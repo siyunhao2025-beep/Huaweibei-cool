@@ -72,9 +72,7 @@
     "附件2得分44.469/2996s/返回道6次"
   ],
   "algorithm_details_and_complexity": "时间状态矩阵O(T·N_lane)递推；GWO迭代G轮O(G·N·D)",
-  "independent_validation_design": [
-    "附件1/附件2两数据集验证"
-  ],
+  "independent_validation_design": "附件1/附件2两数据集验证",
   "sensitivity_robustness_ablation": [
     "返回道使用次数扫描"
   ],

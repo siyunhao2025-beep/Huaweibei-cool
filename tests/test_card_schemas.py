@@ -5,9 +5,8 @@
 - 用 jsonschema 校验全部 729 张 brief 卡、80 张 deep 卡
 - playbook/track schema 仅校验其本身是合法 JSON Schema
 
-说明：经 Wave3 预检，有 2 张 deep 卡存在已知 schema 违例（知识产物，
-按工程纪律不改卡片，仅登记为 KNOWN_DEEP_VIOLATIONS 供后续 Wave 修复）。
-本测试断言：违例集合 ⊆ 已知集合，即不允许出现新增违例。
+说明：全部 729 张 brief 卡与 80 张 deep 卡必须零违例（历史上 2 张 deep 卡
+违例已于交付复核时修复，不再保留豁免清单）。
 """
 import glob
 import json
@@ -18,12 +17,6 @@ import pytest
 from conftest import CORPUS, REPO_ROOT
 
 SCHEMAS = CORPUS / "schemas"
-
-# 已知 deep 卡违例（paper_id, 违例字段路径）——Wave2B 待修，工程验证不改卡片
-KNOWN_DEEP_VIOLATIONS = {
-    ("2009_X_论文1042215B 最终", ("page_locations",)),
-    ("2022_C_C22103560098", ("independent_validation_design",)),
-}
 
 
 def _load_validator(schema_file):
@@ -64,17 +57,12 @@ def test_brief_cards_all_valid(brief_validator):
     assert not bad, f"brief 卡 schema 违例（前10）: {bad[:10]}"
 
 
-def test_deep_cards_valid_except_known(deep_validator):
+def test_deep_cards_all_valid(deep_validator):
     files = sorted(glob.glob(str(CORPUS / "cards" / "deep" / "*.json")))
     assert len(files) == 80, f"deep 卡数量 {len(files)} != 80"
-    violations = set()
+    bad = []
     for f in files:
         c = json.load(open(f, encoding="utf-8"))
         for err in deep_validator.iter_errors(c):
-            violations.add((c.get("paper_id"), tuple(err.path)))
-    new_violations = violations - KNOWN_DEEP_VIOLATIONS
-    assert not new_violations, f"发现新增 deep 卡 schema 违例: {sorted(new_violations)}"
-    # 同时确认已知违例仍在（防止被静默当作已修）
-    missing_known = KNOWN_DEEP_VIOLATIONS - violations
-    if missing_known:
-        pytest.skip(f"已知违例疑似已被修复，可从 KNOWN_DEEP_VIOLATIONS 移除: {missing_known}")
+            bad.append((c.get("paper_id"), list(err.path), err.message))
+    assert not bad, f"deep 卡 schema 违例（前10）: {bad[:10]}"

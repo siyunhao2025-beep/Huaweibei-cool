@@ -49,7 +49,7 @@ LOW_TEXT_THRESHOLD = 500
 # 每篇 low_text 最多渲染的页数
 RENDER_MAX_PAGES = 3
 # 广告水印正则（命中即在 notes 标记，不改原文）
-AD_WATERMARK_RE = re.compile(r"(加微|加[VvＶ]|微信|vx|VX|anjia|公众号|关注|\d{5,}[\u4e00-\u9fa5]{0,4}号)")
+AD_WATERMARK_RE = re.compile(r"(加微|加[VvＶ]|微信|vx|VX|anjia|公众号|关注|有偿|代写|代充|\d{5,}[\u4e00-\u9fa5]{0,4}号)")
 # 赛道字母：文件名首字母 A-F，后接数字（如 A24102940057）
 TRACK_RE = re.compile(r"^([A-F])(?=[0-9])", re.IGNORECASE)
 # 队号：文件名里的连续数字（8-11 位常见）
@@ -124,6 +124,9 @@ def parse_first_pages(first_text: str) -> dict:
         if re.search(r"队号|学校|学院|指导|教师|队员|学号|摘要|关键词|参考文献", line):
             continue
         if re.fullmatch(r"[\d\s\-_]+", line):
+            continue
+        # 广告水印行（“有偿…加微 anjia…”）不得作为题目
+        if AD_WATERMARK_RE.search(line):
             continue
         title = line
         break

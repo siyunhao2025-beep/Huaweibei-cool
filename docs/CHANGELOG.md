@@ -1,5 +1,12 @@
 # CHANGELOG.md
 
+## v0.1.1 — 2026-09-20（交付复核修复）
+
+- **广告清洗**：`papers_index.json/csv` 中 81 条被"加微 anjia"水印污染的标题已剔除（置为"待确认"并在 notes 记录）；`corpus_build.py` 标题提取增加广告行过滤、广告正则补充"有偿/代写/代充"，重跑索引不会再污染。
+- **深卡修复**：2 张 deep 卡 schema 违例无损修复（`page_locations` 转对象、`independent_validation_design` 转字符串）；schema 测试取消豁免清单，729 简卡 + 80 深卡全部零违例。
+- **skill 名称对齐**：SKILL.md frontmatter `name` 改为 `huawei-mcm`，与已安装的 junction 目录名一致。
+- 全量 25 测试通过。
+
 ## v0.1.0 — 2026-09-20（Wave0–Wave2B 初始版本）
 
 ### Wave0：仓库骨架 + 全量抽文
