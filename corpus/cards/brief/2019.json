@@ -1,1299 +1,1328 @@
 [
-  {
-    "paper_id": "2019_A_A19100030004",
-    "year": 2019,
-    "track": "A",
-    "title": "无线智能传播模型",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "预测",
-      "特征工程",
-      "回归"
-    ],
-    "models_and_algorithms": [
-      "Cost 231-Hata",
-      "前馈神经网络",
-      "梯度提升决策树GBDT",
-      "随机森林",
-      "CatBoost",
-      "多元线性回归",
-      "皮尔森相关系数",
-      "最大信息系数MIC",
-      "变异系数"
-    ],
-    "data_modality": "结构化",
-    "data_scale": "千万级(5G路测)",
-    "validation_methods": [
-      "RMSE",
-      "PCRR",
-      "训练/验证集划分",
-      "华为云线上评测"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "特征分布图",
-      "模型对比图",
-      "RSRP预测散点"
-    ],
-    "innovation_points": [
-      "在Cost231-Hata经验模型上引入专家知识构造18类新物理特征(距离/夹角/遮挡物/地物类型)",
-      "五种特征评价(变异系数+皮尔森+MIC+随机森林+CatBoost)加权排序做特征筛选",
-      "前馈神经网络与GBDT/线性回归并行融合的组合模型,华为云RMSE 9.07421排名第一"
-    ],
-    "page_count": 38,
-    "section_structure": "问题重述-假设符号-问题一特征构造-问题二特征筛选-问题三融合预测模型-模型评价",
-    "source_locations": [
-      "摘要 p.1-2",
-      "问题三模型 p.20-30"
-    ],
-    "confidence": "medium",
-    "notes": "原文中文CMap乱码,经PDF首页/摘要页视觉读取;RMSE 9.07421、排名第一等数字来自视觉读取"
-  },
-  {
-    "paper_id": "2019_A_A19100270008",
-    "year": 2019,
-    "track": "A",
-    "title": "基于神经网络的无线电波传播损耗预测模型",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "预测",
-      "特征工程",
-      "多目标优化",
-      "回归"
-    ],
-    "models_and_algorithms": [
-      "GBDT梯度提升决策树",
-      "多层神经网络",
-      "因子分析",
-      "Cost 231-Hata",
-      "Okumura-Hata",
-      "SPM",
-      "Pearson/Kendall/Spearman相关"
-    ],
-    "data_modality": "结构化",
-    "data_scale": "千万级(1201万条)",
-    "validation_methods": [
-      "RMSE",
-      "PCRR",
-      "线下/线上双评测",
-      "华为ModelArts"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "因子分析碎石图",
-      "相关性热力图",
-      "RSRP分布图",
-      "模型对比"
-    ],
-    "innovation_points": [
-      "汇总36种无线电波传播模型做文献综述并提炼统计模型校正特征",
-      "对16变量做因子分析压缩为6因子并构造13类统计特征",
-      "GBDT输出与经验/原始/统计特征融合进多层神经网络,多目标同时优化PCRR与RMSE"
-    ],
-    "page_count": 41,
-    "section_structure": "问题重述-假设-问题一传播模型特征-问题二数据分析特征-问题三融合神经网络-模型总结",
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_A_A19102460049",
-    "year": 2019,
-    "track": "A",
-    "title": "关于无线智能传播模型的研究",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "预测",
-      "特征工程",
-      "回归"
-    ],
-    "models_and_algorithms": [
-      "全连接神经网络",
-      "随机森林",
-      "深度神经网络DNN",
-      "线性回归",
-      "Cost231-Hata",
-      "三系数相关性分析"
-    ],
-    "data_modality": "结构化",
-    "data_scale": "千万级(约1200万条)",
-    "validation_methods": [
-      "RMSE",
-      "线下/线上测试集",
-      "多模型对比"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "特征体系图",
-      "相关性排序图",
-      "模型误差对比表"
-    ],
-    "innovation_points": [
-      "将特征归纳为已有/衍生/计算/校正/涉及五类并给出计算公式的完整特征体系",
-      "横向比较三种相关系数对特征排序的影响,纵向比较排序不变性",
-      "单模型(全连接NN/随机森林)与混合模型(DNN+线性回归)线上线下系统对比"
-    ],
-    "page_count": 30,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_A_A19102690029",
-    "year": 2019,
-    "track": "A",
-    "title": "无线智能传播模型",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "预测",
-      "特征工程",
-      "回归"
-    ],
-    "models_and_algorithms": [
-      "五层神经网络",
-      "LeakyReLU",
-      "BatchNormalization",
-      "Cost231-Hata",
-      "随机森林",
-      "皮尔森/斯皮尔曼相关",
-      "方差"
-    ],
-    "data_modality": "结构化",
-    "data_scale": "千万级",
-    "validation_methods": [
-      "RMSE",
-      "训练集/验证集划分",
-      "异常点剔除",
-      "华为云排名前3%"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "特征分布图",
-      "地图可视化",
-      "神经网络结构图"
-    ],
-    "innovation_points": [
-      "从传统信道模型/数据集几何/算法生成三源构造特征并做多项式-对数-指数变换",
-      "四项特征重要性排名(方差+皮尔森+斯皮尔曼+随机森林)取均值",
-      "五层神经网络加BatchNorm与LeakyReLU,本地验证RMSE 9.06,华为云前3%"
-    ],
-    "page_count": 32,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_A_A19103580027",
-    "year": 2019,
-    "track": "A",
-    "title": "无线智能传播模型",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "预测",
-      "特征工程",
-      "回归",
-      "图像结构对比"
-    ],
-    "models_and_algorithms": [
-      "LightGBM",
-      "全连接神经网络DNN",
-      "卷积神经网络CNN(ResNet/GoogleNet/NetworkInNetwork)",
-      "Cost231-Hata",
-      "皮尔森相关"
-    ],
-    "data_modality": "结构化",
-    "data_scale": "千万级",
-    "validation_methods": [
-      "RMSE",
-      "PCRR",
-      "模型对比",
-      "预测分布拟合"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "特征重要性条形图",
-      "网络结构图",
-      "RSRP分布对比图"
-    ],
-    "innovation_points": [
-      "用LightGBM/Pearson/方差三维度独立判断特征重要性并交叉一致",
-      "系统对比DNN/CNN(三种经典结构)/LightGBM三类建模路线",
-      "LightGBM在RMSE/PCRR最优且RSRP分布逼近真实,ResNet CNN易部署"
-    ],
-    "page_count": 42,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_B_B19100030006",
-    "year": 2019,
-    "track": "B",
-    "title": "天文导航中的星图识别",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "几何解算",
-      "图像识别",
-      "优化"
-    ],
-    "models_and_algorithms": [
-      "张角模型",
-      "归一化法",
-      "带约束OLS最小二乘",
-      "泰勒一阶展开",
-      "球面三角",
-      "三角距角距匹配",
-      "星表块划分"
-    ],
-    "data_modality": "图像+结构化星表",
-    "data_scale": "小样本(8幅星图)",
-    "validation_methods": [
-      "仿真",
-      "解算精度",
-      "鲁棒性",
-      "三星组合对比"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "几何示意图",
-      "误差曲线",
-      "识别流程图"
-    ],
-    "innovation_points": [
-      "将D点坐标误差剥离为MΔa形式,以‖M‖最小选取最优三星组合,精度超80%三星组合",
-      "矢量输入给出焦距f的解析解规避数值初值问题",
-      "圆形视场星表块划分+角距误差门限预匹配,加速并提升鲁棒性"
-    ],
-    "page_count": 35,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": "表格数为0,以图为主"
-  },
-  {
-    "paper_id": "2019_B_B19102690067",
-    "year": 2019,
-    "track": "B",
-    "title": "天体导航中的星图识别",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "几何解算",
-      "图像识别"
-    ],
-    "models_and_algorithms": [
-      "空间几何解析",
-      "投影平面法向法",
-      "角距匹配",
-      "相邻验证法",
-      "假星剔除"
-    ],
-    "data_modality": "图像+结构化星表",
-    "data_scale": "小样本(8幅星图)",
-    "validation_methods": [
-      "8幅星图识别",
-      "误差分析",
-      "算法性能评估"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "几何投影图",
-      "匹配流程图",
-      "星点选取示意图"
-    ],
-    "innovation_points": [
-      "由成像平面法向直接给出D点赤经赤纬解析表达",
-      "提出角距大/不共线/分布均匀的星点选取策略",
-      "设计'先同步匹配再相邻验证'识别算法并能剔除假星"
-    ],
-    "page_count": 47,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_B_B19102880053",
-    "year": 2019,
-    "track": "B",
-    "title": "天文导航中的星图识别",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "几何解算",
-      "图像识别",
-      "模型对比"
-    ],
-    "models_and_algorithms": [
-      "姿态坐标转换矩阵",
-      "透视投影",
-      "角距矩阵匹配",
-      "径向特征星模式识别",
-      "主星-伴星模型"
-    ],
-    "data_modality": "图像+结构化星表",
-    "data_scale": "小样本(8幅星图)",
-    "validation_methods": [
-      "识别时间",
-      "存储容量",
-      "干扰星/噪声下识别率",
-      "鲁棒性"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "坐标系转换图",
-      "径向特征图",
-      "对比柱状图"
-    ],
-    "innovation_points": [
-      "对比角距矩阵匹配与径向特征星模式识别两类方法",
-      "径向特征中以主星+径向模式半径+伴星夹角做先验筛选避免全表遍历",
-      "在实时性与误匹配率之间做工程权衡"
-    ],
-    "page_count": 24,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_B_B19910360003",
-    "year": 2019,
-    "track": "B",
-    "title": "天文导航中的星图识别",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "几何解算",
-      "图像识别",
-      "优化"
-    ],
-    "models_and_algorithms": [
-      "球面三角余弦公式",
-      "牛顿迭代",
-      "误差传递函数",
-      "径向伴星-环向特征",
-      "最小相似差匹配",
-      "补偿码"
-    ],
-    "data_modality": "图像+结构化星表",
-    "data_scale": "小样本(8幅星图)",
-    "validation_methods": [
-      "识别率",
-      "鲁棒性",
-      "F1",
-      "存储压缩"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "球面三角示意图",
-      "特征向量图",
-      "识别性能曲线"
-    ],
-    "innovation_points": [
-      "用球面三角形余弦公式解算D点指向避免复杂运算",
-      "正交矩阵第三行模值条件把求f转为函数零点+牛顿迭代",
-      "提出带补偿码的径向伴星-环向特征向量,引入环向特征与位置噪声补偿"
-    ],
-    "page_count": 40,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_C_C19100030017",
-    "year": 2019,
-    "track": "C",
-    "title": "基于单目视觉的视频图像信息分析",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "图像测距",
-      "相机标定",
-      "深度估计"
-    ],
-    "models_and_algorithms": [
-      "灭点检测(霍夫/Gabor小波/线性回归)",
-      "射影几何交比不变性",
-      "EPnP相机位姿估计",
-      "RANSAC去抖",
-      "SafeUAV深度学习深度估计"
-    ],
-    "data_modality": "图像+视频",
-    "data_scale": "小样本",
-    "validation_methods": [
-      "交叉验证",
-      "R2",
-      "多方法互证"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "灭点图",
-      "单应矩阵示意",
-      "深度图"
-    ],
-    "innovation_points": [
-      "对单幅图用三种灭点检测法择优,直接几何法与EPnP单应矩阵法交叉验证",
-      "用RANSAC帧间全局运动参数消除视频抖动",
-      "立体视频引入SafeUAV深度学习深度估计+灭点求内参求单应"
-    ],
-    "page_count": 40,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_C_C19102480006",
-    "year": 2019,
-    "track": "C",
-    "title": "视觉情报信息分析",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "图像测距",
-      "三维重建",
-      "相机标定",
-      "速度估计"
-    ],
-    "models_and_algorithms": [
-      "消隐点测距",
-      "透视变换",
-      "相机内参标定",
-      "SFM运动恢复",
-      "单目SLAM",
-      "深度学习深度估计"
-    ],
-    "data_modality": "图像+视频(单目/手机/无人机)",
-    "data_scale": "小样本",
-    "validation_methods": [
-      "多场景测距数值",
-      "松耦合点云可视化"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "测距示意图",
-      "点云重建图",
-      "速度差曲线图"
-    ],
-    "innovation_points": [
-      "按单目图像/手机视频/无人机视频四类场景分别建模",
-      "用镜面矫正原理与平面成像求解相机内参做三维坐标转换",
-      "SFM与单目视觉SLAM松耦合降噪点云进行立体场景重建"
-    ],
-    "page_count": 69,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_C_C19102840053",
-    "year": 2019,
-    "track": "C",
-    "title": "C 视觉情报信息分析",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "图像测距",
-      "边缘检测",
-      "几何量测"
-    ],
-    "models_and_algorithms": [
-      "透视变换",
-      "Canny边缘检测",
-      "景深图测距",
-      "平面等高转移模型",
-      "传递测量法"
-    ],
-    "data_modality": "图像",
-    "data_scale": "小样本",
-    "validation_methods": [
-      "模型正确性验证",
-      "R2",
-      "参考物标定"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "边缘检测图",
-      "透视变换图",
-      "传递测量示意图"
-    ],
-    "innovation_points": [
-      "化曲为直分段透视变换处理弯曲道路",
-      "提出平面等高转移模型将拍照者高度等价为平面内某段高度",
-      "传递测量法化立体为平面逐级传递基准尺寸"
-    ],
-    "page_count": 70,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_C_C19104220023",
-    "year": 2019,
-    "track": "C",
-    "title": "视觉情报信息分析",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "图像测距",
-      "相机标定",
-      "速度估计",
-      "三维重建"
-    ],
-    "models_and_algorithms": [
-      "两灭点相机标定",
-      "逆透视变换",
-      "特征点匹配",
-      "SFM运动恢复结构",
-      "稠密点云"
-    ],
-    "data_modality": "图像+视频",
-    "data_scale": "小样本",
-    "validation_methods": [
-      "R2",
-      "鲁棒性",
-      "先验尺度校验"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "两灭点标定图",
-      "特征匹配图",
-      "点云图"
-    ],
-    "innovation_points": [
-      "建立基于两灭点的相机标定模型统一内外参并处理不共面参照物",
-      "逆透视变换处理后视镜凸透镜场景并做连续帧速度差估计",
-      "SFM生成稠密点云借国标建筑尺度将相对距离转真实尺度"
-    ],
-    "page_count": 45,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_C_C19910040006",
-    "year": 2019,
-    "track": "C",
-    "title": "视觉情报信息分析",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "图像测距",
-      "优化",
-      "三维重建"
-    ],
-    "models_and_algorithms": [
-      "交比不变测量",
-      "平面矩形测量",
-      "A-I方程",
-      "牛顿迭代多信息融合",
-      "关键帧选取",
-      "双目视线交汇"
-    ],
-    "data_modality": "图像+视频",
-    "data_scale": "小样本",
-    "validation_methods": [
-      "实地标定(误差6%→3%)",
-      "三维重建检验",
-      "对照表"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "交比示意图",
-      "关键帧示意",
-      "误差表"
-    ],
-    "innovation_points": [
-      "建立A-I方程并以牛顿迭代法求超定最小范数解,将测量误差从6%降到3%",
-      "关键帧选取法把视频参量化后推广到待测帧",
-      "双目视线交汇法解决树木投影被遮挡时的高度求解"
-    ],
-    "page_count": 52,
-    "section_structure": null,
-    "source_locations": [
-      "表2 误差 p.26",
-      "表4 结果 p.28"
-    ],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_D_D19100010050",
-    "year": 2019,
-    "track": "D",
-    "title": "基于随机搜索和聚类分析以及自编码器再优化",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "数据预处理",
-      "聚类",
-      "降维",
-      "优化"
-    ],
-    "models_and_algorithms": [
-      "随机搜索",
-      "K-means聚类",
-      "RBF核主成分分析",
-      "BIRCH层次聚类",
-      "自编码器",
-      "带约束邻域搜索"
-    ],
-    "data_modality": "时序(GPS车速)",
-    "data_scale": "万级(45.5万条)",
-    "validation_methods": [
-      "工况特征误差率(3.18%→2.94%)"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "速度-时间曲线",
-      "聚类散点图",
-      "误差对比表"
-    ],
-    "innovation_points": [
-      "随机搜索(误差14.81%)→聚类(9.40%)→聚类中心邻域带约束搜索(3.18%)的递进链",
-      "RBF核PCA非线性降维+BIRCH层次聚类进一步降到2.94%",
-      "首次用自编码器直接再优化工况特征参数误差"
-    ],
-    "page_count": 52,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_D_D19102470244",
-    "year": 2019,
-    "track": "D",
-    "title": "汽车行驶工况构建",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "数据预处理",
-      "降维",
-      "聚类"
-    ],
-    "models_and_algorithms": [
-      "拉格朗日插值",
-      "主成分分析PCA",
-      "K-means聚类",
-      "误差分析"
-    ],
-    "data_modality": "时序(GPS车速)",
-    "data_scale": "万级",
-    "validation_methods": [
-      "相对误差<8%",
-      "油耗特征评价"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "速度曲线",
-      "聚类图",
-      "误差表"
-    ],
-    "innovation_points": [
-      "线性+拉格朗日混合插值处理时间不连续",
-      "按WLTP提出片段筛选三准则",
-      "PCA将33维特征降至7维再K-means分4类构建1221s工况"
-    ],
-    "page_count": 45,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_D_D19102860085",
-    "year": 2019,
-    "track": "D",
-    "title": "汽车行驶工况构建",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "数据预处理",
-      "降维",
-      "聚类",
-      "评价"
-    ],
-    "models_and_algorithms": [
-      "移动平均滤波",
-      "主成分分析PCA",
-      "K-均值聚类",
-      "最小误差分析法",
-      "CPV综合参数"
-    ],
-    "data_modality": "时序(GPS车速)",
-    "data_scale": "万级",
-    "validation_methods": [
-      "CPV综合参数值合理性评价"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "滤波前后对比",
-      "聚类图",
-      "工况曲线"
-    ],
-    "innovation_points": [
-      "移动平均滤波去毛刺+怠速180s截断",
-      "自提'最小误差分析法'按类误差排序抽片段",
-      "最小误差分析法与相关性分析双曲线用CPV选最优"
-    ],
-    "page_count": 32,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_D_D19103860074",
-    "year": 2019,
-    "track": "D",
-    "title": "基于改进K-means聚类和隐马尔可夫的汽车行驶工况构建",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "数据预处理",
-      "聚类",
-      "时序建模",
-      "优化"
-    ],
-    "models_and_algorithms": [
-      "改进K-means",
-      "隐马尔可夫链HMM",
-      "多目标0-1线性规划"
-    ],
-    "data_modality": "时序(GPS车速,福州)",
-    "data_scale": "万级",
-    "validation_methods": [
-      "工况曲线时长(1200-1300s)",
-      "特征对比"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "行驶轨迹图",
-      "HMM状态图",
-      "工况曲线"
-    ],
-    "innovation_points": [
-      "借高德API绘制一周行驶轨迹做地域先验",
-      "改进K-means+隐马尔可夫链刻画状态转移",
-      "另用多目标0-1线性规划作对照建模路线"
-    ],
-    "page_count": 44,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_D_D19105320030",
-    "year": 2019,
-    "track": "D",
-    "title": "汽车行驶工况构建",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "数据预处理",
-      "降维",
-      "聚类",
-      "误差分析"
-    ],
-    "models_and_algorithms": [
-      "主成分分析",
-      "K-Means聚类",
-      "指标偏差提取",
-      "误差分析"
-    ],
-    "data_modality": "时序(GPS车速)",
-    "data_scale": "万级",
-    "validation_methods": [
-      "指标偏差误差分析"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "预处理流程图",
-      "聚类图",
-      "误差表"
-    ],
-    "innovation_points": [
-      "按五条不良数据类型分步处理",
-      "制定片段时长>20s且缺失率<10%的三规则",
-      "11运动指标+4统计指标的宽评估体系+PCA+K-Means+指标偏差提取"
-    ],
-    "page_count": 51,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_E_E19102470046",
-    "year": 2019,
-    "track": "E",
-    "title": "基于多变量的全球气候与极端天气模型的构建与应用",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "时空趋势",
-      "预测",
-      "回归",
-      "关联分析"
-    ],
-    "models_and_algorithms": [
-      "多变量线性回归",
-      "随机森林非线性回归",
-      "ARIMA时间序列",
-      "气候倾向率"
-    ],
-    "data_modality": "时序(气温/海温站点+网格)",
-    "data_scale": "万级",
-    "validation_methods": [
-      "三模型优缺点对比",
-      "未来25年预测合理性"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "趋势图",
-      "海温纬度分层图",
-      "预测曲线"
-    ],
-    "innovation_points": [
-      "分高中低纬度处理海温规避局部特征被平均",
-      "同时给出线性回归/随机森林非线性/ARIMA三条预测路线并比较",
-      "用网格温度数据量化极端天气与全球变暖关联"
-    ],
-    "page_count": 89,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_E_E19102540248",
-    "year": 2019,
-    "track": "E",
-    "title": "全球变暖？",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "时空趋势",
-      "预测",
-      "极值建模",
-      "系统动力学"
-    ],
-    "models_and_algorithms": [
-      "M-K突变检验",
-      "EOF分解",
-      "回声状态网络ESN",
-      "极值理论",
-      "分层贝叶斯时空模型",
-      "系统动力学"
-    ],
-    "data_modality": "时序(气温/海温)",
-    "data_scale": "万级",
-    "validation_methods": [
-      "模拟值与实测值对比",
-      "与其他模型对比"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "EOF模态图",
-      "ESN结构图",
-      "贝叶斯时空图"
-    ],
-    "innovation_points": [
-      "用EOF分解提取SSTA五个主成分模态",
-      "具鲁棒性的回声状态网络(ESN)做气候预测",
-      "分层贝叶斯时空模型论证极寒与变暖是否矛盾"
-    ],
-    "page_count": 75,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_E_E19102840016",
-    "year": 2019,
-    "track": "E",
-    "title": "全球变暖气候预测分析",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "时空趋势",
-      "预测",
-      "降维",
-      "回归"
-    ],
-    "models_and_algorithms": [
-      "Mann-Kendall突变",
-      "小波分析",
-      "反距离权重IDW插值",
-      "主成分分析PCA",
-      "随机森林回归",
-      "ARIMA",
-      "Prophet"
-    ],
-    "data_modality": "时序(299站点气温)",
-    "data_scale": "万级",
-    "validation_methods": [
-      "调整R²=0.966",
-      "训练/测试集"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "小波分析图",
-      "IDK空间插值图",
-      "因子重要性图"
-    ],
-    "innovation_points": [
-      "分区域分季节从趋势/突变/周期三维度分析,小波识别5年主周期",
-      "9因素PCA(累计方差92%)降至4维后随机森林回归调整R²=0.966",
-      "ARIMA+Prophet预测因素再回代随机森林做未来25年预测"
-    ],
-    "page_count": 61,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_E_E19103530011",
-    "year": 2019,
-    "track": "E",
-    "title": "对气温变化数据的量化分析与预测",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "评价",
-      "预测",
-      "复杂网络",
-      "组合预测"
-    ],
-    "models_and_algorithms": [
-      "模糊综合评价",
-      "熵权法",
-      "BP突变点检验",
-      "ARMA",
-      "复杂网络",
-      "LSTM-ARIMA组合预测"
-    ],
-    "data_modality": "时序(气温/海温)",
-    "data_scale": "万级",
-    "validation_methods": [
-      "组合模型预测",
-      "网络拓扑对比"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "复杂网络图",
-      "LSTM结构图",
-      "预测曲线"
-    ],
-    "innovation_points": [
-      "模糊综合评价+熵权法量化气温影响因子权重",
-      "构建全球海洋气候线性/非线性复杂网络对比拓扑性质",
-      "LSTM-ARIMA组合模型融合5因素预测未来25年气温"
-    ],
-    "page_count": 59,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_E_E19106180041",
-    "year": 2019,
-    "track": "E",
-    "title": "全球变暖和极端气候的时空分析",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "时空趋势",
-      "预测",
-      "非线性回归"
-    ],
-    "models_and_algorithms": [
-      "LSTM",
-      "多元高次多项式非线性回归",
-      "小波分析",
-      "越险指标",
-      "均一性检验"
-    ],
-    "data_modality": "时序(气温/海温)",
-    "data_scale": "万级",
-    "validation_methods": [
-      "模型简化前后对比验证"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "LSTM结构图",
-      "多项式拟合图",
-      "越险指标图"
-    ],
-    "innovation_points": [
-      "LSTM时空序列做多测度多时相趋势分析",
-      "由地气系统平衡方程定系数并用多元高次多项式简化复杂气候模型",
-      "'小波分析-越险指标'修正模型刻画极端天气频次/程度/概率"
-    ],
-    "page_count": 57,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_F_F19102510081",
-    "year": 2019,
-    "track": "F",
-    "title": "多约束条件下智能飞行器航迹快速规划",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "多目标优化",
-      "图论最短路",
-      "整数规划"
-    ],
-    "models_and_algorithms": [
-      "0-1多目标整数规划",
-      "自适应改进Dijkstra",
-      "蚁群算法",
-      "贪婪算法",
-      "分阶段动态规划"
-    ],
-    "data_modality": "网络/图(校正点坐标)",
-    "data_scale": "小样本(数据集1/2)",
-    "validation_methods": [
-      "数据集1/2最优航迹",
-      "校正次数校验"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "邻接网络图",
-      "航迹示意图",
-      "多目标权衡图"
-    ],
-    "innovation_points": [
-      "把航迹规划转为0-1多目标整数规划(航迹最短+校正次数最少)",
-      "自适应Dijkstra+蚁群+贪婪分阶段求解",
-      "故障点概率约束下重构图与目标函数"
-    ],
-    "page_count": 40,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_F_F19102690110",
-    "year": 2019,
-    "track": "F",
-    "title": "多约束条件下智能飞行器航迹快速规划",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "图论最短路",
-      "多目标优化",
-      "概率分析"
-    ],
-    "models_and_algorithms": [
-      "记忆化深度优先搜索",
-      "Dijkstra+堆优化",
-      "相切圆弧转弯",
-      "概率最坏情况分析"
-    ],
-    "data_modality": "网络/图(校正点坐标)",
-    "data_scale": "小样本(数据集1/2)",
-    "validation_methods": [
-      "数据集1/2交叉验证",
-      "复杂度O(V1²ε+V2logV2)"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "有向图",
-      "相切圆弧示意图",
-      "概率分析图"
-    ],
-    "innovation_points": [
-      "记忆化DFS建有向图+Dijkstra堆优化给出明确复杂度上界",
-      "200m最小转弯半径以相切圆弧修正航迹并修正5条候选",
-      "概率约束按最坏情况(所有问题校正点失败)求最大成功概率"
-    ],
-    "page_count": 24,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "medium",
-    "notes": "原文中文CMap乱码,经PDF摘要页视觉读取;数据集1:103512m/9次,数据集2:109336m/12次"
-  },
-  {
-    "paper_id": "2019_F_F19103360018",
-    "year": 2019,
-    "track": "F",
-    "title": "智能飞行器航迹规划模型",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "多目标优化",
-      "启发式搜索",
-      "图论"
-    ],
-    "models_and_algorithms": [
-      "多目标规划",
-      "规范函数无量纲化",
-      "线性加权",
-      "贪心算法",
-      "禁忌搜索(集中分散机制)",
-      "Dubins曲线",
-      "深度优先验证"
-    ],
-    "data_modality": "网络/图",
-    "data_scale": "小样本",
-    "validation_methods": [
-      "DFS深度优先遍历验证最优",
-      "运行时间/改善率"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "双目标权衡图",
-      "禁忌搜索流程图",
-      "Dubins转向图"
-    ],
-    "innovation_points": [
-      "规范函数无量纲化+线性加权把双目标转单目标",
-      "引入集中与分散机制改进禁忌搜索缓解停滞",
-      "以Dubins曲线刻画三维转向约束"
-    ],
-    "page_count": 79,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_F_F19103360033",
-    "year": 2019,
-    "track": "F",
-    "title": "多约束条件下智能飞行器航迹快速规划",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "多目标优化",
-      "图论最短路",
-      "随机规划"
-    ],
-    "models_and_algorithms": [
-      "双目标规划",
-      "Dijkstra",
-      "广度优先",
-      "Dubins曲线",
-      "三次样条插值",
-      "蒙特卡洛",
-      "Pareto"
-    ],
-    "data_modality": "网络/图",
-    "data_scale": "小样本",
-    "validation_methods": [
-      "全局最优证明",
-      "数据集1/2解"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "距离矩阵图",
-      "样条插值图",
-      "Pareto前沿图"
-    ],
-    "innovation_points": [
-      "论证交替经过水平/垂直校正点为最优策略",
-      "以Dubins距离替代欧氏距离做曲率约束判断",
-      "多目标随机规划用期望离散分布刻画通过概率"
-    ],
-    "page_count": 34,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  },
-  {
-    "paper_id": "2019_F_F19910020011",
-    "year": 2019,
-    "track": "F",
-    "title": "多约束条件下智能飞行器航迹快速规划问题",
-    "award_level": "一等奖",
-    "award_confidence": "high",
-    "problem_count": 3,
-    "task_types": [
-      "混合整数规划",
-      "图论",
-      "启发式"
-    ],
-    "models_and_algorithms": [
-      "混合整数规划MIP",
-      "CPLEX",
-      "三维Dubins曲线",
-      "蚁群算法"
-    ],
-    "data_modality": "网络/图",
-    "data_scale": "小样本",
-    "validation_methods": [
-      "CPLEX秒级最优解",
-      "校正概率=100%"
-    ],
-    "figure_count": null,
-    "figure_types": [
-      "MIP模型图",
-      "Dubins距离矩阵图",
-      "蚁群收敛图"
-    ],
-    "innovation_points": [
-      "优先级单目标化后用CPLEX秒级求MIP全局最优",
-      "引入'优选校正点'概念缩减Dubins矩阵规模提升效率",
-      "概率属性收紧约束求最坏情况可行航迹+蚁群提升解质量"
-    ],
-    "page_count": 48,
-    "section_structure": null,
-    "source_locations": [],
-    "confidence": "high",
-    "notes": ""
-  }
+ {
+  "paper_id": "2019_A_A19100030004",
+  "year": 2019,
+  "track": "A",
+  "title": "无线智能传播模型",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "预测",
+   "特征工程",
+   "回归"
+  ],
+  "models_and_algorithms": [
+   "Cost 231-Hata",
+   "前馈神经网络",
+   "梯度提升决策树GBDT",
+   "随机森林",
+   "CatBoost",
+   "多元线性回归",
+   "皮尔森相关系数",
+   "最大信息系数MIC",
+   "变异系数"
+  ],
+  "data_modality": "结构化",
+  "data_scale": "千万级(5G路测)",
+  "validation_methods": [
+   "RMSE",
+   "PCRR",
+   "训练/验证集划分",
+   "华为云线上评测"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "特征分布图",
+   "模型对比图",
+   "RSRP预测散点"
+  ],
+  "innovation_points": [
+   "在Cost231-Hata经验模型上引入专家知识构造18类新物理特征(距离/夹角/遮挡物/地物类型)",
+   "五种特征评价(变异系数+皮尔森+MIC+随机森林+CatBoost)加权排序做特征筛选",
+   "前馈神经网络与GBDT/线性回归并行融合的组合模型,华为云RMSE 9.07421排名第一"
+  ],
+  "page_count": 38,
+  "section_structure": "问题重述-假设符号-问题一特征构造-问题二特征筛选-问题三融合预测模型-模型评价",
+  "source_locations": [
+   "摘要 p.1-2",
+   "问题三模型 p.20-30"
+  ],
+  "confidence": "medium",
+  "notes": "原文中文CMap乱码,经PDF首页/摘要页视觉读取;RMSE 9.07421、排名第一等数字来自视觉读取",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_A_A19100270008",
+  "year": 2019,
+  "track": "A",
+  "title": "基于神经网络的无线电波传播损耗预测模型",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "预测",
+   "特征工程",
+   "多目标优化",
+   "回归"
+  ],
+  "models_and_algorithms": [
+   "GBDT梯度提升决策树",
+   "多层神经网络",
+   "因子分析",
+   "Cost 231-Hata",
+   "Okumura-Hata",
+   "SPM",
+   "Pearson/Kendall/Spearman相关"
+  ],
+  "data_modality": "结构化",
+  "data_scale": "千万级(1201万条)",
+  "validation_methods": [
+   "RMSE",
+   "PCRR",
+   "线下/线上双评测",
+   "华为ModelArts"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "因子分析碎石图",
+   "相关性热力图",
+   "RSRP分布图",
+   "模型对比"
+  ],
+  "innovation_points": [
+   "汇总36种无线电波传播模型做文献综述并提炼统计模型校正特征",
+   "对16变量做因子分析压缩为6因子并构造13类统计特征",
+   "GBDT输出与经验/原始/统计特征融合进多层神经网络,多目标同时优化PCRR与RMSE"
+  ],
+  "page_count": 41,
+  "section_structure": "问题重述-假设-问题一传播模型特征-问题二数据分析特征-问题三融合神经网络-模型总结",
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_A_A19102460049",
+  "year": 2019,
+  "track": "A",
+  "title": "关于无线智能传播模型的研究",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "预测",
+   "特征工程",
+   "回归"
+  ],
+  "models_and_algorithms": [
+   "全连接神经网络",
+   "随机森林",
+   "深度神经网络DNN",
+   "线性回归",
+   "Cost231-Hata",
+   "三系数相关性分析"
+  ],
+  "data_modality": "结构化",
+  "data_scale": "千万级(约1200万条)",
+  "validation_methods": [
+   "RMSE",
+   "线下/线上测试集",
+   "多模型对比"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "特征体系图",
+   "相关性排序图",
+   "模型误差对比表"
+  ],
+  "innovation_points": [
+   "将特征归纳为已有/衍生/计算/校正/涉及五类并给出计算公式的完整特征体系",
+   "横向比较三种相关系数对特征排序的影响,纵向比较排序不变性",
+   "单模型(全连接NN/随机森林)与混合模型(DNN+线性回归)线上线下系统对比"
+  ],
+  "page_count": 30,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_A_A19102690029",
+  "year": 2019,
+  "track": "A",
+  "title": "无线智能传播模型",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "预测",
+   "特征工程",
+   "回归"
+  ],
+  "models_and_algorithms": [
+   "五层神经网络",
+   "LeakyReLU",
+   "BatchNormalization",
+   "Cost231-Hata",
+   "随机森林",
+   "皮尔森/斯皮尔曼相关",
+   "方差"
+  ],
+  "data_modality": "结构化",
+  "data_scale": "千万级",
+  "validation_methods": [
+   "RMSE",
+   "训练集/验证集划分",
+   "异常点剔除",
+   "华为云排名前3%"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "特征分布图",
+   "地图可视化",
+   "神经网络结构图"
+  ],
+  "innovation_points": [
+   "从传统信道模型/数据集几何/算法生成三源构造特征并做多项式-对数-指数变换",
+   "四项特征重要性排名(方差+皮尔森+斯皮尔曼+随机森林)取均值",
+   "五层神经网络加BatchNorm与LeakyReLU,本地验证RMSE 9.06,华为云前3%"
+  ],
+  "page_count": 32,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_A_A19103580027",
+  "year": 2019,
+  "track": "A",
+  "title": "无线智能传播模型",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "预测",
+   "特征工程",
+   "回归",
+   "图像结构对比"
+  ],
+  "models_and_algorithms": [
+   "LightGBM",
+   "全连接神经网络DNN",
+   "卷积神经网络CNN(ResNet/GoogleNet/NetworkInNetwork)",
+   "Cost231-Hata",
+   "皮尔森相关"
+  ],
+  "data_modality": "结构化",
+  "data_scale": "千万级",
+  "validation_methods": [
+   "RMSE",
+   "PCRR",
+   "模型对比",
+   "预测分布拟合"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "特征重要性条形图",
+   "网络结构图",
+   "RSRP分布对比图"
+  ],
+  "innovation_points": [
+   "用LightGBM/Pearson/方差三维度独立判断特征重要性并交叉一致",
+   "系统对比DNN/CNN(三种经典结构)/LightGBM三类建模路线",
+   "LightGBM在RMSE/PCRR最优且RSRP分布逼近真实,ResNet CNN易部署"
+  ],
+  "page_count": 42,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_B_B19100030006",
+  "year": 2019,
+  "track": "B",
+  "title": "天文导航中的星图识别",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "几何解算",
+   "图像识别",
+   "优化"
+  ],
+  "models_and_algorithms": [
+   "张角模型",
+   "归一化法",
+   "带约束OLS最小二乘",
+   "泰勒一阶展开",
+   "球面三角",
+   "三角距角距匹配",
+   "星表块划分"
+  ],
+  "data_modality": "图像+结构化星表",
+  "data_scale": "小样本(8幅星图)",
+  "validation_methods": [
+   "仿真",
+   "解算精度",
+   "鲁棒性",
+   "三星组合对比"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "几何示意图",
+   "误差曲线",
+   "识别流程图"
+  ],
+  "innovation_points": [
+   "将D点坐标误差剥离为MΔa形式,以‖M‖最小选取最优三星组合,精度超80%三星组合",
+   "矢量输入给出焦距f的解析解规避数值初值问题",
+   "圆形视场星表块划分+角距误差门限预匹配,加速并提升鲁棒性"
+  ],
+  "page_count": 35,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "表格数为0,以图为主",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_B_B19102690067",
+  "year": 2019,
+  "track": "B",
+  "title": "天体导航中的星图识别",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "几何解算",
+   "图像识别"
+  ],
+  "models_and_algorithms": [
+   "空间几何解析",
+   "投影平面法向法",
+   "角距匹配",
+   "相邻验证法",
+   "假星剔除"
+  ],
+  "data_modality": "图像+结构化星表",
+  "data_scale": "小样本(8幅星图)",
+  "validation_methods": [
+   "8幅星图识别",
+   "误差分析",
+   "算法性能评估"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "几何投影图",
+   "匹配流程图",
+   "星点选取示意图"
+  ],
+  "innovation_points": [
+   "由成像平面法向直接给出D点赤经赤纬解析表达",
+   "提出角距大/不共线/分布均匀的星点选取策略",
+   "设计'先同步匹配再相邻验证'识别算法并能剔除假星"
+  ],
+  "page_count": 47,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_B_B19102880053",
+  "year": 2019,
+  "track": "B",
+  "title": "天文导航中的星图识别",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "几何解算",
+   "图像识别",
+   "模型对比"
+  ],
+  "models_and_algorithms": [
+   "姿态坐标转换矩阵",
+   "透视投影",
+   "角距矩阵匹配",
+   "径向特征星模式识别",
+   "主星-伴星模型"
+  ],
+  "data_modality": "图像+结构化星表",
+  "data_scale": "小样本(8幅星图)",
+  "validation_methods": [
+   "识别时间",
+   "存储容量",
+   "干扰星/噪声下识别率",
+   "鲁棒性"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "坐标系转换图",
+   "径向特征图",
+   "对比柱状图"
+  ],
+  "innovation_points": [
+   "对比角距矩阵匹配与径向特征星模式识别两类方法",
+   "径向特征中以主星+径向模式半径+伴星夹角做先验筛选避免全表遍历",
+   "在实时性与误匹配率之间做工程权衡"
+  ],
+  "page_count": 24,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_B_B19910360003",
+  "year": 2019,
+  "track": "B",
+  "title": "天文导航中的星图识别",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "几何解算",
+   "图像识别",
+   "优化"
+  ],
+  "models_and_algorithms": [
+   "球面三角余弦公式",
+   "牛顿迭代",
+   "误差传递函数",
+   "径向伴星-环向特征",
+   "最小相似差匹配",
+   "补偿码"
+  ],
+  "data_modality": "图像+结构化星表",
+  "data_scale": "小样本(8幅星图)",
+  "validation_methods": [
+   "识别率",
+   "鲁棒性",
+   "F1",
+   "存储压缩"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "球面三角示意图",
+   "特征向量图",
+   "识别性能曲线"
+  ],
+  "innovation_points": [
+   "用球面三角形余弦公式解算D点指向避免复杂运算",
+   "正交矩阵第三行模值条件把求f转为函数零点+牛顿迭代",
+   "提出带补偿码的径向伴星-环向特征向量,引入环向特征与位置噪声补偿"
+  ],
+  "page_count": 40,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_C_C19100030017",
+  "year": 2019,
+  "track": "C",
+  "title": "基于单目视觉的视频图像信息分析",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "图像测距",
+   "相机标定",
+   "深度估计"
+  ],
+  "models_and_algorithms": [
+   "灭点检测(霍夫/Gabor小波/线性回归)",
+   "射影几何交比不变性",
+   "EPnP相机位姿估计",
+   "RANSAC去抖",
+   "SafeUAV深度学习深度估计"
+  ],
+  "data_modality": "图像+视频",
+  "data_scale": "小样本",
+  "validation_methods": [
+   "交叉验证",
+   "R2",
+   "多方法互证"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "灭点图",
+   "单应矩阵示意",
+   "深度图"
+  ],
+  "innovation_points": [
+   "对单幅图用三种灭点检测法择优,直接几何法与EPnP单应矩阵法交叉验证",
+   "用RANSAC帧间全局运动参数消除视频抖动",
+   "立体视频引入SafeUAV深度学习深度估计+灭点求内参求单应"
+  ],
+  "page_count": 40,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_C_C19102480006",
+  "year": 2019,
+  "track": "C",
+  "title": "视觉情报信息分析",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "图像测距",
+   "三维重建",
+   "相机标定",
+   "速度估计"
+  ],
+  "models_and_algorithms": [
+   "消隐点测距",
+   "透视变换",
+   "相机内参标定",
+   "SFM运动恢复",
+   "单目SLAM",
+   "深度学习深度估计"
+  ],
+  "data_modality": "图像+视频(单目/手机/无人机)",
+  "data_scale": "小样本",
+  "validation_methods": [
+   "多场景测距数值",
+   "松耦合点云可视化"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "测距示意图",
+   "点云重建图",
+   "速度差曲线图"
+  ],
+  "innovation_points": [
+   "按单目图像/手机视频/无人机视频四类场景分别建模",
+   "用镜面矫正原理与平面成像求解相机内参做三维坐标转换",
+   "SFM与单目视觉SLAM松耦合降噪点云进行立体场景重建"
+  ],
+  "page_count": 69,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_C_C19102840053",
+  "year": 2019,
+  "track": "C",
+  "title": "C 视觉情报信息分析",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "图像测距",
+   "边缘检测",
+   "几何量测"
+  ],
+  "models_and_algorithms": [
+   "透视变换",
+   "Canny边缘检测",
+   "景深图测距",
+   "平面等高转移模型",
+   "传递测量法"
+  ],
+  "data_modality": "图像",
+  "data_scale": "小样本",
+  "validation_methods": [
+   "模型正确性验证",
+   "R2",
+   "参考物标定"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "边缘检测图",
+   "透视变换图",
+   "传递测量示意图"
+  ],
+  "innovation_points": [
+   "化曲为直分段透视变换处理弯曲道路",
+   "提出平面等高转移模型将拍照者高度等价为平面内某段高度",
+   "传递测量法化立体为平面逐级传递基准尺寸"
+  ],
+  "page_count": 70,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_C_C19104220023",
+  "year": 2019,
+  "track": "C",
+  "title": "视觉情报信息分析",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "图像测距",
+   "相机标定",
+   "速度估计",
+   "三维重建"
+  ],
+  "models_and_algorithms": [
+   "两灭点相机标定",
+   "逆透视变换",
+   "特征点匹配",
+   "SFM运动恢复结构",
+   "稠密点云"
+  ],
+  "data_modality": "图像+视频",
+  "data_scale": "小样本",
+  "validation_methods": [
+   "R2",
+   "鲁棒性",
+   "先验尺度校验"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "两灭点标定图",
+   "特征匹配图",
+   "点云图"
+  ],
+  "innovation_points": [
+   "建立基于两灭点的相机标定模型统一内外参并处理不共面参照物",
+   "逆透视变换处理后视镜凸透镜场景并做连续帧速度差估计",
+   "SFM生成稠密点云借国标建筑尺度将相对距离转真实尺度"
+  ],
+  "page_count": 45,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_C_C19910040006",
+  "year": 2019,
+  "track": "C",
+  "title": "视觉情报信息分析",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "图像测距",
+   "优化",
+   "三维重建"
+  ],
+  "models_and_algorithms": [
+   "交比不变测量",
+   "平面矩形测量",
+   "A-I方程",
+   "牛顿迭代多信息融合",
+   "关键帧选取",
+   "双目视线交汇"
+  ],
+  "data_modality": "图像+视频",
+  "data_scale": "小样本",
+  "validation_methods": [
+   "实地标定(误差6%→3%)",
+   "三维重建检验",
+   "对照表"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "交比示意图",
+   "关键帧示意",
+   "误差表"
+  ],
+  "innovation_points": [
+   "建立A-I方程并以牛顿迭代法求超定最小范数解,将测量误差从6%降到3%",
+   "关键帧选取法把视频参量化后推广到待测帧",
+   "双目视线交汇法解决树木投影被遮挡时的高度求解"
+  ],
+  "page_count": 52,
+  "section_structure": null,
+  "source_locations": [
+   "表2 误差 p.26",
+   "表4 结果 p.28"
+  ],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_D_D19100010050",
+  "year": 2019,
+  "track": "D",
+  "title": "基于随机搜索和聚类分析以及自编码器再优化",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "数据预处理",
+   "聚类",
+   "降维",
+   "优化"
+  ],
+  "models_and_algorithms": [
+   "随机搜索",
+   "K-means聚类",
+   "RBF核主成分分析",
+   "BIRCH层次聚类",
+   "自编码器",
+   "带约束邻域搜索"
+  ],
+  "data_modality": "时序(GPS车速)",
+  "data_scale": "万级(45.5万条)",
+  "validation_methods": [
+   "工况特征误差率(3.18%→2.94%)"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "速度-时间曲线",
+   "聚类散点图",
+   "误差对比表"
+  ],
+  "innovation_points": [
+   "随机搜索(误差14.81%)→聚类(9.40%)→聚类中心邻域带约束搜索(3.18%)的递进链",
+   "RBF核PCA非线性降维+BIRCH层次聚类进一步降到2.94%",
+   "首次用自编码器直接再优化工况特征参数误差"
+  ],
+  "page_count": 52,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_D_D19102470244",
+  "year": 2019,
+  "track": "D",
+  "title": "汽车行驶工况构建",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "数据预处理",
+   "降维",
+   "聚类"
+  ],
+  "models_and_algorithms": [
+   "拉格朗日插值",
+   "主成分分析PCA",
+   "K-means聚类",
+   "误差分析"
+  ],
+  "data_modality": "时序(GPS车速)",
+  "data_scale": "万级",
+  "validation_methods": [
+   "相对误差<8%",
+   "油耗特征评价"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "速度曲线",
+   "聚类图",
+   "误差表"
+  ],
+  "innovation_points": [
+   "线性+拉格朗日混合插值处理时间不连续",
+   "按WLTP提出片段筛选三准则",
+   "PCA将33维特征降至7维再K-means分4类构建1221s工况"
+  ],
+  "page_count": 45,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_D_D19102860085",
+  "year": 2019,
+  "track": "D",
+  "title": "汽车行驶工况构建",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "数据预处理",
+   "降维",
+   "聚类",
+   "评价"
+  ],
+  "models_and_algorithms": [
+   "移动平均滤波",
+   "主成分分析PCA",
+   "K-均值聚类",
+   "最小误差分析法",
+   "CPV综合参数"
+  ],
+  "data_modality": "时序(GPS车速)",
+  "data_scale": "万级",
+  "validation_methods": [
+   "CPV综合参数值合理性评价"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "滤波前后对比",
+   "聚类图",
+   "工况曲线"
+  ],
+  "innovation_points": [
+   "移动平均滤波去毛刺+怠速180s截断",
+   "自提'最小误差分析法'按类误差排序抽片段",
+   "最小误差分析法与相关性分析双曲线用CPV选最优"
+  ],
+  "page_count": 32,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_D_D19103860074",
+  "year": 2019,
+  "track": "D",
+  "title": "基于改进K-means聚类和隐马尔可夫的汽车行驶工况构建",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "数据预处理",
+   "聚类",
+   "时序建模",
+   "优化"
+  ],
+  "models_and_algorithms": [
+   "改进K-means",
+   "隐马尔可夫链HMM",
+   "多目标0-1线性规划"
+  ],
+  "data_modality": "时序(GPS车速,福州)",
+  "data_scale": "万级",
+  "validation_methods": [
+   "工况曲线时长(1200-1300s)",
+   "特征对比"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "行驶轨迹图",
+   "HMM状态图",
+   "工况曲线"
+  ],
+  "innovation_points": [
+   "借高德API绘制一周行驶轨迹做地域先验",
+   "改进K-means+隐马尔可夫链刻画状态转移",
+   "另用多目标0-1线性规划作对照建模路线"
+  ],
+  "page_count": 44,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_D_D19105320030",
+  "year": 2019,
+  "track": "D",
+  "title": "汽车行驶工况构建",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "数据预处理",
+   "降维",
+   "聚类",
+   "误差分析"
+  ],
+  "models_and_algorithms": [
+   "主成分分析",
+   "K-Means聚类",
+   "指标偏差提取",
+   "误差分析"
+  ],
+  "data_modality": "时序(GPS车速)",
+  "data_scale": "万级",
+  "validation_methods": [
+   "指标偏差误差分析"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "预处理流程图",
+   "聚类图",
+   "误差表"
+  ],
+  "innovation_points": [
+   "按五条不良数据类型分步处理",
+   "制定片段时长>20s且缺失率<10%的三规则",
+   "11运动指标+4统计指标的宽评估体系+PCA+K-Means+指标偏差提取"
+  ],
+  "page_count": 51,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_E_E19102470046",
+  "year": 2019,
+  "track": "E",
+  "title": "基于多变量的全球气候与极端天气模型的构建与应用",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "时空趋势",
+   "预测",
+   "回归",
+   "关联分析"
+  ],
+  "models_and_algorithms": [
+   "多变量线性回归",
+   "随机森林非线性回归",
+   "ARIMA时间序列",
+   "气候倾向率"
+  ],
+  "data_modality": "时序(气温/海温站点+网格)",
+  "data_scale": "万级",
+  "validation_methods": [
+   "三模型优缺点对比",
+   "未来25年预测合理性"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "趋势图",
+   "海温纬度分层图",
+   "预测曲线"
+  ],
+  "innovation_points": [
+   "分高中低纬度处理海温规避局部特征被平均",
+   "同时给出线性回归/随机森林非线性/ARIMA三条预测路线并比较",
+   "用网格温度数据量化极端天气与全球变暖关联"
+  ],
+  "page_count": 89,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_E_E19102540248",
+  "year": 2019,
+  "track": "E",
+  "title": "全球变暖？",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "时空趋势",
+   "预测",
+   "极值建模",
+   "系统动力学"
+  ],
+  "models_and_algorithms": [
+   "M-K突变检验",
+   "EOF分解",
+   "回声状态网络ESN",
+   "极值理论",
+   "分层贝叶斯时空模型",
+   "系统动力学"
+  ],
+  "data_modality": "时序(气温/海温)",
+  "data_scale": "万级",
+  "validation_methods": [
+   "模拟值与实测值对比",
+   "与其他模型对比"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "EOF模态图",
+   "ESN结构图",
+   "贝叶斯时空图"
+  ],
+  "innovation_points": [
+   "用EOF分解提取SSTA五个主成分模态",
+   "具鲁棒性的回声状态网络(ESN)做气候预测",
+   "分层贝叶斯时空模型论证极寒与变暖是否矛盾"
+  ],
+  "page_count": 75,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_E_E19102840016",
+  "year": 2019,
+  "track": "E",
+  "title": "全球变暖气候预测分析",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "时空趋势",
+   "预测",
+   "降维",
+   "回归"
+  ],
+  "models_and_algorithms": [
+   "Mann-Kendall突变",
+   "小波分析",
+   "反距离权重IDW插值",
+   "主成分分析PCA",
+   "随机森林回归",
+   "ARIMA",
+   "Prophet"
+  ],
+  "data_modality": "时序(299站点气温)",
+  "data_scale": "万级",
+  "validation_methods": [
+   "调整R²=0.966",
+   "训练/测试集"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "小波分析图",
+   "IDK空间插值图",
+   "因子重要性图"
+  ],
+  "innovation_points": [
+   "分区域分季节从趋势/突变/周期三维度分析,小波识别5年主周期",
+   "9因素PCA(累计方差92%)降至4维后随机森林回归调整R²=0.966",
+   "ARIMA+Prophet预测因素再回代随机森林做未来25年预测"
+  ],
+  "page_count": 61,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_E_E19103530011",
+  "year": 2019,
+  "track": "E",
+  "title": "对气温变化数据的量化分析与预测",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "评价",
+   "预测",
+   "复杂网络",
+   "组合预测"
+  ],
+  "models_and_algorithms": [
+   "模糊综合评价",
+   "熵权法",
+   "BP突变点检验",
+   "ARMA",
+   "复杂网络",
+   "LSTM-ARIMA组合预测"
+  ],
+  "data_modality": "时序(气温/海温)",
+  "data_scale": "万级",
+  "validation_methods": [
+   "组合模型预测",
+   "网络拓扑对比"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "复杂网络图",
+   "LSTM结构图",
+   "预测曲线"
+  ],
+  "innovation_points": [
+   "模糊综合评价+熵权法量化气温影响因子权重",
+   "构建全球海洋气候线性/非线性复杂网络对比拓扑性质",
+   "LSTM-ARIMA组合模型融合5因素预测未来25年气温"
+  ],
+  "page_count": 59,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_E_E19106180041",
+  "year": 2019,
+  "track": "E",
+  "title": "全球变暖和极端气候的时空分析",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "时空趋势",
+   "预测",
+   "非线性回归"
+  ],
+  "models_and_algorithms": [
+   "LSTM",
+   "多元高次多项式非线性回归",
+   "小波分析",
+   "越险指标",
+   "均一性检验"
+  ],
+  "data_modality": "时序(气温/海温)",
+  "data_scale": "万级",
+  "validation_methods": [
+   "模型简化前后对比验证"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "LSTM结构图",
+   "多项式拟合图",
+   "越险指标图"
+  ],
+  "innovation_points": [
+   "LSTM时空序列做多测度多时相趋势分析",
+   "由地气系统平衡方程定系数并用多元高次多项式简化复杂气候模型",
+   "'小波分析-越险指标'修正模型刻画极端天气频次/程度/概率"
+  ],
+  "page_count": 57,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_F_F19102510081",
+  "year": 2019,
+  "track": "F",
+  "title": "多约束条件下智能飞行器航迹快速规划",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "多目标优化",
+   "图论最短路",
+   "整数规划"
+  ],
+  "models_and_algorithms": [
+   "0-1多目标整数规划",
+   "自适应改进Dijkstra",
+   "蚁群算法",
+   "贪婪算法",
+   "分阶段动态规划"
+  ],
+  "data_modality": "网络/图(校正点坐标)",
+  "data_scale": "小样本(数据集1/2)",
+  "validation_methods": [
+   "数据集1/2最优航迹",
+   "校正次数校验"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "邻接网络图",
+   "航迹示意图",
+   "多目标权衡图"
+  ],
+  "innovation_points": [
+   "把航迹规划转为0-1多目标整数规划(航迹最短+校正次数最少)",
+   "自适应Dijkstra+蚁群+贪婪分阶段求解",
+   "故障点概率约束下重构图与目标函数"
+  ],
+  "page_count": 40,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_F_F19102690110",
+  "year": 2019,
+  "track": "F",
+  "title": "多约束条件下智能飞行器航迹快速规划",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "图论最短路",
+   "多目标优化",
+   "概率分析"
+  ],
+  "models_and_algorithms": [
+   "记忆化深度优先搜索",
+   "Dijkstra+堆优化",
+   "相切圆弧转弯",
+   "概率最坏情况分析"
+  ],
+  "data_modality": "网络/图(校正点坐标)",
+  "data_scale": "小样本(数据集1/2)",
+  "validation_methods": [
+   "数据集1/2交叉验证",
+   "复杂度O(V1²ε+V2logV2)"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "有向图",
+   "相切圆弧示意图",
+   "概率分析图"
+  ],
+  "innovation_points": [
+   "记忆化DFS建有向图+Dijkstra堆优化给出明确复杂度上界",
+   "200m最小转弯半径以相切圆弧修正航迹并修正5条候选",
+   "概率约束按最坏情况(所有问题校正点失败)求最大成功概率"
+  ],
+  "page_count": 24,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "medium",
+  "notes": "原文中文CMap乱码,经PDF摘要页视觉读取;数据集1:103512m/9次,数据集2:109336m/12次",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_F_F19103360018",
+  "year": 2019,
+  "track": "F",
+  "title": "智能飞行器航迹规划模型",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "多目标优化",
+   "启发式搜索",
+   "图论"
+  ],
+  "models_and_algorithms": [
+   "多目标规划",
+   "规范函数无量纲化",
+   "线性加权",
+   "贪心算法",
+   "禁忌搜索(tabu search,集中分散机制)",
+   "Dubins曲线",
+   "深度优先验证"
+  ],
+  "data_modality": "网络/图",
+  "data_scale": "小样本",
+  "validation_methods": [
+   "DFS深度优先遍历验证最优",
+   "运行时间/改善率"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "双目标权衡图",
+   "禁忌搜索流程图",
+   "Dubins转向图"
+  ],
+  "innovation_points": [
+   "规范函数无量纲化+线性加权把双目标转单目标",
+   "引入集中与分散机制改进禁忌搜索缓解停滞",
+   "以Dubins曲线刻画三维转向约束"
+  ],
+  "page_count": 79,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_F_F19103360033",
+  "year": 2019,
+  "track": "F",
+  "title": "多约束条件下智能飞行器航迹快速规划",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "多目标优化",
+   "图论最短路",
+   "随机规划"
+  ],
+  "models_and_algorithms": [
+   "双目标规划",
+   "Dijkstra",
+   "广度优先",
+   "Dubins曲线",
+   "三次样条插值",
+   "蒙特卡洛",
+   "Pareto"
+  ],
+  "data_modality": "网络/图",
+  "data_scale": "小样本",
+  "validation_methods": [
+   "全局最优证明",
+   "数据集1/2解"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "距离矩阵图",
+   "样条插值图",
+   "Pareto前沿图"
+  ],
+  "innovation_points": [
+   "论证交替经过水平/垂直校正点为最优策略",
+   "以Dubins距离替代欧氏距离做曲率约束判断",
+   "多目标随机规划用期望离散分布刻画通过概率"
+  ],
+  "page_count": 34,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ },
+ {
+  "paper_id": "2019_F_F19910020011",
+  "year": 2019,
+  "track": "F",
+  "title": "多约束条件下智能飞行器航迹快速规划问题",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 3,
+  "task_types": [
+   "混合整数规划",
+   "图论",
+   "启发式"
+  ],
+  "models_and_algorithms": [
+   "混合整数规划MIP",
+   "CPLEX",
+   "三维Dubins曲线",
+   "蚁群算法"
+  ],
+  "data_modality": "网络/图",
+  "data_scale": "小样本",
+  "validation_methods": [
+   "CPLEX秒级最优解",
+   "校正概率=100%"
+  ],
+  "figure_count": null,
+  "figure_types": [
+   "MIP模型图",
+   "Dubins距离矩阵图",
+   "蚁群收敛图"
+  ],
+  "innovation_points": [
+   "优先级单目标化后用CPLEX秒级求MIP全局最优",
+   "引入'优选校正点'概念缩减Dubins矩阵规模提升效率",
+   "概率属性收紧约束求最坏情况可行航迹+蚁群提升解质量"
+  ],
+  "page_count": 48,
+  "section_structure": null,
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "",
+  "award_evidence": "文本扫描未发现自述式奖级声明；Wave1 视觉曾判一等奖，文本未独立证实，待多模态复核"
+ }
 ]
