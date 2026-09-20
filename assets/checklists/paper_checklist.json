@@ -1037,7 +1037,7 @@
         "prediction"
       ],
       "length_requirement": null,
-      "notes": "原图此行被水印遮挡，按“分类”同构条目补全，待用户确认"
+      "notes": null
     },
     {
       "id": "Q01",
@@ -1192,7 +1192,7 @@
         ]
       ],
       "length_requirement": null,
-      "notes": "原图字迹疑似“优先”，待用户确认"
+      "notes": null
     },
     {
       "id": "V06",
@@ -1357,12 +1357,12 @@
     {
       "id": "I02",
       "section": "模型的改进",
-      "item": "改进可以分点，但一定不要太偏题",
+      "item": "模型的改进以整段写为主、可以分点但一定不能跑题",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
       "length_requirement": null,
-      "notes": "原图两条互相矛盾，理解为“以整段为主、分点不得跑题”，待用户确认"
+      "notes": null
     },
     {
       "id": "G01",

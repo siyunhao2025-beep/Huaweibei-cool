@@ -37,11 +37,11 @@ def test_checklist_json_parseable_and_138():
     sections = {it["section"] for it in d["items"]}
     for sec in ["全局格式", "摘要", "模型求解", "参考文献"]:
         assert sec in sections
-    # 3 处存疑标注保留
+    # 3 处存疑条目已经用户确认定稿（M14/V05/I02），notes 应为 null
     notes = {it["id"]: it.get("notes") for it in d["items"]}
-    assert notes["M14"] and "待用户确认" in notes["M14"]
-    assert notes["I02"] and "待用户确认" in notes["I02"]
-    assert notes["V05"] and "待用户确认" in notes["V05"]
+    assert notes["M14"] is None
+    assert notes["I02"] is None
+    assert notes["V05"] is None
 
 
 def test_checklist_md_exists_and_has_execution_requirements():

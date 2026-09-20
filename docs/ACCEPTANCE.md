@@ -49,7 +49,7 @@
 
 ## 8. 优秀论文自检表（Wave6）
 
-- [ ] `assets/checklists/paper_checklist.json` **138 条齐全**（F01–F06 / L01–L17 / A01–A10 / B01–B15 / T01–T08 / H01–H06 / S01–S06 / C01–C08 / P01–P11 / M01–M14 / Q01–Q09 / V01–V07 / W01–W05 / E01–E08 / I01–I02 / G01–G02 / R01–R02 / X01–X02），且 3 处存疑标注（M14、V05、I02）保持"待用户确认"语气。
+- [ ] `assets/checklists/paper_checklist.json` **138 条齐全**（F01–F06 / L01–L17 / A01–A10 / B01–B15 / T01–T08 / H01–H06 / S01–S06 / C01–C08 / P01–P11 / M01–M14 / Q01–Q09 / V01–V07 / W01–W05 / E01–E08 / I01–I02 / G01–G02 / R01–R02 / X01–X02），且 3 处存疑（M14、V05、I02）已经用户确认定稿、notes 置空。
 - [ ] 机检脚本 `scripts/paper_checklist.py` 对**正/反例 fixture 行为正确**（正例 PASS、反例 FAIL）。
 - [ ] P6 门禁检查已勾选自检表存在（`progress.py --gate P6` 查《论文自检表_已勾选.md》与 sidecar 无未裁决项）。
 - [ ] 未做到条目**显式标注"不适用/未做到+原因"+ 用户确认**，不静默跳过。

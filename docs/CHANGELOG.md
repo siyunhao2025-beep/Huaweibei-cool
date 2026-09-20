@@ -19,6 +19,10 @@
 - 第三方自检表 F03 要求"二三级标题小四号**黑体**"；但华为杯官方 `华为杯_论文章节规范.md` §2.3(1) 明确为"小四号**宋体**"，且禁止改 `gmcmthesis.cls`；`gmcmthesis.cls` 与 Word 模板现状均为宋体小四。
 - Wave6-B 未改模板，在 `modules/paper-writing.md` §6.1 如实标注冲突、**以官方宋体为准**，待用户最终裁决。本仓库不擅自改模板。
 
+### 3 处转录存疑已经用户确认定稿（2026-09-21）
+- 原转录 M14 / V05 / I02 三处存疑，经用户确认后定稿：M14=预测模型评估（讲如何控制输出，与 M11 同构）；I02=以整段写为主、可分点但不能跑题；V05=误差检验优先使用五折交叉验证。
+- `paper_checklist.json` 三条 notes 置 `null`，人读版/`paper-writing.md`/`validation.md` 去掉“待用户确认”标注；`test_paper_checklist.py` 断言同步改为 notes 为 null。
+
 ### 集成与发布（Wave6-C）
 - 全量 pytest **87 passed / 2 skipped / 1 xfailed**（MATLAB skip、2017_B xfail）。
 - doctor.py 本机 8 PASS / 1 WARN（graphviz dot 可选）/ 0 FAIL。
