@@ -17,6 +17,8 @@ from conftest import CORPUS, REPO_ROOT
 
 INDEX = CORPUS / "papers_index.json"
 REQUIRED_FIELDS = ["paper_id", "year", "title", "text_path", "extract_status"]
+# corpus/text 为本地生成的抽文产物（.gitignore 排除，不入库）
+TEXT_ROOT = REPO_ROOT / "corpus" / "text"
 
 
 @pytest.fixture(scope="module")
@@ -53,7 +55,13 @@ def test_year_range(index):
 
 
 def test_text_files_exist(index):
-    """抽文覆盖率：每条 text_path 指向的 .txt 必须真实落盘。"""
+    """抽文覆盖率：每条 text_path 指向的 .txt 必须真实落盘。
+
+    corpus/text 由 corpus_build.py 在本地生成、.gitignore 排除；
+    干净检出（含 GitHub Actions CI）上该目录不存在，此时 skip 而非失败。
+    """
+    if not TEXT_ROOT.is_dir():
+        pytest.skip("corpus/text 为本地生成产物不入库；如需覆盖率先本地跑 corpus_build.py")
     missing = []
     for p in index["papers"]:
         tp = REPO_ROOT / p["text_path"]
