@@ -1,0 +1,159 @@
+##### MATLAB SMOKE TEST #####
+repoRoot = C:\Users\ASUS\Doubao\chats\2026-09-20\new-chat-12\Huaweibei-cool
+workDir  = C:\Users\ASUS\Doubao\chats\2026-09-20\new-chat-12\Huaweibei-cool\_work
+locale.encoding = UTF-8
+locale query failed: 无法识别的字段名称 "codeset"。
+
+=== [1] version & ver ===
+version: 24.2.0.2712019 (R2024b)
+Installed products (113):
+  - 5G Toolbox
+  - AUTOSAR Blockset
+  - Aerospace Blockset
+  - Aerospace Toolbox
+  - Antenna Toolbox
+  - Audio Toolbox
+  - Automated Driving Toolbox
+  - Bioinformatics Toolbox
+  - Bluetooth Toolbox
+  - C2000 Microcontroller Blockset
+  - Communications Toolbox
+  - Computer Vision Toolbox
+  - Control System Toolbox
+  - Curve Fitting Toolbox
+  - DDS Blockset
+  - DSP HDL Toolbox
+  - DSP System Toolbox
+  - Data Acquisition Toolbox
+  - Database Toolbox
+  - Datafeed Toolbox
+  - Deep Learning HDL Toolbox
+  - Deep Learning Toolbox
+  - Econometrics Toolbox
+  - Embedded Coder
+  - Filter Design HDL Coder
+  - Financial Instruments Toolbox
+  - Financial Toolbox
+  - Fixed-Point Designer
+  - Fuzzy Logic Toolbox
+  - GPU Coder
+  - Global Optimization Toolbox
+  - HDL Coder
+  - HDL Verifier
+  - Image Acquisition Toolbox
+  - Image Processing Toolbox
+  - Industrial Communication Toolbox
+  - Instrument Control Toolbox
+  - LTE Toolbox
+  - Lidar Toolbox
+  - MATLAB
+  - MATLAB Coder
+  - MATLAB Compiler
+  - MATLAB Compiler SDK
+  - MATLAB Report Generator
+  - MATLAB Test
+  - Mapping Toolbox
+  - Medical Imaging Toolbox
+  - Mixed-Signal Blockset
+  - Model Predictive Control Toolbox
+  - Model-Based Calibration Toolbox
+  - Motor Control Blockset
+  - Navigation Toolbox
+  - Optimization Toolbox
+  - Parallel Computing Toolbox
+  - Partial Differential Equation Toolbox
+  - Phased Array System Toolbox
+  - Powertrain Blockset
+  - Predictive Maintenance Toolbox
+  - RF Blockset
+  - RF PCB Toolbox
+  - RF Toolbox
+  - ROS Toolbox
+  - Radar Toolbox
+  - Reinforcement Learning Toolbox
+  - Requirements Toolbox
+  - Risk Management Toolbox
+  - Robotics System Toolbox
+  - Robust Control Toolbox
+  - Satellite Communications Toolbox
+  - Sensor Fusion and Tracking Toolbox
+  - SerDes Toolbox
+  - Signal Integrity Toolbox
+  - Signal Processing Toolbox
+  - SimBiology
+  - SimEvents
+  - Simscape
+  - Simscape Battery
+  - Simscape Driveline
+  - Simscape Electrical
+  - Simscape Fluids
+  - Simscape Multibody
+  - Simulink
+  - Simulink 3D Animation
+  - Simulink Check
+  - Simulink Code Inspector
+  - Simulink Coder
+  - Simulink Compiler
+  - Simulink Control Design
+  - Simulink Coverage
+  - Simulink Design Optimization
+  - Simulink Design Verifier
+  - Simulink Desktop Real-Time
+  - Simulink Fault Analyzer
+  - Simulink PLC Coder
+  - Simulink Real-Time
+  - Simulink Report Generator
+  - Simulink Test
+  - SoC Blockset
+  - Spreadsheet Link
+  - Stateflow
+  - Statistics and Machine Learning Toolbox
+  - Symbolic Math Toolbox
+  - System Composer
+  - System Identification Toolbox
+  - Text Analytics Toolbox
+  - UAV Toolbox
+  - Vehicle Dynamics Blockset
+  - Vehicle Network Toolbox
+  - Vision HDL Toolbox
+  - WLAN Toolbox
+  - Wavelet Toolbox
+  - Wireless HDL Toolbox
+  - Wireless Testbench
+
+=== [2] license test toolboxes ===
+  Optimization Toolbox: available
+  Global Optimization Toolbox: available
+  Statistics and Machine Learning Toolbox: available
+  Deep Learning Toolbox: unavailable
+  Signal Processing Toolbox: available
+  Image Processing Toolbox: available
+
+=== [3] linprog ===
+  linprog exit=1  x=(0.0000, 5.0000)  fval=-5.0000  (expect x1=3,x2=2,fval=-5)
+
+=== [4] intlinprog ===
+  intlinprog exit=1  x=(0, 5)  fval=-5.0000  (expect fval=-5)
+
+=== [5] fmincon ===
+  fmincon exit=1  x=(1.9996, 2.9996)  fval=2.472739e-07  (expect x~(2,3), fval~0)
+
+=== [6] ga / particleswarm ===
+  ga exit=1  x=0.0000  fval=8.400957e-10  (expect x~0, fval~0)
+
+=== [7] ode45 ===
+  ode45 t(end)=5.0000  y(end)=4.560033e-05  (expected e^-10=4.539993e-05)
+
+=== [8] write .mat ===
+  wrote: C:\Users\ASUS\Doubao\chats\2026-09-20\new-chat-12\Huaweibei-cool\_work\matlab_test_output.mat  (exists=2)
+
+=== [9] write .csv ===
+  wrote: C:\Users\ASUS\Doubao\chats\2026-09-20\new-chat-12\Huaweibei-cool\_work\matlab_test_output.csv  (exists=2)
+
+=== [10] Chinese font & figure ===
+  listfonts: Microsoft YaHei present = 1 ; SimHei present = 0
+  using CJK font: Microsoft YaHei
+  wrote Chinese PNG: C:\Users\ASUS\Doubao\chats\2026-09-20\new-chat-12\Huaweibei-cool\_work\matlab_chinese_test.png  (exists=2)
+  title literal check: 测试图表：优化结果
+
+=== MATLAB SMOKE TEST COMPLETE ===
