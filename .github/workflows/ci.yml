@@ -1,0 +1,41 @@
+name: CI
+
+# 华为杯研赛 AI 作战中枢 持续集成（Wave5-C）
+# Ubuntu + Python 3.12（兼容性最稳）；装依赖后跑 pytest 与 doctor 自检。
+# MATLAB 用例默认 skip（CI 无 MATLAB，也未设 HUAWEI_RUN_MATLAB）。
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: 安装依赖
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 环境自检（doctor.py --json）
+        # CI runner 无 xelatex/MATLAB/Word，doctor 会报 FAIL；用 continue-on-error 仅展示不阻塞。
+        continue-on-error: true
+        run: python scripts/doctor.py --json
+
+      - name: 运行测试
+        run: python -m pytest tests/ -v
+
+      # 说明：
+      # - 无中文字体时 render_roadmap / matplotlib 用例走英文标签优雅回退，不应因缺字体失败。
+      # - MATLAB 用例（test_matlab_smoke.py）在无 matlab.exe / 未设 HUAWEI_RUN_MATLAB 时自动 skip。

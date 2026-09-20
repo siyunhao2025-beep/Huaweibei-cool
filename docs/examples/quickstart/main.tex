@@ -1,0 +1,46 @@
+% quickstart 玩具样例 · 极简中文论文（桩）
+% 编译：xelatex -interaction=nonstopmode main.tex
+\documentclass[11pt]{article}
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{产品 A 单变量生产优化（quickstart 玩具样例）}
+\author{工具链自检}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+本文用一个虚构的单变量生产优化问题，验证华为杯工具链从题面到 PDF 的最小闭环。
+成本函数 $C(x)=x^2-10x+100$，售价固定 50，求利润最大产量并做 $\pm10\%$ 鲁棒性分析。
+\end{abstract}
+
+\section{问题}
+单位售价 $p=50$，成本 $C(x)=a x^2-10x+100$（标称 $a=1$）。利润
+\[
+P(x)=p x - C(x)=50x-(a x^2-10x+100).
+\]
+
+\section{求解}
+标称 $a=1$：$P(x)=-x^2+60x-100$。令 $P'(x)=-2x+60=0$，得
+\[
+x^*=30,\qquad P(x^*)=-30^2+60\cdot30-100=800.
+\]
+
+\section{鲁棒性}
+对 $P(x)=-a x^2+60x-100$，$P'(x)=-2a x+60=0\Rightarrow x^*=\dfrac{30}{a}$。
+代入：
+\begin{itemize}
+  \item $a=0.9$：$x^*\approx33.33$，$P^*\approx900$；
+  \item $a=1.0$：$x^*=30$，$P^*=800$；
+  \item $a=1.1$：$x^*\approx27.27$，$P^*\approx718$。
+\end{itemize}
+成本系数 $\pm10\%$ 内，最优产量在 $[27.3,33.3]$ 间移动，利润在 $[718,900]$ 间变化，方案可接受。
+
+\section{结论}
+该玩具样例跑通了题面$\to$匹配$\to$LaTeX 编译的最小闭环。
+
+\end{document}

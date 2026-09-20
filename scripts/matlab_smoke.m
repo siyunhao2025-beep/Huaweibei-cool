@@ -66,6 +66,23 @@ for i = 1:size(tbList, 1)
     end
 end
 
+% ---- 2b. Deep Learning Toolbox 专用探测（只查许可，不跑任何训练）----
+fprintf('\n=== [2b] Deep Learning Toolbox dedicated probe ===\n');
+% 红线：只 license('test',...) 查一次，绝不调用 trainNetwork/summarize 等训练类 API。
+% 本批处理会话已在脚本头 maxNumCompThreads(2)，且不碰用户正在跑的 MATLAB 进程。
+try
+    dlOK = license('test', 'Deep_Learning_Toolbox');
+catch ME
+    dlOK = false;
+    fprintf('  Deep Learning Toolbox: license query error (%s)\n', ME.message);
+end
+if dlOK
+    fprintf('Deep Learning Toolbox: available (license checked, no training run)\n');
+else
+    fprintf('Deep Learning Toolbox: unavailable\n');
+end
+tbAvailable.DeepLearningDedicated = logical(dlOK);
+
 % ---- 3. linprog 极小例 ----
 fprintf('\n=== [3] linprog ===\n');
 try

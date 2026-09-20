@@ -26,7 +26,7 @@
 | Statistics and Machine Learning Toolbox | ✅ available |
 | Signal Processing Toolbox | ✅ available |
 | Image Processing Toolbox | ✅ available |
-| Deep Learning Toolbox | ⚠️ 本次未实测（`license('test','Deep_Learning_Toolbox')` 返回 unavailable；`ver` 列表中产品存在，疑似 license feature 名与传入字符串不一致，本次未深究，不做结论） |
+| Deep Learning Toolbox | ⚠️ 本次实测：`ver` 列表中产品已安装，但 `license('test','Deep_Learning_Toolbox')` 专用探测返回 **unavailable**（只查许可、未跑任何训练）；即产品在、当前会话 checkout 不到 license，不能作为主力求解器 |
 
 > 注意：`ver` 列出"产品已安装"≠ 当前会话一定能 checkout 该工具箱 license。以 `license('test',...)` 或实际调用是否报错为准。
 
@@ -139,7 +139,13 @@ odeFun = @(t, y) -2*y;
 
 ### 3.6 Deep Learning 类（feedforwardnet / trainNetwork 等）
 
-⚠️ **未实测（本次 Deep Learning Toolbox license 探测 unavailable）**。需要时单独验证 license feature 名后再跑最小例。
+本次在 `matlab_smoke.m` 增加了 **[2b] 专用探测**：只跑一次 `license('test','Deep_Learning_Toolbox')`，
+**只查许可、不调用任何训练 API**，日志打印固定结论：
+- 可用时：`Deep Learning Toolbox: available (license checked, no training run)`
+- 不可用时：`Deep Learning Toolbox: unavailable`
+
+**实测结果（R2024b，本次重跑）**：`Deep Learning Toolbox: unavailable`。
+即 `ver` 里产品在，但当前会话 license checkout 不到。需要真跑训练前，先单独确认 license feature 名与许可服务器，再跑最小例。
 
 ---
 
@@ -245,7 +251,7 @@ df = pd.read_csv("matlab_test_output.csv")
 | 优化（LP / MILP / 非线性约束 / 全局启发式） | **MATLAB**：`linprog` / `intlinprog` / `fmincon` / `ga`（本机实测 license 齐全） |
 | ODE / 控制系统 / 信号处理 / 数字滤波 | **MATLAB**：`ode45`、Control System / Signal Processing Toolbox（本机实测 available） |
 | 图像处理 / 特征提取原型 | MATLAB Image Processing Toolbox（本机实测 available） |
-| 深度学习训练 / 大规模 ML | **Python**（PyTorch / sklearn）；本机 Deep Learning Toolbox 本次未实测，不作为主力 |
+| 深度学习训练 / 大规模 ML | **Python**（PyTorch / sklearn）；本机 Deep Learning Toolbox 实测 license 探测 unavailable（产品在、checkout 不到），不作为主力 |
 | 数据清洗 / 预处理 / 表格分析 / 快速原型 | **Python**（pandas / numpy / scipy） |
 | 出图（论文最终图） | MATLAB 出矢量/高 DPI 图，中文用 Microsoft YaHei；或 Python matplotlib（按 `skills/academic-figure` 规范） |
 

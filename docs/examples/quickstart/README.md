@@ -1,0 +1,43 @@
+# quickstart demo · 工具链最小闭环样例（Wave5-C）
+
+> 用一道**完全虚构**的单变量优化题，验证"题面 → 初始化 → 读题审计 → 原型匹配 →
+> 技术路线图 → LaTeX 编译 PDF"的最小闭环。**不引用任何真实赛题语料**。
+
+## 题目
+某工厂生产产品 A，成本 $C(x)=x^2-10x+100$，售价固定 50，求利润最大的产量；
+并评价成本二次项系数 $\pm10\%$ 时的鲁棒性。见 [`problem.txt`](problem.txt)。
+
+**解析答案**（供对照，非工具产出）：标称 $a=1$ 时 $x^*=30$、$P^*=800$；
+$a\in\{0.9,1.0,1.1\}$ 时 $x^*\approx\{33.3,30,27.3\}$、$P^*\approx\{900,800,718\}$。
+
+## 一键复现
+在**仓库根目录**执行：
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\quickstart_demo.ps1
+```
+脚本会打印每步进度，产物落到 `_work\quickstart_demo\`。
+
+## 分步说明（手动版）
+| 步 | 命令 | 预期 |
+|---|---|---|
+| 1 自检 | `python scripts\doctor.py` | 环境表，无 FAIL |
+| 2 初始化 | `python scripts\contest_init.py --workdir _work\quickstart_demo` | 建好五区骨架 |
+| 3 读题审计 | 见 [`read_audit_report.md`](read_audit_report.md)（桩示例） | 要素拆解+选型 |
+| 4 原型匹配 | `python scripts\playbook_match.py --txt docs\examples\quickstart\problem.txt` | 命中 **optimization**（conf≈0.9） |
+| 5 路线图 | `python scripts\render_roadmap.py --spec assets\roadmap\templates\optimization.yaml --outdir _work\quickstart_demo\roadmap` | 出 png/pdf/mmd/dot |
+| 6 编译论文 | `cd docs\examples\quickstart; xelatex main.tex; xelatex main.tex` | 出 `main.pdf`，中文正常 |
+
+## 本目录产物
+| 文件 | 说明 |
+|---|---|
+| `problem.txt` | 题面纯文本（供 playbook_match 读） |
+| `problem.yaml` | 桩配置：模型/鲁棒性/管线步骤 |
+| `read_audit_report.md` | 读题审计报告桩示例 |
+| `main.tex` / `main.pdf` | 极简中文论文源 / 编译产物 |
+| `roadmap_optimization.yaml` | 技术路线图所用 optimization 模板 |
+| `roadmap.png` / `roadmap.pdf` | 路线图渲染产物（Wave5-A 渲染器） |
+
+## 说明与边界
+- 第 5 步依赖 Wave5-A 的 `scripts/render_roadmap.py`；本仓库已就绪，若缺失脚本会打印"待就绪"并跳过。
+- `build_latex.py` 面向完整论文模板（需 manifest + template-dir），本玩具样例按任务约定**手动 xelatex 编译极简 tex**，不跑完整模板链。
+- 正式比赛请把本样例的桩内容替换为真实题面；MATLAB 求解在有 MATLAB 且 `HUAWEI_RUN_MATLAB=1` 时才跑。

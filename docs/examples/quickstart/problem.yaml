@@ -1,0 +1,27 @@
+# quickstart 玩具样例配置（桩，不对应真实赛题）
+problem:
+  id: quickstart-toy-001
+  title: 产品 A 单变量生产优化
+  source: 虚构玩具样例（仅用于跑通工具链，不引用真实语料）
+  archetype_expected: optimization   # playbook_match 应命中 optimization
+  continuous: true                   # x 视为连续产量
+
+model:
+  price: 50.0                        # 单位售价
+  cost: "C(x) = a*x^2 - 10*x + 100"  # a 为二次项系数
+  cost_coef_nominal: 1.0
+
+robustness:
+  cost_coef_sweep: [0.9, 1.0, 1.1]   # ±10%
+  # 解析结果（手算/符号核对，供 demo 对照，非工具产出）：
+  #   a=1.0 -> x*=30,  P*=800
+  #   a=0.9 -> x*=33.33, P*=900
+  #   a=1.1 -> x*=27.27, P*=718
+
+pipeline:
+  steps:
+    - contest_init            # 初始化工作目录
+    - read_audit               # 读题审计（本目录 read_audit_report.md）
+    - playbook_match           # 题面原型匹配（应命中 optimization）
+    - render_roadmap           # 【依赖 Wave5-A】技术路线图渲染器就绪后再跑
+    - build_paper              # 极简 main.tex -> xelatex 编译 PDF
