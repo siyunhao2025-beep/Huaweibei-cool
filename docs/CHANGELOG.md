@@ -1,5 +1,24 @@
 # CHANGELOG.md
 
+## v0.4.1 — 2026-09-21（F03 用户裁决定稿：冲突关闭 + 版本号统一 + demo 证据重生成）
+
+### F03 二三级标题字体：用户裁决定稿（关闭全部"冲突待裁决"）
+- 用户 2026-09-21 裁决：二三级标题字体**以官方格式规范为准——小四号宋体**。官方原文："论文题目用三号黑体字、一级标题用四号黑体字，并居中。论文中其他汉字一律采用小四号宋体字，行距用单倍行距"（来源：cmathc.org.cn 2025 第二十二届论文格式规范）。
+- 第三方自检表 F03 原写"小四号**黑体**"，经裁决**不采纳**；`gmcmthesis.cls` 与 Word 模板现状本就是宋体小四，**不改模板**。
+- 落地：`assets/checklists/paper_checklist.json` F03 item 改为"小四宋体"并 notes 记录裁决依据与官方出处；人读版 `优秀论文自检表.md` 第 11 行同步；`modules/paper-writing.md` §6.1 由"⚠ 冲突/待裁决"改为"✅ 已裁决：以官方为准（宋体）"，模板映射表 F03 行转 ✅ 合规；`SKILL.md`、`docs/UPSTREAM.md`、`交付说明.md` 冲突措辞同步关闭。
+- 所有"冲突待裁决"状态关闭，无遗留待裁决项。
+
+### demo 闭环证据重生成
+- `docs/examples/quickstart/paper_checklist_decisions.json` F03 裁决备注更新为"已裁决：官方宋体，合规"。
+- 对 `docs/examples/quickstart/main.tex`（`--problems 1 --archetype optimization --strict`）重跑 `paper_checklist.py`，输出 **✅124 ❌0 ☐0 ➖14**（F03 文案更新但裁决状态不变），《论文自检表_已勾选.md》已回拷 `docs/examples/quickstart/`。
+
+### 验证与发布
+- Windows pytest 全绿；CI=true 全绿；doctor 0 FAIL。
+- paper_checklist 正/反例行为不变（pass fixture ✅17 ❌0 退出 0；fail fixture 8 ❌ 退出 1）。
+- 版本号统一升 v0.4.1（SKILL.md / 交付说明.md / docs/CHANGELOG.md / docs/HANDOFF.md）。
+
+> v0.4.0 中"⚠ 已知冲突：F03 二三级标题字体"记录保留为历史（见下），本版本仅记录裁决结果，不抹历史。
+
 ## v0.4.0 — 2026-09-21（Wave6 集成：优秀论文自检表全量固化 + 机检脚本 + P4/P6 门禁打通）
 
 ### 优秀论文自检表全量固化（Wave6-A 资产 + 机检脚本）
