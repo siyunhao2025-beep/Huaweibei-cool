@@ -1,0 +1,86 @@
+% checklist_pass.tex — 合规迷你论文 fixture（Wave6-A）
+\documentclass{article}
+\usepackage{booktabs}
+\begin{document}
+
+\section{摘要}
+针对问题1，本文采用优化方法对系统进行建模，首先建立目标函数，接着引入约束条件，最后采用启发式算法求解，得到最优方案。针对问题2，本文在问题1的基础上扩展约束，采用灵敏度分析验证稳定性。实验表明本文方法性能优越，求解结果稳定可靠。
+关键词：优化；灵敏度分析；启发式算法；约束建模
+
+\section{引言}
+\textbf{问题1}：在给定资源约束下，求解最小成本方案。
+\textbf{问题2}：在问题1基础上，扩展多目标约束。
+
+\section{总体分析}
+本文围绕两个问题展开分析，流程图如图\ref{fig:flow}所示。
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{flow.pdf}
+  \caption{总体流程图}
+  \label{fig:flow}
+\end{figure}
+
+\section{模型假设}
+为简化问题，本文做出以下假设：
+假设1：系统处于稳态运行。
+假设2：外部扰动服从正态分布。
+
+\section{符号说明}
+本文使用的主要符号如表\ref{tab:sym}所示。
+\begin{table}[htbp]
+  \centering
+  \caption{主要符号说明}
+  \label{tab:sym}
+  \begin{tabular}{cl}
+    \toprule
+    符号 & 含义 \\
+    \midrule
+    $x$ & 决策变量 \\
+    $c$ & 单位成本 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{模型求解}
+经过建模与求解，得到结果如表\ref{tab:res}与图\ref{fig:res}所示。
+\begin{table}[htbp]
+  \centering
+  \caption{求解结果对比}
+  \label{tab:res}
+  \begin{tabular}{lc}
+    \toprule
+    方案 & 成本（元） \\
+    \midrule
+    方案一 & 1200 \\
+    方案二 & 980 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+如图\ref{fig:res}所示，方案二在成本上优于方案一。
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{result.pdf}
+  \caption{成本对比柱状图}
+  \label{fig:res}
+\end{figure}
+
+\section{模型检验}
+本文对优化模型进行灵敏度分析，结果稳定。
+
+\section{模型的评价}
+优点1：建模简洁，求解效率高。
+优点2：灵敏度分析充分，结果稳健。
+缺点1：未考虑动态扰动。
+
+\section{模型的改进}
+未来可引入动态扰动项，提升模型适应性。
+
+\section{模型的推广}
+本文方法可推广到同类资源调度问题。
+
+\begin{thebibliography}{9}
+\bibitem{a} 张三. 优化方法研究[J]. 系统工程理论与实践, 2023, 43(2): 1-10.
+\bibitem{b} 李四. 灵敏度分析综述[M]. 北京: 科学出版社, 2022.
+\end{thebibliography}
+
+\end{document}

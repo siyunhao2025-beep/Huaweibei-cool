@@ -1,0 +1,60 @@
+% checklist_fail.tex — 故意埋错的迷你论文 fixture（Wave6-A）
+\documentclass{article}
+\usepackage{booktabs}
+\begin{document}
+
+\section{摘要}
+针对问题1，本文采用优化方法求解，得到结果。关键词：优化
+
+\section{引言}
+\textbf{问题1}：求解最小成本。
+
+\section{模型假设}
+假设1：稳态。
+假设2：正态扰动。
+假设3：线性关系。
+
+\section{符号说明}
+\begin{table}[htbp]
+  \centering
+  \caption{符号}
+  \label{tab:sym}
+  \begin{tabular}{cl}
+    \toprule
+    符号 & 含义 \\
+    \midrule
+    $x$ & 变量 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{模型求解}
+经过求解得到结果。
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.99\textwidth]{big.pdf}
+  \caption{A Big Figure}
+  \label{fig:big}
+\end{figure}
+如图\ref{fig:big}所示，\textbf{本步}采用贪心策略。
+\begin{table}[htbp]
+  \centering
+  \caption{未被引用的表}
+  \label{tab:orphan}
+  \begin{tabular}{lc}
+    \toprule
+    A & 1 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{模型的评价}
+优点1：求解快。
+缺点1：未考虑扰动。
+缺点2：精度不足。
+
+\begin{thebibliography}{9}
+\bibitem{a} 张三. Some paper[J]. J, 2023. DOI: 10.1234/abc.5678.
+\end{thebibliography}
+
+\end{document}

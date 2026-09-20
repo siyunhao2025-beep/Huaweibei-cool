@@ -21,12 +21,21 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SCAFFOLD = REPO_ROOT / "assets" / "scaffold"
 CONTEST_JSON = REPO_ROOT / "config" / "contest.json"
+CHECKLIST_MD = REPO_ROOT / "assets" / "checklists" / "优秀论文自检表.md"
 
 
 def load_config() -> dict:
     if CONTEST_JSON.exists():
         return json.loads(CONTEST_JSON.read_text(encoding="utf-8"))
     return {}
+
+
+def _copy_checklist(workdir: Path) -> None:
+    """Wave6-A：把优秀论文自检表复制到工作目录的 论文/ 下。"""
+    target_dir = workdir / "论文"
+    target_dir.mkdir(parents=True, exist_ok=True)
+    if CHECKLIST_MD.exists():
+        shutil.copy2(CHECKLIST_MD, target_dir / CHECKLIST_MD.name)
 
 
 def init_workdir(workdir: Path) -> None:
@@ -42,6 +51,7 @@ def init_workdir(workdir: Path) -> None:
         # 兜底：直接建五区
         for name in ["题目", "数据/原始", "数据/中间", "求解", "论文", "提交附件"]:
             (workdir / name).mkdir(parents=True, exist_ok=True)
+    _copy_checklist(workdir)
     print(f"工作目录已初始化: {workdir}")
 
 

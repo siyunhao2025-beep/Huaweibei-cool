@@ -1,0 +1,1428 @@
+{
+  "version": "1.0.0",
+  "source": "优秀论文自检表_原始转录.md",
+  "total": 138,
+  "items": [
+    {
+      "id": "F01",
+      "section": "全局格式",
+      "item": "论文题目用三号黑体字",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "F02",
+      "section": "全局格式",
+      "item": "一级标题用四号黑体字，居中",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "F03",
+      "section": "全局格式",
+      "item": "二级、三级标题用小四号黑体字，左端对齐（不居中）",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "F04",
+      "section": "全局格式",
+      "item": "论文中其他汉字一律用小四号宋体字",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "F05",
+      "section": "全局格式",
+      "item": "行距用单倍行距",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "F06",
+      "section": "全局格式",
+      "item": "打印文字内容尽量避免彩色打印（必要的彩色图形、图表除外）",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "L01",
+      "section": "章节结构与篇幅",
+      "item": "流程图篇幅",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": "约 3/4 页",
+      "notes": null
+    },
+    {
+      "id": "L02",
+      "section": "章节结构与篇幅",
+      "item": "模型假设篇幅",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": "约 1/3 页",
+      "notes": null
+    },
+    {
+      "id": "L03",
+      "section": "章节结构与篇幅",
+      "item": "符号说明篇幅",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": "约 2/3 页（与模型假设合计约 1 页）",
+      "notes": null
+    },
+    {
+      "id": "L04",
+      "section": "章节结构与篇幅",
+      "item": "具体分析篇幅",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": "约 3/4 页",
+      "notes": null
+    },
+    {
+      "id": "L05",
+      "section": "章节结构与篇幅",
+      "item": "模型准备篇幅",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": "约 1 页",
+      "notes": null
+    },
+    {
+      "id": "L06",
+      "section": "章节结构与篇幅",
+      "item": "模型建立篇幅",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": "自适应（建议 ≈ 5 − 已用页数）",
+      "notes": null
+    },
+    {
+      "id": "L07",
+      "section": "章节结构与篇幅",
+      "item": "模型求解篇幅",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": "约 3/4 页",
+      "notes": null
+    },
+    {
+      "id": "L08",
+      "section": "章节结构与篇幅",
+      "item": "模型检验（选）篇幅",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": "按题型决定是否需要",
+      "notes": null
+    },
+    {
+      "id": "L09",
+      "section": "章节结构与篇幅",
+      "item": "“模型建立与求解”整块合计篇幅",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": "4–5 页",
+      "notes": null
+    },
+    {
+      "id": "L10",
+      "section": "章节结构与篇幅",
+      "item": "模型检验与分析篇幅",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": "1–2 页；多个检验时每个约 1/2 页",
+      "notes": null
+    },
+    {
+      "id": "L11",
+      "section": "章节结构与篇幅",
+      "item": "模型评价·优点篇幅",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": "约 1/4 页",
+      "notes": null
+    },
+    {
+      "id": "L12",
+      "section": "章节结构与篇幅",
+      "item": "模型评价·缺点篇幅",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": "约 1/4 页（优缺点合计约 1/2 页）",
+      "notes": null
+    },
+    {
+      "id": "L13",
+      "section": "章节结构与篇幅",
+      "item": "模型的改进篇幅",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": "约 1/4 页",
+      "notes": null
+    },
+    {
+      "id": "L14",
+      "section": "章节结构与篇幅",
+      "item": "模型的推广篇幅",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": "约 1/4 页（改进+推广合计约 1/2 页）",
+      "notes": null
+    },
+    {
+      "id": "L15",
+      "section": "章节结构与篇幅",
+      "item": "参考文献篇幅",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": "约 1/2 页（合计约 1 页）",
+      "notes": null
+    },
+    {
+      "id": "L16",
+      "section": "章节结构与篇幅",
+      "item": "附录·附件说明表篇幅",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": "自适应（约 1 页）",
+      "notes": null
+    },
+    {
+      "id": "L17",
+      "section": "章节结构与篇幅",
+      "item": "附录·代码（选）篇幅",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": "自适应",
+      "notes": null
+    },
+    {
+      "id": "A01",
+      "section": "摘要",
+      "item": "开头段两句话点出问题主旨、引出下文具体摘要部分",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "A02",
+      "section": "摘要",
+      "item": "每一问的结构都是“针对问题#，……”",
+      "check_method": "machine",
+      "machine_rule": "摘要正文含“针对问题\\d+”",
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "A03",
+      "section": "摘要",
+      "item": "点出问题类型",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "A04",
+      "section": "摘要",
+      "item": "点出主要建模方法",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "A05",
+      "section": "摘要",
+      "item": "用“首先、接着……最后”结构化表达关键步骤",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "A06",
+      "section": "摘要",
+      "item": "展示求解结果",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "A07",
+      "section": "摘要",
+      "item": "每个问的摘要里不写模型检验",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "A08",
+      "section": "摘要",
+      "item": "摘要中不能出现任何解释性语言，直接一步接一步陈述",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "A09",
+      "section": "摘要",
+      "item": "结尾段两句话表达整个问题求解完成、模型性能优越",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "A10",
+      "section": "摘要",
+      "item": "关键词占一行；包含问题领域词、方法、技术、框架、创新点",
+      "check_method": "machine",
+      "machine_rule": "摘要环境内出现“关键词”或 \\keywords 行",
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "B01",
+      "section": "引言",
+      "item": "开头两句话纯背景引入",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "B02",
+      "section": "引言",
+      "item": "讲清楚问题来源与原因",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "B03",
+      "section": "引言",
+      "item": "表达问题的目前困境",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "B04",
+      "section": "引言",
+      "item": "表达需要解决的渴求",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "B05",
+      "section": "引言",
+      "item": "背景段落数在 2–3 段之间",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "B06",
+      "section": "引言",
+      "item": "背景不要出现分点表达",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "B07",
+      "section": "引言",
+      "item": "研究意义主题为社会、科研方面",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "B08",
+      "section": "引言",
+      "item": "研究意义达到两点以上",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "B09",
+      "section": "引言",
+      "item": "研究意义不要用分点符号、序号",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "B10",
+      "section": "引言",
+      "item": "研究意义段落 1–2 段最好，1 段最优",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "B11",
+      "section": "引言",
+      "item": "每个问题的重述保持 2 行之内",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "B12",
+      "section": "引言",
+      "item": "加粗“问题#”等字样",
+      "check_method": "machine",
+      "machine_rule": "问题重述章节含 \\textbf{\\s*问题\\d+\\s*} 或等价加粗",
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "B13",
+      "section": "引言",
+      "item": "在“问题#”等后面加冒号，然后再写重述",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "B14",
+      "section": "引言",
+      "item": "问题重述不要用分点符号、序号",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "B15",
+      "section": "引言",
+      "item": "问题重述是问题的本质缩写，删除背景、附属解释",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "T01",
+      "section": "总体分析",
+      "item": "总体分析三段式写作",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "T02",
+      "section": "总体分析",
+      "item": "第一段引文：总体表达题目意思、引入分析，一句话即可",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "T03",
+      "section": "总体分析",
+      "item": "第二段分析：理清楚问题之间的联系",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "T04",
+      "section": "总体分析",
+      "item": "第二段分析模板：“针对问题#，本问建立了#来解决#，”",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "T05",
+      "section": "总体分析",
+      "item": "第三段图引文：“具体流程如图#所示”，不需要额外说明",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "T06",
+      "section": "总体分析",
+      "item": "流程图可用模板式或自定义（要求配色清晰）",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "T07",
+      "section": "总体分析",
+      "item": "流程图同总体分析配套",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "T08",
+      "section": "总体分析",
+      "item": "总体分析里不要讲检验、不要讲结果（此时尚未求解）",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "H01",
+      "section": "模型假设",
+      "item": "模型假设两段式写作",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "H02",
+      "section": "模型假设",
+      "item": "第一段引文：“为简化问题，本文做出以下假设：”",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "H03",
+      "section": "模型假设",
+      "item": "每条假设控制在两行内",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "H04",
+      "section": "模型假设",
+      "item": "假设开头必须是“假设#：”",
+      "check_method": "machine",
+      "machine_rule": "正则 ^\\s*假设\\d+[：:] 在假设章节内匹配",
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "H05",
+      "section": "模型假设",
+      "item": "假设条数 = 问题数量",
+      "check_method": "machine",
+      "machine_rule": "假设条数 == --problems N",
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "H06",
+      "section": "模型假设",
+      "item": "假设之间用分点符号区分",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "S01",
+      "section": "符号说明",
+      "item": "开头引文：表达符号说明意义、引出表",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "S02",
+      "section": "符号说明",
+      "item": "引文篇幅控制在 2 行内",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "S03",
+      "section": "符号说明",
+      "item": "表格用 2 列三线表",
+      "check_method": "machine",
+      "machine_rule": "符号说明章节含 \\toprule/\\midrule/\\bottomrule 且列数=2",
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "S04",
+      "section": "符号说明",
+      "item": "表一定要有名字（表题）",
+      "check_method": "machine",
+      "machine_rule": "符号说明章节的表格含 \\caption",
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "S05",
+      "section": "符号说明",
+      "item": "表内每行字段不换行",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "S06",
+      "section": "符号说明",
+      "item": "列名不要加粗",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "C01",
+      "section": "具体分析",
+      "item": "具体分析说明针对问题几",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "C02",
+      "section": "具体分析",
+      "item": "具体分析点出问题类型",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "C03",
+      "section": "具体分析",
+      "item": "具体分析点出本问大致建模方法",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "C04",
+      "section": "具体分析",
+      "item": "按“首先、接着、然后……最后”写具体步骤",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "C05",
+      "section": "具体分析",
+      "item": "具体分析三段式写作，不要分点表达",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "C06",
+      "section": "具体分析",
+      "item": "具体分析开头段满足 C01/C02/C03",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "C07",
+      "section": "具体分析",
+      "item": "具体分析中间段满足 C04，每个步骤不换行",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "C08",
+      "section": "具体分析",
+      "item": "具体分析结尾段引出图：“具体分析如图#所示”",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "P01",
+      "section": "模型准备",
+      "item": "数据预处理开头引文",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "P02",
+      "section": "模型准备",
+      "item": "数据预处理表达预处理原因",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "P03",
+      "section": "模型准备",
+      "item": "数据预处理讲预处理步骤及其对应方法",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "P04",
+      "section": "模型准备",
+      "item": "理论结合公式表达预处理方法",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "P05",
+      "section": "模型准备",
+      "item": "给出预处理前后对比图",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "P06",
+      "section": "模型准备",
+      "item": "编码结果展示（选）",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "P07",
+      "section": "模型准备",
+      "item": "算法选择开头过渡文字，承接预处理引入算法选择",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "P08",
+      "section": "模型准备",
+      "item": "引入对问题的算法适用性讨论",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "P09",
+      "section": "模型准备",
+      "item": "用表格展示算法对比结果",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "P10",
+      "section": "模型准备",
+      "item": "对表格结果进行分析，表明要选的算法",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "P11",
+      "section": "模型准备",
+      "item": "结尾段引出模型求解",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "M01",
+      "section": "模型建立",
+      "item": "建立目标函数",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": [
+        "optimization"
+      ],
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "M02",
+      "section": "模型建立",
+      "item": "设定约束条件",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": [
+        "optimization"
+      ],
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "M03",
+      "section": "模型建立",
+      "item": "选定求解算法；开头展示整个优化模型公式（目标函数+约束条件）后再讨论",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": [
+        "optimization"
+      ],
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "M04",
+      "section": "模型建立",
+      "item": "机理分析合理规划步骤，3–4 步即可",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": [
+        "mechanism"
+      ],
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "M05",
+      "section": "模型建立",
+      "item": "结尾段总结建模成果，引出模型求解",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "M06",
+      "section": "模型建立",
+      "item": "评价类选指标",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": [
+        "evaluation"
+      ],
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "M07",
+      "section": "模型建立",
+      "item": "熵权法定权重（中间结果需展示）",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": [
+        "evaluation"
+      ],
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "M08",
+      "section": "模型建立",
+      "item": "任选一个评价方法进行运算",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": [
+        "evaluation"
+      ],
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "M09",
+      "section": "模型建立",
+      "item": "分类特征工程（选指标），中间结果需展示",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": [
+        "classification-cv"
+      ],
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "M10",
+      "section": "模型建立",
+      "item": "选定模型（逻辑回归、XGBoost 等）",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": [
+        "classification-cv"
+      ],
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "M11",
+      "section": "模型建立",
+      "item": "分类模型评估（讲如何控制输出）",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": [
+        "classification-cv"
+      ],
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "M12",
+      "section": "模型建立",
+      "item": "预测特征工程（选指标），中间结果需展示",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": [
+        "prediction"
+      ],
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "M13",
+      "section": "模型建立",
+      "item": "预测选定模型（XGBoost 等）",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": [
+        "prediction"
+      ],
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "M14",
+      "section": "模型建立",
+      "item": "预测模型评估（讲如何控制输出）",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": [
+        "prediction"
+      ],
+      "length_requirement": null,
+      "notes": "原图此行被水印遮挡，按“分类”同构条目补全，待用户确认"
+    },
+    {
+      "id": "Q01",
+      "section": "模型求解",
+      "item": "开头段引文，表达求解完成，引出结果表、图",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "Q02",
+      "section": "模型求解",
+      "item": "图、表宽度设置为正文的 0.8",
+      "check_method": "machine",
+      "machine_rule": "LaTeX includegraphics/table 宽度 ∈ [0.6,0.95]；>0.95 或缺失即 flag",
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "Q03",
+      "section": "模型求解",
+      "item": "图字一定要清晰，全部为中文",
+      "check_method": "machine",
+      "machine_rule": "caption 纯 ASCII 即 flag",
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "Q04",
+      "section": "模型求解",
+      "item": "图和表一定要有正文引用（“如图1所示”“如表1所示”）",
+      "check_method": "machine",
+      "machine_rule": "caption/label/ref 对账：每个浮动体编号必须在正文出现",
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "Q05",
+      "section": "模型求解",
+      "item": "结果展示三段式：文字引入 + 表/图展示 + 分析文字",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "Q06",
+      "section": "模型求解",
+      "item": "数值型结果一定要用单独表格突出表示",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "Q07",
+      "section": "模型求解",
+      "item": "非数值结果、预测趋势线、对比效果用醒目的图表示",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "Q08",
+      "section": "模型求解",
+      "item": "不要放看起来高大上、但莫名其妙的图",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "Q09",
+      "section": "模型求解",
+      "item": "模型求解部分不要出现分点、任何加粗",
+      "check_method": "machine",
+      "machine_rule": "“模型求解”章节内无 \\textbf/\\textbf* 等加粗命令（公式内 \\mathbf 允许）",
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "V01",
+      "section": "模型检验",
+      "item": "评价类：不作检验",
+      "check_method": "machine",
+      "machine_rule": "archetype=evaluation 时不应出现“检验结果”二级章",
+      "applicable_archetypes": [
+        "evaluation"
+      ],
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "V02",
+      "section": "模型检验",
+      "item": "分类类：验证准确率",
+      "check_method": "machine",
+      "machine_rule": "archetype=classification-cv 时检验章节含“准确率”或 Accuracy",
+      "applicable_archetypes": [
+        "classification-cv"
+      ],
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "V03",
+      "section": "模型检验",
+      "item": "预测类：验证误差",
+      "check_method": "machine",
+      "machine_rule": "archetype=prediction 时检验章节含“误差”/RMSE/MAE/MAPE",
+      "applicable_archetypes": [
+        "prediction"
+      ],
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "V04",
+      "section": "模型检验",
+      "item": "优化类：验证灵敏度",
+      "check_method": "machine",
+      "machine_rule": "archetype=optimization 时检验章节含“灵敏度”/Sensitivity",
+      "applicable_archetypes": [
+        "optimization"
+      ],
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "V05",
+      "section": "模型检验",
+      "item": "误差检验优先使用五折交叉验证",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": [
+        [
+          "classification-cv"
+        ],
+        [
+          "prediction"
+        ]
+      ],
+      "length_requirement": null,
+      "notes": "原图字迹疑似“优先”，待用户确认"
+    },
+    {
+      "id": "V06",
+      "section": "模型检验",
+      "item": "灵敏度分析 = 改输入/参数，看输出稳定性",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "V07",
+      "section": "模型检验",
+      "item": "可用 AI 辅助起草，作者核验并按当届规定披露 AI 使用；写作风格为“文字引入+表格+文字分析”",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "W01",
+      "section": "模型检验与分析",
+      "item": "开头段文字引入",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "W02",
+      "section": "模型检验与分析",
+      "item": "用二级标题区分不同的检验类型",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "W03",
+      "section": "模型检验与分析",
+      "item": "文字解释检验的必要性",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "W04",
+      "section": "模型检验与分析",
+      "item": "用图或表列出检验结果（表优先）",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "W05",
+      "section": "模型检验与分析",
+      "item": "对检验结果进行分析",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "E01",
+      "section": "模型的评价",
+      "item": "优点格式按“优点#：”",
+      "check_method": "machine",
+      "machine_rule": "正则 ^\\s*优点\\d+[：:]",
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "E02",
+      "section": "模型的评价",
+      "item": "优点按模型来写，不要按问题来写",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "E03",
+      "section": "模型的评价",
+      "item": "优点数量要大于缺点",
+      "check_method": "machine",
+      "machine_rule": "count(优点\\d+) > count(缺点\\d+)",
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "E04",
+      "section": "模型的评价",
+      "item": "每个优点字数不超过两行",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "E05",
+      "section": "模型的评价",
+      "item": "缺点格式按“缺点#：”",
+      "check_method": "machine",
+      "machine_rule": "正则 ^\\s*缺点\\d+[：:]",
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "E06",
+      "section": "模型的评价",
+      "item": "缺点按模型来写，不要按问题来写",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "E07",
+      "section": "模型的评价",
+      "item": "缺点数量小于优点",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "E08",
+      "section": "模型的评价",
+      "item": "每个缺点字数不超过两行",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "I01",
+      "section": "模型的改进",
+      "item": "改进整段写（可 AI 辅助起草、作者核验并按当届规定披露）",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "I02",
+      "section": "模型的改进",
+      "item": "改进可以分点，但一定不要太偏题",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": "原图两条互相矛盾，理解为“以整段为主、分点不得跑题”，待用户确认"
+    },
+    {
+      "id": "G01",
+      "section": "模型的推广",
+      "item": "推广整段写（可 AI 辅助起草、作者核验并按当届规定披露）",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "G02",
+      "section": "模型的推广",
+      "item": "推广不要分段写",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "R01",
+      "section": "参考文献",
+      "item": "参考文献采用国标 GB/T 7714-2015",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "R02",
+      "section": "参考文献",
+      "item": "参考文献删除 DOI 号",
+      "check_method": "machine",
+      "machine_rule": "参考文献章节内无 DOI 正则 10\\.\\d{4,}",
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "X01",
+      "section": "附录",
+      "item": "附件说明表：用表，按模板（自适应，约 1 页）",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    },
+    {
+      "id": "X02",
+      "section": "附录",
+      "item": "代码（选）：按模板",
+      "check_method": "manual",
+      "machine_rule": null,
+      "applicable_archetypes": null,
+      "length_requirement": null,
+      "notes": null
+    }
+  ]
+}
