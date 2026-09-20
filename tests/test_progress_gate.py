@@ -91,3 +91,83 @@ def test_p2_fails_with_too_few_assumptions(tmp_path):
         "模型假设：\n1. 假设风机出力可独立调节\n", encoding="utf-8")
     passed, _ = prog.check_phase("P2", tmp_path)
     assert passed is False, "假设<3条时 P2 必须 FAIL"
+
+
+# --- 优秀论文自检表门禁（Wave6-B）正反例 ---
+
+def _seed_p4_base(root: Path):
+    """写出一份含摘要/结论/主要章节的论文正文（不含自检表）。"""
+    (root / "论文").mkdir(exist_ok=True)
+    (root / "论文" / "paper.md").write_text(
+        "摘要：本文做了功率分配。\n模型假设：...\n问题重述：...\n参考文献：[1]\n结论：完成。\n",
+        encoding="utf-8")
+
+
+def test_p4_fails_without_checklist(tmp_path):
+    _seed_p4_base(tmp_path)
+    passed, items = prog.check_phase("P4", tmp_path)
+    assert passed is False, "无自检表文件时 P4 必须 FAIL"
+    descs = " ".join(d for _, d in items)
+    assert "自检表" in descs, "P4 应含自检表存在性检查"
+
+
+def test_p4_passes_with_checklist(tmp_path):
+    _seed_p4_base(tmp_path)
+    (tmp_path / "论文" / "优秀论文自检表.md").write_text(
+        "# 优秀论文自检表\n- [ ] A01 ...\n", encoding="utf-8")
+    passed, items = prog.check_phase("P4", tmp_path)
+    assert passed is True, f"有自检表文件时 P4 应 PASS，items={items}"
+
+
+def _seed_p6_base(root: Path):
+    """写出 P6 必需的附件/AI披露/PDF（不含自检表闭环产物）。"""
+    (root / "提交附件").mkdir(exist_ok=True)
+    (root / "提交附件" / "solve.m").write_text("disp('ok');", encoding="utf-8")
+    (root / "论文").mkdir(exist_ok=True)
+    (root / "论文" / "paper.txt").write_text(
+        "本文使用了AI工具辅助数据分析与编程。\n参考文献：[1]\n", encoding="utf-8")
+    (root / "论文" / "paper.pdf").write_bytes(b"%PDF-1.4 fake")
+
+
+def test_p6_fails_without_checked_table(tmp_path):
+    _seed_p6_base(tmp_path)
+    passed, items = prog.check_phase("P6", tmp_path)
+    assert passed is False, "无《论文自检表_已勾选.md》时 P6 必须 FAIL"
+    descs = " ".join(d for _, d in items)
+    assert "已勾选" in descs, "P6 应含已勾选自检表落盘检查"
+
+
+def test_p6_fails_when_sidecar_missing(tmp_path):
+    _seed_p6_base(tmp_path)
+    (tmp_path / "论文" / "论文自检表_已勾选.md").write_text(
+        "# 论文自检表（已勾选）\n- [x] A01 ...\n", encoding="utf-8")
+    passed, items = prog.check_phase("P6", tmp_path)
+    assert passed is False, "缺 sidecar（待运行 paper_checklist）时 P6 必须 FAIL"
+    descs = " ".join(d for _, d in items)
+    assert "待运行 paper_checklist" in descs, "缺 sidecar 应提示待运行 paper_checklist"
+
+
+def test_p6_fails_when_sidecar_has_undecided(tmp_path):
+    _seed_p6_base(tmp_path)
+    (tmp_path / "论文" / "论文自检表_已勾选.md").write_text(
+        "# 论文自检表（已勾选）\n", encoding="utf-8")
+    (tmp_path / "论文" / "paper_checklist_decisions.json").write_text(
+        json.dumps({"decisions": [
+            {"id": "A01", "status": "passed"},
+            {"id": "A02", "status": "pending"},
+        ]}, ensure_ascii=False), encoding="utf-8")
+    passed, items = prog.check_phase("P6", tmp_path)
+    assert passed is False, "sidecar 含未裁决人工条目时 P6 必须 FAIL"
+
+
+def test_p6_passes_with_checked_table_and_clean_sidecar(tmp_path):
+    _seed_p6_base(tmp_path)
+    (tmp_path / "论文" / "论文自检表_已勾选.md").write_text(
+        "# 论文自检表（已勾选）\n- [x] A01 ...\n", encoding="utf-8")
+    (tmp_path / "论文" / "paper_checklist_decisions.json").write_text(
+        json.dumps({"decisions": [
+            {"id": "A01", "status": "passed"},
+            {"id": "A02", "status": "na", "reason": "本题不适用"},
+        ]}, ensure_ascii=False), encoding="utf-8")
+    passed, items = prog.check_phase("P6", tmp_path)
+    assert passed is True, f"已勾选表落盘 + sidecar 无未裁决项时 P6 应 PASS，items={items}"

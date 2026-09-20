@@ -98,6 +98,76 @@ def has_validation_result(root: Path) -> bool:
     return bool(re.search(r"(误差|RMSE|对比|灵敏度|鲁棒|消融|交叉验证|对标)", text))
 
 
+# --- 优秀论文自检表门禁（Wave6-B）---
+
+def _find_selfcheck(root: Path, names):
+    """在比赛工作目录 论文/ 与根下查找自检表文件。"""
+    for base in (root / "论文", root):
+        for name in names:
+            p = base / name
+            if p.is_file():
+                return p
+    return None
+
+
+def find_p4_checklist(root: Path):
+    """P4：写作阶段的自检表（边写边勾）。"""
+    return _find_selfcheck(root, (
+        "优秀论文自检表.md", "论文自检表.md", "paper_checklist.md"))
+
+
+def find_p6_checked(root: Path):
+    """P6：已勾选自检表（100% 闭环产物）。"""
+    return _find_selfcheck(root, (
+        "论文自检表_已勾选.md", "优秀论文自检表_已勾选.md", "自检表_已勾选.md"))
+
+
+def find_sidecar(root: Path):
+    """P6：人工条目裁决 sidecar。"""
+    return _find_selfcheck(root, ("paper_checklist_decisions.json",))
+
+
+def count_undecided_decisions(sidecar: Path) -> int:
+    """从 sidecar JSON 数未裁决人工条目。
+
+    兼容多种落盘形态（Wave6-A 定 schema，此处防御式解析）：
+      - {"pending": n} / {"summary": {"undecided": n}}
+      - {"decisions":[{status:...}]} / {"items":[...]} / 顶层 list
+    status 命中 (pending/undecided/todo/open/空/☐/none) 计为未裁决。
+    无法解析返回 -1。
+    """
+    try:
+        data = json.loads(sidecar.read_text(encoding="utf-8-sig", errors="ignore"))
+    except Exception:
+        return -1
+
+    def _is_und(r):
+        if not isinstance(r, dict):
+            return False
+        st = str(r.get("status", r.get("decision", r.get("state", "")))).strip().lower()
+        return st in ("", "pending", "undecided", "todo", "open", "none", "☐")
+
+    if isinstance(data, dict):
+        for k in ("pending", "undecided", "open", "todo"):
+            if isinstance(data.get(k), int):
+                return data[k]
+        summ = data.get("summary")
+        if isinstance(summ, dict):
+            for k in ("undecided", "pending", "open"):
+                if isinstance(summ.get(k), int):
+                    return summ[k]
+        recs = None
+        for k in ("decisions", "items", "checklist", "results"):
+            if isinstance(data.get(k), list):
+                recs = data[k]
+                break
+        if recs is not None:
+            return sum(1 for r in recs if _is_und(r))
+    elif isinstance(data, list):
+        return sum(1 for r in data if _is_und(r))
+    return -1
+
+
 def check_phase(phase: str, root: Path) -> tuple:
     """返回 (passed, [检查项])。每项 (ok, 描述)。"""
     items = []
@@ -138,6 +208,9 @@ def check_phase(phase: str, root: Path) -> tuple:
         need(re.search(r"摘\s*要|Abstract", text), "论文含摘要")
         need(re.search(r"结论|总结", text), "论文含结论")
         need(re.search(r"模型假设|问题重述|参考文献", text), "论文含主要章节")
+        # 分章节清单检查：写作阶段边写边勾，工作目录下应有自检表
+        need(find_p4_checklist(root) is not None,
+             "分章节清单检查：比赛工作目录存在自检表（论文/优秀论文自检表.md）")
 
     elif phase == "P5":
         text = _gather_text(root)
@@ -151,6 +224,18 @@ def check_phase(phase: str, root: Path) -> tuple:
         text = _gather_text(root)
         need(re.search(r"人工智能工具|AI工具|人工智能辅助|AI辅助", text), "有 AI 使用披露")
         need(any(root.rglob("*.pdf")), "有最终论文 PDF")
+        # 自检表 100% 闭环（Wave6-B 硬退出）
+        need(find_p6_checked(root) is not None,
+             "P6 自检表闭环：《论文自检表_已勾选.md》已落盘")
+        sidecar = find_sidecar(root)
+        if sidecar is None:
+            need(False, "人工条目裁决：待运行 paper_checklist（sidecar paper_checklist_decisions.json 缺失）")
+        else:
+            n = count_undecided_decisions(sidecar)
+            if n < 0:
+                need(False, "人工条目裁决：sidecar 已找到但无法解析未裁决项（请确认 paper_checklist --mark 已跑完）")
+            else:
+                need(n == 0, f"人工条目全部裁决：sidecar 无未裁决项（剩余 {n} 条）")
 
     passed = all(ok for ok, _ in items)
     return passed, items
