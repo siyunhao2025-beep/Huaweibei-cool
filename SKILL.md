@@ -35,7 +35,7 @@ description: 华为杯（中国研究生数学建模竞赛）AI 作战中枢。�
 | `modules/evidence-ledger.md` | 证据账本与 AI 来源标注 |
 | `modules/figures-interface.md` | 论文图规范与求解图接口 |
 | `modules/technical-roadmap.md` | 技术路线图（论文图1）：YAML 规格 + 8 原型模板 + 渲染/审计脚本 |
-| `modules/paper-writing.md` | 论文章节结构与页数基线 |
+| `modules/paper-writing.md` | 论文章节结构与页数基线；**逐章内嵌 138 条优秀论文自检表，写完即勾**（F03 字体冲突见 §6.1） |
 | `modules/abstract.md` | 摘要写法专项（国一模板） |
 | `modules/deai-writing.md` | 反模板/反 AI 味写作 |
 | `modules/innovation.md` | 创新点提炼与伪创新识别 |
@@ -55,9 +55,9 @@ description: 华为杯（中国研究生数学建模竞赛）AI 作战中枢。�
 | P1 | 读题与拆解 | 逐段拆解、读题审计报告、题型候选 | **读题审计报告已产出且经用户明确确认（确认记录写入 evidence-ledger）** |
 | P2 | 建模 | 假设≥3、模型链、基线 | 基线跑通 |
 | P3 | 求解 | 代码、结果、验证 | 可复现+≥1验证 |
-| P4 | 论文初稿 | 摘要/正文/结论 | 章节齐、摘要≤2页 |
+| P4 | 论文初稿 | 摘要/正文/结论 | 章节齐、摘要≤2页、自检表文件就位 |
 | P5 | 打磨审校 | 终稿、匿名化、引用 | audit 脚本 PASS |
-| P6 | 提交蒸馏 | 提交包、AI披露、复盘 | 提交审计 PASS |
+| P6 | 提交蒸馏 | 提交包、AI披露、复盘 | 提交审计 PASS + 自检表已勾选 + sidecar 无未裁决 |
 
 详细工程化检查命令见 `docs/PHASE_GATES.md`。
 
@@ -92,6 +92,7 @@ description: 华为杯（中国研究生数学建模竞赛）AI 作战中枢。�
 | `scripts/progress.py` | P0–P6 内容级门禁（`--gate Pn` / `--all`） |
 | `scripts/review.py` | 评审团启发式打分（非真评审） |
 | `scripts/submission_audit.py` | 提交前审计（页数/匿名/AI披露/附件） |
+| `scripts/paper_checklist.py` | 优秀论文自检表机检（138 条；`--tex/--problems/--archetype`、`--mark` 人工裁决、`--strict`、sidecar JSON） |
 | `scripts/doctor.py` | 一键环境自检（Python/依赖/TeX/字体/MATLAB/Word） |
 | `scripts/render_roadmap.py` | 技术路线图渲染（YAML→PNG/PDF/MMD/DOT） |
 | `scripts/audit_roadmap.py` | 技术路线图规格审计（schema+图结构+安全色） |

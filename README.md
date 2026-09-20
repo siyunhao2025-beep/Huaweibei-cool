@@ -87,11 +87,12 @@ corpus/
   text/                    全文抽文（.gitignore 排除，本地生成）
   schemas/                 卡片 JSON Schema
   cards/                   产出的简卡/深卡（入库）
-scripts/            语料与论文链脚本（含 doctor.py 自检 / render_roadmap.py 路线图渲染）
+scripts/            语料与论文链脚本（含 doctor.py 自检 / render_roadmap.py 路线图渲染 / paper_checklist.py 终审机检）
 skills/academic-figure/  科研绘图子 skill
 assets/paper-template/   论文 LaTeX/Word 模板
 assets/scaffold/         比赛日空骨架
 assets/roadmap/          技术路线图 schema 与 8 原型 YAML 模板
+assets/checklists/       优秀论文自检表（138 条结构化 JSON + 人读版）
 docs/UPSTREAM.md          上游资产来源与许可记录
 docs/HANDOFF.md           深化交接包
 docs/FIGURE_COOKBOOK.md   论文 18 图种选型与八原型必备图
@@ -110,6 +111,8 @@ tests/              测试
 3. **反 AI 读题审计**：按 `modules/kickoff-audit.md` 逐段拆解题面、列约束与歧义、出建模候选与图表计划；
    **报告先给用户确认，确认记录写入 evidence-ledger，才允许进入求解**（判型器只出候选，不抢跑）。
 4. 从 `SKILL.md` 的启动选择题路由进入对应模块。
+5. **终审**：论文成稿后跑 `python scripts/paper_checklist.py --tex 论文/main.tex --problems 题数 --archetype 题型`，
+   对 138 条优秀论文自检表做机检；待人工条目用 `--mark ID=pass|na` 裁决，`--strict` 全裁完才放行（P6 门禁）。
 
 > **反 AI 命题意识**：出题组会刻意诱导套路、藏约束、设歧义。宁可慢、宁可多问，
 > 也不许凭模式匹配一眼套模板就开干——千万不要聪明反被聪明误。

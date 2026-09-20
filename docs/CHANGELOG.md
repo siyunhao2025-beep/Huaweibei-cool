@@ -1,5 +1,32 @@
 # CHANGELOG.md
 
+## v0.4.0 — 2026-09-21（Wave6 集成：优秀论文自检表全量固化 + 机检脚本 + P4/P6 门禁打通）
+
+### 优秀论文自检表全量固化（Wave6-A 资产 + 机检脚本）
+- 新增 `assets/checklists/paper_checklist.json`：**138 条结构化自检条目**（全局格式 F01–F06 / 篇幅 L01–L17 / 摘要 A01–A10 / 引言 B01–B15 / 总体分析 T01–T08 / 假设 H01–H06 / 符号 S01–S06 / 具体分析 C01–C08 / 模型准备 P01–P11 / 模型建立 M01–M14 / 模型求解 Q01–Q09 / 检验 V01–V07 + W01–W05 / 评价 E01–E08 / 改进 I01–I02 / 推广 G01–G02 / 参考文献 R01–R02 / 附录 X01–X02）。
+- 新增 `assets/checklists/优秀论文自检表.md`：人读版，138 条逐章排版，AI 相关措辞已中性化（"AI 速成/claude"→"可用 AI 辅助起草、作者核验并按当届规定披露"）。
+- 新增 `scripts/paper_checklist.py`：13 类可机检规则（图表宽度/全中文题注/引用闭合/三线表/优点>缺点/无加粗/检验章节/参考文献无 DOI 等），支持 `--mark ID=pass|na` 人工裁决持久化、`--strict` 存在未裁决人工条目即失败、sidecar JSON 输出。
+- `scripts/contest_init.py`：初始化工作目录时自动复制自检表到 `论文/`。
+- 新增 fixture `tests/fixtures/checklist_pass.tex`（合规，机检 0 ❌）与 `checklist_fail.tex`（埋错，机检全检出）；新增 `tests/test_paper_checklist.py` **7 项**（JSON 138 条可解析 / 人读版存在 / --help 退出 0 / pass fixture 0 fail / fail fixture 全检出 / --mark 持久化 + strict 门 / contest_init 复制自检表）。
+
+### 模块内嵌与门禁打通（Wave6-B）
+- `modules/paper-writing.md`：138 条自检表逐章内嵌，写完即勾；§6.1 逐条对照 `gmcmthesis.cls` 现状。
+- `modules/abstract.md` 补 A01–A10；`modules/validation.md` 补 V01–V07 + W01–W05；`modules/figures-interface.md` 补 Q02/Q03/Q06/Q07/Q08/T06；`modules/polishing.md` 终审接入 paper_checklist 闭环；`modules/submission.md` P6 硬退出条件。
+- 门禁：`docs/PHASE_GATES.md`（P4/P6）、`docs/ACCEPTANCE.md`（§8 自检表验收）、`modules/phases.md`（P4/P6）、`scripts/progress.py`（P4 查自检表文件存在；P6 查已勾选表 + sidecar 未裁决计数）。
+- `tests/test_progress_gate.py` 新增 **6 项**正反例（P4 无表 FAIL / 有表 PASS；P6 无勾选表 FAIL / sidecar 缺失 FAIL / sidecar 含未裁决 FAIL / 勾选表+干净 sidecar PASS）。
+
+### ⚠ 已知冲突：F03 二三级标题字体（以官方规范为准）
+- 第三方自检表 F03 要求"二三级标题小四号**黑体**"；但华为杯官方 `华为杯_论文章节规范.md` §2.3(1) 明确为"小四号**宋体**"，且禁止改 `gmcmthesis.cls`；`gmcmthesis.cls` 与 Word 模板现状均为宋体小四。
+- Wave6-B 未改模板，在 `modules/paper-writing.md` §6.1 如实标注冲突、**以官方宋体为准**，待用户最终裁决。本仓库不擅自改模板。
+
+### 集成与发布（Wave6-C）
+- 全量 pytest **87 passed / 2 skipped / 1 xfailed**（MATLAB skip、2017_B xfail）。
+- doctor.py 本机 8 PASS / 1 WARN（graphviz dot 可选）/ 0 FAIL。
+- paper_checklist 正反例实测：pass fixture ✅17 ❌0 退出 0；fail fixture 检出 8 ❌（H05/Q02/Q03/Q04/Q09/V04/E03/R02）退出 1。
+- quickstart demo 全链路通，对 demo 玩具稿跑 paper_checklist 如实检出 1 ❌（V04 缺灵敏度，玩具稿非 100% 合规，不修）。
+- 3 张路线图重渲染非空；新增 `paper_checklist.py --help` 退出 0；7 条关键脚本 --help 全 0。
+- 隐私与品牌 grep：身份词/旧品牌/广告 ID 全零命中；华为杯面向用户的 `assets/checklists/` 与 `modules/` 无商业 AI 产品名残留（有单测强制）。
+
 ## v0.3.0 — 2026-09-20（Wave5 集成：技术路线图体系 + 对抗挑刺 + 工程化开箱 + 写作图表细节库）
 
 ### 技术路线图体系（Wave5-A）
