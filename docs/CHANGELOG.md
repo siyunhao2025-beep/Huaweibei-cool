@@ -1,5 +1,36 @@
 # CHANGELOG.md
 
+## v0.2.0 — 2026-09-20（Wave4 真机验证 + 盲检扩容 + 奖级对账 + 品牌定稿）
+
+### 品牌与隐私
+- 品牌由旧名全量替换为 **「AI 作战中枢」**，新增 `docs/banner.png` 横幅并嵌入 README；README 重写为新品牌文案，免责语保留。
+- 全量隐私清洗：面向用户文件零真实身份信息（姓名/拼音/导师/院校/课题组均零命中）；两个原始库存 JSON 中残留的广告联系方式（`微信：85309976`、`kuge225`，各 57 处）改写为「广告联系方式已剔除」。
+- `docs/HANDOFF.md`（清洗版交接包）入库。
+
+### MATLAB 真机验证（Wave4-A）
+- MATLAB **R2024b 实测通过**：检出 113 个工具箱，Optimization / Global Optimization / Statistics and Machine Learning / Signal Processing / Image Processing 均 available（Deep Learning 未实测）。
+- 求解器真机跑通并核对预期结果：`linprog` / `intlinprog` / `fmincon` / `ga` / `ode45`；`.mat` / `.csv` 与 Python 双向回读一致；Microsoft YaHei 中文出图无方块。
+- 新增 `scripts/matlab_smoke.m` + `tests/test_matlab_smoke.py`（默认 SKIP，需 `HUAWEI_RUN_MATLAB=1` 才跑）+ `tests/fixtures/matlab_smoke_R2024b.log`；`modules/matlab-conventions.md` 改为实测版。
+
+### 模板与工程（Wave4-B）
+- 删除 `example.tex` 中引用不存在图片的装饰性二维码图块（loglo.png 缺陷）；干净目录 xelatex 双遍编译成功，产出 12 页 PDF，无需任何占位图。
+- `audit_paper.py` 跑通；**Word 链路真机烟雾全跑通**（python-docx + audit_docx + `render_word.vbs` 导出 8 页 PDF，本机 Word 16.0）。
+
+### 判型与盲检（Wave4-C）
+- 盲检 golden set 由 10 题扩到 **30 题**（8 原型全覆盖，含 3 已知陷阱）。
+- `match_rules.json` 调优：修 Markov→mechanism 误判 bug、补 evaluation 触发词、治"仿真验证"误触发；命中率 **93% → 97%（29/30）**，已知陷阱 3/3 = 100%。
+- `tests/test_playbook_blind.py`（32 passed, 1 xfailed，阈值 90%）；`docs/DISTILLATION_METHOD.md` 新增盲检记录。
+- P1：2023 A/B 档案补强；2024 A 扫描版思路走 OCR。
+
+### 语料与数据（Wave4-D）
+- 奖级口径对账统一：查清 615 vs 722 根因（两奖级存储分叉：索引 7/722 vs 卡片 114/615）。
+- 729 篇自述式奖级文本扫描（防 2023C 评审题误判）：1 篇一等奖（2004）+ 12 篇数模之星提名奖（2021 专集目录）+ 716 待确认；`papers_index.json/csv` 合并式更新，新增 `award_evidence` 列。
+- 禁忌搜索标签清洗 **61 → 4**（仅 4 篇真用，57 篇改标"启发式优化"）；同义词表收紧（排除 tabular_CPD 误匹配）。
+- 12 篇早期论文低质量标题合并式重提；统计重算。
+
+### tracks
+- 2023 A/B 档案补强；2024 A 扫描版思路 OCR。
+
 ## v0.1.1 — 2026-09-20（交付复核修复）
 
 - **广告清洗**：`papers_index.json/csv` 中 81 条被"加微 anjia"水印污染的标题已剔除（置为"待确认"并在 notes 记录）；`corpus_build.py` 标题提取增加广告行过滤、广告正则补充"有偿/代写/代充"，重跑索引不会再污染。
