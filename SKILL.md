@@ -34,6 +34,7 @@ description: 华为杯（中国研究生数学建模竞赛）AI 作战中枢。�
 | `modules/validation.md` | 验证门禁：误差/对比/灵敏度/消融 |
 | `modules/evidence-ledger.md` | 证据账本与 AI 来源标注 |
 | `modules/figures-interface.md` | 论文图规范与求解图接口 |
+| `modules/technical-roadmap.md` | 技术路线图（论文图1）：YAML 规格 + 8 原型模板 + 渲染/审计脚本 |
 | `modules/paper-writing.md` | 论文章节结构与页数基线 |
 | `modules/abstract.md` | 摘要写法专项（国一模板） |
 | `modules/deai-writing.md` | 反模板/反 AI 味写作 |
@@ -91,12 +92,18 @@ description: 华为杯（中国研究生数学建模竞赛）AI 作战中枢。�
 | `scripts/progress.py` | P0–P6 内容级门禁（`--gate Pn` / `--all`） |
 | `scripts/review.py` | 评审团启发式打分（非真评审） |
 | `scripts/submission_audit.py` | 提交前审计（页数/匿名/AI披露/附件） |
+| `scripts/doctor.py` | 一键环境自检（Python/依赖/TeX/字体/MATLAB/Word） |
+| `scripts/render_roadmap.py` | 技术路线图渲染（YAML→PNG/PDF/MMD/DOT） |
+| `scripts/audit_roadmap.py` | 技术路线图规格审计（schema+图结构+安全色） |
 
 ## 5. 评分与自评
 
 - 官方四标准：假设合理性、建模创造性、结果正确性、文字表述清晰度。
 - 自评量表与锚点见 `docs/SCORING_RUBRIC.md`（经验推断，非官方细则）。
 - 知识库蒸馏方法与留出盲检结果见 `docs/DISTILLATION_METHOD.md`。
+- 论文图种选型与八原型必备图清单见 `docs/FIGURE_COOKBOOK.md`。
+- 环境/编译/字体常见坑与修复见 `docs/TROUBLESHOOTING.md`。
+- 一键开箱玩具样例见 `docs/examples/quickstart/`（题面→匹配→路线图→xelatex 全链路）。
 
 ## 6. 完成报告纪律
 

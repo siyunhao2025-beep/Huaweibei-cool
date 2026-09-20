@@ -79,7 +79,7 @@ python -m pip install -r requirements.txt
 ```
 SKILL.md            Skill 入口与路由
 config/             比赛配置与 JSON Schema
-modules/            流程模块（求解/图/验证/比赛日/训练/打磨/蒸馏）
+modules/            流程模块（求解/图/验证/比赛日/训练/打磨/蒸馏/技术路线图）
 playbooks/          八大题型原型与方法卡
 tracks/             2022–2025 赛道档案
 corpus/
@@ -87,17 +87,24 @@ corpus/
   text/                    全文抽文（.gitignore 排除，本地生成）
   schemas/                 卡片 JSON Schema
   cards/                   产出的简卡/深卡（入库）
-scripts/            语料与论文链脚本
+scripts/            语料与论文链脚本（含 doctor.py 自检 / render_roadmap.py 路线图渲染）
 skills/academic-figure/  科研绘图子 skill
 assets/paper-template/   论文 LaTeX/Word 模板
 assets/scaffold/         比赛日空骨架
+assets/roadmap/          技术路线图 schema 与 8 原型 YAML 模板
 docs/UPSTREAM.md          上游资产来源与许可记录
 docs/HANDOFF.md           深化交接包
+docs/FIGURE_COOKBOOK.md   论文 18 图种选型与八原型必备图
+docs/TROUBLESHOOTING.md   环境/编译/字体常见坑
+docs/examples/quickstart/ 一键开箱玩具样例（题面→PDF 全链路）
+docs/examples/roadmap/    3 个技术路线图样例（YAML+渲染产物）
 tests/              测试
 ```
 
 ## 比赛日 1-2-3 上手
 
+0. **环境自检**：先跑 `python scripts/doctor.py`（Python/依赖/xelatex/中文字体/MATLAB/Word 一键体检）；
+   想先看全链路能不能跑，跑 `powershell -File scripts/quickstart_demo.ps1`（玩具题面→匹配→路线图→PDF）。
 1. 运行 `START_WINDOWS.bat`（或 `python scripts/contest_init.py`）初始化工作目录。
 2. 按 `config/contest.json` 核对当届官方规则（届次、页数、格式）。
 3. **反 AI 读题审计**：按 `modules/kickoff-audit.md` 逐段拆解题面、列约束与歧义、出建模候选与图表计划；

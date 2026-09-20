@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://huaweibei-cool/config/contest.schema.json",
-  "title": "华为杯研赛母Skill比赛配置",
+  "title": "华为杯研赛 AI 作战中枢比赛配置",
   "type": "object",
   "required": ["version", "contest", "paths", "paper"],
   "additionalProperties": true,

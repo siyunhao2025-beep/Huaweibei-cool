@@ -1,5 +1,40 @@
 # CHANGELOG.md
 
+## v0.3.0 — 2026-09-20（Wave5 集成：技术路线图体系 + 对抗挑刺 + 工程化开箱 + 写作图表细节库）
+
+### 技术路线图体系（Wave5-A）
+- 新增 `modules/technical-roadmap.md`：论文图1（技术路线图）六层主链路 + 反馈回路 + 小问映射 + 章节回链规范。
+- 新增 `assets/roadmap/roadmap.schema.json` + 8 原型 YAML 模板（optimization/evaluation/prediction/classification-cv/mechanism/signal/spatial-graph/simulation）。
+- 新增 `scripts/render_roadmap.py`（YAML→PNG/PDF/MMD/DOT 四格式，无 CJK 字体自动切 `label_en` 英文回退）与 `scripts/audit_roadmap.py`（schema + 覆盖度 + 孤立节点 + 色盲安全色）。
+- 新增 `docs/examples/roadmap/` 3 个完整样例（classification/mechanism/optimization），含 YAML + 渲染产物。
+- 8 个 playbook `00_overview.md` 与 kickoff-audit/figures-interface/paper-writing/submission 四模块交叉引用技术路线图。
+- 测试 `tests/test_roadmap.py` 12 项全绿。
+
+### 对抗式挑刺修复（Wave5-B）
+- 修复 `交付说明.md` 3 处悬空路径/计数/自相矛盾条目；`requirements.txt` 旧品牌词统一为「AI 作战中枢」；`CLAUDE.md` 与 `AGENTS.md` 字节级镜像。
+- 7 份赛道档案裸"待确认"改写为"证据不足，待补充"（官方模板不在语料，不编造）。
+- 确认 80 张深卡零违例、125 条 playbook 引用全部存在、P0–P6 门禁四处一致、数字全部可重算。
+- 新增 `docs/REVIEW_v0.3.md` 完整评审记录。
+
+### 工程化与开箱体验（Wave5-C）
+- 新增 `scripts/doctor.py`：一键环境自检（Python/依赖/pytest/git 代理/xelatex+CJK/matplotlib CJK/MATLAB/Word COM/graphviz），`--json` 供测试断言。
+- 新增 `docs/TROUBLESHOOTING.md`：环境/编译/字体常见坑与修复。
+- 新增 `docs/examples/quickstart/` 玩具样例（题面+yaml+读题审计桩+tex+PDF+roadmap 图+README）+ `scripts/quickstart_demo.ps1` 一键全链路（contest_init→playbook_match→render_roadmap→xelatex）。
+- 新增 `.github/workflows/ci.yml`：Ubuntu + Python 3.12，跑 doctor（continue-on-error）+ pytest；MATLAB 用例默认 skip。
+- `requirements.txt` 补全 lxml/jsonschema/pyyaml/matplotlib 并加版本注释；`scripts/matlab_smoke.m` 加 Deep Learning license 探测块；`modules/matlab-conventions.md` DL 状态更新为 unavailable。
+- 测试 `tests/test_doctor.py` 4 项全绿。
+
+### 写作与图表细节库（Wave5-D）
+- `modules/abstract.md` 扩 38 条句式库；`modules/deai-writing.md` 扩 18 组 AI 味对照；`modules/innovation.md` 扩四象限 25 案例；`modules/validation.md` 扩八原型验证菜单。
+- 新增 `docs/FIGURE_COOKBOOK.md`：18 图种速查 + 八原型必备图清单 + 配色/字号/导出规范。
+- 新增 `assets/scaffold/题目/读题审计报告模板.md`（7 节 + 示范填写）。
+
+### 集成与发布（Wave5-E）
+- 全量 pytest **74 passed / 2 skipped / 1 xfailed**；doctor 本机 8 PASS / 1 WARN；quickstart demo 全链路通；3 张路线图重渲染非空白；干净目录 xelatex+bibtex 双遍出 12 页 PDF。
+- 隐私与品牌 grep：身份词/旧品牌词/广告 ID 全部零命中（含 untracked 新文件）。
+- `.gitignore` 加例外允许 `docs/examples/` 下演示 PDF 入库；SKILL.md/README 补新文件索引。
+- 修复集成期发现的品牌词残留（doctor.py 3 处、ci.yml 1 处、REVIEW_v0.3.md 1 处、contest.schema.json 1 处）、technical-roadmap.md "三种产物"→"四种产物"、CI doctor 步骤 continue-on-error。
+
 ## v0.2.0 — 2026-09-20（Wave4 真机验证 + 盲检扩容 + 奖级对账 + 品牌定稿）
 
 ### 品牌与隐私

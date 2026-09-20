@@ -51,3 +51,7 @@ s1_*.py
 s1_*.txt
 corpus/cards/_*.py
 corpus/cards/_deepsrc/
+
+# ===== 例外：docs/examples/ 下的演示产物 PDF 需入库（quickstart / roadmap 样例）=====
+!docs/examples/quickstart/*.pdf
+!docs/examples/roadmap/*.pdf
