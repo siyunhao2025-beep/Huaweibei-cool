@@ -34,6 +34,10 @@
 - 随机分布假设错。
 - 不与解析解对比。
 
+## 技术路线图模板
+
+本原型的论文图1 技术路线图预填模板：`assets/roadmap/templates/simulation.yaml`（分布拟合→仿真模型→蒙特卡洛/DE→模型验证→决策建议）。改完用 `scripts/render_roadmap.py` 渲染、`scripts/audit_roadmap.py` 校验，规范见 `modules/technical-roadmap.md`。
+
 ## 方法卡索引
 
 - [蒙特卡洛随机模拟](蒙特卡洛随机模拟.md)

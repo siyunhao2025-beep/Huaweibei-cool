@@ -1,0 +1,41 @@
+# =====================================================================
+# 原型模板：spatial-graph 空间分析与图论类
+# 典型链路：GIS/路网 → 投影拓扑 → 图构建 → 最小生成树/网络流 → 最短路径/VRP → 覆盖验证 → 布局
+# 自定义见 optimization.yaml 头部注释。
+# =====================================================================
+metadata:
+  title: "空间图论问题技术路线图（示例）"
+  year: 2022
+  track: "2022B"
+  version: "0.1.0"
+
+layers:
+  - {id: input,     label: "数据输入层", order: 0}
+  - {id: preprocess,label: "预处理层",   order: 1}
+  - {id: model,     label: "模型层",     order: 2}
+  - {id: solve,     label: "求解层",     order: 3}
+  - {id: validate,  label: "验证层",     order: 4}
+  - {id: output,    label: "结论输出层", order: 5}
+
+nodes:
+  - {id: n_geo,     layer: input,     label: "GIS/路网数据", label_en: "GIS network", method: "坐标/路网读取", constraint_ref: "C1", chapter_ref: "§4.1"}
+  - {id: n_proj,    layer: preprocess,label: "投影与拓扑清洗", label_en: "Projection & topology", method: "坐标转换/断链修复", constraint_ref: "C2", chapter_ref: "§4.1"}
+  - {id: n_graph,   layer: model,     label: "图构建",       label_en: "Graph construction", method: "DAG/加权图", subquestion_ref: "Q1", constraint_ref: "C3", chapter_ref: "§4.2"}
+  - {id: n_mst,     layer: model,     label: "网络结构分析", label_en: "Network structure", method: "最小生成树/网络流", subquestion_ref: "Q1", constraint_ref: "C3", chapter_ref: "§4.2"}
+  - {id: n_path,    layer: solve,     label: "路径/VRP求解", label_en: "Path / VRP", method: "Dijkstra/节约算法", subquestion_ref: "Q2", constraint_ref: "C4", chapter_ref: "§4.3"}
+  - {id: n_cover,   layer: validate,  label: "覆盖与资源验证", label_en: "Coverage check", method: "空间可达性/覆盖分析", subquestion_ref: "Q3", constraint_ref: "C5", chapter_ref: "§5"}
+  - {id: n_layout,  layer: output,    label: "空间布局方案", label_en: "Spatial layout", method: "选址/布局结果", constraint_ref: "C3", chapter_ref: "§7"}
+
+edges:
+  - {from: n_geo,   to: n_proj,   type: solid}
+  - {from: n_proj,   to: n_graph,  type: solid}
+  - {from: n_graph,  to: n_mst,    type: solid}
+  - {from: n_mst,    to: n_path,   type: solid}
+  - {from: n_path,   to: n_cover,  type: solid}
+  - {from: n_cover,  to: n_layout, type: solid}
+  - {from: n_cover,  to: n_graph,  type: dashed, label: "迭代/调参/换模型"}
+
+subquestion_mapping:
+  Q1: [n_graph, n_mst]
+  Q2: [n_path]
+  Q3: [n_cover]

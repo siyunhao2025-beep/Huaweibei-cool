@@ -38,6 +38,10 @@
 - **不做分维误差**：单一 RMSE 掩盖季节/区域差异。
 - **纯黑箱不解释**：2024 偏好"物理机理打底+ML 学残差"。
 
+## 技术路线图模板
+
+本原型的论文图1 技术路线图预填模板：`assets/roadmap/templates/prediction.yaml`（平稳化→ARIMA基线→LSTM→组合预测→回测）。改完用 `scripts/render_roadmap.py` 渲染、`scripts/audit_roadmap.py` 校验，规范见 `modules/technical-roadmap.md`。
+
 ## 方法卡索引
 
 - [ARIMA 与时间序列建模](ARIMA与时间序列建模.md)

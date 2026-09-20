@@ -1,0 +1,45 @@
+# =====================================================================
+# 完整渲染样例三：分类类（仿 2025E 轴承故障诊断风格）
+# 数据为虚构/脱敏示例，仅演示分类诊断链路。
+# 渲染：python scripts/render_roadmap.py --spec docs/examples/roadmap/classification_demo.yaml --outdir docs/examples/roadmap
+# =====================================================================
+metadata:
+  title: "故障诊断分类问题技术路线图（仿2025E轴承）"
+  year: 2025
+  track: "2025E-demo"
+  version: "0.1.0"
+
+layers:
+  - {id: input,     label: "数据输入层", order: 0}
+  - {id: preprocess,label: "预处理层",   order: 1}
+  - {id: model,     label: "模型层",     order: 2}
+  - {id: solve,     label: "求解层",     order: 3}
+  - {id: validate,  label: "验证层",     order: 4}
+  - {id: output,    label: "结论输出层", order: 5}
+
+nodes:
+  - {id: n_data,    layer: input,     label: "带标签样本", label_en: "Labeled samples", method: "振动信号/图像读取", constraint_ref: "C1", chapter_ref: "§4.1"}
+  - {id: n_aug,      layer: preprocess,label: "增强与归一化", label_en: "Augmentation", method: "重采样/归一化/数据增强", constraint_ref: "C2", chapter_ref: "§4.1"}
+  - {id: n_feat,    layer: preprocess,label: "特征提取",     label_en: "Feature extraction", method: "时频特征/CNN特征", subquestion_ref: "Q1", constraint_ref: "C3", chapter_ref: "§4.2"}
+  - {id: n_balance, layer: model,     label: "不平衡处理",   label_en: "Imbalance handling", method: "SMOTE/类别权重", subquestion_ref: "Q2", constraint_ref: "C4", chapter_ref: "§4.3"}
+  - {id: n_clf,     layer: model,     label: "分类器",       label_en: "Classifier", method: "SVM/集成/Stacking", subquestion_ref: "Q2", constraint_ref: "C4", chapter_ref: "§4.3"}
+  - {id: n_cv,      layer: solve,     label: "交叉验证训练", label_en: "CV training", method: "K折交叉验证", subquestion_ref: "Q2", constraint_ref: "C5", chapter_ref: "§4.4"}
+  - {id: n_metric,  layer: validate,  label: "性能评估",     label_en: "Evaluation", method: "混淆矩阵/F1/ROC-AUC", subquestion_ref: "Q3", constraint_ref: "C5", chapter_ref: "§5"}
+  - {id: n_ablation,layer: validate, label: "消融对比",     label_en: "Ablation", method: "多基线/消融实验", subquestion_ref: "Q3", constraint_ref: "C6", chapter_ref: "§5"}
+  - {id: n_diag,    layer: output,    label: "故障诊断结果", label_en: "Diagnosis", method: "类别判定+置信度", constraint_ref: "C1", chapter_ref: "§7"}
+
+edges:
+  - {from: n_data,   to: n_aug,      type: solid}
+  - {from: n_aug,     to: n_feat,     type: solid}
+  - {from: n_feat,    to: n_balance, type: solid}
+  - {from: n_balance, to: n_clf,     type: solid}
+  - {from: n_clf,     to: n_cv,      type: solid}
+  - {from: n_cv,      to: n_metric,  type: solid}
+  - {from: n_metric,  to: n_ablation,type: solid}
+  - {from: n_ablation,to: n_diag,    type: solid}
+  - {from: n_metric,  to: n_clf,     type: dashed, label: "迭代/调参/换模型"}
+
+subquestion_mapping:
+  Q1: [n_feat]
+  Q2: [n_balance, n_clf, n_cv]
+  Q3: [n_metric, n_ablation]

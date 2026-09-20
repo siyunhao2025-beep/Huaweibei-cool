@@ -42,6 +42,10 @@
 - **把工程约束写丢**：S3 模式 17 提醒，落地约束（交期/安全/工艺）必须进目标或约束。
 - **实时场景直接数学规划**：高维非线性下线性化失败，需 RL/滚动优化。
 
+## 技术路线图模板
+
+本原型的论文图1 技术路线图预填模板：`assets/roadmap/templates/optimization.yaml`（数据→特征→目标函数→MILP/启发式→灵敏度→方案）。改完用 `scripts/render_roadmap.py` 渲染、`scripts/audit_roadmap.py` 校验，规范见 `modules/technical-roadmap.md`。
+
 ## 方法卡索引
 
 - [MILP/线性规划精确求解](MILP线性规划精确求解.md)

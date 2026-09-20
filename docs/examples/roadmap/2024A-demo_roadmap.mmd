@@ -1,0 +1,40 @@
+%% 技术路线图（论文图1）— Mermaid 源码，可在 Markdown/在线编辑器继续编辑
+%% title: 优化类问题技术路线图（仿2024A风功率分配）
+flowchart LR
+    n_data["风电场实测数据<br/>多源实测/附件数据读取"]
+    n_clean["清洗与缺失插补<br/>异常值剔除+线性插值"]
+    n_feat["特征工程<br/>风速-功率曲线/聚类分箱"]
+    n_obj["目标函数构建<br/>发电成本+弃风惩罚加权"]
+    n_constr["约束建模<br/>容量/爬坡/安全约束线性化"]
+    n_solver["精确求解<br/>MILP / Gurobi"]
+    n_heu["启发式对比<br/>GA / PSO 元启发式"]
+    n_sens["灵敏度分析<br/>ε-约束/情景扫描"]
+    n_robust["鲁棒性互验<br/>小规模与枚举解互验"]
+    n_plan["最优分配方案<br/>出力分配+帕累托前沿"]
+    n_data --> n_clean
+    n_clean --> n_feat
+    n_feat --> n_obj
+    n_obj --> n_constr
+    n_constr --> n_solver
+    n_solver -->|"基线对比"| n_heu
+    n_heu --> n_sens
+    n_solver --> n_sens
+    n_sens --> n_robust
+    n_robust --> n_plan
+    n_sens -.->|-- "迭代/调参/换模型"| n_obj
+    classDef input fill:#2166AC,stroke:#222222,color:#fff;
+    classDef preprocess fill:#4393C3,stroke:#222222,color:#fff;
+    classDef model fill:#1B7837,stroke:#222222,color:#fff;
+    classDef solve fill:#F1A340,stroke:#222222,color:#fff;
+    classDef validate fill:#762A83,stroke:#222222,color:#fff;
+    classDef output fill:#B2182B,stroke:#222222,color:#fff;
+    n_data:::input
+    n_clean:::preprocess
+    n_feat:::preprocess
+    n_obj:::model
+    n_constr:::model
+    n_solver:::solve
+    n_heu:::solve
+    n_sens:::validate
+    n_robust:::validate
+    n_plan:::output

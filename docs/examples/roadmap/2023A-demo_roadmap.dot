@@ -1,0 +1,18 @@
+digraph roadmap {
+  rankdir=LR;
+  node [shape=box, style="rounded,filled", fontname="DejaVu Sans", fontsize=10];
+  n_data [label="物理参数/观测\n参数读取/量纲统一", fillcolor="#2166AC", fontcolor="white"];
+  n_assump [label="假设与简化\n守恒律识别/小量忽略", fillcolor="#4393C3", fontcolor="white"];
+  n_ode [label="方程建立\nODE/PDE/代数方程组", fillcolor="#1B7837", fontcolor="white"];
+  n_rk [label="数值积分\nRK4/ode45", fillcolor="#F1A340", fontcolor="white"];
+  n_fit [label="观测对比\n与解析解/实测对比", fillcolor="#762A83", fontcolor="white"];
+  n_bif [label="稳定性/分岔\n雅可比/分岔图+统计检验", fillcolor="#762A83", fontcolor="white"];
+  n_evolve [label="演化预测\n系统随时间/空间演化", fillcolor="#B2182B", fontcolor="white"];
+  n_data -> n_assump;
+  n_assump -> n_ode;
+  n_ode -> n_rk;
+  n_rk -> n_fit;
+  n_fit -> n_bif;
+  n_bif -> n_evolve;
+  n_bif -> n_ode [style=dashed, label="迭代/调参/换模型", color="#666666", fontcolor="#666666"];
+}

@@ -1,0 +1,30 @@
+%% 技术路线图（论文图1）— Mermaid 源码，可在 Markdown/在线编辑器继续编辑
+%% title: 机理建模问题技术路线图（仿2023A动力学）
+flowchart LR
+    n_data["物理参数/观测<br/>参数读取/量纲统一"]
+    n_assump["假设与简化<br/>守恒律识别/小量忽略"]
+    n_ode["方程建立<br/>ODE/PDE/代数方程组"]
+    n_rk["数值积分<br/>RK4/ode45"]
+    n_fit["观测对比<br/>与解析解/实测对比"]
+    n_bif["稳定性/分岔<br/>雅可比/分岔图+统计检验"]
+    n_evolve["演化预测<br/>系统随时间/空间演化"]
+    n_data --> n_assump
+    n_assump --> n_ode
+    n_ode --> n_rk
+    n_rk --> n_fit
+    n_fit --> n_bif
+    n_bif --> n_evolve
+    n_bif -.->|-- "迭代/调参/换模型"| n_ode
+    classDef input fill:#2166AC,stroke:#222222,color:#fff;
+    classDef preprocess fill:#4393C3,stroke:#222222,color:#fff;
+    classDef model fill:#1B7837,stroke:#222222,color:#fff;
+    classDef solve fill:#F1A340,stroke:#222222,color:#fff;
+    classDef validate fill:#762A83,stroke:#222222,color:#fff;
+    classDef output fill:#B2182B,stroke:#222222,color:#fff;
+    n_data:::input
+    n_assump:::preprocess
+    n_ode:::model
+    n_rk:::solve
+    n_fit:::validate
+    n_bif:::validate
+    n_evolve:::output

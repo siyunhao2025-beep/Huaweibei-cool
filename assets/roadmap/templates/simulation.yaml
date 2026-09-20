@@ -1,0 +1,39 @@
+# =====================================================================
+# 原型模板：simulation 仿真类
+# 典型链路：系统参数 → 分布拟合 → 仿真模型建立 → 蒙特卡洛/离散事件仿真 → 模型验证 → 决策建议
+# 自定义见 optimization.yaml 头部注释。
+# =====================================================================
+metadata:
+  title: "系统仿真问题技术路线图（示例）"
+  year: 2020
+  track: "2020C"
+  version: "0.1.0"
+
+layers:
+  - {id: input,     label: "数据输入层", order: 0}
+  - {id: preprocess,label: "预处理层",   order: 1}
+  - {id: model,     label: "模型层",     order: 2}
+  - {id: solve,     label: "求解层",     order: 3}
+  - {id: validate,  label: "验证层",     order: 4}
+  - {id: output,    label: "结论输出层", order: 5}
+
+nodes:
+  - {id: n_param,   layer: input,     label: "系统参数/随机源", label_en: "System parameters", method: "参数/到达流读取", constraint_ref: "C1", chapter_ref: "§4.1"}
+  - {id: n_dist,    layer: preprocess,label: "分布拟合",       label_en: "Distribution fitting", method: "经验分布/拒绝采样", constraint_ref: "C2", chapter_ref: "§4.1"}
+  - {id: n_model,   layer: model,     label: "仿真模型建立",   label_en: "Simulation model", method: "排队论/离散事件/DE", subquestion_ref: "Q1", constraint_ref: "C3", chapter_ref: "§4.2"}
+  - {id: n_mc,      layer: solve,     label: "仿真运行",       label_en: "Monte Carlo run", method: "蒙特卡洛/多智能体", subquestion_ref: "Q2", constraint_ref: "C4", chapter_ref: "§4.3"}
+  - {id: n_verify,  layer: validate,  label: "模型验证",       label_en: "Model validation", method: "与解析解/灵敏度", subquestion_ref: "Q3", constraint_ref: "C5", chapter_ref: "§5"}
+  - {id: n_decision,layer: output,    label: "决策建议",       label_en: "Recommendation", method: "性能指标+优化建议", constraint_ref: "C3", chapter_ref: "§7"}
+
+edges:
+  - {from: n_param,  to: n_dist,    type: solid}
+  - {from: n_dist,    to: n_model,  type: solid}
+  - {from: n_model,   to: n_mc,     type: solid}
+  - {from: n_mc,      to: n_verify, type: solid}
+  - {from: n_verify,  to: n_decision, type: solid}
+  - {from: n_verify,  to: n_model,  type: dashed, label: "迭代/调参/换模型"}
+
+subquestion_mapping:
+  Q1: [n_model]
+  Q2: [n_mc]
+  Q3: [n_verify]

@@ -1,0 +1,43 @@
+# =====================================================================
+# 原型模板：evaluation 评价/决策类
+# 典型链路：数据 → 指标体系 → 主客观赋权 → 综合评价 → 灵敏度 → 排序优选
+# 自定义见 optimization.yaml 头部注释。
+# =====================================================================
+metadata:
+  title: "综合评价问题技术路线图（示例）"
+  year: 2024
+  track: "2024C"
+  version: "0.1.0"
+
+layers:
+  - {id: input,     label: "数据输入层", order: 0}
+  - {id: preprocess,label: "预处理层",   order: 1}
+  - {id: model,     label: "模型层",     order: 2}
+  - {id: solve,     label: "求解层",     order: 3}
+  - {id: validate,  label: "验证层",     order: 4}
+  - {id: output,    label: "结论输出层", order: 5}
+
+nodes:
+  - {id: n_data,    layer: input,     label: "多指标原始数据", label_en: "Multi-indicator data", method: "指标矩阵读取", constraint_ref: "C1", chapter_ref: "§4.1"}
+  - {id: n_norm,    layer: preprocess,label: "同向化与标准化", label_en: "Normalization", method: "极差/向量标准化", constraint_ref: "C2", chapter_ref: "§4.1"}
+  - {id: n_index,   layer: model,     label: "指标体系构建", label_en: "Indicator system", method: "层次分解+独立性筛选", subquestion_ref: "Q1", constraint_ref: "C3", chapter_ref: "§4.2"}
+  - {id: n_weight,  layer: model,     label: "组合赋权",     label_en: "Combined weighting", method: "AHP主观+熵权客观", subquestion_ref: "Q2", constraint_ref: "C4", chapter_ref: "§4.2"}
+  - {id: n_topsis,  layer: solve,     label: "综合评价",     label_en: "TOPSIS", method: "TOPSIS/改进TOPSIS", subquestion_ref: "Q2", constraint_ref: "C4", chapter_ref: "§4.3"}
+  - {id: n_sens,    layer: validate,  label: "权重灵敏度",   label_en: "Weight sensitivity", method: "权重扰动/云模型", subquestion_ref: "Q3", constraint_ref: "C5", chapter_ref: "§5"}
+  - {id: n_compare, layer: validate,  label: "多方法对比",   label_en: "Method comparison", method: "模糊综合/灰色关联对照", subquestion_ref: "Q3", constraint_ref: "C5", chapter_ref: "§5"}
+  - {id: n_rank,    layer: output,    label: "排序与优选",   label_en: "Ranking & selection", method: "方案排序+推荐", constraint_ref: "C3", chapter_ref: "§7"}
+
+edges:
+  - {from: n_data,    to: n_norm,    type: solid}
+  - {from: n_norm,    to: n_index,   type: solid}
+  - {from: n_index,   to: n_weight,  type: solid}
+  - {from: n_weight,  to: n_topsis,  type: solid}
+  - {from: n_topsis,  to: n_sens,    type: solid}
+  - {from: n_sens,    to: n_compare, type: solid}
+  - {from: n_compare, to: n_rank,    type: solid}
+  - {from: n_sens,    to: n_weight,  type: dashed, label: "迭代/调参/换模型"}
+
+subquestion_mapping:
+  Q1: [n_index]
+  Q2: [n_weight, n_topsis]
+  Q3: [n_sens, n_compare]

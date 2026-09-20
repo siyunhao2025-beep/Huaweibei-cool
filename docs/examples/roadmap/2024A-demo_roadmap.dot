@@ -1,0 +1,25 @@
+digraph roadmap {
+  rankdir=LR;
+  node [shape=box, style="rounded,filled", fontname="DejaVu Sans", fontsize=10];
+  n_data [label="风电场实测数据\n多源实测/附件数据读取", fillcolor="#2166AC", fontcolor="white"];
+  n_clean [label="清洗与缺失插补\n异常值剔除+线性插值", fillcolor="#4393C3", fontcolor="white"];
+  n_feat [label="特征工程\n风速-功率曲线/聚类分箱", fillcolor="#4393C3", fontcolor="white"];
+  n_obj [label="目标函数构建\n发电成本+弃风惩罚加权", fillcolor="#1B7837", fontcolor="white"];
+  n_constr [label="约束建模\n容量/爬坡/安全约束线性化", fillcolor="#1B7837", fontcolor="white"];
+  n_solver [label="精确求解\nMILP / Gurobi", fillcolor="#F1A340", fontcolor="white"];
+  n_heu [label="启发式对比\nGA / PSO 元启发式", fillcolor="#F1A340", fontcolor="white"];
+  n_sens [label="灵敏度分析\nε-约束/情景扫描", fillcolor="#762A83", fontcolor="white"];
+  n_robust [label="鲁棒性互验\n小规模与枚举解互验", fillcolor="#762A83", fontcolor="white"];
+  n_plan [label="最优分配方案\n出力分配+帕累托前沿", fillcolor="#B2182B", fontcolor="white"];
+  n_data -> n_clean;
+  n_clean -> n_feat;
+  n_feat -> n_obj;
+  n_obj -> n_constr;
+  n_constr -> n_solver;
+  n_solver -> n_heu;
+  n_heu -> n_sens;
+  n_solver -> n_sens;
+  n_sens -> n_robust;
+  n_robust -> n_plan;
+  n_sens -> n_obj [style=dashed, label="迭代/调参/换模型", color="#666666", fontcolor="#666666"];
+}

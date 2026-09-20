@@ -37,6 +37,10 @@
 - 聚类不选 K（肘部/轮廓系数）。
 - 小样本直接上大模型过拟合。
 
+## 技术路线图模板
+
+本原型的论文图1 技术路线图预填模板：`assets/roadmap/templates/classification-cv.yaml`（增强→特征→不平衡处理→分类器→交叉验证→F1/ROC）。改完用 `scripts/render_roadmap.py` 渲染、`scripts/audit_roadmap.py` 校验，规范见 `modules/technical-roadmap.md`。
+
 ## 方法卡索引
 
 - [SVM 支持向量机分类](SVM支持向量机分类.md)

@@ -35,6 +35,10 @@
 - 坐标/单位搞错。
 - GIS 不做空间可视化。
 
+## 技术路线图模板
+
+本原型的论文图1 技术路线图预填模板：`assets/roadmap/templates/spatial-graph.yaml`（投影拓扑→图构建→MST/网络流→路径/VRP→覆盖验证）。改完用 `scripts/render_roadmap.py` 渲染、`scripts/audit_roadmap.py` 校验，规范见 `modules/technical-roadmap.md`。
+
 ## 方法卡索引
 
 - [最短路径与 VPR 车辆路径](最短路径与VRP.md)

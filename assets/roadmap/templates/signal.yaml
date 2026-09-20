@@ -1,0 +1,41 @@
+# =====================================================================
+# 原型模板：signal 信号处理类
+# 典型链路：阵列信号 → 去噪 → 谱估计/波束形成 → 超分辨DOA → 定位解算 → 性能验证 → 跟踪
+# 自定义见 optimization.yaml 头部注释。
+# =====================================================================
+metadata:
+  title: "信号处理问题技术路线图（示例）"
+  year: 2021
+  track: "2021E"
+  version: "0.1.0"
+
+layers:
+  - {id: input,     label: "数据输入层", order: 0}
+  - {id: preprocess,label: "预处理层",   order: 1}
+  - {id: model,     label: "模型层",     order: 2}
+  - {id: solve,     label: "求解层",     order: 3}
+  - {id: validate,  label: "验证层",     order: 4}
+  - {id: output,    label: "结论输出层", order: 5}
+
+nodes:
+  - {id: n_sig,     layer: input,     label: "阵列/传感器信号", label_en: "Array signals", method: "多通道采样读取", constraint_ref: "C1", chapter_ref: "§4.1"}
+  - {id: n_denoise, layer: preprocess,label: "去噪与滤波",     label_en: "Denoising", method: "小波/EMD/卡尔曼", constraint_ref: "C2", chapter_ref: "§4.1"}
+  - {id: n_fft,     layer: model,     label: "谱估计",         label_en: "Spectrum estimation", method: "FFT/波束形成", subquestion_ref: "Q1", constraint_ref: "C3", chapter_ref: "§4.2"}
+  - {id: n_doa,     layer: model,     label: "DOA超分辨",      label_en: "DOA estimation", method: "MUSIC/压缩感知OMP", subquestion_ref: "Q2", constraint_ref: "C4", chapter_ref: "§4.3"}
+  - {id: n_loc,     layer: solve,     label: "定位解算",       label_en: "Localization", method: "TOA/AoA 几何解算", subquestion_ref: "Q2", constraint_ref: "C4", chapter_ref: "§4.4"}
+  - {id: n_crlb,    layer: validate,  label: "性能验证",         label_en: "Performance", method: "CRLB/蒙特卡洛", subquestion_ref: "Q3", constraint_ref: "C5", chapter_ref: "§5"}
+  - {id: n_track,   layer: output,    label: "目标定位跟踪",   label_en: "Tracking", method: "DOA轨迹/定位结果", constraint_ref: "C1", chapter_ref: "§7"}
+
+edges:
+  - {from: n_sig,    to: n_denoise, type: solid}
+  - {from: n_denoise,to: n_fft,     type: solid}
+  - {from: n_fft,    to: n_doa,     type: solid}
+  - {from: n_doa,    to: n_loc,     type: solid}
+  - {from: n_loc,    to: n_crlb,    type: solid}
+  - {from: n_crlb,   to: n_track,   type: solid}
+  - {from: n_crlb,   to: n_doa,     type: dashed, label: "迭代/调参/换模型"}
+
+subquestion_mapping:
+  Q1: [n_fft]
+  Q2: [n_doa, n_loc]
+  Q3: [n_crlb]

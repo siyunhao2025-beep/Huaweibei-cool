@@ -1,0 +1,36 @@
+%% 技术路线图（论文图1）— Mermaid 源码，可在 Markdown/在线编辑器继续编辑
+%% title: 故障诊断分类问题技术路线图（仿2025E轴承）
+flowchart LR
+    n_data["带标签样本<br/>振动信号/图像读取"]
+    n_aug["增强与归一化<br/>重采样/归一化/数据增强"]
+    n_feat["特征提取<br/>时频特征/CNN特征"]
+    n_balance["不平衡处理<br/>SMOTE/类别权重"]
+    n_clf["分类器<br/>SVM/集成/Stacking"]
+    n_cv["交叉验证训练<br/>K折交叉验证"]
+    n_metric["性能评估<br/>混淆矩阵/F1/ROC-AUC"]
+    n_ablation["消融对比<br/>多基线/消融实验"]
+    n_diag["故障诊断结果<br/>类别判定+置信度"]
+    n_data --> n_aug
+    n_aug --> n_feat
+    n_feat --> n_balance
+    n_balance --> n_clf
+    n_clf --> n_cv
+    n_cv --> n_metric
+    n_metric --> n_ablation
+    n_ablation --> n_diag
+    n_metric -.->|-- "迭代/调参/换模型"| n_clf
+    classDef input fill:#2166AC,stroke:#222222,color:#fff;
+    classDef preprocess fill:#4393C3,stroke:#222222,color:#fff;
+    classDef model fill:#1B7837,stroke:#222222,color:#fff;
+    classDef solve fill:#F1A340,stroke:#222222,color:#fff;
+    classDef validate fill:#762A83,stroke:#222222,color:#fff;
+    classDef output fill:#B2182B,stroke:#222222,color:#fff;
+    n_data:::input
+    n_aug:::preprocess
+    n_feat:::preprocess
+    n_balance:::model
+    n_clf:::model
+    n_cv:::solve
+    n_metric:::validate
+    n_ablation:::validate
+    n_diag:::output

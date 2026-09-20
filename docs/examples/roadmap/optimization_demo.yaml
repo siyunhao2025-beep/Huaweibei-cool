@@ -1,0 +1,48 @@
+# =====================================================================
+# 完整渲染样例一：优化类（仿 2024A 风电场功率分配风格）
+# 数据为虚构/脱敏示例，仅演示链路结构；论文中替换为真实题目节点。
+# 渲染：python scripts/render_roadmap.py --spec docs/examples/roadmap/optimization_demo.yaml --outdir docs/examples/roadmap
+# =====================================================================
+metadata:
+  title: "优化类问题技术路线图（仿2024A风功率分配）"
+  year: 2024
+  track: "2024A-demo"
+  version: "0.1.0"
+
+layers:
+  - {id: input,     label: "数据输入层", order: 0}
+  - {id: preprocess,label: "预处理层",   order: 1}
+  - {id: model,     label: "模型层",     order: 2}
+  - {id: solve,     label: "求解层",     order: 3}
+  - {id: validate,  label: "验证层",     order: 4}
+  - {id: output,    label: "结论输出层", order: 5}
+
+nodes:
+  - {id: n_data,    layer: input,     label: "风电场实测数据", label_en: "Wind farm SCADA data", method: "多源实测/附件数据读取", constraint_ref: "C1", chapter_ref: "§4.1"}
+  - {id: n_clean,   layer: preprocess,label: "清洗与缺失插补", label_en: "Cleaning & imputation", method: "异常值剔除+线性插值", constraint_ref: "C2", chapter_ref: "§4.1"}
+  - {id: n_feat,    layer: preprocess,label: "特征工程",     label_en: "Feature engineering", method: "风速-功率曲线/聚类分箱", constraint_ref: "C3", chapter_ref: "§4.1"}
+  - {id: n_obj,     layer: model,     label: "目标函数构建", label_en: "Objective construction", method: "发电成本+弃风惩罚加权", subquestion_ref: "Q1", constraint_ref: "C4", chapter_ref: "§4.2"}
+  - {id: n_constr,  layer: model,     label: "约束建模",     label_en: "Constraint modeling", method: "容量/爬坡/安全约束线性化", subquestion_ref: "Q1", constraint_ref: "C5", chapter_ref: "§4.2"}
+  - {id: n_solver,  layer: solve,     label: "精确求解",     label_en: "Exact solver", method: "MILP / Gurobi", subquestion_ref: "Q2", constraint_ref: "C5", chapter_ref: "§4.3"}
+  - {id: n_heu,     layer: solve,     label: "启发式对比",   label_en: "Heuristic baseline", method: "GA / PSO 元启发式", subquestion_ref: "Q2", constraint_ref: "C6", chapter_ref: "§4.3"}
+  - {id: n_sens,    layer: validate,  label: "灵敏度分析",   label_en: "Sensitivity analysis", method: "ε-约束/情景扫描", subquestion_ref: "Q3", constraint_ref: "C7", chapter_ref: "§5"}
+  - {id: n_robust,  layer: validate,  label: "鲁棒性互验",   label_en: "Robustness check", method: "小规模与枚举解互验", subquestion_ref: "Q3", constraint_ref: "C7", chapter_ref: "§5"}
+  - {id: n_plan,    layer: output,    label: "最优分配方案", label_en: "Optimal dispatch plan", method: "出力分配+帕累托前沿", constraint_ref: "C4", chapter_ref: "§7"}
+
+edges:
+  - {from: n_data,   to: n_clean,   type: solid}
+  - {from: n_clean,  to: n_feat,    type: solid}
+  - {from: n_feat,   to: n_obj,     type: solid}
+  - {from: n_obj,    to: n_constr,  type: solid}
+  - {from: n_constr, to: n_solver,  type: solid}
+  - {from: n_solver,  to: n_heu,    type: solid, label: "基线对比"}
+  - {from: n_heu,    to: n_sens,    type: solid}
+  - {from: n_solver, to: n_sens,    type: solid}
+  - {from: n_sens,   to: n_robust,  type: solid}
+  - {from: n_robust, to: n_plan,    type: solid}
+  - {from: n_sens,   to: n_obj,     type: dashed, label: "迭代/调参/换模型"}
+
+subquestion_mapping:
+  Q1: [n_obj, n_constr]
+  Q2: [n_solver, n_heu]
+  Q3: [n_sens, n_robust]

@@ -1,0 +1,45 @@
+# =====================================================================
+# 原型模板：prediction 预测类
+# 典型链路：时序数据 → 平稳化/特征 → 基线模型 → 深度模型 → 组合 → 回测验证 → 预测
+# 自定义见 optimization.yaml 头部注释。
+# =====================================================================
+metadata:
+  title: "时序预测问题技术路线图（示例）"
+  year: 2023
+  track: "2023B"
+  version: "0.1.0"
+
+layers:
+  - {id: input,     label: "数据输入层", order: 0}
+  - {id: preprocess,label: "预处理层",   order: 1}
+  - {id: model,     label: "模型层",     order: 2}
+  - {id: solve,     label: "求解层",     order: 3}
+  - {id: validate,  label: "验证层",     order: 4}
+  - {id: output,    label: "结论输出层", order: 5}
+
+nodes:
+  - {id: n_data,    layer: input,     label: "时序观测数据", label_en: "Time series data", method: "序列读取/对齐", constraint_ref: "C1", chapter_ref: "§4.1"}
+  - {id: n_station, layer: preprocess,label: "平稳性检验",   label_en: "Stationarity test", method: "ADF检验/差分", constraint_ref: "C2", chapter_ref: "§4.1"}
+  - {id: n_feat,    layer: preprocess,label: "滞后特征",     label_en: "Lag features", method: "滞后阶数/滚动窗口", constraint_ref: "C3", chapter_ref: "§4.1"}
+  - {id: n_arima,   layer: model,     label: "统计基线",     label_en: "ARIMA baseline", method: "ARIMA/SARIMA", subquestion_ref: "Q1", constraint_ref: "C3", chapter_ref: "§4.2"}
+  - {id: n_lstm,    layer: model,     label: "深度预测",     label_en: "LSTM/GRU", method: "LSTM 时序网络", subquestion_ref: "Q2", constraint_ref: "C4", chapter_ref: "§4.3"}
+  - {id: n_ens,     layer: solve,     label: "组合预测",     label_en: "Ensemble", method: "Stacking/误差加权", subquestion_ref: "Q3", constraint_ref: "C4", chapter_ref: "§4.4"}
+  - {id: n_err,     layer: validate,  label: "回测误差",     label_en: "Backtest error", method: "MAE/RMSE/MAPE", subquestion_ref: "Q3", constraint_ref: "C5", chapter_ref: "§5"}
+  - {id: n_resid,   layer: validate,  label: "残差检验",     label_en: "Residual check", method: "白噪声/Ljung-Box", subquestion_ref: "Q3", constraint_ref: "C5", chapter_ref: "§5"}
+  - {id: n_fc,      layer: output,    label: "未来预测",     label_en: "Forecast", method: "点预测+置信区间", constraint_ref: "C1", chapter_ref: "§7"}
+
+edges:
+  - {from: n_data,   to: n_station, type: solid}
+  - {from: n_station,to: n_feat,    type: solid}
+  - {from: n_feat,   to: n_arima,   type: solid}
+  - {from: n_arima,  to: n_lstm,    type: solid, label: "残差建模"}
+  - {from: n_lstm,   to: n_ens,     type: solid}
+  - {from: n_ens,    to: n_err,     type: solid}
+  - {from: n_err,    to: n_resid,   type: solid}
+  - {from: n_resid,  to: n_fc,      type: solid}
+  - {from: n_err,    to: n_lstm,    type: dashed, label: "迭代/调参/换模型"}
+
+subquestion_mapping:
+  Q1: [n_arima]
+  Q2: [n_lstm]
+  Q3: [n_ens, n_err, n_resid]

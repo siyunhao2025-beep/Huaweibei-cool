@@ -37,6 +37,10 @@
 - **指标堆砌**：指标间高度相关（未做 PCA/相关过滤），重复赋权。
 - **2024 趋势**：纯熵权/TOPSIS 单独已降温（S4：2022→2024 从 4 次降到 0），需配树模型/物理机理。
 
+## 技术路线图模板
+
+本原型的论文图1 技术路线图预填模板：`assets/roadmap/templates/evaluation.yaml`（指标体系→组合赋权→TOPSIS→灵敏度→排序）。改完用 `scripts/render_roadmap.py` 渲染、`scripts/audit_roadmap.py` 校验，规范见 `modules/technical-roadmap.md`。
+
 ## 方法卡索引
 
 - [AHP 层次分析法](AHP层次分析法.md)

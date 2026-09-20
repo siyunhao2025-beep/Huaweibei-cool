@@ -1,0 +1,22 @@
+digraph roadmap {
+  rankdir=LR;
+  node [shape=box, style="rounded,filled", fontname="DejaVu Sans", fontsize=10];
+  n_data [label="带标签样本\n振动信号/图像读取", fillcolor="#2166AC", fontcolor="white"];
+  n_aug [label="增强与归一化\n重采样/归一化/数据增强", fillcolor="#4393C3", fontcolor="white"];
+  n_feat [label="特征提取\n时频特征/CNN特征", fillcolor="#4393C3", fontcolor="white"];
+  n_balance [label="不平衡处理\nSMOTE/类别权重", fillcolor="#1B7837", fontcolor="white"];
+  n_clf [label="分类器\nSVM/集成/Stacking", fillcolor="#1B7837", fontcolor="white"];
+  n_cv [label="交叉验证训练\nK折交叉验证", fillcolor="#F1A340", fontcolor="white"];
+  n_metric [label="性能评估\n混淆矩阵/F1/ROC-AUC", fillcolor="#762A83", fontcolor="white"];
+  n_ablation [label="消融对比\n多基线/消融实验", fillcolor="#762A83", fontcolor="white"];
+  n_diag [label="故障诊断结果\n类别判定+置信度", fillcolor="#B2182B", fontcolor="white"];
+  n_data -> n_aug;
+  n_aug -> n_feat;
+  n_feat -> n_balance;
+  n_balance -> n_clf;
+  n_clf -> n_cv;
+  n_cv -> n_metric;
+  n_metric -> n_ablation;
+  n_ablation -> n_diag;
+  n_metric -> n_clf [style=dashed, label="迭代/调参/换模型", color="#666666", fontcolor="#666666"];
+}

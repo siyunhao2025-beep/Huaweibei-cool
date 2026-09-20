@@ -1,0 +1,41 @@
+# =====================================================================
+# 原型模板：mechanism 机理建模类（仿 2023A WLAN / 2021C 神经动力学风格）
+# 典型链路：物理量 → 假设简化 → ODE/PDE 建立 → 数值积分 → 观测对比 → 稳定性/分岔 → 演化预测
+# 自定义见 optimization.yaml 头部注释。
+# =====================================================================
+metadata:
+  title: "机理建模问题技术路线图（示例）"
+  year: 2023
+  track: "2023A"
+  version: "0.1.0"
+
+layers:
+  - {id: input,     label: "数据输入层", order: 0}
+  - {id: preprocess,label: "预处理层",   order: 1}
+  - {id: model,     label: "模型层",     order: 2}
+  - {id: solve,     label: "求解层",     order: 3}
+  - {id: validate,  label: "验证层",     order: 4}
+  - {id: output,    label: "结论输出层", order: 5}
+
+nodes:
+  - {id: n_data,    layer: input,     label: "物理参数/观测", label_en: "Physical params", method: "参数读取/量纲统一", constraint_ref: "C1", chapter_ref: "§4.1"}
+  - {id: n_assump,  layer: preprocess,label: "假设与简化",   label_en: "Assumptions", method: "守恒律识别/小量忽略", constraint_ref: "C2", chapter_ref: "§4.1"}
+  - {id: n_ode,     layer: model,     label: "方程建立",     label_en: "ODE/PDE model", method: "ODE/PDE/代数方程组", subquestion_ref: "Q1", constraint_ref: "C3", chapter_ref: "§4.2"}
+  - {id: n_rk,      layer: solve,     label: "数值积分",     label_en: "Numerical integration", method: "RK4/ode45", subquestion_ref: "Q2", constraint_ref: "C4", chapter_ref: "§4.3"}
+  - {id: n_fit,     layer: validate,  label: "观测对比",     label_en: "Observation fit", method: "与解析解/实测对比", subquestion_ref: "Q3", constraint_ref: "C5", chapter_ref: "§5"}
+  - {id: n_bif,     layer: validate,  label: "稳定性/分岔",   label_en: "Stability & bifurcation", method: "雅可比/分岔图+统计检验", subquestion_ref: "Q3", constraint_ref: "C5", chapter_ref: "§5"}
+  - {id: n_evolve,  layer: output,    label: "演化预测",     label_en: "Evolution forecast", method: "系统随时间/空间演化", constraint_ref: "C3", chapter_ref: "§7"}
+
+edges:
+  - {from: n_data,   to: n_assump, type: solid}
+  - {from: n_assump, to: n_ode,    type: solid}
+  - {from: n_ode,    to: n_rk,     type: solid}
+  - {from: n_rk,     to: n_fit,    type: solid}
+  - {from: n_fit,    to: n_bif,    type: solid}
+  - {from: n_bif,    to: n_evolve, type: solid}
+  - {from: n_bif,    to: n_ode,    type: dashed, label: "迭代/调参/换模型"}
+
+subquestion_mapping:
+  Q1: [n_ode]
+  Q2: [n_rk]
+  Q3: [n_fit, n_bif]

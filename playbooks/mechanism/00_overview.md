@@ -37,6 +37,10 @@
 - 分岔分析看图说话不做统计检验。
 - 2024 趋势：高分论文"物理公式打底 + ML 学残差"，纯机理或纯数据都不够。
 
+## 技术路线图模板
+
+本原型的论文图1 技术路线图预填模板：`assets/roadmap/templates/mechanism.yaml`（假设简化→ODE/PDE→数值积分→观测对比→分岔）。改完用 `scripts/render_roadmap.py` 渲染、`scripts/audit_roadmap.py` 校验，规范见 `modules/technical-roadmap.md`。
+
 ## 方法卡索引
 
 - [常微分/偏微分方程建模](微分方程与动力学建模.md)

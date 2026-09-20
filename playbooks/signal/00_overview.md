@@ -36,6 +36,10 @@
 - 不加窗旁瓣泄漏。
 - 不与理论下界（CRB）对比。
 
+## 技术路线图模板
+
+本原型的论文图1 技术路线图预填模板：`assets/roadmap/templates/signal.yaml`（去噪→FFT谱估计→DOA超分辨→定位解算→CRLB验证）。改完用 `scripts/render_roadmap.py` 渲染、`scripts/audit_roadmap.py` 校验，规范见 `modules/technical-roadmap.md`。
+
 ## 方法卡索引
 
 - [DOA 阵列超分辨 MUSIC/MVDR](DOA阵列超分辨.md)
