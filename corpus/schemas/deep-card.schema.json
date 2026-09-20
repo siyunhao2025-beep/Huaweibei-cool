@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://huaweibei-cool/corpus/schemas/deep-card.schema.json",
+  "title": "华为杯获奖论文深卡（deep，Wave1 ≥80 篇）",
+  "type": "object",
+  "required": ["paper_id", "year", "per_question_method_chain", "confidence"],
+  "additionalProperties": true,
+  "description": "在简卡 brief-card 全部字段基础上，增加逐问方法链、公式假设、目标函数、评估指标、复杂度、独立验证、稳健性消融、摘要解构、图表叙事顺序、高分理由、可复用范式、可迁移能力卡候选与精确页码定位。",
+  "properties": {
+    "paper_id": {"type": "string"},
+    "year": {"type": "integer"},
+    "track": {"type": ["string", "null"]},
+    "title": {"type": "string"},
+    "award_level": {"type": "string"},
+    "award_confidence": {"type": "string", "enum": ["high", "medium", "low", "unknown"]},
+    "per_question_method_chain": {
+      "type": "array",
+      "description": "逐问方法链：baseline→主模型→改进，含为什么换",
+      "items": {
+        "type": "object",
+        "required": ["question_id", "baseline", "main_model"],
+        "properties": {
+          "question_id": {"type": "string"},
+          "baseline": {"type": "string"},
+          "main_model": {"type": "string"},
+          "improvement": {"type": "string"},
+          "why_switch": {"type": "string", "description": "为什么从 baseline 换到主模型/改进"}
+        }
+      }
+    },
+    "key_formulas_and_assumptions": {"type": "array", "items": {"type": "string"}},
+    "objective_function": {"type": ["string", "null"]},
+    "evaluation_metrics": {"type": "array", "items": {"type": "string"}},
+    "algorithm_details_and_complexity": {"type": ["string", "null"]},
+    "independent_validation_design": {"type": ["string", "null"], "description": "独立验证设计：留出集/外部数据/交叉验证"},
+    "sensitivity_robustness_ablation": {"type": "array", "items": {"type": "string"}},
+    "abstract_deconstruction": {
+      "type": "object",
+      "description": "摘要解构：首句/方法句/结果句/数字呈现",
+      "properties": {
+        "first_sentence": {"type": "string"},
+        "method_sentence": {"type": "string"},
+        "result_sentence": {"type": "string"},
+        "numbers_presentation": {"type": "string"}
+      }
+    },
+    "figure_narrative_order": {"type": "array", "items": {"type": "string"}, "description": "图表叙事顺序"},
+    "judge_high_score_reasons": {"type": "array", "items": {"type": "string"}},
+    "reusable_patterns": {"type": "array", "items": {"type": "string"}},
+    "transferable_ability_card_candidates": {"type": "array", "items": {"type": "string"}},
+    "page_locations": {"type": "object", "description": "精确到页的关键内容定位", "additionalProperties": {"type": "string"}},
+    "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
+    "notes": {"type": "string"}
+  }
+}

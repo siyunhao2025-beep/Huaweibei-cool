@@ -1,0 +1,136 @@
+{
+  "paper_id": "2014_D_D10357002_b5f65f8a",
+  "year": 2014,
+  "track": "D",
+  "title": "基于多种智能优化算法和营养健康",
+  "award_level": "待确认",
+  "award_confidence": "unknown",
+  "problem_count": 4,
+  "task_types": [
+    "优化",
+    "预测",
+    "评价",
+    "分类",
+    "回归拟合"
+  ],
+  "models_and_algorithms": [
+    "因子分析",
+    "系统聚类/层次聚类",
+    "灰色预测GM(1,1)",
+    "BP神经网络",
+    "深度学习",
+    "支持向量机SVM",
+    "粒子群算法PSO",
+    "多元线性回归",
+    "多目标规划/优化",
+    "组合预测",
+    "信道建模/多径/OFDM"
+  ],
+  "data_modality": "结构化",
+  "data_scale": "小样本/题设数据",
+  "validation_methods": [
+    "灵敏度/敏感性分析",
+    "对比/比较分析",
+    "鲁棒性/稳定性分析",
+    "精度指标(RMSE/R²等)"
+  ],
+  "figure_count": 118,
+  "figure_types": [
+    "流程图/框图"
+  ],
+  "innovation_points": [],
+  "page_count": 75,
+  "section_structure": "二、了解我国居民矿物质、维生素、膳食纤维等营养素摄入现状，结合为；三、不同的蔬菜、水果尽管各种营养素含量各不相同，但营养素的种类大；四、为实现人体营养均衡满足健康需要，国家可能需要对水果和蔬菜各品",
+  "source_locations": [
+    "模型建立≈p.4",
+    "模型求解≈p.1",
+    "灵敏度分析≈p.1"
+  ],
+  "confidence": "high",
+  "notes": "2014年D题(人体营养健康)，方法链完整，验证充分",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "直接用原始营养指标做筛选",
+      "main_model": "主成分因子分析筛选指标 + 0-1模糊规划选主要果蔬",
+      "improvement": "提出PSO-GA混合算法求解0-1模糊规划；消费量用直接估计+损耗率校正双模型；预测用灰色/BP/SVR再加权power平均(WPA)组合预测",
+      "why_switch": "单预测模型误差大，组合预测通过WPA算子降低单一模型偏置"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "与标准摄入量区间做简单比较",
+      "main_model": "提出连续区间有序加权平均(COWA)算子构建总体营养评价值",
+      "improvement": "把区间型标准转成可计算的连续评价",
+      "why_switch": "标准摄入量是区间，直接比较无法给出总体恶化趋势"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "人工判断果蔬可替代性",
+      "main_model": "SOM自组织特征映射聚类做可替代聚类",
+      "improvement": "南北方分价格建立人均消费量最优化模型，PSO-GA求解替代方案",
+      "why_switch": "聚类给出客观替代类别，再优化给出可执行消费方案"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "单目标种植面积调整",
+      "main_model": "兼顾成本/收益/营养/进出口/土地的多目标规划",
+      "improvement": "PSO-GA求解未来人均消费量与种植结构",
+      "why_switch": "单一目标顾此失彼，需多目标权衡"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "WPA加权power平均算子: y=(Σw_i x_i^p)^(1/p) 融合多预测",
+    "COWA连续区间有序加权平均把区间标准转连续评分",
+    "假设果蔬营养素含量稳定、南北价格差异按给定数据",
+    "损耗率校正: 净消费量=毛消费量×(1-损耗率)"
+  ],
+  "objective_function": "问题三/四: min Σ(南北价格×人均消费量) 且 营养均衡约束；0-1规划选主要果蔬",
+  "evaluation_metrics": [
+    "预测趋势一致性",
+    "营养评价值随时间变化",
+    "聚类内营养素相似度"
+  ],
+  "algorithm_details_and_complexity": "PSO-GA: PSO全局寻优+GA变异交叉，复杂度O(iter×pop×维度)；组合预测降低方差",
+  "independent_validation_design": "用2001-2012历史数据回测预测；损耗率模型与直接估计模型交叉对照",
+  "sensitivity_robustness_ablation": [
+    "对权重p、WPA幂指数做灵敏度分析",
+    "对PSO-GA种群/迭代做收敛性检查",
+    "分别报告单预测模型与组合预测对比"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "水果和蔬菜对人体的营养健康具有举足轻重的作用。",
+    "method_sentence": "构建0-1模糊规划、COWA算子、SOM聚类与多目标规划，并用PSO-GA求解",
+    "result_sentence": "主要果蔬消费上升，居民营养健康状况随时间逐渐恶化，维A过量突出",
+    "numbers_presentation": "给出主要果蔬清单、2020营养缺口、种植结构调整建议"
+  },
+  "figure_narrative_order": [
+    "营养指标筛选流程",
+    "主要果蔬消费量预测曲线",
+    "营养健康评价值变化",
+    "可替代聚类结果",
+    "种植结构优化方案"
+  ],
+  "judge_high_score_reasons": [
+    "一套题贯穿因子分析→组合预测→COWA评价→SOM聚类→多目标优化全链条",
+    "自造WPA/COWA算子并给出数学定义",
+    "南北分区、损耗率校正等工程细节扎实"
+  ],
+  "reusable_patterns": [
+    "多模型+power平均算子的组合预测范式",
+    "区间型指标用COWA类算子做综合评价",
+    "选关键对象用0-1规划+启发式求解"
+  ],
+  "transferable_ability_card_candidates": [
+    "组合预测算子设计",
+    "区间指标综合评价",
+    "PSO-GA混合启发式"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "因子分析选指标": "≈p.5-8",
+    "组合预测": "≈p.15-22",
+    "COWA评价": "≈p.28-33",
+    "SOM聚类": "≈p.40-45",
+    "灵敏度分析": "≈p.65-70"
+  }
+}

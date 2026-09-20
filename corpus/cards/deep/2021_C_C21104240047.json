@@ -1,0 +1,97 @@
+{
+  "paper_id": "2021_C_C21104240047",
+  "year": 2021,
+  "track": "C",
+  "title": "帕金森病的脑深部电刺激治疗建模研究",
+  "confidence": "high",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一(单神经元)",
+      "baseline": "定性看放电",
+      "main_model": "数值分析HH方程，定位极限环(Hopf分岔)与振幅/频率窗口",
+      "improvement": "精确定位临界电流",
+      "why_switch": "需从分岔角度理解发放转换"
+    },
+    {
+      "question_id": "问题二(回路)",
+      "baseline": "简单核团",
+      "main_model": "建皮质-基底节-丘脑-皮质双振子神经质量模型，含26种突触连接",
+      "improvement": "双振子闭合回路",
+      "why_switch": "需刻画多巴胺耗竭引起的耦合变化"
+    },
+    {
+      "question_id": "问题三(健康/PD差异)",
+      "baseline": "肉眼比较序列图",
+      "main_model": "设0.05显著性，Tukey与Levene检验TH神经元水平/方差",
+      "improvement": "统计检验量化差异",
+      "why_switch": "定性比较不严谨"
+    },
+    {
+      "question_id": "问题四(靶点DBS)",
+      "baseline": "只仿真",
+      "main_model": "对STN/GPi高频刺激模拟DBS，结合SVM分类与FPGA仿真",
+      "improvement": "SVM判别+硬件仿真",
+      "why_switch": "需对放电特征做自动判别与硬件可行性"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "HH方程直流Idc=7.8/6.3/9.8临界值",
+    "双振子神经质量模型含26种突触连接",
+    "Tukey/Levene 0.05检验",
+    "SVM放电特征分类"
+  ],
+  "objective_function": "区分正常/PD放电特征并确定最优DBS靶点",
+  "evaluation_metrics": [
+    "Idc≈6.3极限环",
+    "9.8处反向Hopf分岔",
+    "TH神经元p<0.05显著",
+    "SVM分类高精度"
+  ],
+  "algorithm_details_and_complexity": "HH分岔分析→双振子26突触回路→统计检验→SVM+FPGA",
+  "independent_validation_design": "Tukey/Levene统计检验与模型仿真结果互相印证；FPGA硬件仿真验证",
+  "sensitivity_robustness_ablation": [
+    "直流/交流/噪声刺激下放电窗口",
+    "26种突触耦合变化对回路影响",
+    "STN vs GPi靶点对比"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "用HH模型、基底节回路、SVM、FPGA仿真完成DBS放电特征分析与靶点判别",
+    "method_sentence": "数值分析HH分岔→双振子回路→Tukey/Levene检验→SVM+FPGA",
+    "result_sentence": "TH神经元在PD下显著不同(p<0.05)，与模型一致",
+    "numbers_presentation": "精确临界电流7.8/6.3/9.8µA/cm²与频率窗口[1.44,1.48]"
+  },
+  "figure_narrative_order": [
+    "HH放电时域图",
+    "双振子回路结构图",
+    "分岔图",
+    "放电序列图",
+    "统计检验表"
+  ],
+  "judge_high_score_reasons": [
+    "把分岔理论(Hopf)引入HH放电分析，理论深度高",
+    "26种突触连接的双振子闭合回路，建模精细",
+    "用Tukey/Levene统计检验量化健康/PD差异，而非看图说话",
+    "SVM+FPGA兼顾自动判别与硬件落地"
+  ],
+  "reusable_patterns": [
+    "分岔分析定位放电转换临界点",
+    "双振子神经质量回路",
+    "统计检验验证仿真差异",
+    "SVM判别+FPGA仿真"
+  ],
+  "transferable_ability_card_candidates": [
+    "HH神经动力学分岔分析",
+    "神经质量回路建模",
+    "统计假设检验"
+  ],
+  "page_locations": {
+    "摘要": "p2",
+    "双振子回路": "p13-16",
+    "Hopf分岔": "p9",
+    "Tukey检验": "p21",
+    "问题四靶点": "p22"
+  },
+  "notes": "数模之星提名奖",
+  "award_level": "一等奖",
+  "award_confidence": "high"
+}

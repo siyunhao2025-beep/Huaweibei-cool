@@ -1,0 +1,93 @@
+{
+  "paper_id": "2004_X_中山C(压缩版）_44badde7",
+  "year": 2004,
+  "track": "C",
+  "track_confidence": "medium",
+  "title": "售后服务数据的运用",
+  "award_level": "优秀论文",
+  "award_confidence": "low",
+  "per_question_method_chain": [
+    {
+      "question_id": "Q1",
+      "baseline": "原始表格直接使用",
+      "main_model": "数据合理性诊断+制表建议",
+      "improvement": "识别左下方不合理数据（滞后反馈）",
+      "why_switch": "原始表含未反馈数据直接预测会失真"
+    },
+    {
+      "question_id": "Q2-1",
+      "baseline": "线性外推",
+      "main_model": "二参数Weibull分布拟合",
+      "improvement": "拟合0205批次0-12月数据预测18月千车故障数=44.08",
+      "why_switch": "故障累积概率服从Weibull而非线性"
+    },
+    {
+      "question_id": "Q2-2",
+      "baseline": "Weibull外推",
+      "main_model": "多元线性回归",
+      "improvement": "用前1-2月数据回归预测0306批次9月=18.11",
+      "why_switch": "0306批次历史数据不足，Weibull参数不可靠"
+    },
+    {
+      "question_id": "Q2-3",
+      "baseline": "横向回归",
+      "main_model": "纵向质量管理关系模型",
+      "improvement": "预测0310批次12月=6.44",
+      "why_switch": "数据反馈滞后需纵向修正"
+    },
+    {
+      "question_id": "Q3",
+      "baseline": "单一预测",
+      "main_model": "7方面质量管理决策咨询模型",
+      "improvement": "从预测转向管理决策",
+      "why_switch": "题面要求质量管理角度"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "F(t)=1-exp(-(t/η)^m) 二参数Weibull",
+    "假设部件故障寿命服从Weibull",
+    "修理后无后继影响假设"
+  ],
+  "objective_function": "最小化拟合残差（千车故障数）",
+  "evaluation_metrics": [
+    "拟合残差",
+    "预测值合理性"
+  ],
+  "algorithm_details_and_complexity": "Weibull参数m,η最小二乘估计",
+  "independent_validation_design": "用0-12月数据拟合，检验已知月份拟合精度",
+  "sensitivity_robustness_ablation": [
+    "不同批次Weibull参数对比"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "分析售后数据表中不合理数据",
+    "method_sentence": "Weibull分布拟合+多元线性回归+纵向质量管理模型",
+    "result_sentence": "0205批次18月=44.08，0306批次9月=18.11，0310批次12月=6.44",
+    "numbers_presentation": "具体预测数值直接给出"
+  },
+  "figure_narrative_order": [
+    "原始千车故障数表",
+    "不合理数据标注",
+    "Weibull拟合曲线",
+    "预测对比"
+  ],
+  "judge_high_score_reasons": [
+    "对同一预测问题根据数据完整性换用三种模型（Weibull/回归/纵向修正），体现数据驱动建模判断",
+    "识别数据滞后机制而非直接套用模型"
+  ],
+  "reusable_patterns": [
+    "数据不完备时按数据质量选模型（来自1篇论文支持）",
+    "Weibull寿命预测模板"
+  ],
+  "transferable_ability_card_candidates": [
+    "寿命/可靠性预测能力卡：Weibull拟合→参数估计→外推预测",
+    "数据质量诊断能力卡：识别滞后/截断/异常数据"
+  ],
+  "page_locations": {
+    "摘要": "p.1",
+    "Q1数据诊断": "p.1-2",
+    "Q2 Weybull": "p.3-6",
+    "Q3质量管理": "p.7-9"
+  },
+  "confidence": "medium",
+  "notes": "track=C 从文件名中山C推断"
+}

@@ -1,0 +1,138 @@
+{
+  "paper_id": "2024_A_A24107120016",
+  "year": 2024,
+  "track": "A",
+  "title": "风电场有功功率分配优化模型",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 4,
+  "task_types": [
+    "实时计算",
+    "参数估计",
+    "约束优化",
+    "时序预测"
+  ],
+  "models_and_algorithms": [
+    "滑动窗口应力识别",
+    "Goodman修正公式",
+    "Palmgren-Miner",
+    "时滞补偿+尺度变化因子",
+    "带繁殖约束的遗传算法",
+    "滑动平均/Savitzky-Golay/卡尔曼滤波",
+    "ARIMA",
+    "LSTM延迟预测"
+  ],
+  "data_modality": "时序",
+  "data_scale": "万级（100台风机）",
+  "validation_methods": [
+    "与雨流计数法相似度对比",
+    "SSE误差平方和对比",
+    "五种分配方式CDi/ACD/PVj/R/APV指标对比"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "应力识别示意",
+    "估计值与参考值对比",
+    "遗传算法收敛",
+    "五种分配方式雷达图"
+  ],
+  "innovation_points": [
+    "滑动窗口+向量化计算大幅降低疲劳损伤实时计算复杂度",
+    "针对估计模型时间错峰与尺度异常引入时滞补偿机制和尺度变化因子",
+    "设计具有繁殖约束的遗传算法求解带约束功率分配；问题四对比滑动均值/SG/卡尔曼三种去噪与移动平均/ARIMA/LSTM三种延迟预测"
+  ],
+  "page_count": 59,
+  "section_structure": "问题重述/模型假设/问题一~十求解/模型评价/参考文献/附录",
+  "source_locations": [
+    "p.1-2 摘要",
+    "p.51 模型评价"
+  ],
+  "confidence": "high",
+  "notes": "题A，工程化扎实，对比充分。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "离线雨流计数",
+      "main_model": "滑动窗口应力识别+Goodman+Miner",
+      "improvement": "向量化计算降低复杂度",
+      "why_switch": "离线雨流实时性差"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "直接机理估计",
+      "main_model": "能量守恒+空气动力学估计模型",
+      "improvement": "时滞补偿+尺度变化因子",
+      "why_switch": "直接估计存在时间错峰与尺度异常"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "平均分配",
+      "main_model": "单目标疲劳损伤最小化+带繁殖约束遗传算法",
+      "improvement": "五个评估指标 CDi/ACD/PVj/R/APV",
+      "why_switch": "平均分配未考虑疲劳"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "问题三直接使用",
+      "main_model": "滑动均值/SG/卡尔曼去噪 + 移动平均/ARIMA/LSTM延迟预测",
+      "improvement": "五种分配方式横向对比",
+      "why_switch": "噪声与延迟影响优化效果"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "Goodman 平均应力修正",
+    "Palmgren-Miner 线性累积损伤",
+    "时滞补偿项 τ 与尺度因子 α"
+  ],
+  "objective_function": "min 全场主轴+塔架总疲劳损伤 CDi/ACD",
+  "evaluation_metrics": [
+    "与雨流法相似度",
+    "SSE 误差",
+    "CDi/ACD/PVj/R/APV 五指标",
+    "求解时间"
+  ],
+  "algorithm_details_and_complexity": "滑动窗+向量化 O(N)；遗传算法带繁殖约束避免早熟",
+  "independent_validation_design": "问题一与雨流法对比；问题四附件四数据作为测试集",
+  "sensitivity_robustness_ablation": [
+    "三种去噪方法对比",
+    "三种延迟预测方法对比",
+    "五种有功分配方式对比"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "在风电场中，风机有功功率的分配将会影响其疲劳损伤的累计，这与风机的运维成本、发电效率和安全风险息息相关。",
+    "method_sentence": "滑动窗+Goodman+Miner / 时滞补偿+尺度因子 / 带繁殖约束GA / 三种滤波+三种延迟预测",
+    "result_sentence": "算法有效实时；五种分配方式对比验证模型鲁棒性",
+    "numbers_presentation": "提出5个评估指标 CDi/ACD/PVj/R/APV"
+  },
+  "figure_narrative_order": [
+    "风电场信号传输示意",
+    "滑动窗应力识别",
+    "时滞补偿前后对比",
+    "GA 收敛",
+    "五指标雷达图"
+  ],
+  "judge_high_score_reasons": [
+    "问题二发现'时间错峰+尺度异常'并给出时滞补偿+尺度因子，问题诊断细致",
+    "问题四三种去噪×三种延迟预测的对比矩阵完整，工程性强",
+    "五指标评估体系(CDi/ACD/PVj/R/APV)系统化"
+  ],
+  "reusable_patterns": [
+    "估计模型'诊断误差类型(错峰/尺度)→针对性补偿'范式",
+    "多去噪器×多预测器矩阵对比",
+    "遗传算法加繁殖约束避免早熟",
+    "自定义多指标评估体系"
+  ],
+  "transferable_ability_card_candidates": [
+    "时滞补偿",
+    "带约束遗传算法",
+    "ARIMA/LSTM 延迟预测",
+    "多指标评估"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "问题一滑动窗": "p.8-15",
+    "问题二时滞补偿": "p.18-25",
+    "问题三GA": "p.30-40",
+    "模型评价": "p.51"
+  }
+}

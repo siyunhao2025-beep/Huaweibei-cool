@@ -1,0 +1,85 @@
+{
+  "paper_id": "2005_X_城市出租车交通规划综合模型",
+  "year": 2005,
+  "track": null,
+  "track_confidence": "low",
+  "title": "城市出租车交通规划综合模型",
+  "award_level": "优秀论文",
+  "award_confidence": "low",
+  "per_question_method_chain": [
+    {
+      "question_id": "Q1",
+      "baseline": "总量预测",
+      "main_model": "多指标出行需求预测",
+      "improvement": "人口/出行强度/分摊率分层",
+      "why_switch": "单一指标误差大"
+    },
+    {
+      "question_id": "Q2",
+      "baseline": "经验车数",
+      "main_model": "供需平衡+服务水平约束",
+      "improvement": "空驶率/万人拥有量双约束",
+      "why_switch": "需多约束联合定车数"
+    },
+    {
+      "question_id": "Q3",
+      "baseline": "价格统一",
+      "main_model": "博弈论定价模型",
+      "improvement": "司机-乘客-公司三方均衡",
+      "why_switch": "价格影响供需两端"
+    },
+    {
+      "question_id": "Q4",
+      "baseline": "静态规划",
+      "main_model": "动态仿真",
+      "improvement": "分时段调度",
+      "why_switch": "出行需求时变"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "需求=人口×出行强度×出租分摊率",
+    "供给=车数×日运营次数×载客率",
+    "假设乘客到达泊松"
+  ],
+  "objective_function": "max 社会福利（乘客剩余+司机收入）",
+  "evaluation_metrics": [
+    "空驶率",
+    "万人拥有量",
+    "服务水平",
+    "乘客等待时间"
+  ],
+  "algorithm_details_and_complexity": "多约束线性规划求解",
+  "independent_validation_design": "与实际出租车保有量对比",
+  "sensitivity_robustness_ablation": [
+    "油价/运价变化敏感性"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "综合预测出租车需求与最优规模",
+    "method_sentence": "分层需求预测+供需平衡+博弈定价",
+    "result_sentence": "给出车数/运价/调度方案",
+    "numbers_presentation": "车数与空驶率指标"
+  },
+  "figure_narrative_order": [
+    "需求预测",
+    "供需平衡图",
+    "定价博弈树",
+    "调度方案"
+  ],
+  "judge_high_score_reasons": [
+    "一题多解：从预测到定价到调度形成闭环",
+    "多约束联立而非单指标"
+  ],
+  "reusable_patterns": [
+    "城市交通规划综合建模（来自1篇论文支持）"
+  ],
+  "transferable_ability_card_candidates": [
+    "公共交通供需规划卡：需求预测→供需平衡→定价博弈→调度仿真"
+  ],
+  "page_locations": {
+    "需求预测": "p.3-12",
+    "供需平衡": "p.13-22",
+    "定价博弈": "p.23-30",
+    "调度": "p.31-36"
+  },
+  "confidence": "medium"
+}

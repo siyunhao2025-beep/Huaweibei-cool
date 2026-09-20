@@ -1,0 +1,141 @@
+{
+  "paper_id": "2024_E_E24102910005",
+  "year": 2024,
+  "track": "E",
+  "title": "高速公路应急车道紧急启用模型",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 4,
+  "task_types": [
+    "视频检测与跟踪",
+    "时序预测",
+    "区间占用率决策",
+    "监控点补充"
+  ],
+  "models_and_algorithms": [
+    "YOLOv10m",
+    "ByteTrack",
+    "ARIMA",
+    "最小二乘拟合",
+    "多元回归",
+    "AdaBoost",
+    "间断交通流方程",
+    "区间占用率K(t)"
+  ],
+  "data_modality": "视频+时序",
+  "data_scale": "4观测点约2.5小时",
+  "validation_methods": [
+    "ARIMA曲线对比",
+    "最小二乘三关系拟合",
+    "AdaBoost R²=0.968",
+    "D/C点拥堵回测",
+    "K(t)开放前后对比"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "YOLO+ByteTrack",
+    "ARIMA时序",
+    "三关系拟合",
+    "K(t)曲线",
+    "E/F摄像头布局"
+  ],
+  "innovation_points": [
+    "YOLOv10m+ByteTrack 过线统计",
+    "ARIMA 分析拥堵/非拥堵曲线特征，最小二乘拟合三关系",
+    "AdaBoost 提前10分钟预警 R²=0.968",
+    "区间占用率 K(t)=0.4K_AB+0.6K_BC 三启用依据",
+    "建议补充E/F摄像头完善开发/关闭流程"
+  ],
+  "page_count": 60,
+  "section_structure": "问题重述/问题一~X/模型评价/参考文献/附录",
+  "source_locations": [
+    "p.1-2 摘要"
+  ],
+  "confidence": "high",
+  "notes": "题E，AdaBoost+区间占用率路线。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题1",
+      "baseline": "人工",
+      "main_model": "YOLOv10m+ByteTrack+ARIMA",
+      "improvement": "AdaBoost 10分钟预警",
+      "why_switch": "需自动+预警"
+    },
+    {
+      "question_id": "问题2",
+      "baseline": "单阈值",
+      "main_model": "区间占用率K(t)+三依据",
+      "improvement": "0.4/0.6权重",
+      "why_switch": "需量化上游"
+    },
+    {
+      "question_id": "问题3",
+      "baseline": "无应急车道",
+      "main_model": "K(t)开放前后对比",
+      "improvement": "堵塞时间降48.3%",
+      "why_switch": "需量化效果"
+    },
+    {
+      "question_id": "问题4",
+      "baseline": "原4摄像头",
+      "main_model": "补充E/F摄像头",
+      "improvement": "完善开关流程",
+      "why_switch": "需下游+利用率"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "ARIMA 时序",
+    "间断交通流方程",
+    "K(t)=0.4K_AB+0.6K_BC",
+    "三依据 K>0.8/ρ_D<0.8/U_i阈值"
+  ],
+  "objective_function": "min 总堵塞时间",
+  "evaluation_metrics": [
+    "AdaBoost MAE=11.2/RMSE=19.9/R²=0.968",
+    "D点拥堵25分钟/C点38分钟",
+    "堵塞时间降48.3%"
+  ],
+  "algorithm_details_and_complexity": "YOLOv10m 实时；ByteTrack 跟踪；AdaBoost 集成",
+  "independent_validation_design": "D点12:56/C点13:26实际拥堵回测",
+  "sensitivity_robustness_ablation": [
+    "ARIMA vs 多元回归 vs AdaBoost"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "高速公路拥堵现象的原因众多，最典型的就是部分路段出现瓶颈现象。",
+    "method_sentence": "YOLOv10m+ByteTrack+ARIMA / 最小二乘三关系 / AdaBoost / K(t)+三依据",
+    "result_sentence": "AdaBoost R²=0.968；堵塞时间降48.3%",
+    "numbers_presentation": "MAE/RMSE/R²+48.3%"
+  },
+  "figure_narrative_order": [
+    "YOLO+ByteTrack",
+    "ARIMA曲线",
+    "三关系拟合",
+    "K(t)对比",
+    "E/F布局"
+  ],
+  "judge_high_score_reasons": [
+    "YOLOv10m 是较新检测模型",
+    "AdaBoost 10分钟预警 R²=0.968 量化清晰",
+    "K(t)=0.4/0.6 权重设计有工程逻辑",
+    "补充E/F摄像头完善闭环"
+  ],
+  "reusable_patterns": [
+    "YOLOv10+ByteTrack 过线统计",
+    "ARIMA 识别拥堵曲线特征",
+    "区间占用率加权模型",
+    "下游摄像头补充下游拥堵判断"
+  ],
+  "transferable_ability_card_candidates": [
+    "YOLOv10",
+    "ByteTrack",
+    "AdaBoost预警",
+    "区间占用率"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "YOLOv10": "p.10-15",
+    "ARIMA": "p.18-22",
+    "AdaBoost": "p.25-35",
+    "K(t)": "p.40-50"
+  }
+}

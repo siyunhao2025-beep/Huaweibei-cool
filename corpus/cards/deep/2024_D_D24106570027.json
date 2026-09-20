@@ -1,0 +1,145 @@
+{
+  "paper_id": "2024_D_D24106570027",
+  "year": 2024,
+  "track": "D",
+  "title": "大数据驱动的地理综合问题建模与分析",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 4,
+  "task_types": [
+    "时空特征",
+    "非线性交互",
+    "脆弱性预测",
+    "土地利用变化"
+  ],
+  "models_and_algorithms": [
+    "Kriging插值",
+    "Moran's I",
+    "变差系数CV",
+    "ARIMA",
+    "LSTM",
+    "Theil-Sen",
+    "马尔可夫转移矩阵",
+    "随机森林",
+    "XGBoost",
+    "OLS",
+    "GWR地理加权回归",
+    "元高斯极值理论"
+  ],
+  "data_modality": "时空",
+  "data_scale": "百万级",
+  "validation_methods": [
+    "Moran's I 95%显著",
+    "LSTM损失0.050",
+    "多模型集成",
+    "差分模型分析",
+    "XGBoost土地利用预测"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "Kriging插值",
+    "Moran's I",
+    "ARIMA/LSTM预测",
+    "马尔可夫转移",
+    "XGBoost"
+  ],
+  "innovation_points": [
+    "Kriging+Moran's I+CV+ARIMA+LSTM 多描述性方法组合",
+    "元高斯极值理论全微分+随机森林特征重要性+GWR 分析地形-气候-极端天气",
+    "马尔可夫转移矩阵描述土地利用变化",
+    "XGBoost 预测土地利用空间变化"
+  ],
+  "page_count": 114,
+  "section_structure": "问题重述/问题一~四/模型评价/参考文献/附录",
+  "source_locations": [
+    "p.1-2 摘要"
+  ],
+  "confidence": "high",
+  "notes": "题D，多方法集成路线。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "单描述",
+      "main_model": "Kriging+Moran's I+CV+ARIMA+LSTM",
+      "improvement": "多指标时空",
+      "why_switch": "需多维度时空"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "相关",
+      "main_model": "元高斯极值+随机森林+GWR",
+      "improvement": "差分模型",
+      "why_switch": "需非线性交互"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "单模型",
+      "main_model": "XGBoost+OLS+LSTM",
+      "improvement": "多情景脆弱性",
+      "why_switch": "需多模型集成"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "描述",
+      "main_model": "马尔可夫转移矩阵+XGBoost",
+      "improvement": "土地利用预测",
+      "why_switch": "需结构分析"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "Moran's I 空间自相关",
+    "元高斯极值理论重现期全微分",
+    "马尔可夫转移矩阵 P_{i,j}",
+    "GWR 地理加权回归"
+  ],
+  "objective_function": "无明确优化；以脆弱性指数/土地利用预测为目标",
+  "evaluation_metrics": [
+    "Moran's I 95%显著",
+    "LSTM损失0.050",
+    "地形抬升使降水+20%",
+    "沿海城市风险+40%"
+  ],
+  "algorithm_details_and_complexity": "Kriging O(n³)；马尔可夫矩阵；XGBoost 树集成",
+  "independent_validation_design": "多方法交叉验证",
+  "sensitivity_robustness_ablation": [
+    "ARIMA vs LSTM",
+    "XGBoost vs OLS vs LSTM"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "地理系统是一个集聚人文自然的复杂系统，地理学家经常使用地理综合的方式来描述地理系统的基本特征。",
+    "method_sentence": "Kriging+Moran's I+ARIMA+LSTM / 元高斯+RF+GWR / XGBoost+OLS+LSTM / 马尔可夫+XGBoost",
+    "result_sentence": "东南沿海/西南山区未来10年高脆弱；沿海风险+40%",
+    "numbers_presentation": "LSTM损失0.050、地形抬升+20%、风险+40%"
+  },
+  "figure_narrative_order": [
+    "Kriging插值",
+    "Moran's I",
+    "ARIMA/LSTM",
+    "马尔可夫",
+    "XGBoost"
+  ],
+  "judge_high_score_reasons": [
+    "多描述性方法组合丰富",
+    "元高斯极值理论较前沿",
+    "GWR 地理加权回归是空间计量经典",
+    "马尔可夫转移矩阵描述土地利用变化"
+  ],
+  "reusable_patterns": [
+    "多描述性方法(Moran's I/CV/ARIMA/LSTM)组合",
+    "GWR 空间异质性回归",
+    "马尔可夫转移矩阵",
+    "元高斯极值理论"
+  ],
+  "transferable_ability_card_candidates": [
+    "Kriging",
+    "Moran's I",
+    "GWR",
+    "马尔可夫矩阵"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "Kriging/Moran": "p.10-20",
+    "元高斯": "p.30-45",
+    "XGBoost": "p.60-80"
+  }
+}

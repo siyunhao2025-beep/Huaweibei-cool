@@ -1,0 +1,117 @@
+{
+  "paper_id": "2022_D_D22103360092",
+  "year": 2022,
+  "track": "D",
+  "title": "PISA架构芯片资源排布(0-1线性规划+Gurobi)",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 2,
+  "task_types": [
+    "芯片排布",
+    "0-1整数规划",
+    "精确求解",
+    "启发式改进"
+  ],
+  "models_and_algorithms": [
+    "0-1线性规划",
+    "Gurobi求解器",
+    "BFS通路矩阵",
+    "数据/控制依赖矩阵",
+    "模拟退火"
+  ],
+  "data_modality": "PISA编译中间表示(attachment1/2/3.csv)",
+  "data_scale": "607阶邻接矩阵/30958变量/17383约束",
+  "validation_methods": [
+    "51级(0~50)",
+    "求解时间3596.97s",
+    "灵敏性分析"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "DAG依赖图",
+    "排布甘特图",
+    "求解日志",
+    "灵敏性曲线"
+  ],
+  "innovation_points": [
+    "Gurobi精确求解0-1 LP，30958变量/17383约束",
+    "BFS计算通路矩阵推导数据/控制依赖",
+    "问题二引入模拟退火优化共享资源"
+  ],
+  "page_count": 30,
+  "section_structure": "问题重述/问题分析/数据预处理(邻接/依赖矩阵,p.5)/问题一0-1LP+Gurobi(p.5-?)/问题二SA/评价",
+  "source_locations": [
+    "p.5 数据预处理",
+    "0-1LP模型",
+    "Gurobi求解",
+    "灵敏性分析"
+  ],
+  "confidence": "high",
+  "notes": "D题精确求解标杆。Gurobi+0-1LP是少数派，大部分队用启发式。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "启发式排布",
+      "main_model": "0-1线性规划+Gurobi",
+      "improvement": "BFS推导依赖约束",
+      "why_switch": "要精确最优级数"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "问题一0-1LP",
+      "main_model": "模拟退火",
+      "improvement": "引入执行流程共享HASH/ALU资源",
+      "why_switch": "问题二约束更复杂Gurobi难解"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "TCAM≤1/HASH≤2/ALU≤56/QUALIFY≤64",
+    "依赖约束Dwi/Dri",
+    "假设每个基本块占一级"
+  ],
+  "objective_function": "min 占用流水线总级数",
+  "evaluation_metrics": [
+    "51级",
+    "30958变量",
+    "17383约束",
+    "3596.97s"
+  ],
+  "algorithm_details_and_complexity": "0-1LP精确求解，BFS O(V+E)；问题二SA O(迭代·邻域)",
+  "independent_validation_design": "灵敏性分析验证解稳定性",
+  "sensitivity_robustness_ablation": [
+    "灵敏性分析"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "PISA是主流可编程交换芯片架构，资源排布影响利用率。",
+    "method_sentence": "问题一0-1LP+Gurobi；BFS算通路矩阵；问题二模拟退火。",
+    "result_sentence": "问题一51级/30958变量/3596.97s。",
+    "numbers_presentation": "精确到变量数/约束数/秒级求解时间。"
+  },
+  "figure_narrative_order": [
+    "依赖DAG",
+    "0-1LP公式",
+    "Gurobi求解日志",
+    "排布结果"
+  ],
+  "judge_high_score_reasons": [
+    "用Gurobi求精确解而非启发式，差异化明显",
+    "依赖矩阵推导严谨(BFS)",
+    "问题二SA承接问题一解"
+  ],
+  "reusable_patterns": [
+    "小规模组合优化优先试0-1LP+Gurobi",
+    "依赖图用BFS/DFS推导传递依赖",
+    "精确求解超时再切启发式"
+  ],
+  "transferable_ability_card_candidates": [
+    "0-1整数规划",
+    "Gurobi建模仿真",
+    "DAG调度"
+  ],
+  "page_locations": {
+    "数据预处理": "p.5",
+    "0-1LP模型": "p.5+",
+    "Gurobi求解": "p.5+",
+    "灵敏性": "p.5+"
+  }
+}

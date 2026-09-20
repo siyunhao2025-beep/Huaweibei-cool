@@ -1,0 +1,123 @@
+{
+  "paper_id": "2024_B_B24104760033",
+  "year": 2024,
+  "track": "B",
+  "title": "WLAN 组网中网络吞吐量建模",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 3,
+  "task_types": [
+    "回归",
+    "多分类",
+    "回归"
+  ],
+  "models_and_algorithms": [
+    "八种回归模型对比",
+    "逻辑回归",
+    "SVM",
+    "KNN",
+    "随机森林",
+    "多分类模型"
+  ],
+  "data_modality": "结构化",
+  "data_scale": "万级",
+  "validation_methods": [
+    "八种回归模型对比",
+    "多分类 Accuracy/F1/Precision/Recall",
+    "2AP/3AP 分组",
+    "可视化对比"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "相关性热力图",
+    "模型对比柱状图",
+    "散点拟合图"
+  ],
+  "innovation_points": [
+    "问题一用八种回归模型横向对比选最优",
+    "问题二将 (MCS,NSS) 作为多分类问题，用逻辑回归/SVM/KNN/RF 四种经典分类器对比",
+    "问题三多种回归模型预测吞吐量并可视化"
+  ],
+  "page_count": 113,
+  "section_structure": "问题背景/问题一~三/模型评价/未来展望/参考文献/附录代码",
+  "source_locations": [
+    "p.1-2 摘要",
+    "p.63 模型评价"
+  ],
+  "confidence": "high",
+  "notes": "题B，经典机器学习路线，对比充分。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "单模型",
+      "main_model": "八种回归模型横向对比",
+      "improvement": "选最优",
+      "why_switch": "需从多角度捕捉复杂特性"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "回归PHY Rate",
+      "main_model": "多分类逻辑回归/SVM/KNN/RF",
+      "improvement": "(MCS,NSS) 作为离散类别",
+      "why_switch": "MCS/NSS 组合离散有限"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "单模型",
+      "main_model": "多种回归模型预测吞吐量",
+      "improvement": "可视化对比",
+      "why_switch": "吞吐受多因素影响"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "RSSI/sin_dB 与 PHY Rate 映射",
+    "MCS+NSS 组合表"
+  ],
+  "objective_function": "min 吞吐量 MSE / (MCS,NSS) 分类交叉熵",
+  "evaluation_metrics": [
+    "2AP MSE=10.412/MAE=1.756/MAPE=0.064",
+    "3AP MSE=43.869/MAE=4.812/MAPE=0.209",
+    "MCS Acc=0.84/F1=0.63",
+    "NSS Acc=0.98/F1=0.55"
+  ],
+  "algorithm_details_and_complexity": "经典 ML 模型库；2AP/3AP 分组",
+  "independent_validation_design": "2AP/3AP 分开训练验证",
+  "sensitivity_robustness_ablation": [
+    "八种回归对比",
+    "四种分类器对比"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "无线局域网（WLAN）是一种通过无线通信技术实现的局域网，允许设备在一定范围内相互连接并访问网络。",
+    "method_sentence": "八种回归模型 / 四种经典分类器 / 多种回归预测吞吐量",
+    "result_sentence": "2AP/3AP 给出具体 MSE/MAE/MAPE；MCS Acc=0.84，NSS Acc=0.98",
+    "numbers_presentation": "完整给出 MSE/MAE/MAPE/Acc/F1/Precision/Recall"
+  },
+  "figure_narrative_order": [
+    "WLAN 介绍",
+    "相关性热力图",
+    "八模型对比",
+    "分类混淆矩阵",
+    "吞吐量预测"
+  ],
+  "judge_high_score_reasons": [
+    "经典 ML 模型矩阵对比完整",
+    "明确指出问题二是多分类问题",
+    "2AP/3AP 分组并给出量化指标"
+  ],
+  "reusable_patterns": [
+    "经典 ML 模型矩阵对比范式",
+    "2AP/3AP 分组",
+    "多分类 vs 回归任务判定"
+  ],
+  "transferable_ability_card_candidates": [
+    "多模型对比",
+    "多分类",
+    "KNN/SVM/逻辑回归"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "问题一": "p.18-24",
+    "问题二": "p.24-40",
+    "模型评价": "p.63"
+  }
+}

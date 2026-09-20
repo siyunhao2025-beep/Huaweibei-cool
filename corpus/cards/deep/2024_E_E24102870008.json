@@ -1,0 +1,149 @@
+{
+  "paper_id": "2024_E_E24102870008",
+  "year": 2024,
+  "track": "E",
+  "title": "高速公路应急车道紧急启用模型",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 4,
+  "task_types": [
+    "视频检测",
+    "时序预测",
+    "阈值决策",
+    "多目标优化布点"
+  ],
+  "models_and_algorithms": [
+    "OpenCV透视变换",
+    "YOLOv8",
+    "时空集成学习",
+    "窗口梯度判别",
+    "最大似然估计",
+    "时空安全约束",
+    "Kriging元模型",
+    "遗传算法多目标优化"
+  ],
+  "data_modality": "视频+时序",
+  "data_scale": "4观测点约5km路段",
+  "validation_methods": [
+    "OpenCV预处理",
+    "时空集成学习验证",
+    "MLE阈值",
+    "五指标量化",
+    "Kriging+GA求解"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "透视变换",
+    "时空集成学习架构",
+    "Kriging元模型",
+    "多目标优化Pareto"
+  ],
+  "innovation_points": [
+    "OpenCV 透视变换+异常值预处理+YOLOv8 提取交通流参数",
+    "时空集成学习+窗口梯度判别机制做拥堵实时预警",
+    "最大似然估计确定速度<20m/s 或车流量>0.5veh/s 启用阈值",
+    "Kriging 元模型+遗传算法求监控点最优位置与数量"
+  ],
+  "page_count": 81,
+  "section_structure": "问题背景/问题一~九/模型评价/参考文献/附录",
+  "source_locations": [
+    "p.1-2 摘要",
+    "p.65 模型评价"
+  ],
+  "confidence": "high",
+  "notes": "题E，Kriging+GA多目标布点路线。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "人工",
+      "main_model": "OpenCV+YOLOv8",
+      "improvement": "透视变换预处理",
+      "why_switch": "需自动提取"
+    },
+    {
+      "question_id": "问题一预警",
+      "baseline": "单时序模型",
+      "main_model": "时空集成学习+窗口梯度判别",
+      "improvement": "拥堵指数+预警",
+      "why_switch": "需时空联合"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "经验阈值",
+      "main_model": "交通流中断概率+MLE阈值",
+      "improvement": "v<20m/s 或 q>0.5veh/s",
+      "why_switch": "需理论阈值"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "单约束",
+      "main_model": "时空安全约束+实时决策",
+      "improvement": "五指标量化",
+      "why_switch": "需安全约束"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "均匀布点",
+      "main_model": "Kriging元模型+GA多目标优化",
+      "improvement": "安全/效率/成本三目标",
+      "why_switch": "需科学布点"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "拥堵指数",
+    "最大似然估计阈值",
+    "时空安全约束",
+    "Kriging 元模型代理"
+  ],
+  "objective_function": "多目标 min 监控点成本 / max 通行效率",
+  "evaluation_metrics": [
+    "v<20m/s 或 q>0.5veh/s",
+    "平均通行时间降22.37%",
+    "总延误降26.49%",
+    "碰撞暴露降19.12%",
+    "总行程时间降16.24%",
+    "平均速度+7.23%"
+  ],
+  "algorithm_details_and_complexity": "YOLOv8 实时；时空集成学习；Kriging 代理+GA",
+  "independent_validation_design": "五指标量化对比布点前后",
+  "sensitivity_robustness_ablation": [
+    "Kriging+GA vs 原方案"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "高速公路拥堵现象的成因复杂多样，除了交通事故，瓶颈现象尤为突出。",
+    "method_sentence": "OpenCV+YOLOv8 / 时空集成学习+窗口梯度 / MLE阈值 / Kriging+GA多目标",
+    "result_sentence": "布点后通行时间降22.37%/延误降26.49%/碰撞降19.12%",
+    "numbers_presentation": "完整给出五指标改善百分比"
+  },
+  "figure_narrative_order": [
+    "透视变换",
+    "YOLOv8检测",
+    "时空集成学习",
+    "Kriging元模型",
+    "GA Pareto"
+  ],
+  "judge_high_score_reasons": [
+    "时空集成学习+窗口梯度判别有时序新意",
+    "MLE 确定阈值有统计依据",
+    "Kriging 代理+GA 多目标布点是工程亮点",
+    "五指标量化改善完整"
+  ],
+  "reusable_patterns": [
+    "OpenCV 透视变换预处理视频",
+    "时空集成学习+窗口梯度",
+    "MLE 确定阈值",
+    "Kriging 代理+GA 多目标优化"
+  ],
+  "transferable_ability_card_candidates": [
+    "时空集成学习",
+    "MLE阈值",
+    "Kriging元模型",
+    "GA多目标布点"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "YOLOv8": "p.16-22",
+    "时空集成": "p.24-35",
+    "Kriging+GA": "p.50-60"
+  }
+}

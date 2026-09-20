@@ -1,0 +1,139 @@
+{
+  "paper_id": "2024_A_A24103350007",
+  "year": 2024,
+  "track": "A",
+  "title": "风电场有功功率优化分配",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 4,
+  "task_types": [
+    "建模",
+    "拟合",
+    "多目标优化",
+    "信号预处理"
+  ],
+  "models_and_algorithms": [
+    "四点式雨流计数",
+    "Palmgren-Miner",
+    "Goodman修正",
+    "滑动时间窗(TW-Rainflow-Goodman-Miner)",
+    "Nelder-Mead单纯形",
+    "BiLSTM",
+    "NSGA-II",
+    "SVD降噪",
+    "改进三次样条插值"
+  ],
+  "data_modality": "时序",
+  "data_scale": "万级（WF1前70%训练/后30%测试）",
+  "validation_methods": [
+    "三方案对比(Rainflow-Miner/RF-GM/TW-RF-GM)",
+    "训练/测试集划分(70/30)",
+    "Nelder-Mead与BiLSTM拟合对比",
+    "优化前后对比"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "疲劳损伤计算流程",
+    "拟合对比图",
+    "NSGA-II Pareto前沿",
+    "SVD降噪前后对比"
+  ],
+  "innovation_points": [
+    "提出 TW-Rainflow-Goodman-Miner 实时损伤计算方案，在速度与精度间取得平衡",
+    "BiLSTM 拟合桨距角/风速/功率到主轴扭矩/塔架推力的非线性映射，优于 Nelder-Mead",
+    "针对噪声与延迟分别用 SVD 降噪 + 相位差判断+改进三次样条缺失恢复的预处理管线"
+  ],
+  "page_count": 79,
+  "section_structure": "问题背景/模型假设与符号/问题一~七求解/模型总结/参考文献/附录",
+  "source_locations": [
+    "p.1-2 摘要",
+    "p.56 模型总结"
+  ],
+  "confidence": "high",
+  "notes": "题A，方法栈完整：滑动窗+BiLSTM+NSGA-II+SVD。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "离线 Rainflow-Miner",
+      "main_model": "TW-Rainflow-Goodman-Miner 滑动时间窗实时方案",
+      "improvement": "加滑动时间窗实现任意时段实时计算",
+      "why_switch": "离线方案无法实时；Goodman 修正均值应力影响"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "Nelder-Mead 单纯形机理拟合",
+      "main_model": "BiLSTM 非线性映射拟合",
+      "improvement": "用 WF1 前70%训练后30%测试",
+      "why_switch": "Nelder-Mead 对强非线性拟合不足，BiLSTM 拟合更优"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "平均功率分配",
+      "main_model": "NSGA-II 多目标优化",
+      "improvement": "以全场主轴+塔架总疲劳损伤最小为目标",
+      "why_switch": "平均分配未考虑各机疲劳差异"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "直接使用含噪/延迟数据",
+      "main_model": "SVD 降噪+相位差滞后判断+改进三次样条插值缺失恢复",
+      "improvement": "预处理后再送入问题三优化模型",
+      "why_switch": "噪声与延迟显著降低优化效果"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "Palmgren-Miner 累积损伤 D=Σ n_i/N_i",
+    "Goodman 平均应力修正公式 σ_a/σ_{-1} + σ_m/σ_b = 1",
+    "NSGA-II 以总疲劳损伤最小为单目标，约束功率平衡/出力/调节精度"
+  ],
+  "objective_function": "min Σ_{i,j} D_{i,j} (全场所有风机主轴+塔架累积疲劳损伤)",
+  "evaluation_metrics": [
+    "计算时间对比",
+    "相似度/误差率",
+    "BiLSTM vs Nelder-Mead 拟合效果",
+    "优化前后平均分配对比"
+  ],
+  "algorithm_details_and_complexity": "TW 滑窗将离线雨流转为滑动窗口在线计算；BiLSTM 双向时序建模；NSGA-II 多目标进化",
+  "independent_validation_design": "WF1 前70%训练/后30%测试划分；与 Rainflow-Miner、Rainflow-Goodman-Miner 三方案对比",
+  "sensitivity_robustness_ablation": [
+    "三方案在计算时间与误差率上的横向对比",
+    "问题四对 SVD 降噪/三次样条插值预处理前后的优化结果对比"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "风机低疲劳运行能够明显降低机械系统故障率，为风电场运营商带来极大的经济和社会效益。",
+    "method_sentence": "TW-Rainflow-Goodman-Miner 实时损伤量化 + BiLSTM 应力估算 + NSGA-II 优化 + SVD/样条预处理",
+    "result_sentence": "BiLSTM 拟合优于 Nelder-Mead；优化方案满足实时性与约束并优于平均分配",
+    "numbers_presentation": "未在摘要中给具体数字，强调方案对比与定性结论"
+  },
+  "figure_narrative_order": [
+    "疲劳损伤计算流程",
+    "WF1 训练/测试划分",
+    "BiLSTM vs Nelder-Mead 拟合对比",
+    "NSGA-II 实时分配",
+    "SVD 降噪与延迟恢复前后对比"
+  ],
+  "judge_high_score_reasons": [
+    "方法栈完整且每问都有 baseline 对比：三方案雨流对比、Nelder-Mead vs BiLSTM、平均分配 vs NSGA-II",
+    "问题四针对噪声与延迟分别给出工程化预处理方案(SVD/相位差/样条)，而非空泛鲁棒性",
+    "BiLSTM 用于物理量反演是该赛道较新的尝试"
+  ],
+  "reusable_patterns": [
+    "时序疲劳损伤'离线算法→滑动窗在线化'改造范式",
+    "机理拟合 vs 深度学习拟合的对比选择范式",
+    "噪声+延迟预处理管线：SVD降噪 + 相位差滞后识别 + 样条插值补全",
+    "多目标/单目标优化中以累积损伤为目标的工程写法"
+  ],
+  "transferable_ability_card_candidates": [
+    "BiLSTM 时序拟合",
+    "NSGA-II 多目标优化",
+    "SVD 信号降噪",
+    "滑动窗实时算法"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "TW-Rainflow": "p.9-15",
+    "BiLSTM": "p.20-30",
+    "NSGA-II": "p.35-45",
+    "模型总结": "p.56"
+  }
+}

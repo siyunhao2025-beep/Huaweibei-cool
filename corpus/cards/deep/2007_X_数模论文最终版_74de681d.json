@@ -1,0 +1,96 @@
+{
+  "paper_id": "2007_X_数模论文最终版_74de681d",
+  "year": 2007,
+  "track": null,
+  "track_confidence": "low",
+  "title": "机械臂运动路径设计问题",
+  "award_level": "优秀论文",
+  "award_confidence": "low",
+  "per_question_method_chain": [
+    {
+      "question_id": "Q1",
+      "baseline": "几何法",
+      "main_model": "D-H方程直接法+最优法+微分运动法",
+      "improvement": "四种方法对比",
+      "why_switch": "不同方法适用不同精度需求"
+    },
+    {
+      "question_id": "Q2",
+      "baseline": "逐点指令",
+      "main_model": "最少指令数优化",
+      "improvement": "最短轨迹/最小能量三目标",
+      "why_switch": "指令数直接影响效率"
+    },
+    {
+      "question_id": "Q3",
+      "baseline": "离线规划",
+      "main_model": "抽样拟合法+单指令自适应+微分法",
+      "improvement": "三种轨迹设计方法",
+      "why_switch": "给定曲线需连续跟踪"
+    },
+    {
+      "question_id": "Q4",
+      "baseline": "无碰撞假设",
+      "main_model": "空间线段相交检测",
+      "improvement": "安全轨迹法+自适应避障+两阶段",
+      "why_switch": "实际存在障碍"
+    },
+    {
+      "question_id": "Q5",
+      "baseline": "经验设计",
+      "main_model": "可达范围盲区分析",
+      "improvement": "连杆长度/关节角设计建议",
+      "why_switch": "需反向指导机械臂设计"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "D-H变换矩阵 T=Rot(z,θ)Trans(z,d)Trans(a,α)Rot(x,α)",
+    "假设刚性连杆",
+    "忽略关节间隙"
+  ],
+  "objective_function": "min 指令数 / min 轨迹长度 / min 能量",
+  "evaluation_metrics": [
+    "指令数",
+    "轨迹误差",
+    "避障成功率"
+  ],
+  "algorithm_details_and_complexity": "D-H正逆运动学+空间线段距离计算",
+  "independent_validation_design": "焊接任务仿真验证",
+  "sensitivity_robustness_ablation": [
+    "关节角度误差对末端精度的影响"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "分析机械臂运动逆问题并建模求解",
+    "method_sentence": "D-H方程+抽样拟合+空间线段避障",
+    "result_sentence": "给出指令序列优化与焊接方案",
+    "numbers_presentation": "指令数/轨迹误差"
+  },
+  "figure_narrative_order": [
+    "机械臂结构图",
+    "D-H坐标系",
+    "可达范围图",
+    "避障示意图",
+    "焊接轨迹"
+  ],
+  "judge_high_score_reasons": [
+    "一题五问层层递进：从正运动学到逆学到避障到设计",
+    "每个子问给多种方法并对比优缺点",
+    "工程可操作性强"
+  ],
+  "reusable_patterns": [
+    "机器人/机械臂逆问题→D-H建模（来自1篇论文支持）",
+    "多方法对比+按场景选型"
+  ],
+  "transferable_ability_card_candidates": [
+    "机械臂逆运动学卡：D-H建模→正逆解→轨迹优化→避障",
+    "空间线段几何计算卡"
+  ],
+  "page_locations": {
+    "摘要": "p.1",
+    "D-H建模": "p.5-15",
+    "指令优化": "p.16-25",
+    "避障": "p.26-35",
+    "盲区设计": "p.36-40"
+  },
+  "confidence": "high"
+}

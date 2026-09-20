@@ -1,0 +1,127 @@
+{
+  "paper_id": "2017_A_A10425002_6c49ffb8",
+  "year": 2017,
+  "track": "A",
+  "title": "无人机在抢险救灾中的优化运用",
+  "award_level": "待确认",
+  "award_confidence": "unknown",
+  "problem_count": 4,
+  "task_types": [
+    "优化",
+    "分类",
+    "空间图"
+  ],
+  "models_and_algorithms": [
+    "系统聚类/层次聚类",
+    "遗传算法",
+    "图论/最短路",
+    "多目标规划/优化",
+    "禁忌搜索/启发式"
+  ],
+  "data_modality": "时序/信号",
+  "data_scale": "小样本/题设数据",
+  "validation_methods": [
+    "灵敏度/敏感性分析"
+  ],
+  "figure_count": 7,
+  "figure_types": [
+    "折线/曲线图"
+  ],
+  "innovation_points": [],
+  "page_count": 52,
+  "section_structure": "2\n的任务执行时间为5.6 小时。；1 问题重述；2 模型假设；3 符号说明；4 问题一模型建立与求解；5 问题二模型建立与求解；6 问题三模型建立与求解；7 问题四模型建立与求解；8 总 结；9 参考文献",
+  "source_locations": [
+    "模型建立≈p.3",
+    "模型求解≈p.12",
+    "模型评价/改进≈p.13"
+  ],
+  "confidence": "high",
+  "notes": "2017年A题(无人机救灾)，图论/调度建模转译干净",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "随机巡查",
+      "main_model": "网格划分+多目标(覆盖率max/无人机数min)规划",
+      "improvement": "等效为最短路径问题，遗传/贪心求解",
+      "why_switch": "巡查即覆盖路径优化"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "顺序作业",
+      "main_model": "最大值最小化(min-max)任务调度",
+      "improvement": "聚类分析基础上搜索优化，最短5.6h",
+      "why_switch": "并行作业使最后一架回来时间最短化"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "静态铺点",
+      "main_model": "聚类减中继机数量+最小生成树",
+      "improvement": "最少101架维持通信",
+      "why_switch": "中继拓扑即最小生成树"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "经验功率",
+      "main_model": "同时传用户数优化+功率平均分配",
+      "improvement": "聚类+枚举+遗传降架次，总时间4.41h",
+      "why_switch": "用户数与功率权衡"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "网格覆盖:观察仰角/视野/山体遮挡约束",
+    "min-max: min max_i(任务时间_i)",
+    "最小生成树连接中继",
+    "功率平均分配策略"
+  ],
+  "objective_function": "max覆盖率,min无人机架数,min最长作业时间",
+  "evaluation_metrics": [
+    "覆盖率(52.85%→66.18%)",
+    "无人机架数",
+    "作业时间(5.6h/4.41h)",
+    "中继机数101"
+  ],
+  "algorithm_details_and_complexity": "TSP最短路径遗传算法O(iter×n^2)；最小生成树Kruskal/Prim",
+  "independent_validation_design": "初次vs次生灾害巡查对比；多算法(遗传/贪心/枚举)对照；敏感性分析关键目标",
+  "sensitivity_robustness_ablation": [
+    "敏感性:同时传用户数作重要目标",
+    "观察仰角/山体遮挡约束变化对覆盖率影响",
+    "聚类数对中继机数量影响"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "灾后利用无人机高效完成巡查/探测/中继。",
+    "method_sentence": "网格多目标+最短路径遗传、min-max调度、最小生成树中继",
+    "result_sentence": "初次覆盖率52.85%用6架，次生66.18%用30架，中继101架",
+    "numbers_presentation": "覆盖率、架数、作业时间"
+  },
+  "figure_narrative_order": [
+    "网格划分",
+    "巡查路径",
+    "min-max调度",
+    "中继最小生成树",
+    "敏感性"
+  ],
+  "judge_high_score_reasons": [
+    "把多类轨迹问题转成可解规划(TSP/min-max/MST)",
+    "覆盖与架数多目标",
+    "结果量化到架数和小时"
+  ],
+  "reusable_patterns": [
+    "覆盖巡查转TSP",
+    "并行作业min-max调度",
+    "中继网络最小生成树",
+    "敏感性选关键目标"
+  ],
+  "transferable_ability_card_candidates": [
+    "TSP/路径优化",
+    "min-max调度",
+    "最小生成树",
+    "无人机资源分配"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "问题一网格TSP": "≈p.8-20",
+    "问题二min-max": "≈p.25-32",
+    "问题三MST中继": "≈p.35-42",
+    "问题四敏感性": "≈p.45-50"
+  }
+}

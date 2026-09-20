@@ -1,0 +1,114 @@
+{
+  "paper_id": "2022_B_B22100070171",
+  "year": 2022,
+  "track": "B",
+  "title": "方形件排样优化与订单组批",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 2,
+  "task_types": [
+    "组合优化",
+    "排样",
+    "订单聚类",
+    "整数规划"
+  ],
+  "models_and_algorithms": [
+    "混合整数规划MIP",
+    "均匀三阶段排样生成算法TUSP",
+    "顺序价值修正启发式SVC",
+    "杰拉德距离凝聚层次聚类"
+  ],
+  "data_modality": "排样数据集(item/stack/stripe/bin)",
+  "data_scale": "A1-A4/B1-B5",
+  "validation_methods": [
+    "板材利用率96.02%/94.08%/95.15%/94.08%",
+    "复杂度评估",
+    "排样效果图"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "排样效果图",
+    "板材利用率柱状图",
+    "聚类树状图"
+  ],
+  "innovation_points": [
+    "转'割'为'拼'：均匀栈生成→条带生成→原片放置的TUSP法",
+    "SVC顺序价值修正启发式逐张优化全局排样",
+    "杰拉德距离定义订单材质相似性做层次聚类组批"
+  ],
+  "page_count": 62,
+  "section_structure": "问题重述/问题分析/问题一MIP+TUSP+SVC(p.6-18)/问题二MIP+层次聚类(p.19-25)/复杂度与评价(p.25-26)/附录效果图+代码",
+  "source_locations": [
+    "p.6 整数规划模型",
+    "p.7-12 TUSP+SVC",
+    "p.16-18 求解结果",
+    "p.19-21 层次聚类",
+    "p.25-26 复杂度"
+  ],
+  "confidence": "high",
+  "notes": "B题排样经典代表作。问题一精度高、问题二聚类组批。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "一刀切三阶段精确排样",
+      "main_model": "MIP+TUSP+SVC",
+      "improvement": "转割为拼+顺序价值修正",
+      "why_switch": "精确切割NP-hard需启发式"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "问题一单独排样",
+      "main_model": "杰拉德距离层次聚类组批+问题一求解",
+      "improvement": "按材质聚类再排样",
+      "why_switch": "订单组批后批量切割提利用率"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "三阶段齐头切约束",
+    "每个item必须且仅排一次",
+    "假设item不可旋转(题一)"
+  ],
+  "objective_function": "min 所需板材原片总数",
+  "evaluation_metrics": [
+    "板材利用率A1-A4:96.02/94.08/95.15/94.08",
+    "B1-B5:84.42/82.84/82.11/83.44/83.51"
+  ],
+  "algorithm_details_and_complexity": "TUSP O(n)生成单排样；SVC迭代N轮O(N·n)；层次聚类O(n²log n)",
+  "independent_validation_design": "A1-A4/B1-B5多数据集交叉验证利用率稳定",
+  "sensitivity_robustness_ablation": [
+    "价值修正迭代轮数N敏感性"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "方形件排样与订单组批是高复杂度组合优化问题，本文建MIP并设计TUSP+SVC。",
+    "method_sentence": "问题一TUSP+SVC；问题二杰拉德距离层次聚类+TUSP/SVC。",
+    "result_sentence": "A1-A4利用率96.02%~94.08%；B1-B5利用率84.42%~82.11%。",
+    "numbers_presentation": "逐数据集给出利用率数值表。"
+  },
+  "figure_narrative_order": [
+    "排样效果图(A1-A4)",
+    "组批聚类树",
+    "B1-B5效果图"
+  ],
+  "judge_high_score_reasons": [
+    "TUSP+SVC是排样领域经典方法，建模规范",
+    "利用率数值在参赛队中属上游",
+    "问题二层次聚类+排样两段式结构清晰"
+  ],
+  "reusable_patterns": [
+    "排样类问题'生成法+全局修正'两段式",
+    "订单聚类用杰拉德/Jaccard距离定义材质相似性",
+    "组合优化用MIP建模+启发式求解"
+  ],
+  "transferable_ability_card_candidates": [
+    "二维排样",
+    "聚类组批",
+    "MIP启发式"
+  ],
+  "page_locations": {
+    "MIP模型": "p.6",
+    "TUSP算法": "p.7-12",
+    "问题一结果": "p.16-18",
+    "层次聚类": "p.19-21",
+    "复杂度": "p.25-26"
+  }
+}

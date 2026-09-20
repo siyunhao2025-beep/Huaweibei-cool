@@ -1,0 +1,75 @@
+{
+  "paper_id": "2021_C_C21102920013",
+  "year": 2021,
+  "track": "C",
+  "title": "帕金森病的脑深部电刺激治疗建模研究",
+  "confidence": "high",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一(单神经元)",
+      "baseline": "只看时域",
+      "main_model": "改进欧拉离散HH，调直/交流幅值频率，引ISI分岔图快速定位发放行为",
+      "improvement": "ISI分岔图",
+      "why_switch": "时域逐点调参慢，分岔图可大范围扫参数"
+    },
+    {
+      "question_id": "问题二(回路)",
+      "baseline": "单神经元",
+      "main_model": "团块内5神经元电耦合，团块间化学突触全连接建回路",
+      "improvement": "丰富发放行为",
+      "why_switch": "回路产生更丰富放电"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "改进欧拉离散HH",
+    "ISI分岔图",
+    "团块内5神经元电耦合",
+    "团块间化学突触全连接"
+  ],
+  "objective_function": "刻画健康/PD不同刺激下电位发放特征",
+  "evaluation_metrics": [
+    "峰发放/簇发放",
+    "ISI分岔图定位参数区",
+    "回路放电更丰富"
+  ],
+  "algorithm_details_and_complexity": "改进欧拉离散+ISI分岔图扫参+电耦合/化学突触双层回路",
+  "independent_validation_design": "对比问题一单神经元与问题二回路放电丰富度",
+  "sensitivity_robustness_ablation": [
+    "直/交流幅值/频率三参数扫",
+    "ISI分岔图"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "基于电导的HH模型模拟神经元，电/化学突触耦合建核团回路",
+    "method_sentence": "改进欧拉离散+ISI分岔图+电耦合团块+化学突触全连接",
+    "result_sentence": "发现峰/簇发放，回路放电更丰富",
+    "numbers_presentation": "用'5神经元''ISI分岔图'体现方法"
+  },
+  "figure_narrative_order": [
+    "ISI分岔图",
+    "放电时域图",
+    "神经回路结构图"
+  ],
+  "judge_high_score_reasons": [
+    "用ISI分岔图高效扫参数，比逐点仿真高明",
+    "电耦合(团块内)+化学突触(团块间)双层耦合，结构清晰",
+    "假设耦合强度相同简化但不丢物理"
+  ],
+  "reusable_patterns": [
+    "ISI分岔图扫参",
+    "电突触+化学突触分层耦合",
+    "改进欧拉/标准RK离散神经方程"
+  ],
+  "transferable_ability_card_candidates": [
+    "HH神经元数值仿真",
+    "分岔分析",
+    "神经回路建模"
+  ],
+  "page_locations": {
+    "摘要": "p3",
+    "ISI分岔图": "p10-12",
+    "回路建模": "p15-19"
+  },
+  "notes": "普通一等奖，深卡",
+  "award_level": "一等奖",
+  "award_confidence": "high"
+}

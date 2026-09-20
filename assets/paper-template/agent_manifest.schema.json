@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "华为杯 LaTeX-first 论文 manifest",
+  "type": "object",
+  "required": ["title", "keywords", "abstract_tex_path", "chapters"],
+  "additionalProperties": false,
+  "properties": {
+    "title": {"type": "string", "minLength": 1},
+    "keywords": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 6,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "abstract_tex_path": {
+      "type": "string",
+      "pattern": "\\.tex$"
+    },
+    "chapters": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["chapter_id", "title", "role", "order", "tex_path"],
+        "additionalProperties": false,
+        "properties": {
+          "chapter_id": {"type": "string", "minLength": 1},
+          "title": {"type": "string", "minLength": 1},
+          "role": {
+            "enum": ["preliminary", "problem", "evaluation", "conclusion", "references", "appendix"]
+          },
+          "order": {"type": "integer", "minimum": 1},
+          "level": {"type": "integer", "minimum": 1, "maximum": 3, "default": 1},
+          "tex_path": {
+            "type": "string",
+            "pattern": "\\.tex$"
+          },
+          "aliases": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        }
+      }
+    }
+  }
+}

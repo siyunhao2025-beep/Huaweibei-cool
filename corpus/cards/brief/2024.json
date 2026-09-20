@@ -1,0 +1,1310 @@
+[
+  {
+    "paper_id": "2024_A_A24102940057",
+    "year": 2024,
+    "track": "A",
+    "title": "考虑机组实时疲劳损伤的风电场有功功率优化分配",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 4,
+    "task_types": [
+      "建模",
+      "实时计算",
+      "优化",
+      "鲁棒性分析"
+    ],
+    "models_and_algorithms": [
+      "实时雨流计数法(RRF)",
+      "实时非线性累积疲劳损伤指标(RNCFD)",
+      "最小二乘拟合",
+      "强化学习(RL)",
+      "鲁棒优化",
+      "安全层校正"
+    ],
+    "data_modality": "时序",
+    "data_scale": "万级（100台风机×100s载荷谱）",
+    "validation_methods": [
+      "与MATLAB自带rainflow函数对比",
+      "算例复现",
+      "误差对比(主轴6%/塔架20%)",
+      "优化前后对比(损伤降10%/方差降30%)"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "载荷时序图",
+      "损伤分布云图",
+      "功率分配对比图",
+      "算例识别图"
+    ],
+    "innovation_points": [
+      "提出实时雨流计数法(RRF)，在保证精度不变前提下实现载荷循环实时在线计算",
+      "提出实时非线性累积疲劳损伤指标(RNCFD)，引入时间修正系数与暂时损伤，解决线性Miner模型无法考虑载荷循环顺序效应的问题",
+      "构建基于强化学习的风电场功率分配模型，并通过特殊神经网络层+放缩限幅+安全层校正解决RL越界问题"
+    ],
+    "page_count": 68,
+    "section_structure": "问题重述/问题分析/模型假设/问题一~四求解/模型评价与改进/附录代码",
+    "source_locations": [
+      "p.1-2 摘要",
+      "p.5 模型假设",
+      "p.41-43 RRF/RNCFD有效性验证"
+    ],
+    "confidence": "high",
+    "notes": "题A：风电场疲劳损伤与功率分配。问题一算法创新突出，问题三RL+安全层是亮点。"
+  },
+  {
+    "paper_id": "2024_A_A24103350007",
+    "year": 2024,
+    "track": "A",
+    "title": "风电场有功功率优化分配",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 4,
+    "task_types": [
+      "建模",
+      "拟合",
+      "多目标优化",
+      "信号预处理"
+    ],
+    "models_and_algorithms": [
+      "四点式雨流计数",
+      "Palmgren-Miner",
+      "Goodman修正",
+      "滑动时间窗(TW-Rainflow-Goodman-Miner)",
+      "Nelder-Mead单纯形",
+      "BiLSTM",
+      "NSGA-II",
+      "SVD降噪",
+      "改进三次样条插值"
+    ],
+    "data_modality": "时序",
+    "data_scale": "万级（WF1前70%训练/后30%测试）",
+    "validation_methods": [
+      "三方案对比(Rainflow-Miner/RF-GM/TW-RF-GM)",
+      "训练/测试集划分(70/30)",
+      "Nelder-Mead与BiLSTM拟合对比",
+      "优化前后对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "疲劳损伤计算流程",
+      "拟合对比图",
+      "NSGA-II Pareto前沿",
+      "SVD降噪前后对比"
+    ],
+    "innovation_points": [
+      "提出 TW-Rainflow-Goodman-Miner 实时损伤计算方案，在速度与精度间取得平衡",
+      "BiLSTM 拟合桨距角/风速/功率到主轴扭矩/塔架推力的非线性映射，优于 Nelder-Mead",
+      "针对噪声与延迟分别用 SVD 降噪 + 相位差判断+改进三次样条缺失恢复的预处理管线"
+    ],
+    "page_count": 79,
+    "section_structure": "问题背景/模型假设与符号/问题一~七求解/模型总结/参考文献/附录",
+    "source_locations": [
+      "p.1-2 摘要",
+      "p.56 模型总结"
+    ],
+    "confidence": "high",
+    "notes": "题A，方法栈完整：滑动窗+BiLSTM+NSGA-II+SVD。"
+  },
+  {
+    "paper_id": "2024_A_A24103530117",
+    "year": 2024,
+    "track": "A",
+    "title": "风电场有功功率优化分配",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 4,
+    "task_types": [
+      "时序分段",
+      "回归",
+      "MPC滚动优化",
+      "鲁棒优化"
+    ],
+    "models_and_algorithms": [
+      "自适应动态三阶段滑动窗口",
+      "AB对抗算法",
+      "改进雨流计数",
+      "非线性回归(含交互项)",
+      "网格搜索",
+      "Pareto前沿",
+      "MPC模型预测控制",
+      "卡尔曼滤波",
+      "延迟补偿",
+      "粒子群鲁棒优化对比"
+    ],
+    "data_modality": "时序",
+    "data_scale": "万级",
+    "validation_methods": [
+      "与附件1参考数据对比",
+      "拟合度0.8632",
+      "分区域滚动时域结果可视化",
+      "PSO鲁棒优化对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "滑动窗口分段示意",
+      "应力拟合对比",
+      "MPC滚动时域动图",
+      "Pareto前沿"
+    ],
+    "innovation_points": [
+      "自适应动态三阶段滑动窗口+AB对抗搜索窗口参数，实现时序数据分段",
+      "Pareto前沿将多目标功率分配转化为权重自适应 MPC 模型",
+      "按风速波动分区进行滚动时域优化，并对比 PSO 鲁棒优化"
+    ],
+    "page_count": 73,
+    "section_structure": "前言/问题一~八求解/模型总结与评价/参考文献/附录代码",
+    "source_locations": [
+      "p.1-2 摘要",
+      "p.62 模型总结"
+    ],
+    "confidence": "high",
+    "notes": "题A，MPC+卡尔曼滤波路线。"
+  },
+  {
+    "paper_id": "2024_A_A24107120016",
+    "year": 2024,
+    "track": "A",
+    "title": "风电场有功功率分配优化模型",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 4,
+    "task_types": [
+      "实时计算",
+      "参数估计",
+      "约束优化",
+      "时序预测"
+    ],
+    "models_and_algorithms": [
+      "滑动窗口应力识别",
+      "Goodman修正公式",
+      "Palmgren-Miner",
+      "时滞补偿+尺度变化因子",
+      "带繁殖约束的遗传算法",
+      "滑动平均/Savitzky-Golay/卡尔曼滤波",
+      "ARIMA",
+      "LSTM延迟预测"
+    ],
+    "data_modality": "时序",
+    "data_scale": "万级（100台风机）",
+    "validation_methods": [
+      "与雨流计数法相似度对比",
+      "SSE误差平方和对比",
+      "五种分配方式CDi/ACD/PVj/R/APV指标对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "应力识别示意",
+      "估计值与参考值对比",
+      "遗传算法收敛",
+      "五种分配方式雷达图"
+    ],
+    "innovation_points": [
+      "滑动窗口+向量化计算大幅降低疲劳损伤实时计算复杂度",
+      "针对估计模型时间错峰与尺度异常引入时滞补偿机制和尺度变化因子",
+      "设计具有繁殖约束的遗传算法求解带约束功率分配；问题四对比滑动均值/SG/卡尔曼三种去噪与移动平均/ARIMA/LSTM三种延迟预测"
+    ],
+    "page_count": 59,
+    "section_structure": "问题重述/模型假设/问题一~十求解/模型评价/参考文献/附录",
+    "source_locations": [
+      "p.1-2 摘要",
+      "p.51 模型评价"
+    ],
+    "confidence": "high",
+    "notes": "题A，工程化扎实，对比充分。"
+  },
+  {
+    "paper_id": "2024_B_B24102860287",
+    "year": 2024,
+    "track": "B",
+    "title": "WLAN 组网中网络吞吐量建模",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 3,
+    "task_types": [
+      "回归预测",
+      "多分类",
+      "系统预测"
+    ],
+    "models_and_algorithms": [
+      "随机森林回归",
+      "Akima 插值",
+      "残差连接CNN",
+      "Adam优化器",
+      "CDF累积分布函数评估"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "万级（2AP/3AP 分组建模）",
+    "validation_methods": [
+      "特征重要性排序",
+      "验证集准确率86.73%",
+      "CDF 评估",
+      "2AP/3AP 分组建模",
+      "理论与仿真误差<5%"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "相关性热力图",
+      "特征重要性排序",
+      "CNN结构图",
+      "CDF 曲线"
+    ],
+    "innovation_points": [
+      "分 2AP/3AP 系统分别建模，特征重要性 AP-AP RSSI 占比 87.96%/74.94%",
+      "用 Akima 插值统一 RSSI 测量值到 540 点",
+      "残差连接优化 CNN 预测(MCS,NSS) 准确率 86.73%；1D-CNN 统一预测系统吞吐量"
+    ],
+    "page_count": 90,
+    "section_structure": "问题背景/数据预处理/问题一~四/模型评价/附录代码",
+    "source_locations": [
+      "p.1-2 摘要"
+    ],
+    "confidence": "high",
+    "notes": "题B，CNN+随机森林路线。"
+  },
+  {
+    "paper_id": "2024_B_B24103530099",
+    "year": 2024,
+    "track": "B",
+    "title": "基于特征对齐与多重预测驱动的WLAN信号预测方案",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 3,
+    "task_types": [
+      "回归预测",
+      "多分类",
+      "双层预测"
+    ],
+    "models_and_algorithms": [
+      "目标编码/虚拟变量",
+      "DBSCAN聚类",
+      "随机森林",
+      "GBDT",
+      "BP神经网络",
+      "CNN",
+      "深度残差网络",
+      "双层交叉预测模型"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "万级",
+    "validation_methods": [
+      "MSE/R²训练集对比",
+      "过采样丰富样本",
+      "截断对齐两数据集长度",
+      "RF vs GBDT对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "DBSCAN聚类示意",
+      "SINR特征构造",
+      "双层预测架构图"
+    ],
+    "innovation_points": [
+      "DBSCAN 区分同步/异步传输按密度聚类",
+      "MCS+NSS 融合为复合标签再独热编码，降低建模复杂度",
+      "双层交叉预测：先用RF预测数据帧统计量，再用深度残差网络预测系统吞吐量"
+    ],
+    "page_count": 104,
+    "section_structure": "前言/问题一~七/模型评价与改进/参考文献/附录",
+    "source_locations": [
+      "p.1-2 摘要",
+      "p.51 模型评价"
+    ],
+    "confidence": "high",
+    "notes": "题B，双层交叉预测是亮点。"
+  },
+  {
+    "paper_id": "2024_B_B24104760033",
+    "year": 2024,
+    "track": "B",
+    "title": "WLAN 组网中网络吞吐量建模",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 3,
+    "task_types": [
+      "回归",
+      "多分类",
+      "回归"
+    ],
+    "models_and_algorithms": [
+      "八种回归模型对比",
+      "逻辑回归",
+      "SVM",
+      "KNN",
+      "随机森林",
+      "多分类模型"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "万级",
+    "validation_methods": [
+      "八种回归模型对比",
+      "多分类 Accuracy/F1/Precision/Recall",
+      "2AP/3AP 分组",
+      "可视化对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "相关性热力图",
+      "模型对比柱状图",
+      "散点拟合图"
+    ],
+    "innovation_points": [
+      "问题一用八种回归模型横向对比选最优",
+      "问题二将 (MCS,NSS) 作为多分类问题，用逻辑回归/SVM/KNN/RF 四种经典分类器对比",
+      "问题三多种回归模型预测吞吐量并可视化"
+    ],
+    "page_count": 113,
+    "section_structure": "问题背景/问题一~三/模型评价/未来展望/参考文献/附录代码",
+    "source_locations": [
+      "p.1-2 摘要",
+      "p.63 模型评价"
+    ],
+    "confidence": "high",
+    "notes": "题B，经典机器学习路线，对比充分。"
+  },
+  {
+    "paper_id": "2024_B_B24116640167",
+    "year": 2024,
+    "track": "B",
+    "title": "WLAN 组网中网络吞吐量建模",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 3,
+    "task_types": [
+      "回归预测",
+      "回归映射",
+      "系统预测"
+    ],
+    "models_and_algorithms": [
+      "Pearson相关性",
+      "随机森林",
+      "LSTM",
+      "多元线性回归",
+      "梯度下降",
+      "SVM三种核函数",
+      "决策树"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "万级",
+    "validation_methods": [
+      "Pearson相关分析",
+      "RF vs LSTM 对比",
+      "验证集选最优",
+      "三种核函数SVM对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "相关性热力图",
+      "RF/LSTM 训练曲线",
+      "特征筛选流程"
+    ],
+    "innovation_points": [
+      "问题一用 RF 与 LSTM 对比预测 AP 发送机会",
+      "问题二 RF/多元线性/LSTM 三模型预测 PHY Rate，通过(MCS,NSS)组合表映射",
+      "问题三 RF/三种核SVM/LSTM 预测系统吞吐量并通过验证集选最优"
+    ],
+    "page_count": 69,
+    "section_structure": "问题分析与数据预处理/模型假设/问题一~三/模型评价/附录",
+    "source_locations": [
+      "p.1-2 摘要"
+    ],
+    "confidence": "high",
+    "notes": "题B，ML+DL混合路线。"
+  },
+  {
+    "paper_id": "2024_C_C24102890089",
+    "year": 2024,
+    "track": "C",
+    "title": "数据驱动下磁性元件的磁芯损耗建模",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 5,
+    "task_types": [
+      "分类",
+      "参数回归",
+      "方差分析",
+      "预测",
+      "多目标优化"
+    ],
+    "models_and_algorithms": [
+      "傅里叶变换",
+      "MLP",
+      "随机森林",
+      "MLP-RF加权集成",
+      "斯坦麦茨方程",
+      "Solow温度修正",
+      "二次多项式温度饱和",
+      "最小二乘",
+      "ANOVA单/多因素",
+      "粒子群多目标混合整数规划"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "百级样本（80个励磁波形）",
+    "validation_methods": [
+      "混淆矩阵",
+      "交叉验证",
+      "MAPE/R²",
+      "p值显著性",
+      "直接穷举优化",
+      "PSO有效性"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "波形分类",
+      "修正方程拟合",
+      "ANOVA p值表",
+      "PSO Pareto"
+    ],
+    "innovation_points": [
+      "MLP-RF 加权集成做励磁波形分类，三类波形（正弦/三角/梯形）",
+      "Solow函数作为温度修正项修正斯坦麦茨方程，MAPE=15.94%、R²=0.9954",
+      "问题五用 PSO 解多目标混合整数规划（磁芯损耗最小+传输磁能最大）"
+    ],
+    "page_count": 71,
+    "section_structure": "问题重述/问题一~七/模型评价/参考文献/附录",
+    "source_locations": [
+      "p.1-2 摘要"
+    ],
+    "confidence": "high",
+    "notes": "题C，物理+ML路线。"
+  },
+  {
+    "paper_id": "2024_C_C24103860012",
+    "year": 2024,
+    "track": "C",
+    "title": "数据驱动下磁性元件的磁芯损耗建模",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 5,
+    "task_types": [
+      "特征工程",
+      "参数回归",
+      "方差分析",
+      "预测",
+      "多目标优化"
+    ],
+    "models_and_algorithms": [
+      "统计+几何特征",
+      "决策树/随机森林特征重要性",
+      "投票法分类",
+      "6种SE温度修正",
+      "对数变换方差齐性",
+      "分层随机抽样",
+      "单/双因素ANOVA",
+      "One-hot编码",
+      "IGSE",
+      "9种ML模型",
+      "CatBoost堆叠",
+      "GA/PSO/GWO灰狼优化"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "百级样本（48组合×多频率）",
+    "validation_methods": [
+      "特征重要性排序",
+      "投票法",
+      "R²从0.929979提升到0.985661",
+      "对数变换正态化",
+      "分层抽样",
+      "GWO最优解",
+      "48组合鲁棒性验证"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "特征重要性",
+      "6种修正对比",
+      "ANOVA热力图",
+      "CatBoost预测",
+      "GWO收敛"
+    ],
+    "innovation_points": [
+      "统计(8维)+几何(11维)双角度特征提取，决策树/RF 选有效特征",
+      "6种温度修正假设对比，最优使 R² 从 0.93 提升到 0.986",
+      "问题四用 IGSE 作为先验知识做模型堆叠，CatBoost 平均相对误差 0.03542"
+    ],
+    "page_count": 82,
+    "section_structure": "问题重述/问题一~十/模型评价和改进/参考文献/附录",
+    "source_locations": [
+      "p.1-2 摘要",
+      "p.68 模型评价"
+    ],
+    "confidence": "high",
+    "notes": "题C，特征工程+堆叠+灰狼优化路线。"
+  },
+  {
+    "paper_id": "2024_C_C24104220149",
+    "year": 2024,
+    "track": "C",
+    "title": "基于多因素分析与深度学习的磁芯损耗建模",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 5,
+    "task_types": [
+      "分类",
+      "参数寻优",
+      "差异性分析",
+      "预测",
+      "多目标优化"
+    ],
+    "models_and_algorithms": [
+      "FFT",
+      "PCA",
+      "SVM/决策树/集成学习",
+      "比例/二次/三次/指数/幂级数温度修正",
+      "动态参数PSO",
+      "最小二乘",
+      "模拟退火",
+      "特征权重Bi-LSTM",
+      "GBDT/CNN对比",
+      "GA/PSO/NSGA-II/MOPSO"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "百级样本",
+    "validation_methods": [
+      "训练集/测试集",
+      "加噪测试集",
+      "决定系数对比",
+      "Pareto前沿对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "时频域特征",
+      "Bi-LSTM结构",
+      "热点图",
+      "Pareto前沿"
+    ],
+    "innovation_points": [
+      "PCA+FFT 时频特征，SVM/决策树/集成学习三类分类器均 100% 准确",
+      "动态参数 PSO 比常值 PSO 决定系数提升 0.041；三次函数温度修正最优 R²=0.9955",
+      "特征权重 Bi-LSTM 预测磁芯损耗 R²=0.998，加噪测试仍 0.9952"
+    ],
+    "page_count": 71,
+    "section_structure": "问题重述/问题一~十/模型评价与推广/参考文献/附录",
+    "source_locations": [
+      "p.1-2 摘要",
+      "p.54 模型评价"
+    ],
+    "confidence": "high",
+    "notes": "题C，Bi-LSTM+NSGA-II路线。"
+  },
+  {
+    "paper_id": "2024_C_C24106130096",
+    "year": 2024,
+    "track": "C",
+    "title": "多变量复杂环境下的磁芯损耗建模",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 5,
+    "task_types": [
+      "分类",
+      "参数回归",
+      "方差分析",
+      "预测",
+      "多目标优化"
+    ],
+    "models_and_algorithms": [
+      "形状特征阈值",
+      "SVM",
+      "HHT变换",
+      "双谱变换",
+      "NAdam",
+      "LSE对数线性化",
+      "LSEDSR深度学习自表示",
+      "单/多因素ANOVA",
+      "非参数检验",
+      "遗传算法"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "百级样本",
+    "validation_methods": [
+      "98.5%阈值分类",
+      "SVM 100%",
+      "加噪测试降26%",
+      "多域特征提升10%",
+      "相对误差对比",
+      "F统计量",
+      "非参数检验"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "多域特征",
+      "LSEDSR结构",
+      "ANOVA F值",
+      "遗传算法收敛"
+    ],
+    "innovation_points": [
+      "形状阈值分类98.5% → 5维时域SVM 100% → HHT+双谱多域融合特征再提10%抗噪",
+      "LSE 对数线性化使相对误差从0.36降到0.31；乘性γT/e^γT修正到0.17/0.18",
+      "LSEDSR 深度学习自表示模型自适应调参，相对误差降到0.13"
+    ],
+    "page_count": 105,
+    "section_structure": "问题重述/问题一~六/模型评价与推广/参考文献/附录",
+    "source_locations": [
+      "p.1-2 摘要",
+      "p.69 模型评价"
+    ],
+    "confidence": "high",
+    "notes": "题C，HHT+LSEDSR深度学习自表示路线。"
+  },
+  {
+    "paper_id": "2024_D_D24103850092",
+    "year": 2024,
+    "track": "D",
+    "title": "多源异构数据驱动的暴雨成灾机理及其时空演变特征研究",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 4,
+    "task_types": [
+      "时空特征分析",
+      "交互作用分析",
+      "脆弱性预测",
+      "土地利用结构分析"
+    ],
+    "models_and_algorithms": [
+      "描述性统计",
+      "空间分析/GIS",
+      "决策树",
+      "XGBoost",
+      "熵值法",
+      "ARIMA",
+      "SVR",
+      "Clausius-Clapeyron解释",
+      "标准差椭圆"
+    ],
+    "data_modality": "时空",
+    "data_scale": "百万级（1990-2020 长时序全国）",
+    "validation_methods": [
+      "GIS可视化",
+      "决策树规则提取",
+      "熵值法三层次",
+      "ARIMA自相关",
+      "SVR 2025-2035预测"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "降水空间分布图",
+      "LULC演变",
+      "决策树规则",
+      "脆弱性指数空间图",
+      "标准差椭圆"
+    ],
+    "innovation_points": [
+      "决策树量化地形-气候交互作用，提取多变量临界组合（如纬度≤35.5°N+降雨趋势>0.759）",
+      "熵值法从自然触发/物理脆弱/土地脆弱三层次构建脆弱性指数",
+      "ARIMA 预测降水与5类土地利用自相关，SVR 预测2025-2035脆弱性指数"
+    ],
+    "page_count": 113,
+    "section_structure": "问题重述/问题一~四/模型评价/参考文献/附录",
+    "source_locations": [
+      "p.1-2 摘要"
+    ],
+    "confidence": "high",
+    "notes": "题D，多源异构+机器学习+GIS路线。"
+  },
+  {
+    "paper_id": "2024_D_D24104250063",
+    "year": 2024,
+    "track": "D",
+    "title": "大数据驱动的地理综合问题",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 4,
+    "task_types": [
+      "时空趋势分析",
+      "相关与回归",
+      "脆弱性评价",
+      "土地利用预测"
+    ],
+    "models_and_algorithms": [
+      "Mann-Kendall检验",
+      "Sen's斜率估计",
+      "皮尔逊相关",
+      "多元回归",
+      "随机森林",
+      "SVM",
+      "XGBoost",
+      "ADB",
+      "网格搜索",
+      "交叉验证",
+      "H-E-V模型",
+      "层次分析法AHP"
+    ],
+    "data_modality": "时空",
+    "data_scale": "百万级",
+    "validation_methods": [
+      "M-K显著性检验",
+      "Sen's斜率",
+      "网格搜索+交叉验证",
+      "AHP权重",
+      "三重点区域讨论"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "M-K趋势图",
+      "相关热力图",
+      "机器学习对比",
+      "H-E-V评价",
+      "脆弱性预测图"
+    ],
+    "innovation_points": [
+      "Mann-Kendall+Sen's 做降水/土地利用时空趋势显著性检验",
+      "四种ML模型(RF/SVM/XGB/ADB)+网格搜索+交叉验证对比",
+      "H-E-V 暴露-敏感-适应能力脆弱性评价体系+AHP权重"
+    ],
+    "page_count": 62,
+    "section_structure": "问题重述/模型假设/问题一~四/模型评价/参考文献/附录",
+    "source_locations": [
+      "p.1-2 摘要"
+    ],
+    "confidence": "high",
+    "notes": "题D，统计检验+ML+H-E-V路线。"
+  },
+  {
+    "paper_id": "2024_D_D24104460003",
+    "year": 2024,
+    "track": "D",
+    "title": "大数据驱动的地理综合问题",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 4,
+    "task_types": [
+      "时空演化",
+      "不平衡数据建模",
+      "空间聚类与预测",
+      "假设检验"
+    ],
+    "models_and_algorithms": [
+      "时间序列分解",
+      "欠采样",
+      "联合均值与方差模型",
+      "MCP变量选择",
+      "XGBoost",
+      "高斯混合聚类GMM",
+      "SVM",
+      "随机森林",
+      "ROC/AUC",
+      "独立t检验"
+    ],
+    "data_modality": "时空",
+    "data_scale": "百万级（616万条，特大雨仅92条占0.0025%）",
+    "validation_methods": [
+      "时间序列分解",
+      "欠采样分层",
+      "MCP变量选择",
+      "ROC/混淆矩阵/AUC",
+      "t检验"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "箱线图",
+      "时间序列分解",
+      "GMM聚类",
+      "ROC曲线",
+      "假设检验"
+    ],
+    "innovation_points": [
+      "识别特大雨仅92条占0.0025%的极不平衡问题，用欠采样分层(6000/5000/4000/3000/1500/1208/92)",
+      "联合均值与方差模型+MCP变量选择",
+      "GMM 空间聚类9区域，SVM精度0.993/AUC0.671 vs RF 0.999/0.999"
+    ],
+    "page_count": 96,
+    "section_structure": "问题重述/问题一~六/模型优缺点讨论/参考文献/附录",
+    "source_locations": [
+      "p.1-2 摘要",
+      "p.74 模型优缺点"
+    ],
+    "confidence": "high",
+    "notes": "题D，不平衡数据+GMM路线。"
+  },
+  {
+    "paper_id": "2024_D_D24106570027",
+    "year": 2024,
+    "track": "D",
+    "title": "大数据驱动的地理综合问题建模与分析",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 4,
+    "task_types": [
+      "时空特征",
+      "非线性交互",
+      "脆弱性预测",
+      "土地利用变化"
+    ],
+    "models_and_algorithms": [
+      "Kriging插值",
+      "Moran's I",
+      "变差系数CV",
+      "ARIMA",
+      "LSTM",
+      "Theil-Sen",
+      "马尔可夫转移矩阵",
+      "随机森林",
+      "XGBoost",
+      "OLS",
+      "GWR地理加权回归",
+      "元高斯极值理论"
+    ],
+    "data_modality": "时空",
+    "data_scale": "百万级",
+    "validation_methods": [
+      "Moran's I 95%显著",
+      "LSTM损失0.050",
+      "多模型集成",
+      "差分模型分析",
+      "XGBoost土地利用预测"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "Kriging插值",
+      "Moran's I",
+      "ARIMA/LSTM预测",
+      "马尔可夫转移",
+      "XGBoost"
+    ],
+    "innovation_points": [
+      "Kriging+Moran's I+CV+ARIMA+LSTM 多描述性方法组合",
+      "元高斯极值理论全微分+随机森林特征重要性+GWR 分析地形-气候-极端天气",
+      "马尔可夫转移矩阵描述土地利用变化"
+    ],
+    "page_count": 114,
+    "section_structure": "问题重述/问题一~四/模型评价/参考文献/附录",
+    "source_locations": [
+      "p.1-2 摘要"
+    ],
+    "confidence": "high",
+    "notes": "题D，多方法集成路线。"
+  },
+  {
+    "paper_id": "2024_E_E24101480006",
+    "year": 2024,
+    "track": "E",
+    "title": "高速公路应急车道紧急启用模型",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 4,
+    "task_types": [
+      "视频检测与跟踪",
+      "时序预测",
+      "阈值决策",
+      "监控点布局"
+    ],
+    "models_and_algorithms": [
+      "YOLOv5",
+      "DeepSORT",
+      "历史平均/SVM/决策树/LSTM对比",
+      "Greenberg模型",
+      "五大理论依据",
+      "针孔摄像机模型",
+      "二分法+路段速度差"
+    ],
+    "data_modality": "视频+时序",
+    "data_scale": "4个监控视频共约2.5小时",
+    "validation_methods": [
+      "视频数据回测",
+      "LSTM vs 历史平均/SVM/决策树",
+      "拥堵识别准确率",
+      "二分法实验验证"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "交通流参数时序",
+      "相关性矩阵",
+      "针孔相机几何",
+      "二分法流程"
+    ],
+    "innovation_points": [
+      "YOLOv5+DeepSORT 提取5指标再合成速度/流量/密度三参数",
+      "历史平均/SVM/决策树/LSTM 四模型对比选 LSTM 预测密度",
+      "五大理论依据(合法/紧急/优先/安全/及时退出)+四类紧急情况"
+    ],
+    "page_count": 84,
+    "section_structure": "问题重述/问题一~八/模型评价与推广/参考文献/附录",
+    "source_locations": [
+      "p.1-2 摘要",
+      "p.65 模型评价"
+    ],
+    "confidence": "high",
+    "notes": "题E，CV+时序+几何路线。"
+  },
+  {
+    "paper_id": "2024_E_E24102870008",
+    "year": 2024,
+    "track": "E",
+    "title": "高速公路应急车道紧急启用模型",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 4,
+    "task_types": [
+      "视频检测",
+      "时序预测",
+      "阈值决策",
+      "多目标优化布点"
+    ],
+    "models_and_algorithms": [
+      "OpenCV透视变换",
+      "YOLOv8",
+      "时空集成学习",
+      "窗口梯度判别",
+      "最大似然估计",
+      "时空安全约束",
+      "Kriging元模型",
+      "遗传算法多目标优化"
+    ],
+    "data_modality": "视频+时序",
+    "data_scale": "4观测点约5km路段",
+    "validation_methods": [
+      "OpenCV预处理",
+      "时空集成学习验证",
+      "MLE阈值",
+      "五指标量化",
+      "Kriging+GA求解"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "透视变换",
+      "时空集成学习架构",
+      "Kriging元模型",
+      "多目标优化Pareto"
+    ],
+    "innovation_points": [
+      "OpenCV 透视变换+异常值预处理+YOLOv8 提取交通流参数",
+      "时空集成学习+窗口梯度判别机制做拥堵实时预警",
+      "最大似然估计确定速度<20m/s 或车流量>0.5veh/s 启用阈值"
+    ],
+    "page_count": 81,
+    "section_structure": "问题背景/问题一~九/模型评价/参考文献/附录",
+    "source_locations": [
+      "p.1-2 摘要",
+      "p.65 模型评价"
+    ],
+    "confidence": "high",
+    "notes": "题E，Kriging+GA多目标布点路线。"
+  },
+  {
+    "paper_id": "2024_E_E24102910005",
+    "year": 2024,
+    "track": "E",
+    "title": "高速公路应急车道紧急启用模型",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 4,
+    "task_types": [
+      "视频检测与跟踪",
+      "时序预测",
+      "区间占用率决策",
+      "监控点补充"
+    ],
+    "models_and_algorithms": [
+      "YOLOv10m",
+      "ByteTrack",
+      "ARIMA",
+      "最小二乘拟合",
+      "多元回归",
+      "AdaBoost",
+      "间断交通流方程",
+      "区间占用率K(t)"
+    ],
+    "data_modality": "视频+时序",
+    "data_scale": "4观测点约2.5小时",
+    "validation_methods": [
+      "ARIMA曲线对比",
+      "最小二乘三关系拟合",
+      "AdaBoost R²=0.968",
+      "D/C点拥堵回测",
+      "K(t)开放前后对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "YOLO+ByteTrack",
+      "ARIMA时序",
+      "三关系拟合",
+      "K(t)曲线",
+      "E/F摄像头布局"
+    ],
+    "innovation_points": [
+      "YOLOv10m+ByteTrack 过线统计",
+      "ARIMA 分析拥堵/非拥堵曲线特征，最小二乘拟合三关系",
+      "AdaBoost 提前10分钟预警 R²=0.968"
+    ],
+    "page_count": 60,
+    "section_structure": "问题重述/问题一~X/模型评价/参考文献/附录",
+    "source_locations": [
+      "p.1-2 摘要"
+    ],
+    "confidence": "high",
+    "notes": "题E，AdaBoost+区间占用率路线。"
+  },
+  {
+    "paper_id": "2024_E_E24106980067",
+    "year": 2024,
+    "track": "E",
+    "title": "高速公路应急车道紧急启用模型",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 4,
+    "task_types": [
+      "视频检测跟踪",
+      "时序预测",
+      "拥堵波决策",
+      "监控点布局"
+    ],
+    "models_and_algorithms": [
+      "YOLOv5+SE注意力",
+      "BottleneckCSP",
+      "DeepSORT",
+      "Sigmoid标准拥堵指数",
+      "Bi-GRU",
+      "SK-Net-Attention",
+      "TCN",
+      "TCNAt-BiGRU",
+      "拥堵波",
+      "Greenshields模型"
+    ],
+    "data_modality": "视频+时序",
+    "data_scale": "4观测点约2.5小时",
+    "validation_methods": [
+      "MSE/RMSE/MAE/MAPE",
+      "训练/测试集",
+      "提前10分钟预警",
+      "Greenshields验证"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "YOLOv5+SE+BottleneckCSP",
+      "Sigmoid拥堵指数",
+      "TCNAt-BiGRU",
+      "拥堵波",
+      "Greenshields"
+    ],
+    "innovation_points": [
+      "YOLOv5+SE注意力+BottleneckCSP 替代C3解决过拟合",
+      "Sigmoid-标准交通拥堵指数去异常值+五级划分",
+      "TCN+SK-Net-Attention+Bi-GRU 的 TCNAt-BiGRU 时序预测"
+    ],
+    "page_count": 78,
+    "section_structure": "问题重述/问题一~七/模型评价与改进/参考文献/附录",
+    "source_locations": [
+      "p.1-2 摘要",
+      "p.66 模型评价"
+    ],
+    "confidence": "high",
+    "notes": "题E，YOLO改进+TCNAt-BiGRU路线。"
+  },
+  {
+    "paper_id": "2024_F_F24102870082",
+    "year": 2024,
+    "track": "F",
+    "title": "X 射线脉冲星光子到达时间建模",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 4,
+    "task_types": [
+      "轨道力学",
+      "几何时延",
+      "精密时延",
+      "光子序列仿真"
+    ],
+    "models_and_algorithms": [
+      "轨道六根数→ECI→GCRS",
+      "Roemer几何时延",
+      "Shapiro时延",
+      "引力红移",
+      "动钟变慢",
+      "光线偏折",
+      "脉冲星自行",
+      "非齐次泊松",
+      "历元折叠",
+      "高斯拟合"
+    ],
+    "data_modality": "物理时序",
+    "data_scale": "单点高精度计算",
+    "validation_methods": [
+      "轨道一致性检验",
+      "位置精度对比",
+      "Pearson相关0.6992→0.7079",
+      "误差敏感性分析"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "轨道六根数转换",
+      "时延分解",
+      "非齐次泊松仿真",
+      "历元折叠轮廓"
+    ],
+    "innovation_points": [
+      "完整分解时间尺度(引力红移+动钟变慢)与空间尺度(Roemer/Shapiro/光线偏折/自行)时延",
+      "非齐次泊松过程+迭代转换+历元折叠重建脉冲轮廓",
+      "高斯拟合改进使 Pearson 从 0.6992 提升到 0.7079"
+    ],
+    "page_count": 44,
+    "section_structure": "问题重述/问题一~九/模型评价与改进/参考文献/附录",
+    "source_locations": [
+      "p.1-2 摘要",
+      "p.39 模型评价"
+    ],
+    "confidence": "high",
+    "notes": "题F，物理建模严谨。"
+  },
+  {
+    "paper_id": "2024_F_F24103360083",
+    "year": 2024,
+    "track": "F",
+    "title": "X 射线脉冲星光子到达时间建模研究",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 4,
+    "task_types": [
+      "轨道力学",
+      "几何时延",
+      "精密时延",
+      "光子序列仿真"
+    ],
+    "models_and_algorithms": [
+      "PQW→GCRS旋转矩阵",
+      "角动量/能量守恒验证",
+      "Roemer",
+      "Shapiro",
+      "引力红移",
+      "动钟变慢",
+      "齐次泊松背景+非齐次泊松脉冲",
+      "蒙特卡洛削减",
+      "拒绝采样",
+      "Ogata thinning",
+      "历元折叠"
+    ],
+    "data_modality": "物理时序",
+    "data_scale": "单点高精度",
+    "validation_methods": [
+      "轨道半径/角动量/能量一致性",
+      "Pearson/MSE/RMSE/R²",
+      "三种采样法对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "PQW→GCRS旋转",
+      "时延分解",
+      "三种采样法对比",
+      "历元折叠轮廓"
+    ],
+    "innovation_points": [
+      "PQW 绕 W/X/Z 三轴旋转到 GCRS，轨道半径/角动量/能量三守恒验证",
+      "几何时延 277.925s，精密时延 473.898s，Shapiro 仅 -6.63e-6s",
+      "对比蒙特卡洛削减/拒绝采样/Ogata thinning 三种非齐次泊松采样法"
+    ],
+    "page_count": 48,
+    "section_structure": "问题重述/问题一~六/模型评价/参考文献/附录",
+    "source_locations": [
+      "p.1-2 摘要"
+    ],
+    "confidence": "high",
+    "notes": "题F，三种采样法对比路线。"
+  },
+  {
+    "paper_id": "2024_F_F24104860143",
+    "year": 2024,
+    "track": "F",
+    "title": "X 射线脉冲星光子到达时间建模",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 4,
+    "task_types": [
+      "轨道力学",
+      "时间尺度转换",
+      "精密时延",
+      "光子序列仿真"
+    ],
+    "models_and_algorithms": [
+      "二体开普勒",
+      "TT→TDB时间转换",
+      "平行光传播",
+      "Roemer",
+      "Shapiro",
+      "引力红移",
+      "狭义相对论动钟变慢",
+      "χ²拟合优度",
+      "逆变换采样法"
+    ],
+    "data_modality": "物理时序",
+    "data_scale": "单点高精度",
+    "validation_methods": [
+      "反算轨道根数一致",
+      "θ角时变预报",
+      "χ²拟合优度",
+      "Pearson 0.99351"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "二体轨道",
+      "TT→TDB",
+      "时延分解",
+      "逆变换采样轮廓"
+    ],
+    "innovation_points": [
+      "理想二体模型严格推导开普勒六根数与位置速度函数",
+      "反算轨道根数+θ角时变预报一整周期双重验证",
+      "χ²拟合优度检验光子序列服从泊松分布"
+    ],
+    "page_count": 79,
+    "section_structure": "问题重述/问题一~X/模型评价/参考文献/附录",
+    "source_locations": [
+      "p.1-2 摘要"
+    ],
+    "confidence": "high",
+    "notes": "题F，χ²检验+逆变换采样路线。"
+  },
+  {
+    "paper_id": "2024_F_F24910020063",
+    "year": 2024,
+    "track": "F",
+    "title": "X 射线脉冲星时间转换建模与光子序列仿真",
+    "award_level": "待确认",
+    "award_confidence": "medium",
+    "problem_count": 4,
+    "task_types": [
+      "轨道力学",
+      "几何时延",
+      "精密时延",
+      "光子序列仿真"
+    ],
+    "models_and_algorithms": [
+      "XPNAV-1动量→半长轴",
+      "TCB时间尺度",
+      "极移/章动坐标轴变换",
+      "Roemer",
+      "Shapiro",
+      "引力红移乘性因子",
+      "动钟变慢",
+      "脉冲星自行",
+      "频率一/二阶导递推",
+      "反变换求逆法",
+      "指数分布优化"
+    ],
+    "data_modality": "物理时序",
+    "data_scale": "单点高精度",
+    "validation_methods": [
+      "能量/角动量守恒",
+      "遍历赤经赤纬验证",
+      "步长1s→0.033s降离散误差",
+      "指数分布替代均匀分布"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "轨道流程",
+      "TCB时间转换",
+      "时延因素",
+      "反变换求逆",
+      "指数分布优化"
+    ],
+    "innovation_points": [
+      "TCB 时间尺度下考虑极移/章动坐标轴变换",
+      "乘性时间尺度因子贴合 TCB 误差修正",
+      "频率一阶导+二阶导递推相位，卫星运动多普勒频移补全时延"
+    ],
+    "page_count": 53,
+    "section_structure": "问题重述/问题一~三/模型评价/参考文献",
+    "source_locations": [
+      "p.1-2 摘要",
+      "p.36 模型评价"
+    ],
+    "confidence": "high",
+    "notes": "题F，TCB+频率递推+指数分布路线。"
+  }
+]

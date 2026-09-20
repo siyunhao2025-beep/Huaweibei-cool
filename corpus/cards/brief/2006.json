@@ -1,0 +1,508 @@
+[
+  {
+    "paper_id": "2006_X_10183011_166f2cd9",
+    "year": 2006,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "维修线性流量阀时的内筒设计问题（C 题）",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "机理建模",
+      "空间图",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "非线性规划",
+      "方差分析"
+    ],
+    "data_modality": "空间数据",
+    "data_scale": "200 个样本",
+    "validation_methods": [
+      "误差分析",
+      "对比实验"
+    ],
+    "figure_count": 16,
+    "figure_types": [
+      "折线图",
+      "示意图"
+    ],
+    "innovation_points": [
+      "本文对线性阀体的设计进行了研究，对阀体模型进行",
+      "本文提出的模型是从考察内孔的特殊形状中得到启发的，从而具有实际应用"
+    ],
+    "page_count": 25,
+    "section_structure": "1.5 过流面积S(h)；0.9 其中 4y ， 5y 是依据上述分析得到的，曲线如图11 所示；0.5 非线性段",
+    "source_locations": [
+      "摘要:p.1"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2006_X_10286020-C论文",
+    "year": 2006,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "维修线性流量阀时的内筒设计问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 2,
+    "task_types": [
+      "空间图",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "多目标规划"
+    ],
+    "data_modality": "空间数据",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "对比实验"
+    ],
+    "figure_count": 16,
+    "figure_types": [
+      "折线图",
+      "结构图",
+      "示意图"
+    ],
+    "innovation_points": [],
+    "page_count": 17,
+    "section_structure": null,
+    "source_locations": [
+      "摘要:p.1",
+      "模型建立:p.1"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2006_X_10394003_5d4c50c1",
+    "year": 2006,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "学生面试中教师安排的优化与算法",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 2,
+    "task_types": [
+      "优化",
+      "评价"
+    ],
+    "models_and_algorithms": [
+      "多目标优化",
+      "多目标规划",
+      "遗传算法"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "较大规模(页数多)",
+    "validation_methods": [
+      "仿真验证"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "流程图",
+      "结构图"
+    ],
+    "innovation_points": [],
+    "page_count": 45,
+    "section_structure": null,
+    "source_locations": [
+      "摘要:p.1",
+      "模型建立:p.15",
+      "检验/评价:p.1"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2006_X_Ad Hoc 网络中的区域划分和资源分配问题(正文)",
+    "year": 2006,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "中，抽取的点数为总数的2%，5%，10%，15%。通过计算，这样",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "分类",
+      "空间图",
+      "仿真",
+      "排队库存"
+    ],
+    "models_and_algorithms": [],
+    "data_modality": "结构化",
+    "data_scale": "6 个点",
+    "validation_methods": [
+      "对比实验"
+    ],
+    "figure_count": 20,
+    "figure_types": [
+      "示意图"
+    ],
+    "innovation_points": [
+      "1 对于问题一的分析",
+      "2 对问题二的分析",
+      "3 对问题三的分析"
+    ],
+    "page_count": 18,
+    "section_structure": "3.1 对于问题一的分析；3.2 对问题二的分析；3.3 对问题三的分析；3.4 对问题四的分析；3.5 对问题五的分析；3.6 对问题六的分析；4.1 问题一；0.04 网络瘫痪几率；0.1 系列1；4.2 问题二；4.3 问题三；4.4 问题四；4.5 问题五；4.6 问题六",
+    "source_locations": [
+      "检验/评价:p.16"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2006_X_Ad Hoc网络中的区域划分和资源分配问题",
+    "year": 2006,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "Ad Hoc 网络中的区域划分和资源分配问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 6,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "信号处理",
+      "空间图",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "蒙特卡罗方法"
+    ],
+    "data_modality": "网络/图",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "仿真验证",
+      "对比实验"
+    ],
+    "figure_count": 10,
+    "figure_types": [
+      "流程图",
+      "结构图",
+      "示意图"
+    ],
+    "innovation_points": [],
+    "page_count": 23,
+    "section_structure": "1.1 模型1 区域覆盖模型建立 ..................；1.2 区域覆盖模型1 求解 ....................；1.3 网络抗毁性研究 .......................；1.3.1 相关定义及其性质.......................；1.3.2 抗毁性研究..........................",
+    "source_locations": [
+      "摘要:p.1",
+      "模型建立:p.1",
+      "模型求解:p.15"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2006_X_A题 02_33de6dce",
+    "year": 2006,
+    "track": "A",
+    "track_confidence": "medium",
+    "title": "中的不同的条件，分别建立了不同的最优化模型，但是对",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "空间图",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "遗传算法"
+    ],
+    "data_modality": "空间数据",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [],
+    "figure_count": 16,
+    "figure_types": [],
+    "innovation_points": [
+      "本文讨论了Ad Hoc 网络在一个假定区域中针对不同条件建立覆盖区，以及信道分配"
+    ],
+    "page_count": 21,
+    "section_structure": "1.1 圆个数的最小值；1.1.1 最优化模型；1.1.2 覆盖数的定义；1.1.3 平面镶嵌；1.2 平面覆盖的信道分配问题；1.3.1 覆盖方案；1.3.2 信道分配方案；1.4 网络的抗毁性；1.4.1 抗毁性度量；1.4.2 蒙特卡罗模拟及结果；2.1 最优化模型；2.2 遗传算法；2.2.1 算法框架；2.2.2 编码方案；2.2.3 初始种群的选取",
+    "source_locations": [
+      "摘要:p.1",
+      "问题重述:p.1",
+      "结论:p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2006_X_定稿2_7448d5e1",
+    "year": 2006,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "线性流量阀的内筒孔设计",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "空间图",
+      "仿真",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "回归分析"
+    ],
+    "data_modality": "空间数据",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "对比实验"
+    ],
+    "figure_count": 21,
+    "figure_types": [
+      "折线图",
+      "示意图"
+    ],
+    "innovation_points": [
+      "本文讨论了维修线性流量阀时的内筒设计问题"
+    ],
+    "page_count": 22,
+    "section_structure": "4.1 模型分析和建立；0.8 面积s；5.1 问题分析；5.2 模型的建立及求解",
+    "source_locations": [
+      "摘要:p.1",
+      "模型建立:p.10"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2006_X_最终正文_45eebb40",
+    "year": 2006,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "给定的数据资料完全正确合理，具有实际意义；",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 9,
+    "task_types": [
+      "优化",
+      "预测",
+      "机理建模",
+      "空间图",
+      "仿真",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "遗传算法",
+      "差分方程",
+      "时间序列"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "较大规模(页数多)",
+    "validation_methods": [
+      "误差分析",
+      "仿真验证",
+      "对比实验",
+      "鲁棒性/稳健性"
+    ],
+    "figure_count": 32,
+    "figure_types": [
+      "折线图",
+      "流程图"
+    ],
+    "innovation_points": [
+      "1 解析解模型的分析",
+      "2 解析解模型的求解",
+      "1 解析解模型的求解"
+    ],
+    "page_count": 57,
+    "section_structure": "5.1 二体问题和运动方程；5.2 进一步简化的运动方程；5.3 轨道的几何方程的进一步探究；6.1 解析解模型的分析；6.2 解析解模型的求解；7.3 模型的求解与检验 ......................；8.1 解析解模型的求解和讨论 ...................；8.2 考虑了高精度差商的最小二乘法模型的分析和求解 ........；9.1 问题的分析 .........................；9.2 问题的求解；9.3 对模型误差敏感度的检验；10.1 分析和模型修改 .......................；10.2 结果讨论 ..........................；10.3 对模型误差敏感度的检验；11.1 问题的分析 .........................",
+    "source_locations": [
+      "模型求解:p.1",
+      "检验/评价:p.1",
+      "结论:p.1"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2006_X_最终论文2_f52520e7",
+    "year": 2006,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "一、问题的重述",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "预测",
+      "机理建模",
+      "空间图",
+      "仿真",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "非线性规划",
+      "常微分方程",
+      "目标规划",
+      "曲线拟合",
+      "参数估计"
+    ],
+    "data_modality": "空间数据",
+    "data_scale": "6 组数据",
+    "validation_methods": [
+      "误差分析",
+      "仿真验证",
+      "对比实验",
+      "鲁棒性/稳健性"
+    ],
+    "figure_count": 3,
+    "figure_types": [
+      "折线图"
+    ],
+    "innovation_points": [],
+    "page_count": 23,
+    "section_structure": null,
+    "source_locations": [
+      "模型建立:p.1",
+      "检验/评价:p.20"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2006_X_确定高精度参数问题(正文)",
+    "year": 2006,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "要对航天器实施有效的控制，首先必须建立其精确的数学模型。航天器在轨",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "机理建模",
+      "空间图",
+      "仿真",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "卡尔曼滤波",
+      "参数估计"
+    ],
+    "data_modality": "空间数据",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "仿真验证",
+      "对比实验",
+      "鲁棒性/稳健性"
+    ],
+    "figure_count": 9,
+    "figure_types": [
+      "折线图"
+    ],
+    "innovation_points": [
+      "1 问题（1）的求解",
+      "2 问题（2）的求解",
+      "3 问题（3）的求解"
+    ],
+    "page_count": 25,
+    "section_structure": "4.1 问题（1）的求解 ......................；4.2 问题（2）的求解 ......................；4.3 问题（3）的求解 ......................；4.3.1 对参数的估计方法 ......................；4.3.2 模型求解与数据分析 .....................；4.3.3 模型的改进 .........................；4.4 问题（4）的求解 ......................；4.4.1 系统模型的建立 .......................；4.4.2 模型的求解与数据分析 ....................",
+    "source_locations": [
+      "模型建立:p.1",
+      "模型求解:p.1"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2006_X_论文_c1fe5db1",
+    "year": 2006,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "约束条件矛盾。因此性质得证。",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 2,
+    "task_types": [
+      "优化",
+      "评价",
+      "空间图",
+      "仿真",
+      "回归拟合",
+      "机理建模"
+    ],
+    "models_and_algorithms": [
+      "神经网络模型",
+      "多目标规划",
+      "整数规划",
+      "传递函数",
+      "最短路"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "较大规模(页数多)",
+    "validation_methods": [
+      "误差分析",
+      "对比实验"
+    ],
+    "figure_count": 4,
+    "figure_types": [
+      "折线图",
+      "散点图"
+    ],
+    "innovation_points": [
+      "本文进一步提出其他模型"
+    ],
+    "page_count": 47,
+    "section_structure": null,
+    "source_locations": [
+      "模型建立:p.1",
+      "检验/评价:p.2"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2006_X_论文正文_92d56b28",
+    "year": 2006,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "中的各个目标及约束转化成",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "评价"
+    ],
+    "models_and_algorithms": [
+      "多目标规划",
+      "整数规划",
+      "回归分析"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "对比实验"
+    ],
+    "figure_count": 4,
+    "figure_types": [
+      "结构图"
+    ],
+    "innovation_points": [
+      "1 问题1 的模型分析"
+    ],
+    "page_count": 38,
+    "section_structure": "4.1 假设考生人数N 有一个上限G；4.2 分配方案一旦确定，都可以招聘到任何需要的老师，招聘不到的情况忽；5.1 问题1 的模型分析；5.1.1 由此可将条件 Y1 ~ Y4 的条件转换成数学表达式；5.1.2 引进分配变量 ijx 后的符号表示变化；5.2 建立模型；5.3 问题1 模型求解；5.3.2 拟合数据；6.1 问题2 的分析；6.2 建立模型；6.3 建立模型；6.4 具体问题的求解；6.5 结果分析；6.5.1 对条件 1Y 而言；6.5.2 对条件 Y2 而言",
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  }
+]

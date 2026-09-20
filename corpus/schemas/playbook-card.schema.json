@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://huaweibei-cool/corpus/schemas/playbook-card.schema.json",
+  "title": "华为杯方法卡（playbook，方法原型）",
+  "type": "object",
+  "required": ["card_id", "archetype", "trigger_criteria", "modeling_skeleton", "evidence_level"],
+  "additionalProperties": true,
+  "properties": {
+    "card_id": {"type": "string"},
+    "archetype": {"type": "string", "description": "原型名，如 多目标优化-帕累托/时序预测-ARIMA+LSTM"},
+    "trigger_criteria": {"type": "array", "items": {"type": "string"}, "description": "什么题该用这张卡"},
+    "input_units": {"type": ["string", "null"], "description": "输入单位/量纲注意"},
+    "modeling_skeleton": {"type": "array", "items": {"type": "string"}, "description": "建模骨架步骤"},
+    "algorithm_menu": {
+      "type": "array",
+      "description": "算法菜单，每条含适用条件/参数来源/复杂度/常见失败",
+      "items": {
+        "type": "object",
+        "required": ["name", "when", "common_failure"],
+        "properties": {
+          "name": {"type": "string"},
+          "when": {"type": "string", "description": "适用条件"},
+          "param_source": {"type": "string", "description": "参数来源"},
+          "complexity": {"type": "string"},
+          "common_failure": {"type": "string", "description": "常见失败"}
+        }
+      }
+    },
+    "baseline_to_improvement_chain": {"type": "array", "items": {"type": "string"}},
+    "validation_playbook": {"type": "array", "items": {"type": "string"}},
+    "high_score_evidence_modules": {"type": "array", "items": {"type": "string"}},
+    "pitfalls": {"type": "array", "items": {"type": "string"}},
+    "huawei_case_locations": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "案例定位 [年-赛道-paper_id-页码]"
+    },
+    "adjacent_method_distinction": {"type": ["string", "null"], "description": "与相邻方法的区别"},
+    "evidence_level": {
+      "type": "string",
+      "enum": ["A", "B", "C"],
+      "description": "A=官方获奖论文深卡支持；B=简卡/思路资料支持；C=商业资料/推断"
+    },
+    "source_count": {"type": "integer", "minimum": 0}
+  }
+}

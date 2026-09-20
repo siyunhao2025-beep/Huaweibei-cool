@@ -1,0 +1,146 @@
+{
+  "paper_id": "2024_D_D24104460003",
+  "year": 2024,
+  "track": "D",
+  "title": "大数据驱动的地理综合问题",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 4,
+  "task_types": [
+    "时空演化",
+    "不平衡数据建模",
+    "空间聚类与预测",
+    "假设检验"
+  ],
+  "models_and_algorithms": [
+    "时间序列分解",
+    "欠采样",
+    "联合均值与方差模型",
+    "MCP变量选择",
+    "XGBoost",
+    "高斯混合聚类GMM",
+    "SVM",
+    "随机森林",
+    "ROC/AUC",
+    "独立t检验"
+  ],
+  "data_modality": "时空",
+  "data_scale": "百万级（616万条，特大雨仅92条占0.0025%）",
+  "validation_methods": [
+    "时间序列分解",
+    "欠采样分层",
+    "MCP变量选择",
+    "ROC/混淆矩阵/AUC",
+    "t检验"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "箱线图",
+    "时间序列分解",
+    "GMM聚类",
+    "ROC曲线",
+    "假设检验"
+  ],
+  "innovation_points": [
+    "识别特大雨仅92条占0.0025%的极不平衡问题，用欠采样分层(6000/5000/4000/3000/1500/1208/92)",
+    "联合均值与方差模型+MCP变量选择",
+    "GMM 空间聚类9区域，SVM精度0.993/AUC0.671 vs RF 0.999/0.999",
+    "独立 t 检验做南北/东西差异显著性"
+  ],
+  "page_count": 96,
+  "section_structure": "问题重述/问题一~六/模型优缺点讨论/参考文献/附录",
+  "source_locations": [
+    "p.1-2 摘要",
+    "p.74 模型优缺点"
+  ],
+  "confidence": "high",
+  "notes": "题D，不平衡数据+GMM路线。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "描述",
+      "main_model": "时间序列分解(趋势/周期/随机)",
+      "improvement": "多指标可视化",
+      "why_switch": "需时空演化"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "全量数据建模",
+      "main_model": "欠采样分层+联合均值方差+MCP",
+      "improvement": "616万→抽样",
+      "why_switch": "极不平衡"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "单模型",
+      "main_model": "XGBoost+GMM 9区域+SVM/RF",
+      "improvement": "ROC/AUC评估",
+      "why_switch": "需空间聚类"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "描述",
+      "main_model": "独立t检验南北/东西差异",
+      "improvement": "三级阶梯/南北/东西聚合",
+      "why_switch": "需显著性检验"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "时间序列分解 Y=T+S+I",
+    "联合均值与方差模型",
+    "MCP 最小凸惩罚变量选择",
+    "GMM 高斯混合聚类"
+  ],
+  "objective_function": "无明确目标函数；以降水等级分类/AUC为评估",
+  "evaluation_metrics": [
+    "特大雨92条占0.0025%",
+    "抽样 6000/5000/4000/3000/1500/1208/92",
+    "SVM Acc0.993/AUC0.671",
+    "RF Acc0.999/AUC0.999",
+    "东西降水差1.604/气温差1.353"
+  ],
+  "algorithm_details_and_complexity": "欠采样分层；GMM EM；XGBoost 树集成",
+  "independent_validation_design": "抽样数据 vs 全量；ROC/混淆矩阵/AUC",
+  "sensitivity_robustness_ablation": [
+    "SVM vs RF 对比",
+    "欠采样 vs 全量"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "地理系统是多要素作用的复杂系统。",
+    "method_sentence": "时间序列分解 / 欠采样+联合均值方差+MCP / XGBoost+GMM+SVM/RF / t检验",
+    "result_sentence": "RF Acc0.999/AUC0.999；珠三角/藏滇交界/长江中下游为高风险",
+    "numbers_presentation": "精确给出不平衡比0.0025%、抽样数、AUC"
+  },
+  "figure_narrative_order": [
+    "箱线图",
+    "时间序列分解",
+    "GMM 9区域",
+    "ROC曲线",
+    "t检验"
+  ],
+  "judge_high_score_reasons": [
+    "正视极不平衡问题并欠采样分层",
+    "联合均值方差+MCP 变量选择少见",
+    "GMM 空间聚类9区域",
+    "RF AUC 0.999 严谨对比"
+  ],
+  "reusable_patterns": [
+    "极不平衡数据欠采样分层",
+    "联合均值方差模型+MCP",
+    "GMM 空间聚类",
+    "ROC/AUC 评估分类"
+  ],
+  "transferable_ability_card_candidates": [
+    "欠采样分层",
+    "MCP变量选择",
+    "GMM聚类",
+    "XGBoost"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "时间序列分解": "p.16-20",
+    "欠采样": "p.25-35",
+    "GMM/SVM/RF": "p.50-70",
+    "t检验": "p.80-85"
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "paper_id": "2024_F_F24910020063",
+  "year": 2024,
+  "track": "F",
+  "title": "X 射线脉冲星时间转换建模与光子序列仿真",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 4,
+  "task_types": [
+    "轨道力学",
+    "几何时延",
+    "精密时延",
+    "光子序列仿真"
+  ],
+  "models_and_algorithms": [
+    "XPNAV-1动量→半长轴",
+    "TCB时间尺度",
+    "极移/章动坐标轴变换",
+    "Roemer",
+    "Shapiro",
+    "引力红移乘性因子",
+    "动钟变慢",
+    "脉冲星自行",
+    "频率一/二阶导递推",
+    "反变换求逆法",
+    "指数分布优化"
+  ],
+  "data_modality": "物理时序",
+  "data_scale": "单点高精度",
+  "validation_methods": [
+    "能量/角动量守恒",
+    "遍历赤经赤纬验证",
+    "步长1s→0.033s降离散误差",
+    "指数分布替代均匀分布"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "轨道流程",
+    "TCB时间转换",
+    "时延因素",
+    "反变换求逆",
+    "指数分布优化"
+  ],
+  "innovation_points": [
+    "TCB 时间尺度下考虑极移/章动坐标轴变换",
+    "乘性时间尺度因子贴合 TCB 误差修正",
+    "频率一阶导+二阶导递推相位，卫星运动多普勒频移补全时延",
+    "反变换求逆法+步长从1s降到0.033s+指数分布替代均匀分布"
+  ],
+  "page_count": 53,
+  "section_structure": "问题重述/问题一~三/模型评价/参考文献",
+  "source_locations": [
+    "p.1-2 摘要",
+    "p.36 模型评价"
+  ],
+  "confidence": "high",
+  "notes": "题F，TCB+频率递推+指数分布路线。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "无",
+      "main_model": "XPNAV-1动量→半长轴→轨道平面→GCRS",
+      "improvement": "能量+角动量守恒",
+      "why_switch": "需轨道求解"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "无",
+      "main_model": "BCRS+Roemer真空几何时延",
+      "improvement": "遍历赤经赤纬",
+      "why_switch": "需几何"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "Roemer",
+      "main_model": "Shapiro+红移+变慢+自行+TCB乘性因子",
+      "improvement": "-473.899s",
+      "why_switch": "需精密"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "标准泊松",
+      "main_model": "频率一/二阶递推+反变换求逆+步长0.033s+指数分布",
+      "improvement": "提升仿真精度",
+      "why_switch": "需高精度"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "TCB 时间尺度",
+    "乘性时间尺度因子",
+    "频率 f, f', f'' 相位递推",
+    "非齐次泊松反变换求逆"
+  ],
+  "objective_function": "min 仿真脉冲轮廓与标准轮廓误差",
+  "evaluation_metrics": [
+    "位置(1274.9,-1848.9,6507.3)km",
+    "Roemer -277.925s",
+    "修正后-473.899s",
+    "步长0.033s"
+  ],
+  "algorithm_details_and_complexity": "TCB 时间转换；频率递推；反变换求逆",
+  "independent_validation_design": "能量/角动量守恒；遍历赤经赤纬",
+  "sensitivity_robustness_ablation": [
+    "步长1s vs 0.033s",
+    "均匀 vs 指数分布"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "脉冲星是一些质量非常大且密度极高的天体，通常是大质量恒星在超新星爆发后形成的中子星。",
+    "method_sentence": "XPNAV-1动量→GCRS / BCRS+Roemer / Shapiro+红移+变慢+自行+TCB / 频率递推+反变换+指数分布",
+    "result_sentence": "修正后-473.899s；步长0.033s",
+    "numbers_presentation": "完整给出时延分量"
+  },
+  "figure_narrative_order": [
+    "轨道流程",
+    "TCB转换",
+    "时延因素",
+    "频率递推",
+    "反变换+指数分布"
+  ],
+  "judge_high_score_reasons": [
+    "TCB 时间尺度+极移/章动最完整",
+    "频率一/二阶导递推相位有深度",
+    "步长细化+指数分布替代均匀分布工程性强",
+    "乘性时间尺度因子贴合 TCB"
+  ],
+  "reusable_patterns": [
+    "TCB 时间尺度转换",
+    "频率递推相位",
+    "步长细化降离散误差",
+    "指数分布替代均匀分布"
+  ],
+  "transferable_ability_card_candidates": [
+    "TCB时间尺度",
+    "频率递推",
+    "反变换求逆",
+    "指数分布"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "TCB转换": "p.10-20",
+    "频率递推": "p.30-36",
+    "模型评价": "p.36"
+  }
+}

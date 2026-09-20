@@ -1,0 +1,82 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{gmcm-title}[2026/08/19 Huawei Cup contest title style]
+
+\RequirePackage{iftex}
+\ifXeTeX\else
+  \PackageError{gmcm-title}
+    {This package requires XeLaTeX}
+    {Please compile the document with XeLaTeX.}
+\fi
+
+\RequirePackage{fontspec}
+\RequirePackage{xeCJK}
+\RequirePackage{tikz}
+
+% 华文新魏；保持与已确认的 11.tex 一致：AutoFakeBold=2
+\IfFontExistsTF{STXinwei}{%
+  \setCJKfamilyfont{hwxw}[AutoFakeBold=2]{STXinwei}%
+}{%
+  \PackageError{gmcm-title}
+    {Font STXinwei (华文新魏) not found}
+    {Install 华文新魏 in the operating system, then compile again with XeLaTeX.}
+}
+
+% 与已确认的 11.tex 保持一致的轻量 WPS 风格阴影
+\newcommand{\GMCMWPSShadow}[1]{%
+  \begin{tikzpicture}[baseline=(main.base)]
+    % 极轻微柔化边缘
+    \foreach \x/\y in {
+      0.5/0,
+      -0.5/0,
+      0/0.5,
+      0/-0.5
+    }{%
+      \node[
+        inner sep=0pt,
+        text=black,
+        text opacity=0.025,
+        xshift={1.4pt+\x pt},
+        yshift={-1.4pt+\y pt}
+      ] at (0,0) {#1};
+    }%
+
+    % 主阴影
+    \node[
+      inner sep=0pt,
+      text=black,
+      text opacity=0.10,
+      xshift=1.4pt,
+      yshift=-1.4pt
+    ] at (0,0) {#1};
+
+    % 正文
+    \node[
+      inner sep=0pt,
+      text=black
+    ] (main) at (0,0) {#1};
+  \end{tikzpicture}%
+}
+
+% #1 = 届次中文数字，例如：二十三
+% 固定视觉参数：
+% 第一行：华文新魏、小二、加粗
+% 第二/三行：华文新魏、二号、加粗
+% 行间额外间距：1pt / 1pt
+\newcommand{\GMCMContestTitle}[1]{%
+  \begin{center}
+    {\CJKfamily{hwxw}\bfseries\zihao{-2}%
+      \GMCMWPSShadow{中国研究生创新实践系列大赛}%
+      \par
+    }%
+    \vspace{1pt}%
+    {\CJKfamily{hwxw}\bfseries\zihao{2}%
+      \GMCMWPSShadow{“华为杯”第#1届中国研究生}%
+      \par
+    }%
+    \vspace{1pt}%
+    {\CJKfamily{hwxw}\bfseries\zihao{2}%
+      \GMCMWPSShadow{数学建模竞赛}%
+      \par
+    }%
+  \end{center}%
+}

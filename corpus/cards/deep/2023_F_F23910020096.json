@@ -1,0 +1,139 @@
+{
+  "paper_id": "2023_F_F23910020096",
+  "year": 2023,
+  "track": "F",
+  "title": "基于因果推理的强对流降水临近预报",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 4,
+  "task_types": [
+    "时空预测",
+    "因果推理",
+    "极值理论",
+    "可解释AI"
+  ],
+  "models_and_algorithms": [
+    "最大互信息+Pearson空间关联",
+    "多元传递熵",
+    "因果贝叶斯网络",
+    "结构因果模型SCM",
+    "极值理论POT",
+    "卡尔曼滤波干预影响",
+    "时空图神经网络"
+  ],
+  "data_modality": "双偏振雷达ZH/ZDR/KDP格点",
+  "data_scale": "1/3/5km等高面",
+  "validation_methods": [
+    "优于核回归/MLP/LSTM基线",
+    "3km/5km优于基线",
+    "1km略低于MLP",
+    "可解释性方程"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "因果贝叶斯网络图",
+    "空间关联半径图",
+    "POT极值拟合图",
+    "卡尔曼滤波跟踪图"
+  ],
+  "innovation_points": [
+    "多元传递熵构建因果贝叶斯网络，给出确定性物理方程",
+    "结构因果模型SCM同时预报ZH且具备可解释性",
+    "极值理论POT+卡尔曼滤波干预影响缓解'回归到平均'"
+  ],
+  "page_count": 69,
+  "section_structure": "绪论(含国内外综述,p.1-?)/问题一区域关联+因果BN+SCM(p.?)/问题二极值理论+干预影响/问题三/问题四",
+  "source_locations": [
+    "p.1.2 因果推理综述",
+    "p.2.2 区域半径选择",
+    "p.2.3.1 因果贝叶斯网络",
+    "p.2.3.2 结构因果方程",
+    "p.3.2.3 POT极值拟合",
+    "p.3.3.2 卡尔曼滤波干预"
+  ],
+  "confidence": "high",
+  "notes": "F题方法新颖度最高：因果推理+SCM。2023年最前沿路线。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "ConvLSTM/U-Net黑箱",
+      "main_model": "多元传递熵因果BN+SCM",
+      "improvement": "确定性物理方程可解释",
+      "why_switch": "黑箱DL无法解释双偏振变量贡献"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "GAN/损失加权",
+      "main_model": "极值理论POT+卡尔曼干预影响",
+      "improvement": "分解为'极端事件发生'+'发生后降水'",
+      "why_switch": "回归到平均本质是极端事件预测失败"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "",
+      "main_model": "",
+      "improvement": "",
+      "why_switch": ""
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "",
+      "main_model": "",
+      "improvement": "",
+      "why_switch": ""
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "多元传递熵 T(X→Y)=∑p(x,y)log p(y|x,pa)/p(y|pa)",
+    "POT超阈值峰年",
+    "结构因果方程 f(ZH|ZDR,KDP,邻居区域)"
+  ],
+  "objective_function": "min ZH预报RMSE, 同时保证因果可解释性",
+  "evaluation_metrics": [
+    "3km/5km优于核回归/MLP/LSTM",
+    "1km略低于MLP",
+    "突发降水偏差大"
+  ],
+  "algorithm_details_and_complexity": "传递熵O(n·k²)；因果BN结构搜索O(k!)；SCM预测O(k)",
+  "independent_validation_design": "与核回归/MLP/LSTM三基线对比；1/3/5km等高面分尺度验证",
+  "sensitivity_robustness_ablation": [
+    "区域半径扫描",
+    "等高面1/3/5km对比",
+    "突发性降水偏差分析"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "强对流降水高强度小尺度难预报，本文从时序因果性与空间关联性出发。",
+    "method_sentence": "问题一多元传递熵因果BN+SCM；问题二极值理论POT+卡尔曼干预。",
+    "result_sentence": "3km/5km优于MLP/LSTM基线；可解释确定性方程；突发降水偏差大。",
+    "numbers_presentation": "分等高面给对比结论。"
+  },
+  "figure_narrative_order": [
+    "区域空间关联",
+    "因果BN结构图",
+    "SCM方程",
+    "POT极值拟合",
+    "卡尔曼跟踪"
+  ],
+  "judge_high_score_reasons": [
+    "因果推理是2023年最前沿路线，差异化极强",
+    "把'回归到平均'分解为极端事件发生+发生后降水，诊断深刻",
+    "SCM给确定性方程而非黑箱，可解释性突出"
+  ],
+  "reusable_patterns": [
+    "时空预测类用传递熵/Granger做因果发现",
+    "缓解'回归到平均'可走极值理论路线",
+    "把黑箱DL问题转化为可解释结构方程"
+  ],
+  "transferable_ability_card_candidates": [
+    "因果推断",
+    "时空图建模",
+    "极值理论",
+    "可解释AI"
+  ],
+  "page_locations": {
+    "因果BN": "p.2.3.1",
+    "SCM方程": "p.2.3.2",
+    "POT极值": "p.3.2.3",
+    "卡尔曼干预": "p.3.3.2"
+  }
+}

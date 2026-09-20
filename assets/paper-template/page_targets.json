@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "required_body_pages": 45,
+  "body_page_gate_mode": "warning",
+  "body_page_gate_authority": "project_heuristic",
+  "page_system": "printed",
+  "body_definition": "正文从摘要结束后的下一页开始，到参考文献标题前一页结束；附录不计入正文。",
+  "role_targets": {
+    "evaluation": {
+      "min_pages": 1,
+      "max_pages": 6
+    },
+    "preliminary": {
+      "min_pages": 1,
+      "max_pages": 8
+    },
+    "problem": {
+      "min_pages": 3,
+      "max_pages": 27
+    }
+  },
+  "observations": [],
+  "policy": "Role windows and 45-page minimum are historical project heuristics. Official rules for the current contest always override them. Default body-page shortfall is a warning, not a hard failure."
+}

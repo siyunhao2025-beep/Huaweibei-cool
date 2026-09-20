@@ -1,0 +1,143 @@
+{
+  "paper_id": "2024_E_E24101480006",
+  "year": 2024,
+  "track": "E",
+  "title": "高速公路应急车道紧急启用模型",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 4,
+  "task_types": [
+    "视频检测与跟踪",
+    "时序预测",
+    "阈值决策",
+    "监控点布局"
+  ],
+  "models_and_algorithms": [
+    "YOLOv5",
+    "DeepSORT",
+    "历史平均/SVM/决策树/LSTM对比",
+    "Greenberg模型",
+    "五大理论依据",
+    "针孔摄像机模型",
+    "二分法+路段速度差"
+  ],
+  "data_modality": "视频+时序",
+  "data_scale": "4个监控视频共约2.5小时",
+  "validation_methods": [
+    "视频数据回测",
+    "LSTM vs 历史平均/SVM/决策树",
+    "拥堵识别准确率",
+    "二分法实验验证"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "交通流参数时序",
+    "相关性矩阵",
+    "针孔相机几何",
+    "二分法流程"
+  ],
+  "innovation_points": [
+    "YOLOv5+DeepSORT 提取5指标再合成速度/流量/密度三参数",
+    "历史平均/SVM/决策树/LSTM 四模型对比选 LSTM 预测密度",
+    "五大理论依据(合法/紧急/优先/安全/及时退出)+四类紧急情况",
+    "针孔相机几何模型+二分法+路段速度差选监控点"
+  ],
+  "page_count": 84,
+  "section_structure": "问题重述/问题一~八/模型评价与推广/参考文献/附录",
+  "source_locations": [
+    "p.1-2 摘要",
+    "p.65 模型评价"
+  ],
+  "confidence": "high",
+  "notes": "题E，CV+时序+几何路线。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一(1)",
+      "baseline": "人工统计",
+      "main_model": "YOLOv5+DeepSORT",
+      "improvement": "5指标合成3参数",
+      "why_switch": "需自动多目标检测跟踪"
+    },
+    {
+      "question_id": "问题一(2)(3)",
+      "baseline": "历史平均/SVM/决策树",
+      "main_model": "LSTM密度预测+Greenberg速度模型",
+      "improvement": "多阈值拥堵判断",
+      "why_switch": "LSTM时序最优"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "经验判断",
+      "main_model": "五大理论依据+四类紧急情况",
+      "improvement": "上下游联动",
+      "why_switch": "需理论依据"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "单阈值",
+      "main_model": "相关性矩阵+LSTM+Greenberg多阈值",
+      "improvement": "分拥堵等级",
+      "why_switch": "需量化"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "均匀布点",
+      "main_model": "针孔相机几何+二分法+路段速度差",
+      "improvement": "最少3摄像头并行",
+      "why_switch": "需科学布点"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "Greenberg 速度-密度关系 u=u_m ln(k_j/k)",
+    "针孔摄像机几何模型",
+    "二分法选拥堵易发区"
+  ],
+  "objective_function": "无显式目标函数；以拥堵识别准确率与布点成本平衡",
+  "evaluation_metrics": [
+    "5指标提取",
+    "LSTM vs 三模型",
+    "视频回测准确率",
+    "二分法稳定性"
+  ],
+  "algorithm_details_and_complexity": "YOLOv5 实时检测；DeepSORT 跟踪；LSTM 时序",
+  "independent_validation_design": "视频数据回测；二分法实验验证",
+  "sensitivity_robustness_ablation": [
+    "历史平均/SVM/决策树/LSTM 对比",
+    "多速度阈值对比"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "高速公路拥堵现象的原因多样，除了交通事故，瓶颈现象也是主要因素。",
+    "method_sentence": "YOLOv5+DeepSORT / LSTM+Greenberg / 五大理论 / 针孔相机+二分法",
+    "result_sentence": "LSTM 最优；二分法稳定",
+    "numbers_presentation": "未给具体数字"
+  },
+  "figure_narrative_order": [
+    "交通流参数时序",
+    "相关性矩阵",
+    "针孔相机几何",
+    "二分法流程"
+  ],
+  "judge_high_score_reasons": [
+    "YOLOv5+DeepSORT 是 CV 标准管线",
+    "五大理论依据把经验上升为理论",
+    "针孔相机几何+二分法选监控点是工程巧思"
+  ],
+  "reusable_patterns": [
+    "YOLO+DeepSORT 视频过线统计",
+    "四模型对比选时序预测",
+    "Greenberg/Greenshields 交通流模型",
+    "针孔相机几何定监控点"
+  ],
+  "transferable_ability_card_candidates": [
+    "YOLO+DeepSORT",
+    "Greenberg模型",
+    "针孔相机几何",
+    "二分法选点"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "YOLO+DeepSORT": "p.8-20",
+    "LSTM": "p.25-40",
+    "针孔相机": "p.60-65"
+  }
+}

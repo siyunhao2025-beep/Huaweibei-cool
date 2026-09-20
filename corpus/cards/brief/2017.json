@@ -1,0 +1,1598 @@
+[
+  {
+    "paper_id": "2017_A_A10252401_e8fcf0a6",
+    "year": 2017,
+    "track": "A",
+    "title": "无人机在抢险救灾中的优化运用",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "分类",
+      "仿真",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "遗传算法",
+      "模拟退火",
+      "禁忌搜索/启发式",
+      "航迹规划/协同"
+    ],
+    "data_modality": "图像",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "折线/曲线图",
+      "空间/地图"
+    ],
+    "innovation_points": [
+      "在于根据无人机巡查或探测面积的不同对目标区域进",
+      "本文的创新点在于根据无人机巡查或探测面积的不同对目标区域进"
+    ],
+    "page_count": 39,
+    "section_structure": "5\n的时间间隔不小于1 小时)？；3    第二组无人机起飞；6    第三组无人机起飞；8    第一组无人机已全部回到基地，进行休整；9    第一组无人机起飞",
+    "source_locations": [
+      "模型建立≈p.11",
+      "模型求解≈p.21"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_A_A10254014_bf8b7269",
+    "year": 2017,
+    "track": "A",
+    "title": "无人机在抢险救灾中的优化运用",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "仿真",
+      "回归拟合",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "遗传算法",
+      "粒子群算法PSO",
+      "模拟退火",
+      "蚁群算法",
+      "多元线性回归",
+      "线性规划",
+      "非线性规划",
+      "禁忌搜索/启发式",
+      "航迹规划/协同"
+    ],
+    "data_modality": "图像",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "鲁棒性/稳定性分析",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 60,
+    "figure_types": [
+      "流程图/框图",
+      "空间/地图"
+    ],
+    "innovation_points": [],
+    "page_count": 77,
+    "section_structure": "1 问题的重述；2 模型假设；3 符号说明；4 问题的分析；1 障碍物栅格；2 可以得知地面终端的地理位置。；5 模型的评价；6 参考文献",
+    "source_locations": [
+      "模型建立≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_A_A10286374_ba5dff1d",
+    "year": 2017,
+    "track": "A",
+    "title": "无人机在抢险救灾中的优化运用",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "分类",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "系统聚类/层次聚类",
+      "遗传算法",
+      "图论/最短路"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 32,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 47,
+    "section_structure": "1\n量为97 架。；2\n           目 录；1 问题重述；5\n发的时间间隔不小于1 小时)。；2 模型假设及符号说明；6\n  针对问题2，提出的假设有：；3 问题一模型建立与求解；4 问题二模型建立与求解；5 问题三模型建立与求解；6 问题四模型建立与求解；7 模型的优缺点；8 参考文献",
+    "source_locations": [
+      "模型建立≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_A_A10425002_6c49ffb8",
+    "year": 2017,
+    "track": "A",
+    "title": "无人机在抢险救灾中的优化运用",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "分类",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "系统聚类/层次聚类",
+      "遗传算法",
+      "图论/最短路",
+      "多目标规划/优化",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "灵敏度/敏感性分析"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 52,
+    "section_structure": "2\n的任务执行时间为5.6 小时。；1 问题重述；2 模型假设；3 符号说明；4 问题一模型建立与求解；5 问题二模型建立与求解；6 问题三模型建立与求解；7 问题四模型建立与求解；8 总 结；9 参考文献",
+    "source_locations": [
+      "模型建立≈p.3",
+      "模型求解≈p.12",
+      "模型评价/改进≈p.13"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_A_A10700045_b1eff655",
+    "year": 2017,
+    "track": "A",
+    "title": "无人机在抢险救灾中的优化运用",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "仿真",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "模拟退火",
+      "蚁群算法",
+      "线性规划",
+      "非线性规划",
+      "信道建模/多径/OFDM",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 19,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 49,
+    "section_structure": "1 问题重述；2 问题分析；3 问题假设；4 变量说明；5 模型的建立与求解；8 小时。；4\n\n  其中maxr 为最大有效探测距离。；6 模型的评价与改进；7 参考文献",
+    "source_locations": [
+      "模型建立≈p.38"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_A_A80143001_d8cc0877",
+    "year": 2017,
+    "track": "A",
+    "title": "无人机在抢险救灾中的优化运用",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "分类",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "K-means聚类",
+      "遗传算法",
+      "图论/最短路",
+      "航迹规划/协同"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 7,
+    "figure_types": [
+      "折线/曲线图",
+      "空间/地图"
+    ],
+    "innovation_points": [],
+    "page_count": 66,
+    "section_structure": "3\n             目  录；9\n                 初始化群体；4 小时，平均速度位60 千米/小时。；4 个方面：；3         一小时后出发；6\n       第一架返回；1 高度层",
+    "source_locations": [
+      "模型建立≈p.3",
+      "模型求解≈p.3",
+      "模型评价/改进≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_B_B10183125_8f6f2035",
+    "year": 2017,
+    "track": "B",
+    "title": "面向下一代光通信的VCSEL 激光器仿真建模",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "仿真",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "遗传算法",
+      "粒子群算法PSO",
+      "模拟退火",
+      "光通信/半导体仿真",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "灵敏度/敏感性分析",
+      "误差/残差分析",
+      "对比/比较分析"
+    ],
+    "figure_count": 16,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [
+      "地考虑了器件的光学特性，重新构建VCSEL 器件稳小信号特",
+      "本文依据实验数据，建立VCSEL 激光器L-I 模型和小信号频率",
+      "本文建立了激光器L-I 参数"
+    ],
+    "page_count": 67,
+    "section_structure": "一、问题重述；二、主要变量说明；三、条件假设；四、问题分析；五、模型建立与求解；六、模型评价与改进；七、参考文献；八、附录",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.3",
+      "模型评价/改进≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_B_B10246049_b088c96c",
+    "year": 2017,
+    "track": "B",
+    "title": "面向下一代光通信的VCSEL 激光器仿真模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "评价",
+      "回归拟合",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "小波变换/小波分析",
+      "粒子群算法PSO",
+      "光通信/半导体仿真",
+      "刚体/多体动力学"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析",
+      "仿真/数值验证",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 23,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "散点/拟合图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [
+      "在于：第一，充分利用了系统稳态工作条件，即各参数对时间",
+      "本文围绕着VCSEL 激光器的多种性能，通过建立数学模型，修正数学模型，采取",
+      "本文的工作包括但不限于建立了VCSEL 激光器工作电流与输出光"
+    ],
+    "page_count": 60,
+    "section_structure": "一、 问题重述；二、 基本假设和符号说明；三、 问题1：VCSEL 的L-I 模型；四、 问题2：VCSEL 的L-I 模型改进；五、 问题3：VCSEL 的带宽模型；六、 问题4：VCSEL 的带宽模型的改进；七、 参考文献",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_B_B10280234_6cd974e4",
+    "year": 2017,
+    "track": "B",
+    "title": "面向下一代光通信的VCSEL 激光器仿真模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "预测",
+      "仿真",
+      "回归拟合",
+      "机理建模",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "微分方程/动力学",
+      "光通信/半导体仿真"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析",
+      "仿真/数值验证"
+    ],
+    "figure_count": 19,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [],
+    "page_count": 46,
+    "section_structure": "一、问题重述；二、问题假设；三、符号及变量说明；四、问题分析；五、模型的建立与求解；六、总结与展望；七、参考文献",
+    "source_locations": [
+      "模型建立≈p.3",
+      "模型求解≈p.8"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_B_B10614023_7e2b6277",
+    "year": 2017,
+    "track": "B",
+    "title": "面向下一代光通信的VCSEL 激光器仿真模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "预测",
+      "评价",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "光通信/半导体仿真"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "灵敏度/敏感性分析",
+      "误差/残差分析",
+      "对比/比较分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 24,
+    "figure_types": [
+      "折线/曲线图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [],
+    "page_count": 75,
+    "section_structure": "一、问题重述与分析；二、模型假设与符号说明；三、问题1 模型的建立与求解；四、问题2 模型的建立与求解；五、问题3 模型的建立与求解；六、问题4 模型的建立与求解；六、模型评价",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.6",
+      "模型评价/改进≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_B_B10615020_29c5616a",
+    "year": 2017,
+    "track": "B",
+    "title": "基于最优参数搜索算法的VCSEL 激光器仿真模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "仿真",
+      "回归拟合",
+      "机理建模"
+    ],
+    "models_and_algorithms": [
+      "遗传算法",
+      "光通信/半导体仿真"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "百级样本",
+    "validation_methods": [
+      "灵敏度/敏感性分析",
+      "误差/残差分析",
+      "对比/比较分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 8,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "散点/拟合图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [
+      "本文遵循“物理建模—参数拟合—误差分析—模型改进”的总体研究思路，在"
+    ],
+    "page_count": 54,
+    "section_structure": "1 问题重述；3 的模型进行比较。；2 模型假设；3 符号说明；4 模型准备；5 问题1：VCSEL 的L-I 模型的参数确定；7\n        读取I、U、P0、Ta数据文件；6 问题2：VCSEL 的L-I 模型改进；7 问题3：VCSEL 带宽模型的建立；8 问题4：VCSEL 带宽模型的改进；9 模型总结与评价",
+    "source_locations": [
+      "模型建立≈p.8"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_B_B80143006_3ed07fb6",
+    "year": 2017,
+    "track": "B",
+    "title": "面向下一代光通信的VCSEL 激光器仿真模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "预测",
+      "仿真",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "光通信/半导体仿真",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 6,
+    "figure_types": [
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 47,
+    "section_structure": "1 问题重述；2 模型假设；3 符号说明；4  问题一（L-I 曲线）；9\n  对误差向量线性化，有；1               光功率；5  问题二（L-I 曲线改进模型）；7 问题三（带宽模型）；8 问题四（带宽模型的改进）；9 模型评价",
+    "source_locations": [
+      "模型建立≈p.12",
+      "模型求解≈p.3",
+      "模型评价/改进≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_B_B80151002_3326a2b2",
+    "year": 2017,
+    "track": "B",
+    "title": "面向下一代光通信的VCSEL 激光器仿真模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "预测",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "光通信/半导体仿真"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析",
+      "鲁棒性/稳定性分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 4,
+    "figure_types": [
+      "折线/曲线图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [
+      "本文基于经验公式建立了VCSEL 激光器的工作电流与输出光功率强度关系"
+    ],
+    "page_count": 53,
+    "section_structure": "一、 问题重述；二、 模型假设；三、 符号说明；四、 问题一的模型建立与求解；五、 问题二的模型建立与求解；六、 问题三的模型建立与求解；七、 问题四的模型建立与求解；八、 总结；九、 参考文献；十、 附录",
+    "source_locations": [
+      "模型建立≈p.1",
+      "模型求解≈p.7"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_B_B90105001_a9ba8f1b",
+    "year": 2017,
+    "track": "B",
+    "title": "面向下一代光通信的VCSEL 激光器仿真模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "预测",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "光通信/半导体仿真"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析",
+      "仿真/数值验证"
+    ],
+    "figure_count": 31,
+    "figure_types": [
+      "折线/曲线图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [
+      "本文采用了改进的V-I 关系模型——二极管"
+    ],
+    "page_count": 46,
+    "section_structure": "一、问题重述；二、问题分析；三、模型假设与符号说明；四、问题一模型的建立与求解；五、问题二L-I 模型的改进；六、问题三模型的建立与求解；七、问题四模型的建立与求解；八、总结",
+    "source_locations": [
+      "模型建立≈p.3",
+      "模型求解≈p.8"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_C_C10004025_27f84171",
+    "year": 2017,
+    "track": "C",
+    "title": "\"r į\"żoÃ ŭŶśĎ®Ôĺź。",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [],
+    "models_and_algorithms": [
+      "粒子群算法PSO",
+      "蚁群算法",
+      "定位算法(AOA/TDOA/Chan/Taylor)"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": null,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 66,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "low",
+    "notes": "全文抽取乱码（PDF CID 字体编码问题），仅封面题目可读，正文方法/验证待确认"
+  },
+  {
+    "paper_id": "2017_C_C10248117_7c00d4ef",
+    "year": 2017,
+    "track": "C",
+    "title": "应用时空网络模型解决不正常航班恢复问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 1,
+    "task_types": [
+      "优化",
+      "预测"
+    ],
+    "models_and_algorithms": [
+      "整数规划"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 7,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 25,
+    "section_structure": "2\n        二模型假设；3\n      三符号说明与名词解释；5\n     四问题一模型建立与提出；8\n     五问题二模型建立与提出",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_C_C10617012_d65cf5de",
+    "year": 2017,
+    "track": "C",
+    "title": "摘    要：",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "模拟退火",
+      "图论/最短路",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "网络",
+    "data_scale": "千-万级",
+    "validation_methods": [],
+    "figure_count": 4,
+    "figure_types": [],
+    "innovation_points": [
+      "本文提出的模型和求解算法进行验证证明模"
+    ],
+    "page_count": 22,
+    "section_structure": null,
+    "source_locations": [
+      "模型建立≈p.1",
+      "模型求解≈p.11"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_C_C90005033_11011a03",
+    "year": 2017,
+    "track": "C",
+    "title": "机场临时关闭时的航班恢复问题研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "模拟退火",
+      "蒙特卡洛模拟",
+      "图论/最短路",
+      "线性规划",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 11,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [
+      "地引入语谱图的概念来建立航"
+    ],
+    "page_count": 43,
+    "section_structure": "一、问题重述；二、问题分析；三、符号说明；四、模型假设；五、模型建立与求解；六、模型的特点、推广与改进；七、参考文献",
+    "source_locations": [
+      "摘要≈p.40",
+      "模型建立≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_C_CK0264_f4f6ab5a",
+    "year": 2017,
+    "track": "C",
+    "title": "基于时空网络技术的航班恢复问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "整数规划",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 7,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [],
+    "page_count": 26,
+    "section_structure": "3\n            目 录；1 问题重述；2 模型的假设；3 符号说明；4 问题一（重新规划航班——单一机型）；9\n  分析思路如下：；5 问题二（重新规划航班——多种机型）；6 问题三（重新规划航班——直达旅客）；7 问题四（重新规划航班——联程旅客）；8 模型的评价；9 参考文献",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_C_CK0723_2e3d3df6",
+    "year": 2017,
+    "track": "C",
+    "title": "摘    要：",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化"
+    ],
+    "models_and_algorithms": [
+      "模拟退火",
+      "图论/最短路",
+      "整数规划",
+      "信道建模/多径/OFDM",
+      "定位算法(AOA/TDOA/Chan/Taylor)",
+      "禁忌搜索/启发式",
+      "航迹规划/协同"
+    ],
+    "data_modality": "图像",
+    "data_scale": "千-万级",
+    "validation_methods": [],
+    "figure_count": 2,
+    "figure_types": [],
+    "innovation_points": [
+      "首次将匈牙利法引入时空网络模型中处理"
+    ],
+    "page_count": 52,
+    "section_structure": "一、问题重述；二、问题分析；三、问题1：单一机型的航班恢复问题；四、问题2：多机型的航班恢复问题；五、问题3：考虑商务约束的多机型航班恢复问题；六、问题4：考虑联程旅客的多机型航班恢复问题",
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_D_D10247003_8b485c8d",
+    "year": 2017,
+    "track": "D",
+    "title": "基于监控视频的前景目标提取",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 6,
+    "task_types": [
+      "预测",
+      "评价",
+      "分类",
+      "回归拟合",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "卡尔曼滤波",
+      "数据插值/拟合曲面"
+    ],
+    "data_modality": "图像",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "流程图/框图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [
+      "本文提出了一种基于整体特征的视频中人群异"
+    ],
+    "page_count": 62,
+    "section_structure": "一. 问题重述；二. 问题分析；三. 模型假设；四. 符号系统；五. 模型的建立及求解；六、模型分析及展望；七、参考文献",
+    "source_locations": [
+      "模型建立≈p.3",
+      "模型求解≈p.2",
+      "模型评价/改进≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_D_D10252016_7a73dd47",
+    "year": 2017,
+    "track": "D",
+    "title": "基于监控视频的前景目标提取",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 6,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "深度学习",
+      "支持向量机SVM",
+      "蚁群算法",
+      "定位算法(AOA/TDOA/Chan/Taylor)",
+      "航迹规划/协同"
+    ],
+    "data_modality": "图像",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析",
+      "仿真/数值验证",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [
+      "本文对所建立的模型给出了评价和改进的方向。"
+    ],
+    "page_count": 45,
+    "section_structure": "2\n       目  录；1 问题重述；2 模型假设；3 符号说明；4 问题分析；5 模型的建立与求解；6 模型的评价与改进；7 参考文献",
+    "source_locations": [
+      "模型建立≈p.16"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_D_D10532006_4ede866b",
+    "year": 2017,
+    "track": "D",
+    "title": "基于Vibe 算法的视频前景目标提取",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 6,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "粒子群算法PSO"
+    ],
+    "data_modality": "图像",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析",
+      "精度指标(RMSE/R²等)",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 9,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文采用Vibe 算法建立背景模型，其核心思想是在像素点附近邻域"
+    ],
+    "page_count": 42,
+    "section_structure": null,
+    "source_locations": [
+      "模型建立≈p.3",
+      "模型求解≈p.1",
+      "灵敏度分析≈p.12",
+      "模型检验/验证≈p.13",
+      "模型评价/改进≈p.7"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_D_D10701013_93d695fa",
+    "year": 2017,
+    "track": "D",
+    "title": "基于监控视频的前景目标提取",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 6,
+    "task_types": [
+      "优化",
+      "预测",
+      "分类",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "深度学习",
+      "支持向量机SVM"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析",
+      "鲁棒性/稳定性分析",
+      "仿真/数值验证",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 8,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [
+      "本文提出的前景目标提取优化模型再贴近实际的前提下，能够更合理"
+    ],
+    "page_count": 95,
+    "section_structure": "1 问题重述；2 模型假设和符号说明；3 问题一模型的建立和求解；7\n生成视频。；4  问题二模型的建立和求解；5 问题三的建立和求解；6 问题四的分析及模型建立及求解；7 问题5 的分析及模型建立及求解；8 问题六的分析及模型建立及求解；9 模型评价和推广",
+    "source_locations": [
+      "模型建立≈p.4",
+      "模型求解≈p.6",
+      "模型评价/改进≈p.26"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_D_D90005013_8745f088",
+    "year": 2017,
+    "track": "D",
+    "title": "基于监控视频的前景目标提取",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 9,
+    "task_types": [
+      "分类"
+    ],
+    "models_and_algorithms": [
+      "深度学习"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 31,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [],
+    "page_count": 47,
+    "section_structure": "3\n          目  录；1 问题重述；2 问题一的建模与求解；3 问题二的建模与求解；4 问题三的建模与求解；5 问题四（8 组视频分组标注）；6 问题五的建模与求解；7 问题六的建模与求解；8 模型评价；9 参考文献",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型评价/改进≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_D_DK0059_c726c68f",
+    "year": 2017,
+    "track": "D",
+    "title": "基于监控视频的前景目标提取",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 6,
+    "task_types": [
+      "预测",
+      "评价",
+      "分类",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "图论/最短路",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "图像",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析",
+      "仿真/数值验证",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 999,
+    "figure_types": [
+      "流程图/框图",
+      "柱状图"
+    ],
+    "innovation_points": [],
+    "page_count": 70,
+    "section_structure": "9 参考文献",
+    "source_locations": [
+      "模型建立≈p.1",
+      "模型求解≈p.16",
+      "模型评价/改进≈p.13"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_D_DK0483_63852b38",
+    "year": 2017,
+    "track": "D",
+    "title": "基于监控视频的前景目标提取",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 6,
+    "task_types": [
+      "预测",
+      "评价",
+      "分类",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "系统聚类/层次聚类",
+      "深度学习",
+      "决策树",
+      "刚体/多体动力学",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "图像",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 8,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [],
+    "page_count": 86,
+    "section_structure": "一、程序源代码清单",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型评价/改进≈p.5"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_E_E10252101_19ddc5d2",
+    "year": 2017,
+    "track": "E",
+    "title": "多波次导弹发射中的规划问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "预测",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "整数规划"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 6,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [],
+    "page_count": 31,
+    "section_structure": "八、模型的评价与展望",
+    "source_locations": [
+      "模型建立≈p.6",
+      "模型求解≈p.22"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_E_E10294008_5aa678d6",
+    "year": 2017,
+    "track": "E",
+    "title": "多波次导弹发射中的规划问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 1,
+    "task_types": [
+      "优化",
+      "评价",
+      "分类",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "层次分析法AHP",
+      "图论/最短路",
+      "多目标规划/优化"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": null,
+    "figure_types": [],
+    "innovation_points": [
+      "本文针对多波次导弹发射中的规划问题，建立了单目标优化模型、评价模型"
+    ],
+    "page_count": 40,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_E_E10426002_3e43fadd",
+    "year": 2017,
+    "track": "E",
+    "title": "车载导弹波次作战部署",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "评价",
+      "仿真",
+      "空间图",
+      "排队库存"
+    ],
+    "models_and_algorithms": [
+      "TOPSIS",
+      "图论/最短路",
+      "动态规划"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 7,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 47,
+    "section_structure": null,
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.2",
+      "模型评价/改进≈p.5"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_E_E10487018_4f7d0c90",
+    "year": 2017,
+    "track": "E",
+    "title": "多波次导弹发射中的规划问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "评价",
+      "仿真",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "模糊综合评价",
+      "图论/最短路",
+      "多目标规划/优化"
+    ],
+    "data_modality": "网络",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 10,
+    "figure_types": [
+      "流程图/框图",
+      "柱状图"
+    ],
+    "innovation_points": [],
+    "page_count": 43,
+    "section_structure": "1 问题重述；1\n发射时刻作为第二波次机动的起始时刻。；2 模型假设与符号说明；3 问题分析；4 数据处理；5 问题一模型建立与求解；8\n发射任务中，每个发射点位使用的次数不能高过一次：；1 计算得到每个车辆进入各个转载地的时间tij；6 问题二模型建立与求解；7 问题三模型建立与求解；8 问题四模型建立与求解；9 问题五模型建立与求解",
+    "source_locations": [
+      "模型建立≈p.6",
+      "模型求解≈p.20",
+      "模型评价/改进≈p.42"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_E_E10610009_91f8c0dc",
+    "year": 2017,
+    "track": "E",
+    "title": "多波次导弹发射中的规划问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "评价",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "图论/最短路",
+      "整数规划"
+    ],
+    "data_modality": "网络",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "灵敏度/敏感性分析"
+    ],
+    "figure_count": 1,
+    "figure_types": [],
+    "innovation_points": [
+      "本文提出了基于度和集聚系数的节点重要性度量方法，将该方法应用于道路交通"
+    ],
+    "page_count": 30,
+    "section_structure": "5 问题二；6 问题三；7 问题四；8 问题五",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.24",
+      "灵敏度分析≈p.24"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_E_E90038022_ecb77b93",
+    "year": 2017,
+    "track": "E",
+    "title": "两波次导弹发射中的规划问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "评价",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "图论/最短路",
+      "多目标规划/优化",
+      "博弈论",
+      "信道建模/多径/OFDM",
+      "定位算法(AOA/TDOA/Chan/Taylor)",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "网络",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 6,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 47,
+    "section_structure": "一、问题重述；二、问题分析；三、模型假设；四、符号说明；五、两波次导弹齐射任务方案优化；六、新增转载地域的两波次导弹齐射任务方案优化；七、隐蔽待机情形下的两波次导弹齐射任务方案优化；八、基于博弈的道路节点重要性评价；九、多目标下两波次导弹齐射任务方案优化；十、优缺点分析；十一、参考文献；一、路径优化lingo 程序",
+    "source_locations": [
+      "模型求解≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_E_EK0411_93adcfdf",
+    "year": 2017,
+    "track": "E",
+    "title": "多波次导弹发射中的规划问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "评价",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "图论/最短路",
+      "多目标规划/优化",
+      "动态规划",
+      "博弈论"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 8,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [],
+    "page_count": 52,
+    "section_structure": "一、 问题重述；二、 模型假设；三、 符号说明；四、 问题一；五、 问题二；六、 问题三；七、 问题四；八、 问题五；九、 参考文献；十、 附录",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_F_F10256001_c021d812",
+    "year": 2017,
+    "track": "F",
+    "title": "地下物流系统的构建研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "分类",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "数据包络分析DEA",
+      "粒子群算法PSO",
+      "模拟退火",
+      "图论/最短路",
+      "动态规划",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 24,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [
+      "本文建立了地下物流节点选择聚类模型、地下物流节点选择验证模型、地下"
+    ],
+    "page_count": 68,
+    "section_structure": "1 问题重述；2 模型假设与符号说明；3 问题分析；4 问题一模型的建立与求解；8\n  考虑加权网络边带的权重，将点的强度 iS 定义为:；9\n  节点服务覆盖面积占区域总面积的百分比：；5 问题二模型的建立与求解；6 问题三模型的建立与求解；7 问题四模型的建立与求解；8 模型的评价与推广；9 地下物流系统构建体系模型的研究报告",
+    "source_locations": [
+      "模型求解≈p.24",
+      "模型检验/验证≈p.1",
+      "模型评价/改进≈p.46"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_F_F10294003_bdf3b1fe",
+    "year": 2017,
+    "track": "F",
+    "title": "构建地下物流系统网络",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "分类",
+      "仿真",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "K-means聚类",
+      "数据插值/拟合曲面"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 39,
+    "figure_types": [
+      "散点/拟合图"
+    ],
+    "innovation_points": [],
+    "page_count": 50,
+    "section_structure": "一、问题重述；二、问题分析；三、基本假设；四、符号说明；五、模型的建立与求解；一、二级节点与园区之间的双向双轨通道全部改建为双向四轨通道。；六、总结；七、模型评价及推广",
+    "source_locations": [
+      "模型建立≈p.3",
+      "模型评价/改进≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_F_F10486024_7693bd1e",
+    "year": 2017,
+    "track": "F",
+    "title": "构建地下物流系统网络",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "评价",
+      "仿真",
+      "信号处理",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "层次分析法AHP",
+      "熵权法",
+      "TOPSIS",
+      "逻辑回归",
+      "图论/最短路",
+      "整数规划"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 4,
+    "figure_types": [
+      "流程图/框图",
+      "空间/地图"
+    ],
+    "innovation_points": [
+      "本文首先根据区域划分关系，将网络架构设计问题划分为区域",
+      "本文建立了影响ULS 线网建设时序的五个效益性指标体系，"
+    ],
+    "page_count": 49,
+    "section_structure": "一、问题重述；二、问题分析；三、符号定义与说明；四、模型假设；五、模型的建立与求解；六、模型总结与评价；七、参考文献；八、附录",
+    "source_locations": [
+      "模型建立≈p.6",
+      "模型求解≈p.3",
+      "灵敏度分析≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_F_F10703002_9fa064d1",
+    "year": 2017,
+    "track": "F",
+    "title": "构建分层优化的城市地下物流系统网络",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "评价",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "主成分分析",
+      "遗传算法",
+      "蚁群算法",
+      "图论/最短路",
+      "动态规划",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 4,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 36,
+    "section_structure": "一、问题重述；二、模型假设与说明；三、符号说明；四、模型的建立与求解；五、模型的优缺点",
+    "source_locations": [
+      "模型建立≈p.21"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_F_F10710008_b1acabf8",
+    "year": 2017,
+    "track": "F",
+    "title": "构建地下物流系统网络",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "评价",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "线性规划",
+      "非线性规划",
+      "动态规划",
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 8,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 34,
+    "section_structure": "一、问题重述；二、问题分析；三、符号说明；四、模型假设；五、模型建立与求解；六、模型的评价；七、模型的改进和推广；一、各阶段方案具体安排：；三、重心法优化级点程序",
+    "source_locations": [
+      "模型建立≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_F_F90005027_33d7ef74",
+    "year": 2017,
+    "track": "F",
+    "title": "关于南京仙林地区ULS 的建设方案探析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "评价",
+      "仿真",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "图论/最短路"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "流程图/框图",
+      "空间/地图"
+    ],
+    "innovation_points": [],
+    "page_count": 54,
+    "section_structure": null,
+    "source_locations": [
+      "模型建立≈p.4",
+      "模型求解≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2017_F_FK0263_43c27987",
+    "year": 2017,
+    "track": "F",
+    "title": "构建地下物流系统网络",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "图论/最短路",
+      "整数规划"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 7,
+    "figure_types": [],
+    "innovation_points": [
+      "本文没有对8 年建设的具体方案进行详述，而是提出了解"
+    ],
+    "page_count": 63,
+    "section_structure": "一、问题背景与重述；二、模型假设与符号说明；三、问题分析；四、问题一的解答；五、问题2 的解答；六、问题3 的解答；七、问题4 的解答",
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": ""
+  }
+]

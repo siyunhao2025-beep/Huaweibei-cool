@@ -1,0 +1,85 @@
+{
+  "paper_id": "2021_A_A21102910019",
+  "year": 2021,
+  "track": "A",
+  "title": "相关矩阵组低复杂度计算和存储模型",
+  "confidence": "high",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一(W近似)",
+      "baseline": "每分块矩阵独立用GKSVD(双对角化+QR)求右奇异向量",
+      "main_model": "8x8小矩阵直接Cholesky；384分块的右奇异向量改用乘幂法+降阶法迭代求特征向量，并以相邻分块右奇异向量作下一块迭代初值",
+      "improvement": "加精度约束控制迭代次数",
+      "why_switch": "逐块GKSVD复杂度高；利用分块间强相关性把上一块解当下一块初值，迭代仅2~3次即收敛"
+    },
+    {
+      "question_id": "问题二(压缩)",
+      "baseline": "关联矩阵线性变化模型用稀疏矩阵表示(精度不满足-30dB)",
+      "main_model": "按行高相关把每行拼成384x64矩阵，SVD保留贡献率>99%主成份",
+      "improvement": "稀疏存储改为主成份压缩",
+      "why_switch": "线性变化稀疏模型达不到-30dB精度要求；行高相关特性下主成份压缩可在精度内压到65%"
+    },
+    {
+      "question_id": "问题三(整体)",
+      "baseline": "先存全量H再算",
+      "main_model": "直接用压缩后H̃代替H，再乘幂法/降阶法求右奇异向量",
+      "improvement": "存储与计算联合优化",
+      "why_switch": "压缩后再算，降存储的同时降计算复杂度"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "右奇异向量↔H*H最大特征值对应特征向量",
+    "迭代初值继承自相邻分块",
+    "SVD保留主成份贡献率>99%",
+    "-30dB精度约束"
+  ],
+  "objective_function": "在-30dB精度约束下最小化存储与计算复杂度",
+  "evaluation_metrics": [
+    "迭代多数仅2~3次",
+    "压缩比达65%",
+    "少数难收敛数据由精度约束兜底"
+  ],
+  "algorithm_details_and_complexity": "乘幂法+降阶法(Deflation)迭代求前若干最大特征向量，利用分块相关性热启动",
+  "independent_validation_design": "对题目相关矩阵组整体测试，对比逐块GKSVD验证低复杂度特性",
+  "sensitivity_robustness_ablation": [
+    "少数需多轮迭代数据的精度约束",
+    "-30dB精度下的压缩比验证"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "研究矩阵在某些维度上的关联性以降计算与存储开销",
+    "method_sentence": "小矩阵直接Cholesky，分块右奇异向量用乘幂法+降阶法并热启动",
+    "result_sentence": "迭代仅需2~3次，99%主成份压缩比65%",
+    "numbers_presentation": "用'2~3次迭代''65%压缩比'两个关键数字"
+  },
+  "figure_narrative_order": [
+    "乘幂法迭代流程图",
+    "分块相关性示意",
+    "压缩比对比",
+    "整体处理框图"
+  ],
+  "judge_high_score_reasons": [
+    "洞察右奇异向量可转为H*H特征向量问题，换用乘幂法+降阶法避开QR迭代",
+    "热启动思想(相邻分块解作初值)利用数据关联降迭代次数，是工程性强的巧思",
+    "压缩路线从稀疏模型失败中按数据特性(行高相关)改主成份压缩，体现试错与修正"
+  ],
+  "reusable_patterns": [
+    "相邻样本解作下一样本迭代初值(热启动)",
+    "特征向量↔右奇异向量转换",
+    "主成份贡献率阈值控压缩比"
+  ],
+  "transferable_ability_card_candidates": [
+    "大型SVD快速算法",
+    "矩阵相关性热启动迭代",
+    "低秩压缩存储"
+  ],
+  "page_locations": {
+    "摘要": "p2-3",
+    "问题一正文": "p7-17",
+    "乘幂法/降阶法": "p11-17",
+    "问题二正文": "p18-21",
+    "问题三正文": "p24-25"
+  },
+  "notes": "数模之星提名奖",
+  "award_level": "一等奖",
+  "award_confidence": "high"
+}

@@ -1,0 +1,94 @@
+{
+  "paper_id": "2021_E_E21103860005",
+  "year": 2021,
+  "track": "E",
+  "title": "信号干扰下的超宽带精确定位问题",
+  "confidence": "high",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一(预处理)",
+      "baseline": "均值去重",
+      "main_model": "3σ正态检验+距离阈值系统聚类，正常15mm/异常100mm每类留最近均值点",
+      "improvement": "聚类去冗余",
+      "why_switch": "重复测量冗余大，聚类去相似保代表"
+    },
+    {
+      "question_id": "问题二三(定位)",
+      "baseline": "直接最小二乘",
+      "main_model": "最小二乘+残差加权误差抑制算近似坐标，再极限学习机/BP优化",
+      "improvement": "二阶段",
+      "why_switch": "LS初值粗，神经网络精修"
+    },
+    {
+      "question_id": "问题四(干扰分类)",
+      "baseline": "无特征",
+      "main_model": "从测距衍生9几何新特征，选5个建随机森林分类",
+      "improvement": "特征工程+随机森林",
+      "why_switch": "原始测距无判别力，几何衍生特征有区分度"
+    },
+    {
+      "question_id": "问题五(动态轨迹)",
+      "baseline": "逐点定位",
+      "main_model": "先判干扰类型选对应定位模型，再利用运动连续性修正+轨迹平滑",
+      "improvement": "先分类再定位再平滑",
+      "why_switch": "靶点相邻位置变化小，平滑降噪声"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "3σ准则",
+    "正常15mm/异常100mm聚类阈值",
+    "9个几何新特征(距离/距离差/距离差和)",
+    "轨迹平滑"
+  ],
+  "objective_function": "最小化1/2/3维定位误差，分类正确率最高",
+  "evaluation_metrics": [
+    "正常3维误差141.7mm/异常419.4mm",
+    "5特征随机森林分类准确率85.1%",
+    "轨迹呈N字形"
+  ],
+  "algorithm_details_and_complexity": "聚类去冗余→LS+残差加权→ELM/BP精修→几何特征随机森林分类→轨迹平滑",
+  "independent_validation_design": "测试集1维/2维/3维误差分别报告；分类测试集准确率",
+  "sensitivity_robustness_ablation": [
+    "正常vs异常模型误差对比",
+    "9特征选5的重要性",
+    "轨迹平滑前后"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "UWB抗干扰下定位精度急剧下降，需精确定位",
+    "method_sentence": "聚类去冗余+LS残差加权+神经网络精修+几何特征分类+轨迹平滑",
+    "result_sentence": "正常3维误差141.7mm，分类85.1%，轨迹N字形",
+    "numbers_presentation": "分正常/异常报1/2/3维误差毫米数"
+  },
+  "figure_narrative_order": [
+    "聚类阈值示意",
+    "LS近似坐标图",
+    "定位误差对比表",
+    "N字轨迹图"
+  ],
+  "judge_high_score_reasons": [
+    "完整闭环：预处理→定位→干扰分类→动态轨迹，五问层层递进",
+    "自己从测距衍生9个几何特征再筛5个做分类，特征工程主动",
+    "先判干扰类型再选定位模型，问题分解合理",
+    "动态轨迹用运动连续性+平滑，体现对物理规律理解"
+  ],
+  "reusable_patterns": [
+    "聚类去相似样本",
+    "LS初值+神经精修二阶段",
+    "测距衍生几何特征",
+    "先分类再分模型处理"
+  ],
+  "transferable_ability_card_candidates": [
+    "UWB定位",
+    "干扰判别分类",
+    "动态轨迹重建"
+  ],
+  "page_locations": {
+    "摘要": "p2-3",
+    "残差加权定位": "p15-21",
+    "随机森林分类": "p28-34",
+    "N字轨迹": "p35-37"
+  },
+  "notes": "数模之星提名奖",
+  "award_level": "一等奖",
+  "award_confidence": "high"
+}

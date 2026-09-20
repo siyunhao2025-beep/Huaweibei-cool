@@ -1,0 +1,10 @@
+{
+  "kind": "SensitivityTornado",
+  "data": "DEMO_PREVIEW_ONLY",
+  "rows": 7,
+  "statistics": {
+    "parameters": 7,
+    "most_sensitive": "参数 α",
+    "max_abs_effect": 0.31
+  }
+}

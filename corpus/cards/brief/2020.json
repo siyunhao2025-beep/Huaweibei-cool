@@ -1,0 +1,1775 @@
+[
+  {
+    "paper_id": "2020_A_A20102460127",
+    "year": 2020,
+    "track": "A",
+    "title": "ASIC 芯片上的载波恢复DSP 算法设计与实现",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "通信仿真",
+      "优化",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "16QAM调制解调",
+      "色散补偿",
+      "导频相噪插值",
+      "LS最小二乘",
+      "毛刺剔除",
+      "三维曲面拟合"
+    ],
+    "data_modality": "仿真信号",
+    "data_scale": "仿真",
+    "validation_methods": [
+      "RSNR代价<0.3dB",
+      "误码率BER",
+      "星座图",
+      "蒙特卡洛"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "星座图",
+      "误码率曲线",
+      "三维曲面图",
+      "ASIC电路结构图"
+    ],
+    "innovation_points": [
+      "遍历相邻导频间隔取最大2900使Pilot开销最小(3.45e-4)",
+      "揭示色散与线宽耦合效应并拟合三维曲面方程",
+      "导频相噪毛刺剔除提升插值准确度"
+    ],
+    "page_count": 40,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_A_A20102480161",
+    "year": 2020,
+    "track": "A",
+    "title": "ASIC 芯片上的载波恢复DSP 算法设计与实现",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "通信仿真",
+      "优化",
+      "硬件资源建模"
+    ],
+    "models_and_algorithms": [
+      "16QAM",
+      "导频长度可变准则",
+      "LS估计",
+      "MAP最大后验",
+      "BER-RSNR曲线",
+      "定点量化位宽建模"
+    ],
+    "data_modality": "仿真信号",
+    "data_scale": "仿真",
+    "validation_methods": [
+      "RSNR代价<3dB",
+      "BER-RSNR代价曲线",
+      "多轮仿真对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "BER曲线",
+      "导频开销关系图",
+      "硬件结构时序图"
+    ],
+    "innovation_points": [
+      "导频长度可变准则+MAP净荷相噪补偿",
+      "将线宽/色散/导频开销/并行度/位宽统一建模为资源函数",
+      "问题四建立性能-资源统筹优化综合代价函数自动优化位宽"
+    ],
+    "page_count": 35,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_A_A20104870015",
+    "year": 2020,
+    "track": "A",
+    "title": "载波恢复算法设计及实现",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "通信仿真",
+      "优化",
+      "定点量化"
+    ],
+    "models_and_algorithms": [
+      "16QAM格雷映射",
+      "蒙特卡洛模拟",
+      "插值补偿",
+      "目标规划",
+      "定点量化资源优化",
+      "评价模型"
+    ],
+    "data_modality": "仿真信号",
+    "data_scale": "仿真",
+    "validation_methods": [
+      "BER=0.02",
+      "蒙特卡洛BER-Pilot符号数关系",
+      "分段位宽最优"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "星座图",
+      "Pilot开销-线宽色散关系图",
+      "位宽分段表"
+    ],
+    "innovation_points": [
+      "蒙特卡洛确定Pilot符号数9/总826/开销1.09%",
+      "给出Pilot数关于线宽LW的解析公式",
+      "按线宽分段给出最优定点位宽(6/7/8/9bit)并设计自动优化判断模型"
+    ],
+    "page_count": 42,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_A_A20106110086",
+    "year": 2020,
+    "track": "A",
+    "title": "基于通信仿真的载波恢复算法设计与ASIC 实现",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "通信仿真",
+      "优化",
+      "硬件设计"
+    ],
+    "models_and_algorithms": [
+      "MATLAB仿真框架",
+      "傅里叶去耦合",
+      "分段线性插值",
+      "响应面实验",
+      "定点量化噪声建模",
+      "Pareto"
+    ],
+    "data_modality": "仿真信号",
+    "data_scale": "仿真",
+    "validation_methods": [
+      "RSNR<0.3dB",
+      "误码率",
+      "量化比特-量化信噪比关系",
+      "ASIC资源统计"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "色散-相噪耦合图",
+      "响应面",
+      "ASIC改进电路结构图"
+    ],
+    "innovation_points": [
+      "按时移/频移对色散与相噪去耦合后分段线性插值相噪补偿",
+      "响应面实验建立色散/线宽/BER关系",
+      "量化噪声建模+数值统计做比特分配"
+    ],
+    "page_count": 40,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_A_A20910040037",
+    "year": 2020,
+    "track": "A",
+    "title": "ASIC 芯片上的载波恢复DSP 算法设计与实现",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "通信仿真",
+      "优化",
+      "硬件设计"
+    ],
+    "models_and_algorithms": [
+      "非线性优化",
+      "枚举法",
+      "CRAP1算法",
+      "泰勒级数展开",
+      "反馈机制",
+      "综合代价函数"
+    ],
+    "data_modality": "仿真信号",
+    "data_scale": "仿真",
+    "validation_methods": [
+      "RSNR<0.3dB",
+      "BER-信噪比曲线",
+      "阶梯函数拟合",
+      "位宽-资源曲线"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "导频开销曲线",
+      "时序图",
+      "位宽资源权衡图"
+    ],
+    "innovation_points": [
+      "设计CRAP1算法在RSNR<0.3dB下导频开销达1/1024",
+      "证明线宽/色散对导频开销成阶梯函数关系",
+      "借鉴锁相环反馈机制给出资源最低CR算法"
+    ],
+    "page_count": 43,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_B_B20100040057",
+    "year": 2020,
+    "track": "B",
+    "title": "降低汽油精制过程中的辛烷值损失模型",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "数据预处理",
+      "聚类",
+      "特征选择",
+      "预测",
+      "优化"
+    ],
+    "models_and_algorithms": [
+      "3σ准则",
+      "GMM高斯混合(EM)",
+      "t-SNE降维",
+      "信息增益",
+      "斯皮尔曼相关",
+      "SFA慢特征分析",
+      "JITL即时学习"
+    ],
+    "data_modality": "结构化(化工366变量)",
+    "data_scale": "小样本(325样本)",
+    "validation_methods": [
+      "与真实值对比",
+      "多模型比较"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "t-SNE聚类图",
+      "信息增益排序图",
+      "预测对比曲线"
+    ],
+    "innovation_points": [
+      "对354操作变量用EM-GMM聚成30类再信息增益+斯皮尔曼筛到28变量",
+      "SFA-JITL慢特征即时学习框架,局部加权慢特征随样本更新",
+      "适用于工艺流程数据在线更新的预测建模"
+    ],
+    "page_count": 36,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_B_B20100050019",
+    "year": 2020,
+    "track": "B",
+    "title": "汽油精制过程中的辛烷值损失预测及优化研究",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "数据预处理",
+      "特征选择",
+      "预测",
+      "优化"
+    ],
+    "models_and_algorithms": [
+      "3σ拉依达准则",
+      "灰色关联度分析",
+      "动量因子BP神经网络",
+      "遗传算法"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "网络拟合度检测",
+      "隐含层/学习率对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "灰色关联排序图",
+      "BP结构图",
+      "优化轨迹图"
+    ],
+    "innovation_points": [
+      "灰色关联度以>80%相关度筛出30个关键变量",
+      "加入动量因子的三层BP双输出(辛烷值+硫含量)",
+      "遗传算法厘清操作变量调整下辛烷值与硫含量变化轨迹"
+    ],
+    "page_count": 42,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_B_B20102470089",
+    "year": 2020,
+    "track": "B",
+    "title": "汽油辛烷值优化建模",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "数据预处理",
+      "特征选择",
+      "预测"
+    ],
+    "models_and_algorithms": [
+      "拉格朗日插值",
+      "随机森林重要性",
+      "距离相关系数",
+      "三层BP神经网络"
+    ],
+    "data_modality": "结构化(367变量)",
+    "data_scale": "小样本(325样本)",
+    "validation_methods": [
+      "80/20训练测试",
+      "变量独立性检验",
+      "物理可解释性"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "重要性排序图",
+      "相关性热力图",
+      "预测拟合图"
+    ],
+    "innovation_points": [
+      "随机森林重要性取前60后用距离相关系数逐步剔除高相关→27独立变量",
+      "27变量物理意义可解释性检验",
+      "三层BP(输入27/隐层50/输出1)预测产品辛烷值"
+    ],
+    "page_count": 51,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_B_B20102940042",
+    "year": 2020,
+    "track": "B",
+    "title": "汽油辛烷值优化建模",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "数据预处理",
+      "特征选择",
+      "预测"
+    ],
+    "models_and_algorithms": [
+      "偏相关分析",
+      "互信息降维",
+      "遗传算法-BP降维",
+      "单/双隐层BP",
+      "小波神经网络"
+    ],
+    "data_modality": "结构化(364变量)",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "预测误差区间",
+      "两降维模型对比(8变量重合)"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "互信息排序图",
+      "遗传进化图",
+      "预测误差对比"
+    ],
+    "innovation_points": [
+      "模型一互信息降维 vs 模型二遗传算法-BP降维对比,8变量重合且独立性更优",
+      "产品辛烷值与原料辛烷值偏相关达0.973",
+      "小波神经网络预测误差(-0.15%)优于单双隐层BP"
+    ],
+    "page_count": 54,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_B_B20102980116",
+    "year": 2020,
+    "track": "B",
+    "title": "降低汽油精制过程中的辛烷值损失模型",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "数据预处理",
+      "特征选择",
+      "预测",
+      "博弈优化"
+    ],
+    "models_and_algorithms": [
+      "mRMR最大相关最小冗余",
+      "IFS增量特征选择",
+      "RBF-SVR",
+      "决策树回归",
+      "合作博弈论",
+      "多目标优化"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "R2/MSE/RMSE",
+      "RBF-SVR/决策树/随机森林/GBDT比较(决策树R²=93.75%)",
+      "递归特征消除验证"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "特征筛选流程",
+      "回归对比图",
+      "多目标优化图"
+    ],
+    "innovation_points": [
+      "mRMR-IFS-SVR两阶段特征筛到24变量",
+      "横向比较四种回归模型选决策树(R²=93.75%)",
+      "用合作博弈论解释变量贡献建立多目标优化"
+    ],
+    "page_count": 50,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_B_B20103350031",
+    "year": 2020,
+    "track": "B",
+    "title": "基于数据挖掘技术的汽油辛烷值优化研究",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 5,
+    "task_types": [
+      "数据预处理",
+      "特征选择",
+      "预测",
+      "优化",
+      "可视化"
+    ],
+    "models_and_algorithms": [
+      "两阶段整定",
+      "综合筛选模型",
+      "改进LSTM",
+      "GA遗传算法参数优化",
+      "GA/PSO优化",
+      "t-SNE"
+    ],
+    "data_modality": "结构化(367变量)",
+    "data_scale": "小样本(325样本)",
+    "validation_methods": [
+      "对比3种典型预测方法",
+      "t-SNE二维三维轨迹可视化",
+      "均匀步长调整稳定性"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "两阶段整定流程",
+      "LSTM结构图",
+      "辛烷值-硫含量变化轨迹3D图"
+    ],
+    "innovation_points": [
+      "两阶段整定算法迭代7次将367变量筛至230变量",
+      "改进LSTM并用GA优化参数,对比其他3种预测方法",
+      "GA+PSO对325样本优化操作条件,t-SNE可视化变化轨迹"
+    ],
+    "page_count": 82,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_B_B20103380015",
+    "year": 2020,
+    "track": "B",
+    "title": "基于数据挖掘降低汽油精制过程辛烷值损失",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "数据预处理",
+      "特征选择",
+      "预测"
+    ],
+    "models_and_algorithms": [
+      "贝塞尔公式",
+      "斯皮尔曼相关",
+      "SPSS系统聚类谱系图",
+      "BP神经网络",
+      "多元非线性回归"
+    ],
+    "data_modality": "结构化(367变量)",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "多BP模型取均值",
+      "均方误差对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "谱系聚类图",
+      "散点图",
+      "多模型预测对比"
+    ],
+    "innovation_points": [
+      "用贝塞尔公式标准误差delta做异常判定",
+      "斯皮尔曼99%置信筛53变量→系统聚成23类每类选高相关→29变量",
+      "设计3个三层全连接BP分工输入后取均值"
+    ],
+    "page_count": 47,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_B_B20103580004",
+    "year": 2020,
+    "track": "B",
+    "title": "汽油辛烷值优化建模",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 5,
+    "task_types": [
+      "特征选择",
+      "预测",
+      "集成学习",
+      "多目标优化"
+    ],
+    "models_and_algorithms": [
+      "LightGBM特征权重",
+      "决策树二次筛选",
+      "MLP/随机森林/决策树/LightGBM基学习器",
+      "GBDT元学习器两层集成",
+      "NSGA-II"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本(325样本)",
+    "validation_methods": [
+      "集成vs单基学习器误差",
+      "NSGA-II Pareto前沿",
+      "优化后RON损失降47%"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "两层集成结构图",
+      "Pareto前沿",
+      "操作变量调整表"
+    ],
+    "innovation_points": [
+      "LightGBM权重+决策树二次选→23变量",
+      "4个低相关基学习器二层集成进GBDT元学习器",
+      "NSGA-II求325样本Pareto最优,筛选304样本平均优化RON损失47%"
+    ],
+    "page_count": 39,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_B_B20104870036",
+    "year": 2020,
+    "track": "B",
+    "title": "降低汽油精制过程中的辛烷值损失模型",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "数据预处理",
+      "特征选择",
+      "预测",
+      "优化"
+    ],
+    "models_and_algorithms": [
+      "随机森林重要性",
+      "相关性分析",
+      "信息熵",
+      "多元线性回归",
+      "随机森林",
+      "梯度提升回归",
+      "敏感性分析"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "信息熵代表性验证",
+      "相关性独立性验证",
+      "敏感性分析",
+      "三回归模型对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "重要性条形图",
+      "敏感性曲线",
+      "优化流程图"
+    ],
+    "innovation_points": [
+      "操作/非操作变量差异化建模分别筛选→26变量",
+      "预测目标转换:先预测产品辛烷值再减损失而非直接预测损失",
+      "最大降幅为目标以16操作变量为决策的优化模型"
+    ],
+    "page_count": 60,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_B_B20105340008",
+    "year": 2020,
+    "track": "B",
+    "title": "降低汽油精制过程中的辛烷值损失模型",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "数据预处理",
+      "特征选择",
+      "预测"
+    ],
+    "models_and_algorithms": [
+      "皮尔森相关二级降维",
+      "遗传算法(独热编码+余弦相似度适应度)",
+      "LightGBM",
+      "线性回归/DNN/决策树/SVR/GBDT对比"
+    ],
+    "data_modality": "结构化(365变量)",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "5种预测方法对比",
+      "归一化/完整度分析"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "二级降维流程",
+      "LightGBM拟合图",
+      "误差对比表"
+    ],
+    "innovation_points": [
+      "皮尔森一级筛57变量+遗传算法二级去冗余,余弦相似度作适应度",
+      "小样本下选轻型LightGBM避免深度学习过拟合",
+      "横比5种预测方法验证LightGBM"
+    ],
+    "page_count": 48,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_B_B20106570027",
+    "year": 2020,
+    "track": "B",
+    "title": "降低汽油精制过程中的辛烷值损失模型",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "数据预处理",
+      "特征选择",
+      "预测",
+      "优化"
+    ],
+    "models_and_algorithms": [
+      "皮尔森相关",
+      "BP神经网络",
+      "XGBoost",
+      "LightGBM",
+      "随机森林",
+      "SVM",
+      "粒子群优化"
+    ],
+    "data_modality": "结构化(367变量)",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "SVM/XGBoost/LightGBM/随机森林横向对比",
+      "实验验证'预测辛烷值比预测损失更合理'假设"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "相关性热力图",
+      "模型对比表",
+      "粒子群收敛图"
+    ],
+    "innovation_points": [
+      "皮尔森+BP综合得26主要变量",
+      "实验论证应预测辛烷值而非辛烷值损失",
+      "XGBoost/LightGBM/RF/SVM横比选误差最低SVM"
+    ],
+    "page_count": 51,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_C_C20102470319",
+    "year": 2020,
+    "track": "C",
+    "title": "面向康复工程的脑电信号分析和判别模型",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "信号分类",
+      "特征选择",
+      "模式识别"
+    ],
+    "models_and_algorithms": [
+      "带通滤波",
+      "支持向量机SVM",
+      "随机森林",
+      "卷积神经网络CNN",
+      "卷积核权重通道选择",
+      "投票机制"
+    ],
+    "data_modality": "时序(脑电EEG)",
+    "data_scale": "小样本(5被试)",
+    "validation_methods": [
+      "SVM/RF/CNN在测试集对比",
+      "通道选择后精度"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "脑电波形图",
+      "卷积核权重热力图",
+      "识别结果表"
+    ],
+    "innovation_points": [
+      "把P300目标识别转为逐周期二分类",
+      "用卷积核权重衡量20通道重要性做个体化通道选择",
+      "跨被试共识(≥3人选)选15通道通用组合"
+    ],
+    "page_count": 42,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_C_C20102480095",
+    "year": 2020,
+    "track": "C",
+    "title": "脑电信号分析与判别模型研究",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "信号分类",
+      "特征选择",
+      "半监督",
+      "睡眠分期"
+    ],
+    "models_and_algorithms": [
+      "经验模态分解EMD",
+      "四阶Butterworth低通",
+      "FFT",
+      "SVM/DNN/LSTM/1D-CNN",
+      "注意力机制1D-CNN",
+      "重采样"
+    ],
+    "data_modality": "时序(脑电EEG)",
+    "data_scale": "小样本(5被试)",
+    "validation_methods": [
+      "验证集准确率(SVM68.17/DNN71.12/LSTM73.44/1D-CNN77.87)",
+      "注意力权重通道筛选"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "IMF分量图",
+      "注意力权重图",
+      "识别准确率对比"
+    ],
+    "innovation_points": [
+      "EMD得8个IMF分量结合Butterworth+FFT去噪",
+      "多分类转行列二分类提升P300识别",
+      "带注意力机制1D-CNN做个体化通道筛选"
+    ],
+    "page_count": 68,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_C_C20102520034",
+    "year": 2020,
+    "track": "C",
+    "title": "面向康复工程的脑电信号分析和判别模型",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "信号分类",
+      "特征选择",
+      "半监督",
+      "睡眠分期"
+    ],
+    "models_and_algorithms": [
+      "带通滤波0.2-8Hz",
+      "PCA主成分",
+      "SVM半监督",
+      "SVM/KNN/1D-CNN对比"
+    ],
+    "data_modality": "时序(脑电EEG)",
+    "data_scale": "小样本(5被试)",
+    "validation_methods": [
+      "SVM/KNN/1D-CNN睡眠分期对比(1D-CNN最优)",
+      "半监督验证"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "脑电滤波前后对比",
+      "PCA通道图",
+      "睡眠分期图"
+    ],
+    "innovation_points": [
+      "带通0.2-8Hz+单次分割+降采样预处理",
+      "PCA得适用所有被试的最优通道组合",
+      "SVM半监督以少量有标签样本提升训练效率"
+    ],
+    "page_count": 26,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_C_C20102840089",
+    "year": 2020,
+    "track": "C",
+    "title": "面向康复工程的脑电信号分析和判别模型",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "信号分类",
+      "特征选择",
+      "睡眠分期"
+    ],
+    "models_and_algorithms": [
+      "带通滤波",
+      "时域降采样",
+      "SVM",
+      "朴素贝叶斯",
+      "CNN批归一化",
+      "PCA",
+      "K-Means"
+    ],
+    "data_modality": "时序(脑电EEG)",
+    "data_scale": "小样本(5被试)",
+    "validation_methods": [
+      "SVM/朴素贝叶斯/CNN对比(CNN最优)",
+      "3轮识别成功率"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "时间窗截取图",
+      "CNN结构图",
+      "K-Means睡眠聚类图"
+    ],
+    "innovation_points": [
+      "截取150-650ms时间窗+时域降采样225→32点",
+      "正样本扩5倍解决1:5正负不平衡,批归一化防梯度消失",
+      "K-Means做睡眠阶段无监督分类"
+    ],
+    "page_count": 64,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_C_C20102860127",
+    "year": 2020,
+    "track": "C",
+    "title": "面向康复工程的脑电信号分析和判别模型",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "信号分类",
+      "特征选择",
+      "半监督"
+    ],
+    "models_and_algorithms": [
+      "46阶巴特沃斯IIR滤波0.1-20Hz",
+      "随机森林",
+      "KNN",
+      "spike-and-slab贝叶斯稀疏回归",
+      "S3VM半监督",
+      "EP算法"
+    ],
+    "data_modality": "时序(脑电EEG)",
+    "data_scale": "小样本(5被试)",
+    "validation_methods": [
+      "随机森林92% vs KNN84%",
+      "S3VM带标记预训练+拉格朗日启发式"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "滤波器幅频图",
+      "贝叶斯通道后验图",
+      "识别准确率对比"
+    ],
+    "innovation_points": [
+      "46阶巴特沃斯IIR带通+阻带-80dB预处理",
+      "spike-and-slab先验贝叶斯稀疏回归+EP算法选通道",
+      "S3VM半监督引正负样本比例因子r处理不平衡"
+    ],
+    "page_count": 43,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_C_C20106980009",
+    "year": 2020,
+    "track": "C",
+    "title": "面向康复工程的脑电信号分析和判别模型",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "信号分类",
+      "特征选择",
+      "半监督",
+      "睡眠分期"
+    ],
+    "models_and_algorithms": [
+      "ICA去眼电",
+      "小波变换+能量熵",
+      "动态卷积神经网络",
+      "SVM",
+      "KNN",
+      "SVR-RFE递归特征消除",
+      "GAN样本扩增",
+      "原型网络"
+    ],
+    "data_modality": "时序(脑电EEG)",
+    "data_scale": "小样本(5被试)",
+    "validation_methods": [
+      "动态CNN/SVM/KNN对比(SVM最优)",
+      "GAN扩增后半监督测试"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "ICA去噪图",
+      "能量熵特征图",
+      "原型网络嵌入图"
+    ],
+    "innovation_points": [
+      "ICA去眼电+小波能量熵特征提取",
+      "SVR-RFE递归消除做通道选择",
+      "GAN扩增样本+原型网络解决半监督小样本"
+    ],
+    "page_count": 50,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_D_D20102470005",
+    "year": 2020,
+    "track": "D",
+    "title": "无人机集群追逃博弈模型研究",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "追逃博弈",
+      "路径规划",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "阿波罗尼奥斯圆定理",
+      "离散时间追逃博弈",
+      "蒙特卡洛扫描范围估计",
+      "三种E机动策略(暴力/直线/欺骗)",
+      "支付函数"
+    ],
+    "data_modality": "仿真(几何区域)",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "蒙特卡洛估计扫描范围",
+      "可逃离区面积计算(776/1358/1528 km²)",
+      "仿真"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "阿波罗尼奥斯圆图",
+      "花瓣形扫描范围",
+      "可逃离区坐标图"
+    ],
+    "innovation_points": [
+      "引入阿波罗尼奥斯可逃离范围定理把博弈转几何分析",
+      "三种E机动策略层层递进(暴力/近似直线/欺骗性突防)",
+      "均匀分布圆形方案扫描范围大于三角形方案"
+    ],
+    "page_count": 48,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_D_D20102690110",
+    "year": 2020,
+    "track": "D",
+    "title": "无人机集群协同对抗",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "微分博弈",
+      "最优控制",
+      "路径规划",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "定性/定量微分对策",
+      "哈密顿极大极小原理",
+      "纳均衡矩阵对策",
+      "蚁群算法",
+      "栅格化航迹优化"
+    ],
+    "data_modality": "仿真(二维对抗)",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "哈密顿函数倒向积分最优轨线",
+      "蚁群纳什均衡",
+      "通道宽度92.2Km"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "界栅/躲避区图",
+      "哈密顿函数图",
+      "蚁群收敛图"
+    ],
+    "innovation_points": [
+      "把微分对策变分化用哈密顿极大极小解界栅",
+      "动态博弈+矩阵结合求纳均衡突防策略",
+      "栅格化后蚁群反推通道宽度极限值"
+    ],
+    "page_count": 67,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_D_D20102860223",
+    "year": 2020,
+    "track": "D",
+    "title": "无人机集群协同对抗",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "非线性优化",
+      "博弈推演",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "蒙特卡洛突防概率",
+      "内点法非线性规划",
+      "正则化目标函数",
+      "全联立正交配置有限元法",
+      "AMPL/MATLAB"
+    ],
+    "data_modality": "仿真(二维对抗)",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "蒙特卡洛突防概率图",
+      "带宽渐进松弛逼近Mmin=91km/Mmax=39km"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "突防概率热力图",
+      "正交配置离散图",
+      "带宽收敛曲线"
+    ],
+    "innovation_points": [
+      "贪婪队形拦截+内点法蓝方突防+蒙特卡洛概率推演",
+      "正则化改进目标函数使时间最短突防",
+      "全联立正交配置有限元法离散状态量提高多波次推演效率"
+    ],
+    "page_count": 50,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_D_D20107010019",
+    "year": 2020,
+    "track": "D",
+    "title": "无人机集群协同对抗",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "微分博弈",
+      "路径规划",
+      "智能决策",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "微分博弈路径规划",
+      "BP神经网络多机目标分配",
+      "强化学习G2ANet博弈均衡"
+    ],
+    "data_modality": "仿真(二维对抗)",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "BP训练分配结果(1-3-1模式)",
+      "G2ANet博弈均衡分析",
+      "仿真"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "路径规划图",
+      "兵力分配图",
+      "对抗博弈树"
+    ],
+    "innovation_points": [
+      "微分博弈建立最小通道带宽优化并证明上下限存在",
+      "BP神经网络给出红方1-3-1兵力分配方案",
+      "强化学习G2ANet求红蓝最优拦截/防守策略"
+    ],
+    "page_count": 27,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_D_D20910240043",
+    "year": 2020,
+    "track": "D",
+    "title": "无人机集群协同对抗",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "博弈",
+      "路径规划",
+      "理论证明"
+    ],
+    "models_and_algorithms": [
+      "截击三角形空中拦截",
+      "垂直/斜向/机动突防",
+      "充分必要条件推导",
+      "圆周构型拦截",
+      "Stackelberg博弈"
+    ],
+    "data_modality": "仿真(二维对抗)",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "突防充分必要条件严格证明",
+      "拦截成功充分必要条件",
+      "区域Pareto"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "截击三角形",
+      "突防区边界图",
+      "Stackelberg博弈树"
+    ],
+    "innovation_points": [
+      "理论推导垂直/斜向突防成功的充分必要条件",
+      "拦截概率最大化转为突防区最小化+集群最优布设",
+      "Stackelberg博弈刻画规模效应与结构效应能力涌现"
+    ],
+    "page_count": 62,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_D_D20910240065",
+    "year": 2020,
+    "track": "D",
+    "title": "无人机集群协同对抗",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "可达集",
+      "博弈",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "反向可达集",
+      "可控系统",
+      "并集初始安全状态集合",
+      "层次分析法",
+      "系统动力学"
+    ],
+    "data_modality": "仿真(二维对抗)",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "反向可达集求解",
+      "与穷举搜索计算效率对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "反向可达集图",
+      "拦截区域演变图",
+      "初始安全状态集"
+    ],
+    "innovation_points": [
+      "把对抗看作可控系统用反向可达集逆时间求拦截区域",
+      "各时刻初始安全状态集求并集得突防初始集",
+      "无需穷举双方动态对抗,计算量小效率高"
+    ],
+    "page_count": 46,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_E_E20102690219",
+    "year": 2020,
+    "track": "E",
+    "title": "能见度估计与预测",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "回归",
+      "深度学习",
+      "图像估计"
+    ],
+    "models_and_algorithms": [
+      "Lasso",
+      "三次多项式拟合",
+      "SIFT尺度不变特征",
+      "全连接神经网络",
+      "暗通道先验",
+      "车道分隔线几何"
+    ],
+    "data_modality": "气象时序+视频图像",
+    "data_scale": "万级(1860×15766特征)",
+    "validation_methods": [
+      "全天/白天/夜间三场景R²=0.94",
+      "训练/验证R²=0.94/0.86",
+      "数据分布均衡划分"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "气象因子相关图",
+      "神经网络结构图",
+      "暗通道透射率图"
+    ],
+    "innovation_points": [
+      "Lasso+相关性选RH/TEMP/WS2A三因子分场景三次多项式",
+      "SIFT提1860×15766图像特征训练深度学习能见度估计",
+      "不依赖能见度观测值:暗通道先验+车道线间距设计自估计"
+    ],
+    "page_count": 57,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_E_E20104250114",
+    "year": 2020,
+    "track": "E",
+    "title": "基于视频数据的能见度估计与预测",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "回归",
+      "深度学习",
+      "时间序列",
+      "图像估计"
+    ],
+    "models_and_algorithms": [
+      "多元线性回归",
+      "VGG16卷积神经网络",
+      "景深特征",
+      "时间序列预测"
+    ],
+    "data_modality": "气象时序+视频图像",
+    "data_scale": "万级",
+    "validation_methods": [
+      "相关系数矩阵",
+      "VGG16精度评估",
+      "能见度时间曲线"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "相关系数热力图",
+      "VGG16结构图",
+      "能见度曲线"
+    ],
+    "innovation_points": [
+      "RVR与MOR两种能见度定义分别建回归方程区分灯光影响",
+      "VGG16深度学习估计机场视频能见度",
+      "仅靠视频景深特征不依赖观测值的能见度估计"
+    ],
+    "page_count": 54,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_E_E20104590039",
+    "year": 2020,
+    "track": "E",
+    "title": "能见度估计与预测",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "回归",
+      "图像分类",
+      "图像估计"
+    ],
+    "models_and_algorithms": [
+      "Pearson相关",
+      "多元回归",
+      "改进CNN 9类Softmax",
+      "大气散射模型",
+      "暗通道先验",
+      "交比不变灭点"
+    ],
+    "data_modality": "气象时序+视频图像",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "能见度散布验证",
+      "CNN识别率77.8%",
+      "暗通道去雾后定位"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "气象因子散点图",
+      "CNN结构图",
+      "暗通道透射率图"
+    ],
+    "innovation_points": [
+      "按能见度动态分9类(低能见度细分足够类别)提高分类精度",
+      "大气散射模型把能见度转大气消光系数求取",
+      "暗通道先验+交比不变灭点求目标距离反推能见度"
+    ],
+    "page_count": 27,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_E_E20104590100",
+    "year": 2020,
+    "track": "E",
+    "title": "大雾演化规律的量化分析与预测模型研究",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "回归",
+      "深度学习",
+      "时间序列预测"
+    ],
+    "models_and_algorithms": [
+      "多元非线性回归",
+      "遗传算法求解参数",
+      "视频深度学习反演",
+      "景深亮度差",
+      "ARIMA",
+      "灰色预测"
+    ],
+    "data_modality": "气象时序+视频图像",
+    "data_scale": "万级",
+    "validation_methods": [
+      "SPSS/Matlab统计检验",
+      "遗传算法参数合理性",
+      "时间序列趋势"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "多元回归曲面",
+      "深度学习反演流程图",
+      "大雾消散预测曲线"
+    ],
+    "innovation_points": [
+      "遗传算法求解多变量非线性回归参数",
+      "利用视频连续信息建深度学习反演模型",
+      "景深物体亮度差+时间序列预测大雾消散时间"
+    ],
+    "page_count": 68,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_E_E20112870005",
+    "year": 2020,
+    "track": "E",
+    "title": "基于深度学习的大雾条件下能见度估计与预测",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "回归",
+      "时空深度学习",
+      "图像去雾估计"
+    ],
+    "models_and_algorithms": [
+      "气象因子非线性拟合(三角/指数)",
+      "ResNet空间特征",
+      "LSTM时间特征",
+      "ResNet+LSTM融合",
+      "暗通道先验+引导滤波",
+      "大气消光"
+    ],
+    "data_modality": "气象时序+视频图像",
+    "data_scale": "万级",
+    "validation_methods": [
+      "长视频切1分钟短视频",
+      "6类标签",
+      "交叉熵收敛",
+      "错判率17.23%"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "气象因子关系曲线",
+      "ResNet+LSTM结构图",
+      "透射率图"
+    ],
+    "innovation_points": [
+      "能见度分6类映射标签构造视频数据集",
+      "ResNet提空间域+LSTM提时间域的时空融合模型",
+      "引导滤波优化透射率消除块状效应+几何建模道路深度"
+    ],
+    "page_count": 50,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_E_E20114820008",
+    "year": 2020,
+    "track": "E",
+    "title": "大雾天气下的能见度估计与预测问题",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "回归",
+      "迁移学习",
+      "图像去雾",
+      "时间序列预测"
+    ],
+    "models_and_algorithms": [
+      "分位数非线性回归",
+      "CNN+迁移学习",
+      "梯度导向滤波暗通道先验",
+      "ARMA(3,3)",
+      "PSO-NGBM(1,1)非线性灰色伯努利"
+    ],
+    "data_modality": "气象时序+视频图像",
+    "data_scale": "万级",
+    "validation_methods": [
+      "调整R²/各变量检验最优分位点",
+      "BP神经网络对照",
+      "ARMA/PSO-NGBM预测对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "分位数回归图",
+      "迁移学习示意图",
+      "能见度时间曲线"
+    ],
+    "innovation_points": [
+      "分位数非线性回归从多分位点刻画气象-能见度非线性",
+      "CNN+迁移学习对比传统BP突出迁移优势",
+      "PSO优化非线性灰色伯努利模型PSO-NGBM(1,1)预测大雾消散"
+    ],
+    "page_count": 70,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_F_F20100070005",
+    "year": 2020,
+    "track": "F",
+    "title": "飞行器质心平衡供油策略优化",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "几何建模",
+      "超启发式优化",
+      "离散规划"
+    ],
+    "models_and_algorithms": [
+      "质心-俯仰角-供油关系模型",
+      "35种供油模式",
+      "120窗口滚动时域",
+      "遗传编程超启发式hybrid hyper-heuristic"
+    ],
+    "data_modality": "结构化(油箱几何+耗油)",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "给定数据集验证",
+      "最大欧氏距离1.109137m"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "质心变化曲线",
+      "供油模式图",
+      "超启发式流程图"
+    ],
+    "innovation_points": [
+      "归纳35种供油模式把超高维连续优化转120维离散",
+      "滚动时域以最小窗口产生唯一供油序列",
+      "遗传编程在启发式解空间上优化供油模式选择规则"
+    ],
+    "page_count": 57,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_F_F20102480125",
+    "year": 2020,
+    "track": "F",
+    "title": "质心平衡供油策略设计：贪心和搜索的结合",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "几何建模",
+      "贪心优化",
+      "聚类修正"
+    ],
+    "models_and_algorithms": [
+      "油箱坐标系转换",
+      "逐时间节点贪心最优",
+      "聚类方法修正最优解",
+      "允许耗油浪费"
+    ],
+    "data_modality": "结构化(油箱几何)",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "允许浪费vs不允许浪费对比(欧氏距离6.96e-5m vs 0.1246m,差1790倍)",
+      "耗油仅浪费0.222kg"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "质心偏差曲线",
+      "供油策略图",
+      "允许/不允许浪费对比表"
+    ],
+    "innovation_points": [
+      "逐节点贪心得忽略连续约束最优解再用聚类修正迭代",
+      "提出允许一定耗油浪费(20%计划)换取质心偏差大幅降低",
+      "质心偏差最大仅6.96e-5m而耗油浪费仅0.222kg"
+    ],
+    "page_count": 76,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_F_F20102690221",
+    "year": 2020,
+    "track": "F",
+    "title": "飞行器质心平衡供油策略优化",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "几何建模",
+      "数值优化",
+      "启发式"
+    ],
+    "models_and_algorithms": [
+      "积分求油箱质心",
+      "序列二次规划SQP",
+      "改进模拟退火算法",
+      "初始油量分布算法"
+    ],
+    "data_modality": "结构化(油箱几何)",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "质心偏差最大0.065365m/0.029063m",
+      "总供油量6441.574kg/6805.217kg"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "质心3D变化曲线",
+      "SQP流程图",
+      "模拟退火收敛图"
+    ],
+    "innovation_points": [
+      "油箱分六状态用积分直接求各时刻质心",
+      "问题二拆成单时刻SQP+全程改进模拟退火双子问题",
+      "问题三新增指定初始总油量的SQP初始油量分布子问题"
+    ],
+    "page_count": 57,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_F_F20102840100",
+    "year": 2020,
+    "track": "F",
+    "title": "飞行器质心平衡供油策略优化",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "几何建模",
+      "贪心优化"
+    ],
+    "models_and_algorithms": [
+      "俯仰角油面5形状(矩形/三角/2梯形/五边形)9质心公式",
+      "枚举34供油组合",
+      "贪心单目标二次优化"
+    ],
+    "data_modality": "结构化(油箱几何)",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "t=1时刻与附件3首质心相同连续性验证",
+      "复杂度O(n)"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "油面形状切换图",
+      "质心变化曲线",
+      "供油策略图"
+    ],
+    "innovation_points": [
+      "俯仰角下油面5种形状9个分段质心公式把三维转二维",
+      "34种供油组合7200秒枚举指数级,贪心策略得全局近似最优",
+      "4条简化假设(时长/速度/比例/总量)降复杂度"
+    ],
+    "page_count": 75,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_F_F20102920009",
+    "year": 2020,
+    "track": "F",
+    "title": "飞行器质心平衡供油策略优化研究",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "几何建模",
+      "二次规划",
+      "优化"
+    ],
+    "models_and_algorithms": [
+      "油截面3形状(直角三角形/梯形/梯形+矩形)形心公式",
+      "0-1定性函数",
+      "二次规划混合优化",
+      "T=90s窗口局部优化拼接",
+      "初始总油9m³规划"
+    ],
+    "data_modality": "结构化(油箱几何)",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "质心偏差最大0.0062128m",
+      "总供油量6441.5242kg与耗油一致"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "油截面形心图",
+      "供油曲线",
+      "二次规划流程图"
+    ],
+    "innovation_points": [
+      "证明油截面3种形状形心x-z坐标公式并分段",
+      "0-1定性函数公式化供油约束建二次规划混合模型",
+      "每油箱供油持续T=90s窗口局部最优拼接得可行解"
+    ],
+    "page_count": 45,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  },
+  {
+    "paper_id": "2020_F_F20105320023",
+    "year": 2020,
+    "track": "F",
+    "title": "飞行器质心平衡供油策略优化研究",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "几何建模",
+      "智能优化",
+      "分层优化"
+    ],
+    "models_and_algorithms": [
+      "燃油质心4类定位",
+      "带约束遗传算法",
+      "粒子群算法",
+      "深度优先搜索DFS分层优化"
+    ],
+    "data_modality": "结构化(油箱几何)",
+    "data_scale": "小样本",
+    "validation_methods": [
+      "带约束GA vs PSO对比(GA更快更优,O(n³))",
+      "质心偏移均值0.011m/方差1.3e-5"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "燃油质心定位图",
+      "GA/PSO收敛对比",
+      "分层优化流程图"
+    ],
+    "innovation_points": [
+      "燃油质心视为多棱柱中心定位分4类建模",
+      "带约束遗传算法vs粒子群横比选GA",
+      "两层分层优化:DFS优化初始油量→GA优化后续供油"
+    ],
+    "page_count": 56,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": ""
+  }
+]

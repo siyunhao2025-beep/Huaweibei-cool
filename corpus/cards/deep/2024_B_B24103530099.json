@@ -1,0 +1,127 @@
+{
+  "paper_id": "2024_B_B24103530099",
+  "year": 2024,
+  "track": "B",
+  "title": "基于特征对齐与多重预测驱动的WLAN信号预测方案",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 3,
+  "task_types": [
+    "回归预测",
+    "多分类",
+    "双层预测"
+  ],
+  "models_and_algorithms": [
+    "目标编码/虚拟变量",
+    "DBSCAN聚类",
+    "随机森林",
+    "GBDT",
+    "BP神经网络",
+    "CNN",
+    "深度残差网络",
+    "双层交叉预测模型"
+  ],
+  "data_modality": "结构化",
+  "data_scale": "万级",
+  "validation_methods": [
+    "MSE/R²训练集对比",
+    "过采样丰富样本",
+    "截断对齐两数据集长度",
+    "RF vs GBDT对比"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "DBSCAN聚类示意",
+    "SINR特征构造",
+    "双层预测架构图"
+  ],
+  "innovation_points": [
+    "DBSCAN 区分同步/异步传输按密度聚类",
+    "MCS+NSS 融合为复合标签再独热编码，降低建模复杂度",
+    "双层交叉预测：先用RF预测数据帧统计量，再用深度残差网络预测系统吞吐量"
+  ],
+  "page_count": 104,
+  "section_structure": "前言/问题一~七/模型评价与改进/参考文献/附录",
+  "source_locations": [
+    "p.1-2 摘要",
+    "p.51 模型评价"
+  ],
+  "confidence": "high",
+  "notes": "题B，双层交叉预测是亮点。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "直接回归",
+      "main_model": "DBSCAN+RF/GBDT预测seq_time",
+      "improvement": "目标编码+虚拟变量+扰动机制",
+      "why_switch": "同步/异步传输密度分布不同"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "MCS/NSS分别分类",
+      "main_model": "MCS+NSS融合复合标签+独热编码+BP/CNN",
+      "improvement": "构造SINR新特征+过采样",
+      "why_switch": "分别建模忽略两者耦合"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "直接预测吞吐量",
+      "main_model": "双层交叉预测：RF预测帧统计量→深度残差网络预测吞吐量",
+      "improvement": "利用问题一已验证的RF",
+      "why_switch": "测试集缺num_ppdu等中间量"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "SINR 信号与干扰加噪声比构造",
+    "MCS+NSS 复合标签"
+  ],
+  "objective_function": "min 吞吐量预测 MSE / (MCS,NSS) 分类损失",
+  "evaluation_metrics": [
+    "MSE",
+    "R²",
+    "训练集拟合优度",
+    "特征重要性排序"
+  ],
+  "algorithm_details_and_complexity": "DBSCAN O(n log n)；双层预测串行",
+  "independent_validation_design": "训练集 MSE/R² 对比 RF vs GBDT；过采样平衡样本",
+  "sensitivity_robustness_ablation": [
+    "BP vs CNN 对比",
+    "RF vs GBDT 对比"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "无线局域网基于IEEE802.11标准不断发展演变，然而在高密度部署场景下信号干扰、碰撞等问题显著导致实际部署带宽和数据传输速率大幅下降。",
+    "method_sentence": "DBSCAN+RF/GBDT / MCS+NSS融合+BP/CNN / 双层交叉预测(RF+深度残差)",
+    "result_sentence": "模型按特征重要性排序并完成三问预测",
+    "numbers_presentation": "未在摘要中给具体数字"
+  },
+  "figure_narrative_order": [
+    "WLAN背景",
+    "DBSCAN聚类",
+    "SINR构造",
+    "双层预测架构",
+    "模型对比"
+  ],
+  "judge_high_score_reasons": [
+    "MCS+NSS 复合标签化是工程巧思",
+    "双层交叉预测把缺中间量的问题转化为级联预测",
+    "DBSCAN 区分同步/异步传输有物理依据"
+  ],
+  "reusable_patterns": [
+    "复合标签+独热编码",
+    "DBSCAN 区分不同传输模式",
+    "双层级联预测(中间量缺失时)",
+    "RF+深度残差组合"
+  ],
+  "transferable_ability_card_candidates": [
+    "DBSCAN",
+    "双层级联预测",
+    "复合标签编码",
+    "深度残差网络"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "DBSCAN": "p.10-15",
+    "双层预测": "p.30-50",
+    "模型评价": "p.51"
+  }
+}

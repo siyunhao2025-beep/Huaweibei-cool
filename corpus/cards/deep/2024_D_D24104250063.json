@@ -1,0 +1,142 @@
+{
+  "paper_id": "2024_D_D24104250063",
+  "year": 2024,
+  "track": "D",
+  "title": "大数据驱动的地理综合问题",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 4,
+  "task_types": [
+    "时空趋势分析",
+    "相关与回归",
+    "脆弱性评价",
+    "土地利用预测"
+  ],
+  "models_and_algorithms": [
+    "Mann-Kendall检验",
+    "Sen's斜率估计",
+    "皮尔逊相关",
+    "多元回归",
+    "随机森林",
+    "SVM",
+    "XGBoost",
+    "ADB",
+    "网格搜索",
+    "交叉验证",
+    "H-E-V模型",
+    "层次分析法AHP"
+  ],
+  "data_modality": "时空",
+  "data_scale": "百万级",
+  "validation_methods": [
+    "M-K显著性检验",
+    "Sen's斜率",
+    "网格搜索+交叉验证",
+    "AHP权重",
+    "三重点区域讨论"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "M-K趋势图",
+    "相关热力图",
+    "机器学习对比",
+    "H-E-V评价",
+    "脆弱性预测图"
+  ],
+  "innovation_points": [
+    "Mann-Kendall+Sen's 做降水/土地利用时空趋势显著性检验",
+    "四种ML模型(RF/SVM/XGB/ADB)+网格搜索+交叉验证对比",
+    "H-E-V 暴露-敏感-适应能力脆弱性评价体系+AHP权重"
+  ],
+  "page_count": 62,
+  "section_structure": "问题重述/模型假设/问题一~四/模型评价/参考文献/附录",
+  "source_locations": [
+    "p.1-2 摘要"
+  ],
+  "confidence": "high",
+  "notes": "题D，统计检验+ML+H-E-V路线。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "描述统计",
+      "main_model": "M-K+Sen's",
+      "improvement": "时空趋势显著性",
+      "why_switch": "需显著性检验"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "单相关",
+      "main_model": "皮尔逊+多元回归+RF/SVM/XGB/ADB",
+      "improvement": "网格搜索+交叉验证",
+      "why_switch": "需多因素非线性影响"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "经验脆弱性",
+      "main_model": "H-E-V+AHP",
+      "improvement": "2025-2035预测",
+      "why_switch": "需结构化脆弱性体系"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "描述",
+      "main_model": "土地利用动态度+ML预测",
+      "improvement": "2025-2035",
+      "why_switch": "需预测"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "Mann-Kendall 统计量 Z",
+    "Sen's 斜率 β",
+    "H-E-V 暴露度-敏感性-适应能力",
+    "AHP 层次权重"
+  ],
+  "objective_function": "无明确优化目标；以脆弱性指数评估为目标",
+  "evaluation_metrics": [
+    "M-K显著性",
+    "Sen's斜率",
+    "ML模型交叉验证",
+    "AHP权重"
+  ],
+  "algorithm_details_and_complexity": "M-K/Sen's 非参数检验；四ML模型网格搜索",
+  "independent_validation_design": "交叉验证；三重点区域分别讨论",
+  "sensitivity_robustness_ablation": [
+    "RF/SVM/XGB/ADB 四模型对比"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "大自然无时无刻在影响人类生活，人类活动也不停地影响着自然，人文、自然等多种要素组合成了地理系统，相互依存。",
+    "method_sentence": "M-K+Sen's / 皮尔逊+多元回归+四ML / H-E-V+AHP / 动态度+ML预测",
+    "result_sentence": "预测2025-2035脆弱地区",
+    "numbers_presentation": "未在摘要给具体数字"
+  },
+  "figure_narrative_order": [
+    "M-K趋势",
+    "相关热力图",
+    "四ML对比",
+    "H-E-V评价",
+    "脆弱性预测"
+  ],
+  "judge_high_score_reasons": [
+    "M-K+Sen's 是水文地理经典非参数组合",
+    "四ML+网格搜索+交叉验证完整",
+    "H-E-V+AHP 结构化"
+  ],
+  "reusable_patterns": [
+    "M-K+Sen's 时空趋势检验",
+    "四ML+网格搜索+CV",
+    "H-E-V脆弱性+AHP",
+    "三重点区域分论"
+  ],
+  "transferable_ability_card_candidates": [
+    "M-K检验",
+    "Sen's斜率",
+    "H-E-V模型",
+    "AHP"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "M-K": "p.7-13",
+    "四ML": "p.20-35",
+    "H-E-V": "p.40-50"
+  }
+}

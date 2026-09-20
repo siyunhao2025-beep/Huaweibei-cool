@@ -1,0 +1,1525 @@
+[
+  {
+    "paper_id": "2018_A_A18101830082",
+    "year": 2018,
+    "track": "A",
+    "title": "关于跳台跳水体型系数设置的建模分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "回归拟合",
+      "机理建模"
+    ],
+    "models_and_algorithms": [
+      "遗传算法",
+      "微分方程/动力学",
+      "图论/最短路",
+      "刚体/多体动力学"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "灵敏度/敏感性分析",
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 30,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文可以建立出完成各个跳",
+      "本文基于问题二的模型建立了新的难度系数评价指标。首先，本"
+    ],
+    "page_count": 45,
+    "section_structure": null,
+    "source_locations": [
+      "摘要≈p.45",
+      "模型建立≈p.2",
+      "灵敏度分析≈p.6",
+      "模型评价/改进≈p.32"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_A_A18102690160",
+    "year": 2018,
+    "track": "A",
+    "title": "跳台跳水体型校正系数的建模分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "分类",
+      "回归拟合",
+      "机理建模"
+    ],
+    "models_and_algorithms": [
+      "多元线性回归",
+      "刚体/多体动力学"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 2,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 10,
+    "section_structure": "1 问题重述与分析；2 模型建立与求解；2 中转动惯量随时间的变化为：；6\n  完成n 周翻腾转体动作的总用时：；3 新难度系数与原系数的对比分析；4 总结与推广",
+    "source_locations": [
+      "模型建立≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_A_A18103000012",
+    "year": 2018,
+    "track": "A",
+    "title": "关于跳台跳水体型系数设置的建模分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "刚体/多体动力学"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 20,
+    "figure_types": [
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文需要建立一个身高和体重对跳水动作"
+    ],
+    "page_count": 36,
+    "section_structure": "一、问题重述；二、问题分析；三、模型假设；四、符号说明；五、模型求解；六、模型的评价",
+    "source_locations": [
+      "模型建立≈p.13",
+      "模型求解≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_A_A18105000011",
+    "year": 2018,
+    "track": "A",
+    "title": "关于跳台跳水体型系数设置的建模分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "回归拟合",
+      "机理建模"
+    ],
+    "models_and_algorithms": [
+      "多元线性回归",
+      "图论/最短路",
+      "运动学/插补/S型曲线",
+      "刚体/多体动力学"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析"
+    ],
+    "figure_count": 5,
+    "figure_types": [],
+    "innovation_points": [
+      "首次列入奥运会项目。跳水是一项由个"
+    ],
+    "page_count": 27,
+    "section_structure": "一、问题的重述；二、问题的分析；三、模型假设；四、符号说明；五、建模与求解；六、模型展望",
+    "source_locations": [
+      "摘要≈p.5"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_A_A18106150026",
+    "year": 2018,
+    "track": "A",
+    "title": "跳台跳水难度系数的体型校正分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [],
+    "models_and_algorithms": [
+      "刚体/多体动力学"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": null,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 32,
+    "section_structure": null,
+    "source_locations": [
+      "摘要≈p.1"
+    ],
+    "confidence": "low",
+    "notes": "全文抽取乱码（PDF CID 字体编码问题），仅封面题目可读，正文方法/验证待确认"
+  },
+  {
+    "paper_id": "2018_A_A18900020063",
+    "year": 2018,
+    "track": "A",
+    "title": "关于跳台跳水体型系数设置的建模分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "机理建模"
+    ],
+    "models_and_algorithms": [
+      "刚体/多体动力学"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 6,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 41,
+    "section_structure": "一、问题重述；二、模型假设；三、符号说明；四、问题一的求解；五、问题二模型的建立与求解；六、问题三的求解；七、问题四的求解；八、总结；九、参考文献",
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_B_B18102520096",
+    "year": 2018,
+    "track": "B",
+    "title": "光传送网建模与价值评估",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "评价",
+      "仿真",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "遗传算法",
+      "图论/最短路",
+      "光通信/半导体仿真"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 6,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 49,
+    "section_structure": "8\n的功率谱是两支路信号功率谱的叠加。",
+    "source_locations": [
+      "模型建立≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_B_B18102800030",
+    "year": 2018,
+    "track": "B",
+    "title": "光传送网建模与价值评估",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "评价"
+    ],
+    "models_and_algorithms": [
+      "光通信/半导体仿真"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 6,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 32,
+    "section_structure": "一、问题重述；二、问题假设；三、符号说明与数据来源；四、问题一：光传送链路建模；五、问题二：光传送网规划；六、问题三：调制格式改进；七、总结与展望",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.14",
+      "模型评价/改进≈p.5"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_B_B18102840008",
+    "year": 2018,
+    "track": "B",
+    "title": "光传送网建模与价值评估",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "模拟退火",
+      "图论/最短路",
+      "光通信/半导体仿真",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 38,
+    "section_structure": "1 问题重述；6\n规划有无变化？；2 问题一 光传送链路建模；3\n由于功率噪声是加性噪声，所以总噪声功率为；3 问题二 光传网规划；5 模型讨论与评价；6 参考文献",
+    "source_locations": [
+      "模型求解≈p.37"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_B_B18102840019",
+    "year": 2018,
+    "track": "B",
+    "title": "光传送网建模与价值评估",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "评价",
+      "仿真",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "模拟退火",
+      "线性规划",
+      "光通信/半导体仿真",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "仿真/数值验证"
+    ],
+    "figure_count": 27,
+    "figure_types": [
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 44,
+    "section_structure": "一、 问题重述；二、 模型假设与说明；三、 符号说明；四、 问题一模型建立与求解；五、 问题二模型建立与求解；六、 问题三模型建立与求解；七、 结论；八、 模型评价与讨论；九、 参考文献",
+    "source_locations": [
+      "模型建立≈p.9",
+      "模型求解≈p.11",
+      "模型评价/改进≈p.42"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_B_B18102860425",
+    "year": 2018,
+    "track": "B",
+    "title": "光传送网建模与价值评估",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "评价"
+    ],
+    "models_and_algorithms": [
+      "光通信/半导体仿真"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": null,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 67,
+    "section_structure": null,
+    "source_locations": [
+      "摘要≈p.1"
+    ],
+    "confidence": "low",
+    "notes": "全文抽取乱码（PDF CID 字体编码问题），仅封面题目可读，正文方法/验证待确认"
+  },
+  {
+    "paper_id": "2018_B_B18102930014",
+    "year": 2018,
+    "track": "B",
+    "title": "光传送网建模与价值评估",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "评价",
+      "信号处理",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "图论/最短路"
+    ],
+    "data_modality": "网络",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "仿真/数值验证"
+    ],
+    "figure_count": 26,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文首先建立MQAM 调制解调模型，得出MQAM 的BER 和SNR 关",
+      "本文分为三部分进行网络规划设计。第一部分首先构建最小生",
+      "本文采用控制变量法，分别建立了星座图的概率分布模型，位"
+    ],
+    "page_count": 45,
+    "section_structure": "3\n             问题背景；2\n             问题描述；5\n              问题一",
+    "source_locations": [
+      "模型建立≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_B_B18106140049",
+    "year": 2018,
+    "track": "B",
+    "title": "光传送网建模与价值评估",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "评价",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "动态规划",
+      "信道建模/多径/OFDM",
+      "光通信/半导体仿真",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 30,
+    "figure_types": [
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "首次在青岛至大连开通，沈阳至"
+    ],
+    "page_count": 43,
+    "section_structure": "2\n            目 录；2\n\n以有2  N 0 / 2 。",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型评价/改进≈p.42"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_C_C18101830161",
+    "year": 2018,
+    "track": "C",
+    "title": "对恐怖主义袭击事件数据的量化分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "回归拟合",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "主成分分析",
+      "灰色预测GM(1,1)",
+      "深度学习",
+      "逻辑回归"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "灵敏度/敏感性分析",
+      "对比/比较分析",
+      "精度指标(RMSE/R²等)",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "散点/拟合图",
+      "空间/地图"
+    ],
+    "innovation_points": [
+      "本文所建立逻辑回归预测模型的准确度。"
+    ],
+    "page_count": 59,
+    "section_structure": "一、前言；二、 模型假设；三、 模型符号分析与说明；四、问题一的模型建立与求解；五、问题二的模型建立与求解；六、问题三的模型建立与求解；七、问题四的模型建立与求解；八、参考文献",
+    "source_locations": [
+      "摘要≈p.8",
+      "模型建立≈p.2",
+      "模型求解≈p.8",
+      "模型检验/验证≈p.2",
+      "模型评价/改进≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_C_C18102720070",
+    "year": 2018,
+    "track": "C",
+    "title": "对恐怖袭击事件记录数据的量化分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "预测",
+      "评价",
+      "分类"
+    ],
+    "models_and_algorithms": [
+      "系统聚类/层次聚类",
+      "层次分析法AHP",
+      "时间序列ARIMA",
+      "多目标规划/优化"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 46,
+    "section_structure": "一、 问题背景与重述；二、 问题分析；三、 基本假设及符号说明；四、问题一的建模与求解；五、 问题二的建模与求解；六、问题三的建模与求解；七、问题四的建模与求解；八、模型评价与改进",
+    "source_locations": [
+      "模型求解≈p.3",
+      "模型评价/改进≈p.5"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_C_C18103570006",
+    "year": 2018,
+    "track": "C",
+    "title": "基于模糊聚类和距离测度的恐袭",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "预测",
+      "评价",
+      "分类",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "因子分析",
+      "K-means聚类",
+      "模糊聚类",
+      "层次分析法AHP",
+      "博弈论",
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "千-万级",
+    "validation_methods": [
+      "对比/比较分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "流程图/框图",
+      "柱状图",
+      "空间/地图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 60,
+    "section_structure": "1 问题重述；2 基本假设；3 项目符号；4 问题一模型建立与求解；7\n视为异常数据。；8\n又支配下一层因素。；5 问题二模型建立与求解；6 问题三模型建立与求解；7 问题四模型的建立与求解；8 模型评价",
+    "source_locations": [
+      "摘要≈p.6",
+      "模型建立≈p.4",
+      "模型评价/改进≈p.55"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_C_C18105320019",
+    "year": 2018,
+    "track": "C",
+    "title": "基于恐怖袭击记录数据的量化分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "预测",
+      "评价",
+      "分类",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "模糊聚类",
+      "支持向量机SVM",
+      "模拟退火",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "文本",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "灵敏度/敏感性分析",
+      "交叉验证",
+      "对比/比较分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 20,
+    "figure_types": [
+      "柱状图",
+      "热力/矩阵图"
+    ],
+    "innovation_points": [],
+    "page_count": 42,
+    "section_structure": "2\n              目 录；4                                  人员伤亡；8 条分类错误，分类准确度很高，模型训练效果较好。；4\n                                                    地区2；3                                    地区3；1                                    地区6",
+    "source_locations": [
+      "摘要≈p.9",
+      "灵敏度分析≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_C_C18108560226",
+    "year": 2018,
+    "track": "C",
+    "title": "对恐怖袭击事件记录数据的量化分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "预测",
+      "评价",
+      "分类",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "因子分析",
+      "支持向量机SVM",
+      "粒子群算法PSO"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "交叉验证",
+      "对比/比较分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 45,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 46,
+    "section_structure": "一、问题重述；二、模型假设与符号说明；三、问题分析；四、模型建立与求解；五、模型评价与改进；六、参考文献；七、附录",
+    "source_locations": [
+      "模型建立≈p.3",
+      "模型求解≈p.20",
+      "模型评价/改进≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_C_C18900450036",
+    "year": 2018,
+    "track": "C",
+    "title": "对恐怖袭击事件记录数据的量化分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "预测",
+      "评价",
+      "分类"
+    ],
+    "models_and_algorithms": [
+      "系统聚类/层次聚类",
+      "贝叶斯",
+      "TOPSIS",
+      "微分方程/动力学"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "交叉验证",
+      "对比/比较分析",
+      "鲁棒性/稳定性分析",
+      "仿真/数值验证",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 49,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "散点/拟合图",
+      "空间/地图"
+    ],
+    "innovation_points": [
+      "本文提出RS-TOPSIS 模",
+      "本文分别提出了IS3VM（Improved Semi-supervised Supp"
+    ],
+    "page_count": 83,
+    "section_structure": "2\n                目 录；1 问题重述；2 合理假设及符号系统；3 问题一的建模与求解；7\n                          事件数据；4 问题二的建模与求解；5 问题三的建模与求解；6 问题四的建模与求解",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_C_C18910040046",
+    "year": 2018,
+    "track": "C",
+    "title": "对恐怖袭击事件记录数据的量化分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "预测",
+      "评价",
+      "分类",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "数据包络分析DEA",
+      "系统聚类/层次聚类",
+      "灰色关联分析"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "空间/地图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 43,
+    "section_structure": "5\n任务2 依据事件特征发现恐怖袭击事件制造者；4    未知           未知；1       两因素相比，具有相同的重要性；3       两因素相比，前者比后者稍重要；5      两因素相比，前者比后者明显重要；7      两因素相比，前者比后者强烈重要；9      两因素相比，前者比后者极端重要；6 对未来反恐态势的分析；8 模型的评价",
+    "source_locations": [
+      "模型建立≈p.5",
+      "模型求解≈p.6",
+      "模型检验/验证≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_D_D18102480211",
+    "year": 2018,
+    "track": "D",
+    "title": "基于卫星高度计海面高度异常资料",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "评价",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "数据插值/拟合曲面",
+      "潮汐调和分析"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "仿真/数值验证"
+    ],
+    "figure_count": 42,
+    "figure_types": [
+      "流程图/框图",
+      "空间/地图"
+    ],
+    "innovation_points": [
+      "在于对原始数据增加数据清洗环节，滤掉",
+      "本文的创新点在于对原始数据增加数据清洗环节，滤掉"
+    ],
+    "page_count": 73,
+    "section_structure": "2\n             目 录；9\n                                        格林尼治时间",
+    "source_locations": [
+      "模型建立≈p.3",
+      "模型求解≈p.13",
+      "模型评价/改进≈p.9"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_D_D18104250046",
+    "year": 2018,
+    "track": "D",
+    "title": "基于卫星高度计海面高度异常资料获取潮汐调和常数方法及应用",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "评价",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "数据插值/拟合曲面",
+      "潮汐调和分析"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "千-万级",
+    "validation_methods": [
+      "交叉验证",
+      "对比/比较分析",
+      "仿真/数值验证",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "折线/曲线图",
+      "散点/拟合图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 58,
+    "section_structure": null,
+    "source_locations": [
+      "模型建立≈p.25"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_D_D18104910017",
+    "year": 2018,
+    "track": "D",
+    "title": "基于卫星高度计海面高度异常资料",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 1,
+    "task_types": [
+      "分类",
+      "仿真",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "数据插值/拟合曲面",
+      "潮汐调和分析",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "千-万级",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析",
+      "仿真/数值验证"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "散点/拟合图"
+    ],
+    "innovation_points": [],
+    "page_count": 65,
+    "section_structure": "二、利用Utide 数据包求解四个主要分潮的调和常数",
+    "source_locations": [
+      "摘要≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_D_D18106110053",
+    "year": 2018,
+    "track": "D",
+    "title": "基于卫星高度计海面高度异常资料",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "回归拟合",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "数据插值/拟合曲面",
+      "潮汐调和分析"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析",
+      "仿真/数值验证",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 20,
+    "figure_types": [
+      "流程图/框图",
+      "散点/拟合图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 50,
+    "section_structure": "一、问题背景及重述；二、问题分析；三、模型假设；四、名词解释及符号说明；五、模型的建立与求解；六、模型评价；七、参考文献；八、附录",
+    "source_locations": [
+      "模型评价/改进≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_D_D18107010021",
+    "year": 2018,
+    "track": "D",
+    "title": "基于卫星高度计海面高度异常资料获取潮汐调和常数",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "预测",
+      "仿真",
+      "回归拟合",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "潮汐调和分析",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "图像",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析",
+      "仿真/数值验证",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 4,
+    "figure_types": [
+      "散点/拟合图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [
+      "本文根据卫星高度计海面高度异常资料建立了提取潮汐调和常数的j,v 模"
+    ],
+    "page_count": 44,
+    "section_structure": "一、问题重述；二、模型假设；三、符号说明；四、问题分析；五、模型的评价与推广；六、参考文献；七、附录",
+    "source_locations": [
+      "模型建立≈p.3",
+      "模型求解≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_D_D18108560125",
+    "year": 2018,
+    "track": "D",
+    "title": "基于卫星高度计海面高度异常资料",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "评价",
+      "仿真",
+      "回归拟合",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "数据插值/拟合曲面",
+      "潮汐调和分析"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "仿真/数值验证",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "折线/曲线图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [],
+    "page_count": 60,
+    "section_structure": "一、问题背景与重述；二、模型假设；三、符号说明；四、问题分析；五、模型建立与求解；六、模型评价及展望",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.2",
+      "模型评价/改进≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_D_D18116460078",
+    "year": 2018,
+    "track": "D",
+    "title": "基于卫星高度计海面高度异常资料",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "预测",
+      "评价",
+      "仿真",
+      "回归拟合",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "数据插值/拟合曲面",
+      "潮汐调和分析"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "千-万级",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析",
+      "仿真/数值验证",
+      "精度指标(RMSE/R²等)",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "流程图/框图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [
+      "本文为此建立了沿轨分离模型。首先对数据进行分段预处理。对数据进行初步分",
+      "本文建立了两种数学模型，分别是基于多项式拟合的求解任意点调和常"
+    ],
+    "page_count": 41,
+    "section_structure": "6\n数H 和g。",
+    "source_locations": [
+      "模型建立≈p.4",
+      "模型求解≈p.3",
+      "模型检验/验证≈p.8"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_D_D18911010003",
+    "year": 2018,
+    "track": "D",
+    "title": "基于卫星高度计海面高度异常资料",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "预测",
+      "评价",
+      "回归拟合",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "数据插值/拟合曲面",
+      "潮汐调和分析"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 53,
+    "figure_types": [
+      "流程图/框图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [],
+    "page_count": 49,
+    "section_structure": "一、问题重述；二、基本假设与符号说明；三、问题一的模型建立与求解；四、问题二的模型建立与求解；五、问题三的模型建立与求解；六、问题四的模型建立与求解；七、参考文献",
+    "source_locations": [
+      "摘要≈p.1",
+      "模型建立≈p.5",
+      "模型求解≈p.1",
+      "模型评价/改进≈p.19"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_E_E18100700006",
+    "year": 2018,
+    "track": "E",
+    "title": "多无人机对组网雷达的协同干扰",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "航迹规划/协同"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 120,
+    "figure_types": [
+      "对比/雷达图"
+    ],
+    "innovation_points": [
+      "文章专门编写程序重复抽样，对虚假航迹点能否通过",
+      "本文的一个重要创新，文章专门编写程序重复抽样，对虚假航迹点能否通过"
+    ],
+    "page_count": 37,
+    "section_structure": "2\n              目 录；4\n一条虚假航迹的运动规律和合理性。",
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_E_E18102690044",
+    "year": 2018,
+    "track": "E",
+    "title": "多无人机对组网雷达的协同干扰",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "机理建模"
+    ],
+    "models_and_algorithms": [
+      "禁忌搜索/启发式",
+      "航迹规划/协同"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "灵敏度/敏感性分析",
+      "对比/比较分析",
+      "鲁棒性/稳定性分析",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 25,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 37,
+    "section_structure": "1 给出的虚假目标点进行对比，验证了模型的可靠性。；3\n            一 问题重述",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.2",
+      "灵敏度分析≈p.1",
+      "模型检验/验证≈p.2",
+      "模型评价/改进≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_E_E18102700005",
+    "year": 2018,
+    "track": "E",
+    "title": "多无人机对组网雷达的协同干扰",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "仿真",
+      "机理建模",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "航迹规划/协同"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 6,
+    "figure_types": [
+      "流程图/框图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [
+      "本文提出了一系列合理假设，通过对无人机飞"
+    ],
+    "page_count": 37,
+    "section_structure": "一、问题重述；二、模型假设；三、符号说明；四、问题一模型的建立和求解；五、问题二模型的建立和求解；六、问题三模型的建立和求解；七、模型的改进和评价；八、参考文献",
+    "source_locations": [
+      "模型求解≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_E_E18102860271",
+    "year": 2018,
+    "track": "E",
+    "title": "多无人机对组网雷达的协同干扰",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "仿真",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "蚁群算法",
+      "图论/最短路",
+      "线性规划",
+      "非线性规划",
+      "航迹规划/协同"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "鲁棒性/稳定性分析",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 4,
+    "figure_types": [
+      "流程图/框图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 37,
+    "section_structure": "三、符号说明及模型假设；五、 模型总结",
+    "source_locations": [
+      "模型建立≈p.5"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_E_E18910160005",
+    "year": 2018,
+    "track": "E",
+    "title": "多无人机对组网雷达的协同干扰",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "分类"
+    ],
+    "models_and_algorithms": [
+      "遗传算法",
+      "蚁群算法",
+      "刚体/多体动力学",
+      "航迹规划/协同"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 42,
+    "figure_types": [
+      "对比/雷达图"
+    ],
+    "innovation_points": [
+      "本文基于当前研究，建立多无人机对组网雷达系统协同干扰的数学模"
+    ],
+    "page_count": 34,
+    "section_structure": "一、 符号说明；二、问题重述；三、模型假设；四、优化算法；五、问题一；六、问题二；七、问题三",
+    "source_locations": [
+      "模型建立≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_F_F18100030032",
+    "year": 2018,
+    "track": "F",
+    "title": "中转航班调度：从MILP 模型到启发式算法",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "评价",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "模拟退火",
+      "线性规划",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "图像",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 700,
+    "figure_types": [
+      "流程图/框图",
+      "柱状图"
+    ],
+    "innovation_points": [
+      "本文提出了线性规划模型和启"
+    ],
+    "page_count": 59,
+    "section_structure": "1\n             目 录；1 问题描述；2 模型假设；3 符号定义及数据预处理；4 问题一模型求解及算法设计；5 问题二模型求解及算法设计；6 问题三模型求解及算法设计；7 总结分析",
+    "source_locations": [
+      "模型建立≈p.1",
+      "模型求解≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_F_F18102470507",
+    "year": 2018,
+    "track": "F",
+    "title": "机场新增卫星厅对中转旅客影响的研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "评价"
+    ],
+    "models_and_algorithms": [
+      "支持向量机SVM",
+      "遗传算法",
+      "粒子群算法PSO",
+      "蚁群算法",
+      "逻辑回归",
+      "多目标规划/优化",
+      "动态规划",
+      "定位算法(AOA/TDOA/Chan/Taylor)",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "图像",
+    "data_scale": "千-万级",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 6,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [
+      "本文提出第二种目标函数，即将分配",
+      "本文提出的多目标多约束的登机口分配优化模型能恰当地描述不"
+    ],
+    "page_count": 73,
+    "section_structure": "一、 问题重述；二、 模型假设；三、 符号说明；四、 问题一模型的建立与求解；五、 问题二模型的建立与求解；六、 问题三模型的建立与求解；七、模型对比分析；八、 模型的总结与评价；九、 参考文献",
+    "source_locations": [
+      "模型求解≈p.5",
+      "模型评价/改进≈p.35"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_F_F18104860073",
+    "year": 2018,
+    "track": "F",
+    "title": "机场新增卫星厅对中转旅客影响的评估方法",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "整数规划",
+      "多目标规划/优化",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "图像",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 6,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文提出了一种多阶段邻域搜索算法，首先设"
+    ],
+    "page_count": 38,
+    "section_structure": "2\n             目 录；1 问题重述；2 模型假设及符号说明；3 数据预处理及问题分析；4 问题一的模型建立与求解；5 问题二的模型建立与求解；6                                                      换乘流程时间 5.8；6 问题三的模型建立与求解；8 模型的优缺点与展望；9 参考文献",
+    "source_locations": [
+      "模型建立≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_F_F18105610030",
+    "year": 2018,
+    "track": "F",
+    "title": "机场新增卫星厅对中转旅客影响的评估方法",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 7,
+    "task_types": [
+      "优化",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "遗传算法",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "图像",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 23,
+    "figure_types": [],
+    "innovation_points": [
+      "本文递进式地针对问题的特点设计了搜索策略：首先，"
+    ],
+    "page_count": 56,
+    "section_structure": "8\n衍子代，从而增强了算法的全局搜索能力。；1      航班类型或登机口类型为国内航班（D）",
+    "source_locations": [
+      "模型求解≈p.11"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_F_F18107010037",
+    "year": 2018,
+    "track": "F",
+    "title": "机场新增卫星厅对中转旅客影响的评估方法",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "评价",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "遗传算法",
+      "模拟退火",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "图像",
+    "data_scale": "千-万级",
+    "validation_methods": [],
+    "figure_count": 5,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 29,
+    "section_structure": "2\n             目  录",
+    "source_locations": [
+      "模型建立≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2018_F_F18900020072",
+    "year": 2018,
+    "track": "F",
+    "title": "增设卫星厅的登机口分配问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "评价",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "整数规划",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "图像",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 900,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 43,
+    "section_structure": "3\n              问题重述；5\n     符号              说明；7\n          数量   到达飞机  出发飞机",
+    "source_locations": [
+      "模型求解≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  }
+]

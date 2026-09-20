@@ -1,0 +1,22 @@
+{
+  "_comment": "题面→8原型规则匹配数据，供 scripts/playbook_match.py 使用。关键词匹配题面文本，置信度=该规则命中时指向原型的把握。evidence_papers=支持该规则的论文数（来自简卡题面/方法聚合）。",
+  "version": "wave2a",
+  "prototypes": ["optimization", "evaluation", "prediction", "classification-cv", "mechanism", "signal", "spatial-graph", "simulation"],
+  "rules": [
+    {"rule_id": "R01", "keywords": ["排样", "排布", "调度", "分配", "选址", "车辆路径", "VRP", "最优", "优化", "成本最低", "资源分配"], "archetype": "optimization", "confidence": 0.85, "evidence_papers": 120, "note": "题面出现'最优/分配/调度/排样/路径'且问求极值"},
+    {"rule_id": "R02", "keywords": ["评价", "评估", "排序", "打分", "综合评价", "指标体系", "优选", "方案比较"], "archetype": "evaluation", "confidence": 0.8, "evidence_papers": 70, "note": "多指标打分排序选优"},
+    {"rule_id": "R03", "keywords": ["预测", "预报", "外推", "未来", "趋势", "时序", "销量", "需求预测"], "archetype": "prediction", "confidence": 0.85, "evidence_papers": 90, "note": "问未来/未知量外推"},
+    {"rule_id": "R04", "keywords": ["分类", "识别", "聚类", "分割", "检测", "故障诊断", "图像", "模式识别", "目标检测"], "archetype": "classification-cv", "confidence": 0.85, "evidence_papers": 80, "note": "分类/识别/分割/检测"},
+    {"rule_id": "R05", "keywords": ["微分方程", "动力学", "机理", "传染病", "种群", "稳定性", "分岔", "物理模型", "演化方程"], "archetype": "mechanism", "confidence": 0.85, "evidence_papers": 50, "note": "第一性原理方程建模"},
+    {"rule_id": "R06", "keywords": ["信号", "回波", "频谱", "滤波", "雷达", "DOA", "波达方向", "阵列", "振动", "包络谱", "到达时间"], "archetype": "signal", "confidence": 0.85, "evidence_papers": 45, "note": "采样信号谱分析/滤波/超分辨"},
+    {"rule_id": "R07", "keywords": ["路径", "网络", "图", "空间分布", "GIS", "选址布局", "节点", "边", "空间插值", "轨迹"], "archetype": "spatial-graph", "confidence": 0.75, "evidence_papers": 55, "note": "地理/图结构问题"},
+    {"rule_id": "R08", "keywords": ["仿真", "模拟", "蒙特卡洛", "排队", "随机", "多智能体", "随机事件", "演化模拟"], "archetype": "simulation", "confidence": 0.8, "evidence_papers": 40, "note": "随机抽样/数值仿真"},
+    {"rule_id": "R09", "keywords": ["遗传算法", "粒子群", "模拟退火", "启发式", "智能优化"], "archetype": "optimization", "confidence": 0.6, "evidence_papers": 82, "note": "方法名触发→优化原型（弱信号，需结合题面）"},
+    {"rule_id": "R10", "keywords": ["LSTM", "ARIMA", "XGBoost", "随机森林", "BP神经", "回归预测"], "archetype": "prediction", "confidence": 0.6, "evidence_papers": 100, "note": "预测方法名触发"},
+    {"rule_id": "R11", "keywords": ["TOPSIS", "AHP", "熵权", "模糊综合", "灰色关联"], "archetype": "evaluation", "confidence": 0.7, "evidence_papers": 60, "note": "评价方法名触发"},
+    {"rule_id": "R12", "keywords": ["YOLO", "UNet", "CNN", "特征提取", "边缘检测"], "archetype": "classification-cv", "confidence": 0.65, "evidence_papers": 35, "note": "CV方法名触发"},
+    {"rule_id": "R13", "keywords": ["马尔可夫链", "排队论", "泊松过程"], "archetype": "simulation", "confidence": 0.6, "evidence_papers": 20, "note": "随机过程触发仿真原型"}
+  ],
+  "tie_break": "多规则命中时按 confidence 高者优先；同分取 rule_id 小者；均<0.5 则标 unknown 人工判断。",
+  "limitation": "关键词规则为粗筛，单篇论文常跨多原型（如优化+评价），脚本输出 top1 仅供建议。"
+}

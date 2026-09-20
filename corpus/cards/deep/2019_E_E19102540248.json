@@ -1,0 +1,96 @@
+{
+  "paper_id": "2019_E_E19102540248",
+  "year": 2019,
+  "track": "E",
+  "title": "全球变暖？",
+  "confidence": "high",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一(时空趋势)",
+      "baseline": "描述统计",
+      "main_model": "加拿大13地区2000-2019数据+回归/正态拟合/M-K突变检验；全球SSTA用EOF分解5主模态",
+      "improvement": "EOF模态分析",
+      "why_switch": "EOF提取主导时空模态"
+    },
+    {
+      "question_id": "问题二(预测)",
+      "baseline": "普通时序模型",
+      "main_model": "鲁棒回声状态网络ESN预测全球温度，对比验证",
+      "improvement": "鲁棒ESN",
+      "why_switch": "数据非平稳，ESN储备池计算适合"
+    },
+    {
+      "question_id": "问题三(极寒)",
+      "baseline": "定性",
+      "main_model": "极值理论分析NUNAVUT极寒，再分层贝叶斯时空模型看全球变暖与局地极寒矛盾",
+      "improvement": "分层贝叶斯时空",
+      "why_switch": "需在全球-局地尺度上统计检验"
+    },
+    {
+      "question_id": "问题四(系统论)",
+      "baseline": "单点结论",
+      "main_model": "系统动力学分析大气各圈层相互作用与外界因素",
+      "improvement": "系统动力学",
+      "why_switch": "变暖-极寒关系需系统视角"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "M-K突变检验",
+    "EOF分解5主模态",
+    "鲁棒回声状态网络ESN",
+    "极值理论",
+    "分层贝叶斯时空模型",
+    "系统动力学"
+  ],
+  "objective_function": "揭示全球变暖时空规律并预测，辨析变暖与局地极寒关系",
+  "evaluation_metrics": [
+    "13地区2000-2019趋势",
+    "SSTA五主模态",
+    "ESN预测对比观测"
+  ],
+  "algorithm_details_and_complexity": "M-K/EOF时空分析→鲁棒ESN预测→极值理论+分层贝叶斯→系统动力学",
+  "independent_validation_design": "ESN模拟vs实际观测对比；与其他预测模型对比",
+  "sensitivity_robustness_ablation": [
+    "ESN vs 其他预测模型",
+    "分层贝叶斯全球vs局地"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "围绕全球变暖展开一系列讨论",
+    "method_sentence": "M-K+EOF+鲁棒ESN+极值理论+分层贝叶斯+系统动力学",
+    "result_sentence": "全球海洋SSTA五主模态，预测验证有效",
+    "numbers_presentation": "13地区/2000-2019/5模态"
+  },
+  "figure_narrative_order": [
+    "气温时空分布图",
+    "EOF主模态图",
+    "ESN预测曲线",
+    "极寒极值曲线"
+  ],
+  "judge_high_score_reasons": [
+    "EOF分解提取海洋温度异常主模态，方法经典有力",
+    "鲁棒回声状态网络做气候预测，储备池计算新颖",
+    "分层贝叶斯时空模型把全球变暖与局地极寒放到统一框架，思辨性强",
+    "问题四上升系统动力学，回答'变暖却极寒'悖论有深度"
+  ],
+  "reusable_patterns": [
+    "EOF时空模态分解",
+    "鲁棒ESN时序预测",
+    "分层贝叶斯时空建模",
+    "极值理论"
+  ],
+  "transferable_ability_card_candidates": [
+    "气候时空分析",
+    "极值建模",
+    "复杂系统预测"
+  ],
+  "page_locations": {
+    "摘要": "p2-3",
+    "EOF分解": "p18-25",
+    "鲁棒ESN预测": "p31-38",
+    "分层贝叶斯时空": "p47-49",
+    "系统动力学": "p61-62"
+  },
+  "notes": "2019普通一等奖，深卡(气候极值/评价题型)",
+  "award_level": "一等奖",
+  "award_confidence": "high"
+}

@@ -1,0 +1,86 @@
+{
+  "paper_id": "2021_F_F21103560049",
+  "year": 2021,
+  "track": "F",
+  "title": "基于整数线性规划的机组航班匹配问题研究",
+  "confidence": "high",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "直接分配",
+      "main_model": "引入时间戳建数据集+可换航班矩阵，单目标加权整数规划，时序优先启发求解",
+      "improvement": "可换矩阵简化约束",
+      "why_switch": "可换航班矩阵把航班衔接约束显式化简化建模"
+    },
+    {
+      "question_id": "问题二(执勤)",
+      "baseline": "单目标",
+      "main_model": "加执勤成本与时长平衡，时长平衡用最大最小化转线性，加权单目标",
+      "improvement": "最大最小化线性化",
+      "why_switch": "时长平衡原非线性，max-min转线性"
+    },
+    {
+      "question_id": "问题三(任务环)",
+      "baseline": "类比",
+      "main_model": "类比可换航矩阵建任务环匹配",
+      "improvement": "—",
+      "why_switch": "结构同问题一"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "时间戳数据建模",
+    "可换航班矩阵",
+    "单目标加权ω1=1000,ω4=1,ω7=0.001",
+    "最大最小化线性化时长平衡"
+  ],
+  "objective_function": "按量级悬殊加权多目标为单目标:配置航班最多→乘机/替补最少→执勤成本最低→时长最平衡",
+  "evaluation_metrics": [
+    "A组206全满足",
+    "B组13824满足130不满足",
+    "B组利用率65.15%"
+  ],
+  "algorithm_details_and_complexity": "可换航班矩阵+时序优先启发+最大最小化线性化",
+  "independent_validation_design": "A/B套数据求解并报告满足率/利用率/成本；权重按量级设计",
+  "sensitivity_robustness_ablation": [
+    "权重ω1/ω4/ω7悬殊设计",
+    "A/B规模对比",
+    "时长平衡线性化验证"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "航班线路机场增多致运营复杂，需经济高效排班",
+    "method_sentence": "时间戳+可换航班矩阵+加权整数规划+时序启发+最大最小化线性化",
+    "result_sentence": "A组206全满足，B组13824满足130不满足",
+    "numbers_presentation": "权重按量级悬殊(1000/1/0.001)体现目标重要性"
+  },
+  "figure_narrative_order": [
+    "可换航班矩阵图",
+    "权重设计表",
+    "排班结果表",
+    "利用率统计图"
+  ],
+  "judge_high_score_reasons": [
+    "时间戳+可换航班矩阵把衔接约束结构化，建模清晰",
+    "权重按量级悬殊赋值体现目标优先级，处理多目标巧",
+    "时长平衡用最大最小化转线性，技术到位",
+    "结果指标全面(满足率/利用率/时长分布/成本)"
+  ],
+  "reusable_patterns": [
+    "可换航班矩阵显式化衔接约束",
+    "量级悬殊权重设计多目标",
+    "max-min线性化平衡目标"
+  ],
+  "transferable_ability_card_candidates": [
+    "机组排班整数规划",
+    "多目标标量化",
+    "航班网络建模"
+  ],
+  "page_locations": {
+    "摘要": "p2-4",
+    "可换航班矩阵": "p8,11,14-15",
+    "权重设计": "p8-9,16-17",
+    "模型评价": "p4,33"
+  },
+  "notes": "数模之星提名奖",
+  "award_level": "一等奖",
+  "award_confidence": "high"
+}

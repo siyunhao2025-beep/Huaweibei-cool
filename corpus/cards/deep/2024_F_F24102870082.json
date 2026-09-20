@@ -1,0 +1,141 @@
+{
+  "paper_id": "2024_F_F24102870082",
+  "year": 2024,
+  "track": "F",
+  "title": "X 射线脉冲星光子到达时间建模",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 4,
+  "task_types": [
+    "轨道力学",
+    "几何时延",
+    "精密时延",
+    "光子序列仿真"
+  ],
+  "models_and_algorithms": [
+    "轨道六根数→ECI→GCRS",
+    "Roemer几何时延",
+    "Shapiro时延",
+    "引力红移",
+    "动钟变慢",
+    "光线偏折",
+    "脉冲星自行",
+    "非齐次泊松",
+    "历元折叠",
+    "高斯拟合"
+  ],
+  "data_modality": "物理时序",
+  "data_scale": "单点高精度计算",
+  "validation_methods": [
+    "轨道一致性检验",
+    "位置精度对比",
+    "Pearson相关0.6992→0.7079",
+    "误差敏感性分析"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "轨道六根数转换",
+    "时延分解",
+    "非齐次泊松仿真",
+    "历元折叠轮廓"
+  ],
+  "innovation_points": [
+    "完整分解时间尺度(引力红移+动钟变慢)与空间尺度(Roemer/Shapiro/光线偏折/自行)时延",
+    "非齐次泊松过程+迭代转换+历元折叠重建脉冲轮廓",
+    "高斯拟合改进使 Pearson 从 0.6992 提升到 0.7079"
+  ],
+  "page_count": 44,
+  "section_structure": "问题重述/问题一~九/模型评价与改进/参考文献/附录",
+  "source_locations": [
+    "p.1-2 摘要",
+    "p.39 模型评价"
+  ],
+  "confidence": "high",
+  "notes": "题F，物理建模严谨。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "无",
+      "main_model": "轨道六根数→ECI J2000→GCRS",
+      "improvement": "位置(1274.9,-1848.9,6507.3)km",
+      "why_switch": "需坐标系转换"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "无",
+      "main_model": "平行光路几何传播时延",
+      "improvement": "277.925s",
+      "why_switch": "需基本时延"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "几何时延",
+      "main_model": "Roemer+Shapiro+引力红移+动钟变慢+光线偏折+自行",
+      "improvement": "473.898s",
+      "why_switch": "需精密"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "齐次泊松",
+      "main_model": "非齐次泊松+历元折叠+高斯拟合",
+      "improvement": "Pearson 0.6992→0.7079",
+      "why_switch": "需高精度仿真"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "开普勒轨道六根数",
+    "Roemer 时延 r·n/c",
+    "Shapiro 时延 -2GM/c³ ln(1+cosθ)",
+    "引力红移/动钟变慢",
+    "非齐次泊松过程强度函数"
+  ],
+  "objective_function": "min 仿真轮廓与标准轮廓 Pearson 误差",
+  "evaluation_metrics": [
+    "位置(1274.9,-1848.9,6507.3)km",
+    "几何时延277.925s",
+    "精密时延473.898s",
+    "Pearson 0.6992→0.7079"
+  ],
+  "algorithm_details_and_complexity": "轨道力学解析解；非齐次泊松蒙特卡洛",
+  "independent_validation_design": "轨道一致性(角动量/能量守恒)",
+  "sensitivity_robustness_ablation": [
+    "各天体位置误差敏感性分析"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "X射线脉冲星自转的稳定性和连续性使其能够作为独立、稳定的空间参考基准和时间基准。",
+    "method_sentence": "六根数→GCRS / 几何时延 / 精密时延(Roemer+Shapiro+红移+变慢+偏折+自行) / 非齐次泊松+历元折叠+高斯拟合",
+    "result_sentence": "位置(1274.9,-1848.9,6507.3)km；精密时延473.898s；Pearson 0.7079",
+    "numbers_presentation": "完整给出坐标/时延/Pearson 数值"
+  },
+  "figure_narrative_order": [
+    "六根数转换",
+    "时延分解",
+    "非齐次泊松仿真",
+    "历元折叠轮廓",
+    "高斯拟合"
+  ],
+  "judge_high_score_reasons": [
+    "时延分解完整（时间尺度+空间尺度六类）",
+    "非齐次泊松+历元折叠重建脉冲轮廓",
+    "高斯拟合改进 Pearson 有对比",
+    "各误差源敏感性分析"
+  ],
+  "reusable_patterns": [
+    "轨道六根数→GCRS 标准转换",
+    "时延分层(Roemer/Shapiro/红移/变慢)",
+    "非齐次泊松+历元折叠",
+    "高斯拟合改进脉冲轮廓"
+  ],
+  "transferable_ability_card_candidates": [
+    "轨道六根数",
+    "Roemer/Shapiro",
+    "非齐次泊松",
+    "历元折叠"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "六根数": "p.7-15",
+    "精密时延": "p.20-30",
+    "历元折叠": "p.33-39"
+  }
+}

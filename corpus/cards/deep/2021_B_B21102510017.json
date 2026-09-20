@@ -1,0 +1,90 @@
+{
+  "paper_id": "2021_B_B21102510017",
+  "year": 2021,
+  "track": "B",
+  "title": "空气质量二次预测模型的构建分析",
+  "confidence": "high",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "直接用",
+      "main_model": "数据查看+3σ/箱线异常+臭氧8h滑动平均+AQI等级",
+      "improvement": "规范预处理",
+      "why_switch": "二次预报依赖干净数据"
+    },
+    {
+      "question_id": "问题二(气象)",
+      "baseline": "定性",
+      "main_model": "KNN插值+皮尔逊+折线趋势图分时间粒度分析气象-污染物",
+      "improvement": "多时间粒度",
+      "why_switch": "相关性随时间尺度变化"
+    },
+    {
+      "question_id": "问题三(跨站通用)",
+      "baseline": "单站LSTM",
+      "main_model": "GAN-Stacked-BiLSTM-MLP跨站点通用预报",
+      "improvement": "对抗生成+双向LSTM",
+      "why_switch": "站点有个性共性，BiLSTM+MLP兼顾"
+    },
+    {
+      "question_id": "问题四(时空)",
+      "baseline": "时序模型",
+      "main_model": "PGAN时空注意力预测",
+      "improvement": "时空注意力",
+      "why_switch": "需捕捉站间时空相关"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "KNN插值",
+    "3σ准则",
+    "GAN-Stacked-BiLSTM-MLP",
+    "PGAN时空注意力",
+    "臭氧8h滑动平均"
+  ],
+  "objective_function": "最小化跨站点二次预报误差",
+  "evaluation_metrics": [
+    "跨站点通用预报",
+    "时空注意力捕捉站间相关"
+  ],
+  "algorithm_details_and_complexity": "KNN/3σ预处理→皮尔逊多时间粒度→GAN-BiLSTM-MLP→PGAN时空注意力",
+  "independent_validation_design": "站点个性与共性建模，三站点通用；模型对比",
+  "sensitivity_robustness_ablation": [
+    "单站vs跨站",
+    "时序vs时空模型"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "WRF-CMAQ结果不理想，需实测二次预测",
+    "method_sentence": "KNN/3σ预处理+皮尔逊+GAN-BiLSTM-MLP+PGAN时空注意力",
+    "result_sentence": "跨站点通用+时空注意力精准预测",
+    "numbers_presentation": "以模型命名(GAN-Stacked-BiLSTM-MLP)为卖点"
+  },
+  "figure_narrative_order": [
+    "预处理流程图",
+    "BiLSTM结构图",
+    "时空注意力热力图",
+    "预测曲线"
+  ],
+  "judge_high_score_reasons": [
+    "提出站点个性/共性视角设计跨站点通用模型",
+    "BiLSTM双向+MLP融合，深度网络结构完整",
+    "PGAN时空注意力刻画站间时空相关，前瞻"
+  ],
+  "reusable_patterns": [
+    "站点个性共性拆解",
+    "双向LSTM+MLP融合",
+    "时空注意力建站间关系"
+  ],
+  "transferable_ability_card_candidates": [
+    "时空深度预测",
+    "跨域通用预报",
+    "注意力建模"
+  ],
+  "page_locations": {
+    "摘要": "p2-3",
+    "BiLSTM-MLP": "p32-37",
+    "PGAN时空注意力": "p39-46"
+  },
+  "notes": "普通一等奖，深卡",
+  "award_level": "一等奖",
+  "award_confidence": "high"
+}

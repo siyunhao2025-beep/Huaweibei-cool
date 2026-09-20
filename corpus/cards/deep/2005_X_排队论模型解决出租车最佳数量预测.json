@@ -1,0 +1,78 @@
+{
+  "paper_id": "2005_X_排队论模型解决出租车最佳数量预测",
+  "year": 2005,
+  "track": null,
+  "track_confidence": "low",
+  "title": "排队论模型解决出租车最佳数量预测",
+  "award_level": "优秀论文",
+  "award_confidence": "low",
+  "per_question_method_chain": [
+    {
+      "question_id": "Q1",
+      "baseline": "直接统计出行",
+      "main_model": "居民消费支出+人口+出行强度三级预测",
+      "improvement": "GM(1,1)灰色预测消费支出",
+      "why_switch": "历史数据短，灰色模型适合小样本"
+    },
+    {
+      "question_id": "Q2",
+      "baseline": "供需平衡简单计算",
+      "main_model": "M/M/c排队论模型",
+      "improvement": "来客速率λ与服务率μ建模",
+      "why_switch": "出租车空载/等待本质是排队系统"
+    },
+    {
+      "question_id": "Q3",
+      "baseline": "固定配额",
+      "main_model": "排队指标最优解（等待时间/利用率）",
+      "improvement": "最优车数c*求解",
+      "why_switch": "需在乘客等待与司机利用率间权衡"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "M/M/c: λ到达率，μ服务率，ρ=λ/(cμ)",
+    "假设乘客泊松到达，服务时间负指数",
+    "出租车数量c为决策变量"
+  ],
+  "objective_function": "min 乘客等待成本 + 司机空载成本",
+  "evaluation_metrics": [
+    "平均等待时间",
+    "系统利用率",
+    "最优车数"
+  ],
+  "algorithm_details_and_complexity": "M/M/c稳态概率递推",
+  "independent_validation_design": "与现状车数对比验证合理性",
+  "sensitivity_robustness_ablation": [
+    "λ和μ变化对最优车数的敏感性"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "建立居民出行强度预测与出租车排队模型",
+    "method_sentence": "GM(1,1)灰色预测+M/M/c排队论",
+    "result_sentence": "给出最优出租车数量",
+    "numbers_presentation": "最优车数与利用率"
+  },
+  "figure_narrative_order": [
+    "出行强度预测曲线",
+    "排队系统结构图",
+    "最优车数敏感性曲线"
+  ],
+  "judge_high_score_reasons": [
+    "将出租车供需问题抽象为M/M/c排队论，物理意义清晰",
+    "灰色预测处理小样本经济数据"
+  ],
+  "reusable_patterns": [
+    "公共资源供需→排队论建模（来自1篇论文支持）",
+    "小样本经济指标→GM(1,1)"
+  ],
+  "transferable_ability_card_candidates": [
+    "排队论服务能力规划卡：M/M/c建模→λ/μ估计→最优c",
+    "小样本灰色预测卡"
+  ],
+  "page_locations": {
+    "目录": "p.1",
+    "出行预测": "p.3-15",
+    "排队模型": "p.16-30",
+    "最优车数": "p.31-38"
+  },
+  "confidence": "medium"
+}

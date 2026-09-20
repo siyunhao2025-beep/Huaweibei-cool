@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "华为杯视觉证据计划",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "project_title",
+    "plan_status",
+    "visual_encoding_path",
+    "problems",
+    "global_figures",
+    "flowcharts"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "project_title": {"type": "string", "minLength": 1},
+    "plan_status": {"enum": ["draft", "ready"]},
+    "visual_encoding_path": {"type": "string", "minLength": 1},
+    "problems": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/problem"}
+    },
+    "global_figures": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/figure"}
+    },
+    "flowcharts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/flowchart"}
+    }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "required": [
+        "evidence_id",
+        "category",
+        "question",
+        "applicability",
+        "reason",
+        "data_shape",
+        "representation",
+        "result_files",
+        "figure_ids"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": {"type": "string", "minLength": 1},
+        "category": {
+          "enum": [
+            "mechanism_geometry",
+            "main_result",
+            "independent_validation",
+            "error_constraint",
+            "comparison_ablation",
+            "sensitivity_robustness",
+            "scenario",
+            "theoretical_boundary",
+            "counterexample",
+            "complexity_convergence"
+          ]
+        },
+        "question": {"type": "string", "minLength": 1},
+        "applicability": {"enum": ["pending", "applicable", "not_needed", "not_possible"]},
+        "reason": {"type": "string"},
+        "data_shape": {
+          "enum": [
+            "pending",
+            "single_value",
+            "ordered_series",
+            "multi_point_scan",
+            "repeated_trials",
+            "distribution",
+            "error_structure",
+            "matrix_surface",
+            "spatial_geometry",
+            "graph_flow",
+            "analytic_relation"
+          ]
+        },
+        "representation": {"enum": ["pending", "figure", "schematic", "table", "text", "na"]},
+        "result_files": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "figure_ids": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "panel": {
+      "type": "object",
+      "required": [
+        "panel_id",
+        "question",
+        "figure_type",
+        "figure_family",
+        "result_file",
+        "fields",
+        "units",
+        "visual_encoding",
+        "asset_directory",
+        "asset_mode"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "panel_id": {"type": "string", "pattern": "^[a-z][a-z0-9]*$"},
+        "question": {"type": "string", "minLength": 1},
+        "figure_type": {"type": "string", "minLength": 1},
+        "figure_family": {
+          "enum": [
+            "mechanism",
+            "trajectory_spatial",
+            "trend_scan",
+            "comparison_ranking",
+            "prediction_diagnostic",
+            "classification_clustering",
+            "optimization_decision",
+            "distribution_uncertainty",
+            "relationship_correlation",
+            "heatmap_surface",
+            "flow_structure"
+          ]
+        },
+        "result_file": {"type": "string", "minLength": 1},
+        "fields": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "units": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "visual_encoding": {"type": "string", "minLength": 1},
+        "asset_directory": {"type": "string", "minLength": 1},
+        "asset_mode": {"enum": ["native_run", "visual_adapt", "cross_type_inherit"]}
+      }
+    },
+    "paper_link": {
+      "type": "object",
+      "required": ["chapter", "label", "caption", "reference_context"],
+      "additionalProperties": false,
+      "properties": {
+        "chapter": {"type": "string"},
+        "label": {"type": "string", "pattern": "^fig:"},
+        "caption": {"type": "string"},
+        "reference_context": {"type": "string"}
+      }
+    },
+    "figure": {
+      "type": "object",
+      "required": [
+        "figure_id",
+        "scope",
+        "scientific_question",
+        "claim_ids",
+        "evidence_ids",
+        "archetype",
+        "layout",
+        "hero_panel",
+        "panels",
+        "script",
+        "outputs",
+        "statistics_report",
+        "qa_report",
+        "paper",
+        "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "figure_id": {"type": "string", "minLength": 1},
+        "scope": {"type": "string", "minLength": 1},
+        "scientific_question": {"type": "string", "minLength": 1},
+        "claim_ids": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "evidence_ids": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "archetype": {"enum": ["quantitative_grid", "schematic_led", "image_plate_quant", "asymmetric_mixed"]},
+        "layout": {"type": "string", "minLength": 1},
+        "hero_panel": {"type": ["string", "null"]},
+        "panels": {"type": "array", "minItems": 1, "maxItems": 6, "items": {"$ref": "#/$defs/panel"}},
+        "script": {"type": "string", "minLength": 1},
+        "outputs": {
+          "type": "object",
+          "required": ["vector", "preview"],
+          "additionalProperties": false,
+          "properties": {
+            "vector": {"type": "string", "pattern": "\\.(pdf|svg)$"},
+            "preview": {"type": "string", "pattern": "\\.png$"}
+          }
+        },
+        "statistics_report": {"type": "string", "minLength": 1},
+        "qa_report": {"type": "string", "minLength": 1},
+        "paper": {"$ref": "#/$defs/paper_link"},
+        "status": {"enum": ["planned", "data_ready", "rendered", "qa_pass", "incomplete"]}
+      }
+    },
+    "schematic": {
+      "type": "object",
+      "required": [
+        "schematic_id",
+        "kind",
+        "scientific_question",
+        "source_refs",
+        "elements",
+        "tex_source",
+        "output_pdf",
+        "preview_png",
+        "paper",
+        "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schematic_id": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["mechanism_geometry", "coordinate_transform", "propagation_path", "sampling_folding", "physical_principle"]},
+        "scientific_question": {"type": "string", "minLength": 1},
+        "source_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "elements": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "tex_source": {"type": "string", "pattern": "\\.tex$"},
+        "output_pdf": {"type": "string", "pattern": "\\.pdf$"},
+        "preview_png": {"type": "string", "pattern": "\\.png$"},
+        "paper": {"$ref": "#/$defs/paper_link"},
+        "status": {"enum": ["planned", "rendered", "qa_pass", "incomplete"]}
+      }
+    },
+    "problem": {
+      "type": "object",
+      "required": [
+        "problem_id",
+        "complexity",
+        "claims",
+        "evidence_matrix",
+        "figures",
+        "schematics",
+        "low_figure_exception"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "problem_id": {"type": "string", "minLength": 1},
+        "complexity": {"enum": ["simple", "standard", "complex"]},
+        "claims": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["claim_id", "text"],
+            "additionalProperties": false,
+            "properties": {
+              "claim_id": {"type": "string", "minLength": 1},
+              "text": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "evidence_matrix": {"type": "array", "minItems": 4, "items": {"$ref": "#/$defs/evidence"}},
+        "figures": {"type": "array", "items": {"$ref": "#/$defs/figure"}},
+        "schematics": {"type": "array", "items": {"$ref": "#/$defs/schematic"}},
+        "low_figure_exception": {"type": ["string", "null"]}
+      }
+    },
+    "flowchart": {
+      "type": "object",
+      "required": ["scope", "needed", "reason", "plan_id", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "scope": {"type": "string", "minLength": 1},
+        "needed": {"enum": ["pending", "yes", "no"]},
+        "reason": {"type": "string"},
+        "plan_id": {"type": ["string", "null"]},
+        "status": {"enum": ["pending", "planned", "qa_pass", "not_applicable", "incomplete"]}
+      }
+    }
+  }
+}

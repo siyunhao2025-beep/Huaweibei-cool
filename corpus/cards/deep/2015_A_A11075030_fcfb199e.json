@@ -1,0 +1,130 @@
+{
+  "paper_id": "2015_A_A11075030_fcfb199e",
+  "year": 2015,
+  "track": "A",
+  "title": "水面舰艇编队防空和信息化战争评估模型",
+  "award_level": "待确认",
+  "award_confidence": "unknown",
+  "problem_count": 5,
+  "task_types": [
+    "优化",
+    "预测",
+    "评价",
+    "分类"
+  ],
+  "models_and_algorithms": [
+    "支持向量机SVM",
+    "多目标规划/优化",
+    "数据插值/拟合曲面"
+  ],
+  "data_modality": "结构化",
+  "data_scale": "小样本/题设数据",
+  "validation_methods": [
+    "对比/比较分析"
+  ],
+  "figure_count": 9,
+  "figure_types": [
+    "折线/曲线图",
+    "对比/雷达图"
+  ],
+  "innovation_points": [],
+  "page_count": 54,
+  "section_structure": "4 艘护卫舰距离指挥舰的距离应该相等，记作r 。",
+  "source_locations": [
+    "模型建立≈p.43",
+    "模型求解≈p.1"
+  ],
+  "confidence": "high",
+  "notes": "2015年A题(舰艇防空)另一获奖解法，云模型/证据推理有特色",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "单目标定阵型",
+      "main_model": "多目标规划(拦截距离/抗饱和/全向覆盖)",
+      "improvement": "AHP转单目标，Lingo求解半环预警式队形",
+      "why_switch": "队形需多目标权衡"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "定性找危险方向",
+      "main_model": "概率模型+几何理论算各舰拦截批数",
+      "improvement": "得最危险方向边界方向，抗饱和11",
+      "why_switch": "用概率描述多批次来袭"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "无预警机",
+      "main_model": "几何关系模型+MATLAB",
+      "improvement": "抗饱和提升到21(1.91倍)",
+      "why_switch": "预警机扩展探测后重算"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "规则判断意图",
+      "main_model": "B样条插值修复异常数据后SVM识别意图",
+      "improvement": "输出12目标意图",
+      "why_switch": "异常数据先修复再SVM分类"
+    },
+    {
+      "question_id": "问题五",
+      "baseline": "传统评估",
+      "main_model": "云模型+证据推理建防空信息战系统评估",
+      "improvement": "融合定性定量不确定性",
+      "why_switch": "信息化战争含不确定因素，云模型/证据推理合适"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "AHP把多目标权重化",
+    "概率模型:各舰拦截成功概率相乘",
+    "B样条插值修复异常点",
+    "云模型用期望/熵/超熵表征不确定性"
+  ],
+  "objective_function": "多目标:max拦截距离,max抗饱和,max覆盖；AHP加权求和",
+  "evaluation_metrics": [
+    "抗饱和批数",
+    "SVM意图识别",
+    "云模型评估结果"
+  ],
+  "algorithm_details_and_complexity": "Lingo解规划；SVM核函数分类；云模型不确定性推理",
+  "independent_validation_design": "问题三对比无预警机；SVM用已知样本；云模型+证据推理对系统评分",
+  "sensitivity_robustness_ablation": [
+    "AHP权重敏感性",
+    "B样条修复对SVM结果影响",
+    "与传统评估对比"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "本文研究水面舰艇防御来袭导弹及信息化作战评估。",
+    "method_sentence": "多目标规划+AHP、概率模型、SVM意图、云模型证据推理评估",
+    "result_sentence": "抗饱和11，配预警机21(1.91倍)，12目标意图判定",
+    "numbers_presentation": "各舰批数、意图表、评估等级"
+  },
+  "figure_narrative_order": [
+    "半环预警队形",
+    "各舰拦截批数",
+    "SVM意图流程",
+    "云模型评估",
+    "证据推理合成"
+  ],
+  "judge_high_score_reasons": [
+    "与另一队同题(舰艇防空)形成对照解法",
+    "云模型+证据推理处理不确定性是亮点",
+    "数据修复(B样条)前置处理规范"
+  ],
+  "reusable_patterns": [
+    "AHP解多目标规划",
+    "异常数据插值修复后再建模",
+    "云模型+证据推理系统评估"
+  ],
+  "transferable_ability_card_candidates": [
+    "云模型评估",
+    "证据推理",
+    "SVM分类前置清洗"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "多目标+AHP": "≈p.6-12",
+    "概率模型抗饱和": "≈p.15-22",
+    "SVM意图": "≈p.25-35",
+    "云模型评估": "≈p.40-50"
+  }
+}

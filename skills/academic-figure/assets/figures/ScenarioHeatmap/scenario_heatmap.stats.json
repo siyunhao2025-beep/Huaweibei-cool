@@ -1,0 +1,16 @@
+{
+  "kind": "ScenarioHeatmap",
+  "data": "DEMO_PREVIEW_ONLY",
+  "rows": 30,
+  "statistics": {
+    "shape": [
+      6,
+      5
+    ],
+    "best": [
+      "基准",
+      "完整模型",
+      0.9227408596238604
+    ]
+  }
+}

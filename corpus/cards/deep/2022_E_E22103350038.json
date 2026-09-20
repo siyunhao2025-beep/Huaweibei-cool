@@ -1,0 +1,133 @@
+{
+  "paper_id": "2022_E_E22103350038",
+  "year": 2022,
+  "track": "E",
+  "title": "草原放牧策略研究(LSTM-FC+Stacking)",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 4,
+  "task_types": [
+    "机理建模",
+    "特征工程",
+    "时序预测",
+    "多目标优化"
+  ],
+  "models_and_algorithms": [
+    "改进Woodward植被演变模型",
+    "土壤湿度演变模型",
+    "随机森林特征筛选",
+    "LSTM-FC网络",
+    "Stacking集成",
+    "熵权法",
+    "遗传粒子群优化"
+  ],
+  "data_modality": "锡林郭勒草原多站点面板数据",
+  "data_scale": "2012-2020/12个月份模型",
+  "validation_methods": [
+    "Stacking对比验证",
+    "特征独立性/代表性检验",
+    "机理模型数据验证"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "植被演变图",
+    "特征重要性图",
+    "LSTM-FC预测图",
+    "放牧策略优化图"
+  ],
+  "innovation_points": [
+    "按月份分别建12个LSTM-FC模型捕捉季节差异",
+    "随机森林+分步过滤+相关性分析四层特征筛选",
+    "遗传粒子群优化最大放牧羊群"
+  ],
+  "page_count": 104,
+  "section_structure": "问题重述/问题一机理模型(p.8-?)/问题二LSTM-FC(p.?-?)/问题三化学性质机理/问题四最大羊群优化",
+  "source_locations": [
+    "p.17 NDVI植被生物量模型",
+    "p.34 LSTM-FC",
+    "随机森林特征筛选"
+  ],
+  "confidence": "high",
+  "notes": "E题篇幅最大(104页)，方法最全。机理+ML+优化三段式。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "纯数据驱动",
+      "main_model": "改进Woodward机理模型",
+      "improvement": "降水/蒸发/放牧因子显式建模",
+      "why_switch": "缺机理可解释性差"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "单一时序模型",
+      "main_model": "LSTM-FC分月建模",
+      "improvement": "12月份模型+Stacking对比",
+      "why_switch": "季节差异大需分月"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "数据驱动",
+      "main_model": "土壤化学性质机理模型",
+      "improvement": "植被枯萎/排泄因素显式",
+      "why_switch": "化学性质有守恒机理"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "经验阈值",
+      "main_model": "熵权法+遗传PSO最大羊群优化",
+      "improvement": "多目标进化",
+      "why_switch": "可持续放牧需优化"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "植被生物量演变方程",
+    "土壤含水量-降水-蒸发平衡方程",
+    "假设2022-2023放牧策略不变"
+  ],
+  "objective_function": "max 放牧羊群数 s.t. 土壤指标可持续阈值",
+  "evaluation_metrics": [
+    "12个LSTM-FC模型",
+    "Stacking对比",
+    "特征独立性检验"
+  ],
+  "algorithm_details_and_complexity": "LSTM-FC O(T·H²)；随机森林O(n·m·tree)；GWO-PSO O(iter·pop·dim)",
+  "independent_validation_design": "Stacking集成学习模型作为对比验证LSTM-FC",
+  "sensitivity_robustness_ablation": [
+    "特征过滤前后对比",
+    "LSTM-FC vs Stacking"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "草原在维护生物多样性等方面重要，本文构建机理+ML+优化模型给出放牧策略。",
+    "method_sentence": "问题一Woodward机理；问题二LSTM-FC分月+Stacking；问题三化学机理；问题四遗传PSO。",
+    "result_sentence": "LSTM-FC优于Stacking；12月模型捕捉季节差异。",
+    "numbers_presentation": "按问题分述方法+验证。"
+  },
+  "figure_narrative_order": [
+    "机理方程图",
+    "特征筛选流程",
+    "LSTM-FC网络结构",
+    "预测对比",
+    "优化结果"
+  ],
+  "judge_high_score_reasons": [
+    "机理+数据驱动混合范式完整",
+    "分月LSTM-FC捕捉季节差异是细节亮点",
+    "104页大工作量，四层特征筛选严谨"
+  ],
+  "reusable_patterns": [
+    "生态类题目'机理方程+数据驱动'两段式",
+    "强季节性时序按月份分别建模",
+    "四层特征筛选:相关性→随机森林重要性→强相关过滤→独立性检验"
+  ],
+  "transferable_ability_card_candidates": [
+    "机理建模",
+    "LSTM时序预测",
+    "随机森林特征工程",
+    "多目标优化"
+  ],
+  "page_locations": {
+    "植被机理": "p.8-17",
+    "LSTM-FC": "p.34+",
+    "特征筛选": "p.?"
+  }
+}

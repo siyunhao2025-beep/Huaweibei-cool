@@ -1,0 +1,134 @@
+{
+  "paper_id": "2018_F_F18102470507",
+  "year": 2018,
+  "track": "F",
+  "title": "机场新增卫星厅对中转旅客影响的研究",
+  "award_level": "待确认",
+  "award_confidence": "unknown",
+  "problem_count": 3,
+  "task_types": [
+    "优化",
+    "评价"
+  ],
+  "models_and_algorithms": [
+    "支持向量机SVM",
+    "遗传算法",
+    "粒子群算法PSO",
+    "蚁群算法",
+    "逻辑回归",
+    "多目标规划/优化",
+    "动态规划",
+    "定位算法(AOA/TDOA/Chan/Taylor)",
+    "禁忌搜索/启发式"
+  ],
+  "data_modality": "图像",
+  "data_scale": "千-万级",
+  "validation_methods": [
+    "对比/比较分析",
+    "鲁棒性/稳定性分析"
+  ],
+  "figure_count": 6,
+  "figure_types": [
+    "流程图/框图"
+  ],
+  "innovation_points": [
+    "本文提出第二种目标函数，即将分配",
+    "本文提出的多目标多约束的登机口分配优化模型能恰当地描述不"
+  ],
+  "page_count": 73,
+  "section_structure": "一、 问题重述；二、 模型假设；三、 符号说明；四、 问题一模型的建立与求解；五、 问题二模型的建立与求解；六、 问题三模型的建立与求解；七、模型对比分析；八、 模型的总结与评价；九、 参考文献",
+  "source_locations": [
+    "模型求解≈p.5",
+    "模型评价/改进≈p.35"
+  ],
+  "confidence": "high",
+  "notes": "2018年F题(机场卫星厅)，问题发现-惩罚修正-多版对照范式好",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "经验分配",
+      "main_model": "双目标(失败率min/登机口使用率min)多约束",
+      "improvement": "生物地理学算法(BBO)求解，成功率82.18%用65口",
+      "why_switch": "约束组合优化用启发式"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "问题一",
+      "main_model": "加中转旅客最短流程时间第三目标，按优先级",
+      "improvement": "发现大航班被挤到临时口→加6h惩罚时间",
+      "why_switch": "不加惩罚会损害航司利益"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "流程时间",
+      "main_model": "改目标为中转旅客总体紧张度最小",
+      "improvement": "对比惩罚时间计入/不计入两种方案",
+      "why_switch": "紧张度更贴近体验"
+    },
+    {
+      "question_id": "对比",
+      "baseline": "无惩罚",
+      "main_model": "惩罚机制前后对比",
+      "improvement": "临时口旅客从1197降到699/726",
+      "why_switch": "验证惩罚机制有效性"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "多目标按优先级:失败率>流程时间/紧张度>登机口使用率",
+    "约束:航班分配规则/飞机指派/机型",
+    "临时登机口旅客加6h惩罚时间计入总时间",
+    "BBO:生物地理学迁移率寻优"
+  ],
+  "objective_function": "min(失败率, 最短流程时间/紧张度, 登机口使用率)",
+  "evaluation_metrics": [
+    "分配成功率",
+    "使用登机口数",
+    "总流程时间",
+    "临时口旅客数",
+    "紧张度"
+  ],
+  "algorithm_details_and_complexity": "BBO生物地理学算法，迭代迁移演化；复杂度O(iter×种群)",
+  "independent_validation_design": "问题一→二→三递进对比；惩罚计入vs不计入对照；问题二/三分别给两版结果",
+  "sensitivity_robustness_ablation": [
+    "惩罚时间6h取值影响",
+    "优先级顺序对结果影响",
+    "临时口旅客数对方案敏感性"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "以最优化原理研究航班-登机口分配并评价对中转旅客影响。",
+    "method_sentence": "多目标多约束+生物地理学算法+临时口惩罚机制",
+    "result_sentence": "成功率82.18%，加惩罚后临时口旅客1197→699",
+    "numbers_presentation": "成功率、口数、总时间、临时口人数"
+  },
+  "figure_narrative_order": [
+    "登机口分配规则",
+    "多目标优先级",
+    "BBO求解流程",
+    "惩罚前后对比",
+    "三问结果对比表"
+  ],
+  "judge_high_score_reasons": [
+    "自己发现大航班被挤临时口的问题并加惩罚机制修正",
+    "三问递进、多版对照",
+    "BBO应用具体"
+  ],
+  "reusable_patterns": [
+    "多目标优先级规划",
+    "启发式(BBO)解分配",
+    "发现模型偏置→加惩罚修正",
+    "方案多版对照"
+  ],
+  "transferable_ability_card_candidates": [
+    "多目标分配优化",
+    "生物地理学算法",
+    "惩罚机制设计",
+    "中转流程评价"
+  ],
+  "page_locations": {
+    "摘要": "p.1",
+    "问题一分配": "≈p.8-20",
+    "问题二惩罚": "≈p.22-40",
+    "问题三紧张度": "≈p.42-55",
+    "对比表": "≈p.55-70"
+  }
+}

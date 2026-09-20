@@ -1,0 +1,155 @@
+{
+  "paper_id": "2024_C_C24106130096",
+  "year": 2024,
+  "track": "C",
+  "title": "多变量复杂环境下的磁芯损耗建模",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 5,
+  "task_types": [
+    "分类",
+    "参数回归",
+    "方差分析",
+    "预测",
+    "多目标优化"
+  ],
+  "models_and_algorithms": [
+    "形状特征阈值",
+    "SVM",
+    "HHT变换",
+    "双谱变换",
+    "NAdam",
+    "LSE对数线性化",
+    "LSEDSR深度学习自表示",
+    "单/多因素ANOVA",
+    "非参数检验",
+    "遗传算法"
+  ],
+  "data_modality": "结构化",
+  "data_scale": "百级样本",
+  "validation_methods": [
+    "98.5%阈值分类",
+    "SVM 100%",
+    "加噪测试降26%",
+    "多域特征提升10%",
+    "相对误差对比",
+    "F统计量",
+    "非参数检验"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "多域特征",
+    "LSEDSR结构",
+    "ANOVA F值",
+    "遗传算法收敛"
+  ],
+  "innovation_points": [
+    "形状阈值分类98.5% → 5维时域SVM 100% → HHT+双谱多域融合特征再提10%抗噪",
+    "LSE 对数线性化使相对误差从0.36降到0.31；乘性γT/e^γT修正到0.17/0.18",
+    "LSEDSR 深度学习自表示模型自适应调参，相对误差降到0.13",
+    "独立样本非参数检验找最优参数组"
+  ],
+  "page_count": 105,
+  "section_structure": "问题重述/问题一~六/模型评价与推广/参考文献/附录",
+  "source_locations": [
+    "p.1-2 摘要",
+    "p.69 模型评价"
+  ],
+  "confidence": "high",
+  "notes": "题C，HHT+LSEDSR深度学习自表示路线。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "形状阈值98.5%",
+      "main_model": "5维时域SVM 100%",
+      "improvement": "HHT+双谱多域融合特征抗噪+10%",
+      "why_switch": "阈值法自动化低；SVM抗噪差"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "原始SE NAdam 0.36",
+      "main_model": "LSE对数线性化 0.31",
+      "improvement": "乘性γT/e^γT修正 0.17/0.18",
+      "why_switch": "对数线性化保留线性结构"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "单因素",
+      "main_model": "LSEDSR自适应 0.13",
+      "improvement": "NAdam求解",
+      "why_switch": "修正模型不能动态调参"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "分离模型0.78",
+      "main_model": "深度自表示0.46",
+      "improvement": "引入温度信息",
+      "why_switch": "分离模型精度不足"
+    },
+    {
+      "question_id": "问题五",
+      "baseline": "单因素",
+      "main_model": "遗传算法多目标",
+      "improvement": "最优参数组",
+      "why_switch": "双目标"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "LSE 对数线性化 ln P_v = ln k + α ln f + β ln B",
+    "乘性温度修正 γT 或 e^(γT)",
+    "LSEDSR 深度自表示自适应参数"
+  ],
+  "objective_function": "min P_v / max f·B",
+  "evaluation_metrics": [
+    "阈值98.5%",
+    "SVM 100%",
+    "加噪降26%",
+    "多域+10%",
+    "SE 0.36→LSE 0.31→修正0.17/0.18→LSEDSR 0.13",
+    "F统计量"
+  ],
+  "algorithm_details_and_complexity": "HHT/双谱多域；LSEDSR 神经网络自表示",
+  "independent_validation_design": "模拟噪声环境测试抗噪性",
+  "sensitivity_robustness_ablation": [
+    "阈值 vs SVM vs 多域特征",
+    "SE vs LSE vs 修正 vs LSEDSR 相对误差递减"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "磁性元件的磁芯损耗精准预测在工业生产中有着重要的意义，但传统模型通常面临精度不足或适用场景受限等问题。",
+    "method_sentence": "形状阈值/SVM/HHT+双谱 / LSE+乘性温度修正 / LSEDSR / ANOVA+非参数检验 / 遗传算法",
+    "result_sentence": "相对误差从0.36逐代降到0.13；多域特征抗噪+10%",
+    "numbers_presentation": "误差递进 0.36→0.31→0.17→0.18→0.13"
+  },
+  "figure_narrative_order": [
+    "形状特征",
+    "HHT/双谱",
+    "LSEDSR",
+    "ANOVA F值",
+    "GA收敛"
+  ],
+  "judge_high_score_reasons": [
+    "相对误差逐代递减(0.36→0.13)的方法论叙事清晰",
+    "HHT+双谱多域融合抗噪性思路新颖",
+    "LSEDSR 深度自表示是少见的结构创新",
+    "非参数检验找最优组严谨"
+  ],
+  "reusable_patterns": [
+    "时域→时频域多域特征抗噪",
+    "对数线性化物理方程",
+    "深度学习自表示自适应调参",
+    "非参数检验找最优组"
+  ],
+  "transferable_ability_card_candidates": [
+    "HHT",
+    "双谱变换",
+    "LSEDSR",
+    "非参数检验"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "多域特征": "p.9-18",
+    "LSEDSR": "p.30-45",
+    "ANOVA": "p.50-60",
+    "GA": "p.65-69"
+  }
+}

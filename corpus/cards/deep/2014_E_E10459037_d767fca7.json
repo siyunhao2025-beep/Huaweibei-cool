@@ -1,0 +1,124 @@
+{
+  "paper_id": "2014_E_E10459037_d767fca7",
+  "year": 2014,
+  "track": "E",
+  "title": "基于S 型曲线的加减速优化控制与实例检验",
+  "award_level": "待确认",
+  "award_confidence": "unknown",
+  "problem_count": 4,
+  "task_types": [
+    "优化",
+    "仿真",
+    "空间图",
+    "控制决策"
+  ],
+  "models_and_algorithms": [
+    "运动学/插补/S型曲线"
+  ],
+  "data_modality": "时序/信号",
+  "data_scale": "小样本/题设数据",
+  "validation_methods": [
+    "模型检验/显著性检验"
+  ],
+  "figure_count": 61,
+  "figure_types": [
+    "折线/曲线图"
+  ],
+  "innovation_points": [
+    "本文提出一种三次多项式加减速控制模型。通过模型检验发现三次多项式加减速控制模"
+  ],
+  "page_count": 23,
+  "section_structure": "1\n   第十二届“中关村青联杯”全国研究生；3\n                 目  录；5 所示：",
+  "source_locations": [
+    "模型建立≈p.2",
+    "模型求解≈p.3",
+    "模型检验/验证≈p.1",
+    "模型评价/改进≈p.3"
+  ],
+  "confidence": "high",
+  "notes": "2014年E题(数控加工)，机理性强，页数23偏少但方法链清晰",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "直接过折线交点",
+      "main_model": "按夹角分三段建过渡模型(直接/高速高精度/圆弧过渡)",
+      "improvement": "向量法求交点前后各轴分量与拐点速度",
+      "why_switch": "直接过渡会造成各轴速度跳变"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "逐段算",
+      "main_model": "把直线-圆弧过渡简化为直线-直线过渡，得拐角速度与半径关系",
+      "improvement": "S型加减速规划+圆弧插补Matlab仿真",
+      "why_switch": "统一过渡模型后可解整段加工时间"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "无瞬时启停",
+      "main_model": "考虑瞬时启动加速度/速度，重设各节点限速",
+      "improvement": "重算总加工时间84.3363s",
+      "why_switch": "更贴近实际启停"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "S曲线(参数多复杂)",
+      "main_model": "提出三次多项式加减速控制模型",
+      "improvement": "保证加速度连续消除冲击，仅需少量四则运算",
+      "why_switch": "S曲线参数多实现复杂，多项式更简且平稳"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "按进给速度/加速度/误差/半径/插补周期约束求拐点速度",
+    "圆弧插补求满足误差与分辨率的插补点与次数",
+    "S曲线:速度/加速度/加加速度分段光滑",
+    "三次多项式:v(t)三阶多项式，a(t)连续"
+  ],
+  "objective_function": "最小化加工路径总时间，满足各轴限速与误差约束",
+  "evaluation_metrics": [
+    "拐点速度跳变量",
+    "加工总时间",
+    "加速度连续性",
+    "算法实现复杂度"
+  ],
+  "algorithm_details_and_complexity": "圆弧插补O(插补点数)；三次多项式仅四则运算，复杂度低",
+  "independent_validation_design": "Matlab编程对加工路径示例仿真检验；问题三在问题二程序上重设节点对照",
+  "sensitivity_robustness_ablation": [
+    "拐角速度随圆弧半径增大而增大",
+    "对比S曲线与三次多项式的复杂度和平稳性",
+    "对90°/135°两种夹角实例检验"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "基于计算机数控系统工作原理分析刀具运动优化控制。",
+    "method_sentence": "夹角过渡模型+圆弧插补+S曲线/三次多项式加减速",
+    "result_sentence": "整段加工时间84.7252s，三次多项式保证加速度连续",
+    "numbers_presentation": "给出节点限速、总时间、各段速度"
+  },
+  "figure_narrative_order": [
+    "折线过渡几何",
+    "拐角速度-半径关系",
+    "S曲线加减速曲线",
+    "三次多项式对比",
+    "加工路径仿真"
+  ],
+  "judge_high_score_reasons": [
+    "纯机理推导，物理约束(加速度连续)抓得准",
+    "自提三次多项式替代S曲线并论证优势",
+    "Matlab仿真可复现"
+  ],
+  "reusable_patterns": [
+    "按几何夹角分段建过渡模型",
+    "加减速曲线连续性约束",
+    "复杂工艺→低复杂度多项式近似"
+  ],
+  "transferable_ability_card_candidates": [
+    "插补与加减速规划",
+    "运动学过渡建模",
+    "三次多项式平滑控制"
+  ],
+  "page_locations": {
+    "摘要": "p.2-3",
+    "夹角过渡模型": "≈p.5-12",
+    "圆弧插补/S曲线": "≈p.13-18",
+    "三次多项式": "≈p.19-22"
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "paper_id": "2024_F_F24103360083",
+  "year": 2024,
+  "track": "F",
+  "title": "X 射线脉冲星光子到达时间建模研究",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 4,
+  "task_types": [
+    "轨道力学",
+    "几何时延",
+    "精密时延",
+    "光子序列仿真"
+  ],
+  "models_and_algorithms": [
+    "PQW→GCRS旋转矩阵",
+    "角动量/能量守恒验证",
+    "Roemer",
+    "Shapiro",
+    "引力红移",
+    "动钟变慢",
+    "齐次泊松背景+非齐次泊松脉冲",
+    "蒙特卡洛削减",
+    "拒绝采样",
+    "Ogata thinning",
+    "历元折叠"
+  ],
+  "data_modality": "物理时序",
+  "data_scale": "单点高精度",
+  "validation_methods": [
+    "轨道半径/角动量/能量一致性",
+    "Pearson/MSE/RMSE/R²",
+    "三种采样法对比"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "PQW→GCRS旋转",
+    "时延分解",
+    "三种采样法对比",
+    "历元折叠轮廓"
+  ],
+  "innovation_points": [
+    "PQW 绕 W/X/Z 三轴旋转到 GCRS，轨道半径/角动量/能量三守恒验证",
+    "几何时延 277.925s，精密时延 473.898s，Shapiro 仅 -6.63e-6s",
+    "对比蒙特卡洛削减/拒绝采样/Ogata thinning 三种非齐次泊松采样法",
+    "拒绝采样 R²=0.994623 优于 Ogata thinning 0.993784"
+  ],
+  "page_count": 48,
+  "section_structure": "问题重述/问题一~六/模型评价/参考文献/附录",
+  "source_locations": [
+    "p.1-2 摘要"
+  ],
+  "confidence": "high",
+  "notes": "题F，三种采样法对比路线。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "无",
+      "main_model": "PQW→GCRS旋转矩阵",
+      "improvement": "三守恒验证",
+      "why_switch": "需坐标系转换"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "无",
+      "main_model": "平行光几何传播时延",
+      "improvement": "277.925s",
+      "why_switch": "需基本时延"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "几何",
+      "main_model": "Roemer+Shapiro+红移+变慢+自行",
+      "improvement": "473.898s",
+      "why_switch": "需精密"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "蒙特卡洛削减",
+      "main_model": "拒绝采样/Ogata thinning",
+      "improvement": "R² 0.9934→0.9946",
+      "why_switch": "需更高精度"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "PQW→GCRS 旋转矩阵",
+    "Roemer/Shapiro/红移/变慢",
+    "非齐次泊松过程",
+    "Ogata thinning 算法"
+  ],
+  "objective_function": "min 仿真轮廓与标准轮廓 R²/MSE",
+  "evaluation_metrics": [
+    "位置(1274.9,-1848.9,6507.3)km",
+    "几何277.925s",
+    "精密473.898s",
+    "MC削减 R=0.997189/RMSE=0.092/R²=0.9934",
+    "拒绝采样 R=0.997763/R²=0.9946",
+    "Ogata R=0.997503/R²=0.9938"
+  ],
+  "algorithm_details_and_complexity": "轨道解析；三种非齐次泊松采样",
+  "independent_validation_design": "三守恒验证；三种采样法横向对比",
+  "sensitivity_robustness_ablation": [
+    "MC削减 vs 拒绝采样 vs Ogata thinning"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "X射线脉冲星导航作为航天和深空探测领域的自主导航技术。",
+    "method_sentence": "PQW→GCRS / 几何时延 / Shapiro+红移+变慢+自行 / 三采样法对比",
+    "result_sentence": "精密473.898s；拒绝采样 R²=0.9946 最优",
+    "numbers_presentation": "完整给出三采样法 R/MSE/RMSE/R²"
+  },
+  "figure_narrative_order": [
+    "PQW旋转",
+    "时延分解",
+    "三采样法对比",
+    "历元折叠轮廓"
+  ],
+  "judge_high_score_reasons": [
+    "三守恒验证严谨",
+    "三种非齐次泊松采样法横向对比完整",
+    "拒绝采样 vs Ogata thinning 有定量结论",
+    "Shapiro/红移/变慢各分量精确到 1e-10s"
+  ],
+  "reusable_patterns": [
+    "PQW→GCRS 旋转矩阵",
+    "轨道三守恒验证",
+    "三种非齐次泊松采样对比",
+    "历元折叠重建脉冲轮廓"
+  ],
+  "transferable_ability_card_candidates": [
+    "PQW→GCRS",
+    "Ogata thinning",
+    "拒绝采样",
+    "历元折叠"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "PQW旋转": "p.11-16",
+    "精密时延": "p.20-30",
+    "三采样法": "p.35-45"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "paper_id": "2009_X_论文1042215B 最终",
+  "year": 2009,
+  "track": "B",
+  "track_confidence": "high",
+  "title": "枪弹头痕迹自动比对方法的研究",
+  "award_level": "优秀论文",
+  "award_confidence": "low",
+  "per_question_method_chain": [
+    {
+      "question_id": "Q1",
+      "baseline": "人工对齐",
+      "main_model": "二元二次方程组解析解圆心",
+      "improvement": "平移/转动误差精确消除",
+      "why_switch": "数值法慢且精度低"
+    },
+    {
+      "question_id": "Q2",
+      "baseline": "原始噪声",
+      "main_model": "中值+低通+高斯三级滤波",
+      "improvement": "对比2种滤波方案选优",
+      "why_switch": "原始坐标噪声影响比对"
+    },
+    {
+      "question_id": "Q3",
+      "baseline": "全点比对",
+      "main_model": "一维特征向量提取",
+      "improvement": "比对特征相关系数",
+      "why_switch": "全点计算量大"
+    },
+    {
+      "question_id": "Q4",
+      "baseline": "两两比对",
+      "main_model": "相似度矩阵+Top5检索",
+      "improvement": "22颗子弹互查",
+      "why_switch": "需批量检索"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "圆心解析解（二元二次方程组）",
+    "假设同一枪弹头痕迹一致",
+    "噪声为高斯型"
+  ],
+  "objective_function": "max 相似度相关系数",
+  "evaluation_metrics": [
+    "对齐误差",
+    "滤波信噪比",
+    "相似度排序正确率"
+  ],
+  "algorithm_details_and_complexity": "解析解+三级滤波+相关系数，O(n)级",
+  "independent_validation_design": "已知同枪/异枪样本验证",
+  "sensitivity_robustness_ablation": [
+    "不同噪声水平下比对稳定性"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "解决弹头痕迹自动比对四问",
+    "method_sentence": "解析圆心+三级滤波+特征相关系数+相似度矩阵",
+    "result_sentence": "误差在题目范围内，给出Top5相似弹头",
+    "numbers_presentation": "22颗子弹"
+  },
+  "figure_narrative_order": [
+    "弹头坐标三维图",
+    "对齐前后对比",
+    "滤波前后对比",
+    "特征曲线",
+    "相似度热力图"
+  ],
+  "judge_high_score_reasons": [
+    "信号处理完整链：对齐→滤波→特征→比对",
+    "解析解替代数值法体现数学功底",
+    "法医/刑侦应用明确"
+  ],
+  "reusable_patterns": [
+    "三维痕迹/信号比对→对齐-滤波-特征-相似度（来自1篇论文支持）"
+  ],
+  "transferable_ability_card_candidates": [
+    "痕迹/波形比对卡：几何对齐→噪声滤波→特征提取→相关系数相似度→矩阵检索"
+  ],
+  "page_locations": [
+    "对齐算法p.5-15",
+    "滤波p.16-25",
+    "特征提取p.26-35",
+    "相似度矩阵p.36-45"
+  ],
+  "confidence": "high"
+}

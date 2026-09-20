@@ -1,0 +1,89 @@
+{
+  "paper_id": "2007_X_邮政运输规划(1029301)",
+  "year": 2007,
+  "track": null,
+  "track_confidence": "low",
+  "title": "邮政运输网络中的邮路规划和邮车调度",
+  "award_level": "优秀论文",
+  "award_confidence": "low",
+  "per_question_method_chain": [
+    {
+      "question_id": "Q1",
+      "baseline": "经验派车",
+      "main_model": "Dijkstra最短路+遍历可行路线",
+      "improvement": "空车率最小化",
+      "why_switch": "需精确最小化减少的收入"
+    },
+    {
+      "question_id": "Q2",
+      "baseline": "整体优化",
+      "main_model": "区域划分+分枝定界",
+      "improvement": "区域微调降车数",
+      "why_switch": "大规模VRP直接求解难"
+    },
+    {
+      "question_id": "Q3",
+      "baseline": "固定县局归属",
+      "main_model": "跨县局协同",
+      "improvement": "Z56/Z57由X1送，Z27由X2送，车数10",
+      "why_switch": "允许跨区可降成本"
+    },
+    {
+      "question_id": "Q4",
+      "baseline": "原局址",
+      "main_model": "中心点选址算法",
+      "improvement": "X1→Z4, X2→Z21, X5→Z52，日省789元",
+      "why_switch": "选址影响全局成本"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "VRP: min ∑距离×车数",
+    "Dijkstra求最短距离矩阵",
+    "假设邮车容量固定",
+    "时间窗约束"
+  ],
+  "objective_function": "min 总运行成本（车数×距离×单价）",
+  "evaluation_metrics": [
+    "邮车数",
+    "日运行成本",
+    "空车率",
+    "节省金额"
+  ],
+  "algorithm_details_and_complexity": "Dijkstra O(n²) + 分枝定界指数级",
+  "independent_validation_design": "与原方案对比成本节省额",
+  "sensitivity_robustness_ablation": [
+    "发车时间窗变化对车数影响"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "本题是VRP问题，Dijkstra求最短路",
+    "method_sentence": "Dijkstra+分枝定界+中心点选址",
+    "result_sentence": "Q3仅需10辆日省354元，Q4日省789元",
+    "numbers_presentation": "具体车数与节省金额"
+  },
+  "figure_narrative_order": [
+    "区域网络图",
+    "Dijkstra距离矩阵",
+    "Q1路线表",
+    "Q2/Q3调度表",
+    "Q4选址图"
+  ],
+  "judge_high_score_reasons": [
+    "标准VRP完整四问：单车→多车→跨区→选址",
+    "每问有具体数值结果（省多少钱）",
+    "Dijkstra+分枝定界经典组合"
+  ],
+  "reusable_patterns": [
+    "VRP四步走：最短路→分区→协同→选址（来自1篇论文支持）"
+  ],
+  "transferable_ability_card_candidates": [
+    "VRP邮路调度卡：Dijkstra距离矩阵→分枝定界→跨区协同→中心点选址"
+  ],
+  "page_locations": {
+    "摘要": "p.1",
+    "Q1": "p.5-12",
+    "Q2": "p.13-20",
+    "Q3": "p.21-27",
+    "Q4": "p.28-34"
+  },
+  "confidence": "high"
+}

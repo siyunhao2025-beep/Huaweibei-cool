@@ -1,0 +1,10 @@
+{
+  "kind": "ResourceDesign",
+  "data": "DEMO_PREVIEW_ONLY",
+  "rows": 120,
+  "statistics": {
+    "n": 120,
+    "knee_resource": 55.0,
+    "knee_performance": 0.8809241315125256
+  }
+}

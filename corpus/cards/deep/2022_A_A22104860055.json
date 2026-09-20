@@ -1,0 +1,135 @@
+{
+  "paper_id": "2022_A_A22104860055",
+  "year": 2022,
+  "track": "A",
+  "title": "移动场景超分辨定位问题(FMCW-MUSIC路线)",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 4,
+  "task_types": [
+    "DOA估计",
+    "效率优化",
+    "在线跟踪",
+    "鲁棒性改进"
+  ],
+  "models_and_algorithms": [
+    "2D-MUSIC",
+    "FMCW-MUSIC自研",
+    "频谱峰值测距辅助",
+    "多层级分辨率搜索",
+    "运动连续性预测+梯度下降"
+  ],
+  "data_modality": "仿真FMCW雷达中频信号",
+  "data_scale": "两发多收MIMO阵列",
+  "validation_methods": [
+    "定位精度约1cm",
+    "优化前0.22s提速200倍",
+    "四种跟踪方案对比",
+    "SNR扫描"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "极坐标定位图",
+    "距离-多普勒图",
+    "轨迹图",
+    "求解时间对比表"
+  ],
+  "innovation_points": [
+    "自研FMCW-MUSIC算法针对FMCW阵列雷达信号",
+    "频谱峰值测距信息辅助+多层级分辨率搜索将求解时间从秒级降至0.22s(提速200倍)",
+    "利用运动连续性预测搜索范围+梯度下降实现在线低复杂度连续跟踪(0.027s)"
+  ],
+  "page_count": 59,
+  "section_structure": "问题重述/问题分析/模型假设/符号说明/问题一(3章)~问题四(6章)/模型评价/参考文献",
+  "source_locations": [
+    "p.1-2 摘要",
+    "p.7-10 FMCW-MUSIC原理",
+    "p.15-18 搜索效率优化",
+    "p.28-32 运动连续性跟踪",
+    "p.33-36 结构误差鲁棒"
+  ],
+  "confidence": "high",
+  "notes": "A题FMCW-MUSIC效率优化标杆。四问递进：无噪→噪声→动态→结构误差。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "2D-MUSIC",
+      "main_model": "自研FMCW-MUSIC",
+      "improvement": "频谱峰值辅助+多层级分辨率搜索",
+      "why_switch": "传统MUSIC对FMCW信号适配差且复杂度高"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "问题一FMCW-MUSIC",
+      "main_model": "时空扫描窗口l1,l2参数调优",
+      "improvement": "窗口(20,210)清晰定位双目标",
+      "why_switch": "噪声下需调窗口参数"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "逐帧独立FMCW-MUSIC",
+      "main_model": "运动连续性预测+梯度下降",
+      "improvement": "搜索范围预测+梯度下降精修",
+      "why_switch": "动态目标需利用运动连续性降复杂度"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "理想天线",
+      "main_model": "结构误差下FMCW-MUSIC+单天线测距约束",
+      "improvement": "容忍天线结构老化误差",
+      "why_switch": "实际天线存在幅相误差"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "MUSIC空间谱 P(θ)=1/(a^H(θ)UnUn^Ha(θ))",
+    "假设无噪/高斯白噪声/目标点源",
+    "搜索步长0.01m×0.05°"
+  ],
+  "objective_function": "min 空间谱搜索网格定位误差",
+  "evaluation_metrics": [
+    "定位精度约1cm(径向切向)",
+    "求解时间0.22s→提速200倍",
+    "连续跟踪0.027s"
+  ],
+  "algorithm_details_and_complexity": "FMCW-MUSIC单次O(N^2·搜索网格)；多层级搜索将网格数降为O(log N)级；运动连续性预测将下帧搜索窗压缩到局部",
+  "independent_validation_design": "四种跟踪方案(无/有运动连续性+梯度下降等)横向对比求解时间与精度",
+  "sensitivity_robustness_ablation": [
+    "窗口尺寸l1,l2参数扫描",
+    "使用/不使用运动连续性条件对比"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "移动场景超分辨定位应用价值大但现有算法不同时具备低复杂度与高分辨率，本文就低复杂度超分辨定位建模。",
+    "method_sentence": "问题一FMCW-MUSIC+效率优化；问题二窗口调优；问题三运动连续性+梯度下降；问题四结构误差鲁棒。",
+    "result_sentence": "问题一精度1cm/0.22s提速200倍；问题三运动连续性方案求解0.027s最短。",
+    "numbers_presentation": "分问题给具体数值：0.22s/200倍/1cm/0.027s。"
+  },
+  "figure_narrative_order": [
+    "FMCW雷达体制示意",
+    "极坐标定位结果",
+    "求解时间对比",
+    "运动轨迹",
+    "鲁棒性对比"
+  ],
+  "judge_high_score_reasons": [
+    "效率优化量化显著(200倍)且有对比实验",
+    "四问递进结构清晰，每问都在前问基础上增加一个现实约束",
+    "运动连续性+梯度下降的在线思路工程性强"
+  ],
+  "reusable_patterns": [
+    "信号处理类题目'精度-复杂度'权衡：多层级搜索",
+    "动态目标跟踪用运动连续性预测压缩搜索窗",
+    "每问增加一个现实约束(噪声/动态/误差)的递进式建模范式"
+  ],
+  "transferable_ability_card_candidates": [
+    "阵列信号DOA估计",
+    "MUSIC类算法工程优化",
+    "在线跟踪"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "FMCW-MUSIC原理": "p.7-10",
+    "效率优化": "p.15-18",
+    "动态跟踪": "p.28-32",
+    "结构误差": "p.33-36"
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "paper_id": "2017_D_D10252016_7a73dd47",
+  "year": 2017,
+  "track": "D",
+  "title": "基于监控视频的前景目标提取",
+  "award_level": "待确认",
+  "award_confidence": "unknown",
+  "problem_count": 6,
+  "task_types": [
+    "优化",
+    "预测",
+    "评价",
+    "分类",
+    "空间图"
+  ],
+  "models_and_algorithms": [
+    "深度学习",
+    "支持向量机SVM",
+    "蚁群算法",
+    "定位算法(AOA/TDOA/Chan/Taylor)",
+    "航迹规划/协同"
+  ],
+  "data_modality": "图像",
+  "data_scale": "小样本/题设数据",
+  "validation_methods": [
+    "对比/比较分析",
+    "鲁棒性/稳定性分析",
+    "仿真/数值验证",
+    "精度指标(RMSE/R²等)"
+  ],
+  "figure_count": 5,
+  "figure_types": [
+    "流程图/框图",
+    "折线/曲线图",
+    "散点/拟合图"
+  ],
+  "innovation_points": [
+    "本文对所建立的模型给出了评价和改进的方向。"
+  ],
+  "page_count": 45,
+  "section_structure": "2\n       目  录；1 问题重述；2 模型假设；3 符号说明；4 问题分析；5 模型的建立与求解；6 模型的评价与改进；7 参考文献",
+  "source_locations": [
+    "模型建立≈p.16"
+  ],
+  "confidence": "high",
+  "notes": "2017年D题(视频前景提取)，6问计算机视觉工程链完整",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "帧差法/平均背景差",
+      "main_model": "ViBe背景建模",
+      "improvement": "对比三法选ViBe",
+      "why_switch": "ViBe一帧建模、对突变鲁棒"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "静态背景法",
+      "main_model": "混合高斯模型+优化ViBe",
+      "improvement": "对比动态背景效果",
+      "why_switch": "动态背景需多模分布"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "直接提前景",
+      "main_model": "RANSAC估计帧间全局运动参数做运动补偿去抖",
+      "improvement": "去抖后再提前景",
+      "why_switch": "相机晃动需先补偿"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "人工选帧",
+      "main_model": "改进ViBe提前景二值序列+前景面积双阈值",
+      "improvement": "自动标显著/非显著帧号",
+      "why_switch": "双阈值区分目标大小"
+    },
+    {
+      "question_id": "问题五",
+      "baseline": "单视角",
+      "main_model": "多层标志物算单应性矩阵+混合高斯多视角融合",
+      "improvement": "不同高度层定位目标",
+      "why_switch": "多视角需单应变换对齐"
+    },
+    {
+      "question_id": "问题六",
+      "baseline": "逐个体运动检测",
+      "main_model": "光流场+光流速度分离(滤低速)+事件均值评分",
+      "improvement": "UMN库验证群体性异常检测",
+      "why_switch": "群体个体无序，用统计评分而非逐个体"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "ViBe:邻域随机样本建模，一帧初始化",
+    "RANSAC:迭代剔外点估全局运动单应矩阵",
+    "单应性矩阵H连接两视角",
+    "光流速度分离:保留高速分量"
+  ],
+  "objective_function": "最大化前景提取正确率；异常事件评分阈值",
+  "evaluation_metrics": [
+    "前景提取对比",
+    "去抖有效性",
+    "帧号标注",
+    "多视角定位",
+    "UMN异常检测"
+  ],
+  "algorithm_details_and_complexity": "ViBe O(N)逐像素；RANSAC迭代；光流场",
+  "independent_validation_design": "静态/动态背景多算法对比；UMN数据库异常事件验证；典型监控视频去抖验证",
+  "sensitivity_robustness_ablation": [
+    "ViBe鬼影问题与解决",
+    "双阈值对小目标帧号影响",
+    "光流低速滤除对异常检测影响"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "运动目标检测是智能监控重要部分。",
+    "method_sentence": "帧差/背景差/ViBe、混合高斯、RANSAC去抖、单应性多视角、光流均值评分",
+    "result_sentence": "静态/动态/抖动/多视角/异常六场景全解决",
+    "numbers_presentation": "算法对比、双阈值、UMN验证"
+  },
+  "figure_narrative_order": [
+    "各算法前景对比",
+    "RANSAC去抖",
+    "双阈值帧标注",
+    "多视角单应性",
+    "光流异常评分"
+  ],
+  "judge_high_score_reasons": [
+    "6问覆盖视频监控全链路",
+    "按场景选算法且对比",
+    "RANSAC去抖和光流异常评分有巧思"
+  ],
+  "reusable_patterns": [
+    "按场景匹配视觉算法",
+    "RANSAC鲁棒估计",
+    "双阈值自动选帧",
+    "光流统计做异常检测"
+  ],
+  "transferable_ability_card_candidates": [
+    "ViBe背景建模",
+    "RANSAC去抖",
+    "单应性多视角",
+    "光流异常评分"
+  ],
+  "page_locations": {
+    "摘要": "p.1",
+    "问题一 ViBe": "≈p.8-18",
+    "问题二混合高斯": "≈p.20-28",
+    "问题三 RANSAC": "≈p.30-35",
+    "问题六光流异常": "≈p.38-44"
+  }
+}

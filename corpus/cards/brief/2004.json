@@ -1,0 +1,390 @@
+[
+  {
+    "paper_id": "2004_X_中山C(压缩版）_44badde7",
+    "year": 2004,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "售后服务数据的运用",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "预测",
+      "评价",
+      "机理建模",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "多元线性回归",
+      "假设检验"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "对比实验",
+      "假设检验"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "折线图"
+    ],
+    "innovation_points": [],
+    "page_count": 10,
+    "section_structure": null,
+    "source_locations": [
+      "摘要:p.1",
+      "模型假设:p.1",
+      "结论:p.2"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2004_X_信息工程大学电子技术学院的研究生建模竞赛获奖论文实用下料数学模型",
+    "year": 2004,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "实用下料的数学模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "评价",
+      "机理建模"
+    ],
+    "models_and_algorithms": [
+      "线性规划",
+      "整数规划",
+      "背包问题"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "百万级以上",
+    "validation_methods": [
+      "对比实验"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "示意图"
+    ],
+    "innovation_points": [
+      "本文以原材料最少为目标，采用启发式多级"
+    ],
+    "page_count": 5,
+    "section_structure": null,
+    "source_locations": [
+      "摘要:p.1",
+      "检验/评价:p.4"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2004_X_华东理工大学数模竞赛472队的论文",
+    "year": 2004,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "有交货时间限制的大规模实用下料问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "机理建模",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "线性规划",
+      "动态规划",
+      "背包问题"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "对比实验"
+    ],
+    "figure_count": 1,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 5,
+    "section_structure": "2.1 模型假设；2.2 一维单一原材料实用下料问题的模型；2.3 模型求解；3.1 模型建立",
+    "source_locations": [
+      "摘要:p.1",
+      "模型求解:p.4"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2004_X_南京大学论文_129ba1b7",
+    "year": 2004,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "发现空间目标并定位的模型1",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "空间图"
+    ],
+    "models_and_algorithms": [],
+    "data_modality": "空间数据",
+    "data_scale": "18 个点",
+    "validation_methods": [],
+    "figure_count": 6,
+    "figure_types": [
+      "折线图"
+    ],
+    "innovation_points": [
+      "本文针对在一个圆柱体内用最少的红球、蓝球发现黄球的问题，采用多个椭圆覆盖圆柱顶面的方法，设计出利用18 个球覆盖的方"
+    ],
+    "page_count": 5,
+    "section_structure": null,
+    "source_locations": [
+      "摘要:p.1",
+      "结论:p.1"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2004_X_厦门大学研究生建模论文_a36f8628",
+    "year": 2004,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "汽车千车故障数的预测与分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "预测",
+      "分类",
+      "空间图",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "曲线拟合"
+    ],
+    "data_modality": "空间数据",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "对比实验",
+      "外部数据验证"
+    ],
+    "figure_count": 3,
+    "figure_types": [
+      "折线图"
+    ],
+    "innovation_points": [
+      "本文从改进统计方法着手，提出一种新的统计方法即重新定义千车"
+    ],
+    "page_count": 6,
+    "section_structure": null,
+    "source_locations": [
+      "摘要:p.1",
+      "模型建立:p.3",
+      "检验/评价:p.5"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2004_X_售后服务数据的应用_66dc76e6",
+    "year": 2004,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "基于样条模型的汽车可靠性双向联合预测",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "预测",
+      "评价",
+      "分类",
+      "空间图",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "相关分析",
+      "假设检验",
+      "参数估计",
+      "时间序列"
+    ],
+    "data_modality": "时序",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "对比实验",
+      "鲁棒性/稳健性",
+      "外部数据验证",
+      "假设检验"
+    ],
+    "figure_count": 3,
+    "figure_types": [
+      "折线图",
+      "结构图"
+    ],
+    "innovation_points": [
+      "本文通过分析原始数据和“千车故障数”计算的不合理性，提出了改进的千车故障数的计算方法，并对原始数据进行变换得到"
+    ],
+    "page_count": 5,
+    "section_structure": null,
+    "source_locations": [
+      "摘要:p.1"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2004_X_武汉大学竞赛论文（10面）研究",
+    "year": 2004,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "要求研究了在各种不同条件下的研究生录取问题。在对笔试、面试成绩以",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "评价"
+    ],
+    "models_and_algorithms": [
+      "目标规划"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "对比实验"
+    ],
+    "figure_count": 1,
+    "figure_types": [],
+    "innovation_points": [
+      "本文提出的解决方案对高等教育部门在高校研究生录取工作中起到一定参考作用"
+    ],
+    "page_count": 10,
+    "section_structure": "4.1 对笔试成绩与复试成绩的量化处理；4.2 导师学术水平的量化；4.3 学生自身能力与导师主观因素的符合度的量化；5.1 研究生的录取方案；5.2 学生对导师的满意度矩阵 A  ( a ip )；5.4 定义选择矩阵X；5.5 多目标0-1 规划模型[1]；5.6 单目标0-1 规划模型；5.7 单目标0-1 规划模型的求解[3]；6.1 模型的建立；6.2 模型的求解；7.1 导师对15 名学生的评分；7.2 研究生的新录取方案；7.3 导师对录取的研究生的满意度矩阵 E  ( e ip ) 10；7.4 研究生对导师的满意度矩阵 Q  ( q ip ) 1010",
+    "source_locations": [
+      "摘要:p.1",
+      "模型假设:p.1",
+      "模型建立:p.3",
+      "模型求解:p.3"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2004_X_王文娟论文基于最大满意度的研究生录取问题（new)",
+    "year": 2004,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "王文娟 张元标 张章华",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "评价",
+      "分类",
+      "机理建模"
+    ],
+    "models_and_algorithms": [
+      "整数规划",
+      "指派问题"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "对比实验"
+    ],
+    "figure_count": null,
+    "figure_types": [],
+    "innovation_points": [
+      "本文采用了模糊数学的知识和优化方法讨论解决了研究生的录取问题"
+    ],
+    "page_count": 5,
+    "section_structure": "3.1 问题(1)的分析与建模；3.2 问题2 的分析与建模；3.3 问题3 的分析与建模（思路）",
+    "source_locations": [
+      "摘要:p.1"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2004_X_目标定位最优布局的研究（王郑耀，汪洪武，杨敏）",
+    "year": 2004,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "目标定位最优布局的研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 7,
+    "task_types": [
+      "优化",
+      "机理建模",
+      "空间图",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "常微分方程",
+      "三次样条"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "仿真验证",
+      "对比实验"
+    ],
+    "figure_count": 23,
+    "figure_types": [
+      "折线图",
+      "结构图",
+      "示意图"
+    ],
+    "innovation_points": [],
+    "page_count": 30,
+    "section_structure": "2.1 问题的第一步简化；3.1 对每一个点定位需要3 个数据；3.2 冗余最小的情形；3.3 正方形半径的确定；3.3.1 不考虑圆锥影响时正方形半径的确定；3.3.2 考虑圆锥影响时正方形半径的确定；3.4 边界附近球的分布点的调整；3.5 最优的方案；4.2 红蓝球的数目及其分布的确定；4.3 圆锥旋转方案的确定；4.3.3 各个圆锥旋转相位的确定；4.3.4 对边界区域内圆锥的讨论；0.1 的某一点穿出；6.1 圆柱体的底面有起伏时的影响；6.2 增加方向信息和颜色可变的影响",
+    "source_locations": [
+      "摘要:p.1"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2004_X_装甲兵研究生录取问题（投稿）",
+    "year": 2004,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "（装甲兵工程学院，北京  100072）",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "评价"
+    ],
+    "models_and_algorithms": [
+      "整数规划"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [],
+    "figure_count": 3,
+    "figure_types": [
+      "结构图"
+    ],
+    "innovation_points": [],
+    "page_count": 5,
+    "section_structure": "3.1 导师对学生的评价模型；3.2 学生对导师的评价模型；3.3 导师与学生配对的优化模型",
+    "source_locations": [
+      "摘要:p.1",
+      "模型建立:p.1",
+      "结论:p.2"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  }
+]

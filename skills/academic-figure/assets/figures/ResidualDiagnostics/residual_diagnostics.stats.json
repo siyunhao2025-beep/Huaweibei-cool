@@ -1,0 +1,10 @@
+{
+  "kind": "ResidualDiagnostics",
+  "data": "DEMO_PREVIEW_ONLY",
+  "rows": 240,
+  "statistics": {
+    "n": 240,
+    "rmse": 0.15427448912457536,
+    "violations": 5
+  }
+}

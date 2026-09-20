@@ -1,0 +1,141 @@
+{
+  "paper_id": "2024_D_D24103850092",
+  "year": 2024,
+  "track": "D",
+  "title": "多源异构数据驱动的暴雨成灾机理及其时空演变特征研究",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 4,
+  "task_types": [
+    "时空特征分析",
+    "交互作用分析",
+    "脆弱性预测",
+    "土地利用结构分析"
+  ],
+  "models_and_algorithms": [
+    "描述性统计",
+    "空间分析/GIS",
+    "决策树",
+    "XGBoost",
+    "熵值法",
+    "ARIMA",
+    "SVR",
+    "Clausius-Clapeyron解释",
+    "标准差椭圆"
+  ],
+  "data_modality": "时空",
+  "data_scale": "百万级（1990-2020 长时序全国）",
+  "validation_methods": [
+    "GIS可视化",
+    "决策树规则提取",
+    "熵值法三层次",
+    "ARIMA自相关",
+    "SVR 2025-2035预测"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "降水空间分布图",
+    "LULC演变",
+    "决策树规则",
+    "脆弱性指数空间图",
+    "标准差椭圆"
+  ],
+  "innovation_points": [
+    "决策树量化地形-气候交互作用，提取多变量临界组合（如纬度≤35.5°N+降雨趋势>0.759）",
+    "熵值法从自然触发/物理脆弱/土地脆弱三层次构建脆弱性指数",
+    "ARIMA 预测降水与5类土地利用自相关，SVR 预测2025-2035脆弱性指数",
+    "提出'和仲线'资源开发分界线"
+  ],
+  "page_count": 113,
+  "section_structure": "问题重述/问题一~四/模型评价/参考文献/附录",
+  "source_locations": [
+    "p.1-2 摘要"
+  ],
+  "confidence": "high",
+  "notes": "题D，多源异构+机器学习+GIS路线。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "单一时序分析",
+      "main_model": "描述性统计+空间分析/GIS",
+      "improvement": "1990-2020长时序",
+      "why_switch": "需时空双维度"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "相关分析",
+      "main_model": "决策树量化地形-气候交互",
+      "improvement": "Clausius-Clapeyron物理解释",
+      "why_switch": "需非线性交互作用"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "单变量脆弱性",
+      "main_model": "XGBoost+决策树临界条件+熵值法三层次+ARIMA+SVR",
+      "improvement": "2025-2035预测",
+      "why_switch": "需多变量临界组合+未来预测"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "描述",
+      "main_model": "土地利用动态度+标准差椭圆",
+      "improvement": "'和仲线'提取",
+      "why_switch": "需结构分析"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "Clausius-Clapeyron 方程",
+    "熵值法指标权重",
+    "ARIMA 时间序列",
+    "SVR 回归预测"
+  ],
+  "objective_function": "无明确目标函数；以脆弱性指数最小/最大区域识别为目标",
+  "evaluation_metrics": [
+    "决策树临界阈值具体数值",
+    "脆弱性指数空间分布",
+    "ARIMA/SVR 未来10年预测"
+  ],
+  "algorithm_details_and_complexity": "决策树规则提取；XGBoost 树集成；SVR 核技巧",
+  "independent_validation_design": "GIS 可视化与实际地理分区对照",
+  "sensitivity_robustness_ablation": [
+    "多变量临界组合",
+    "ARIMA vs 描述统计"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "随着全球气候变化日趋剧烈，极端天气事件，尤其是暴雨的发生频率显著增加，对生态环境安全和人类经济社会发展构成了严峻挑战。",
+    "method_sentence": "描述统计+GIS / 决策树+CC方程 / XGBoost+熵值法+ARIMA+SVR / 动态度+标准差椭圆",
+    "result_sentence": "低纬耕地高降雨趋势易发；高脆弱区集中东南沿海",
+    "numbers_presentation": "给出具体临界阈值 35.5°N/0.759/0.067 等"
+  },
+  "figure_narrative_order": [
+    "降水/LULC 时空分布",
+    "决策树规则",
+    "脆弱性指数空间图",
+    "ARIMA/SVR 预测",
+    "标准差椭圆"
+  ],
+  "judge_high_score_reasons": [
+    "决策树提取多变量临界组合并给出具体阈值",
+    "熵值法三层次脆弱性体系完整",
+    "Clausius-Clapeyron 物理解释气候-降水关系",
+    "'和仲线'有叙事记忆点"
+  ],
+  "reusable_patterns": [
+    "决策树提取多变量交互临界规则",
+    "熵值法三层次脆弱性体系",
+    "ARIMA 时序+SVR 回归 双模型未来预测",
+    "GIS 可视化地理大数据"
+  ],
+  "transferable_ability_card_candidates": [
+    "XGBoost决策树规则",
+    "熵值法",
+    "ARIMA+SVR 预测",
+    "GIS时空分析"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "决策树": "p.20-35",
+    "XGBoost": "p.50-70",
+    "SVR预测": "p.80-95"
+  }
+}

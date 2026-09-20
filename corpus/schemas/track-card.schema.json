@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://huaweibei-cool/corpus/schemas/track-card.schema.json",
+  "title": "华为杯赛道档案（track）",
+  "type": "object",
+  "required": ["year", "track", "topic", "archetype_mapping", "representative_papers"],
+  "additionalProperties": true,
+  "properties": {
+    "year": {"type": "integer"},
+    "track": {"type": "string", "enum": ["A", "B", "C", "D", "E", "F"]},
+    "topic": {"type": "string", "description": "赛题主题"},
+    "task_breakdown": {"type": "array", "items": {"type": "string"}, "description": "子问题拆解"},
+    "data_modality": {"type": ["string", "null"]},
+    "data_scale": {"type": ["string", "null"]},
+    "official_constraints": {"type": "array", "items": {"type": "string"}},
+    "submission_format": {"type": ["string", "null"]},
+    "archetype_mapping": {"type": "array", "items": {"type": "string"}, "description": "方法原型映射"},
+    "method_frequency": {
+      "type": "object",
+      "description": "方法→出现篇数",
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "representative_papers": {"type": "array", "items": {"type": "string"}, "description": "paper_id 列表"},
+    "recommended_route": {"type": ["string", "null"]},
+    "alternative_routes": {"type": "array", "items": {"type": "string"}},
+    "pitfalls": {"type": "array", "items": {"type": "string"}},
+    "target_audience": {"type": ["string", "null"]},
+    "sources": {"type": "array", "items": {"type": "string"}}
+  }
+}

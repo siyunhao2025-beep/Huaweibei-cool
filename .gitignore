@@ -1,0 +1,53 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ===== 语料原始文件（禁止入库）=====
+# 获奖论文 PDF 原件不入库
+*.pdf
+# 全文抽文文本（由 scripts/corpus_build.py 本地生成，不入 git）
+corpus/text/
+# low_text 渲染的封面 PNG（本地多模态读图用）
+corpus/text/**/_rendered/*.png
+
+# ===== 工作区临时产物 =====
+_work/
+*.log
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
+
+# ===== 大资产（figure-atlas PNG 由 Wave3 评估是否入库，先排除体积大的中间图）=====
+skills/academic-figure/assets/figures/*/*.png
+skills/academic-figure/assets/figures/*/*.pdf
+
+# ===== IDE / 系统 =====
+.vscode/
+.idea/
+*.swp
+
+# ===== 必须入库的语料索引与卡片（即使在 corpus/ 下）=====
+# 显式取消忽略：索引、卡片、方法频次、schema
+!corpus/papers_index.json
+!corpus/papers_index.csv
+!corpus/cards/
+!corpus/cards/**
+!corpus/method_frequency.json
+!corpus/schemas/
+!corpus/schemas/**
+!corpus/CORPUS_NOTES.md
+
+# ===== 构建临时脚本/中间产物（Wave3 工程验证排除，文件保留磁盘）=====
+s1_*.py
+s1_*.txt
+corpus/cards/_*.py
+corpus/cards/_deepsrc/

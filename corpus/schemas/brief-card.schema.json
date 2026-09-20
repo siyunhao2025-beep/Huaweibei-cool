@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://huaweibei-cool/corpus/schemas/brief-card.schema.json",
+  "title": "华为杯获奖论文简卡（brief，729 篇全覆盖）",
+  "type": "object",
+  "required": ["paper_id", "year", "title", "award_level", "confidence"],
+  "additionalProperties": true,
+  "properties": {
+    "paper_id": {"type": "string", "description": "自建编号，形如 2024_A_A24102940057"},
+    "year": {"type": "integer", "minimum": 2004, "maximum": 2024},
+    "track": {"type": ["string", "null"], "enum": ["A", "B", "C", "D", "E", "F", null]},
+    "title": {"type": "string"},
+    "award_level": {"type": "string", "description": "一等奖/二等奖/优秀论文/待确认"},
+    "award_confidence": {"type": "string", "enum": ["high", "medium", "low", "unknown"]},
+    "problem_count": {"type": ["integer", "null"], "description": "问题个数（子问数）"},
+    "task_types": {"type": "array", "items": {"type": "string"}, "description": "如 优化/预测/评价/分类/聚类/仿真"},
+    "models_and_algorithms": {"type": "array", "items": {"type": "string"}, "description": "模型与算法名清单"},
+    "data_modality": {"type": ["string", "null"], "description": "结构化/时序/图像/文本/网络/无数据"},
+    "data_scale": {"type": ["string", "null"], "description": "数据规模定性描述，如 小样本/万级/百万级"},
+    "validation_methods": {"type": "array", "items": {"type": "string"}},
+    "figure_count": {"type": ["integer", "null"]},
+    "figure_types": {"type": "array", "items": {"type": "string"}},
+    "innovation_points": {"type": "array", "maxItems": 3, "items": {"type": "string"}, "description": "1-3 条创新点"},
+    "page_count": {"type": ["integer", "null"]},
+    "section_structure": {"type": ["string", "null"], "description": "章节结构概要"},
+    "source_locations": {"type": "array", "items": {"type": "string"}, "description": "关键内容页码定位，如 p.12-15"},
+    "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
+    "notes": {"type": "string"}
+  }
+}

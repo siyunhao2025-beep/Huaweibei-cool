@@ -1,0 +1,11 @@
+{
+  "kind": "ConvergenceBand",
+  "data": "DEMO_PREVIEW_ONLY",
+  "rows": 3240,
+  "statistics": {
+    "seeds": 18,
+    "iterations": 180,
+    "final_objective": 0.352199367853991,
+    "final_violation": 0.005207597145567223
+  }
+}

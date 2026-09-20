@@ -1,0 +1,158 @@
+{
+  "paper_id": "2024_C_C24103860012",
+  "year": 2024,
+  "track": "C",
+  "title": "数据驱动下磁性元件的磁芯损耗建模",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 5,
+  "task_types": [
+    "特征工程",
+    "参数回归",
+    "方差分析",
+    "预测",
+    "多目标优化"
+  ],
+  "models_and_algorithms": [
+    "统计+几何特征",
+    "决策树/随机森林特征重要性",
+    "投票法分类",
+    "6种SE温度修正",
+    "对数变换方差齐性",
+    "分层随机抽样",
+    "单/双因素ANOVA",
+    "One-hot编码",
+    "IGSE",
+    "9种ML模型",
+    "CatBoost堆叠",
+    "GA/PSO/GWO灰狼优化"
+  ],
+  "data_modality": "结构化",
+  "data_scale": "百级样本（48组合×多频率）",
+  "validation_methods": [
+    "特征重要性排序",
+    "投票法",
+    "R²从0.929979提升到0.985661",
+    "对数变换正态化",
+    "分层抽样",
+    "GWO最优解",
+    "48组合鲁棒性验证"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "特征重要性",
+    "6种修正对比",
+    "ANOVA热力图",
+    "CatBoost预测",
+    "GWO收敛"
+  ],
+  "innovation_points": [
+    "统计(8维)+几何(11维)双角度特征提取，决策树/RF 选有效特征",
+    "6种温度修正假设对比，最优使 R² 从 0.93 提升到 0.986",
+    "问题四用 IGSE 作为先验知识做模型堆叠，CatBoost 平均相对误差 0.03542",
+    "问题五对比 GA/PSO/GWO，GWO 最优解频率~188kHz/90°C/正弦/B=0.012/材料4"
+  ],
+  "page_count": 82,
+  "section_structure": "问题重述/问题一~十/模型评价和改进/参考文献/附录",
+  "source_locations": [
+    "p.1-2 摘要",
+    "p.68 模型评价"
+  ],
+  "confidence": "high",
+  "notes": "题C，特征工程+堆叠+灰狼优化路线。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "人工特征",
+      "main_model": "统计8维+几何11维+决策树/RF特征重要性选特征",
+      "improvement": "决策树/RF/逻辑回归投票分类",
+      "why_switch": "需自动选有效波形特征"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "原始SE",
+      "main_model": "6种温度修正假设",
+      "improvement": "对数变换+最小二乘",
+      "why_switch": "原SE缺温度项"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "原始数据方差分析",
+      "main_model": "对数变换方差齐性+分层随机抽样+单/双因素ANOVA",
+      "improvement": "热力图可视化",
+      "why_switch": "原始数据方差不齐"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "修正SE+one-hot",
+      "main_model": "9种ML模型+IGSE先验+CatBoost堆叠",
+      "improvement": "加入问题一峰值特征",
+      "why_switch": "纯修正SE泛化不足"
+    },
+    {
+      "question_id": "问题五",
+      "baseline": "单目标",
+      "main_model": "GA/PSO/GWO对比+CatBoost代理",
+      "improvement": "48组合鲁棒性验证",
+      "why_switch": "双目标(损耗最小+磁能最大)"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "Steinmetz P_v=k f^α B^β",
+    "6种温度修正假设（线性/对数/多项式等）",
+    "IGSE 基于 dB/dt 的等效频率",
+    "双目标 min P_v / max f·B"
+  ],
+  "objective_function": "min P_v 且 max f·B_peak",
+  "evaluation_metrics": [
+    "R² 0.929979→0.985661",
+    "CatBoost平均相对误差0.03542",
+    "GWO最优解~188kHz/90°C/材料4"
+  ],
+  "algorithm_details_and_complexity": "特征工程→投票分类→6假设SE修正→9模型堆叠→GWO优化",
+  "independent_validation_design": "分层随机抽样50条；48组合GWO鲁棒性验证",
+  "sensitivity_robustness_ablation": [
+    "6种温度修正对比",
+    "9种ML模型对比",
+    "GA/PSO/GWO 对比"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "磁性元件（如变压器、电感）是功率变换器中不可或缺的核心器件，广泛应用于轨道交通、电动汽车、信息通讯等领域。",
+    "method_sentence": "统计+几何特征/6种温度修正/对数变换ANOVA/9模型+IGSE堆叠/GWO",
+    "result_sentence": "R²提升近4倍；CatBoost误差0.03542；GWO最优解~188kHz",
+    "numbers_presentation": "R² 0.929979→0.985661、0.03542、188000Hz"
+  },
+  "figure_narrative_order": [
+    "特征重要性",
+    "6修正对比",
+    "ANOVA热力图",
+    "9模型对比",
+    "GWO收敛"
+  ],
+  "judge_high_score_reasons": [
+    "特征工程系统：统计+几何双角度",
+    "6种修正假设对比严谨",
+    "IGSE 作为先验做模型堆叠，融合可解释性与非线性",
+    "GA/PSO/GWO 三种元启发式对比"
+  ],
+  "reusable_patterns": [
+    "统计+几何双视角特征工程",
+    "多假设对比选最优温度修正",
+    "物理先验(IGSE)做模型堆叠",
+    "三种元启发式对比验证"
+  ],
+  "transferable_ability_card_candidates": [
+    "CatBoost堆叠",
+    "IGSE",
+    "GWO灰狼优化",
+    "特征重要性"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "特征工程": "p.5-15",
+    "6修正": "p.18-30",
+    "ANOVA": "p.38-45",
+    "CatBoost堆叠": "p.50-60",
+    "GWO": "p.62-68"
+  }
+}

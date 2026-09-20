@@ -1,0 +1,135 @@
+{
+  "paper_id": "2015_C_C90110006_b2fe815e",
+  "year": 2015,
+  "track": "C",
+  "title": "移动通信无线信道指纹建模及识别",
+  "award_level": "待确认",
+  "award_confidence": "unknown",
+  "problem_count": 4,
+  "task_types": [
+    "预测",
+    "评价",
+    "分类",
+    "回归拟合",
+    "机理建模",
+    "信号处理",
+    "空间图"
+  ],
+  "models_and_algorithms": [
+    "支持向量机SVM",
+    "贝叶斯",
+    "卡尔曼滤波",
+    "信道建模/多径/OFDM"
+  ],
+  "data_modality": "时序/信号",
+  "data_scale": "小样本/题设数据",
+  "validation_methods": [
+    "对比/比较分析",
+    "模型检验/显著性检验"
+  ],
+  "figure_count": 40,
+  "figure_types": [
+    "流程图/框图",
+    "散点/拟合图"
+  ],
+  "innovation_points": [],
+  "page_count": 40,
+  "section_structure": "3\n         第二章 信道建模与指纹特征提取",
+  "source_locations": [],
+  "confidence": "high",
+  "notes": "2015年C题(无线信道指纹)，信号处理专业度高",
+  "per_question_method_chain": [
+    {
+      "question_id": "信道建模",
+      "baseline": "单径模型",
+      "main_model": "从直达/双径物理模型推多基复包络线性叠加信道模型",
+      "improvement": "体现多径指纹特征",
+      "why_switch": "真实信道多径叠加"
+    },
+    {
+      "question_id": "指纹提取",
+      "baseline": "常规谱估计",
+      "main_model": "基于CLEAN超分辨谱估计，Sinc插值逐步提指纹",
+      "improvement": "超分辨分辨多径",
+      "why_switch": "常规谱分辨率不足"
+    },
+    {
+      "question_id": "场景识别",
+      "baseline": "距离/多普勒图像",
+      "main_model": "成像预识别+超分辨径数识别+Kalman主径+指纹椭圆",
+      "improvement": "指纹椭圆定位完成场景识别",
+      "why_switch": "主径衰落的椭圆位置具场景指纹性"
+    },
+    {
+      "question_id": "时序分段",
+      "baseline": "固定窗",
+      "main_model": "变尺度分段:大尺度按噪声统计，小尺度滑窗+Sobel边缘",
+      "improvement": "43段拟合误差0.32，压缩率99.7%",
+      "why_switch": "固定窗不适应强弱噪声"
+    },
+    {
+      "question_id": "分段聚类",
+      "baseline": "直接聚类",
+      "main_model": "SVM邻段区域融合聚类(相邻三段两训一融)",
+      "improvement": "聚12类，Bayes假设检验给后验概率",
+      "why_switch": "邻段融合提高小样本聚类稳定性"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "接收信号=Σ多径复包络线性叠加",
+    "CLEAN:逐次减最大相关分量提多径",
+    "Kalman滤波跟踪信道主径",
+    "变尺度:噪声数阈值自适应窗长"
+  ],
+  "objective_function": "超分辨提取多径参数最小化残差；分段最小化拟合误差",
+  "evaluation_metrics": [
+    "场景识别概率",
+    "分段拟合误差0.32",
+    "压缩率99.7%",
+    "Bayes后验概率"
+  ],
+  "algorithm_details_and_complexity": "CLEAN迭代O(径数×N)；SVM邻段融合；Bayes后验",
+  "independent_validation_design": "Test1/Test2场景概率输出(近100%/91.9%)；问题4用Bayes后验给置信",
+  "sensitivity_robustness_ablation": [
+    "强弱噪声下分段策略对比",
+    "Sinc插值点数对超分辨影响",
+    "SVM聚类用Bayes假设检验"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "多径参数可作指纹特征识别场景。",
+    "method_sentence": "复包络信道建模+CLEAN超分辨+Kalman主径+变尺度分段+SVM邻段融合",
+    "result_sentence": "Test1近100%识别，时序分43段误差0.32压缩99.7%",
+    "numbers_presentation": "识别概率、段数、拟合误差、压缩率"
+  },
+  "figure_narrative_order": [
+    "多径信道模型",
+    "CLEAN谱估计",
+    "指纹椭圆",
+    "变尺度分段",
+    "SVM聚类树"
+  ],
+  "judge_high_score_reasons": [
+    "通信物理+信号处理+时序分段+聚类全链",
+    "CLEAN超分辨和变尺度分段是专业级技巧",
+    "用Bayes后验给分类置信"
+  ],
+  "reusable_patterns": [
+    "物理量指纹化识别",
+    "CLEAN超分辨谱估计",
+    "变尺度时序分段",
+    "SVM邻段融合小样本聚类"
+  ],
+  "transferable_ability_card_candidates": [
+    "超分辨谱估计",
+    "变尺度分段",
+    "SVM+Bayes分类"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "信道建模": "≈p.5-12",
+    "CLEAN指纹": "≈p.13-20",
+    "场景识别": "≈p.22-30",
+    "变尺度分段": "≈p.30-35",
+    "SVM聚类": "≈p.35-40"
+  }
+}

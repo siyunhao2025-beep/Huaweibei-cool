@@ -1,0 +1,16 @@
+{
+  "kind": "ParameterSweep",
+  "data": "DEMO_PREVIEW_ONLY",
+  "rows": 1800,
+  "statistics": {
+    "grid": [
+      40,
+      45
+    ],
+    "best": [
+      1.1818181818181819,
+      0.7820512820512819,
+      0.7642799400808442
+    ]
+  }
+}

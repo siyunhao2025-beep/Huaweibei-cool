@@ -1,0 +1,79 @@
+{
+  "paper_id": "2021_F_F21102870035",
+  "year": 2021,
+  "track": "F",
+  "title": "航空公司机组优化排班问题",
+  "confidence": "high",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "直接列约束",
+      "main_model": "航班连接网络建网络流模型，预处理去冗余约束，标量化求Pareto",
+      "improvement": "去冗余降规模",
+      "why_switch": "冗余约束放大问题规模"
+    },
+    {
+      "question_id": "问题二(执勤)",
+      "baseline": "非线规划",
+      "main_model": "二次变量代换线性化+关联约束转等价MILP，'暂不考虑-求解-检验'策略",
+      "improvement": "非线性→MILP",
+      "why_switch": "累计执勤/飞行容量约束含二次项，线性化后可解"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "航班连接网络流模型",
+    "标量化Pareto",
+    "二次变量线性化",
+    "等价MILP",
+    "'暂不考虑-求解-检验'策略"
+  ],
+  "objective_function": "多目标标量化求Pareto最优:满足配置→乘机/替补最少→执勤成本最低→时长平衡",
+  "evaluation_metrics": [
+    "A组0.7分钟得全配置排班",
+    "去冗余约束降规模",
+    "B组分段3-4天"
+  ],
+  "algorithm_details_and_complexity": "网络流+去冗余+二次线性化MILP+分段求解",
+  "independent_validation_design": "A/B数据集求解并对比计算时间",
+  "sensitivity_robustness_ablation": [
+    "去冗余前后规模",
+    "线性化等价性",
+    "分段策略"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "机组排班需科学降人力成本，考虑合理/公平/有效",
+    "method_sentence": "航班连接网络+点边多目标+二次线性化MILP+加速策略",
+    "result_sentence": "A组0.7分钟得全配置，B组不满足35",
+    "numbers_presentation": "求解时间0.7分钟体现效率"
+  },
+  "figure_narrative_order": [
+    "航班连接网络图",
+    "Pareto前沿",
+    "求解时间对比表"
+  ],
+  "judge_high_score_reasons": [
+    "构造航班连接网络建模并去冗余约束，工程降规模意识强",
+    "二次变量线性化转等价MILP，建模技术扎实",
+    "'暂不考虑-求解-检验'加速策略实用",
+    "标量化求Pareto处理多目标规范"
+  ],
+  "reusable_patterns": [
+    "去冗余约束降规模",
+    "二次项线性化MILP",
+    "'求解-检验'加速大规模OR"
+  ],
+  "transferable_ability_card_candidates": [
+    "MILP建模",
+    "网络流问题",
+    "Pareto多目标"
+  ],
+  "page_locations": {
+    "摘要": "p2-3",
+    "航班连接网络流": "p8,13",
+    "MILP线性化": "p16-19",
+    "Pareto": "p13,15,20"
+  },
+  "notes": "普通一等奖，深卡",
+  "award_level": "一等奖",
+  "award_confidence": "high"
+}

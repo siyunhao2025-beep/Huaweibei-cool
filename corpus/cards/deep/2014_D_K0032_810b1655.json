@@ -1,0 +1,126 @@
+{
+  "paper_id": "2014_D_K0032_810b1655",
+  "year": 2014,
+  "track": "D",
+  "title": "面向节能的单/多列车优化决策问题",
+  "award_level": "待确认",
+  "award_confidence": "unknown",
+  "problem_count": 5,
+  "task_types": [
+    "优化",
+    "控制决策"
+  ],
+  "models_and_algorithms": [
+    "遗传算法",
+    "多目标规划/优化"
+  ],
+  "data_modality": "结构化",
+  "data_scale": "小样本/题设数据",
+  "validation_methods": [
+    "灵敏度/敏感性分析",
+    "鲁棒性/稳定性分析"
+  ],
+  "figure_count": 6,
+  "figure_types": [
+    "流程图/框图",
+    "折线/曲线图"
+  ],
+  "innovation_points": [
+    "本文还以问题一（1）为例对设计参数进行了敏感性分析，得到分段时间间"
+  ],
+  "page_count": 68,
+  "section_structure": null,
+  "source_locations": [
+    "模型建立≈p.18",
+    "模型求解≈p.1",
+    "灵敏度分析≈p.23"
+  ],
+  "confidence": "high",
+  "notes": "2014年D题变体(列车节能)，多岛遗传+NSGA-II，工程结果量化好",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一(1)",
+      "baseline": "给定工况跑固定策略",
+      "main_model": "时间分段-离散化把能耗积分方程数值化",
+      "improvement": "末端制动策略+多岛遗传算法求解最低能耗",
+      "why_switch": "能耗是连续积分，需离散化为可优化决策变量"
+    },
+    {
+      "question_id": "问题一(2)",
+      "baseline": "单目标最低能耗",
+      "main_model": "最低能耗-最少时间双目标Pareto前端",
+      "improvement": "NSGA-II求Pareto解集，多岛遗传在前端上优化时间分配",
+      "why_switch": "能耗与时间矛盾，需Pareto前沿而非单点"
+    },
+    {
+      "question_id": "问题二(1)(2)",
+      "baseline": "单车节能",
+      "main_model": "再生能源最大化模型，车辆分组发车间隔优化",
+      "improvement": "高峰/非高峰分时段分组调度",
+      "why_switch": "再生能源取决于车距，需全局发车时刻优化"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "延误后重跑",
+      "main_model": "最短追赶时间-最低能耗多目标延误追赶模型",
+      "improvement": "把延误概率参数化做概率延误追赶",
+      "why_switch": "追赶时间与能耗矛盾，需按站点给不同策略"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "能耗=∫牵引/巡航/惰行/制动工况下功率对时间积分",
+    "末端制动策略保证规定时间距离内速度减为0",
+    "再生能源=Σ(制动回馈)，与发车间隔相关",
+    "把停站视为第5种工况"
+  ],
+  "objective_function": "min 总能耗 J=∫P(t)dt；双目标 min(能耗, 运行时间)；再生能源 max",
+  "evaluation_metrics": [
+    "各段能耗(J)",
+    "Pareto前端分布",
+    "再生能源占比",
+    "高峰节能百分比"
+  ],
+  "algorithm_details_and_complexity": "多岛遗传算法(MIGA)分岛迁移避免早熟；NSGA-II非支配排序+拥挤度；复杂度O(iter×pop×m)",
+  "independent_validation_design": "以A6-A7/A7-A8区间分别求解互验；两个延误算例对照不同站点策略",
+  "sensitivity_robustness_ablation": [
+    "图6.1参数敏感性:分段时间间隔、分段时刻影响最大(正效应)",
+    "去除不敏感参数提升计算效率",
+    "对Pareto解集丰富度讨论"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "本文围绕单/多列车优化决策问题。",
+    "method_sentence": "利用多岛遗传算法和NSGA-II给出各场景能耗最优运行线与延误控制",
+    "result_sentence": "A6-A7能耗3.37×10^7J，再生能源占17.5%，早高峰节能约37%",
+    "numbers_presentation": "给出各段时间、总能耗、节能百分比、抗延误批数"
+  },
+  "figure_narrative_order": [
+    "工况分段示意",
+    "能耗-时间Pareto前沿",
+    "发车间隔与再生能源",
+    "延误追赶策略",
+    "参数敏感性图6.1"
+  ],
+  "judge_high_score_reasons": [
+    "连续能耗积分→离散优化的建模转译干净",
+    "NSGA-II Pareto+多岛遗传双层求解",
+    "对设计参数做了带正负效应的敏感性分析"
+  ],
+  "reusable_patterns": [
+    "连续物理量离散化后用启发式优化",
+    "能耗/时间双目标Pareto调度",
+    "再生能源全局时刻优化"
+  ],
+  "transferable_ability_card_candidates": [
+    "Pareto多目标调度",
+    "多岛遗传算法",
+    "运行工况分段优化"
+  ],
+  "page_locations": {
+    "摘要": "p.1",
+    "能耗积分离散化": "≈p.5-12",
+    "NSGA-II Pareto": "≈p.15-25",
+    "发车间隔优化": "≈p.30-40",
+    "延误追赶": "≈p.50-60",
+    "敏感性图6.1": "≈p.62-65"
+  }
+}

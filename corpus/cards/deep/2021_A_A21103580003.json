@@ -1,0 +1,77 @@
+{
+  "paper_id": "2021_A_A21103580003",
+  "year": 2021,
+  "track": "A",
+  "title": "相关矩阵组的低复杂度计算和存储建模",
+  "confidence": "high",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一(计算)",
+      "baseline": "直接求解输出矩阵",
+      "main_model": "利用帧间数值连续性做插值估计输出W；中间V用LHC降维快速SVD+Sturm求前L特征值；改进Cholesky消元避免直接求逆；Strassen加速矩阵乘",
+      "improvement": "插值+快速SVD+免求逆",
+      "why_switch": "帧间连续使插值可行；QR迭代昂贵改用Sturm；直接求逆昂贵改Cholesky消元"
+    },
+    {
+      "question_id": "问题二(压缩)",
+      "baseline": "全量存储",
+      "main_model": "结合相关性插值与SVD压缩解压策略",
+      "improvement": "压缩比最高80%",
+      "why_switch": "利用矩阵间相关压存储"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "矩阵间连续性插值",
+    "Lawson-Hanson-Chan降维",
+    "Sturm理论求前L最大特征值",
+    "改进Cholesky高斯消元",
+    "Strassen矩阵乘"
+  ],
+  "objective_function": "保证精度下最小化计算与存储复杂度",
+  "evaluation_metrics": [
+    "压缩比最高80%",
+    "避免QR迭代",
+    "改进Cholesky免直接求逆"
+  ],
+  "algorithm_details_and_complexity": "LHC降维+Sturm求前L特征值避开QR迭代，改进Cholesky消元免求逆，Strassen加速乘",
+  "independent_validation_design": "对相关矩阵组整体验证精度与压缩比",
+  "sensitivity_robustness_ablation": [
+    "插值精度vs计算量权衡",
+    "80%压缩比下误差"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "大数据时代数据量激增，相关矩阵组低复杂度计算存储有价值",
+    "method_sentence": "帧间连续性插值+LHC快速SVD+Sturm特征值+改进Cholesky+Strassen",
+    "result_sentence": "实现最高80%压缩比",
+    "numbers_presentation": "80%压缩比为核心数字"
+  },
+  "figure_narrative_order": [
+    "相关性评价指标图",
+    "快速SVD流程图",
+    "压缩比对比表"
+  ],
+  "judge_high_score_reasons": [
+    "洞察帧间数值连续做插值，物理观察到位",
+    "LHC降维+Sturm求前L特征值避开昂贵QR迭代，算法功底深",
+    "改进Cholesky消元避免直接求逆，多算子协同降复杂度"
+  ],
+  "reusable_patterns": [
+    "利用相邻样本连续做插值估计",
+    "快速SVD:降维+Sturm求前L特征值",
+    "Cholesky消元免直接求逆"
+  ],
+  "transferable_ability_card_candidates": [
+    "大型矩阵低复杂度算法",
+    "快速SVD/特征值",
+    "压缩存储"
+  ],
+  "page_locations": {
+    "摘要": "p2",
+    "插值估计": "p6-10",
+    "LHC/Sturm快速SVD": "p13-15",
+    "改进Cholesky": "p18-21"
+  },
+  "notes": "普通一等奖，深卡",
+  "award_level": "一等奖",
+  "award_confidence": "high"
+}

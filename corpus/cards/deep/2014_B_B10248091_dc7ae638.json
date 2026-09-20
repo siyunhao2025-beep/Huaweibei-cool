@@ -1,0 +1,128 @@
+{
+  "paper_id": "2014_B_B10248091_dc7ae638",
+  "year": 2014,
+  "track": "B",
+  "title": "数据的多流形结构分析",
+  "award_level": "待确认",
+  "award_confidence": "unknown",
+  "problem_count": 4,
+  "task_types": [
+    "分类",
+    "信号处理"
+  ],
+  "models_and_algorithms": [
+    "主成分分析",
+    "K-means聚类",
+    "禁忌搜索/启发式"
+  ],
+  "data_modality": "图像",
+  "data_scale": "小样本/题设数据",
+  "validation_methods": [
+    "对比/比较分析",
+    "鲁棒性/稳定性分析"
+  ],
+  "figure_count": 6,
+  "figure_types": [
+    "流程图/框图",
+    "折线/曲线图",
+    "对比/雷达图"
+  ],
+  "innovation_points": [
+    "地提出一种基于PID 思想的参数调节策略，能够快速合理的逼近所",
+    "首先，我们引入了SSC 算法去解决高维数据，然后，",
+    "本文有以下的创新点，首先，我们引入了SSC 算法去解决高维数据，然后，"
+  ],
+  "page_count": 57,
+  "section_structure": "一．背景回顾；二．问题一的建模与求解；三．问题二的建模与求解；四．问题三的建模与求解；五．问题四的建模与求解；六．模型的优缺点；七．总结与展望；八．参考文献；九．代码目录",
+  "source_locations": [
+    "模型求解≈p.34"
+  ],
+  "confidence": "high",
+  "notes": "2014年B题(数据多流形)，方法选型与对比充分，PID调参是亮点",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "PCA主成分聚类",
+      "main_model": "PCA得基本解启发，SSC稀疏子空间聚类",
+      "improvement": "调SSC参数得相似度矩阵后接K-means",
+      "why_switch": "线性子空间下SSC比普通聚类更忠实流形"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "单算法处理四类数据",
+      "main_model": "SMMC利用自然局部集合结构构造相似度矩阵",
+      "improvement": "提出基于PID思想的参数调节策略快速逼近参数",
+      "why_switch": "SMMC对参数极敏感，PID式闭环调节比网格搜索高效"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "经典PCA",
+      "main_model": "大样本交叉流形用mum-Cluster；运动分割用加权SSC；人脸识别用2DIMPCA/RPCA+SSC",
+      "improvement": "多算法对比选最快最准(2DIMPCA)",
+      "why_switch": "光照/噪声/交叠流形需针对性流形方法"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "基本SMMC",
+      "main_model": "改进SMMC(局部信息由点改为子块)+LSC",
+      "improvement": "PID调参指导",
+      "why_switch": "圆台两侧数据需子块级相似度才能关联"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "SSC:在字典上求稀疏表示z=argmin||z||_1 s.t. x=Dz",
+    "SMMC:用自然局部集合结构信息辅助构造相似度矩阵",
+    "PID参数调节:按聚类误差的比例-积分-微分反馈调参",
+    "假设数据近似位于若干低维子空间/流形"
+  ],
+  "objective_function": "稀疏表示min||z||_1；聚类后接K-means最小化类内方差",
+  "evaluation_metrics": [
+    "聚类准确率",
+    "运行时间",
+    "相似度矩阵合理性",
+    "与PCA/2DIMPCA/RPCA对比"
+  ],
+  "algorithm_details_and_complexity": "SSC解1范数最小化(复杂度O(n^2)字典)；SMMC加相似度构造；对SMMC做了时间复杂度分析",
+  "independent_validation_design": "四类不同特征数据统一验证；31帧运动分割逐帧核对；4种人脸识别算法对比准确率与耗时",
+  "sensitivity_robustness_ablation": [
+    "PID参数调节策略替代人工调参",
+    "对SMMC/mum/LSC各自参数依赖与适用场景做对比",
+    "运动分割高斯权重改善子块不准"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "进入信息时代，大规模数据分析越来越重要。",
+    "method_sentence": "用PCA/SSC/SMMC/mum-Cluster/LSC及改进，并提出PID式参数调节",
+    "result_sentence": "各数据集得到高精度聚类，2DIMPCA又快又准处理光照人脸",
+    "numbers_presentation": "给出类标号区间(如1-138背景)、31帧准确、4算法对比"
+  },
+  "figure_narrative_order": [
+    "流形聚类对比",
+    "SSC相似度矩阵",
+    "PID参数调节流程",
+    "多流形拆分结果",
+    "人脸识别对比"
+  ],
+  "judge_high_score_reasons": [
+    "不是套用单一聚类，而是按数据特征匹配流形方法族",
+    "提出PID闭环调参这一可迁移技巧",
+    "对算法复杂度和适用边界有清醒讨论"
+  ],
+  "reusable_patterns": [
+    "按数据特征选子空间/流形聚类",
+    "PID式参数闭环调节",
+    "稀疏表示SSC+K-means两段式"
+  ],
+  "transferable_ability_card_candidates": [
+    "SSC稀疏子空间聚类",
+    "SMMC改进相似度",
+    "PID参数调节",
+    "2DIMPCA光照人脸识别"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "PCA/SSC": "≈p.8-15",
+    "SMMC+PID调参": "≈p.20-30",
+    "mum-Cluster运动分割": "≈p.35-45",
+    "人脸识别对比": "≈p.45-52"
+  }
+}

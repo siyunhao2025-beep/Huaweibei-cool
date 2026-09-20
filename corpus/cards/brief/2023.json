@@ -1,0 +1,2323 @@
+[
+  {
+    "paper_id": "2023_A_A23100070049",
+    "year": 2023,
+    "track": "A",
+    "title": "WLAN 网络信道接入机制建模",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "通信建模",
+      "Markov链",
+      "仿真验证"
+    ],
+    "models_and_algorithms": [
+      "Bianchi模型推广",
+      "二维Markov链",
+      "RTS/CTS分析",
+      "MATLAB离散事件仿真器"
+    ],
+    "data_modality": "WLAN仿真",
+    "data_scale": "2-3 BSS",
+    "validation_methods": [
+      "理论冲突概率10.46% vs 仿真11.03%(差0.57%)",
+      "吞吐误差2.55%"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "状态转移图",
+      "吞吐对比曲线",
+      "仿真器界面"
+    ],
+    "innovation_points": [
+      "统一处理隐藏终端/暴露终端/自然丢包",
+      "定义脆弱时隙概念",
+      "自研离散事件仿真器"
+    ],
+    "page_count": 56,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "A题Bianchi推广代表作"
+  },
+  {
+    "paper_id": "2023_A_A23102470073",
+    "year": 2023,
+    "track": "A",
+    "title": "WLAN 网络信道接入机制建模",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "通信建模",
+      "Markov链",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "DCF/CSMA/CA",
+      "Bianchi模型",
+      "离散事件仿真"
+    ],
+    "data_modality": "WLAN仿真",
+    "data_scale": "2-3 BSS",
+    "validation_methods": [
+      "改进Bianchi与仿真差3.8%"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "状态转移图",
+      "吞吐对比表"
+    ],
+    "innovation_points": [
+      "分场景改进Bianchi模型"
+    ],
+    "page_count": 58,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "A题Bianchi标准路线"
+  },
+  {
+    "paper_id": "2023_A_A23102480015",
+    "year": 2023,
+    "track": "A",
+    "title": "WLAN网络信道接入机制建模",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "通信建模",
+      "Markov链",
+      "多BSS扩展"
+    ],
+    "models_and_algorithms": [
+      "改进Markov链",
+      "一维/二维Markov",
+      "交叠情况分类讨论"
+    ],
+    "data_modality": "WLAN仿真",
+    "data_scale": "2-3 BSS",
+    "validation_methods": [
+      "归一化吞吐0.1474/0.2412"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "状态转移图",
+      "吞吐表"
+    ],
+    "innovation_points": [
+      "问题二一维Markov简化",
+      "问题四3BSS分类讨论"
+    ],
+    "page_count": 83,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "A题Markov分类讨论路线"
+  },
+  {
+    "paper_id": "2023_A_A23102860239",
+    "year": 2023,
+    "track": "A",
+    "title": "_____WLAN 网络信道接入机制建模______",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "通信建模",
+      "Markov链",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "DCF/CSMA/CA",
+      "Bianchi模型",
+      "有限状态机",
+      "牛顿法",
+      "蒙特卡洛"
+    ],
+    "data_modality": "WLAN仿真",
+    "data_scale": "",
+    "validation_methods": [
+      "蒙特卡洛仿真"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "状态机图"
+    ],
+    "innovation_points": [
+      "有限状态机建模"
+    ],
+    "page_count": 62,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": "摘要抽文短"
+  },
+  {
+    "paper_id": "2023_A_A23102890028",
+    "year": 2023,
+    "track": "A",
+    "title": "WLAN网络信道接入机制建模",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "通信建模",
+      "Markov链",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "Bianchi模型",
+      "Markov稳态解",
+      "全概率公式",
+      "蒙特卡洛仿真"
+    ],
+    "data_modality": "WLAN仿真",
+    "data_scale": "",
+    "validation_methods": [
+      "理论67.174Mbps vs 仿真65.263Mbps(区间[64.18,66.20])"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "状态转移图",
+      "吞吐误差分布"
+    ],
+    "innovation_points": [
+      "全概率公式推导吞吐",
+      "蒙特卡洛给置信区间"
+    ],
+    "page_count": 89,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "A题全概率公式+置信区间路线"
+  },
+  {
+    "paper_id": "2023_A_A23103360079",
+    "year": 2023,
+    "track": "A",
+    "title": "WLAN 组网中多BSS 系统建模研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "通信建模",
+      "数值求解",
+      "仿真器开发"
+    ],
+    "models_and_algorithms": [
+      "Markov链",
+      "牛顿法",
+      "二分法",
+      "App Designer仿真器",
+      "经验累积分布图"
+    ],
+    "data_modality": "WLAN仿真",
+    "data_scale": "",
+    "validation_methods": [
+      "平均相对误差2.589%/RMSE0.266",
+      "问题二误差0.993%"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "误差经验累积分布图",
+      "仿真器界面"
+    ],
+    "innovation_points": [
+      "App Designer交互式仿真器",
+      "ECDF验证模型精度"
+    ],
+    "page_count": 77,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "A题仿真器工程化路线"
+  },
+  {
+    "paper_id": "2023_A_A23103840031",
+    "year": 2023,
+    "track": "A",
+    "title": "WLAN网络信道接入机制建模",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "通信建模",
+      "二维Markov",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "二维Markov链",
+      "CSMA/CA稳态解",
+      "自研仿真器"
+    ],
+    "data_modality": "WLAN仿真",
+    "data_scale": "",
+    "validation_methods": [
+      "问题一误差0.5158%",
+      "问题二72.63Mbps"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "状态转移图",
+      "吞吐对比表"
+    ],
+    "innovation_points": [
+      "退避冻结状态精确建模"
+    ],
+    "page_count": 55,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "A题二维Markov标准路线"
+  },
+  {
+    "paper_id": "2023_A_A23104220005",
+    "year": 2023,
+    "track": "A",
+    "title": "WLAN网络信道接入机制建模",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "通信建模",
+      "Markov",
+      "牛顿迭代"
+    ],
+    "models_and_algorithms": [
+      "二维Markov过程",
+      "牛顿迭代法",
+      "一维Markov",
+      "丢包概率融入"
+    ],
+    "data_modality": "WLAN仿真",
+    "data_scale": "",
+    "validation_methods": [
+      "问题一误差0.45%/问题二3.6%/问题三4.57%"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "状态转移图",
+      "吞吐表"
+    ],
+    "innovation_points": [
+      "丢包概率融入二维Markov",
+      "分场景一/二维切换"
+    ],
+    "page_count": 49,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "A题牛顿迭代求解路线"
+  },
+  {
+    "paper_id": "2023_A_A23104860166",
+    "year": 2023,
+    "track": "A",
+    "title": "基于Markov 链的WLAN 网络信道接入机制建模",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "通信建模",
+      "Markov",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "DCF",
+      "Bianchi",
+      "Markov chain"
+    ],
+    "data_modality": "WLAN仿真",
+    "data_scale": "2-3 BSS",
+    "validation_methods": [
+      "仿真器验证"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "状态转移图"
+    ],
+    "innovation_points": [
+      "分BSS互听/不互听系统建模"
+    ],
+    "page_count": 68,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": "摘要抽文中等长度"
+  },
+  {
+    "paper_id": "2023_A_A23105330383",
+    "year": 2023,
+    "track": "A",
+    "title": "WLAN 中多BSS 场景下的信道竞争建模与性能分析",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "通信建模",
+      "高次非线性方程",
+      "混合算法"
+    ],
+    "models_and_algorithms": [
+      "二维Markov模型",
+      "高次非线性方程",
+      "松弛牛顿法",
+      "松弛牛顿-自适应扰动模拟退火混合算法"
+    ],
+    "data_modality": "WLAN仿真",
+    "data_scale": "",
+    "validation_methods": [
+      "信道利用率差1.00%/1.66%"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "状态转移图",
+      "收敛曲线"
+    ],
+    "innovation_points": [
+      "松弛牛顿+自适应扰动SA混合算法求解高次方程"
+    ],
+    "page_count": 63,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "A题混合算法求解路线，方法创新突出"
+  },
+  {
+    "paper_id": "2023_B_B23100070010",
+    "year": 2023,
+    "track": "B",
+    "title": "DFT类矩阵的整数分解逼近：解析与优化方法",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 5,
+    "task_types": [
+      "矩阵分解",
+      "解析逼近",
+      "整数规划"
+    ],
+    "models_and_algorithms": [
+      "Cooley-Tukey基-2分解",
+      "邻近交替线性化最小化PALM",
+      "Weyl均匀分布遍历性搜索",
+      "层次递归分解"
+    ],
+    "data_modality": "DFT矩阵N=2~32",
+    "data_scale": "F4~F32",
+    "validation_methods": [
+      "问题一误差0",
+      "RMSE 0.781~0.969",
+      "硬件复杂度通项"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "蝶形分解图",
+      "RMSE对比表"
+    ],
+    "innovation_points": [
+      "PALM+投影算子元素映射",
+      "Weyl遍历性搜索",
+      "递归分层分解"
+    ],
+    "page_count": 74,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题理论性最强：PALM+Weyl"
+  },
+  {
+    "paper_id": "2023_B_B23100070173",
+    "year": 2023,
+    "track": "B",
+    "title": "DFT类矩阵的整数分解逼近",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 5,
+    "task_types": [
+      "矩阵分解",
+      "启发式"
+    ],
+    "models_and_algorithms": [
+      "对角矩阵拟合",
+      "截尾SVD",
+      "Cooley-Tukey",
+      "改进Winograd",
+      "直接整数映射",
+      "遗传算法"
+    ],
+    "data_modality": "DFT矩阵",
+    "data_scale": "N=2~32",
+    "validation_methods": [
+      "四方案横向对比",
+      "RMSE=0(CT/Winograd)"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "分解图",
+      "复杂度对比表"
+    ],
+    "innovation_points": [
+      "改进Winrad闭式分解",
+      "放缩因子位置影响分析"
+    ],
+    "page_count": 49,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题多方案对比路线"
+  },
+  {
+    "paper_id": "2023_B_B23102870003",
+    "year": 2023,
+    "track": "B",
+    "title": "DFT类矩阵的整数分解逼近",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 5,
+    "task_types": [
+      "矩阵分解",
+      "启发式优化"
+    ],
+    "models_and_algorithms": [
+      "DFT递归分解",
+      "数学规划",
+      "双扰动模拟退火",
+      "灵敏度分析"
+    ],
+    "data_modality": "DFT矩阵",
+    "data_scale": "",
+    "validation_methods": [
+      "放缩因子灵敏度分析"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "分解图",
+      "灵敏度曲线"
+    ],
+    "innovation_points": [
+      "双扰动模拟退火",
+      "放缩因子乘在拟合矩阵侧更优"
+    ],
+    "page_count": 53,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题SA路线"
+  },
+  {
+    "paper_id": "2023_B_B23102870182",
+    "year": 2023,
+    "track": "B",
+    "title": "DFT类矩阵的整数分解逼近",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 5,
+    "task_types": [
+      "矩阵分解",
+      "多方案对比"
+    ],
+    "models_and_algorithms": [
+      "SVD奇异值分解",
+      "分块矩阵分解",
+      "矩阵乘法拟合",
+      "蝶形运算分解"
+    ],
+    "data_modality": "DFT矩阵",
+    "data_scale": "",
+    "validation_methods": [
+      "三模型对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "分解图"
+    ],
+    "innovation_points": [
+      "分块降维降低误差"
+    ],
+    "page_count": 61,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题多模型对比路线"
+  },
+  {
+    "paper_id": "2023_B_B23103360062",
+    "year": 2023,
+    "track": "B",
+    "title": "DFT类矩阵的整数分解逼近",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 5,
+    "task_types": [
+      "矩阵分解",
+      "混合整数优化"
+    ],
+    "models_and_algorithms": [
+      "Cooley-Tukey Radix-2 DIT",
+      "位翻转",
+      "多元混合整数规划",
+      "矩阵连乘"
+    ],
+    "data_modality": "DFT矩阵",
+    "data_scale": "N=2~128",
+    "validation_methods": [
+      "误差近0",
+      "硬件复杂度通项"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "蝶形图",
+      "复杂度表"
+    ],
+    "innovation_points": [
+      "位翻转操作",
+      "多元混合整数规划同时优化矩阵数/元素/放缩因子"
+    ],
+    "page_count": 126,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题最详尽：126页"
+  },
+  {
+    "paper_id": "2023_B_B23104860044",
+    "year": 2023,
+    "track": "B",
+    "title": "DFT类矩阵的整数分解逼近",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 5,
+    "task_types": [
+      "矩阵分解",
+      "ADMM优化"
+    ],
+    "models_and_algorithms": [
+      "BSVD蝶形-奇异值分解",
+      "ADMM交替方向乘子",
+      "布尔矩阵复杂度统计算法"
+    ],
+    "data_modality": "DFT矩阵",
+    "data_scale": "N=2~128(2^t)",
+    "validation_methods": [
+      "最小误差序列(0,0,0.716,1.015...)",
+      "布尔矩阵统计硬件复杂度"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "蝶形划分图",
+      "复杂度曲线"
+    ],
+    "innovation_points": [
+      "BSVD新方法",
+      "布尔矩阵统计算法定硬件复杂度"
+    ],
+    "page_count": 103,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题BSVD创新路线"
+  },
+  {
+    "paper_id": "2023_B_B23105580005",
+    "year": 2023,
+    "track": "B",
+    "title": "基于修正精确分解的矩阵连乘拟合模型",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 5,
+    "task_types": [
+      "矩阵分解",
+      "插值逼近"
+    ],
+    "models_and_algorithms": [
+      "Cooley-Tukey精确分解",
+      "矩阵插值逼近",
+      "缩放因子邻域搜索"
+    ],
+    "data_modality": "DFT矩阵",
+    "data_scale": "",
+    "validation_methods": [
+      "RMSE=0",
+      "硬件复杂度通项C=16[(log2N-3)N+4]"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "分解通项图"
+    ],
+    "innovation_points": [
+      "前K-3个不满足矩阵合并修正",
+      "缩放因子邻域搜索"
+    ],
+    "page_count": 48,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题修正逼近路线"
+  },
+  {
+    "paper_id": "2023_B_B23106140164",
+    "year": 2023,
+    "track": "B",
+    "title": "___ DFT 类矩阵的整数分解逼近问题研究_     _",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 5,
+    "task_types": [
+      "矩阵分解",
+      "遗传算法",
+      "降维寻优"
+    ],
+    "models_and_algorithms": [
+      "稀疏矩阵",
+      "蝶形算法",
+      "遗传算法",
+      "混合积分解-降维寻优"
+    ],
+    "data_modality": "DFT矩阵",
+    "data_scale": "",
+    "validation_methods": [],
+    "figure_count": null,
+    "figure_types": [],
+    "innovation_points": [
+      "混合积分解降维寻优"
+    ],
+    "page_count": 68,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": "摘要抽文短"
+  },
+  {
+    "paper_id": "2023_B_B23111170006",
+    "year": 2023,
+    "track": "B",
+    "title": "基于整数分解的DFT精度和效率优化问题",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 5,
+    "task_types": [
+      "矩阵分解",
+      "低秩近似",
+      "最小二乘"
+    ],
+    "models_and_algorithms": [
+      "稀疏矩阵分解",
+      "分治算法降维",
+      "最小二乘",
+      "低秩近似"
+    ],
+    "data_modality": "DFT矩阵",
+    "data_scale": "N=2~32",
+    "validation_methods": [
+      "RMSE=0(t=1,2)",
+      "C=8Nlog2N-32N+16"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "分解图",
+      "RMSE表"
+    ],
+    "innovation_points": [
+      "分治降维",
+      "低秩近似路线"
+    ],
+    "page_count": 42,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题低秩近似路线"
+  },
+  {
+    "paper_id": "2023_C_C23102540029",
+    "year": 2023,
+    "track": "C",
+    "title": "大规模创新类竞赛评审方案研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 3,
+    "task_types": [
+      "多目标优化",
+      "标准分建模",
+      "评审方案设计"
+    ],
+    "models_and_algorithms": [
+      "0-1规划交叉分发",
+      "NSGA-II",
+      "线性回归标准分",
+      "随机森林创新性评价"
+    ],
+    "data_modality": "3000作品×125评委评分",
+    "data_scale": "3000×125×5",
+    "validation_methods": [
+      "交叉量30000/标准差1.6258",
+      "标准分模型R²"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "交叉分布直方图",
+      "标准分回归图"
+    ],
+    "innovation_points": [
+      "ER/SRA双指标标准分",
+      "随机森林评创新性"
+    ],
+    "page_count": 52,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "C题NSGA-II交叉分发代表"
+  },
+  {
+    "paper_id": "2023_C_C23102890004",
+    "year": 2023,
+    "track": "C",
+    "title": "大规模创新类竞赛评审方案研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 3,
+    "task_types": [
+      "0-1矩阵分析",
+      "统计检验",
+      "标准分"
+    ],
+    "models_and_algorithms": [
+      "0-1矩阵P",
+      "PPT的1-范数/0-范数",
+      "双样本t检验",
+      "回避制度约束",
+      "匹配度函数"
+    ],
+    "data_modality": "评审评分数据",
+    "data_scale": "",
+    "validation_methods": [
+      "t检验分布差异",
+      "三方案匹配度对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "交叉矩阵热图",
+      "匹配度对比表"
+    ],
+    "innovation_points": [
+      "PPT范数量化交集",
+      "回避制度建模",
+      "匹配度概念"
+    ],
+    "page_count": 54,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "C题理论推导最严谨：范数量化"
+  },
+  {
+    "paper_id": "2023_C_C23102980125",
+    "year": 2023,
+    "track": "C",
+    "title": "大规模创新类竞赛评审方案的建模与研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 3,
+    "task_types": [
+      "多目标优化",
+      "统计检验",
+      "聚类"
+    ],
+    "models_and_algorithms": [
+      "均匀-交叉多目标模型",
+      "NSGA-II/MO-GA",
+      "Shapiro-Wilk正态检验",
+      "P-P/Q-Q图",
+      "K-means"
+    ],
+    "data_modality": "3000×125",
+    "data_scale": "",
+    "validation_methods": [
+      "变异系数0.292",
+      "正态性检验",
+      "最优交叉量1.92"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "箱线图",
+      "P-P图",
+      "Pareto前沿"
+    ],
+    "innovation_points": [
+      "工作量均衡+交叉量双目标",
+      "MO-GA求Pareto"
+    ],
+    "page_count": 52,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "C题MO-GA路线"
+  },
+  {
+    "paper_id": "2023_C_C23103360083",
+    "year": 2023,
+    "track": "C",
+    "title": "大规模创新类竞赛评审方案研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 3,
+    "task_types": [
+      "多目标优化",
+      "启发式算法"
+    ],
+    "models_and_algorithms": [
+      "混合整数规划多目标",
+      "线性加权单目标",
+      "辅助矩阵+滑动窗口启发式"
+    ],
+    "data_modality": "3000×125",
+    "data_scale": "",
+    "validation_methods": [
+      "复杂度O(M+NlogN)",
+      "每专家120份/交集600"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "分发矩阵热图"
+    ],
+    "innovation_points": [
+      "辅助矩阵+滑动窗口快速启发式"
+    ],
+    "page_count": 101,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "C题启发式工程路线"
+  },
+  {
+    "paper_id": "2023_C_C23103510013",
+    "year": 2023,
+    "track": "C",
+    "title": "大规模创新类竞赛评审方案研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 3,
+    "task_types": [
+      "0-1规划",
+      "秩相关分析",
+      "标准分修正"
+    ],
+    "models_and_algorithms": [
+      "0-1规划",
+      "Spearman/Kendall秩相关",
+      "Max-min/Mean-scale标准分",
+      "震荡因子",
+      "偏差因子"
+    ],
+    "data_modality": "评审评分数据",
+    "data_scale": "",
+    "validation_methods": [
+      "Spearman提升247%/Kendall提升365%",
+      "最优Spearman=0.837"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "秩相关对比图",
+      "排名变动图"
+    ],
+    "innovation_points": [
+      "震荡因子/偏差因子理论修正标准分"
+    ],
+    "page_count": 59,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "C题标准分修正理论最深"
+  },
+  {
+    "paper_id": "2023_C_C23104080013",
+    "year": 2023,
+    "track": "C",
+    "title": "大规模创新类竞赛评审模型构建____",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 3,
+    "task_types": [
+      "概率分析",
+      "图论",
+      "标准分"
+    ],
+    "models_and_algorithms": [
+      "交叉概率计算",
+      "图论法",
+      "可信度",
+      "权重"
+    ],
+    "data_modality": "评审评分数据",
+    "data_scale": "",
+    "validation_methods": [
+      "交叉分布概率81.25%/17.51%..."
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "交叉分布图"
+    ],
+    "innovation_points": [
+      "交叉分布概率推导"
+    ],
+    "page_count": 65,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": "摘要抽文中等"
+  },
+  {
+    "paper_id": "2023_C_C23106130016",
+    "year": 2023,
+    "track": "C",
+    "title": "_大规模创新类竞赛评审方案研究_",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 3,
+    "task_types": [
+      "多目标非线性规划",
+      "BP神经网络",
+      "模糊综合评价"
+    ],
+    "models_and_algorithms": [
+      "多目标非线性规划",
+      "模拟退火",
+      "BP神经网络标准分",
+      "特征值提取",
+      "模糊综合评价"
+    ],
+    "data_modality": "评审评分数据",
+    "data_scale": "",
+    "validation_methods": [
+      "SA vs 枚举对比",
+      "BP标准分 vs 原标准分"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "收敛曲线",
+      "标准分对比图"
+    ],
+    "innovation_points": [
+      "BP神经网络学习专家打分规律"
+    ],
+    "page_count": 74,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "C题BP神经网络路线"
+  },
+  {
+    "paper_id": "2023_C_C23106570312",
+    "year": 2023,
+    "track": "C",
+    "title": "大规模创新类竞赛评审方案研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 3,
+    "task_types": [
+      "二次0-1整数规划",
+      "神经网络",
+      "德尔菲法"
+    ],
+    "models_and_algorithms": [
+      "二次0-1整数规划",
+      "yalmip+cplex",
+      "BP神经网络",
+      "模糊控制",
+      "德尔菲法"
+    ],
+    "data_modality": "3000×125",
+    "data_scale": "",
+    "validation_methods": [
+      "重复均衡度97.95%"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "分发矩阵图"
+    ],
+    "innovation_points": [
+      "重复度/重复均衡度双指标",
+      "德尔菲修正标准化"
+    ],
+    "page_count": 49,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "C题cplex精确求解路线"
+  },
+  {
+    "paper_id": "2023_C_C23107120024",
+    "year": 2023,
+    "track": "C",
+    "title": "大规模创新类竞赛评审方案研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 3,
+    "task_types": [
+      "组合优化",
+      "多目标",
+      "标准分"
+    ],
+    "models_and_algorithms": [
+      "K可重组合优化",
+      "NSGA-II",
+      "随机森林创新度",
+      "曼哈顿/欧氏距离验证"
+    ],
+    "data_modality": "评审评分数据",
+    "data_scale": "",
+    "validation_methods": [
+      "MD/ED距离验证",
+      "随机森林创新度"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "Pareto前沿",
+      "标准分对比"
+    ],
+    "innovation_points": [
+      "K可重组合问题建模",
+      "随机森林评创新度"
+    ],
+    "page_count": 73,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "C题完整流程路线"
+  },
+  {
+    "paper_id": "2023_C_C23910020010",
+    "year": 2023,
+    "track": "C",
+    "title": "大规模创新类竞赛评审方案研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 3,
+    "task_types": [
+      "多目标规划",
+      "模拟退火",
+      "标准分"
+    ],
+    "models_and_algorithms": [
+      "多目标规划",
+      "模拟退火两阶段交叉算法",
+      "WLT修正T分数法",
+      "排名重合度/乱序度"
+    ],
+    "data_modality": "评审评分数据",
+    "data_scale": "",
+    "validation_methods": [
+      "10次实验交集度98.64%",
+      "最大最小交集差9.4"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "分发矩阵图",
+      "乱序度对比"
+    ],
+    "innovation_points": [
+      "两阶段交叉SA",
+      "WLT加权T分数"
+    ],
+    "page_count": 58,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "C题两阶段SA路线"
+  },
+  {
+    "paper_id": "2023_D_D23100060041",
+    "year": 2023,
+    "track": "D",
+    "title": "区域碳排放量影响因素分析及双碳目标分析.",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 3,
+    "task_types": [
+      "相关分析",
+      "预测建模",
+      "情景规划"
+    ],
+    "models_and_algorithms": [
+      "Spearman相关",
+      "线性回归",
+      "LSTM",
+      "灰色预测GM",
+      "ARIMA",
+      "PSO加权组合"
+    ],
+    "data_modality": "区域经济能源面板数据",
+    "data_scale": "十二五/十三五",
+    "validation_methods": [
+      "多模型加权PSO优化权重",
+      "2040年碳达峰"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "碳排放趋势图",
+      "预测对比图",
+      "情景图"
+    ],
+    "innovation_points": [
+      "PSO加权多模型组合预测",
+      "四情景设计"
+    ],
+    "page_count": 99,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题多模型组合路线"
+  },
+  {
+    "paper_id": "2023_D_D23102690008",
+    "year": 2023,
+    "track": "D",
+    "title": "区域双碳目标与路径规划",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 3,
+    "task_types": [
+      "回归预测",
+      "情景规划"
+    ],
+    "models_and_algorithms": [
+      "Kaya模型",
+      "多元线性回归",
+      "逻辑斯蒂曲线",
+      "多项式拟合",
+      "ARIMA"
+    ],
+    "data_modality": "区域能源经济数据",
+    "data_scale": "2010-2060预测",
+    "validation_methods": [
+      "缺失值插值",
+      "多模型对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "碳排放路径图",
+      "情景对比图"
+    ],
+    "innovation_points": [
+      "Kaya模型指标体系",
+      "2010-2060长周期预测"
+    ],
+    "page_count": 63,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题Kaya+ARIMA标准路线"
+  },
+  {
+    "paper_id": "2023_D_D23102860126",
+    "year": 2023,
+    "track": "D",
+    "title": "区域双碳目标与路径规划研究_____",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 3,
+    "task_types": [
+      "特征分析",
+      "预测",
+      "情景规划"
+    ],
+    "models_and_algorithms": [
+      "改进Kaya",
+      "Pearson",
+      "随机森林",
+      "CatBoost",
+      "CV/MIC特征重要性",
+      "熵权法",
+      "岭回归",
+      "ARIMA-MLP"
+    ],
+    "data_modality": "区域能源经济数据",
+    "data_scale": "",
+    "validation_methods": [
+      "11项综合得分指标",
+      "岭回归解决共线性"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "特征重要性图",
+      "岭回归图"
+    ],
+    "innovation_points": [
+      "CV/MIC/CatBoost综合特征得分",
+      "ARIMA-MLP组合预测残差"
+    ],
+    "page_count": 73,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题特征工程最全"
+  },
+  {
+    "paper_id": "2023_D_D23103560099",
+    "year": 2023,
+    "track": "D",
+    "title": "基于碳排放时序分析的区域双碳目标与路径规划的研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 3,
+    "task_types": [
+      "指标体系",
+      "随机森林",
+      "SHAP解释"
+    ],
+    "models_and_algorithms": [
+      "德尔菲法指标筛选",
+      "Pearson",
+      "随机森林",
+      "SHAP可解释性"
+    ],
+    "data_modality": "区域能源数据",
+    "data_scale": "",
+    "validation_methods": [
+      "SHAP解释各因素贡献"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "SHAP力图",
+      "指标体系图"
+    ],
+    "innovation_points": [
+      "SHAP解释碳排放驱动因素",
+      "单位GDP能耗阈值0.25"
+    ],
+    "page_count": 79,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题SHAP可解释性路线"
+  },
+  {
+    "paper_id": "2023_D_D23104860011",
+    "year": 2023,
+    "track": "D",
+    "title": "___  _区域双碳目标与路径规划研究_____",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 3,
+    "task_types": [
+      "评价体系",
+      "微分方程+神经网络",
+      "路径规划"
+    ],
+    "models_and_algorithms": [
+      "正态云可靠性模型",
+      "蛇优化综合权重",
+      "物元分析",
+      "四阶龙格-库塔微分方程",
+      "RNN",
+      "IPSO-LSTM"
+    ],
+    "data_modality": "东南沿海区域数据",
+    "data_scale": "2021-2060",
+    "validation_methods": [
+      "物元分析检验模型",
+      "IPSO优化LSTM"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "云图",
+      "碳排放路径图"
+    ],
+    "innovation_points": [
+      "微分方程物理约束+RNN混合",
+      "蛇优化权重",
+      "正态云可靠性评价"
+    ],
+    "page_count": 98,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题方法最花哨：云模型+蛇优化+IPSO-LSTM"
+  },
+  {
+    "paper_id": "2023_D_D23105330094",
+    "year": 2023,
+    "track": "D",
+    "title": "双碳目标下基于kaya-LMDI模型的区域碳排放预测及路径设计",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 3,
+    "task_types": [
+      "因素分解",
+      "预测",
+      "LEAP情景"
+    ],
+    "models_and_algorithms": [
+      "Kaya-LMDI因素分解",
+      "改进Logistic",
+      "ARIMA",
+      "STIRPAT模型",
+      "LEAP模型",
+      "6情景设计"
+    ],
+    "data_modality": "区域能源数据",
+    "data_scale": "2020-2060",
+    "validation_methods": [
+      "LMDI因素贡献分解",
+      "LEAP分部门核算"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "因素分解图",
+      "LEAP情景图"
+    ],
+    "innovation_points": [
+      "Kaya-LMDI因素分解",
+      "LEAP模型6情景路径设计"
+    ],
+    "page_count": 66,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题政策建模最深：LMDI+LEAP"
+  },
+  {
+    "paper_id": "2023_D_D23106350004",
+    "year": 2023,
+    "track": "D",
+    "title": "基于区域双碳目标与路径规划的算法研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 3,
+    "task_types": [
+      "灰色关联",
+      "多模型预测",
+      "情景"
+    ],
+    "models_and_algorithms": [
+      "灰色关联度",
+      "线性回归",
+      "Logistic",
+      "灰色预测",
+      "LSTM",
+      "PSO加权",
+      "BP/XGBoost"
+    ],
+    "data_modality": "区域能源数据",
+    "data_scale": "",
+    "validation_methods": [
+      "多模型PSO加权组合"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "关联度图",
+      "预测图"
+    ],
+    "innovation_points": [
+      "PSO加权多模型集成"
+    ],
+    "page_count": 76,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题多模型集成路线"
+  },
+  {
+    "paper_id": "2023_D_D23106740070",
+    "year": 2023,
+    "track": "D",
+    "title": "____ 区域双碳目标与路径规划研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 3,
+    "task_types": [
+      "Kaya-STIRPAT",
+      "ARIMA预测"
+    ],
+    "models_and_algorithms": [
+      "Kaya",
+      "STIRPAT",
+      "Pearson",
+      "ARIMA(自相关/偏自相关定阶)",
+      "岭回归"
+    ],
+    "data_modality": "区域能源数据",
+    "data_scale": "",
+    "validation_methods": [
+      "ACF/PACF定阶"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "碳排放路径图"
+    ],
+    "innovation_points": [
+      "STIRPAT扩展建模"
+    ],
+    "page_count": 86,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题Kaya-STIRPAT标准路线"
+  },
+  {
+    "paper_id": "2023_D_D23116460172",
+    "year": 2023,
+    "track": "D",
+    "title": "区域双碳目标与路径规划研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 3,
+    "task_types": [
+      "LMDI分解",
+      "最大似然预测",
+      "岭回归"
+    ],
+    "models_and_algorithms": [
+      "LMDI对数平均迪氏指数",
+      "Spearman",
+      "双指数函数拟合",
+      "最大似然估计",
+      "STIRPAT扩展",
+      "二范数岭回归"
+    ],
+    "data_modality": "区域能源数据",
+    "data_scale": "2035/2050预测",
+    "validation_methods": [
+      "LMDI因素贡献",
+      "2035人口8509万/GDP17.7万亿"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "因素分解图",
+      "预测路径图"
+    ],
+    "innovation_points": [
+      "LMDI定量因素分解",
+      "双指数函数人口预测"
+    ],
+    "page_count": 58,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题LMDI定量路线"
+  },
+  {
+    "paper_id": "2023_E_E23100650012",
+    "year": 2023,
+    "track": "E",
+    "title": "出血性脑卒中临床智能诊疗建模",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "特征工程",
+      "分类预测",
+      "曲线拟合",
+      "聚类"
+    ],
+    "models_and_algorithms": [
+      "方差信息剔除",
+      "并查集高相关过滤",
+      "特征权重函数",
+      "KNN/SVM/随机森林/GBDT对比",
+      "决策树回归",
+      "网格搜索+K折"
+    ],
+    "data_modality": "160患者临床+影像",
+    "data_scale": "72变量→47→分类",
+    "validation_methods": [
+      "MAE=0.0524",
+      "消融实验验证过滤/权重函数"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "特征重要性图",
+      "水肿曲线",
+      "聚类图"
+    ],
+    "innovation_points": [
+      "并查集过滤高相关变量",
+      "按发病-首次影像时间间隔差异化权重",
+      "消融实验"
+    ],
+    "page_count": 59,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题特征工程+消融实验路线"
+  },
+  {
+    "paper_id": "2023_E_E23102550019",
+    "year": 2023,
+    "track": "E",
+    "title": "出血性脑卒中临床智能诊疗建模",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "分类预测",
+      "曲线拟合",
+      "亚组聚类"
+    ],
+    "models_and_algorithms": [
+      "SPSS相关分析",
+      "朴素贝叶斯NBM+二元线性回归",
+      "局部加权回归",
+      "非线性最小二乘",
+      "K-means+手肘法"
+    ],
+    "data_modality": "脑卒中临床数据",
+    "data_scale": "160患者",
+    "validation_methods": [
+      "三亚组R²=0.982/0.949/0.922"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "散点图",
+      "亚组拟合曲线"
+    ],
+    "innovation_points": [
+      "NBM+二元线性回归组合预测",
+      "三亚组病情分型"
+    ],
+    "page_count": 68,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题NBM+聚类路线"
+  },
+  {
+    "paper_id": "2023_E_E23103530067",
+    "year": 2023,
+    "track": "E",
+    "title": "出血性脑卒中患者预后预测与治疗智能模型构建",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "分类",
+      "曲线拟合",
+      "FCM聚类"
+    ],
+    "models_and_algorithms": [
+      "随机森林/LightGBM/XGBoost树模型",
+      "高斯模型拟合",
+      "K-means/GMM/FCM",
+      "置换重要性"
+    ],
+    "data_modality": "脑卒中临床数据",
+    "data_scale": "",
+    "validation_methods": [
+      "5折交叉验证",
+      "FCM效果最优"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "特征重要性图",
+      "高斯拟合曲线",
+      "FCM聚类图"
+    ],
+    "innovation_points": [
+      "FCM模糊聚类分亚组",
+      "置换重要性评估特征"
+    ],
+    "page_count": 85,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题FCM路线"
+  },
+  {
+    "paper_id": "2023_E_E23103570015",
+    "year": 2023,
+    "track": "E",
+    "title": "E _  出血性脑卒中临床智能诊疗建模",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "时间序列",
+      "梯度提升",
+      "聚类",
+      "预后预测"
+    ],
+    "models_and_algorithms": [
+      "梯度提升GBDT",
+      "最小角回归LAR",
+      "高斯模型",
+      "K-means+手肘法",
+      "Logistic回归",
+      "PCA",
+      "critic权重法"
+    ],
+    "data_modality": "脑卒中临床数据",
+    "data_scale": "160患者",
+    "validation_methods": [
+      "召回率96.8%/精确率94.3%",
+      "轮廓系数0.849",
+      "mRS RMSE=0.355"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "ROC曲线",
+      "四簇水肿曲线",
+      "PCA图"
+    ],
+    "innovation_points": [
+      "四阶OLS/二阶LAR/三高斯模型对比",
+      "critic权重法赋治疗方案"
+    ],
+    "page_count": 138,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题GBDT+多模型对比路线，138页"
+  },
+  {
+    "paper_id": "2023_E_E23104030073",
+    "year": 2023,
+    "track": "E",
+    "title": "出血性脑卒中临床智能诊疗建模分析",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "CNN分类",
+      "三维聚类",
+      "BP神经网络"
+    ],
+    "models_and_algorithms": [
+      "CNN卷积神经网络",
+      "灰色关联分析",
+      "PCA主成分",
+      "K-means三维聚类",
+      "BP神经网络",
+      "Spearman"
+    ],
+    "data_modality": "脑卒中影像+临床",
+    "data_scale": "",
+    "validation_methods": [
+      "RMSE/MAE评价"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "CNN结构图",
+      "三维聚类图"
+    ],
+    "innovation_points": [
+      "CNN二分类预测血肿扩张概率"
+    ],
+    "page_count": 60,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题深度学习(CNN)路线"
+  },
+  {
+    "paper_id": "2023_E_E23105330424",
+    "year": 2023,
+    "track": "E",
+    "title": "出血性脑卒中临床智能诊疗建模",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "随机森林分类",
+      "DTW时序聚类",
+      "XGBoost回归"
+    ],
+    "models_and_algorithms": [
+      "随机森林预测",
+      "DTW距离K-Means",
+      "XGBoost",
+      "趋势分箱编码",
+      "趋势卡方检验"
+    ],
+    "data_modality": "脑卒中多表关联数据",
+    "data_scale": "非等长时间序列",
+    "validation_methods": [
+      "5亚型划分",
+      "趋势卡方检验"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "DTW聚类图",
+      "亚型曲线"
+    ],
+    "innovation_points": [
+      "DTW解决非等长非均匀时序聚类"
+    ],
+    "page_count": 115,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题DTW时序聚类亮点"
+  },
+  {
+    "paper_id": "2023_E_E23106730076",
+    "year": 2023,
+    "track": "E",
+    "title": "出血性脑卒中临床智能诊疗建模",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "不平衡分类",
+      "分段拟合",
+      "灰色关联"
+    ],
+    "models_and_algorithms": [
+      "SMOTE过采样",
+      "XGBoost/MLP/LightGBM/SVC/LR对比",
+      "ROC/AUC",
+      "分段多项式",
+      "PCA+K-Means",
+      "灰色关联"
+    ],
+    "data_modality": "脑卒中数据",
+    "data_scale": "160患者/不平衡样本",
+    "validation_methods": [
+      "ROC/AUC/F1对比",
+      "XGBoost最优"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "ROC曲线",
+      "分段拟合图",
+      "灰色关联图"
+    ],
+    "innovation_points": [
+      "SMOTE处理样本不平衡",
+      "分段多项式拟合水肿曲线"
+    ],
+    "page_count": 109,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题SMOTE+XGBoost路线"
+  },
+  {
+    "paper_id": "2023_E_E23106980022",
+    "year": 2023,
+    "track": "E",
+    "title": "出血性脑卒中临床智能诊疗建模",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "分层特征选择",
+      "分段拟合",
+      "聚类"
+    ],
+    "models_and_algorithms": [
+      "随机森林/LightGBM/Spearman分层特征选择",
+      "逻辑回归",
+      "多项式+高斯分段拟合",
+      "K-means"
+    ],
+    "data_modality": "脑卒中数据",
+    "data_scale": "",
+    "validation_methods": [
+      "23特征→10",
+      "分段残差"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "分段拟合图",
+      "聚类图"
+    ],
+    "innovation_points": [
+      "临床/影像体积/影像形状三类特征分层处理"
+    ],
+    "page_count": 53,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题分层特征工程路线"
+  },
+  {
+    "paper_id": "2023_E_E23107030070",
+    "year": 2023,
+    "track": "E",
+    "title": "_出血性脑卒中临床智能诊疗建模__",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "回归预测",
+      "多模型拟合对比",
+      "DBSCAN聚类"
+    ],
+    "models_and_algorithms": [
+      "因子分析降维",
+      "逻辑回归+随机森林",
+      "LOESS(Epanechnikov/Cauchy核)",
+      "七阶多项式",
+      "二元高斯",
+      "DBSCAN+K-means对比"
+    ],
+    "data_modality": "脑卒中数据",
+    "data_scale": "",
+    "validation_methods": [
+      "RMSE/R²/Adjusted R²对比",
+      "二元高斯最优"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "多模型拟合对比图",
+      "聚类散点图"
+    ],
+    "innovation_points": [
+      "LOESS核对比",
+      "DBSCAN vs K-means聚类对比"
+    ],
+    "page_count": 73,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题多模型拟合对比路线"
+  },
+  {
+    "paper_id": "2023_E_E23900310014",
+    "year": 2023,
+    "track": "E",
+    "title": "出血性脑卒中临床智能诊疗建模",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "XGBoost分类",
+      "RBF核拟合",
+      "Mean-Shift聚类"
+    ],
+    "models_and_algorithms": [
+      "Spearman/PCA",
+      "XGBoost/随机森林/逻辑回归对比",
+      "RBF核+样条插值",
+      "线条-三维趋势点-Mean-Shift",
+      "决策树+统计分析"
+    ],
+    "data_modality": "脑卒中数据",
+    "data_scale": "160患者",
+    "validation_methods": [
+      "XGBoost准确率90%",
+      "亚组残差降34.3%"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "RBF拟合曲线",
+      "Mean-Shift聚类图"
+    ],
+    "innovation_points": [
+      "线条-三维趋势点-Mean-Shift捕捉个体差异"
+    ],
+    "page_count": 61,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题Mean-Shift路线"
+  },
+  {
+    "paper_id": "2023_F_F23102520378",
+    "year": 2023,
+    "track": "F",
+    "title": "强对流降水临近预报",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "雷达反演",
+      "时空深度学习",
+      "GAN"
+    ],
+    "models_and_algorithms": [
+      "ZH/ZDR/KDP双偏振变量",
+      "模糊逻辑相态识别",
+      "线性回归含水量",
+      "U-Net",
+      "ConvLSTM",
+      "GAN数据增强",
+      "注意力+残差"
+    ],
+    "data_modality": "双偏振雷达格点",
+    "data_scale": "1km/3km/7km等高面×10帧",
+    "validation_methods": [
+      "CSI/ETS/FAR/MAR/POD/RMSE气象指标"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "雷达回波对比图",
+      "微物理结构图"
+    ],
+    "innovation_points": [
+      "GAN缓解模糊效应",
+      "注意力+残差解决梯度消失"
+    ],
+    "page_count": 61,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题DL+GAN路线代表"
+  },
+  {
+    "paper_id": "2023_F_F23102690048",
+    "year": 2023,
+    "track": "F",
+    "title": "短临强降水情景下基于深度学习模型和双偏振雷达数据的未来降",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "时空深度学习",
+      "多模态融合"
+    ],
+    "models_and_algorithms": [
+      "ConvLSTM",
+      "DRPP-Net",
+      "CBAM注意力",
+      "Swin Transformer",
+      "ASPP模块",
+      "步长法阈值分割"
+    ],
+    "data_modality": "双偏振雷达",
+    "data_scale": "",
+    "validation_methods": [
+      "CSI/ETS/FAR/MAR/POD/RMSE"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "雷达回波预报对比图"
+    ],
+    "innovation_points": [
+      "DRPP-Net融合CBAM+DOM",
+      "Swin Transformer+ASPP降水估测"
+    ],
+    "page_count": 72,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题Swin Transformer路线"
+  },
+  {
+    "paper_id": "2023_F_F23102860072",
+    "year": 2023,
+    "track": "F",
+    "title": "强对流降水临近预报",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "3D时空Transformer",
+      "GAN",
+      "光流"
+    ],
+    "models_and_algorithms": [
+      "3D Swin-Transformer(3DST)",
+      "稠密光流运动估计",
+      "GAN时间/空间判别器",
+      "LOF+Z-score离群检测",
+      "非线性回归"
+    ],
+    "data_modality": "双偏振雷达",
+    "data_scale": "",
+    "validation_methods": [
+      "CSI 0.181→0.255(+40.9%)",
+      "R=0.301·Z^1.445·ZDR^-0.136"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "运动矢量场",
+      "GAN预报对比图"
+    ],
+    "innovation_points": [
+      "3D Swin-Transformer时空扩展",
+      "MoG-3DST运动任务+GAN双约束"
+    ],
+    "page_count": 39,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题方法创新突出：3DST+MoG"
+  },
+  {
+    "paper_id": "2023_F_F23103560002",
+    "year": 2023,
+    "track": "F",
+    "title": "强对流降水临近预报",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "U-Net",
+      "损失函数设计",
+      "消融"
+    ],
+    "models_and_algorithms": [
+      "FURENet",
+      "U-Net编码-融合-解码",
+      "加权L1/SSIM/对抗损失",
+      "消融实验"
+    ],
+    "data_modality": "NJU-CPOL双偏振雷达",
+    "data_scale": "",
+    "validation_methods": [
+      "CSI=0.62/MAE=0.70/SSIM=0.95",
+      "第60min CSI=0.52"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "回波对比图",
+      "损失消融图"
+    ],
+    "innovation_points": [
+      "加权L1+SSIM损失缓解回归到平均",
+      "系统消融实验"
+    ],
+    "page_count": 63,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题损失函数设计路线"
+  },
+  {
+    "paper_id": "2023_F_F23104040152",
+    "year": 2023,
+    "track": "F",
+    "title": "基于多特征融合ConvLSTM 模型的强对流天气预测研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "ConvLSTM改进",
+      "分段拟合",
+      "PLS"
+    ],
+    "models_and_algorithms": [
+      "DTConvLSTM",
+      "CBAM通道空间注意力",
+      "分段拟合PFM",
+      "偏最小二乘PLS"
+    ],
+    "data_modality": "双偏振雷达",
+    "data_scale": "",
+    "validation_methods": [
+      "PFM经验公式拟合",
+      "PLS变量贡献排序"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "回波预报图",
+      "PFM拟合图"
+    ],
+    "innovation_points": [
+      "DTConvLSTM+CBAM",
+      "PLS评估双偏振变量贡献"
+    ],
+    "page_count": 64,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题PLS可解释性路线"
+  },
+  {
+    "paper_id": "2023_F_F23105550004",
+    "year": 2023,
+    "track": "F",
+    "title": "基于多模型融合的UNet 网络预报强对流降水",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "UNet融合",
+      "注意力",
+      "符号回归"
+    ],
+    "models_and_algorithms": [
+      "UNet",
+      "ConvLSTM",
+      "CBAM",
+      "3D-UNet",
+      "CSU-HIDRO",
+      "遗传算法符号回归"
+    ],
+    "data_modality": "双偏振雷达",
+    "data_scale": "10557样本",
+    "validation_methods": [
+      "FURNet指标0.4133/0.0553/0.8336/0.8512",
+      "损失降至0.0021"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "回波对比图",
+      "符号回归公式"
+    ],
+    "innovation_points": [
+      "3D-UNet多通道融合",
+      "遗传符号回归物理公式"
+    ],
+    "page_count": 70,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题符号回归物理公式路线"
+  },
+  {
+    "paper_id": "2023_F_F23107010086",
+    "year": 2023,
+    "track": "F",
+    "title": "强对流降水临近预报建模与优化        .",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "离群检测",
+      "NARX-RNN",
+      "信息补足"
+    ],
+    "models_and_algorithms": [
+      "LOF线性拟合+RMSE双驱动清洗",
+      "NARX-RNN神经网络",
+      "输入层/输出层信息挖掘"
+    ],
+    "data_modality": "双偏振雷达",
+    "data_scale": "",
+    "validation_methods": [
+      "相关性>0.9/FRMSE<1.7",
+      "输入信息+336.67%"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "LOF离群图",
+      "网络结构图"
+    ],
+    "innovation_points": [
+      "LOF双驱动清洗",
+      "输入/输出层信息补足缓解模糊"
+    ],
+    "page_count": 71,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题NARX-RNN+信息补足路线"
+  },
+  {
+    "paper_id": "2023_F_F23107300013",
+    "year": 2023,
+    "track": "F",
+    "title": "基于双偏振订正NowcastNet 的短临降水估测研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "NowcastNet",
+      "模糊逻辑订正",
+      "定量估测"
+    ],
+    "models_and_algorithms": [
+      "NowcastNet",
+      "ConvLSTM/PredRNN/PredRNN-v2对比",
+      "模糊逻辑去非气象回波",
+      "三次多项式",
+      "XGBoost"
+    ],
+    "data_modality": "双偏振雷达",
+    "data_scale": "",
+    "validation_methods": [
+      "NowcastNet CSI最高",
+      "端到端可微分神经演变算子"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "回波对比图",
+      "NowcastNet结构图"
+    ],
+    "innovation_points": [
+      "NowcastNet中尺度演变网络+可微分神经演变算子",
+      "双偏振订正"
+    ],
+    "page_count": 46,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题NowcastNet前沿路线"
+  },
+  {
+    "paper_id": "2023_F_F23910020015",
+    "year": 2023,
+    "track": "F",
+    "title": "强对流降水临近预报",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "U-Net改进",
+      "残差",
+      "Bagging集成"
+    ],
+    "models_and_algorithms": [
+      "U-Net",
+      "残差连接",
+      "注意力机制",
+      "Bagging集成三模型",
+      "MSE/MRE/RBIAS/CSI"
+    ],
+    "data_modality": "双偏振雷达",
+    "data_scale": "",
+    "validation_methods": [
+      "MRE/RBIAS/CSI定量",
+      "可视化对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "网络结构图",
+      "回波对比图"
+    ],
+    "innovation_points": [
+      "残差卷积块+注意力+Bagging三改进"
+    ],
+    "page_count": 87,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题Bagging集成路线"
+  },
+  {
+    "paper_id": "2023_F_F23910020096",
+    "year": 2023,
+    "track": "F",
+    "title": "基于因果推理的强对流降水临近预报问题研究  究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "因果推理",
+      "时空图神经网络",
+      "极值理论"
+    ],
+    "models_and_algorithms": [
+      "最大互信息+Pearson空间关联",
+      "多元传递熵",
+      "因果贝叶斯网络",
+      "结构因果模型",
+      "极值理论PEAKS-OVER-THRESHOLD",
+      "时空图神经网络"
+    ],
+    "data_modality": "双偏振雷达",
+    "data_scale": "1/3/5km等高面",
+    "validation_methods": [
+      "优于核回归/MLP/LSTM基线",
+      "可解释性方程"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "因果贝叶斯网络图",
+      "空间关联半径图"
+    ],
+    "innovation_points": [
+      "结构因果模型SCM可解释",
+      "多元传递熵构建因果贝叶斯网络",
+      "极值理论处理极端降水"
+    ],
+    "page_count": 69,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题因果推理路线，方法新颖度最高"
+  }
+]

@@ -1,0 +1,154 @@
+{
+  "paper_id": "2024_E_E24106980067",
+  "year": 2024,
+  "track": "E",
+  "title": "高速公路应急车道紧急启用模型",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 4,
+  "task_types": [
+    "视频检测跟踪",
+    "时序预测",
+    "拥堵波决策",
+    "监控点布局"
+  ],
+  "models_and_algorithms": [
+    "YOLOv5+SE注意力",
+    "BottleneckCSP",
+    "DeepSORT",
+    "Sigmoid标准拥堵指数",
+    "Bi-GRU",
+    "SK-Net-Attention",
+    "TCN",
+    "TCNAt-BiGRU",
+    "拥堵波",
+    "Greenshields模型"
+  ],
+  "data_modality": "视频+时序",
+  "data_scale": "4观测点约2.5小时",
+  "validation_methods": [
+    "MSE/RMSE/MAE/MAPE",
+    "训练/测试集",
+    "提前10分钟预警",
+    "Greenshields验证"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "YOLOv5+SE+BottleneckCSP",
+    "Sigmoid拥堵指数",
+    "TCNAt-BiGRU",
+    "拥堵波",
+    "Greenshields"
+  ],
+  "innovation_points": [
+    "YOLOv5+SE注意力+BottleneckCSP 替代C3解决过拟合",
+    "Sigmoid-标准交通拥堵指数去异常值+五级划分",
+    "TCN+SK-Net-Attention+Bi-GRU 的 TCNAt-BiGRU 时序预测",
+    "标准拥堵指数+拥堵波 w 联合算法控制应急车道开关"
+  ],
+  "page_count": 78,
+  "section_structure": "问题重述/问题一~七/模型评价与改进/参考文献/附录",
+  "source_locations": [
+    "p.1-2 摘要",
+    "p.66 模型评价"
+  ],
+  "confidence": "high",
+  "notes": "题E，YOLO改进+TCNAt-BiGRU路线。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一(1)",
+      "baseline": "YOLOv5",
+      "main_model": "YOLOv5+SE+BottleneckCSP",
+      "improvement": "DeepSORT跟踪",
+      "why_switch": "过拟合问题"
+    },
+    {
+      "question_id": "问题一(2)",
+      "baseline": "基本拥堵指数",
+      "main_model": "Sigmoid标准拥堵指数+五级",
+      "improvement": "TCNAt-BiGRU预测",
+      "why_switch": "需标准化去异常"
+    },
+    {
+      "question_id": "问题一(3)",
+      "baseline": "单模型",
+      "main_model": "监控点1/2训练→第二段视频测试",
+      "improvement": "提前10分钟预警",
+      "why_switch": "需泛化"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "单阈值",
+      "main_model": "激波+临界拥堵指数开关",
+      "improvement": "上下游联动",
+      "why_switch": "需开关条件"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "单模型",
+      "main_model": "标准指数+拥堵波w联合控制+Greenshields",
+      "improvement": "分段控制",
+      "why_switch": "需量化效果"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "原4摄像头",
+      "main_model": "加密+无人机+移动摄像头+数据平台",
+      "improvement": "成本控制",
+      "why_switch": "需科学布局"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "Sigmoid 标准拥堵指数 γ_norm",
+    "Greenshields u=u_f(1-k/k_j)",
+    "拥堵波速度 w"
+  ],
+  "objective_function": "min 拥堵持续时间 / 总延误",
+  "evaluation_metrics": [
+    "MSE/RMSE/MAE/MAPE",
+    "提前10分钟预警",
+    "五级划分"
+  ],
+  "algorithm_details_and_complexity": "YOLOv5改进；TCNAt-BiGRU 双时序",
+  "independent_validation_design": "监控点1/2训练→第二段视频测试泛化",
+  "sensitivity_robustness_ablation": [
+    "TCNAt-BiGRU vs 原Bi-GRU"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "随着国民经济水平的不断提升和城市间交通运输需求的日益增长，高速公路的交通流量持续攀升。",
+    "method_sentence": "YOLOv5+SE+BottleneckCSP+DeepSORT / Sigmoid指数+TCNAt-BiGRU / 拥堵波+Greenshields / 加密+无人机",
+    "result_sentence": "提前10分钟预警；开关算法有效",
+    "numbers_presentation": "MSE/RMSE/MAE/MAPE"
+  },
+  "figure_narrative_order": [
+    "YOLOv5改进",
+    "Sigmoid指数",
+    "TCNAt-BiGRU",
+    "拥堵波",
+    "Greenshields"
+  ],
+  "judge_high_score_reasons": [
+    "YOLOv5+SE+BottleneckCSP 对检测模型有改进",
+    "Sigmoid 标准化拥堵指数去异常值工程化",
+    "TCNAt-BiGRU 融合TCN+Attention+BiGRU时序新结构",
+    "拥堵波 w 物理量联合开关决策"
+  ],
+  "reusable_patterns": [
+    "YOLOv5+注意力+CSP 改进",
+    "Sigmoid 标准化拥堵指数",
+    "TCN+Attention+BiGRU 时序融合",
+    "拥堵波物理量决策"
+  ],
+  "transferable_ability_card_candidates": [
+    "YOLOv5改进",
+    "TCNAt-BiGRU",
+    "Sigmoid标准化",
+    "拥堵波"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "YOLO改进": "p.9-32",
+    "TCNAt-BiGRU": "p.38-50",
+    "模型评价": "p.66"
+  }
+}

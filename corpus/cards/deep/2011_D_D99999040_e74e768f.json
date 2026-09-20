@@ -1,0 +1,92 @@
+{
+  "paper_id": "2011_D_D99999040_e74e768f",
+  "year": 2011,
+  "track": "D",
+  "track_confidence": "high",
+  "title": "房地产行业的数学建模",
+  "award_level": "优秀论文",
+  "award_confidence": "low",
+  "per_question_method_chain": [
+    {
+      "question_id": "Q1",
+      "baseline": "简单回归",
+      "main_model": "逐步回归+面板数据模型",
+      "improvement": "全国年度/月度+天津+31地区面板",
+      "why_switch": "地区差异大需面板"
+    },
+    {
+      "question_id": "Q2",
+      "baseline": "单方程",
+      "main_model": "住房供给逐步回归+面板",
+      "improvement": "土地/政策/区域因素",
+      "why_switch": "供给端因素不同"
+    },
+    {
+      "question_id": "Q3",
+      "baseline": "相关分析",
+      "main_model": "VAR+Johansen协整+格兰杰因果+VECM+脉冲响应+方差分解",
+      "improvement": "房地产与国民经济联动",
+      "why_switch": "多变量动态关系"
+    },
+    {
+      "question_id": "Q4",
+      "baseline": "定性",
+      "main_model": "多指标综合评价",
+      "improvement": "政策调控效果评价",
+      "why_switch": "需量化政策效果"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "VAR(p): y_t=A1 y_{t-1}+...+Ap y_{t-p}+ε",
+    "Johansen协整检验",
+    "VECM误差修正",
+    "面板固定效应"
+  ],
+  "objective_function": "max 拟合优度 / min 预测误差",
+  "evaluation_metrics": [
+    "R²",
+    "协整秩",
+    "格兰杰因果p值",
+    "脉冲响应函数"
+  ],
+  "algorithm_details_and_complexity": "逐步回归+面板+VAR全套时间序列计量",
+  "independent_validation_design": "月度数据验证年度模型稳定性",
+  "sensitivity_robustness_ablation": [
+    "不同滞后阶数p对比",
+    "剔除异常年敏感性"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "建立房地产供需及与国民经济关系模型",
+    "method_sentence": "逐步回归+面板数据+VAR+Johansen协整+格兰杰因果+VECM+脉冲响应+方差分解",
+    "result_sentence": "经济/人口/区域/政策是主要因素",
+    "numbers_presentation": "31地区/1991-2010年度"
+  },
+  "figure_narrative_order": [
+    "供需时序图",
+    "回归系数表",
+    "面板效应图",
+    "VAR脉冲响应",
+    "方差分解",
+    "政策评价雷达"
+  ],
+  "judge_high_score_reasons": [
+    "计量经济学全套工具箱：回归→面板→VAR→协整→格兰杰→脉冲→方差分解",
+    "供需两侧对称建模",
+    "全国/地方/面板三层次"
+  ],
+  "reusable_patterns": [
+    "宏观经济联动→VAR+协整全套（来自1篇论文支持）",
+    "供需双侧对称建模"
+  ],
+  "transferable_ability_card_candidates": [
+    "房地产/行业计量卡：供需逐步回归→面板异质性→VAR联动→协整因果→政策评价"
+  ],
+  "page_locations": {
+    "摘要": "p.1-3",
+    "需求模型": "p.5-20",
+    "供给模型": "p.21-35",
+    "VAR联动": "p.36-50",
+    "政策评价": "p.51-58"
+  },
+  "confidence": "high"
+}

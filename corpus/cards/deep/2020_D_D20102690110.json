@@ -1,0 +1,98 @@
+{
+  "paper_id": "2020_D_D20102690110",
+  "year": 2020,
+  "track": "D",
+  "title": "无人机集群协同对抗",
+  "confidence": "high",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一(定性微分博弈)",
+      "baseline": "解析求界栅",
+      "main_model": "把微分博弈看作变分问题，极大极小原理建Hamilton函数求最优控制，倒向积分得界栅",
+      "improvement": "界栅界定躲避区",
+      "why_switch": "定性微分对策等价界栅问题"
+    },
+    {
+      "question_id": "问题二(定量生存博弈)",
+      "baseline": "解析纳什",
+      "main_model": "栅格化突防区+蚁群算法求纳什均衡，反推通道宽度",
+      "improvement": "蚁群数值解",
+      "why_switch": "解析复杂，数值栅格化"
+    },
+    {
+      "question_id": "问题三(多对一)",
+      "baseline": "单拦截",
+      "main_model": "微分制导律+零脱靶量支付函数+滚动时域，Dubins判转弯+RRT评路径，差分进化求鞍点",
+      "improvement": "多波次+鞍点",
+      "why_switch": "多对一需分配与路径"
+    },
+    {
+      "question_id": "问题四(多对多)",
+      "baseline": "集中分配",
+      "main_model": "空战态势优势函数+分布式一致性拍卖CBAA目标分配+SAC-OD运动决策",
+      "improvement": "分布式集群",
+      "why_switch": "多对多集中不可解，分布式涌现"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "极大极小Hamilton最优控制",
+    "定性微分博弈界栅",
+    "BUP/NUP躲避区",
+    "栅格化+蚁群",
+    "Dubins/RRT路径",
+    "滚动时域",
+    "CBAA一致性拍卖",
+    "SAC-OD集群规则"
+  ],
+  "objective_function": "最大化蓝方逃脱/红方拦截(博弈双方支付)，通道带宽极限",
+  "evaluation_metrics": [
+    "通道宽度下限92.2km",
+    "多波次带宽上限108.8km",
+    "CBAA目标分配"
+  ],
+  "algorithm_details_and_complexity": "变分Hamilton求界栅→蚁群栅格纳什→滚动时域+Dubins/RRT→CBAA+SAC-OD分布式",
+  "independent_validation_design": "多初始值仿真；模型优点/局限评价",
+  "sensitivity_robustness_ablation": [
+    "通道宽度对哈密顿函数影响",
+    "不同初始值策略",
+    "鞍点存在性证明"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "逐问题建模型解无人机集群对抗",
+    "method_sentence": "Hamilton界栅→蚁群纳什→滚动时域Dubins/RRT→CBAA分布式",
+    "result_sentence": "通道宽度92.2km/上限108.8km",
+    "numbers_presentation": "通道带宽精确到0.1km"
+  },
+  "figure_narrative_order": [
+    "界栅示意图",
+    "栅格化突防区",
+    "Dubins/RRT路径",
+    "CBAA分配框图"
+  ],
+  "judge_high_score_reasons": [
+    "从定性微分博弈界栅到定量生存博弈，博弈理论体系完整",
+    "解析不可解处转蚁群/差分进化数值解，方法选择务实",
+    "多对多用CBAA分布式一致性拍卖，集群智能前沿",
+    "问题拆4问从单双机到多对多，难度递进"
+  ],
+  "reusable_patterns": [
+    "微分博弈界栅构造",
+    "解析困难转智能算法数值解",
+    "分布式拍卖任务分配",
+    "滚动时域对抗"
+  ],
+  "transferable_ability_card_candidates": [
+    "微分博弈",
+    "集群对抗",
+    "多智能体分配"
+  ],
+  "page_locations": {
+    "摘要": "p2-4",
+    "Hamilton界栅": "p9,16-17",
+    "蚁群": "p26-28",
+    "CBAA一致性拍卖": "p45-46"
+  },
+  "notes": "2020普通一等奖，深卡(微分博弈题型)",
+  "award_level": "一等奖",
+  "award_confidence": "high"
+}

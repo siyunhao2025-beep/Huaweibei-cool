@@ -1,0 +1,89 @@
+{
+  "paper_id": "2012_B_B90052016李鹿刘",
+  "year": 2012,
+  "track": "B",
+  "track_confidence": "high",
+  "title": "基于卫星无源探测的空间飞行器主动段轨道估计及误差分析",
+  "award_level": "优秀论文",
+  "award_confidence": "low",
+  "per_question_method_chain": [
+    {
+      "question_id": "Q1",
+      "baseline": "标准RK4",
+      "main_model": "自适应定点四阶Runge-Kutta",
+      "improvement": "降阶二阶方程求解卫星轨道",
+      "why_switch": "变步长提高效率"
+    },
+    {
+      "question_id": "Q2",
+      "baseline": "直接插值",
+      "main_model": "样条插值数据同步+坐标转换+双星交汇定位",
+      "improvement": "中心差分求速度加速度",
+      "why_switch": "观测时间异步"
+    },
+    {
+      "question_id": "Q3",
+      "baseline": "单一运动模型",
+      "main_model": "rg(t)与gm(t)分段建模",
+      "improvement": "完善主动段运动方程",
+      "why_switch": "主动段推力变化"
+    },
+    {
+      "question_id": "Q4",
+      "baseline": "单星误差",
+      "main_model": "系统误差估计+联合轨道估计",
+      "improvement": "多星融合",
+      "why_switch": "单星有系统偏差"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "二体/受摄运动方程",
+    "双星交汇定位方程组",
+    "假设卫星轨道已知",
+    "坐标转换旋转矩阵"
+  ],
+  "objective_function": "min 轨道位置估计误差",
+  "evaluation_metrics": [
+    "位置误差",
+    "速度误差",
+    "系统偏差估计"
+  ],
+  "algorithm_details_and_complexity": "自适应RK4+样条插值+交汇定位+最小二乘误差估计",
+  "independent_validation_design": "09号卫星5个时刻位置估计验证",
+  "sensitivity_robustness_ablation": [
+    "观测噪声对轨道精度影响",
+    "时间异步误差"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "研究卫星无源探测轨道估计及误差分析",
+    "method_sentence": "自适应RK4+样条插值同步+双星交汇+中心差分+系统误差估计",
+    "result_sentence": "给出09号卫星50/100/150/200/250s位置",
+    "numbers_presentation": "5个时刻具体坐标"
+  },
+  "figure_narrative_order": [
+    "卫星轨道三维图",
+    "观测几何关系",
+    "双星交汇示意",
+    "轨道误差曲线",
+    "系统偏差分布"
+  ],
+  "judge_high_score_reasons": [
+    "数值方法（自适应RK4）+几何交汇（双星定位）+误差估计三位一体",
+    "处理时间异步这一实际问题",
+    "主动段分段建模"
+  ],
+  "reusable_patterns": [
+    "轨道估计→运动方程数值解+几何交汇+误差分析（来自1篇论文支持）"
+  ],
+  "transferable_ability_card_candidates": [
+    "卫星/轨道估计卡：运动方程降阶→自适应RK→时间同步插值→坐标转换→双星交汇→差分速度→误差估计"
+  ],
+  "page_locations": {
+    "摘要": "p.1-3",
+    "Q1卫星轨道": "p.5-15",
+    "Q2飞行器轨道": "p.16-30",
+    "Q3运动方程": "p.31-40",
+    "Q4误差": "p.41-50"
+  },
+  "confidence": "high"
+}

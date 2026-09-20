@@ -1,0 +1,85 @@
+{
+  "paper_id": "2021_D_D21104860088",
+  "year": 2021,
+  "track": "D",
+  "title": "抗乳腺癌候选药物的优化建模",
+  "confidence": "high",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一(变量选择)",
+      "baseline": "单重要性",
+      "main_model": "删稀有变量+Spearman高相关初筛得196，再内置/排列/SHAP三重要性排序选20",
+      "improvement": "三重要性互证",
+      "why_switch": "单法偏倚，三法交叉鲁棒"
+    },
+    {
+      "question_id": "问题二(回归)",
+      "baseline": "单模型",
+      "main_model": "多ML回归对比",
+      "improvement": "—",
+      "why_switch": "选最优"
+    },
+    {
+      "question_id": "问题三(ADMET+优化)",
+      "baseline": "无优化",
+      "main_model": "WOE/IV+过采样+LightGBM/XGBoost分类，再粒子群+主要目标法搜变量范围",
+      "improvement": "分类+智能优化",
+      "why_switch": "要找变量取值范围需全局优化"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "Spearman相关",
+    "内置/排列/SHAP三种重要性",
+    "WOE/IV筛选",
+    "过采样",
+    "LightGBM/XGBoost",
+    "粒子群+主要目标法"
+  ],
+  "objective_function": "同时优化生物活性与ADMET性质，求分子描述符范围",
+  "evaluation_metrics": [
+    "三重要性方法交叉排序",
+    "MDEC-23等关键描述符识别"
+  ],
+  "algorithm_details_and_complexity": "Spearman初筛→三重要性选20→ML分类→粒子群优化",
+  "independent_validation_design": "三种特征重要性方法交叉验证",
+  "sensitivity_robustness_ablation": [
+    "三重要性一致性",
+    "过采样对不平衡",
+    "粒子群收敛"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "需拮抗ERα且ADMET良好才是候选药",
+    "method_sentence": "Spearman+内置/排列/SHAP三重要性+WOE/IV+过采样+粒子群",
+    "result_sentence": "MDEC-23等为关键描述符",
+    "numbers_presentation": "729→213+50→196→20筛选漏斗"
+  },
+  "figure_narrative_order": [
+    "SHAP重要性图",
+    "WOE/IV筛选图",
+    "粒子群收敛曲线"
+  ],
+  "judge_high_score_reasons": [
+    "内置+排列+SHAP三种特征重要性互证，可解释性扎实",
+    "WOE/IV筛选结合过采样处理不平衡，工业方法齐全",
+    "回归→分类→粒子群优化闭环，最终给变量范围"
+  ],
+  "reusable_patterns": [
+    "多重要性方法交叉选特征",
+    "WOE/IV+过采样",
+    "预测模型+粒子群搜变量区间"
+  ],
+  "transferable_ability_card_candidates": [
+    "可解释机器学习",
+    "ADMET建模",
+    "智能优化"
+  ],
+  "page_locations": {
+    "摘要": "p2-4",
+    "SHAP重要性": "p15-17,55-56,60-61",
+    "LightGBM分类": "p18-24",
+    "粒子群优化": "p51-55,58-59"
+  },
+  "notes": "普通一等奖，深卡",
+  "award_level": "一等奖",
+  "award_confidence": "high"
+}

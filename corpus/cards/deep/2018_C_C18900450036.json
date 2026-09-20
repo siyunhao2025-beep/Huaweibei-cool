@@ -1,0 +1,141 @@
+{
+  "paper_id": "2018_C_C18900450036",
+  "year": 2018,
+  "track": "C",
+  "title": "对恐怖袭击事件记录数据的量化分析",
+  "award_level": "待确认",
+  "award_confidence": "unknown",
+  "problem_count": 4,
+  "task_types": [
+    "预测",
+    "评价",
+    "分类"
+  ],
+  "models_and_algorithms": [
+    "系统聚类/层次聚类",
+    "贝叶斯",
+    "TOPSIS",
+    "微分方程/动力学"
+  ],
+  "data_modality": "时序/信号",
+  "data_scale": "小样本/题设数据",
+  "validation_methods": [
+    "交叉验证",
+    "对比/比较分析",
+    "鲁棒性/稳定性分析",
+    "仿真/数值验证",
+    "精度指标(RMSE/R²等)"
+  ],
+  "figure_count": 49,
+  "figure_types": [
+    "流程图/框图",
+    "折线/曲线图",
+    "散点/拟合图",
+    "空间/地图"
+  ],
+  "innovation_points": [
+    "本文提出RS-TOPSIS 模",
+    "本文分别提出了IS3VM（Improved Semi-supervised Supp"
+  ],
+  "page_count": 83,
+  "section_structure": "2\n                目 录；1 问题重述；2 合理假设及符号系统；3 问题一的建模与求解；7\n                          事件数据；4 问题二的建模与求解；5 问题三的建模与求解；6 问题四的建模与求解",
+  "source_locations": [
+    "模型建立≈p.2",
+    "模型求解≈p.4"
+  ],
+  "confidence": "high",
+  "notes": "2018年C题(恐怖袭击量化)，83页，大数据+半监督+蔓延模型，方法丰富",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "统一打分",
+      "main_model": "完备信息用RS-TOPSIS，不完备用ITR-RS粗糙集修正权重",
+      "improvement": "逐年评估+相对危害值削弱年份效应，排十大事件",
+      "why_switch": "跨年份参数作用不同，需去年份效应"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "有监督分类",
+      "main_model": "小样本半监督IS3VM+RSNB",
+      "improvement": "类平均聚类定组织嫌疑度，重复输入100次量化",
+      "why_switch": "有标签样本<10，需半监督提升小样本"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "定性归因",
+      "main_model": "粗糙集去冗余属性找主因",
+      "improvement": "SIR蔓延模型+RBF网络时序预测2018态势",
+      "why_switch": "蔓延类比传染病，时序用RBF"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "全样本",
+      "main_model": "离群点检测找与中国相似的低发稳定区",
+      "improvement": "数据挖潜给我国反恐建议",
+      "why_switch": "和平区暴恐对我国更有借鉴"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "RS-TOPSIS:粗糙集定权重+TOPSIS贴近度",
+    "ITR-RS:不完备属性权重修正",
+    "SIR:易感-感染-恢复仓室模型",
+    "RBF径向基函数时序网络",
+    "重复输入100次取频次量化嫌疑度"
+  ],
+  "objective_function": "max事件危害贴近度；半监督分类准确率；RBF预测误差",
+  "evaluation_metrics": [
+    "事件定级",
+    "十大事件",
+    "组织嫌疑度",
+    "2018态势",
+    "离群点"
+  ],
+  "algorithm_details_and_complexity": "粗糙集约简；半监督SVM；SIR微分；RBF时序",
+  "independent_validation_design": "逐年评估后合并排十大；重复输入100次频次量化；IS3VM对比改进前与主流方法；2018态势外推",
+  "sensitivity_robustness_ablation": [
+    "完备vs不完备两种评估路线",
+    "小样本半监督vs监督对比",
+    "SIR参数对蔓延曲线影响",
+    "离群点阈值敏感性"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "基于GTD数据库做恐怖袭击量化与研判。",
+    "method_sentence": "RS-TOPSIS/ITR-RS评估、IS3VM/RSNB半监督、SIR蔓延、RBF时序、离群点",
+    "result_sentence": "评出十大事件，锁定前组织，预测2018威胁曲折上升",
+    "numbers_presentation": "事件定级、频次、组织嫌疑、离群区"
+  },
+  "figure_narrative_order": [
+    "危害评估流程",
+    "十大事件",
+    "半监督分类",
+    "SIR蔓延",
+    "RBF预测",
+    "离群点"
+  ],
+  "judge_high_score_reasons": [
+    "大数据评估+半监督小样本+蔓延预测+离群借鉴全链",
+    "按数据完备性分两套评估路线",
+    "用重复采样频次量化不确定嫌疑"
+  ],
+  "reusable_patterns": [
+    "按数据完备性选评估法",
+    "粗糙集客观权重",
+    "半监督小样本分类",
+    "SIR类比蔓延预测",
+    "离群点找相似样本"
+  ],
+  "transferable_ability_card_candidates": [
+    "RS-TOPSIS",
+    "半监督SVM",
+    "SIR扩散模型",
+    "RBF时序",
+    "离群点检测"
+  ],
+  "page_locations": {
+    "摘要": "p.1-3",
+    "RS-TOPSIS评估": "≈p.10-30",
+    "IS3VM半监督": "≈p.35-55",
+    "SIR+RBF": "≈p.60-72",
+    "离群点": "≈p.75-80"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "paper_id": "2021_B_B21106990088",
+  "year": 2021,
+  "track": "B",
+  "title": "空气质量预报二次建模",
+  "confidence": "high",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "直接计算",
+      "main_model": "分析逐时/逐日实测误差，算IAQI/AQI与首要污染物",
+      "improvement": "—",
+      "why_switch": "确定性计算"
+    },
+    {
+      "question_id": "问题二(气象降维)",
+      "baseline": "单变量分析",
+      "main_model": "PCA与核KPCA同时对线性/非线性降维，得5个综合气象指标并排序气象对污染物影响",
+      "improvement": "线性+非线性双降维",
+      "why_switch": "气象-污染物关系含非线性，PCA不够，补KPCA"
+    },
+    {
+      "question_id": "问题三(二次预报)",
+      "baseline": "Fuzzy-BLS宽度学习直接预测",
+      "main_model": "先Fuzzy-BLS(Takagi-Sugeno)得初预测；发现O3/NO2有局限后用Lotka-Volterra种间竞争时变微分方程修正",
+      "improvement": "LoVo-FBLS",
+      "why_switch": "O3与NO2存在相互作用，纯数据模型捕捉不了耦合；种间竞争微分方程刻画二者争夺关系"
+    },
+    {
+      "question_id": "问题四(区域协同)",
+      "baseline": "单站",
+      "main_model": "对A及邻近A1/A2/A3建区域协同预报",
+      "improvement": "—",
+      "why_switch": "邻近站有空间相关"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "PCA线性降维+KPCA核非线性降维",
+    "Takagi-Sugeno模糊宽度学习Fuzzy-BLS",
+    "Lotka-Volterra时变参数微分方程修正O3/NO2"
+  ],
+  "objective_function": "最小化二次预报AQI最大相对误差",
+  "evaluation_metrics": [
+    "O3相对误差0.0379",
+    "NO2相对误差0.0227",
+    "5个综合气象指标"
+  ],
+  "algorithm_details_and_complexity": "PCA/KPCA融合降维→Fuzzy-BLS预报→种间竞争微分方程修正",
+  "independent_validation_design": "训练/测试两部分对三监测点AQI检验与误差计算",
+  "sensitivity_robustness_ablation": [
+    "O3/NO2修正前后曲线重合度",
+    "PCA vs KPCA降维对比",
+    "气象条件分类的典型天气说明"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "准确空气质量预测为政府决策与居民活动提供信息",
+    "method_sentence": "PCA/KPCA降维+Fuzzy-BLS+Lotka-Volterra种间竞争修正",
+    "result_sentence": "O3相对误差0.0379，NO2 0.0227，近实际曲线重合",
+    "numbers_presentation": "相对误差精确到小数点后4位(0.0379/0.0227)"
+  },
+  "figure_narrative_order": [
+    "气象影响排序表",
+    "PCA/KPCA降维图",
+    "气象条件分类图",
+    "种间竞争修正曲线"
+  ],
+  "judge_high_score_reasons": [
+    "PCA+KPCA同时处理线性与非线性降维，方法论完整",
+    "把生态学Lotka-Volterra种间竞争迁移到O3/NO2耦合修正，跨学科创意且效果近重合",
+    "相对误差做到3.79%/2.27%，量化精度突出"
+  ],
+  "reusable_patterns": [
+    "线性+核降维组合",
+    "用领域微分方程(种间竞争)修正数据模型残差",
+    "跨学科模型迁移"
+  ],
+  "transferable_ability_card_candidates": [
+    "模糊宽度学习",
+    "非线性降维",
+    "耦合变量微分修正"
+  ],
+  "page_locations": {
+    "摘要": "p2",
+    "宽度学习Fuzzy-BLS": "p18",
+    "种间竞争修正": "p22-25",
+    "问题四区域协同": "p27,33-35"
+  },
+  "notes": "数模之星提名奖",
+  "award_level": "一等奖",
+  "award_confidence": "high"
+}

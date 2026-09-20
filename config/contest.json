@@ -1,0 +1,53 @@
+{
+  "version": "0.1.0-wave0",
+  "project_name": "华为杯研赛国一母 Skill（Huaweibei-cool）",
+  "contest": {
+    "name_cn": "中国研究生数学建模竞赛（华为杯）",
+    "edition_cn": "待确认",
+    "edition_arabic": null,
+    "year": null,
+    "official_rules_priority": true,
+    "verified_against_official_rules": false,
+    "note": "比赛当天先按题面/官方通知核对届次、年份与格式要求；官方规则始终高于本项目经验规则。未核对前不得据此下结论。"
+  },
+  "paths": {
+    "problem_dir": "题目",
+    "raw_data_dir": "数据/原始",
+    "intermediate_data_dir": "数据/中间",
+    "solution_dir": "求解",
+    "paper_dir": "论文",
+    "submission_dir": "提交附件"
+  },
+  "paper": {
+    "body_page_gate": {
+      "mode": "warning",
+      "minimum": 45,
+      "maximum": null,
+      "authority": "project_heuristic",
+      "note": "45 页下限仅为历史项目经验阈值，非官方规则。正文页数上限/附录页数上限待官方规则核对后填入；未确认前不得据此判整篇论文失败。"
+    },
+    "appendix_page_gate": {
+      "mode": "off",
+      "maximum": null,
+      "authority": "pending_official",
+      "note": "待确认：附录页数上限按当届官方规则填写。"
+    },
+    "role_windows_enabled": true,
+    "word_template": "研赛论文Word标准模板.docx",
+    "latex_engine": "xelatex",
+    "contest_title_font": "STXinwei"
+  },
+  "automation": {
+    "stop_only_on": [
+      "关键题目或附件缺失/损坏",
+      "题意、单位或硬约束无法可靠判定",
+      "必要软件不可用且无安全替代",
+      "继续运行会制造虚假或不可追溯结果"
+    ]
+  },
+  "corpus": {
+    "source_root_note": "获奖论文语料根为本机只读外部路径，不入库；索引见 corpus/papers_index.json。",
+    "expected_papers": 729,
+    "years": "2004-2024"
+  }
+}

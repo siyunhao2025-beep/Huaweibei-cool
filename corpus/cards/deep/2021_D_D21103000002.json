@@ -1,0 +1,94 @@
+{
+  "paper_id": "2021_D_D21103000002",
+  "year": 2021,
+  "track": "D",
+  "title": "两阶段抗乳腺癌候选药物特性预测与优化建模",
+  "confidence": "high",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一(选变量)",
+      "baseline": "单法重要性",
+      "main_model": "灰色关联/MIC/随机森林/平均精度损失四法加权集成重要度，再自适应迭代变量选择",
+      "improvement": "加权集成+独立性筛选",
+      "why_switch": "单法偏倚；加权集成并去相关得20独立变量"
+    },
+    {
+      "question_id": "问题二(活性回归)",
+      "baseline": "多模型试",
+      "main_model": "全面核岭回归/SVR/MLP/GBR/RF/XGBoost对比，4标准自适应选XGBoost",
+      "improvement": "XGBoost最优",
+      "why_switch": "系统对比后选最优而非先验"
+    },
+    {
+      "question_id": "问题三(ADMET并行)",
+      "baseline": "面向单一目标选变量",
+      "main_model": "两阶段XGBoost-MLP：阶段一XGBoost同时面向ADMET与活性选变量，阶段二五个MLP并行预测",
+      "improvement": "两阶段联合",
+      "why_switch": "ADMET与活性需同时满足，联合选变量"
+    },
+    {
+      "question_id": "问题四(全局优化)",
+      "baseline": "局部",
+      "main_model": "六个MLP作DE差分进化目标函数，全局搜使ADMET与活性都优的变量取值范围",
+      "improvement": "DE-MLP全局优化",
+      "why_switch": "要找取值范围而非单点，需全局搜"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "四法加权集成重要度",
+    "自适应迭代变量选择",
+    "两阶段XGBoost-MLP",
+    "DE差分进化目标函数=六个MLP",
+    "9:1随机划分"
+  ],
+  "objective_function": "同时最大化ERα活性与ADMET五性质，DE全局搜变量取值",
+  "evaluation_metrics": [
+    "测试RMSE<0.07,R²>0.72",
+    "ADMET五特性精度>80%,AUC>0.9"
+  ],
+  "algorithm_details_and_complexity": "加权集成选变量→XGBoost回归→两阶段XGBoost-MLP并行→DE-MLP全局优化",
+  "independent_validation_design": "9:1随机划分反复实验；4种评估标准自适应选模",
+  "sensitivity_robustness_ablation": [
+    "XGBoost vs 5基线模型",
+    "两阶段 vs 单阶段",
+    "DE收敛性"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "建两阶段预测与优化模型，给描述符同时满足活性与ADMET的取值",
+    "method_sentence": "四法加权集成选变量，XGBoost-MLP两阶段，DE全局优化",
+    "result_sentence": "RMSE<0.07/R²>0.72，ADMET精度>80% AUC>0.9",
+    "numbers_presentation": "精度门槛化呈现(RMSE<0.07,AUC>0.9)"
+  },
+  "figure_narrative_order": [
+    "加权重要度融合图",
+    "模型评估雷达图",
+    "两阶段流程图",
+    "DE收敛曲线"
+  ],
+  "judge_high_score_reasons": [
+    "把预测与优化贯通：先预测再用MLP当代理模型做DE全局优化，闭环完整",
+    "四法加权集成重要度+自适应迭代，特征选择方法论扎实",
+    "两阶段XGBoost-MLP同时面向活性与ADMET，目标对齐准确",
+    "精度门槛(R²>0.72,AUC>0.9)量化清晰"
+  ],
+  "reusable_patterns": [
+    "四法加权集成选变量",
+    "预测模型当代理模型做智能优化",
+    "两阶段联合目标选变量"
+  ],
+  "transferable_ability_card_candidates": [
+    "QSAR两阶段建模",
+    "差分进化全局优化",
+    "多目标代理建模"
+  ],
+  "page_locations": {
+    "摘要": "p2-4",
+    "XGBoost回归": "p28-31",
+    "两阶段XGBoost-MLP": "p35,39,43",
+    "DE差分进化": "p40-44",
+    "模型评价": "p43"
+  },
+  "notes": "数模之星提名奖",
+  "award_level": "一等奖",
+  "award_confidence": "high"
+}

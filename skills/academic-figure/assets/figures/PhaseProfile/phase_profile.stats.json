@@ -1,0 +1,10 @@
+{
+  "kind": "PhaseProfile",
+  "data": "DEMO_PREVIEW_ONLY",
+  "rows": 4608,
+  "statistics": {
+    "cycles": 48,
+    "bins": 96,
+    "peak_phase": 0.35416666666666663
+  }
+}

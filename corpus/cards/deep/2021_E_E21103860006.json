@@ -1,0 +1,85 @@
+{
+  "paper_id": "2021_E_E21103860006",
+  "year": 2021,
+  "track": "E",
+  "title": "信号干扰下的超宽带（UWB）精确定位问题",
+  "confidence": "high",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一(预处理)",
+      "baseline": "直接用",
+      "main_model": "理论距离误差直方图剔不良2966组+k-mean聚类筛代表",
+      "improvement": "理论误差筛数据",
+      "why_switch": "用理论距离vs测量距离误差判异常"
+    },
+    {
+      "question_id": "问题二(定位)",
+      "baseline": "直接ML",
+      "main_model": "正常:最小二乘近似坐标+岭回归精修；异常:球面方程目标函数粒子群寻优近似坐标+ML精修",
+      "improvement": "正常异常分模型",
+      "why_switch": "异常数据非视距，需球面寻优"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "—",
+      "main_model": "麻雀算法优化极限学习机",
+      "improvement": "麻雀优化ELM",
+      "why_switch": "提升ML精修精度"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "理论距离误差直方图",
+    "k-mean筛代表",
+    "最小二乘+岭回归",
+    "球面方程+粒子群",
+    "麻雀算法优化ELM"
+  ],
+  "objective_function": "最小化1/2/3维定位误差",
+  "evaluation_metrics": [
+    "剔不良2966组",
+    "正常2维误差52.43mm/3维175.71mm",
+    "异常3维437.50mm"
+  ],
+  "algorithm_details_and_complexity": "理论误差筛数据→正常LS+岭回归/异常球面PSO→麻雀ELM精修",
+  "independent_validation_design": "正常/异常数据分别报1/2/3维误差",
+  "sensitivity_robustness_ablation": [
+    "正常vs异常模型",
+    "PSO vs LS",
+    "麻雀ELM vs 普通ELM"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "信号干扰下UWB精确定位待解决",
+    "method_sentence": "PSO+最小二乘分正常/异常拓展特征，岭回归+麻雀ELM预测",
+    "result_sentence": "正常2维52.43mm，异常3维437.50mm",
+    "numbers_presentation": "剔2966组+分正常/异常报毫米误差"
+  },
+  "figure_narrative_order": [
+    "误差直方图",
+    "球面寻优示意",
+    "定位误差对比表"
+  ],
+  "judge_high_score_reasons": [
+    "用理论距离vs测量距离误差直方图筛数据，数据清洗有物理依据",
+    "正常/异常分模型(岭回归vs球面PSO)处理合理",
+    "麻雀算法优化ELM，启发式优化神经网络"
+  ],
+  "reusable_patterns": [
+    "理论值vs测量值误差清洗",
+    "正常/异常分模型",
+    "球面方程+PSO寻坐标"
+  ],
+  "transferable_ability_card_candidates": [
+    "UWB定位",
+    "PSO寻优",
+    "ELM调优"
+  ],
+  "page_locations": {
+    "摘要": "p2",
+    "球面+PSO": "p16-18",
+    "岭回归": "p17,19,21",
+    "极限学习机": "p23-27"
+  },
+  "notes": "普通一等奖，深卡",
+  "award_level": "一等奖",
+  "award_confidence": "high"
+}

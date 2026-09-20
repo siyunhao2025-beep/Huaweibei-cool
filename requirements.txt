@@ -1,0 +1,5 @@
+# 华为杯研赛母 Skill 运行依赖（Wave0 实测版本）
+pymupdf>=1.28.2
+pypdf>=6.19.0
+python-docx>=1.1.2
+pytest>=8.0

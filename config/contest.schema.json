@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://huaweibei-cool/config/contest.schema.json",
+  "title": "华为杯研赛母Skill比赛配置",
+  "type": "object",
+  "required": ["version", "contest", "paths", "paper"],
+  "additionalProperties": true,
+  "properties": {
+    "version": {"type": "string"},
+    "project_name": {"type": "string"},
+    "contest": {
+      "type": "object",
+      "required": ["official_rules_priority", "verified_against_official_rules"],
+      "properties": {
+        "name_cn": {"type": "string"},
+        "edition_cn": {"type": "string"},
+        "edition_arabic": {"type": ["integer", "null"], "minimum": 1},
+        "year": {"type": ["integer", "null"]},
+        "official_rules_priority": {"const": true},
+        "verified_against_official_rules": {"type": "boolean"},
+        "note": {"type": "string"}
+      }
+    },
+    "paths": {"type": "object"},
+    "paper": {
+      "type": "object",
+      "required": ["body_page_gate", "latex_engine"],
+      "properties": {
+        "body_page_gate": {
+          "type": "object",
+          "required": ["mode"],
+          "properties": {
+            "mode": {"enum": ["off", "warning", "error"]},
+            "minimum": {"type": "integer", "minimum": 0},
+            "maximum": {"type": ["integer", "null"]},
+            "authority": {"type": "string"},
+            "note": {"type": "string"}
+          }
+        },
+        "appendix_page_gate": {
+          "type": "object",
+          "properties": {
+            "mode": {"enum": ["off", "warning", "error"]},
+            "maximum": {"type": ["integer", "null"]},
+            "authority": {"type": "string"},
+            "note": {"type": "string"}
+          }
+        },
+        "word_template": {"type": "string"},
+        "latex_engine": {"type": "string"},
+        "contest_title_font": {"type": "string"}
+      }
+    },
+    "automation": {"type": "object"},
+    "corpus": {"type": "object"}
+  }
+}

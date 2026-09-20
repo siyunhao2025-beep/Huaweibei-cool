@@ -1,0 +1,129 @@
+{
+  "paper_id": "2016_C_C10534002_9f50ff5f",
+  "year": 2016,
+  "track": "C",
+  "title": "基于无线通信基站的室内三维定位问题",
+  "award_level": "待确认",
+  "award_confidence": "unknown",
+  "problem_count": 4,
+  "task_types": [
+    "预测",
+    "评价",
+    "空间图"
+  ],
+  "models_and_algorithms": [
+    "定位算法(AOA/TDOA/Chan/Taylor)",
+    "禁忌搜索/启发式"
+  ],
+  "data_modality": "时序/信号",
+  "data_scale": "小样本/题设数据",
+  "validation_methods": [
+    "误差/残差分析",
+    "对比/比较分析",
+    "鲁棒性/稳定性分析",
+    "精度指标(RMSE/R²等)",
+    "模型检验/显著性检验"
+  ],
+  "figure_count": 13,
+  "figure_types": [
+    "流程图/框图",
+    "散点/拟合图"
+  ],
+  "innovation_points": [],
+  "page_count": 65,
+  "section_structure": "2\n较小的定位。；2 模型假设与说符号说明；3 问题一模型建立与求解；4 问题二模型建立与求解；6 问题四模型的建立与求解；7 模型的评价与结论",
+  "source_locations": [
+    "摘要≈p.1",
+    "模型建立≈p.6",
+    "模型检验/验证≈p.20"
+  ],
+  "confidence": "high",
+  "notes": "2016年C题(室内三维定位)，从数据规律出发设计算法，验证具体",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "直接用测量TOA定位",
+      "main_model": "不考虑NLOS的TOA超定线性方程组",
+      "improvement": "发现测量TOA与真实TOA线性关系，二维遍历斜率截距使残差最小同时定位+校正",
+      "why_switch": "NLOS延迟导致直接定位偏差，线性校正更准"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "全基站定位",
+      "main_model": "TOA排序后从最小4基站贪心增加，与基准解差小即停",
+      "improvement": "得最少基站数",
+      "why_switch": "在精度与基站数间权衡"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "三维单点",
+      "main_model": "问题一降为二维逐采集点定位",
+      "improvement": "连成运动轨迹",
+      "why_switch": "移动终端逐点定位"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "单一定位",
+      "main_model": "最小4/5基站连续两次接近即可定位，残差为误差",
+      "improvement": "由真实TOA算连接度，给连接度-平均误差单调性",
+      "why_switch": "评估不同连接数定位质量"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "超定方程组: min||Ax-b||_2 (最小二乘)",
+    "NLOS校正: TOA_true=a·TOA_meas+b，二维遍历(a,b)",
+    "假设LOS/NLOS下延迟与测量值线性相关",
+    "残差作为定位误差指标"
+  ],
+  "objective_function": "min 超定方程组残差；最少基站数满足精度阈值",
+  "evaluation_metrics": [
+    "x/y/z轴误差(≤1m)",
+    "最少基站数",
+    "连接度-平均误差单调性",
+    "残差"
+  ],
+  "algorithm_details_and_complexity": "最小二乘O(n)；二维网格遍历(a,b)粗定位+精定位",
+  "independent_validation_design": "5组测试数据与给定正确位置对比，分轴报告误差；z轴偏大但<1m",
+  "sensitivity_robustness_ablation": [
+    "遍历步长对精度影响",
+    "基站数增加对误差递减",
+    "连接度与误差单调关系验证"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "通过测无线电传播时间转距离做终端定位。",
+    "method_sentence": "TOA超定方程+NLOS线性校正遍历+贪心最少基站",
+    "result_sentence": "Case1定位(-284.4,89.73,3.89)距离误差1.29m，z轴误差<1m",
+    "numbers_presentation": "给坐标、线性关系系数、分轴误差表"
+  },
+  "figure_narrative_order": [
+    "TOA测量几何",
+    "超定方程残差曲面",
+    "最少基站流程",
+    "轨迹",
+    "连接度误差表"
+  ],
+  "judge_high_score_reasons": [
+    "从数据中发现NLOS线性规律并据此设计校正，而非套算法",
+    "最少基站贪心+残差判停工程性强",
+    "分轴误差验证扎实"
+  ],
+  "reusable_patterns": [
+    "从数据发现误差规律→校正项",
+    "最小二乘超定定位",
+    "贪心增加设备满足精度",
+    "残差作置信指标"
+  ],
+  "transferable_ability_card_candidates": [
+    "TOA/AoA定位",
+    "NLOS校正",
+    "最小二乘定位",
+    "贪心最少基站"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "TOA模型+NLOS校正": "≈p.5-20",
+    "最少基站": "≈p.25-35",
+    "轨迹": "≈p.40-45",
+    "误差验证表": "≈p.50-60"
+  }
+}

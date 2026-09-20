@@ -1,0 +1,152 @@
+{
+  "paper_id": "2024_C_C24102890089",
+  "year": 2024,
+  "track": "C",
+  "title": "数据驱动下磁性元件的磁芯损耗建模",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 5,
+  "task_types": [
+    "分类",
+    "参数回归",
+    "方差分析",
+    "预测",
+    "多目标优化"
+  ],
+  "models_and_algorithms": [
+    "傅里叶变换",
+    "MLP",
+    "随机森林",
+    "MLP-RF加权集成",
+    "斯坦麦茨方程",
+    "Solow温度修正",
+    "二次多项式温度饱和",
+    "最小二乘",
+    "ANOVA单/多因素",
+    "粒子群多目标混合整数规划"
+  ],
+  "data_modality": "结构化",
+  "data_scale": "百级样本（80个励磁波形）",
+  "validation_methods": [
+    "混淆矩阵",
+    "交叉验证",
+    "MAPE/R²",
+    "p值显著性",
+    "直接穷举优化",
+    "PSO有效性"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "波形分类",
+    "修正方程拟合",
+    "ANOVA p值表",
+    "PSO Pareto"
+  ],
+  "innovation_points": [
+    "MLP-RF 加权集成做励磁波形分类，三类波形（正弦/三角/梯形）",
+    "Solow函数作为温度修正项修正斯坦麦茨方程，MAPE=15.94%、R²=0.9954",
+    "问题五用 PSO 解多目标混合整数规划（磁芯损耗最小+传输磁能最大）"
+  ],
+  "page_count": 71,
+  "section_structure": "问题重述/问题一~七/模型评价/参考文献/附录",
+  "source_locations": [
+    "p.1-2 摘要"
+  ],
+  "confidence": "high",
+  "notes": "题C，物理+ML路线。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "人工规则",
+      "main_model": "MLP/RF/MLP-RF集成波形分类",
+      "improvement": "傅里叶+形状特征(峰值/升降速/峰度/偏度)",
+      "why_switch": "需自动识别三类波形"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "原始斯坦麦茨方程",
+      "main_model": "Solow/二次多项式/温度饱和三种温度修正",
+      "improvement": "最小二乘/非线性拟合定参",
+      "why_switch": "原SE方程缺温度项误差大"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "单因素分析",
+      "main_model": "单/多因素ANOVA",
+      "improvement": "直接穷举寻最优",
+      "why_switch": "需量化温度/波形/材料独立与协同影响"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "单一温度修正模型",
+      "main_model": "基于IGSE的12种温度-波形-材料预测模型",
+      "improvement": "分材料分波形预测",
+      "why_switch": "需跨材料跨工况泛化"
+    },
+    {
+      "question_id": "问题五",
+      "baseline": "单目标",
+      "main_model": "PSO多目标混合整数规划",
+      "improvement": "定性变量(波形/材料)整型约束",
+      "why_switch": "双目标(损耗最小+磁能最大)"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "Steinmetz 方程 P_v=k·f^α·B^β",
+    "Solow 温度修正函数 C_T",
+    "IGSE 等效正弦波频率",
+    "多目标 min P_v / max f·B"
+  ],
+  "objective_function": "min 磁芯损耗 P_v 且 max 传输磁能 f·B_peak（多目标）",
+  "evaluation_metrics": [
+    "三类波形数 20/44/16",
+    "MAPE=15.94%",
+    "R²=0.9954",
+    "ANOVA p值 1.6996e-11/1.4854e-118/2.1167e-63",
+    "最优点 90°C/正弦/材料4 损耗37860"
+  ],
+  "algorithm_details_and_complexity": "MLP/RF 分类；PSO 混合整数进化",
+  "independent_validation_design": "混淆矩阵+交叉验证；残差图+MAPE+R²",
+  "sensitivity_robustness_ablation": [
+    "三种温度修正函数对比",
+    "直接穷举 vs PSO 对比"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "随着经济社会的不断发展，电能变换技术在各个领域的广泛应用推动了对高效磁性元件的需求。",
+    "method_sentence": "MLP/RF集成 / Solow温度修正SE / ANOVA / IGSE 12种模型 / PSO多目标",
+    "result_sentence": "MAPE=15.94%、R²=0.9954；最优 90°C/正弦/材料4",
+    "numbers_presentation": "完整给出 p值、MAPE、R²、最优解数值"
+  },
+  "figure_narrative_order": [
+    "波形可视化",
+    "分类混淆矩阵",
+    "SE修正拟合",
+    "ANOVA 热力图",
+    "PSO Pareto"
+  ],
+  "judge_high_score_reasons": [
+    "五问完整覆盖分类/修正/分析/预测/优化",
+    "Solow 温度修正是物理性较强的选择",
+    "ANOVA p值精确到 e-118 量级，严谨",
+    "PSO 处理定性变量整型约束是工程巧思"
+  ],
+  "reusable_patterns": [
+    "波形分类先做时频特征提取再分类",
+    "物理方程(SE)+温度修正项+最小二乘定参",
+    "ANOVA 量化因素独立与协同影响",
+    "PSO/GA 处理混合整数多目标"
+  ],
+  "transferable_ability_card_candidates": [
+    "斯坦麦茨修正",
+    "ANOVA",
+    "PSO多目标",
+    "MLP/RF集成"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "问题一分类": "p.8-18",
+    "问题二SE修正": "p.19-27",
+    "问题三ANOVA": "p.28-40",
+    "问题五PSO": "p.55-65"
+  }
+}

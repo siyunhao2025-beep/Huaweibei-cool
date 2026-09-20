@@ -1,0 +1,125 @@
+{
+  "paper_id": "2024_B_B24102860287",
+  "year": 2024,
+  "track": "B",
+  "title": "WLAN 组网中网络吞吐量建模",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 3,
+  "task_types": [
+    "回归预测",
+    "多分类",
+    "系统预测"
+  ],
+  "models_and_algorithms": [
+    "随机森林回归",
+    "Akima 插值",
+    "残差连接CNN",
+    "Adam优化器",
+    "CDF累积分布函数评估"
+  ],
+  "data_modality": "结构化",
+  "data_scale": "万级（2AP/3AP 分组建模）",
+  "validation_methods": [
+    "特征重要性排序",
+    "验证集准确率86.73%",
+    "CDF 评估",
+    "2AP/3AP 分组建模",
+    "理论与仿真误差<5%"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "相关性热力图",
+    "特征重要性排序",
+    "CNN结构图",
+    "CDF 曲线"
+  ],
+  "innovation_points": [
+    "分 2AP/3AP 系统分别建模，特征重要性 AP-AP RSSI 占比 87.96%/74.94%",
+    "用 Akima 插值统一 RSSI 测量值到 540 点",
+    "残差连接优化 CNN 预测(MCS,NSS) 准确率 86.73%；1D-CNN 统一预测系统吞吐量"
+  ],
+  "page_count": 90,
+  "section_structure": "问题背景/数据预处理/问题一~四/模型评价/附录代码",
+  "source_locations": [
+    "p.1-2 摘要"
+  ],
+  "confidence": "high",
+  "notes": "题B，CNN+随机森林路线。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "相关性分析",
+      "main_model": "随机森林回归预测AP发送机会",
+      "improvement": "按特征重要性排序",
+      "why_switch": "需量化各因素影响强弱"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "直接回归PHY Rate",
+      "main_model": "Akima插值+残差连接CNN预测(MCS,NSS)",
+      "improvement": "考虑同一次实验多行样本间相互影响",
+      "why_switch": "MCS/NSS为离散分类问题"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "分问单独预测",
+      "main_model": "1D-CNN 统一预测系统吞吐量",
+      "improvement": "Adam优化",
+      "why_switch": "需综合干扰与丢包"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "RSSI/SINR 与 PHY Rate 映射关系",
+    "CNN 1D 卷积+池化+全连接"
+  ],
+  "objective_function": "min 吞吐量预测 MSE / (MCS,NSS) 分类交叉熵",
+  "evaluation_metrics": [
+    "特征重要性占比",
+    "(MCS,NSS) 准确率86.73%",
+    "2AP/3AP 吞吐量验证准确率>95%",
+    "理论仿真误差<5%"
+  ],
+  "algorithm_details_and_complexity": "随机森林 O(n log n)；1D-CNN 推理 O(1) 样本级",
+  "independent_validation_design": "2AP/3AP 分开训练验证；CDF 累积分布函数评估模型精度",
+  "sensitivity_robustness_ablation": [
+    "2AP vs 3AP 系统对比",
+    "干扰情况下理论与仿真误差<5%"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "无线局域网（WLAN）在现代通信中具有重要作用，而信道接入机制对网络的整体吞吐量有显著影响。",
+    "method_sentence": "随机森林回归特征重要性 / Akima+残差CNN预测MCS,NSS / 1D-CNN预测吞吐量",
+    "result_sentence": "2AP/3AP 验证准确率超95%，干扰误差<5%",
+    "numbers_presentation": "87.96%/74.94% 特征重要性，86.73% 准确率，<5% 误差"
+  },
+  "figure_narrative_order": [
+    "数据预处理流程",
+    "特征相关性热力图",
+    "RF 特征重要性排序",
+    "CNN 结构图",
+    "CDF 评估"
+  ],
+  "judge_high_score_reasons": [
+    "分 2AP/3AP 建模工程合理",
+    "残差CNN预测离散(MCS,NSS)并量化准确率",
+    "CDF 评估是少见的严谨做法"
+  ],
+  "reusable_patterns": [
+    "分场景(2AP/3AP)分别建模",
+    "用Akima插值统一采样点",
+    "1D-CNN 预测结构化时序输出",
+    "CDF 评估回归模型"
+  ],
+  "transferable_ability_card_candidates": [
+    "随机森林特征重要性",
+    "残差CNN",
+    "Akima插值",
+    "CDF评估"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "问题一RF": "p.12-15",
+    "问题二CNN": "p.18-30",
+    "问题三吞吐量": "p.40-60"
+  }
+}

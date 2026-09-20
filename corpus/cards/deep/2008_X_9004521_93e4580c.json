@@ -1,0 +1,89 @@
+{
+  "paper_id": "2008_X_9004521_93e4580c",
+  "year": 2008,
+  "track": null,
+  "track_confidence": "low",
+  "title": "唐家山堰塞湖泄洪问题的研究",
+  "award_level": "优秀论文",
+  "award_confidence": "low",
+  "per_question_method_chain": [
+    {
+      "question_id": "Q1",
+      "baseline": "经验水位",
+      "main_model": "等高图像分析+体积离散化积分",
+      "improvement": "神经网络+多元线性回归降雨量-入库流量",
+      "why_switch": "降雨与水位关系非线性"
+    },
+    {
+      "question_id": "Q2",
+      "baseline": "无数据",
+      "main_model": "正交多项式逼近+溃坝仿真",
+      "improvement": "借泄洪数据反演溃坝过程",
+      "why_switch": "无溃坝实测数据，需仿真"
+    },
+    {
+      "question_id": "Q3",
+      "baseline": "经验淹没",
+      "main_model": "数字高程地图水流推演",
+      "improvement": "洪水流速+到达时间+撤离方案",
+      "why_switch": "需精确淹没范围"
+    },
+    {
+      "question_id": "Q4",
+      "baseline": "定性评价",
+      "main_model": "安全最优化模型",
+      "improvement": "定量评价导流渠方案+定性撤离方案",
+      "why_switch": "需量化决策正确性"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "蓄水量 V=∫S(h)dh 等高线面积积分",
+    "假设坝体材料均匀",
+    "洪水沿地势最低路径流"
+  ],
+  "objective_function": "max 安全度（生命损失最小）",
+  "evaluation_metrics": [
+    "水位高程",
+    "入库流量",
+    "溃口流量过程线",
+    "淹没到达时间"
+  ],
+  "algorithm_details_and_complexity": "等高线面积积分+正交多项式拟合+DEM水流推演",
+  "independent_validation_design": "用实际泄洪数据校核模型",
+  "sensitivity_robustness_ablation": [
+    "降雨量50%/80%/100%/150%四情景",
+    "溃坝参数敏感性"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "研究唐家山堰塞湖形成后水位/蓄水量/溃坝/淹没",
+    "method_sentence": "等高线分析+神经网络降雨预测+正交多项式溃坝仿真+DEM洪水推演",
+    "result_sentence": "给出水位预测与撤离方案",
+    "numbers_presentation": "降雨量四情景"
+  },
+  "figure_narrative_order": [
+    "堰塞湖等高线图",
+    "水位-体积关系",
+    "溃坝流量过程线",
+    "淹没范围图",
+    "撤离方案图"
+  ],
+  "judge_high_score_reasons": [
+    "应急题：四问从水量→溃坝→淹没→决策形成灾害链",
+    "无溃坝数据时用泄洪数据仿真反演",
+    "结合DEM地图做空间推演"
+  ],
+  "reusable_patterns": [
+    "自然灾害应急建模链：水量积分→过程仿真→空间淹没→决策评价（来自1篇论文支持）"
+  ],
+  "transferable_ability_card_candidates": [
+    "洪水/堰塞湖应急卡：DEM等高线体积积分→降雨-径流预测→溃坝过程仿真→淹没路径推演→撤离优化"
+  ],
+  "page_locations": {
+    "摘要": "p.1",
+    "Q1蓄水量": "p.3-10",
+    "Q2溃坝": "p.11-18",
+    "Q3淹没": "p.19-25",
+    "Q4决策": "p.26-33"
+  },
+  "confidence": "high"
+}

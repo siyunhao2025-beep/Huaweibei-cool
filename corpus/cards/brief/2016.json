@@ -1,0 +1,1122 @@
+[
+  {
+    "paper_id": "2016_A_A10248058_68f37984",
+    "year": 2016,
+    "track": "A",
+    "title": "多无人机协同任务规划",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 8,
+    "task_types": [
+      "优化",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "蚁群算法",
+      "图论/最短路",
+      "数据插值/拟合曲面",
+      "禁忌搜索/启发式",
+      "航迹规划/协同"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 8,
+    "figure_types": [
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 30,
+    "section_structure": null,
+    "source_locations": [
+      "模型建立≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_A_A10252152_db222c78",
+    "year": 2016,
+    "track": "A",
+    "title": "多无人机协同任务规划",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "模糊聚类",
+      "系统聚类/层次聚类",
+      "遗传算法",
+      "多目标规划/优化",
+      "航迹规划/协同"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "仿真/数值验证"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "流程图/框图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 41,
+    "section_structure": "3 分钟以上。",
+    "source_locations": [
+      "模型建立≈p.5",
+      "模型求解≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_A_A10287004_436aba4a",
+    "year": 2016,
+    "track": "A",
+    "title": "多无人机协同任务规划",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化"
+    ],
+    "models_and_algorithms": [
+      "遗传算法",
+      "航迹规划/协同"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 33,
+    "figure_types": [
+      "流程图/框图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 48,
+    "section_structure": "一、问题重述；二、模型假设；三、符号说明；四、问题一求解；五、问题二求解；六、问题三求解；七、问题四求解；八、问题五",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_A_A10287022_9e3b1b5c",
+    "year": 2016,
+    "track": "A",
+    "title": "多无人机协同任务规划",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "分类",
+      "仿真",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "粒子群算法PSO",
+      "蒙特卡洛模拟",
+      "图论/最短路",
+      "线性规划",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 10,
+    "figure_types": [
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 36,
+    "section_structure": "一、问题重述；二、问题分析；三、基本假设；四、符号说明与名词解释；五、模型的建立与求解；六、模型的评价与改进；七、参考文献；八、附录",
+    "source_locations": [
+      "模型求解≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_A_A10294006_dda5f369",
+    "year": 2016,
+    "track": "A",
+    "title": "多无人机协同任务规划",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "分类"
+    ],
+    "models_and_algorithms": [
+      "动态规划",
+      "航迹规划/协同"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 8,
+    "figure_types": [
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 71,
+    "section_structure": "1 问题重述；2 问题分析；3 分钟以上；；3 模型假设；4 符号系统；5 问题一：基于虚拟点的改进hamilton 回路模型；6 问题二：多任务无人机通信规划模型；7 问题三：分步规划模型；8 问题四：针对远程雷达的分步优化模型；9 问题五：模型分析；2 架无人机。",
+    "source_locations": [
+      "模型求解≈p.18"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_B_B10013022_7ea39357",
+    "year": 2016,
+    "track": "B",
+    "title": "具有遗传性疾病和性状的遗传位点分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "回归拟合",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "多元线性回归"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "千-万级",
+    "validation_methods": [
+      "对比/比较分析",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "流程图/框图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [],
+    "page_count": 26,
+    "section_structure": "一. 问题重述；二. 基本假设；三. 问题分析；四. 问题一的模型建立与求解；五. 问题二的模型建立与求解；六. 问题三的模型建立与求解；七. 问题四的模型建立与求解；八. 总结与展望；九. 参考文献",
+    "source_locations": [
+      "模型建立≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_B_B10248299_80cb767d",
+    "year": 2016,
+    "track": "B",
+    "title": "具有遗传性疾病和性状的遗传位点分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "回归拟合",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "多元线性回归",
+      "逻辑回归"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "千-万级",
+    "validation_methods": [
+      "对比/比较分析",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [],
+    "page_count": 34,
+    "section_structure": null,
+    "source_locations": [
+      "模型建立≈p.1",
+      "模型求解≈p.3",
+      "模型检验/验证≈p.18"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_B_B10273004_19a1f397",
+    "year": 2016,
+    "track": "B",
+    "title": "具有遗传性疾病和性状的遗传位点分析（B 题）",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "系统聚类/层次聚类",
+      "决策树"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "千-万级",
+    "validation_methods": [
+      "对比/比较分析",
+      "精度指标(RMSE/R²等)",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 30,
+    "figure_types": [
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 41,
+    "section_structure": "一.问题重述；二．问题分析；三．基本假设；四．模型建立与求解；五．结论",
+    "source_locations": [
+      "摘要≈p.1",
+      "模型建立≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_B_B11117004_ff8c3dde",
+    "year": 2016,
+    "track": "B",
+    "title": "具有遗传性疾病和性状的遗传位点分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "机理建模",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "K-means聚类"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "千-万级",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 27,
+    "section_structure": "2 组，每组250 个。根据大数定律，应该有：",
+    "source_locations": [
+      "摘要≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_X_BK0209_03d6984c",
+    "year": 2016,
+    "track": null,
+    "title": "具有遗传性疾病和性状的遗传位点分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "机理建模",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "贝叶斯"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "千-万级",
+    "validation_methods": [
+      "对比/比较分析",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 6,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [
+      "首次从期望的角度提出了错误发"
+    ],
+    "page_count": 34,
+    "section_structure": "一、问题描述；二、合理假设与符号说明；三、问题分析；四、模型特点介绍；五、问题求解；六、模型评价",
+    "source_locations": [
+      "模型求解≈p.1",
+      "模型评价/改进≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_X_BK0247_1713941d",
+    "year": 2016,
+    "track": null,
+    "title": "1.1 问题背景",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "回归拟合",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "多元线性回归",
+      "刚体/多体动力学"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "千-万级",
+    "validation_methods": [
+      "对比/比较分析",
+      "精度指标(RMSE/R²等)",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 10,
+    "figure_types": [
+      "柱状图"
+    ],
+    "innovation_points": [],
+    "page_count": 23,
+    "section_structure": "1 问题重述；2 模型假设与符号说明；3 问题一模型建立与求解；4 问题二模型建立与求解；5 问题三模型建立与求解；6 问题四模型建立与求解",
+    "source_locations": [
+      "模型建立≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_C_C10287048_7c8a4972",
+    "year": 2016,
+    "track": "C",
+    "title": "基于无线通信基站的室内三维定位问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "回归拟合",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "线性规划",
+      "非线性规划",
+      "定位算法(AOA/TDOA/Chan/Taylor)"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 10,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [],
+    "page_count": 29,
+    "section_structure": "一、问题的重述；二、问题的分析；三、模型的假设；四、名词解释与符号说明；五、模型的建立；六、模型的求解；七、模型的评价",
+    "source_locations": [
+      "模型求解≈p.20",
+      "模型评价/改进≈p.20"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_C_C10423010_2919dd60",
+    "year": 2016,
+    "track": "C",
+    "title": "基于无线通信基站的预估-校正-自适应定位模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "预测",
+      "分类",
+      "仿真",
+      "回归拟合",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "信道建模/多径/OFDM",
+      "定位算法(AOA/TDOA/Chan/Taylor)"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "鲁棒性/稳定性分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 27,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [],
+    "page_count": 36,
+    "section_structure": "一、 问题重述；二、 模型假设；三、 相关定义与符号说明；四、TOA 定位原理；五、预估-校正-自适应定位模型的建立；六、问题分析与求解；七、模型的不足与展望",
+    "source_locations": [
+      "模型求解≈p.24"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_C_C10534002_9f50ff5f",
+    "year": 2016,
+    "track": "C",
+    "title": "基于无线通信基站的室内三维定位问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "预测",
+      "评价",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "定位算法(AOA/TDOA/Chan/Taylor)",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析",
+      "鲁棒性/稳定性分析",
+      "精度指标(RMSE/R²等)",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 13,
+    "figure_types": [
+      "流程图/框图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [],
+    "page_count": 65,
+    "section_structure": "2\n较小的定位。；2 模型假设与说符号说明；3 问题一模型建立与求解；4 问题二模型建立与求解；6 问题四模型的建立与求解；7 模型的评价与结论",
+    "source_locations": [
+      "摘要≈p.1",
+      "模型建立≈p.6",
+      "模型检验/验证≈p.20"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_C_C11660022_0ec013d7",
+    "year": 2016,
+    "track": "C",
+    "title": "基于无线通信基站的室内三维定位问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "分类",
+      "仿真",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "K-means聚类",
+      "图论/最短路",
+      "信道建模/多径/OFDM",
+      "定位算法(AOA/TDOA/Chan/Taylor)"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "百级样本",
+    "validation_methods": [
+      "误差/残差分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 19,
+    "figure_types": [
+      "流程图/框图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [],
+    "page_count": 44,
+    "section_structure": "一、 问题重述；二、模型假设与符号说明；二、 问题分析；四、问题1 模型的建立与求解；五、问题2 模型的建立与求解；六、问题3 模型的建立与求解；七、问题4 模型的建立与求解；八、模型的评价与推广",
+    "source_locations": [
+      "模型评价/改进≈p.29"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_C_C80138004_57b19546",
+    "year": 2016,
+    "track": "C",
+    "title": "基于无线通信基站的室内三维定位问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 1,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "回归拟合",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "定位算法(AOA/TDOA/Chan/Taylor)"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析"
+    ],
+    "figure_count": 22,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [],
+    "page_count": 25,
+    "section_structure": null,
+    "source_locations": [
+      "模型建立≈p.3",
+      "模型评价/改进≈p.5"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_C_C90110002_1d0ee441",
+    "year": 2016,
+    "track": "C",
+    "title": "基于无线通信基站的室内三维定位问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "预测",
+      "评价",
+      "分类",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "卡尔曼滤波",
+      "信道建模/多径/OFDM",
+      "定位算法(AOA/TDOA/Chan/Taylor)",
+      "无迹卡尔曼UKF"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析",
+      "精度指标(RMSE/R²等)",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 35,
+    "figure_types": [
+      "流程图/框图",
+      "柱状图",
+      "散点/拟合图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [
+      "本文建立了复杂环境下无线基站定位模型，体现了NLOS 和LOS 环境下的各个特",
+      "本文建立模型十分精确，"
+    ],
+    "page_count": 32,
+    "section_structure": null,
+    "source_locations": [
+      "模型建立≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_D_D10248021_f57b60f7",
+    "year": 2016,
+    "track": "D",
+    "title": "军事行动避空侦察的时机和路径选择",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "图论/最短路"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [
+      "本文围绕三个问题建立了合",
+      "本文对相关模型的优缺点进行了评价与改进，并进行了推广。"
+    ],
+    "page_count": 55,
+    "section_structure": "2 问题一的解答；3 问题二的解答；4 问题三的解答；5 模型评价与推广；6 参考文献",
+    "source_locations": [
+      "模型建立≈p.36",
+      "模型评价/改进≈p.5"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_D_D10252015_d84956c9",
+    "year": 2016,
+    "track": "D",
+    "title": "军事行动避空侦察的时机和路线选择",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "预测",
+      "回归拟合",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "图论/最短路",
+      "定位算法(AOA/TDOA/Chan/Taylor)",
+      "数据插值/拟合曲面"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 28,
+    "figure_types": [
+      "空间/地图"
+    ],
+    "innovation_points": [],
+    "page_count": 36,
+    "section_structure": "1 问题重述；2 模型假设；3 符号说明；4 问题一模型建立与求解；5 问题二模型建立与求解；6 问题三模型建立与求解",
+    "source_locations": [
+      "模型建立≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_D_D10291002_ae527b47",
+    "year": 2016,
+    "track": "D",
+    "title": "军事行动避空侦察的时机和路线选择",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "预测",
+      "回归拟合",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "图论/最短路",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 23,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [],
+    "page_count": 37,
+    "section_structure": "一、 问题背景与重述；二、 问题假设及符号说明；三、 问题分析；四、 问题一解答；五、 问题二的解答；六、问题三的解答；七、模型的而评价与改进",
+    "source_locations": [
+      "模型检验/验证≈p.23"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_D_D83285024_4baefbdb",
+    "year": 2016,
+    "track": "D",
+    "title": "军事行动避空侦察的时机和路线选择",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "预测",
+      "仿真",
+      "机理建模",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "模拟退火",
+      "运动学/插补/S型曲线",
+      "禁忌搜索/启发式",
+      "航迹规划/协同"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 5,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 54,
+    "section_structure": "一. 问题重述；二. 问题假设与符号说明；三. 问题一的分析与建模；四. 问题二的分析与建模；五. 问题三的分析与建模；六. 结论与分析",
+    "source_locations": [
+      "模型建立≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_D_D90059029_5941efa8",
+    "year": 2016,
+    "track": "D",
+    "title": "军事行动避空侦察的时机和路线选择",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "预测",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "图论/最短路"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析"
+    ],
+    "figure_count": 20,
+    "figure_types": [
+      "流程图/框图",
+      "空间/地图"
+    ],
+    "innovation_points": [
+      "本文通过对卫星的被观测数据进行分析，建立基于时间的预测模型，对三种卫星的"
+    ],
+    "page_count": 35,
+    "section_structure": "1 问题重述；2 问题分析；4\n条件）和方式。；3 问题假设；4 符号说明；5 问题1 模型的建立和求解；8 月22 日时间；8 月23 日时间；6 问题2 模型的建立和求解；7 问题3 模型的建立和求解；8 模型的评价和改进；9 参考文献",
+    "source_locations": [
+      "模型建立≈p.1",
+      "模型求解≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_X_DK0003_e006bcfe",
+    "year": 2016,
+    "track": null,
+    "title": "军事行动避空侦察的时机和路线选择",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 2,
+    "task_types": [
+      "优化",
+      "预测",
+      "仿真",
+      "回归拟合",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "图论/最短路"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 32,
+    "figure_types": [
+      "流程图/框图",
+      "散点/拟合图",
+      "空间/地图"
+    ],
+    "innovation_points": [],
+    "page_count": 56,
+    "section_structure": "1                   从阿勒泰出发开始行军；2                      暂停行军，躲避L-1 星；8                      莎车县休息10 小时；9                      到达喀什；3                 在和田工作时将会相遇；4                              提前暂停行军躲避",
+    "source_locations": [
+      "模型建立≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_E_E10058003_6355e4e9",
+    "year": 2016,
+    "track": "E",
+    "title": "粮食最低收购价问题研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 6,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "回归拟合",
+      "排队库存",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "主成分分析",
+      "系统聚类/层次聚类",
+      "多元线性回归",
+      "线性规划"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 4,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [
+      "本文根据问题1 中建立的指标体系，运用主成分-统计控制的方法分别对安",
+      "本文运用市场收购价理论和局部调整模型分别建立了包含粮食最低"
+    ],
+    "page_count": 76,
+    "section_structure": "2\n             第1 章 前 言；9\n            第2 章 问题一解答",
+    "source_locations": [
+      "模型求解≈p.35",
+      "模型检验/验证≈p.22",
+      "模型评价/改进≈p.69"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_E_E10058009_e94c94c9",
+    "year": 2016,
+    "track": "E",
+    "title": "粮食最低收购价政策问题研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 6,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "仿真",
+      "回归拟合",
+      "排队库存",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "主成分分析",
+      "时间序列ARIMA"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "交叉验证",
+      "对比/比较分析",
+      "精度指标(RMSE/R²等)",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 6,
+    "figure_types": [
+      "折线/曲线图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [
+      "首次出台《农业调整法》，对农业支持系列政策作了"
+    ],
+    "page_count": 54,
+    "section_structure": "3 回归系数的显著性检验；8 个指标将作为影响安徽省小麦种植面积的主要指标。",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.3",
+      "模型检验/验证≈p.4",
+      "模型评价/改进≈p.5"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_E_E10327023_24c1f9fa",
+    "year": 2016,
+    "track": "E",
+    "title": "粮食最低收购价政策问题研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 6,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "仿真",
+      "回归拟合",
+      "空间图",
+      "排队库存",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "因子分析",
+      "结构方程模型",
+      "支持向量机SVM",
+      "熵权法",
+      "物元/可拓分析",
+      "多元线性回归",
+      "组合预测"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "鲁棒性/稳定性分析",
+      "精度指标(RMSE/R²等)",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 8,
+    "figure_types": [],
+    "innovation_points": [
+      "本文通过对我国粮食最低收购价政策进行研究，建立影响粮食种植面积的模"
+    ],
+    "page_count": 35,
+    "section_structure": "一、 问题重述；二、问题分析；三、基本假设及相关定义；四、模型的建立与求解；五、模型评价；六、参考文献",
+    "source_locations": [
+      "模型检验/验证≈p.18",
+      "模型评价/改进≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_E_E10357003_821c54b8",
+    "year": 2016,
+    "track": "E",
+    "title": "基于多目标规划和智能优化算法的粮",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 6,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "回归拟合",
+      "排队库存",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "因子分析",
+      "投影寻踪",
+      "系统聚类/层次聚类",
+      "灰色预测GM(1,1)",
+      "BP神经网络",
+      "深度学习",
+      "支持向量机SVM",
+      "粒子群算法PSO",
+      "多元线性回归",
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "灵敏度/敏感性分析",
+      "误差/残差分析",
+      "鲁棒性/稳定性分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 6,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 108,
+    "section_structure": "2 问题分析；3 重要符号说明；4 模型假设；5 模型的建立与求解",
+    "source_locations": [
+      "模型建立≈p.4",
+      "模型求解≈p.77",
+      "灵敏度分析≈p.2",
+      "模型评价/改进≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2016_E_E10615007_90f05d8f",
+    "year": 2016,
+    "track": "E",
+    "title": "粮食最低收购价政策问题研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 6,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "回归拟合",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "主成分分析",
+      "多元线性回归"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "流程图/框图",
+      "柱状图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [
+      "本文首先基于柯布-道格拉斯函数，建立了粮食生产量函数（见式7-2），",
+      "首次启动最低收购价政策的执行预案，多年以来不断上调最低价价格，"
+    ],
+    "page_count": 50,
+    "section_structure": "一、问题重述；二、模型假设；三、符号说明；四、问题一模型建立与求解；五、问题二模型建立与求解；六、问题三数据分析粮食价格的特殊规律；七、问题四模型建立与求解；八、问题五模型建立与求解；九、问题六调控粮食种植的优化决策和建议；一、充分调动农民的种粮积极性；二、控制耕地流转非粮化；三、优化粮食最低价收购政策",
+    "source_locations": [
+      "模型建立≈p.3",
+      "模型求解≈p.4",
+      "模型检验/验证≈p.18",
+      "模型评价/改进≈p.48"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  }
+]

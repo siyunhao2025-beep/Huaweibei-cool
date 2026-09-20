@@ -1,0 +1,110 @@
+{
+  "version": 2,
+  "page_number_system": "printed",
+  "body_definition": "正文从摘要结束后的下一页开始，到参考文献标题前一页结束；附录不计入正文。",
+  "required_body_pages": 45,
+  "status": "legacy_metadata_only",
+  "samples": [
+    {
+      "id": "legacy_sample_A",
+      "source": "historical_calibration_metadata_only; source PDF is not bundled",
+      "sections": [
+        {
+          "name": "问题重述与背景",
+          "role": "preliminary",
+          "start": 5,
+          "end": 8,
+          "confidence": "medium"
+        },
+        {
+          "name": "问题一",
+          "role": "problem",
+          "start": 9,
+          "end": 18,
+          "confidence": "high"
+        },
+        {
+          "name": "问题二",
+          "role": "problem",
+          "start": 19,
+          "end": 28,
+          "confidence": "high"
+        },
+        {
+          "name": "问题三",
+          "role": "problem",
+          "start": 29,
+          "end": 55,
+          "confidence": "medium"
+        },
+        {
+          "name": "模型总结",
+          "role": "evaluation",
+          "start": 56,
+          "end": 56,
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "id": "legacy_sample_B",
+      "source": "historical_calibration_metadata_only; source PDF is not bundled",
+      "sections": [
+        {
+          "name": "问题重述",
+          "role": "preliminary",
+          "start": 5,
+          "end": 5,
+          "confidence": "high"
+        },
+        {
+          "name": "问题一",
+          "role": "problem",
+          "start": 9,
+          "end": 21,
+          "confidence": "high"
+        },
+        {
+          "name": "问题二",
+          "role": "problem",
+          "start": 22,
+          "end": 35,
+          "confidence": "high"
+        },
+        {
+          "name": "问题三",
+          "role": "problem",
+          "start": 36,
+          "end": 42,
+          "confidence": "high"
+        },
+        {
+          "name": "问题四",
+          "role": "problem",
+          "start": 43,
+          "end": 60,
+          "confidence": "high"
+        },
+        {
+          "name": "问题五",
+          "role": "problem",
+          "start": 61,
+          "end": 68,
+          "confidence": "high"
+        },
+        {
+          "name": "模型评价与推广",
+          "role": "evaluation",
+          "start": 69,
+          "end": 69,
+          "confidence": "high"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "仅保留用于角色页数窗口的历史元数据；对应源 PDF 不随本包分发，因此不得将这些元数据当作当前赛题事实或引用来源。",
+    "45页是历史项目经验值，不是当届官方规则；当届官方要求始终优先。",
+    "问题章节差异很大，区间仅用于发现异常，不要求各问等长。"
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "paper_id": "2013_A_A6_1a357ae6",
+  "year": 2013,
+  "track": "A",
+  "track_confidence": "high",
+  "title": "变循环发动机部件法建模及优化",
+  "award_level": "优秀论文",
+  "award_confidence": "low",
+  "per_question_method_chain": [
+    {
+      "question_id": "Q1",
+      "baseline": "整体算术平均",
+      "main_model": "逐维线性插值",
+      "improvement": "逐步搜索+二分法求根",
+      "why_switch": "整体平均引入大误差"
+    },
+    {
+      "question_id": "Q2",
+      "baseline": "牛顿法",
+      "main_model": "阻尼牛顿迭代法",
+      "improvement": "8方程8未知量非线性方程组",
+      "why_switch": "标准牛顿法可能发散"
+    },
+    {
+      "question_id": "Q3",
+      "baseline": "单工况",
+      "main_model": "非线性规划约束优化",
+      "improvement": "性能最优时3变量随马赫数变化规律",
+      "why_switch": "需多工况优化"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "7个发动机平衡方程（流量/压力/温度平衡）",
+    "8未知量: ncor,nH,Z_CD,Z_CDFS,Z_CH,Z_TH,Z_TL,ΔT*",
+    "假设气体理想",
+    "部件特性查表"
+  ],
+  "objective_function": "max 单位推力（约束：压比/温度限制）",
+  "evaluation_metrics": [
+    "迭代收敛精度",
+    "最大单位推力",
+    "变量随马赫数曲线"
+  ],
+  "algorithm_details_and_complexity": "逐维插值+二分法+阻尼牛顿迭代",
+  "independent_validation_design": "与工程手册数据对比",
+  "sensitivity_robustness_ablation": [
+    "阻尼因子对收敛影响",
+    "初值敏感性"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "建立变循环发动机涡喷/涡扇双模式数学模型并研究求解算法",
+    "method_sentence": "逐维线性插值+逐步搜索二分法+阻尼牛顿迭代+非线性规划",
+    "result_sentence": "给出最优变量随马赫数规律",
+    "numbers_presentation": "8未知量/7方程"
+  },
+  "figure_narrative_order": [
+    "发动机结构示意图",
+    "风扇流量-压比曲线",
+    "非线性方程组收敛过程",
+    "最优变量随马赫数曲线"
+  ],
+  "judge_high_score_reasons": [
+    "工程机理建模：从部件特性到整机平衡方程",
+    "阻尼牛顿改进标准牛顿法",
+    "逐维插值避免整体平均误差"
+  ],
+  "reusable_patterns": [
+    "复杂非线性方程组→阻尼牛顿+逐维插值（来自1篇论文支持）",
+    "工程部件法建模链"
+  ],
+  "transferable_ability_card_candidates": [
+    "发动机/流体机械部件法卡：部件特性插值→整机平衡方程→阻尼牛顿求解→约束优化"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "问题重述": "p.5",
+    "模型假设": "p.8",
+    "Q1部件建模": "p.10-20",
+    "Q2方程组": "p.21-35",
+    "Q3优化": "p.36-55"
+  },
+  "confidence": "high"
+}

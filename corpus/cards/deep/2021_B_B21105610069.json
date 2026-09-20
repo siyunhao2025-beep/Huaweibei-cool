@@ -1,0 +1,97 @@
+{
+  "paper_id": "2021_B_B21105610069",
+  "year": 2021,
+  "track": "B",
+  "title": "空气质量预报二次建模",
+  "confidence": "high",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一(AQI)",
+      "baseline": "直接查公式",
+      "main_model": "按规范算8.25-8.28 AQI与首要污染物",
+      "improvement": "结果60/46/109/138，O3为主",
+      "why_switch": "确定性计算，无需模型"
+    },
+    {
+      "question_id": "问题二(气象分类)",
+      "baseline": "普通归一化+聚类",
+      "main_model": "伪独热码处理风向(保连续消有序)+Z-score，SVD主成分+Spearman降维，两步聚类",
+      "improvement": "从指标到主成分再聚类",
+      "why_switch": "风向是环形变量，独热会破坏连续性；伪独热码既消除有序性又保留连续信息"
+    },
+    {
+      "question_id": "问题三(单站二次预报)",
+      "baseline": "统一用FNN/RF/SVR/XGBoost",
+      "main_model": "先RF重要性排序做自适应特征选择；常规污染物用FNN，O3因噪声大改用CEEMDAN-IPSO-SVR降噪；偏差大者再用Lasso组合LSTM_FC",
+      "improvement": "按污染物特性分而治之",
+      "why_switch": "O3是二次污染物受外界影响易噪声，FNN偏差17.14，降噪后13.53；时序偏差大者叠加LSTM"
+    },
+    {
+      "question_id": "问题四(区域协同)",
+      "baseline": "单站模型",
+      "main_model": "Pearson验证空间相关后建图卷积GCN，偏差大四污染物用GRU_GCN_FC时空图卷积修正",
+      "improvement": "非欧空间图网络",
+      "why_switch": "单站模型忽略站间空间相关；GCN可捕捉非欧空间节点信息"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "伪独热码风向编码",
+    "两步聚类",
+    "CEEMDAN分解降噪",
+    "Lasso线性组合机理模型与LSTM_FC",
+    "GRU_GCN时空图卷积"
+  ],
+  "objective_function": "最小化各污染物二次预报偏差(相对一次预报)",
+  "evaluation_metrics": [
+    "PM2.5 FNN偏差1.92 vs 其余>2.60",
+    "O3偏差17.14→13.53",
+    "组合模型PM2.5偏差较FNN/LSTM降6.3%/9.1%",
+    "GRU_GCN修正NO2/O3偏差降17.4%/12.6%"
+  ],
+  "algorithm_details_and_complexity": "分污染物选型：FNN→CEEMDAN降噪SVR→Lasso+LSTM_FC→GRU_GCN，逐级升级",
+  "independent_validation_design": "训练/测试集误差检验；与多种经典模型(RF/SVR/XGBoost)对比偏差",
+  "sensitivity_robustness_ablation": [
+    "O3降噪前后对比",
+    "组合模型对单模型的提升",
+    "时空图卷积修正前后各污染物偏差"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "建高效精确二次预报模型对提高空气质量预报准确度意义重大",
+    "method_sentence": "按污染物分别建模，O3考虑空间相关用协同预报",
+    "result_sentence": "组合模型PM2.5偏差较FNN/LSTM降6.3%/9.1%",
+    "numbers_presentation": "偏差数字逐模型递进(1.92/17.14/13.53/降6.3%/9.1%/17.4%)"
+  },
+  "figure_narrative_order": [
+    "AQI计算表",
+    "伪独热码风向示意",
+    "两步聚类图",
+    "各模型偏差对比表",
+    "GRU_GCN结构图"
+  ],
+  "judge_high_score_reasons": [
+    "对风向这种环形变量用伪独热码，数据预处理懂领域细节",
+    "按污染物生成机理分而治之(常规用FNN/二次污染物O3降噪/时序用LSTM/空间用GCN)，不是一刀切",
+    "模型升级有明确的'上一模型偏差大→针对性改进'链条，结果可解释",
+    "Lasso组合机理模型与数据驱动模型，兼顾物理与精度"
+  ],
+  "reusable_patterns": [
+    "环形变量伪独热码编码",
+    "按目标变量机理分而治之选型",
+    "机理模型+数据模型Lasso融合",
+    "非欧空间用GCN建区域协同"
+  ],
+  "transferable_ability_card_candidates": [
+    "空气质量二次建模",
+    "时序-时空混合预测",
+    "特征自适应选择"
+  ],
+  "page_locations": {
+    "摘要": "p2-3",
+    "两步聚类气象分类": "p17-21",
+    "CEEMDAN降噪": "p31-36",
+    "GRU_GCN时空图卷积": "p39-43"
+  },
+  "notes": "数模之星提名奖",
+  "award_level": "一等奖",
+  "award_confidence": "high"
+}

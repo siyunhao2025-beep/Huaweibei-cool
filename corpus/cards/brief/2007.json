@@ -1,0 +1,876 @@
+[
+  {
+    "paper_id": "2007_X_1000401-A_111e8fd0",
+    "year": 2007,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "食品卫生安全保障体系数学模型及改进模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "预测",
+      "评价",
+      "分类",
+      "机理建模",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "Pareto",
+      "多元线性回归",
+      "系统聚类",
+      "假设检验",
+      "区间估计",
+      "参数估计"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "仿真验证",
+      "对比实验",
+      "敏感性分析",
+      "外部数据验证",
+      "假设检验"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "折线图",
+      "流程图",
+      "结构图"
+    ],
+    "innovation_points": [
+      "本文通过建立人群食物摄入量模型、污染物分布模型、风险评估模型并建立了一套比较"
+    ],
+    "page_count": 22,
+    "section_structure": "1.1 研究现状；2.1 模型基本假设；2.1.1 全国受调查人群的分类；2.1.2 全国所检测食物的分类；2.2 模型数据库的建立；2.2.1 数据的采集--抽样具体流程；2.2.2 数据的采集--抽样方法与分类；2.3 模型的建立；2.3.1 多元线性回归建模；2.3.2 回归模型的显著性检验；2.4 模型的优化；2.4.1 回归模型中影响因子的优化；2.4.2 预测问题；2.5 模型中的理论问题；2.5.1 针对小抽样率下的信息收集",
+    "source_locations": [
+      "摘要:p.1",
+      "模型假设:p.1",
+      "模型建立:p.3",
+      "检验/评价:p.2",
+      "结论:p.2"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2007_X_1000633邮政运输网络中的邮路规划和邮车调整",
+    "year": 2007,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "邮政运输网络中的邮路规划和邮车调整",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "线性规划",
+      "距离判别",
+      "最短路",
+      "TSP"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "对比实验"
+    ],
+    "figure_count": 11,
+    "figure_types": [
+      "流程图",
+      "结构图",
+      "示意图"
+    ],
+    "innovation_points": [],
+    "page_count": 25,
+    "section_structure": null,
+    "source_locations": [
+      "摘要:p.1",
+      "问题分析:p.1",
+      "模型假设:p.1",
+      "结论:p.1"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2007_X_数模论文最终版_74de681d",
+    "year": 2007,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "机械臂运动路径设计问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "空间图",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "模拟退火算法",
+      "曲线拟合",
+      "相关分析",
+      "CNN",
+      "DEA"
+    ],
+    "data_modality": "空间数据",
+    "data_scale": "较大规模(页数多)",
+    "validation_methods": [
+      "误差分析",
+      "仿真验证",
+      "对比实验",
+      "鲁棒性/稳健性"
+    ],
+    "figure_count": 9,
+    "figure_types": [
+      "折线图",
+      "流程图",
+      "结构图",
+      "示意图"
+    ],
+    "innovation_points": [
+      "本文分析了机械臂运动的逆问题，对给出的问题建模求解",
+      "本文给出抽样拟合法、单指令自适应法和微分法三种轨迹指令序列设计"
+    ],
+    "page_count": 41,
+    "section_structure": "5.1 模型准备；5.2 逆问题模型；5.2.1 几何法；5.2.4 微分运动法；5.2.5 指令序列设计；5.3 轨迹模型；5.3.1 抽样拟合法；5.3.2 单指令自适应法；5.3.3 微分法；5.4 碰撞规避模型；5.4.1 空间两线段距离；5.4.2 空间碰撞建模；5.4.3 碰撞规避模型分析；6.1 问题1 和2；6.2 问题3",
+    "source_locations": [
+      "摘要:p.1",
+      "模型求解:p.5",
+      "检验/评价:p.1",
+      "结论:p.21"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2007_X_1002701邮政运输网络中的邮路规划和邮车调度",
+    "year": 2007,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "邮政运输网络中的邮路规划和邮车调度",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 6,
+    "task_types": [
+      "优化",
+      "空间图",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "粒子群算法",
+      "多目标规划",
+      "动态规划",
+      "运输问题",
+      "最短路",
+      "TSP"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "对比实验"
+    ],
+    "figure_count": 8,
+    "figure_types": [
+      "流程图",
+      "示意图"
+    ],
+    "innovation_points": [],
+    "page_count": 18,
+    "section_structure": "4.2 求解结果；5.1 模型的建立；5.2 求解结果；6.1 模型的建立；6.2 求解结果；2.3 县局迁址建议书",
+    "source_locations": [
+      "模型建立:p.1",
+      "结论:p.8"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2007_X_10052A论文_6be5a2df",
+    "year": 2007,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "基于自助法和核密度估计的膳食暴露评估模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "机理建模",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "非参数估计",
+      "判别分析",
+      "物理模型",
+      "置信区间"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "万级",
+    "validation_methods": [
+      "误差分析",
+      "对比实验",
+      "外部数据验证",
+      "假设检验"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "折线图",
+      "流程图",
+      "结构图"
+    ],
+    "innovation_points": [
+      "本文建立了膳食暴露评估数学模型，并用对模型进行了检验和推广"
+    ],
+    "page_count": 22,
+    "section_structure": "1.1 基本情况；1.2 问题的由来；1.3 问题的要求；5.1 模型Ⅰ；5.1.1 样本容量；5.1.2 抽样方案的设计；5.1.3 常规食物摄取量调查方法；5.1.4 食品摄取量调查技术路线模型；5.2 模型Ⅱ；5.2.1 分类标准的设定；5.2.2 截尾正态分布函数假设；5.2.3 人群食物摄入量模型；5.3 模型Ⅲ；5.3.1 随机抽样数据的获得与处理方案；5.3.2 模型的建立",
+    "source_locations": [
+      "摘要:p.1",
+      "模型假设:p.3",
+      "模型建立:p.3",
+      "检验/评价:p.19"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2007_X_数学建模竞赛论文-01_a10b1854",
+    "year": 2007,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "食品卫生安全保障体系数学模型的建立及其改进理论问题的研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 1,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "机理建模",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "偏微分方程"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "仿真验证",
+      "对比实验",
+      "外部数据验证"
+    ],
+    "figure_count": 20,
+    "figure_types": [
+      "折线图",
+      "柱状图",
+      "流程图",
+      "结构图",
+      "示意图"
+    ],
+    "innovation_points": [
+      "根据我国的基本国情，设计",
+      "给出了污染物分布模型及其建立",
+      "建立了风险评估模型及其建立"
+    ],
+    "page_count": 31,
+    "section_structure": "2.1 抽样调查方案的设计 .....................；2.1.1 样本总量的确定 .......................；2.1.2 样本数在各个地区的分布及各地区样本的抽样方法 ........；2.1.3 抽样数据的记录方式 .....................；2.2 抽样调查中食物的分类方法 ..................；2.3 人群食物摄入量模型的建立方法 ................；2.3.1 数据的收集和应用 ......................；2.3.2 人群食物摄入量模型 .....................；3.1 污染物分布模型的建立方法 ..................；3.1.1 基本数据获得 ........................；3.1.2 基本思想 ..........................；3.1.3 模型简化 ..........................；3.1.4 基于有限分布类型的拟合 ...................；3.2 对污染物模型的进一步优化 ..................；3.2.1 直接利用污染物大于某一数值的样本拟合 ............",
+    "source_locations": [
+      "摘要:p.1",
+      "模型建立:p.1"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2007_X_1029405邮政运输网络中的邮路规划和邮车调度",
+    "year": 2007,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "本意的态度，对该收益的评估方法予以",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "分类",
+      "空间图",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "模拟退火算法",
+      "车辆路径问题",
+      "旅行商问题",
+      "遗传算法",
+      "整数规划",
+      "运输问题",
+      "最短路",
+      "TSP",
+      "VRP"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "对比实验",
+      "敏感性分析"
+    ],
+    "figure_count": 6,
+    "figure_types": [
+      "流程图",
+      "结构图",
+      "示意图"
+    ],
+    "innovation_points": [
+      "本文针对问题一带有时间窗的邮政运输问题（VRPTW），建立起了双目标的"
+    ],
+    "page_count": 18,
+    "section_structure": "4.1 问题一；4.1.1 基于2-opt 方法进行线路内优化的节约算法；4.1.2 模拟退火算法；4.2 问题二；4.3 问题三；4.4 问题四",
+    "source_locations": [
+      "摘要:p.1",
+      "检验/评价:p.4"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2007_X_1031910论文_9c310550",
+    "year": 2007,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "给出的实际情",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "分类",
+      "机理建模",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "Floyd算法",
+      "遗传算法",
+      "运输问题",
+      "最短路",
+      "TSP"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "对比实验"
+    ],
+    "figure_count": 9,
+    "figure_types": [
+      "流程图",
+      "结构图",
+      "示意图"
+    ],
+    "innovation_points": [
+      "本文提出了关于如何合理规划邮路的问题，具体内容如下：",
+      "1.1 模型的建立"
+    ],
+    "page_count": 32,
+    "section_structure": "4.1 问题1 的解决；4.1.1 模型的建立；4.1.2 方案的比较与确定；4.1.3 最佳邮路的选定方案；4.1.4 问题1 的小结；4.2 问题2 的解决；4.2.1 总体方案的选定及模型建立；4.2.2 具体方案的实施；4.2.3 问题2 的小结；4.3 问题3 的解决；4.3.1 解决方案的确定；4.3.2 具体方案的实施；4.3.3 问题3 的小结；4.4 问题4 的解决；4.4.1 解决方案的确定",
+    "source_locations": [
+      "模型建立:p.1"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2007_X_1042609_1cb783f7",
+    "year": 2007,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "邮路规划与邮车调度最优化理论研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "评价",
+      "分类",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "非线性规划",
+      "最短路"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "对比实验"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "流程图",
+      "示意图"
+    ],
+    "innovation_points": [
+      "本文对小规模NP 类邮路规划与邮车调度问题,建立了可精确求解方案的0-1"
+    ],
+    "page_count": 40,
+    "section_structure": "5.0 模型准备；5.1 邮局间最短路矩阵的建立；5.2.1 模型Ⅰ分析；5.2.2 模型Ⅰ的建立；5.2.3 模型Ⅰ的求解；6.0 问题二模型假设；6.1 区级车的邮运网络构建模型；6.1.0 区级邮路图中邮局间最短路径矩阵的建立；6.1.1 模型Ⅱ(ⅰ)分析；6.1.2 模型Ⅱ(ⅰ)的建立；6.1.3 模型Ⅱ(ⅰ)的求解；6.2 县级邮车的邮运网络构建模型；6.2.0 各县网中邮局间最短路径矩阵的建立；6.2.1 模型Ⅱ(ⅱ)分析；6.2.2 模型Ⅱ(ⅱ)的建立",
+    "source_locations": [
+      "摘要:p.1",
+      "模型假设:p.27",
+      "模型建立:p.26",
+      "模型求解:p.11"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2007_X_正式论文_c83eb636",
+    "year": 2007,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "邮路规划与邮车调度",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "分类",
+      "机理建模",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "旅行商问题",
+      "线性规划",
+      "最短路",
+      "TSP",
+      "VRP"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "对比实验"
+    ],
+    "figure_count": 9,
+    "figure_types": [
+      "流程图",
+      "示意图"
+    ],
+    "innovation_points": [],
+    "page_count": 19,
+    "section_structure": "2.1 针对本问题，本文做出如下假设；2.2 符号说明；4.1 问题一的求解；4.1.1 最少邮车数的求法；4.1.2 邮路规划及路径选择；4.1.3 问题的求解结果；4.2 问题二的求解；4.2.1 问题的分析；4.2.2 问题的求解结果；4.3 问题三的求解；4.3.1 问题分析；4.3.2 求解结果；4.4 问题四的求解；4.4.1 问题分析；4.4.2 求解结果",
+    "source_locations": [
+      "摘要:p.1",
+      "模型求解:p.4"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2007_C_1053306队C题论文",
+    "year": 2007,
+    "track": "C",
+    "track_confidence": "high",
+    "title": "高速公路路面质量改进的分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "评价",
+      "分类",
+      "机理建模",
+      "回归拟合",
+      "预测"
+    ],
+    "models_and_algorithms": [
+      "多元线性回归",
+      "目标规划",
+      "模糊聚类",
+      "回归分析",
+      "相关分析"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "对比实验",
+      "鲁棒性/稳健性"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "折线图"
+    ],
+    "innovation_points": [
+      "本文主要讨论了改进高速公路路面质量的问题，利用聚类、回归分析等知识"
+    ],
+    "page_count": 24,
+    "section_structure": "2.1 问题一；2.1.1 问题一重述；2.1.2 问题一分析；2.1.3 模型建立与求解；2.2 问题二；2.2.1 问题二重述；2.2.2 模型建立与求解；2.3 问题三；2.3.1 问题三重述；2.3.2 模型建立；2.3.3 模型求解；2.4 问题四；2.4.1 问题四重述；2.4.2 模型建立与求解；2.5 问题五",
+    "source_locations": [
+      "摘要:p.1",
+      "检验/评价:p.20",
+      "结论:p.20"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2007_X_1107502_d3e62617",
+    "year": 2007,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "六自由度机械臂路径优化设计",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "评价",
+      "分类",
+      "空间图",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [],
+    "data_modality": "空间数据",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "对比实验"
+    ],
+    "figure_count": 13,
+    "figure_types": [
+      "折线图",
+      "散点图",
+      "流程图",
+      "结构图",
+      "热力图/云图",
+      "三维图",
+      "示意图"
+    ],
+    "innovation_points": [],
+    "page_count": 27,
+    "section_structure": "5.1 初始姿态Φ0 的确定；5.2.3 倒序寻优法；5.2.4 倒序寻优法算法框图；5.4.1 对障碍物的简化处理[3]；5.4.2 碰撞判别；5.4.3 无碰撞轨迹的搜索；5.4.4 算法框图",
+    "source_locations": [
+      "摘要:p.1",
+      "模型建立:p.2",
+      "检验/评价:p.19"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2007_X_9000212 国防科大 王小强 黎渊  杨子煜",
+    "year": 2007,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "中提出的风险评估模型建立过程中的难点给出了专门的",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "机理建模",
+      "空间图"
+    ],
+    "models_and_algorithms": [],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "对比实验"
+    ],
+    "figure_count": 8,
+    "figure_types": [
+      "折线图",
+      "流程图",
+      "结构图"
+    ],
+    "innovation_points": [
+      "1. 食品污染及其分类"
+    ],
+    "page_count": 25,
+    "section_structure": null,
+    "source_locations": [
+      "摘要:p.1",
+      "问题分析:p.1",
+      "模型建立:p.1"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2007_X_9003803（D）_080c47ff",
+    "year": 2007,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "邮政运输网络中的邮路规划和邮车调度",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "评价",
+      "分类",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "运输问题",
+      "最短路"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "对比实验"
+    ],
+    "figure_count": 10,
+    "figure_types": [
+      "流程图",
+      "结构图"
+    ],
+    "innovation_points": [],
+    "page_count": 32,
+    "section_structure": "5.1 问题一的解答；5.1.1 模型的准备；5.1.2 模型的分析与建立；5.1.3 模型的求解；5.1.4 进一步讨论；5.2 问题二的解答；5.2.1 模型的分析和建立；5.3 问题三的解答；5.4 问题四的解答；5.4.1 计算方案讨论；5.4.2 求解过程；5.4.3 计算结果；7.2 不足之处",
+    "source_locations": [
+      "摘要:p.1",
+      "模型假设:p.2",
+      "模型建立:p.2",
+      "模型求解:p.6",
+      "结论:p.1"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2007_X_机械臂运动路径设计问题1",
+    "year": 2007,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "给出的具体数据，应用上述模型进行计算。",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "蒙特卡罗方法"
+    ],
+    "data_modality": "空间数据",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "对比实验"
+    ],
+    "figure_count": 1,
+    "figure_types": [
+      "折线图",
+      "散点图",
+      "结构图",
+      "三维图",
+      "示意图"
+    ],
+    "innovation_points": [
+      "本文设计几何算法和牛顿迭代法求解",
+      "自由空间中机械臂运动逆问题的求解模型",
+      "1 机械臂指尖坐标公式求解"
+    ],
+    "page_count": 22,
+    "section_structure": "4.1 机械臂指尖坐标公式求解；4.2 几何算法；4.3 牛顿迭代法；6.1 问题①的求解；6.2 问题②的求解；6.2.1 不考虑障碍物以及机械臂转角限制时，用牛顿迭代法求解；6.2.2 考虑障碍物时，应用牛顿迭代算法求解；6.2.3 对最低焊点的讨论；6.3 问题③的求解；6.3.1 对内表面四个焊接点的求解；6.3.2 圆台内表面盲区的分析",
+    "source_locations": [
+      "检验/评价:p.14"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2007_X_正文_6bf63f0c",
+    "year": 2007,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "中所给的数据可知，现在测试高速公路路面质量的试验项目都是基于",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "机理建模",
+      "空间图",
+      "回归拟合",
+      "分类"
+    ],
+    "models_and_algorithms": [
+      "多元线性回归",
+      "回归分析",
+      "方差分析",
+      "假设检验",
+      "参数估计",
+      "决策树"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "对比实验",
+      "鲁棒性/稳健性",
+      "假设检验"
+    ],
+    "figure_count": 6,
+    "figure_types": [
+      "结构图"
+    ],
+    "innovation_points": [
+      "1 对附件中数据的分析"
+    ],
+    "page_count": 26,
+    "section_structure": "1.1 对附件中数据的分析；1.2 对问题一的理解；1.3 对问题二的理解；1.4 对问题三的理解；1.5 对问题四的理解；1.6 对问题五的理解；5.1 问题一的求解；5.1.1 任两个指标间的数量关系；5.1.2 任意三个指标间的数量关系；5.1.3 四个指标间的数量关系；5.2 问题二的求解；5.2.1 通过筛孔百分率因素中的每一列都参与回归分析；13.2 时集料的通过率；5.2.2 取通过筛孔百分率因素中的某一列作代表进行回归分析；5.2.3 提高公路路面质量的方案",
+    "source_locations": [
+      "模型建立:p.1",
+      "模型求解:p.24",
+      "检验/评价:p.25",
+      "结论:p.14"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2007_X_论文_04abd2e4",
+    "year": 2007,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "基于自助法和核密度估计的膳食暴露评估模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "机理建模",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "非参数估计",
+      "判别分析",
+      "物理模型",
+      "置信区间"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "万级",
+    "validation_methods": [
+      "误差分析",
+      "对比实验",
+      "外部数据验证",
+      "假设检验"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "折线图",
+      "流程图",
+      "结构图"
+    ],
+    "innovation_points": [
+      "本文建立了膳食暴露评估数学模型，并用对模型进行了检验和推广"
+    ],
+    "page_count": 22,
+    "section_structure": "1.1 基本情况；1.2 问题的由来；1.3 问题的要求；5.1 模型Ⅰ；5.1.1 样本容量；5.1.2 抽样方案的设计；5.1.3 常规食物摄取量调查方法；5.1.4 食品摄取量调查技术路线模型；5.2 模型Ⅱ；5.2.1 分类标准的设定；5.2.2 截尾正态分布函数假设；5.2.3 人群食物摄入量模型；5.3 模型Ⅲ；5.3.1 随机抽样数据的获得与处理方案；5.3.2 模型的建立",
+    "source_locations": [
+      "摘要:p.1",
+      "模型假设:p.3",
+      "模型建立:p.3",
+      "检验/评价:p.19"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2007_X_邮政运输网络中的邮路规划和邮车调整",
+    "year": 2007,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "邮政运输网络中的邮路规划和邮车调整",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "线性规划",
+      "距离判别",
+      "最短路",
+      "TSP"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "对比实验"
+    ],
+    "figure_count": 11,
+    "figure_types": [
+      "流程图",
+      "结构图",
+      "示意图"
+    ],
+    "innovation_points": [],
+    "page_count": 25,
+    "section_structure": null,
+    "source_locations": [
+      "摘要:p.1",
+      "问题分析:p.1",
+      "模型假设:p.1",
+      "结论:p.1"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2007_X_邮政运输规划(1029301)",
+    "year": 2007,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "邮政运输网络中的邮路规划和邮车调度",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "分类",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "最短路",
+      "VRP"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "17 个点",
+    "validation_methods": [
+      "对比实验"
+    ],
+    "figure_count": 12,
+    "figure_types": [
+      "流程图",
+      "示意图"
+    ],
+    "innovation_points": [],
+    "page_count": 35,
+    "section_structure": "2.2 符号说明；3.2 分枝定界算法；4.1 最小邮车数的求解；4.87 邮车2       Z8         63；4.2 最佳邮路的规划",
+    "source_locations": [
+      "摘要:p.1",
+      "模型建立:p.25"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  }
+]

@@ -1,0 +1,100 @@
+{
+  "paper_id": "2021_C_C21102860153",
+  "year": 2021,
+  "track": "C",
+  "title": "帕金森病的脑深部电刺激治疗建模研究",
+  "confidence": "high",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一(单神经元)",
+      "baseline": "解析求解HH方程",
+      "main_model": "Matlab/Simulink搭建HH模型，分析交直流刺激下峰/簇发放特征指标",
+      "improvement": "频率/振幅/峰峰间距/占空比",
+      "why_switch": "HH无解析解，数值仿真"
+    },
+    {
+      "question_id": "问题二(回路)",
+      "baseline": "单神经元",
+      "main_model": "结合突触理论建基底神经节神经回路理论模型，核团内外随机兴奋/抑制连接",
+      "improvement": "—",
+      "why_switch": "单神经元不能体现回路"
+    },
+    {
+      "question_id": "问题三(健康vs PD)",
+      "baseline": "定性对比",
+      "main_model": "去黑质模拟PD，用中继可靠性指标定量分析",
+      "improvement": "引入可靠性指标",
+      "why_switch": "需定量刻画回路功能差异"
+    },
+    {
+      "question_id": "问题四(靶点参数优化)",
+      "baseline": "穷举",
+      "main_model": "参数扫描定频率/振幅较优范围，结合电池使用建损失函数，贪心+变步长精细搜索",
+      "improvement": "两阶段优化",
+      "why_switch": "全网格太贵；先粗扫再细搜"
+    },
+    {
+      "question_id": "问题五(扩展靶点)",
+      "baseline": "只比STN/GPi",
+      "main_model": "对直接/间接通路其他靶点刺激并对比，确认STN最优",
+      "improvement": "—",
+      "why_switch": "验证靶点选择鲁棒性"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "Hodgkin-Huxley神经元方程",
+    "正弦/方波/三角波多波形DBS",
+    "中继可靠性指标",
+    "损失函数含电池使用因素"
+  ],
+  "objective_function": "最小化含电池使用代价的DBS刺激损失函数(频率/振幅)",
+  "evaluation_metrics": [
+    "确定STN为最佳靶点",
+    "不同波形/频率/振幅放电特征",
+    "STN优于GPi/STr"
+  ],
+  "algorithm_details_and_complexity": "HH仿真→回路搭建→健康/PD对比→参数扫描+贪心+变步长两阶段优化靶点参数",
+  "independent_validation_design": "与现有文献理论/模型计算结果对照验证机理",
+  "sensitivity_robustness_ablation": [
+    "频率/振幅参数扫描热力图",
+    "正弦/方波/三角波波形对比",
+    "STN/GPi/STr靶点疗效对比"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "从DBS机理出发，基于HH模型搭基底神经节回路",
+    "method_sentence": "参数扫描定范围+贪心变步长细搜，考虑电池功耗建损失函数",
+    "result_sentence": "确定STN为最佳刺激靶点",
+    "numbers_presentation": "用波形种类数/核团名(STN/GPi/STr)体现覆盖面"
+  },
+  "figure_narrative_order": [
+    "HH放电时域图",
+    "基底神经节回路图",
+    "中继可靠性指标对比",
+    "参数扫描热力图",
+    "靶点疗效柱状图"
+  ],
+  "judge_high_score_reasons": [
+    "问题拆到五问，单神经元→回路→健康/PD→靶点参数→扩展靶点，递进完整",
+    "参数优化两阶段(扫描定范围+贪心变步长)，且把电池使用写进损失函数，工程落地意识强",
+    "用中继可靠性指标定量对比健康/PD，不止定性看波形"
+  ],
+  "reusable_patterns": [
+    "两阶段参数优化(粗扫+细搜)",
+    "把工程约束(电池)写进损失函数",
+    "多靶点/多波形对比选最优"
+  ],
+  "transferable_ability_card_candidates": [
+    "HH神经元建模仿真",
+    "DBS刺激参数优化",
+    "回路级神经动力学分析"
+  ],
+  "page_locations": {
+    "摘要": "p2",
+    "问题一HH建模": "p6,13-14",
+    "问题四变步长参数优化": "p25-28,31-35",
+    "STN靶点对比": "p20-24,37-38"
+  },
+  "notes": "数模之星提名奖，共5问",
+  "award_level": "一等奖",
+  "award_confidence": "high"
+}

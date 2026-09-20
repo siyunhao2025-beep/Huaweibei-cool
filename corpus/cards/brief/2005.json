@@ -1,0 +1,491 @@
+[
+  {
+    "paper_id": "2005_X_1415 B题论文_8e5cd59e",
+    "year": 2005,
+    "track": "B",
+    "track_confidence": "medium",
+    "title": "中假设加油机和主机的载油量相同，这一般是不符合实际的。如伊尔－",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "评价",
+      "空间图"
+    ],
+    "models_and_algorithms": [],
+    "data_modality": "空间数据",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "对比实验"
+    ],
+    "figure_count": 13,
+    "figure_types": [
+      "流程图",
+      "结构图"
+    ],
+    "innovation_points": [],
+    "page_count": 19,
+    "section_structure": null,
+    "source_locations": [
+      "检验/评价:p.1",
+      "结论:p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2005_X_1418-A题_93b825ea",
+    "year": 2005,
+    "track": "A",
+    "track_confidence": "medium",
+    "title": "中的数据，用Matlab 计算出了从某一时刻出发从第1 个传感器到",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "预测",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "卡尔曼滤波"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "对比实验",
+      "鲁棒性/稳健性",
+      "外部数据验证"
+    ],
+    "figure_count": 6,
+    "figure_types": [],
+    "innovation_points": [
+      "本文中我们把行车时间最短作为设计目标",
+      "假设每段路的运行时间是互相独立的随机变量，请为系统设计"
+    ],
+    "page_count": 14,
+    "section_structure": null,
+    "source_locations": [
+      "模型假设:p.1",
+      "检验/评价:p.12"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2005_X_d题论文_039008b6",
+    "year": 2005,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "中所述，个别引入符号在文中会有具体说明。",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "预测",
+      "机理建模",
+      "回归拟合",
+      "排队库存"
+    ],
+    "models_and_algorithms": [],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "对比实验",
+      "外部数据验证"
+    ],
+    "figure_count": null,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 9,
+    "section_structure": null,
+    "source_locations": [
+      "摘要:p.1",
+      "模型建立:p.1"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2005_X_交通网络的通行时间预测与最优路径决策1433-A 王邦进 唐蕾 姜  萍",
+    "year": 2005,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "交通网络的通行时间预测与最优路径决策",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "机理建模",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "时间序列分析",
+      "模糊神经网络",
+      "物理模型",
+      "最短路"
+    ],
+    "data_modality": "时序",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "仿真验证",
+      "对比实验",
+      "敏感性分析",
+      "外部数据验证"
+    ],
+    "figure_count": 14,
+    "figure_types": [
+      "折线图",
+      "示意图"
+    ],
+    "innovation_points": [],
+    "page_count": 17,
+    "section_structure": "2.1 基本变量；2.2 基本假设；2.3 跟车模型；2.3.1 公路非满载时的情况 当车流密度较小时，后车与前车的平均间距远远；2.3.2 公路满载时的情况 当车流量继续增加，达到路的通行能力限制时，车；2.3.3 公路流量过载时的情况 如果涌入公路的车流量进一步增加，超过了高；3.1 定常模型；3.2 准定常模型；3.3 时变模型；3.4 突发事件的预报；3.5 模型的讨论；4.1 稳态独立随机交通网络模型；4.1.1 优化准则的确立与人群的选择偏向性 解决优化问题的第一步就是建立；4.1.2 优化算法 边分位数法中，将未知的问题转化为了经典的图论最短路算；4.2 时变相关随机交通网络模型",
+    "source_locations": [
+      "摘要:p.1",
+      "模型假设:p.2"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2005_X_仓库容量有限条件下的随机存贮管理",
+    "year": 2005,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "仓库容量有限条件下的随机存贮管理",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "评价",
+      "分类",
+      "机理建模",
+      "空间图",
+      "排队库存"
+    ],
+    "models_and_algorithms": [
+      "非线性规划",
+      "库存模型"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "对比实验"
+    ],
+    "figure_count": 1,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 19,
+    "section_structure": "4.1 单一商品最优订货点决策模型；4.1.1 模型的建立；4.1.2 模型求解与结果分析——问题2 求解；4.2 多种商品最优订货点决策模型；4.2.1 最佳库存安排模型；4.2.2 多种商品最优订货点决策模型；4.2.3 模型的求解与运用——问题4 求解；5.1 模型的建立；5.2 模型分析；5.4 模型讨论；6.1 模型的优点；6.2 模型的不足；6.3 模型的推广",
+    "source_locations": [
+      "摘要:p.1",
+      "模型建立:p.2",
+      "模型求解:p.5"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2005_X_余自若张明波杨风利a_8bc5ae7c",
+    "year": 2005,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "行车时间估计和最优路线选择（A）",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "最短路"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "对比实验"
+    ],
+    "figure_count": 9,
+    "figure_types": [
+      "结构图"
+    ],
+    "innovation_points": [],
+    "page_count": 21,
+    "section_structure": null,
+    "source_locations": [
+      "摘要:p.1",
+      "检验/评价:p.2"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2005_X_城市出租车交通规划综合模型",
+    "year": 2005,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "给出的图表数据，假定出行与公交数据的统计口径只针对常住人口，",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 7,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "空间图",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "多元线性回归",
+      "层次分析法",
+      "样条插值",
+      "三次样条",
+      "回归分析",
+      "AHP"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "对比实验"
+    ],
+    "figure_count": 3,
+    "figure_types": [
+      "折线图",
+      "结构图"
+    ],
+    "innovation_points": [],
+    "page_count": 37,
+    "section_structure": null,
+    "source_locations": [
+      "模型建立:p.4",
+      "模型求解:p.25",
+      "检验/评价:p.31",
+      "结论:p.1"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2005_X_排队论模型解决出租车最佳数量预测",
+    "year": 2005,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "中居民的概念只是代表城市的常住人口。",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "预测"
+    ],
+    "models_and_algorithms": [
+      "排队论模型",
+      "时间序列"
+    ],
+    "data_modality": "文本",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "对比实验",
+      "鲁棒性/稳健性",
+      "外部数据验证"
+    ],
+    "figure_count": 4,
+    "figure_types": [
+      "折线图",
+      "流程图",
+      "结构图"
+    ],
+    "innovation_points": [
+      "1 问题1：居民出行强度和出行总量预测",
+      "1.3 居民消费支出预测",
+      "1.4 城市居民人口预测"
+    ],
+    "page_count": 40,
+    "section_structure": "2.1 问题1；2.1.1 问题分析---------------------------；2.1.2 符号约定---------------------------；2.1.3 居民消费支出预测-----------------------；2.1.4 城市居民人口预测-----------------------；2.1.5 出行强度预测-------------------------；2.1.6 出行总量预测-------------------------；2.1.7 出租车人口预测模型 ---------------------；2.2 问题2；2.2.1 问题分析---------------------------；2.2.2 符号约定---------------------------；2.2.3 服务系统模型-------------------------；2.2.4 最优化模型--------------------------；2.2.5 模型的验证--------------------------；2.3 问题3",
+    "source_locations": [
+      "模型建立:p.5",
+      "模型求解:p.7",
+      "结论:p.36"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2005_X_数学建模报告B题_胡亚峰",
+    "year": 2005,
+    "track": "B",
+    "track_confidence": "medium",
+    "title": "空中加油问题的递推模型与调度策略 （B 题）",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "最短路"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [],
+    "figure_count": null,
+    "figure_types": [],
+    "innovation_points": [
+      "本文设计了相关的优化函数",
+      "本文提出的启发式搜索算法十分高效"
+    ],
+    "page_count": 8,
+    "section_structure": null,
+    "source_locations": [
+      "摘要:p.1",
+      "结论:p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2005_X_论文_ecfbe1a1",
+    "year": 2005,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "C 题：城市交通管理中的出租车规划",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "机理建模",
+      "空间图",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "灰色预测模型",
+      "微分方程模型",
+      "神经网络模型",
+      "灰色系统",
+      "灰色模型",
+      "时间序列"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "仿真验证",
+      "对比实验",
+      "鲁棒性/稳健性"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "折线图",
+      "流程图",
+      "结构图"
+    ],
+    "innovation_points": [
+      "本文问题一首先要建立一个预测该城市居民出行强度AP和出行总量AN 的数",
+      "本文问题二是依据问题一中所建立的乘坐出租车人口的预测模型以及附录",
+      "本文采用人工神经网络对"
+    ],
+    "page_count": 24,
+    "section_structure": null,
+    "source_locations": [
+      "摘要:p.1",
+      "模型建立:p.3",
+      "模型求解:p.1"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2005_X_论文1313_5cdcb75e",
+    "year": 2005,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "要求写出平均费用的函数，该函数是关于订货点L 和缺货天数X 的函数，",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "评价",
+      "排队库存",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "系统仿真"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "误差分析",
+      "对比实验"
+    ],
+    "figure_count": 8,
+    "figure_types": [
+      "流程图"
+    ],
+    "innovation_points": [
+      "本文还给出了一种比较实用的求解全局最优的"
+    ],
+    "page_count": 29,
+    "section_structure": "1.1 模型假设；1.2 符号说明；1.3 解题思路；1.4 具体步骤；2.1 缺货天数的数据分析；2.2 程序实现；3.1 模型假设；3.2 符号说明；3.4 模型建立；4.1 问题分析；4.2 优化的 Qi 和 Q0 i 的遍历搜索算法；5.1 问题假设；5.2 模型建立",
+    "source_locations": [
+      "摘要:p.1",
+      "模型建立:p.3",
+      "模型求解:p.3"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  },
+  {
+    "paper_id": "2005_X_飞机加油东南大学1035",
+    "year": 2005,
+    "track": null,
+    "track_confidence": "unknown",
+    "title": "题 目         空中加油",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化"
+    ],
+    "models_and_algorithms": [],
+    "data_modality": "结构化",
+    "data_scale": "小样本/中等规模",
+    "validation_methods": [
+      "对比实验"
+    ],
+    "figure_count": 3,
+    "figure_types": [],
+    "innovation_points": [
+      "本文提出了集群方式送主机的方案，分析了此方案下当辅机数量趋向无穷"
+    ],
+    "page_count": 32,
+    "section_structure": null,
+    "source_locations": [
+      "摘要:p.1"
+    ],
+    "confidence": "medium",
+    "notes": "早期论文 track 未标注，需人工核对"
+  }
+]

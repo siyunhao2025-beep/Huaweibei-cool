@@ -1,0 +1,1908 @@
+[
+  {
+    "paper_id": "2021_A_A21102170024",
+    "year": 2021,
+    "track": "A",
+    "title": "相关矩阵组的低复杂度计算和存储建模",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "矩阵计算",
+      "复杂度优化",
+      "压缩存储"
+    ],
+    "models_and_algorithms": [
+      "两步法V=f1(H),W=f2(V)",
+      "加权变步长采样",
+      "最邻近插值",
+      "Shlien近似SVD",
+      "Neumann级数一阶求逆",
+      "最小二乘迭代"
+    ],
+    "data_modality": "矩阵数值数据",
+    "data_scale": "6组相关矩阵组",
+    "validation_methods": [
+      "6组矩阵实证",
+      "复杂度从K次降到K/λ",
+      "复杂度降低约500倍",
+      "精度满足ρmin(W)≥0.99"
+    ],
+    "figure_count": 34,
+    "figure_types": [
+      "矩阵拼接流程图",
+      "复杂度对比表",
+      "精度验证曲线"
+    ],
+    "innovation_points": [
+      "三步拆解复杂度瓶颈分别替换为低复杂度算子",
+      "加权变步长采样+插值补齐把计算量降到K/λ",
+      "Neumann一阶把矩阵求逆转为最小二乘迭代"
+    ],
+    "page_count": 41,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "A题普通一等奖"
+  },
+  {
+    "paper_id": "2021_A_A21102480004",
+    "year": 2021,
+    "track": "A",
+    "title": "相关矩阵基于近似矩阵分解概率算法的计算与存储优化",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "矩阵计算",
+      "聚类",
+      "压缩存储"
+    ],
+    "models_and_algorithms": [
+      "模方法相关度评价",
+      "聚类父子节点算法",
+      "随机奇异值分解",
+      "Strassen矩阵求逆",
+      "Coppersmith-Winograd算法",
+      "降维分块压缩"
+    ],
+    "data_modality": "矩阵数值数据",
+    "data_scale": "1024维矩阵测试",
+    "validation_methods": [
+      "1024维求逆降时41.5%",
+      "CW改进后再降46.9%",
+      "稀疏基压缩重建"
+    ],
+    "figure_count": 0,
+    "figure_types": [
+      "聚类父子节点结构图",
+      "求逆耗时对比柱状图",
+      "压缩重建误差曲线"
+    ],
+    "innovation_points": [
+      "模方法评价矩阵相关度并父子节点聚类",
+      "Strassen求逆结合分治思想",
+      "Coppersmith-Winograd替换矩阵乘法进一步降复杂度"
+    ],
+    "page_count": 74,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": "原文中文CMap乱码，标题/方法据渲染摘要页视觉补读"
+  },
+  {
+    "paper_id": "2021_A_A21102860059",
+    "year": 2021,
+    "track": "A",
+    "title": "相关矩阵组的低复杂度计算和存储建模",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "矩阵计算",
+      "迭代求解",
+      "压缩存储"
+    ],
+    "models_and_algorithms": [
+      "SVD",
+      "逐次超松弛SOR",
+      "共轭梯度法",
+      "多目标优化"
+    ],
+    "data_modality": "矩阵数值数据",
+    "data_scale": "相关矩阵组",
+    "validation_methods": [
+      "收敛性对比",
+      "多目标权衡"
+    ],
+    "figure_count": 12,
+    "figure_types": [
+      "迭代收敛曲线",
+      "SOR松弛因子对比图",
+      "压缩率对比表"
+    ],
+    "innovation_points": [
+      "用SOR逐次超松弛迭代求解逆矩阵",
+      "多目标权衡计算复杂度与存储"
+    ],
+    "page_count": 39,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": "摘要文本较短，方法据正文关键词命中补全"
+  },
+  {
+    "paper_id": "2021_A_A21103580003",
+    "year": 2021,
+    "track": "A",
+    "title": "相关矩阵组的低复杂度计算和存储建模",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "矩阵计算",
+      "插值",
+      "压缩存储"
+    ],
+    "models_and_algorithms": [
+      "矩阵间相关性插值估计",
+      "Lawson-Hanson-Chan降维快速SVD",
+      "Sturm理论求前L特征值",
+      "改进Cholesky高斯消元",
+      "Strassen矩阵乘"
+    ],
+    "data_modality": "矩阵数值数据",
+    "data_scale": "相关矩阵组",
+    "validation_methods": [
+      "压缩比最高80%",
+      "避免QR迭代降中间步骤复杂度",
+      "免直接求逆"
+    ],
+    "figure_count": 36,
+    "figure_types": [
+      "相关性评价指标图",
+      "快速SVD流程图",
+      "压缩比对比表"
+    ],
+    "innovation_points": [
+      "利用帧间数值连续性做插值估计输出矩阵",
+      "LHC降维+Sturm直接求前L特征值避开QR迭代",
+      "改进Cholesky消元避免直接求逆"
+    ],
+    "page_count": 28,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "A题普通一等奖"
+  },
+  {
+    "paper_id": "2021_A_A21106140105",
+    "year": 2021,
+    "track": "A",
+    "title": "相关矩阵组低复杂度计算和存储建模",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "矩阵计算",
+      "特征分析",
+      "压缩存储"
+    ],
+    "models_and_algorithms": [
+      "Pearson相关分析",
+      "随机SVD",
+      "迭代QR分解",
+      "Hermite矩阵求逆引理递推",
+      "线性插值隔位舍弃压缩"
+    ],
+    "data_modality": "矩阵数值数据",
+    "data_scale": "相关矩阵组",
+    "validation_methods": [
+      "矩阵内无相关、矩阵间强相关结论",
+      "三种隔位舍弃压缩模型对比"
+    ],
+    "figure_count": 53,
+    "figure_types": [
+      "相关性热力图",
+      "随机SVD流程图",
+      "压缩模型对比表"
+    ],
+    "innovation_points": [
+      "Pearson揭示矩阵间强相关而矩阵内弱相关",
+      "行块三相邻矩阵共用Q矩阵",
+      "Hermite求逆引理递推求逆"
+    ],
+    "page_count": 29,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "A题普通一等奖"
+  },
+  {
+    "paper_id": "2021_B_B21100130067",
+    "year": 2021,
+    "track": "B",
+    "title": "空气质量二次预报模型的设计与优化",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "数据预测",
+      "聚类",
+      "协同预测"
+    ],
+    "models_and_algorithms": [
+      "AQI计算",
+      "拉格朗日插值",
+      "EM-GMM高斯混合聚类",
+      "t-SNE降维",
+      "协同预测",
+      "直线距离/风力影响距离"
+    ],
+    "data_modality": "环境监测时序数据",
+    "data_scale": "多监测点A/B+C",
+    "validation_methods": [
+      "6类气象聚类",
+      "首要污染物O3",
+      "邻近站点协同预测提升精度"
+    ],
+    "figure_count": 87,
+    "figure_types": [
+      "AQI计算流程",
+      "t-SNE聚类散点图",
+      "协同预测误差对比"
+    ],
+    "innovation_points": [
+      "EM-GMM聚6类气象条件并结合文献解读",
+      "引入直线距离与风力影响距离构建协同预测"
+    ],
+    "page_count": 60,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题普通一等奖"
+  },
+  {
+    "paper_id": "2021_B_B21100790043",
+    "year": 2021,
+    "track": "B",
+    "title": "空气质量预报二次建模",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "数据预测",
+      "聚类",
+      "回归"
+    ],
+    "models_and_algorithms": [
+      "AQI计算",
+      "K-means++聚类",
+      "BP神经网络",
+      "随机森林",
+      "皮尔逊相关",
+      "z-score标准化"
+    ],
+    "data_modality": "环境监测时序数据",
+    "data_scale": "多监测点",
+    "validation_methods": [
+      "AQI=60/46/109/138",
+      "O3为首要污染物",
+      "5类气象聚类"
+    ],
+    "figure_count": 19,
+    "figure_types": [
+      "AQI柱状图",
+      "聚类雷达图",
+      "预测拟合图"
+    ],
+    "innovation_points": [
+      "把实时AQI与空气质量等级分纳入相关性分析",
+      "删除同时间异常数据只看气象-污染物关系"
+    ],
+    "page_count": 57,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题普通一等奖"
+  },
+  {
+    "paper_id": "2021_B_B21102510017",
+    "year": 2021,
+    "track": "B",
+    "title": "空气质量二次预测模型的构建分析",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "时间序列预测",
+      "深度网络",
+      "时空建模"
+    ],
+    "models_and_algorithms": [
+      "KNN插值",
+      "3σ准则",
+      "皮尔逊相关",
+      "GAN-Stacked-BiLSTM-MLP",
+      "PGAN时空注意力"
+    ],
+    "data_modality": "环境监测时序数据",
+    "data_scale": "三监测点A/B/C",
+    "validation_methods": [
+      "跨站点通用预报",
+      "时空注意力捕捉站间时空相关"
+    ],
+    "figure_count": 68,
+    "figure_types": [
+      "缺失值处理流程图",
+      "BiLSTM结构图",
+      "时空注意力热力图"
+    ],
+    "innovation_points": [
+      "提出GAN-Stacked-BiLSTM-MLP跨站点通用预报模型",
+      "PGAN时空注意力模型刻画站点时空相关性"
+    ],
+    "page_count": 66,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题普通一等奖"
+  },
+  {
+    "paper_id": "2021_B_B21102690002",
+    "year": 2021,
+    "track": "B",
+    "title": "空气质量预报二次建模",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "数据预测",
+      "回归",
+      "协同预测"
+    ],
+    "models_and_algorithms": [
+      "多元线性回归",
+      "高/低影响气象分类",
+      "反距离权重LSTM",
+      "一次预报修正"
+    ],
+    "data_modality": "环境监测时序数据",
+    "data_scale": "三监测点A/B/C",
+    "validation_methods": [
+      "湿度风速高影响、温度压强低影响",
+      "反距离权重LSTM区域协同"
+    ],
+    "figure_count": 21,
+    "figure_types": [
+      "回归拟合图",
+      "气象分类图",
+      "LSTM预测曲线"
+    ],
+    "innovation_points": [
+      "多元线性回归分出高/低影响气象条件",
+      "反距离权重LSTM做区域协同预报"
+    ],
+    "page_count": 32,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题普通一等奖"
+  },
+  {
+    "paper_id": "2021_B_B21103530001",
+    "year": 2021,
+    "track": "B",
+    "title": "二次优化的WRF-CMAQ空气质量预报模型",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "数据清洗",
+      "回归",
+      "预报修正"
+    ],
+    "models_and_algorithms": [
+      "均值插补",
+      "趋势外推",
+      "邻近点地理补全",
+      "3σ拉依达准则",
+      "最值归一化",
+      "HJ633-2012"
+    ],
+    "data_modality": "环境监测时序数据",
+    "data_scale": "多监测点",
+    "validation_methods": [
+      "AQI=60/46/109/138",
+      "邻近点地理补全大段连续缺失气象"
+    ],
+    "figure_count": 39,
+    "figure_types": [
+      "缺失值补全流程图",
+      "AQI计算表",
+      "污染物时序曲线"
+    ],
+    "innovation_points": [
+      "按地理相对位置补全A3大段连续缺失气象指标",
+      "严格按HJ633-2012规范计算AQI"
+    ],
+    "page_count": 50,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题普通一等奖"
+  },
+  {
+    "paper_id": "2021_B_B21107040042",
+    "year": 2021,
+    "track": "B",
+    "title": "空气质量预报二次建模",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "回归",
+      "聚类",
+      "数据预测"
+    ],
+    "models_and_algorithms": [
+      "多元线性回归",
+      "F检验/P值检验",
+      "系统聚类",
+      "向后逐步回归",
+      "BP神经网络"
+    ],
+    "data_modality": "环境监测时序数据",
+    "data_scale": "三监测点",
+    "validation_methods": [
+      "风速单独一类对六气体显著作用",
+      "远近监测点两种二次建模对比"
+    ],
+    "figure_count": 45,
+    "figure_types": [
+      "回归显著性表",
+      "系统聚类树状图",
+      "BP预测对比"
+    ],
+    "innovation_points": [
+      "F检验/P值验证多元回归后做系统聚类分气象类",
+      "对比远距离与近距离监测点两种二次建模"
+    ],
+    "page_count": 52,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题普通一等奖"
+  },
+  {
+    "paper_id": "2021_B_B21116640067",
+    "year": 2021,
+    "track": "B",
+    "title": "基于LSTM-FC的大气污染物浓度预测模型",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "时间序列预测",
+      "神经网络",
+      "聚类"
+    ],
+    "models_and_algorithms": [
+      "LSTM-FC混合模型",
+      "Pearson相关",
+      "k-means聚类",
+      "权重预测",
+      "近邻填补",
+      "箱线法异常检测"
+    ],
+    "data_modality": "环境监测时序数据",
+    "data_scale": "多监测点",
+    "validation_methods": [
+      "臭氧为首要污染物占59.6%",
+      "LSTM-FC时空耦合预测"
+    ],
+    "figure_count": 71,
+    "figure_types": [
+      "AQI全年波动曲线",
+      "LSTM-FC结构图",
+      "预测误差散点"
+    ],
+    "innovation_points": [
+      "LSTM-FC混合模型耦合时间与空间特性",
+      "统计全年臭氧首要污染物占比59.6%"
+    ],
+    "page_count": 44,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题普通一等奖"
+  },
+  {
+    "paper_id": "2021_C_C21100560011",
+    "year": 2021,
+    "track": "C",
+    "title": "帕金森病的脑深部电刺激治疗建模研究",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "微分方程仿真",
+      "神经元建模",
+      "靶点优化"
+    ],
+    "models_and_algorithms": [
+      "Hodgkin-Huxley模型",
+      "Matlab/Simulink仿真",
+      "信赖域算法求平衡点",
+      "两类突触模型",
+      "基底神经节拓扑"
+    ],
+    "data_modality": "仿真数据",
+    "data_scale": "HH神经元数值仿真",
+    "validation_methods": [
+      "信赖域验证解正确性",
+      "比较不同核团刺激效果定最优靶点"
+    ],
+    "figure_count": 108,
+    "figure_types": [
+      "HH放电时域图",
+      "基底神经节拓扑图",
+      "靶点对比柱状图"
+    ],
+    "innovation_points": [
+      "把HH平衡点转为函数最小值优化问题用信赖域求解",
+      "Simulink搭建兴奋/抑制两类突触并验证有效性"
+    ],
+    "page_count": 42,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "C题普通一等奖"
+  },
+  {
+    "paper_id": "2021_C_C21102470060",
+    "year": 2021,
+    "track": "C",
+    "title": "深部电刺激治疗帕金森病的建模研究",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "微分方程仿真",
+      "神经元建模",
+      "通路分析"
+    ],
+    "models_and_algorithms": [
+      "Hodgkin-Huxley模型",
+      "直接/间接通路",
+      "健康/PD回路",
+      "SNc黑质调控",
+      "STN与GPi对比"
+    ],
+    "data_modality": "仿真数据",
+    "data_scale": "HH神经元数值仿真",
+    "validation_methods": [
+      "SNc在PD回路作用减弱",
+      "STN/GPi靶点治疗效果对比"
+    ],
+    "figure_count": 147,
+    "figure_types": [
+      "电位响应特征曲线",
+      "通路结构图",
+      "靶点对比图"
+    ],
+    "innovation_points": [
+      "分别构建直接/间接/健康/PD四类回路",
+      "揭示SNc黑质多巴胺神经元调控作用"
+    ],
+    "page_count": 49,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "C题普通一等奖"
+  },
+  {
+    "paper_id": "2021_C_C21102920013",
+    "year": 2021,
+    "track": "C",
+    "title": "帕金森病的脑深部电刺激治疗建模研究",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "微分方程仿真",
+      "神经元建模",
+      "分岔分析"
+    ],
+    "models_and_algorithms": [
+      "Hodgkin-Huxley模型",
+      "改进欧拉离散",
+      "ISI分岔图",
+      "电突触耦合5神经元",
+      "化学突触全连接"
+    ],
+    "data_modality": "仿真数据",
+    "data_scale": "HH神经元数值仿真",
+    "validation_methods": [
+      "峰发放/簇发放两类行为",
+      "ISI分岔图快速定位参数区"
+    ],
+    "figure_count": 68,
+    "figure_types": [
+      "ISI分岔图",
+      "放电时域图",
+      "神经回路结构图"
+    ],
+    "innovation_points": [
+      "引入ISI分岔图大范围快速定位发放行为",
+      "电耦合团块+化学突触全连接建基底神经节回路"
+    ],
+    "page_count": 50,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "C题普通一等奖"
+  },
+  {
+    "paper_id": "2021_C_C21102920019",
+    "year": 2021,
+    "track": "C",
+    "title": "帕金森的脑深部电刺激治疗建模研究",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "微分方程仿真",
+      "神经元建模",
+      "回路建模"
+    ],
+    "models_and_algorithms": [
+      "Hodgkin-Huxley模型",
+      "四阶龙格库塔RK4离散",
+      "8神经元环形核团",
+      "8核团化学突触连接"
+    ],
+    "data_modality": "仿真数据",
+    "data_scale": "HH神经元数值仿真",
+    "validation_methods": [
+      "交流刺激下峰/簇发放",
+      "正常核团尖峰幅值稳定50mV"
+    ],
+    "figure_count": 38,
+    "figure_types": [
+      "放电时域图",
+      "环形核团结构图",
+      "核团放电对比图"
+    ],
+    "innovation_points": [
+      "RK4离散HH模型复现丰富放电行为",
+      "8神经元环形核团+8核团建庞大回路"
+    ],
+    "page_count": 47,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "C题普通一等奖"
+  },
+  {
+    "paper_id": "2021_C_C21106980211",
+    "year": 2021,
+    "track": "C",
+    "title": "帕金森病的脑深部电刺激治疗建模研究",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "微分方程仿真",
+      "神经元建模",
+      "房室模型"
+    ],
+    "models_and_algorithms": [
+      "Hodgkin-Huxley模型",
+      "欧拉迭代",
+      "锥形房室模型",
+      "稀疏神经元网络",
+      "Neuron软件验证"
+    ],
+    "data_modality": "仿真数据",
+    "data_scale": "HH神经元数值仿真",
+    "validation_methods": [
+      "6.27µA/cm²产生极限环",
+      "Neuron软件验证与Matlab符合"
+    ],
+    "figure_count": 54,
+    "figure_types": [
+      "放电时域图",
+      "房室模型图",
+      "双参数分岔图"
+    ],
+    "innovation_points": [
+      "锥形房室模型把连续神经元离散化分区",
+      "稀疏网络突出单神经元信息特性"
+    ],
+    "page_count": 41,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "C题普通一等奖"
+  },
+  {
+    "paper_id": "2021_D_D21101080006",
+    "year": 2021,
+    "track": "D",
+    "title": "抗乳腺癌候选药物的优化建模",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "特征选择",
+      "回归预测",
+      "分类预测"
+    ],
+    "models_and_algorithms": [
+      "随机森林+熵值法特征筛选",
+      "Pearson剔强相关",
+      "SVM/神经网络/梯度提升/随机森林回归",
+      "随机搜索超参",
+      "5化合物二分类"
+    ],
+    "data_modality": "化合物分子描述符数据",
+    "data_scale": "1974化合物/729描述符",
+    "validation_methods": [
+      "MAE/RMSE/拟合度三指标比模型",
+      "随机森林回归最优",
+      "限幅处理异常值"
+    ],
+    "figure_count": 120,
+    "figure_types": [
+      "特征相关性图",
+      "回归拟合图",
+      "二分类结果表"
+    ],
+    "innovation_points": [
+      "剔除>90%零特征后随机森林+熵值选30再Pearson剔强相关得20",
+      "限幅而非删除异常值保留样本"
+    ],
+    "page_count": 65,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题普通一等奖"
+  },
+  {
+    "paper_id": "2021_D_D21102700119",
+    "year": 2021,
+    "track": "D",
+    "title": "基于数据挖掘的抗乳腺癌候选药物的优化模型",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "特征选择",
+      "回归预测",
+      "分类预测"
+    ],
+    "models_and_algorithms": [
+      "LASSO/皮尔森/随机森林/互信息四法投票",
+      "高相关滤波",
+      "HGBRT直方图梯度增强回归树",
+      "K折交叉",
+      "HGBCT分类+惩罚因子C"
+    ],
+    "data_modality": "化合物分子描述符数据",
+    "data_scale": "1973样本",
+    "validation_methods": [
+      "HGBRT误差最小优于SVR/MLP/RF",
+      "类别不平衡用惩罚因子C",
+      "8:2训练测试"
+    ],
+    "figure_count": 40,
+    "figure_types": [
+      "四法投票特征排序图",
+      "模型对比表",
+      "ADMET分类结果"
+    ],
+    "innovation_points": [
+      "四种特征重要性方法投票加权取综合排序",
+      "HGBRT/HGBCT直方图梯度增强同时做回归与分类"
+    ],
+    "page_count": 49,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题普通一等奖"
+  },
+  {
+    "paper_id": "2021_D_D21102980066",
+    "year": 2021,
+    "track": "D",
+    "title": "抗乳腺癌候选药物的优化建模",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "特征选择",
+      "回归预测",
+      "分类预测"
+    ],
+    "models_and_algorithms": [
+      "低方差滤波",
+      "灰色关联分析",
+      "随机森林RFE试50次计数",
+      "最大互信息/距离相关/Pearson验证",
+      "SVR/RF/GBRT/XGBoost/BP五模型"
+    ],
+    "data_modality": "化合物分子描述符数据",
+    "data_scale": "729描述符/1974化合物",
+    "validation_methods": [
+      "RFE试50次计数得稳定特征",
+      "NMS式去强相关保独立性",
+      "10:1样本特征比"
+    ],
+    "figure_count": 59,
+    "figure_types": [
+      "特征筛选流程图",
+      "五模型对比表",
+      "特征独立性散点"
+    ],
+    "innovation_points": [
+      "RFE重复50次计数降算法随机性",
+      "类非极大值抑制去强相关保特征独立"
+    ],
+    "page_count": 53,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题普通一等奖"
+  },
+  {
+    "paper_id": "2021_D_D21104860088",
+    "year": 2021,
+    "track": "D",
+    "title": "抗乳腺癌候选药物的优化建模",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "特征选择",
+      "可解释机器学习",
+      "优化建模"
+    ],
+    "models_and_algorithms": [
+      "Spearman相关",
+      "内置/排列/SHAP三种重要性",
+      "WOE/IV筛选",
+      "过采样",
+      "LightGBM/XGBoost/随机森林分类",
+      "粒子群+主要目标法"
+    ],
+    "data_modality": "化合物分子描述符数据",
+    "data_scale": "1974化合物/729描述符",
+    "validation_methods": [
+      "三种重要性方法交叉排序",
+      "SHAP解释关键描述符",
+      "粒子群优化变量范围"
+    ],
+    "figure_count": 85,
+    "figure_types": [
+      "SHAP重要性图",
+      "WOE/IV筛选图",
+      "优化收敛曲线"
+    ],
+    "innovation_points": [
+      "内置+排列+SHAP三种特征重要性互证",
+      "WOE/IV筛选结合过采样解类别不平衡"
+    ],
+    "page_count": 69,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题普通一等奖"
+  },
+  {
+    "paper_id": "2021_D_D21116460003",
+    "year": 2021,
+    "track": "D",
+    "title": "抗乳腺癌候选药物的优化建模",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "特征选择",
+      "回归预测",
+      "分类预测"
+    ],
+    "models_and_algorithms": [
+      "灰色关联度三次筛选",
+      "距离相关系数",
+      "随机森林",
+      "最大信息系数MIC",
+      "RFE独立性检验",
+      "XGBoost/遗传算法"
+    ],
+    "data_modality": "化合物分子描述符数据",
+    "data_scale": "729描述符/1974化合物",
+    "validation_methods": [
+      "灰关70→距离相关37→随机森林20",
+      "XGBoost优于RF/GDBT",
+      "遗传算法选ADMET变量"
+    ],
+    "figure_count": 50,
+    "figure_types": [
+      "三次筛选漏斗图",
+      "XGBoost对比图",
+      "ADMET分类结果"
+    ],
+    "innovation_points": [
+      "灰色关联+距离相关+随机森林三次递进筛选",
+      "XGBoost应对高维非线性稀疏小样本防过拟合"
+    ],
+    "page_count": 55,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题普通一等奖"
+  },
+  {
+    "paper_id": "2021_E_E21100030005",
+    "year": 2021,
+    "track": "E",
+    "title": "信号干扰下的UWB精确定位模型",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "定位",
+      "异常检测",
+      "滤波"
+    ],
+    "models_and_algorithms": [
+      "线性回归测距修正",
+      "Jacobi/牛顿法",
+      "加权最小二乘Chan算法",
+      "贪心误差搜索异常补偿",
+      "有偏卡尔曼滤波"
+    ],
+    "data_modality": "UWB测距实测数据",
+    "data_scale": "4锚点多靶点",
+    "validation_methods": [
+      "1/2/3维RMSE精度分析",
+      "贪心补偿最小化定位误差",
+      "有偏卡尔曼消非视距误差"
+    ],
+    "figure_count": 69,
+    "figure_types": [
+      "误差分布直方图",
+      "RMSE对比表",
+      "定位轨迹图"
+    ],
+    "innovation_points": [
+      "锚点遮挡特征建贪心误差搜索补偿异常测距",
+      "非视距误差引入卡尔曼得到有偏滤波消除NLOS"
+    ],
+    "page_count": 78,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题普通一等奖"
+  },
+  {
+    "paper_id": "2021_E_E21103860006",
+    "year": 2021,
+    "track": "E",
+    "title": "信号干扰下的超宽带（UWB）精确定位问题",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "定位",
+      "寻优",
+      "机器学习"
+    ],
+    "models_and_algorithms": [
+      "粒子群算法",
+      "最小二乘",
+      "岭回归",
+      "麻雀算法优化极限学习机",
+      "球面方程寻优",
+      "k-means筛代表样本"
+    ],
+    "data_modality": "UWB测距实测数据",
+    "data_scale": "4锚点多靶点",
+    "validation_methods": [
+      "剔除不良数据2966组",
+      "正常2维平均误差52.43mm",
+      "异常3维误差437.50mm"
+    ],
+    "figure_count": 46,
+    "figure_types": [
+      "误差直方图",
+      "定位误差对比表",
+      "球面寻优示意图"
+    ],
+    "innovation_points": [
+      "正常/异常数据差别拓展空间位置特征再机器学习预测",
+      "球面方程目标函数粒子群寻优近似坐标"
+    ],
+    "page_count": 60,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题普通一等奖"
+  },
+  {
+    "paper_id": "2021_E_E21104080004",
+    "year": 2021,
+    "track": "E",
+    "title": "基于EKF和BP神经网络的超宽带定位抗干扰综合研究",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "定位",
+      "滤波",
+      "神经网络"
+    ],
+    "models_and_algorithms": [
+      "扩展卡尔曼滤波EKF",
+      "3σ正态剔除",
+      "聚类去相似",
+      "BP神经网络",
+      "集成学习分类"
+    ],
+    "data_modality": "UWB测距实测数据",
+    "data_scale": "定点重复测量",
+    "validation_methods": [
+      "3维损失183.83",
+      "有/无干扰双BP定位模型",
+      "loss≈100拟合良好"
+    ],
+    "figure_count": 18,
+    "figure_types": [
+      "定位误差柱状图",
+      "BP结构图",
+      "轨迹曲线"
+    ],
+    "innovation_points": [
+      "EKF解决信号干扰下数据异常波动",
+      "有/无干扰双BP模型分别定位"
+    ],
+    "page_count": 59,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题普通一等奖"
+  },
+  {
+    "paper_id": "2021_E_E21105330243",
+    "year": 2021,
+    "track": "E",
+    "title": "信号干扰下的超宽带（UWB）精确定位问题",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "定位",
+      "滤波",
+      "神经网络",
+      "动态轨迹"
+    ],
+    "models_and_algorithms": [
+      "拉依达准则",
+      "卡尔曼滤波",
+      "BP神经网络",
+      "回归",
+      "分类预测",
+      "轨迹平滑"
+    ],
+    "data_modality": "UWB测距实测数据",
+    "data_scale": "动静靶点",
+    "validation_methods": [
+      "8输入4输出精准定位",
+      "卡尔曼平滑滤除运动噪声",
+      "特征组合校正"
+    ],
+    "figure_count": 26,
+    "figure_types": [
+      "轨迹曲线图",
+      "定位误差表",
+      "分类混淆矩阵"
+    ],
+    "innovation_points": [
+      "卡尔曼平滑辅助正常/异常样本切换时精准定位",
+      "先判干扰类型再选对应定位模型预测轨迹"
+    ],
+    "page_count": 30,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题普通一等奖"
+  },
+  {
+    "paper_id": "2021_E_E21832010024",
+    "year": 2021,
+    "track": "E",
+    "title": "基于机器学习的UWB定位与分类技术研究",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "定位",
+      "机器学习",
+      "分类"
+    ],
+    "models_and_algorithms": [
+      "3σ准则",
+      "欧氏距离去相似",
+      "最小二乘四点算法",
+      "PSO粒子群定位",
+      "三层BP神经网络",
+      "二分类"
+    ],
+    "data_modality": "UWB测距实测数据",
+    "data_scale": "324组标准差数据",
+    "validation_methods": [
+      "测量噪声均值10标准差3",
+      "BP使xy达厘米级z达分米级",
+      "正常/异常二分类"
+    ],
+    "figure_count": 55,
+    "figure_types": [
+      "数据分布图",
+      "BP定位误差图",
+      "分类结果表"
+    ],
+    "innovation_points": [
+      "统计证明传感器性能一致并明确噪声分布规律",
+      "三层BP把三点定位精度从米级提升到厘米/分米级"
+    ],
+    "page_count": 41,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题普通一等奖"
+  },
+  {
+    "paper_id": "2021_F_F21102540382",
+    "year": 2021,
+    "track": "F",
+    "title": "航空公司机组优化排班问题探析",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "运筹优化",
+      "整数规划",
+      "启发式"
+    ],
+    "models_and_algorithms": [
+      "线性优化模型",
+      "层次分析法权重",
+      "改进遗传算法",
+      "CPLEX精确求解",
+      "多目标转单目标"
+    ],
+    "data_modality": "航班/机组调度数据",
+    "data_scale": "A/B两组算例",
+    "validation_methods": [
+      "小规模遗传结果与CPLEX精确解一致",
+      "A组全部满足配置",
+      "B组16班不满足"
+    ],
+    "figure_count": 3,
+    "figure_types": [
+      "排班甘特图",
+      "收敛曲线",
+      "结果对比表"
+    ],
+    "innovation_points": [
+      "层次分析法把多目标转单目标",
+      "改进遗传算法小规模与CPLEX精确解互验"
+    ],
+    "page_count": 33,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题普通一等奖"
+  },
+  {
+    "paper_id": "2021_F_F21102870035",
+    "year": 2021,
+    "track": "F",
+    "title": "航空公司机组优化排班问题",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "运筹优化",
+      "混合整数规划",
+      "加速求解"
+    ],
+    "models_and_algorithms": [
+      "航班连接网络流模型",
+      "标量化求Pareto",
+      "二次变量线性化",
+      "混合整数线性规划MILP",
+      "分段策略"
+    ],
+    "data_modality": "航班/机组调度数据",
+    "data_scale": "A/B两组算例",
+    "validation_methods": [
+      "A组0.7分钟得全配置排班",
+      "预处理去冗余约束降规模",
+      "B组分段3-4天处理"
+    ],
+    "figure_count": 10,
+    "figure_types": [
+      "航班连接网络图",
+      "Pareto前沿",
+      "求解时间对比表"
+    ],
+    "innovation_points": [
+      "构造航班连接网络建模并去冗余约束降规模",
+      "二次变量线性化把非线规划转等价MILP"
+    ],
+    "page_count": 29,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题普通一等奖"
+  },
+  {
+    "paper_id": "2021_F_F21102920005",
+    "year": 2021,
+    "track": "F",
+    "title": "航空公司机组优化排班问题",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "运筹优化",
+      "整数规划",
+      "启发式"
+    ],
+    "models_and_algorithms": [
+      "加权0-1整数规划",
+      "广度优先搜索航段组",
+      "贪心算法",
+      "启发式搜索排班",
+      "工资低机组优先"
+    ],
+    "data_modality": "航班/机组调度数据",
+    "data_scale": "A/B两组算例",
+    "validation_methods": [
+      "A组206班全满足0不满足",
+      "B组13922满足32不满足",
+      "机组利用率82.27%"
+    ],
+    "figure_count": 6,
+    "figure_types": [
+      "排班网络图",
+      "贪心流程图",
+      "利用率统计表"
+    ],
+    "innovation_points": [
+      "BFS找所有合法航段执勤组再启发式排班",
+      "工资较低机组优先贪心降执勤成本"
+    ],
+    "page_count": 36,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题普通一等奖"
+  },
+  {
+    "paper_id": "2021_F_F21103360050",
+    "year": 2021,
+    "track": "F",
+    "title": "基于机组排班问题的多目标规划模型",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "运筹优化",
+      "多目标规划",
+      "启发式"
+    ],
+    "models_and_algorithms": [
+      "分层多目标规划",
+      "分层序列法",
+      "贪心算法结合回溯",
+      "目标重要性排序为贪心策略"
+    ],
+    "data_modality": "航班/机组调度数据",
+    "data_scale": "A/B两组算例",
+    "validation_methods": [
+      "A套0.0042分钟求解",
+      "贪心复杂度O(n)~O(n²)",
+      "不满足航班0/195"
+    ],
+    "figure_count": 66,
+    "figure_types": [
+      "贪心回溯流程图",
+      "排班结果表",
+      "时间复杂度分析"
+    ],
+    "innovation_points": [
+      "用目标重要性排序作贪心策略",
+      "贪心+回溯快速求解大规模算例"
+    ],
+    "page_count": 45,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题普通一等奖"
+  },
+  {
+    "paper_id": "2021_F_F21104870099",
+    "year": 2021,
+    "track": "F",
+    "title": "航空公司机组优化排班问题",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "运筹优化",
+      "启发式",
+      "多目标"
+    ],
+    "models_and_algorithms": [
+      "多目标分级优化",
+      "启发式算法",
+      "线性规划",
+      "任务环成本"
+    ],
+    "data_modality": "航班/机组调度数据",
+    "data_scale": "A/B两组算例",
+    "validation_methods": [
+      "A组配置成功率100%",
+      "B组99.75%",
+      "执勤成本A53万/B4110万"
+    ],
+    "figure_count": 50,
+    "figure_types": [
+      "结果汇总表",
+      "成本对比图",
+      "甘特图"
+    ],
+    "innovation_points": [
+      "三问逐步加目标逐层细化优化",
+      "主/次目标分级求解机组排班"
+    ],
+    "page_count": 93,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题普通一等奖"
+  },
+  {
+    "paper_id": "2021_A_A21102860073",
+    "year": 2021,
+    "track": "A",
+    "title": "相关矩阵组的低复杂度计算和存储建模",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "矩阵计算",
+      "复杂度优化",
+      "压缩感知"
+    ],
+    "models_and_algorithms": [
+      "相邻矩阵相关系数阈值λth",
+      "随机正交基SVD",
+      "逐次超松弛SOR求逆",
+      "稀疏基压缩重建",
+      "空间正交基压缩感知"
+    ],
+    "data_modality": "矩阵数值数据",
+    "data_scale": "相关矩阵组",
+    "validation_methods": [
+      "SVD降46.0%/求逆降85.9%",
+      "随机正交SVD降38.7%/SOR降至24.7%",
+      "总复杂度降72.8%保持99.99%精度"
+    ],
+    "figure_count": 46,
+    "figure_types": [
+      "相关性/稀疏性分析图",
+      "标准运算复杂度表",
+      "压缩模型对比",
+      "误差-压缩率曲线"
+    ],
+    "innovation_points": [
+      "设立相关系数阈值λth做相邻矩阵V替代",
+      "四种优化合并总复杂度降72.8%仍保99.99%精度",
+      "SVD压缩与空间正交基压缩感知两路线分场景适用"
+    ],
+    "page_count": 53,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "数模之星提名奖，深卡必做"
+  },
+  {
+    "paper_id": "2021_A_A21102910019",
+    "year": 2021,
+    "track": "A",
+    "title": "相关矩阵组低复杂度计算和存储模型",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "矩阵计算",
+      "特征值迭代",
+      "压缩存储"
+    ],
+    "models_and_algorithms": [
+      "Cholesky分解",
+      "乘幂法Power Method",
+      "降阶法Deflation",
+      "GKSVD双对角化+QR",
+      "稀疏矩阵线性变化模型"
+    ],
+    "data_modality": "矩阵数值数据",
+    "data_scale": "384分块矩阵",
+    "validation_methods": [
+      "迭代仅需2~3次收敛",
+      "99%主成份压缩比65%",
+      "加精度约束控迭代次数"
+    ],
+    "figure_count": 25,
+    "figure_types": [
+      "乘幂法迭代流程图",
+      "压缩比对比表",
+      "收敛曲线"
+    ],
+    "innovation_points": [
+      "相邻分块右奇异向量作下一块迭代初值加速收敛",
+      "行高相关取99%主成份在-30dB精度下压缩65%"
+    ],
+    "page_count": 26,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "数模之星提名奖，深卡必做"
+  },
+  {
+    "paper_id": "2021_B_B21105610069",
+    "year": 2021,
+    "track": "B",
+    "title": "空气质量预报二次建模",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "时间序列预测",
+      "集成学习",
+      "图神经网络"
+    ],
+    "models_and_algorithms": [
+      "伪独热码风向",
+      "SVD主成分+Spearman两步聚类",
+      "FNN/RF/SVR/XGBoost",
+      "CEEMDAN-IPSO-SVR降噪",
+      "Lasso组合LSTM_FC",
+      "时空图卷积GRU_GCN_FC"
+    ],
+    "data_modality": "环境监测时序数据",
+    "data_scale": "三监测点",
+    "validation_methods": [
+      "FNN对PM2.5偏差1.92",
+      "CEEMDAN降噪后O3偏差17.14→13.53",
+      "GRU_GCN修正使NO2偏差再降17.4%"
+    ],
+    "figure_count": 44,
+    "figure_types": [
+      "两步聚类图",
+      "模型偏差对比表",
+      "时空图卷积结构图"
+    ],
+    "innovation_points": [
+      "伪独热码处理风向保连续消有序",
+      "按污染物特性选模型:常规FNN/O3用CEEMDAN降噪/时空用GCN",
+      "Lasso把机理模型与LSTM组合"
+    ],
+    "page_count": 54,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "数模之星提名奖，深卡必做"
+  },
+  {
+    "paper_id": "2021_B_B21106990088",
+    "year": 2021,
+    "track": "B",
+    "title": "空气质量预报二次建模",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "降维",
+      "模糊预测",
+      "微分方程修正"
+    ],
+    "models_and_algorithms": [
+      "PCA与KPCA核主成分降维",
+      "Takagi-Sugeno模糊宽度学习Fuzzy-BLS",
+      "Lotka-Volterra种间竞争时变微分方程修正",
+      "区域协同预报"
+    ],
+    "data_modality": "环境监测时序数据",
+    "data_scale": "三监测点+邻近点",
+    "validation_methods": [
+      "O3相对误差0.0379/NO2 0.0227",
+      "5个综合气象指标",
+      "LoVo修正近实际曲线重合"
+    ],
+    "figure_count": 45,
+    "figure_types": [
+      "PCA/KPCA降维图",
+      "气象影响排序表",
+      "种间竞争修正曲线"
+    ],
+    "innovation_points": [
+      "PCA/KPCA同时处理线性与非线性降维",
+      "引入Lotka-Volterra种间竞争微分方程修正O3/NO2耦合"
+    ],
+    "page_count": 46,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "数模之星提名奖，深卡必做"
+  },
+  {
+    "paper_id": "2021_C_C21102860153",
+    "year": 2021,
+    "track": "C",
+    "title": "帕金森病的脑深部电刺激治疗建模研究",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 5,
+    "task_types": [
+      "微分方程仿真",
+      "神经元建模",
+      "参数优化"
+    ],
+    "models_and_algorithms": [
+      "Hodgkin-Huxley模型",
+      "Matlab/Simulink",
+      "中继可靠性指标",
+      "参数扫描+贪心+变步长搜索",
+      "正弦/方波/三角波波形对比"
+    ],
+    "data_modality": "仿真数据",
+    "data_scale": "HH神经元数值仿真",
+    "validation_methods": [
+      "对比STN/GPi/STr靶点定STN最优",
+      "频率振幅两级优化",
+      "考虑电池使用建损失函数"
+    ],
+    "figure_count": 97,
+    "figure_types": [
+      "放电特征指标表",
+      "靶点对比柱状图",
+      "参数扫描热力图"
+    ],
+    "innovation_points": [
+      "先参数扫描定范围再贪心+变步长精细优化频率振幅",
+      "综合电池功耗建损失函数做DBS参数优化"
+    ],
+    "page_count": 51,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "数模之星提名奖，深卡必做"
+  },
+  {
+    "paper_id": "2021_C_C21104240047",
+    "year": 2021,
+    "track": "C",
+    "title": "帕金森病的脑深部电刺激治疗建模研究",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "微分方程仿真",
+      "神经质量模型",
+      "统计检验"
+    ],
+    "models_and_algorithms": [
+      "Hodgkin-Huxley模型",
+      "双振子神经质量模型",
+      "26种突触连接",
+      "Tukey/Levene统计检验",
+      "SVM分类",
+      "FPGA仿真"
+    ],
+    "data_modality": "仿真数据",
+    "data_scale": "HH神经元数值仿真",
+    "validation_methods": [
+      "Idc≈6.3µA/cm²极限环",
+      "9.8µA/cm²反向Hopf分岔",
+      "TH神经元p<0.05显著差异"
+    ],
+    "figure_count": 95,
+    "figure_types": [
+      "双振子回路结构图",
+      "分岔图",
+      "放电序列图"
+    ],
+    "innovation_points": [
+      "建皮质-基底节-丘脑-皮质双振子闭合回路含26种突触",
+      "Tukey/Levene统计检验量化正常/PD放电差异"
+    ],
+    "page_count": 42,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "数模之星提名奖，深卡必做"
+  },
+  {
+    "paper_id": "2021_D_D21102800176",
+    "year": 2021,
+    "track": "D",
+    "title": "抗乳腺癌候选药物的优化建模",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "特征选择",
+      "集成学习",
+      "小样本学习"
+    ],
+    "models_and_algorithms": [
+      "方差/相关性分步冗余过滤",
+      "Spearman/距离相关/随机森林/弹性网集成筛选",
+      "Stacking集成",
+      "深度森林Deep Forest",
+      "TPE调参",
+      "原型网络小样本分类",
+      "Borderline-SMOTE"
+    ],
+    "data_modality": "化合物分子描述符数据",
+    "data_scale": "1974化合物/729描述符",
+    "validation_methods": [
+      "无关过滤341维→类间冗余137维",
+      "Deep Forest性能高且训练快",
+      "ADMET类别不平衡Borderline-SMOTE处理"
+    ],
+    "figure_count": 121,
+    "figure_types": [
+      "分步筛选流程图",
+      "集成重要性排序图",
+      "Deep Forest结构图"
+    ],
+    "innovation_points": [
+      "方差+相关性分步过滤再四法集成选20变量",
+      "深度森林替代Stacking兼顾性能与训练速度",
+      "原型网络小样本学习解ADMET分类"
+    ],
+    "page_count": 80,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "数模之星提名奖，深卡必做"
+  },
+  {
+    "paper_id": "2021_D_D21103000002",
+    "year": 2021,
+    "track": "D",
+    "title": "两阶段抗乳腺癌候选药物特性预测与优化建模",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 4,
+    "task_types": [
+      "特征选择",
+      "回归预测",
+      "全局优化"
+    ],
+    "models_and_algorithms": [
+      "加权集成重要度(灰色关联/MIC/随机森林/平均精度损失)",
+      "自适应迭代变量选择",
+      "XGBoost回归",
+      "两阶段XGBoost-MLP",
+      "DE差分进化全局优化"
+    ],
+    "data_modality": "化合物分子描述符数据",
+    "data_scale": "729描述符/1974化合物",
+    "validation_methods": [
+      "测试RMSE<0.07,R²>0.72",
+      "ADMET五特性精度>80% AUC>0.9",
+      "DE-MLP全局搜变量取值"
+    ],
+    "figure_count": 45,
+    "figure_types": [
+      "加权重要度融合图",
+      "模型评估雷达图",
+      "DE优化收敛曲线"
+    ],
+    "innovation_points": [
+      "四法加权集成重要度做特征选择",
+      "两阶段XGBoost选变量+MLP并行预测ADMET",
+      "六个MLP作DE目标函数全局搜变量取值范围"
+    ],
+    "page_count": 44,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "数模之星提名奖，深卡必做"
+  },
+  {
+    "paper_id": "2021_E_E21103860005",
+    "year": 2021,
+    "track": "E",
+    "title": "信号干扰下的超宽带精确定位问题",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 5,
+    "task_types": [
+      "定位",
+      "特征工程",
+      "分类",
+      "轨迹重建"
+    ],
+    "models_and_algorithms": [
+      "3σ准则",
+      "距离阈值系统聚类",
+      "最小二乘+残差加权误差抑制",
+      "极限学习机/BP神经网络",
+      "随机森林分类",
+      "轨迹平滑化"
+    ],
+    "data_modality": "UWB测距实测数据",
+    "data_scale": "4锚点多动静靶点",
+    "validation_methods": [
+      "正常3维误差141.7mm/异常419.4mm",
+      "9个新特征选5个随机森林分类准确率85.1%",
+      "轨迹呈N字形"
+    ],
+    "figure_count": 46,
+    "figure_types": [
+      "聚类阈值示意图",
+      "定位误差对比表",
+      "N字形轨迹图"
+    ],
+    "innovation_points": [
+      "从测距衍生9个几何特征再筛5个做干扰二分类",
+      "先分类干扰类型再选对应定位模型最后轨迹平滑"
+    ],
+    "page_count": 48,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "数模之星提名奖，深卡必做"
+  },
+  {
+    "paper_id": "2021_E_E21104870136",
+    "year": 2021,
+    "track": "E",
+    "title": "基于多层感知机的最小二乘优化定位模型",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "定位",
+      "神经网络",
+      "置信度加权"
+    ],
+    "models_and_algorithms": [
+      "LS-MLP最小二乘优化定位",
+      "K-means聚类选一致解",
+      "Softmax交叉熵置信度分类",
+      "CE-CL置信度赋权联合定位",
+      "场景信息编码进损失函数"
+    ],
+    "data_modality": "UWB测距实测数据",
+    "data_scale": "4锚点多靶点",
+    "validation_methods": [
+      "正常XY平面RMSE 6.95cm",
+      "异常XY RMSE 18.24cm",
+      "不依赖初始解抗噪强"
+    ],
+    "figure_count": 53,
+    "figure_types": [
+      "LS-MLP结构图",
+      "置信度聚类图",
+      "RMSE对比表"
+    ],
+    "innovation_points": [
+      "把最小二乘拟合建模为可微优化问题用MLP求解不依赖初始解",
+      "CE-CL假设最多一基站异常做切片采样+Softmax置信度加权",
+      "场景信息编码进损失函数实现网络与场景剥离"
+    ],
+    "page_count": 51,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "数模之星提名奖，深卡必做"
+  },
+  {
+    "paper_id": "2021_F_F21102480018",
+    "year": 2021,
+    "track": "F",
+    "title": "F航空公司机组优化排班问题研究",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "运筹优化",
+      "整数线性规划",
+      "启发式"
+    ],
+    "models_and_algorithms": [
+      "0-1整数线性规划",
+      "Gurobi求解",
+      "航班-回路-编组多层级启发式",
+      "0-1相乘辅助变量线性化",
+      "虚拟机组配置"
+    ],
+    "data_modality": "航班/机组调度数据",
+    "data_scale": "A/B两组算例",
+    "validation_methods": [
+      "A组206班全满足与Gurobi最优一致",
+      "ε=45灵敏度最优",
+      "B组13911满足43不满足"
+    ],
+    "figure_count": 8,
+    "figure_types": [
+      "航班-回路-编组层级图",
+      "Gurobi对比表",
+      "ε灵敏度曲线"
+    ],
+    "innovation_points": [
+      "航班-回路-编组多层级概念设计规则启发式",
+      "0-1变量相乘用辅助变量线性化",
+      "对连接时间阈值ε做灵敏度分析定最优"
+    ],
+    "page_count": 114,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "数模之星提名奖，深卡必做"
+  },
+  {
+    "paper_id": "2021_F_F21103560049",
+    "year": 2021,
+    "track": "F",
+    "title": "基于整数线性规划的机组航班匹配问题研究",
+    "award_level": "一等奖",
+    "award_confidence": "high",
+    "problem_count": 3,
+    "task_types": [
+      "运筹优化",
+      "整数规划",
+      "启发式"
+    ],
+    "models_and_algorithms": [
+      "时间戳数据建模",
+      "可换航班矩阵",
+      "单目标加权整数规划",
+      "时序优先启发信息",
+      "最大最小化线性化",
+      "类比可换航矩阵"
+    ],
+    "data_modality": "航班/机组调度数据",
+    "data_scale": "A/B两组算例",
+    "validation_methods": [
+      "权重ω1=1000,ω4=1,ω7=0.001",
+      "A组206全满足",
+      "B组13824满足130不满足"
+    ],
+    "figure_count": 22,
+    "figure_types": [
+      "可换航班矩阵图",
+      "权重设计表",
+      "排班结果表"
+    ],
+    "innovation_points": [
+      "引入时间戳与可换航班矩阵简化约束建模",
+      "最大最小化把时长平衡转线性目标",
+      "多目标权重按量级悬殊赋值"
+    ],
+    "page_count": 63,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "数模之星提名奖，深卡必做"
+  }
+]

@@ -1,0 +1,89 @@
+{
+  "paper_id": "2021_F_F21102480018",
+  "year": 2021,
+  "track": "F",
+  "title": "F航空公司机组优化排班问题研究",
+  "confidence": "high",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一(航班分配)",
+      "baseline": "纯启发式",
+      "main_model": "0-1整数线性规划Gurobi求精确解，同时设计航班-回路-编组多层级启发式",
+      "improvement": "精确解验证启发式",
+      "why_switch": "小规模用Gurobi验证启发式最优性"
+    },
+    {
+      "question_id": "问题二(执勤)",
+      "baseline": "问题一规则",
+      "main_model": "加执勤约束/目标，启发式分三阶段(成对绑定双向选班/排班规划/资格分配)",
+      "improvement": "规则细化",
+      "why_switch": "执勤引入新约束需重设规则"
+    },
+    {
+      "question_id": "问题三(任务环)",
+      "baseline": "非线性直接解",
+      "main_model": "0-1相乘用辅助变量线性化，虚拟机组完成任务环决策+贪心分配",
+      "improvement": "非线性线性化",
+      "why_switch": "0-1相乘非线性，线性化后可解"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "0-1整数线性规划",
+    "航班-回路-编组多层级",
+    "0-1相乘辅助变量线性化",
+    "Gurobi求解",
+    "连接时间阈值ε"
+  ],
+  "objective_function": "分级优化:满足配置航班最多→乘机次数最少→执勤成本最低→任务环成本最低",
+  "evaluation_metrics": [
+    "A组206全满足与Gurobi最优一致",
+    "B组13911满足43不满足",
+    "ε=45灵敏度最优"
+  ],
+  "algorithm_details_and_complexity": "ILP精确解+规则启发式双轨，非线性用辅助变量线性化",
+  "independent_validation_design": "小规模Gurobi精确解与启发式结果互验；算法有效性/稳定性/复杂度评估",
+  "sensitivity_robustness_ablation": [
+    "连接时间阈值ε灵敏度(ε=45最优)",
+    "A/B大小数据集对比",
+    "线性化对求解时间影响"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "机组排班规则复杂目标繁多，拆解为子问题由浅入深",
+    "method_sentence": "0-1整数线性规划+规则启发式，0-1相乘线性化，Gurobi验证",
+    "result_sentence": "A组206班与Gurobi最优一致，ε=45最优",
+    "numbers_presentation": "A/B组满足/不满足航班数与成本并列"
+  },
+  "figure_narrative_order": [
+    "航班-回路-编组层级图",
+    "Gurobi vs 启发式对比",
+    "灵敏度ε曲线",
+    "结果汇总表"
+  ],
+  "judge_high_score_reasons": [
+    "ILP精确解+启发式双轨，用Gurobi证明启发式达到最优，严谨",
+    "航班-回路-编组多层级概念把复杂规则结构化",
+    "0-1相乘用辅助变量线性化，建模技术到位",
+    "对连接时间阈值ε做灵敏度分析并定最优，闭环"
+  ],
+  "reusable_patterns": [
+    "精确求解器验证启发式最优性",
+    "多层级问题拆解",
+    "0-1乘积线性化",
+    "关键阈值灵敏度分析"
+  ],
+  "transferable_ability_card_candidates": [
+    "机组排班/ILP",
+    "规则启发式设计",
+    "MILP线性化"
+  ],
+  "page_locations": {
+    "摘要": "p2-3",
+    "问题一Gurobi": "p15-18",
+    "问题二启发式": "p20-25",
+    "问题三线性化": "p26-28",
+    "灵敏度ε": "p33-34"
+  },
+  "notes": "数模之星提名奖，114页长文",
+  "award_level": "一等奖",
+  "award_confidence": "high"
+}

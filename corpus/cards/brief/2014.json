@@ -1,0 +1,3859 @@
+[
+  {
+    "paper_id": "2014_A_A10288020_5ab07000",
+    "year": 2014,
+    "track": "A",
+    "title": "水面舰艇编队防空和信息化战争评估模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "空间图",
+      "排队库存"
+    ],
+    "models_and_algorithms": [
+      "BP神经网络",
+      "深度学习",
+      "排队论"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析",
+      "仿真/数值验证",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 24,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 37,
+    "section_structure": "1 问题重述；2 模型假设；3 符号说明；4 问题一模型建立与求解；5 问题二模型建立与求解；6 问题三模型建立与求解；7 问题四模型建立与求解；8 问题五模型建立与求解；9 总 结",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.13",
+      "模型评价/改进≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_A_A10422076_feb37d60",
+    "year": 2014,
+    "track": "A",
+    "title": "水面舰艇编队防空和信息化战争评估模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "主成分分析",
+      "支持向量机SVM",
+      "线性规划",
+      "非线性规划"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "百级样本",
+    "validation_methods": [
+      "精度指标(RMSE/R²等)",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 410,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [
+      "首次被发现时与指挥舰之间的距离 d  max d i ，假设导弹以最危险的角度入射，",
+      "首次被发现时与指挥舰之间的距离 D   min        d ，然后以最早发现来袭导弹为目",
+      "首次被发现时，来袭导弹与指挥舰之间的距离为d 。"
+    ],
+    "page_count": 36,
+    "section_structure": "一、问题重述；二、模型假设；三、基本符号说明；四、问题分析；五、模型的建立与问题的求解；六、模型评价与改进",
+    "source_locations": [
+      "模型求解≈p.24",
+      "模型检验/验证≈p.10",
+      "模型评价/改进≈p.11"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_A_A10533032_3cf94245",
+    "year": 2014,
+    "track": "A",
+    "title": "水面舰艇编队防空和信息化战争评估模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "预测",
+      "评价",
+      "分类",
+      "仿真",
+      "机理建模",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "系统聚类/层次聚类",
+      "微分方程/动力学",
+      "航迹规划/协同"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "千-万级",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 410,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文从研究水面舰艇编队的防空问题入手，先设计了一种特定条件下编队"
+    ],
+    "page_count": 38,
+    "section_structure": "1 问题重述；2 问题分析；3 模型假设；4 模型的建立与求解；1 号护卫舰（41.8289，418289）；2 号护卫舰（-5.1557，58.9299）；3 号护卫舰（-48.4570，33.9299）；4 号护卫舰（-57.1394，-15.3105）；5 模型的分析与评价；6 参考文献",
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_A_A10651009_415b6547",
+    "year": 2014,
+    "track": "A",
+    "title": "水面舰艇编队防空和信息化战争评估模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "预测",
+      "分类",
+      "仿真",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "深度学习",
+      "信道建模/多径/OFDM",
+      "数据插值/拟合曲面"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 410,
+    "figure_types": [],
+    "innovation_points": [
+      "本文研究了本次大赛A 题的全部内容，包括设计指挥舰与护卫舰的最佳队"
+    ],
+    "page_count": 34,
+    "section_structure": "九、模型的评价和拓展",
+    "source_locations": [
+      "模型建立≈p.29"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_A_A10856054_91a0ce1c",
+    "year": 2014,
+    "track": "A",
+    "title": "水面舰艇编队防空和信息化战争评估模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类"
+    ],
+    "models_and_algorithms": [
+      "系统聚类/层次聚类",
+      "层次分析法AHP",
+      "航迹规划/协同"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文采用几何法构建水面舰艇编队队形，采用聚类分析法对空中目标进行意"
+    ],
+    "page_count": 72,
+    "section_structure": "1 问题重述；2 模型假设；3 符号说明；4 问题分析；5 模型建立与求解",
+    "source_locations": [
+      "模型建立≈p.7",
+      "模型求解≈p.47"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_A_A11075030_59be094a",
+    "year": 2014,
+    "track": "A",
+    "title": "水面舰艇编队防空和信息化战争评估模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类"
+    ],
+    "models_and_algorithms": [
+      "支持向量机SVM",
+      "多目标规划/优化",
+      "数据插值/拟合曲面"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 9,
+    "figure_types": [
+      "折线/曲线图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 54,
+    "section_structure": "4 艘护卫舰距离指挥舰的距离应该相等，记作r 。",
+    "source_locations": [
+      "模型建立≈p.43",
+      "模型求解≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_A_A90025016_ce97a109",
+    "year": 2014,
+    "track": "A",
+    "title": "水面舰艇编队防空和信息化战争评估模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "深度学习",
+      "支持向量机SVM",
+      "模糊综合评价",
+      "航迹规划/协同"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 410,
+    "figure_types": [
+      "散点/拟合图"
+    ],
+    "innovation_points": [],
+    "page_count": 56,
+    "section_structure": "2\n             目 录",
+    "source_locations": [
+      "模型建立≈p.29"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_B_B10006005_cab104df",
+    "year": 2014,
+    "track": "B",
+    "title": "数据的多流流形和子子空间聚类类模型研研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "分类"
+    ],
+    "models_and_algorithms": [
+      "主成分分析",
+      "K-means聚类",
+      "系统聚类/层次聚类",
+      "深度学习",
+      "图论/最短路",
+      "刚体/多体动力学"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "千-万级",
+    "validation_methods": [],
+    "figure_count": 6,
+    "figure_types": [
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 25,
+    "section_structure": "一一、问题重重述；二、模型假设；三、符号说明；四、问题分析；五、模型建立",
+    "source_locations": [
+      "模型建立≈p.4",
+      "模型求解≈p.17",
+      "模型评价/改进≈p.23"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_B_B10248091_dc7ae638",
+    "year": 2014,
+    "track": "B",
+    "title": "数据的多流形结构分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "分类",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "主成分分析",
+      "K-means聚类",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "图像",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 6,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [
+      "地提出一种基于PID 思想的参数调节策略，能够快速合理的逼近所",
+      "首先，我们引入了SSC 算法去解决高维数据，然后，",
+      "本文有以下的创新点，首先，我们引入了SSC 算法去解决高维数据，然后，"
+    ],
+    "page_count": 57,
+    "section_structure": "一．背景回顾；二．问题一的建模与求解；三．问题二的建模与求解；四．问题三的建模与求解；五．问题四的建模与求解；六．模型的优缺点；七．总结与展望；八．参考文献；九．代码目录",
+    "source_locations": [
+      "模型求解≈p.34"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_B_B10248118_27012a87",
+    "year": 2014,
+    "track": "B",
+    "title": "数据的多流形结构分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "分类"
+    ],
+    "models_and_algorithms": [
+      "主成分分析"
+    ],
+    "data_modality": "图像",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 5,
+    "figure_types": [
+      "折线/曲线图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [
+      "本文所做的主要创新工作和结论如下：",
+      "本文改进了SMMC 算法，使得SMMC 算法能够很好地解决第四题"
+    ],
+    "page_count": 36,
+    "section_structure": "一、 问题重述；二、问题分析；三、符号说明；四、模型建立与改进；五、问题求解；六、评价与结论；七、参考文献；八、附录",
+    "source_locations": [
+      "模型建立≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_B_B10290012_7537cc7c",
+    "year": 2014,
+    "track": "B",
+    "title": "数据的多流形结构分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "评价",
+      "分类",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "主成分分析",
+      "K-means聚类"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 51,
+    "section_structure": "1\n            二 基本假设及说明；2\n              四 问题分析；4\n             五 模型特点介绍；8\n              六 问题求解；7 模型评价与改进",
+    "source_locations": [
+      "模型求解≈p.14",
+      "模型评价/改进≈p.6"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_B_B10290012_1_",
+    "year": 2014,
+    "track": "B",
+    "title": "数据的多流形结构分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "评价",
+      "分类",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "主成分分析",
+      "K-means聚类"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 51,
+    "section_structure": "1\n            二 基本假设及说明；2\n              四 问题分析；4\n             五 模型特点介绍；8\n              六 问题求解；7 模型评价与改进",
+    "source_locations": [
+      "模型求解≈p.14",
+      "模型评价/改进≈p.6"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_B_B10294017_88d1417e",
+    "year": 2014,
+    "track": "B",
+    "title": "数据的多流形结构分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 7,
+    "task_types": [
+      "分类",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "主成分分析",
+      "K-means聚类",
+      "系统聚类/层次聚类"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文对数据建立稀疏子空间聚类（SSC）模型进行聚类分析，得",
+      "本文对线性问题建立稀疏子空间聚类",
+      "本文建立基于K-means 的SSC 模型进行聚类分析，并采用"
+    ],
+    "page_count": 47,
+    "section_structure": "1 问题背景；2 模型假设；3 符号系统；4 问题1 模型的建立与求解；5 问题2 模型的建立与求解；6 问题3 模型的建立与求解；7 问题4 模型的建立与求解；8 模型评价与推广",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型检验/验证≈p.1",
+      "模型评价/改进≈p.5"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_B_B10700027_c01259e6",
+    "year": 2014,
+    "track": "B",
+    "title": "数据的多流形结构分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "分类",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "主成分分析",
+      "K-means聚类"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 47,
+    "section_structure": "一、问题的重述；二、问题的分析；三、模型的假设；四、符号说明；五、模型的建立与求解；六、模型评价与改进",
+    "source_locations": [
+      "模型求解≈p.8",
+      "模型评价/改进≈p.17"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_B_B11660017_0174d19b",
+    "year": 2014,
+    "track": "B",
+    "title": "数据的多流形结构分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "分类"
+    ],
+    "models_and_algorithms": [
+      "主成分分析",
+      "系统聚类/层次聚类",
+      "刚体/多体动力学"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "鲁棒性/稳定性分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 14,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文提出稀疏子空间聚类模型以及改进优化算",
+      "本文首先建立稀疏子空间聚类模型，",
+      "本文建立拉普拉斯特征映射模"
+    ],
+    "page_count": 55,
+    "section_structure": "一、问题重述；二、基本假设；三、符号说明；四、问题1 分析及模型建立与求解；五、问题2 分析及模型建立与求解；六、问题3 分析及模型建立与求解；七、问题4 分析及模型建立与求解；八、模型的总结与改进",
+    "source_locations": [
+      "模型建立≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_B_B90002105_b4578e5a",
+    "year": 2014,
+    "track": "B",
+    "title": "数据的多流形结构分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "分类",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "主成分分析",
+      "刚体/多体动力学"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 12,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [
+      "本文提出了基于SSC 与LRR 相结合的正则项 R ( Z ) = Z 1 + λ Z * ，同时考虑了数据",
+      "本文所提出的算法能够很好地解决该类问题。"
+    ],
+    "page_count": 43,
+    "section_structure": "5\n                  核范数        *",
+    "source_locations": [
+      "模型建立≈p.7",
+      "模型求解≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_B_B90006058_2b167986",
+    "year": 2014,
+    "track": "B",
+    "title": "数据的多流形结构分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "评价",
+      "分类"
+    ],
+    "models_and_algorithms": [
+      "主成分分析",
+      "K-means聚类",
+      "系统聚类/层次聚类",
+      "深度学习",
+      "图论/最短路"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 9,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [
+      "包括以下几个方面："
+    ],
+    "page_count": 54,
+    "section_structure": "1 问题重述；2 基本假设；3 主要符号说明；4 问题分析；5 谱聚类的相关知识；7\n             输入相似矩；6 问题一：独立子空间高维数据聚类问题；7 问题二：低维空间中的子空间与多流形聚类问题；8 问题三：子空间聚类在实际中的应用；9 问题四：实际应用中的多流形聚类问题的探讨；1\n附录2：；2\n附录3：",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_C_C90005047_79e87523",
+    "year": 2014,
+    "track": "C",
+    "title": "移动通信中的无线信道“指纹”特征建模",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "预测",
+      "分类",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 600,
+    "figure_types": [
+      "柱状图",
+      "热力/矩阵图"
+    ],
+    "innovation_points": [
+      "本文工作的优缺点，并提出了改进方向。"
+    ],
+    "page_count": 32,
+    "section_structure": "6\n\n                             幅度 5.5；4\n                                          数据包4数据",
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_C_C90019017_c4ebf2ad",
+    "year": 2014,
+    "track": "C",
+    "title": "移动通信中的无线信道“指纹”特征建模",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "评价",
+      "分类",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析"
+    ],
+    "figure_count": 43,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "散点/拟合图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 32,
+    "section_structure": "一、问题的重述；二、合理假设及符号系统；三、问题的分析；四、信号模型的建立与求解；五、问题1 模型的建立与求解；六、问题2 模型的建立与求解；七、问题3 模型的建立与求解；八、问题4 模型的建立与求解；九、模型的评价与推广",
+    "source_locations": [
+      "模型建立≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_C_C90047002_5b52576c",
+    "year": 2014,
+    "track": "C",
+    "title": "移动通信中的无线信道“指纹”特征建模",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "评价",
+      "分类",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "K-means聚类",
+      "系统聚类/层次聚类",
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "百级样本",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 6,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 24,
+    "section_structure": "一、问题引入；二、模型假设以及基本符号说明；三、多径特征提取以及评价指标；四、基于多径指纹模型的场景判别；五、问题三求解；六、问题四的求解；七、模型评价及改进；八、参考文献",
+    "source_locations": [
+      "模型评价/改进≈p.14"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_C_C90110006_eb871f72",
+    "year": 2014,
+    "track": "C",
+    "title": "移动通信无线信道指纹建模及识别",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "预测",
+      "评价",
+      "分类",
+      "回归拟合",
+      "机理建模",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "支持向量机SVM",
+      "贝叶斯",
+      "卡尔曼滤波",
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 40,
+    "figure_types": [
+      "流程图/框图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [],
+    "page_count": 40,
+    "section_structure": "3\n         第二章 信道建模与指纹特征提取",
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_C_C90110010_9a437ed3",
+    "year": 2014,
+    "track": "C",
+    "title": "移动通信中的无线信道“指纹”特征建模",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "评价",
+      "分类",
+      "仿真",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "K-means聚类",
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 18,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文提出的“指纹”特征与识别"
+    ],
+    "page_count": 36,
+    "section_structure": "6\n峰值个数  5；8                                          峰值3；4                                                                                       多普勒数目",
+    "source_locations": [
+      "模型建立≈p.5"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_C_CK0127_21e37172",
+    "year": 2014,
+    "track": "C",
+    "title": "移动通信中的无线信道“指纹”特征建模",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "评价",
+      "分类"
+    ],
+    "models_and_algorithms": [
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 14,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 29,
+    "section_structure": "一. 问题重述；二. 问题假设与符号说明；三. 问题一的分析与建模；四. 问题二的求解；五. 问题三的分析与建模；六. 问题四的求解；七.模型评价与结论",
+    "source_locations": [
+      "模型建立≈p.1",
+      "模型评价/改进≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_D_10004002_41ec88fe",
+    "year": 2014,
+    "track": "D",
+    "title": "面向节能的单/多列车优化决策问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "分类",
+      "仿真",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "遗传算法"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 74,
+    "section_structure": "七．问题三的解答",
+    "source_locations": [
+      "模型求解≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_D_10287013_92f61fa6",
+    "year": 2014,
+    "track": "D",
+    "title": "面向节能的单/多列车优化决策问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "机理建模",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "遗传算法",
+      "微分方程/动力学",
+      "线性规划"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 18,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "地以所有列车制动段与牵"
+    ],
+    "page_count": 43,
+    "section_structure": "一、问题重述；一、单列车节能运行优化控制问题；二、多列车节能运行优化控制问题；三、列车延误后运行优化控制问题；二、模型假设；三、符号说明；四、问题一求解；五、问题二求解；六、问题三求解；七、模型评价；八、参考文献；九、附录",
+    "source_locations": [
+      "模型建立≈p.4",
+      "模型求解≈p.5",
+      "模型评价/改进≈p.24"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_D_10287026_58bbbd2d",
+    "year": 2014,
+    "track": "D",
+    "title": "面向节能的单/多列车优化决策问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "仿真",
+      "机理建模",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "模拟退火",
+      "整数规划",
+      "刚体/多体动力学",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 6,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文还提出一种新的预处理方法，将列车距"
+    ],
+    "page_count": 40,
+    "section_structure": "1 问题重述；2 问题假设；3 符号说明；4 问题一分析；5 问题二分析；6 问题三分析；7 模型总结分析；8 参考文献",
+    "source_locations": [
+      "模型求解≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_D_10422053_54777d27",
+    "year": 2014,
+    "track": "D",
+    "title": "面向节能的单/多列车优化决策问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "遗传算法",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "地提出将时间约束问题转化为能量约束问题。",
+      "本文建立了单列车的节能操控策略分析模型、单列车的节能优化最优控制模型、单"
+    ],
+    "page_count": 43,
+    "section_structure": "一、 问题重述；一、单列车节能运行优化控制问题；二、多列车节能运行优化控制问题；三、列车延误后运行优化控制问题；二、 模型的假设与符号说明；三、 问题分析；四、 问题一求解；五、 问题二求解；六、 问题三求解；七、 模型的评价与推广；八、 参考文献；九、 附录",
+    "source_locations": [
+      "模型求解≈p.1",
+      "模型评价/改进≈p.18"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_D_10615017_d5191f8d",
+    "year": 2014,
+    "track": "D",
+    "title": "面向节能的单/多列车优化决策问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "仿真",
+      "机理建模",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "遗传算法",
+      "蒙特卡洛模拟",
+      "多目标规划/优化"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 24,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 56,
+    "section_structure": "一、单列车节能运行优化控制问题；二、多列车节能运行优化控制问题；三、列车延误后运行优化控制问题",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_D_10700001_3e594b18",
+    "year": 2014,
+    "track": "D",
+    "title": "面向节能的单/多列车优化决策问题研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "评价",
+      "仿真",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "蒙特卡洛模拟",
+      "多目标规划/优化"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 16,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 56,
+    "section_structure": "一．单列车节能运行优化控制问题；二．多列车节能运行优化控制问题；三．列车延误后运行优化控制问题",
+    "source_locations": [
+      "模型建立≈p.1",
+      "模型求解≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_D_83285013_db84de26",
+    "year": 2014,
+    "track": "D",
+    "title": "单/多列车优化决策问题的研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "评价",
+      "分类",
+      "仿真",
+      "回归拟合",
+      "机理建模",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "模拟退火",
+      "微分方程/动力学",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 39,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文提出的单/多列车节能的优化方法具有一定的现实意义和参考价值。"
+    ],
+    "page_count": 60,
+    "section_structure": "三、问题分析与模型准备；四、问题一模型建立与求解；五、问题二模型建立与求解；六、问题三模型建立与求解",
+    "source_locations": [
+      "模型建立≈p.1",
+      "模型求解≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_D_90002014_591961b7",
+    "year": 2014,
+    "track": "D",
+    "title": "面向节能的单/多列车优化决策控制",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 50,
+    "section_structure": "1\n 第十二届“中关村青联杯”全国研究生；1 问题重述；5\n最低的间隔H。；2 假设和说明；3 符号说明；4 单列车节能运行优化控制问题；2\n\n  则此时制动力产生的能量E巡航为：；2\n  其中h 为距平地（势能零点）的高度。；5 多列车节能运行优化控制问题；6 列车延误后运行优化控制问题；7 稳定性分析；8 优缺点分析",
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_D_90038010_dad07bdd",
+    "year": 2014,
+    "track": "D",
+    "title": "面向节能的单/多列车优化决策问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 7,
+    "task_types": [
+      "优化",
+      "仿真",
+      "机理建模",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "刚体/多体动力学",
+      "航迹规划/协同"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 7,
+    "figure_types": [
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 64,
+    "section_structure": "一、问题重述；一、单列车节能运行优化控制问题；二、多列车节能运行优化控制问题；三、列车延误后运行优化控制问题；二、模型假设；三、符号说明；四、问题分析；五、问题一：单列车节能运行优化控制问题；六、问题二：多列车节能运行优化控制问题；七、问题三：列车延误后运行优化控制问题；八、模型评价；九、参考文献",
+    "source_locations": [
+      "模型建立≈p.23",
+      "模型求解≈p.1",
+      "模型评价/改进≈p.23"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_D_90038025_d1265f3b",
+    "year": 2014,
+    "track": "D",
+    "title": "面向节能的列车调度优化决策研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "遗传算法",
+      "微分方程/动力学"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析"
+    ],
+    "figure_count": 6,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 71,
+    "section_structure": "2\n            目  录；2                                                                          能耗/kJ；5\n                                                                                             速度/km/h 43",
+    "source_locations": [
+      "模型建立≈p.1",
+      "模型求解≈p.1",
+      "模型评价/改进≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_D_K0032_810b1655",
+    "year": 2014,
+    "track": "D",
+    "title": "面向节能的单/多列车优化决策问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "遗传算法",
+      "多目标规划/优化"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "灵敏度/敏感性分析",
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 6,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文还以问题一（1）为例对设计参数进行了敏感性分析，得到分段时间间"
+    ],
+    "page_count": 68,
+    "section_structure": null,
+    "source_locations": [
+      "模型建立≈p.18",
+      "模型求解≈p.1",
+      "灵敏度分析≈p.23"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_E_E10054013_c2ba01fc",
+    "year": 2014,
+    "track": "E",
+    "title": "数控机床加工优化控制",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "运动学/插补/S型曲线"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 17,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 34,
+    "section_structure": "一、问题重述；二、问题分析；三、模型假设及符号说明；四、模型Ⅰ：折线加工优化控制模型；五、模型Ⅱ：直线圆弧段加工优化控制模型；六、模型Ⅲ：考虑瞬时启动速度的优化控制修正模型；七、模型Ⅳ：基于正弦曲线加减速法的加工优化控制；八、模型评价",
+    "source_locations": [
+      "模型求解≈p.11",
+      "模型评价/改进≈p.33"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_E_E10247086_ddde05d9",
+    "year": 2014,
+    "track": "E",
+    "title": "数控加工刀具运动的优化控制模型研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "仿真",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "运动学/插补/S型曲线"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "仿真/数值验证"
+    ],
+    "figure_count": 8,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [
+      "本文提出了折线转接点速度不为0 的过渡算法。首先通过查",
+      "本文在问题一提出的算法的基础上进行了调整。首先考虑了"
+    ],
+    "page_count": 51,
+    "section_structure": "一、圆弧段插补M 文件；二、不考虑瞬时启动加速度及瞬时启动速度的加工示例速度规划M 文件；三、考虑瞬时启动加速度及瞬时启动速度的加工示例速度规划M 文件；四、加工示例节点1—节点2速度曲线；五、S型曲线的速度、加速度、加加速度曲线走势；六、S型曲线的位移曲线走向",
+    "source_locations": [
+      "模型评价/改进≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_E_E10256058_c60e2c3f",
+    "year": 2014,
+    "track": "E",
+    "title": "数控加工刀具运动的优化控制",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "仿真",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "运动学/插补/S型曲线"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 3,
+    "figure_types": [
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 25,
+    "section_structure": "一、问题重述；二、问题分析；三、模型建立与求解；四、总结",
+    "source_locations": [
+      "模型建立≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_E_E10425010_2e53fccd",
+    "year": 2014,
+    "track": "E",
+    "title": "数控加工刀具运动的优化控制",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "仿真",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "运动学/插补/S型曲线"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 6,
+    "figure_types": [
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文提出引入一种加加速度连续的加减速方法，相对S 曲线加减速方法，"
+    ],
+    "page_count": 44,
+    "section_structure": "一、问题重述；二、问题分析；三、问题一模型建立与求解；四、问题二模型建立与求解；五、问题三模型建立与求解；六、问题四模型建立与求解",
+    "source_locations": [
+      "模型建立≈p.1",
+      "模型检验/验证≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_E_E10459037_d767fca7",
+    "year": 2014,
+    "track": "E",
+    "title": "基于S 型曲线的加减速优化控制与实例检验",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "仿真",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "运动学/插补/S型曲线"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 61,
+    "figure_types": [
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文提出一种三次多项式加减速控制模型。通过模型检验发现三次多项式加减速控制模"
+    ],
+    "page_count": 23,
+    "section_structure": "1\n   第十二届“中关村青联杯”全国研究生；3\n                 目  录；5 所示：",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.3",
+      "模型检验/验证≈p.1",
+      "模型评价/改进≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_E_E10700022_e96a4612",
+    "year": 2014,
+    "track": "E",
+    "title": "数控加工刀具运动的优化控制",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "运动学/插补/S型曲线"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析"
+    ],
+    "figure_count": 26,
+    "figure_types": [
+      "折线/曲线图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 38,
+    "section_structure": "一、问题重述；二、模型假设；三、符号说明；四、问题分析；五、模型的建立与求解；六、模型的评价与推广",
+    "source_locations": [
+      "模型建立≈p.3",
+      "模型求解≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_E_E10757002_f34b0021",
+    "year": 2014,
+    "track": "E",
+    "title": "数控加工刀具运动的优化控制问题研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "运动学/插补/S型曲线"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 5,
+    "figure_types": [
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 27,
+    "section_structure": "1 问题重述；2 问题假设；3 符号说明；4 问题分析；5 模型建立与求解；2\n\n  故S 型加工减速控制中不存在匀加速阶段。；6 模型评价与优化",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型评价/改进≈p.25"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_E_E90047006_4dff9963",
+    "year": 2014,
+    "track": "E",
+    "title": "E.数控加工刀具运动的优化控制",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "评价",
+      "仿真",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "运动学/插补/S型曲线"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 56,
+    "section_structure": "一、问题的重述；二、问题的假设；三、符号说明；四、问题一的分析与求解；五、问题二的分析与求解；六、问题三的分析与求解；七、问题四的分析与求解；八、模型总结及其改进",
+    "source_locations": [
+      "模型建立≈p.4",
+      "模型求解≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_E_EK0196_d7f35119",
+    "year": 2014,
+    "track": "E",
+    "title": "数控加工刀具优化控制的建模仿真",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "仿真",
+      "机理建模",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "运动学/插补/S型曲线"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 34,
+    "section_structure": "1 问题重述与分析；2 模型假设；3 符号定义；4 基于折线光滑转接的实时加工优化控制算法；5 简化条件下的曲线实时加工优化控制算法；6 实际条件下的曲线实时加工优化控制算法；7 提高机床运行平稳性的优化控制运动模型；8 模型的评价；9 结 论",
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_F_F10248085_19c1d9be",
+    "year": 2014,
+    "track": "F",
+    "title": "旅游路线规划问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "遗传算法"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 9,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 72,
+    "section_structure": "一、 问题重述；二、 问题分析；三、 符号定义与说明；四、 模型假设；五、 模型的建立与求解；六、 模型总结与评价；七、 参考文献；八、 附录",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.6"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_F_F10273011_b13a3f99",
+    "year": 2014,
+    "track": "F",
+    "title": "摘    要：",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "评价",
+      "仿真",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "模拟退火",
+      "层次分析法AHP",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "千-万级",
+    "validation_methods": [],
+    "figure_count": 4,
+    "figure_types": [],
+    "innovation_points": [
+      "地建立了以星级景点的价格、旅游交通、市场吸"
+    ],
+    "page_count": 64,
+    "section_structure": "一. 问题重述；二. 问题分析；三. 基本假设3；四. 模型建立与求解；五、结论；六. 模型的优缺点评价",
+    "source_locations": [
+      "模型建立≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_F_F10295002_661d7296",
+    "year": 2014,
+    "track": "F",
+    "title": "旅游路线规划问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "分类",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "粒子群算法PSO",
+      "蚁群算法",
+      "多目标规划/优化"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "千-万级",
+    "validation_methods": [
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "流程图/框图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [
+      "以局部优化简化复杂的全局优化，从而得到旅游路线设计的近",
+      "本文的主要创新点：以局部优化简化复杂的全局优化，从而得到旅游路线设计的近"
+    ],
+    "page_count": 49,
+    "section_structure": "1             宁夏   0k 甘肃  0k；2       青海     西藏；3\n        重庆            成  都；8\n    飞机 乌鲁木 飞机；1  苏州市区    50     1；2  常熟市区    130     3；3  苏州市区     0      0；4  苏州市区     0      0；6  无锡市区           无锡鼋头渚景区；7  常州市区     0      0；8  常州市区    77     1；1  烟台市区     0      0",
+    "source_locations": [
+      "模型建立≈p.1",
+      "模型求解≈p.1",
+      "模型评价/改进≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_F_F10353007_ca58c125",
+    "year": 2014,
+    "track": "F",
+    "title": "旅游路径规划问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "分类",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "图论/最短路",
+      "线性规划"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 8,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [],
+    "page_count": 101,
+    "section_structure": "一、问题重述；二、符号说明和基本假设；三、问题分析；四、问题一；五、问题二；六、问题三；七、问题四；八、总结和展望；九、参考文献",
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_F_F10357003_7e5e3f40",
+    "year": 2014,
+    "track": "F",
+    "title": "基于粒化思想的多层次目标规划模型的研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "评价"
+    ],
+    "models_and_algorithms": [
+      "粒子群算法PSO"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 17,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [
+      "本文建立的基于粒化多层次优化模型在求解各种不同种类问题"
+    ],
+    "page_count": 65,
+    "section_structure": "一、问题重述；二、问题分析；三、符号说明与模型假设；四、问题一的模型建立与求解：；五.问题二的模型建立与求解：",
+    "source_locations": [
+      "模型建立≈p.3",
+      "模型求解≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_F_F10613002_223181bd",
+    "year": 2014,
+    "track": "F",
+    "title": "旅游路线规划问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "评价",
+      "分类",
+      "仿真"
+    ],
+    "models_and_algorithms": [
+      "系统聚类/层次聚类",
+      "模拟退火",
+      "整数规划",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 61,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文针对旅游路线规划这一系列问题，建立了全局区域嵌套优化模型对遍历"
+    ],
+    "page_count": 67,
+    "section_structure": "一、问题提出；二、基本假设；三、符号说明；四、问题分析；五、问题一的模型建立与求解；六、问题二模型的建立与求解；七、问题三模型的建立与求解；八、问题四的模型建立与求解；九、模型的评价与推广；十、参考文献；十一、附录",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_F_F10613003_93089088",
+    "year": 2014,
+    "track": "F",
+    "title": "旅游路线优化设计问题研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "评价",
+      "机理建模"
+    ],
+    "models_and_algorithms": [
+      "遗传算法",
+      "蚁群算法",
+      "层次分析法AHP",
+      "多目标规划/优化"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 8,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [
+      "本文分别通过建立带约束的非线性单目标和多目标优化模型，解决了旅游路线的最",
+      "本文建立了带约束的非线性多目标约束模",
+      "本文较为完善的机理分析，建立带约束的非线性单目标和多目标优化模型，并"
+    ],
+    "page_count": 112,
+    "section_structure": "一、问题重述及国内外研究情况；二、基本假设；三、符号说明与名词解释；四、问题分析；五、问题一模型的建立、求解及应用；六、问题二模型的建立、求解及应用",
+    "source_locations": [
+      "模型建立≈p.1",
+      "模型求解≈p.8"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_F_F10613005_6197632a",
+    "year": 2014,
+    "track": "F",
+    "title": "旅游路线规划问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化"
+    ],
+    "models_and_algorithms": [
+      "整数规划",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [],
+    "page_count": 95,
+    "section_structure": "五、模型的评价",
+    "source_locations": [
+      "模型建立≈p.6",
+      "模型求解≈p.8"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_F_F10615003_04bcb6e8",
+    "year": 2014,
+    "track": "F",
+    "title": "分块分层优化的旅游路线规划问题研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "评价",
+      "分类",
+      "仿真",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "模拟退火",
+      "模糊综合评价",
+      "图论/最短路",
+      "多目标规划/优化",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "网络",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析"
+    ],
+    "figure_count": 12,
+    "figure_types": [
+      "流程图/框图",
+      "柱状图"
+    ],
+    "innovation_points": [],
+    "page_count": 39,
+    "section_structure": "2\n               目 录；1 问题重述；2 问题分析；3 模型的假设与符号说明；4 模型的建立与求解；3                 在景点的游览总时间；5 模型的评价与改进方向",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_F_FK0041_d41965c2",
+    "year": 2014,
+    "track": "F",
+    "title": "旅游路线规划模型",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "评价",
+      "机理建模"
+    ],
+    "models_and_algorithms": [
+      "蚁群算法",
+      "模糊综合评价",
+      "多目标规划/优化",
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 55,
+    "figure_types": [
+      "流程图/框图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 53,
+    "section_structure": "2\n 第2 天；1 问题重述；4 次，每次旅游的时间不超过15 天；；2 问题分析；5\n意度相应也会提高。；3 模型假设；4 符号说明；5 数据的收集与处理；6 复杂交通网络的构建；7 问题一:景区线路规划模型；8 问题二: 十年内游览规划模型",
+    "source_locations": [
+      "模型求解≈p.12"
+    ],
+    "confidence": "medium",
+    "notes": "全文为第十二届（2015年赛题）内容，误置于2014目录；按索引year归为2014"
+  },
+  {
+    "paper_id": "2014_A_A10056003_95e1c591",
+    "year": 2014,
+    "track": "A",
+    "title": "小鼠视觉感受区电位信号（LFP）与视觉刺激之间的",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "预测",
+      "回归拟合",
+      "机理建模",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "独立成分分析",
+      "小波变换/小波分析",
+      "经验模态分解EEMD",
+      "多元线性回归"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 28,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文提出了基于区间估计法和Rayleigh 检验结合的方法判定  0.05 时相位锁"
+    ],
+    "page_count": 38,
+    "section_structure": "一、问题重述；二、模型假设；三、符号说明；四、模型的建立与求解；五、模型思考",
+    "source_locations": [
+      "模型建立≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_A_A10079006_eec63a4c",
+    "year": 2014,
+    "track": "A",
+    "title": "小鼠视觉感受区电位信号(LFP)与视觉刺激",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "评价",
+      "机理建模",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "经验模态分解EEMD",
+      "微分方程/动力学",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 4,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 30,
+    "section_structure": "1 问题重述；2 模型假设与符号说明；3 问题分析；4 模型的建立与求解；2\n\n   再用X(t)减去m1(t)得到h1(t)：",
+    "source_locations": [
+      "模型建立≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_A_A10107001_34833ee3",
+    "year": 2014,
+    "track": "A",
+    "title": "小鼠视觉感受区电位信号(LFP)与视觉刺激",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "仿真",
+      "回归拟合",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "小波变换/小波分析",
+      "数据插值/拟合曲面"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "折线/曲线图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [
+      "在于：（1）通过对小鼠脑电波在睡眠、清醒、视觉刺激状态下",
+      "本文创新点在于：（1）通过对小鼠脑电波在睡眠、清醒、视觉刺激状态下"
+    ],
+    "page_count": 33,
+    "section_structure": "1 问题的提出；2 问题分析；3 符号说明；4 模型的假设；5 模型的建立和求解",
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_A_A10248027_95f4664e",
+    "year": 2014,
+    "track": "A",
+    "title": "小鼠视觉感受区电位信号(LFP)与视觉刺激间关系研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "预测",
+      "机理建模",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "独立成分分析",
+      "小波变换/小波分析",
+      "刚体/多体动力学"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "折线/曲线图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [
+      "地改进了参考独立分量分析方法（ICA-R），并在",
+      "本文创新地改进了参考独立分量分析方法（ICA-R），并在"
+    ],
+    "page_count": 26,
+    "section_structure": "一、问题重述；二、问题假设；三、问题1 模型的建立与分析；四、问题2 模型的建立与分析；五、问题3 模型的建立与分析；六、问题4 模型的建立与分析；七、问题5 模型的建立与分析；八、总结与讨论",
+    "source_locations": [
+      "摘要≈p.1",
+      "模型建立≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_A_A10252101_d044db11",
+    "year": 2014,
+    "track": "A",
+    "title": "小鼠视觉感受区电位信号(LFP)与",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "回归拟合",
+      "机理建模",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "多元线性回归"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 32,
+    "section_structure": null,
+    "source_locations": [
+      "模型建立≈p.28",
+      "模型求解≈p.14",
+      "模型评价/改进≈p.31"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_A_A10269049_40837c8f",
+    "year": 2014,
+    "track": "A",
+    "title": "小鼠视觉感受区电位信号(LFP)与视觉刺激之间的关系研",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "回归拟合",
+      "机理建模",
+      "信号处理",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "FastICA",
+      "独立成分分析",
+      "小波变换/小波分析",
+      "航迹规划/协同"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "折线/曲线图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [],
+    "page_count": 35,
+    "section_structure": null,
+    "source_locations": [
+      "模型建立≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_A_A10300065_d60b8860",
+    "year": 2014,
+    "track": "A",
+    "title": "基于ICA 的小鼠视觉感受区电位信号(LFP)与",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "回归拟合",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "独立成分分析"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 4,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [
+      "本文主要的工作在于建立脑电波与行为之间的关系模型，研究视觉感受区电位信"
+    ],
+    "page_count": 41,
+    "section_structure": "一、问题重述；二、基本假设和符号约定；三、呼吸与脑电波的关系；四、脑电波分离；五、模型总结与展望",
+    "source_locations": [
+      "模型建立≈p.5",
+      "模型求解≈p.5"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_A_A10699024_9e77a555",
+    "year": 2014,
+    "track": "A",
+    "title": "小鼠特征脑电波信号分离与相关性分析",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "预测",
+      "仿真",
+      "机理建模",
+      "信号处理",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "小波变换/小波分析",
+      "微分方程/动力学",
+      "航迹规划/协同"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 6,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文建立了关联性模型来研究呼吸曲线与脑电波间的相关性。",
+      "本文首先设计了IIR 巴特沃"
+    ],
+    "page_count": 33,
+    "section_structure": "一. 问题重述；二. 基本假设与符号说明；三. 问题的分析；四. 基于呼吸机理的呼吸脑电波建模；五. 小鼠脑电波与呼吸的关联性模型；六. 小鼠脑电波信号中弱信号的分离与提取模型；七. 模型的评价与推广",
+    "source_locations": [
+      "模型建立≈p.24",
+      "模型求解≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_B_B10006002_1ef9d083",
+    "year": 2014,
+    "track": "B",
+    "title": "机动目标的跟踪与反跟踪（B 题）",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "预测",
+      "仿真",
+      "机理建模",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "卡尔曼滤波",
+      "运动学/插补/S型曲线",
+      "数据插值/拟合曲面",
+      "航迹规划/协同",
+      "无迹卡尔曼UKF"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 8,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 83,
+    "section_structure": "1 问题重述；1\n应给出处理结果。；2 符号说明；3 模型建立；6\n  直角坐标系内的测量方程为；4 卡尔曼状态估计器与预测器；5 问题1：单目标航迹跟踪与机动检测；6 问题2：多目标航迹跟踪与数据关联；2   目标一的门限值 1            50；3   目标二的门限值 2           500；7 问题3：加速度随时间变化目标的机动变化规律分析；4                         测量数据",
+    "source_locations": [
+      "模型建立≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_B_B10248108_8b509ad8",
+    "year": 2014,
+    "track": "B",
+    "title": "机动目标的跟踪与反跟踪问题的数学建模",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "预测",
+      "仿真",
+      "回归拟合",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "卡尔曼滤波",
+      "航迹规划/协同",
+      "无迹卡尔曼UKF"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析",
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 7,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [
+      "本文主要针对机动目标跟踪中机动模型的建立，多目标数据关联以及跟踪-",
+      "本文中设计了三种跟踪模型，分别是扩展卡尔曼滤波（EKF）模型、强跟踪模"
+    ],
+    "page_count": 43,
+    "section_structure": "3\n           第1章  问题重述；4\n        第2章  问题假设和数据处理；6\n        第3章  机动目标的跟踪模型；8\n其中：",
+    "source_locations": [
+      "模型建立≈p.3",
+      "模型求解≈p.1",
+      "模型评价/改进≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_B_B10287028_71054292",
+    "year": 2014,
+    "track": "B",
+    "title": "机动目标的跟踪与反跟踪",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "预测",
+      "仿真",
+      "回归拟合",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "线性规划",
+      "动态规划",
+      "卡尔曼滤波",
+      "数据插值/拟合曲面",
+      "禁忌搜索/启发式",
+      "航迹规划/协同",
+      "无迹卡尔曼UKF"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 43,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "散点/拟合图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [
+      "本文提出了基于启发式动态规划的数据关联算法。该算法动态地处理雷达",
+      "本文建立了基于波束覆盖范围限制的最小化逃逸距离数学优"
+    ],
+    "page_count": 43,
+    "section_structure": "4               雷达对目标1的量测点迹；2                 雷达对目标1的量测点迹",
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_B_B10287032_e0aa9820",
+    "year": 2014,
+    "track": "B",
+    "title": "机动目标的跟踪与反跟踪",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "预测",
+      "回归拟合",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "多元线性回归",
+      "卡尔曼滤波",
+      "数据插值/拟合曲面",
+      "航迹规划/协同",
+      "无迹卡尔曼UKF"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "鲁棒性/稳定性分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 50,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "散点/拟合图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 44,
+    "section_structure": "一、问题的重述；二、问题的假设；三、符号说明；四、问题的分析与建模；五、分析总结",
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_B_B10561006_d8be6abc",
+    "year": 2014,
+    "track": "B",
+    "title": "(⩡㏴༄ъඛ ۉ )",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [],
+    "models_and_algorithms": [
+      "无迹卡尔曼UKF"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": null,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 38,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "low",
+    "notes": "全文抽取乱码（PDF CID 字体编码问题），仅封面题目可读，正文方法/验证待确认"
+  },
+  {
+    "paper_id": "2014_B_B10698001_889ee6e3",
+    "year": 2014,
+    "track": "B",
+    "title": "机动目标的跟踪与反跟踪",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "预测",
+      "回归拟合",
+      "信号处理",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "数据插值/拟合曲面",
+      "航迹规划/协同"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "散点/拟合图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [
+      "本文尝试了2 种模型集设计算法。算法1 的模型集包括匀速模型（CV）、匀加速"
+    ],
+    "page_count": 42,
+    "section_structure": "1\n来进行航迹的起始。；2\n             一 问题重述；6\n           三 模型建立与求解；7\n  而e 和Eq 分别是地球偏心率和地球半径。；2 问题二解答；5                      后续阶段；3\n\n          高度 2；4                        量测航迹；4 问题四解答",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.19"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_B_B90045007_19705f6d",
+    "year": 2014,
+    "track": "B",
+    "title": "机动目标的跟踪与反跟踪",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "预测",
+      "仿真",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "蒙特卡洛模拟",
+      "卡尔曼滤波",
+      "航迹规划/协同"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 5,
+    "figure_types": [
+      "折线/曲线图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 46,
+    "section_structure": "一、问题重述；二、问题假设；三、符号说明；四、问题分析；五、模型的建立与求解；六、模型优缺点分析",
+    "source_locations": [
+      "模型求解≈p.13"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_B_B90059013_036d2c84",
+    "year": 2014,
+    "track": "B",
+    "title": "机动目标的跟踪与反跟踪",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "预测",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "航迹规划/协同"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "仿真/数值验证"
+    ],
+    "figure_count": 20,
+    "figure_types": [
+      "折线/曲线图",
+      "散点/拟合图",
+      "空间/地图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 33,
+    "section_structure": "3\n           目 录；1 问题重述；2 基本假设；3 符号说明；4 数据分析；5 问题一的建模与求解；5                                                                             雷达3；6 问题二的建模与求解；7 问题三的建模与求解；4                       滤波点迹；8 问题四的建模与求解；9 问题五的建模与求解",
+    "source_locations": [
+      "模型建立≈p.1",
+      "模型求解≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_C_C10013006_047daba3",
+    "year": 2014,
+    "track": "C",
+    "title": "无线通信中的快时变信道建模",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "预测",
+      "仿真",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "千-万级",
+    "validation_methods": [],
+    "figure_count": 15,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文建立了快时变信道的基扩展模型，通过分析不"
+    ],
+    "page_count": 27,
+    "section_structure": "1 构造M×N 的B 矩阵复杂度为ሺܯܰ  ሻ；2 计算一次࢈࢒෡需要进行以下矩阵计算；3 预测ࢎ࢒෡复杂度为ሺ ܯܰ  ሻ；2\n则ܧ଴ൌ√2，带入(11)式即得；1\n                                仿真数据1",
+    "source_locations": [
+      "模型建立≈p.5",
+      "模型求解≈p.2",
+      "模型评价/改进≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_C_C10247056_c60357b3",
+    "year": 2014,
+    "track": "C",
+    "title": "无线通信中的快速时变信道建模",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "预测",
+      "仿真",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析",
+      "仿真/数值验证"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "散点/拟合图"
+    ],
+    "innovation_points": [],
+    "page_count": 39,
+    "section_structure": "一、 问题重述；二、 系统模型及符号说明；三、基于基扩展（BEM）的快速时变信道估计算法；四、BEM 估计算法对多普勒频移的鲁棒性分析；五、基于BEM 的基带通信系统",
+    "source_locations": [
+      "模型评价/改进≈p.11"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_C_C10248046_58323f98",
+    "year": 2014,
+    "track": "C",
+    "title": "无线通信中的快时变信道建模",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "预测",
+      "评价",
+      "仿真",
+      "信号处理",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 6,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "提出并尝试Chebyshev-BEM 模型。对比仿真",
+      "本文的亮点在于：在综合现有文献方法的基础上，提出创新性的想法并大胆"
+    ],
+    "page_count": 36,
+    "section_structure": "一、问题背景；二、问题描述；三、专业术语及符号说明；四、问题一；五、问题二；六、问题三；七、总结及展望；八、参考文献；九、致 谢",
+    "source_locations": [
+      "模型建立≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_C_C10286040_c133e1ed",
+    "year": 2014,
+    "track": "C",
+    "title": "无线通信中的快时变信道建模",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "优化",
+      "预测",
+      "仿真",
+      "回归拟合",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "信道建模/多径/OFDM",
+      "光通信/半导体仿真"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析",
+      "仿真/数值验证"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文针对无线通信系统中的快时变信道问题，建立了减少信道参数估计的模"
+    ],
+    "page_count": 28,
+    "section_structure": "一、绪论；二、符号说明；三、问题一分析、建模与求解；四、问题二分析、建模与求解；五、问题三分析与求解；六、结束语",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_C_C10286046_e7c546c0",
+    "year": 2014,
+    "track": "C",
+    "title": "无线通信中的快时变信道建模",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 1,
+    "task_types": [
+      "预测",
+      "仿真",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "信道建模/多径/OFDM",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 5,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "在于：仿真对比了多种BEM 模型，在比较NMSE 的基础上，",
+      "本文的创新点在于：仿真对比了多种BEM 模型，在比较NMSE 的基础上，"
+    ],
+    "page_count": 36,
+    "section_structure": "6                      实际值；2                无                N*1；1\n                                 仿真数据",
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_C_C10291002_cdb514bc",
+    "year": 2014,
+    "track": "C",
+    "title": "无线通信中的快时变信道建模",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "预测",
+      "评价",
+      "仿真",
+      "回归拟合",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "信道建模/多径/OFDM",
+      "光通信/半导体仿真"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析"
+    ],
+    "figure_count": 35,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [],
+    "page_count": 39,
+    "section_structure": "2\n             目  录；4\n           第一章 问题重述；8\n      第二章 名词解释、符号说明与基本假设；1\n                       改进Jakes模型概率密度",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型评价/改进≈p.2"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_C_C10293007_cb30d513",
+    "year": 2014,
+    "track": "C",
+    "title": "无线通信中的快时变信道建模",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "预测",
+      "评价",
+      "仿真",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "仿真/数值验证",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 4,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 28,
+    "section_structure": "一、 问题重述；二、模型假设；三、定义与符号说明；四、模型的建立与求解；五、模型评价与推广；六、参考文献",
+    "source_locations": [
+      "模型建立≈p.6",
+      "模型求解≈p.1",
+      "模型评价/改进≈p.26"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_C_C10558018_891a0df7",
+    "year": 2014,
+    "track": "C",
+    "title": "无线通信中的快时变信道建模",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "预测",
+      "评价",
+      "仿真",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 17,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 28,
+    "section_structure": "一．问题重述；二、基本符号说明；三．问题分析；四．问题一的求解；五．问题二的求解；六．问题三的求解",
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_C_C90005034_382da0d6",
+    "year": 2014,
+    "track": "C",
+    "title": "无线通信中的快时变信道建模",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 3,
+    "task_types": [
+      "预测",
+      "仿真",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "信道建模/多径/OFDM",
+      "光通信/半导体仿真"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析"
+    ],
+    "figure_count": 22,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [],
+    "page_count": 39,
+    "section_structure": "2 个方面：",
+    "source_locations": [
+      "模型建立≈p.10"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_C_C90006014_c1e34599",
+    "year": 2014,
+    "track": "C",
+    "title": "基于基扩展的快时变多径信道建模与估计",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": null,
+    "task_types": [
+      "优化",
+      "预测",
+      "仿真",
+      "信号处理"
+    ],
+    "models_and_algorithms": [
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "鲁棒性/稳定性分析"
+    ],
+    "figure_count": 11,
+    "figure_types": [
+      "折线/曲线图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [],
+    "page_count": 26,
+    "section_structure": "2 快时变多径信道特性分析与建模；2\n时变信道的数字离散化模型。；1                                    功率/dB 10；3 快变信道的基扩展逼近模型；7\n行性能分析和仿真。；4 基于基扩展模型的快变信道估计；5 系统性能分析；6 结论与展望",
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_D_D10247034_309ca20f",
+    "year": 2014,
+    "track": "D",
+    "title": "人体营养健康角度的中国果蔬发展战略研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "回归拟合",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "系统聚类/层次聚类",
+      "多元线性回归",
+      "逻辑回归",
+      "线性规划",
+      "多目标规划/优化",
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析"
+    ],
+    "figure_count": 17,
+    "figure_types": [
+      "流程图/框图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [],
+    "page_count": 53,
+    "section_structure": "5 营养素摄入现状与摄入水平探究；6 居民果蔬人均消费优化方案；2     橘子、大枣；7 问题四模型建立与求解；8 政策建议；9 模型评价",
+    "source_locations": [
+      "模型建立≈p.4",
+      "模型评价/改进≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_D_D10252179_d644288d",
+    "year": 2014,
+    "track": "D",
+    "title": "人体营养健康角度的中国果蔬发展战略研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "仿真",
+      "回归拟合",
+      "机理建模"
+    ],
+    "models_and_algorithms": [
+      "系统聚类/层次聚类",
+      "BP神经网络",
+      "深度学习",
+      "模糊综合评价",
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析",
+      "精度指标(RMSE/R²等)",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 9,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [
+      "快捷体系。6.开展质量认证体系建设。"
+    ],
+    "page_count": 45,
+    "section_structure": "1\n趋于好转，需要加大健康饮食的力度。；2\n             一 问题重述；3\n             二 模型假设；4\n             四 问题分析；9\n                  菠萝、桂圆、荔枝、芒果、木瓜、；1\n                                 原趋势的预测值",
+    "source_locations": [
+      "模型求解≈p.13",
+      "模型检验/验证≈p.14"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_D_D10327003_d420cc5d",
+    "year": 2014,
+    "track": "D",
+    "title": "人体营养健康角度的中国果蔬发展战略研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "预测",
+      "评价",
+      "分类",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "因子分析",
+      "系统聚类/层次聚类",
+      "多元线性回归",
+      "线性规划",
+      "信道建模/多径/OFDM",
+      "数据插值/拟合曲面"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "灵敏度/敏感性分析",
+      "误差/残差分析",
+      "对比/比较分析"
+    ],
+    "figure_count": 13,
+    "figure_types": [
+      "折线/曲线图",
+      "柱状图"
+    ],
+    "innovation_points": [
+      "本文建立线性规划模型，基于2013 年月度数据中某些水果随季节变",
+      "本文建立多目标线性规划模型，以居民购买成本最低和种植者收入最"
+    ],
+    "page_count": 49,
+    "section_structure": "1 问题重述；2 问题分析；3 模型假设；4 模型符号与说明；5 模型的建立与求解；6\n                                     大白菜",
+    "source_locations": [
+      "灵敏度分析≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_D_D10357002_b5f65f8a",
+    "year": 2014,
+    "track": "D",
+    "title": "基于多种智能优化算法和营养健康",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "因子分析",
+      "系统聚类/层次聚类",
+      "灰色预测GM(1,1)",
+      "BP神经网络",
+      "深度学习",
+      "支持向量机SVM",
+      "粒子群算法PSO",
+      "多元线性回归",
+      "多目标规划/优化",
+      "组合预测",
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "灵敏度/敏感性分析",
+      "对比/比较分析",
+      "鲁棒性/稳定性分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 118,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [],
+    "page_count": 75,
+    "section_structure": "二、了解我国居民矿物质、维生素、膳食纤维等营养素摄入现状，结合为；三、不同的蔬菜、水果尽管各种营养素含量各不相同，但营养素的种类大；四、为实现人体营养均衡满足健康需要，国家可能需要对水果和蔬菜各品",
+    "source_locations": [
+      "模型建立≈p.4",
+      "模型求解≈p.1",
+      "灵敏度分析≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_D_D10426016_578bcb92",
+    "year": 2014,
+    "track": "D",
+    "title": "人体营养健康角度的中国果蔬发展战略研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "预测",
+      "评价",
+      "分类",
+      "回归拟合"
+    ],
+    "models_and_algorithms": [
+      "系统聚类/层次聚类",
+      "线性规划"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "灵敏度/敏感性分析",
+      "误差/残差分析",
+      "对比/比较分析",
+      "精度指标(RMSE/R²等)",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 25,
+    "figure_types": [
+      "折线/曲线图",
+      "柱状图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [],
+    "page_count": 51,
+    "section_structure": "一、问题重述；二、模型假设；三、符号说明；四、问题一:模型的建立与求解；五、问题二:模型的建立与求解；六、问题三:模型的建立与求解；七、问题四:模型的建立与求解；八、问题五：果蔬生产与消费策略；九、模型的评价与推广；十、参考文献",
+    "source_locations": [
+      "模型建立≈p.5",
+      "模型求解≈p.23",
+      "灵敏度分析≈p.24",
+      "模型检验/验证≈p.11"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_D_D10615010_2103d72f",
+    "year": 2014,
+    "track": "D",
+    "title": "人体营养健康角度的中国果蔬发展战略研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "系统聚类/层次聚类",
+      "多目标规划/优化",
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 21,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图"
+    ],
+    "innovation_points": [
+      "本文在此背景下，以收集统计数据为基础，建立数学模型解决了以下问题。"
+    ],
+    "page_count": 42,
+    "section_structure": "1 问题的来源；2 问题的分析；3 符号说明；4 模型假设；5 数据预处理；7\n年产量的补充；；6 模型的建立与求解；7 模型评价与推广",
+    "source_locations": [
+      "模型建立≈p.13",
+      "模型求解≈p.1",
+      "模型评价/改进≈p.40"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_D_D11075002_afdac8db",
+    "year": 2014,
+    "track": "D",
+    "title": "人体营养健康角度的中国果蔬发展问题研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类"
+    ],
+    "models_and_algorithms": [
+      "深度学习",
+      "模糊综合评价",
+      "多目标规划/优化"
+    ],
+    "data_modality": "时序/信号",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析",
+      "精度指标(RMSE/R²等)"
+    ],
+    "figure_count": 15,
+    "figure_types": [
+      "对比/雷达图"
+    ],
+    "innovation_points": [
+      "本文建立了时间预测、模糊综合评价等多个模型。",
+      "本文建立了基于0-1 规划的果蔬筛选模型。首先，收集相关数据，并对其进行补",
+      "本文研究结论，向有关部门提出了果蔬种植要有侧重点、"
+    ],
+    "page_count": 51,
+    "section_structure": "1 问题重述；2 模型假设；3 符号说明；4 问题分析；5 问题一 主要水果和蔬菜的相关问题；6                          大白菜真实值；5                            消耗量（吨）；4\n               苹果真实值；2                                           消耗量（吨）；4                                      消耗量（吨）；6 问题二 我国居民营养素摄入相关问题；7 问题三 果蔬产品的消费选择问题",
+    "source_locations": [
+      "模型建立≈p.4",
+      "模型求解≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_D_D11075031_b79d17f4",
+    "year": 2014,
+    "track": "D",
+    "title": "人体营养健康角度的中国果蔬发展战略研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "回归拟合",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "系统聚类/层次聚类",
+      "灰色预测GM(1,1)",
+      "遗传算法",
+      "多元线性回归",
+      "逻辑回归",
+      "线性规划",
+      "整数规划",
+      "多目标规划/优化",
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析",
+      "精度指标(RMSE/R²等)",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 30,
+    "figure_types": [
+      "流程图/框图",
+      "折线/曲线图",
+      "对比/雷达图"
+    ],
+    "innovation_points": [
+      "本文首先建立Logistic 回归模型预测出未来十年人口，并计算",
+      "本文提出了基于研究结论的截至2020 年我国果蔬生产的如下三个调"
+    ],
+    "page_count": 57,
+    "section_structure": "一、问题重述；二、模型假设与符号说明；三、问题分析；四、数据处理；五、问题一的模型建立与解答；六、问题二的模型建立与解答；七、问题三的模型建立与解答；八、问题四的模型建立与求解；九、问题五的解答；十、模型的评价、改进及推广；十一、参考文献",
+    "source_locations": [
+      "模型建立≈p.12",
+      "模型求解≈p.2",
+      "模型检验/验证≈p.24"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_D_D90019003_165d76f8",
+    "year": 2014,
+    "track": "D",
+    "title": "人体营养健康角度的中国果蔬发展战略研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 4,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "仿真",
+      "回归拟合",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "灰色关联分析",
+      "多元线性回归",
+      "多目标规划/优化",
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析"
+    ],
+    "figure_count": 15,
+    "figure_types": [],
+    "innovation_points": [
+      "本文建立了多角度、考虑因素较全面、相对结合国情的一系列模型，意在为"
+    ],
+    "page_count": 58,
+    "section_structure": "一、问题的重述；二、问题的背景；三、合理假设及符号系统；四、问题的分析；五、建模前的准备；六、模型的建立与求解；七、模型优缺点",
+    "source_locations": [
+      "模型建立≈p.7",
+      "模型求解≈p.25"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_D_DK0002_0be29f52",
+    "year": 2014,
+    "track": "D",
+    "title": "D：人体营养健康角度的中国果蔬发展战略研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "预测",
+      "评价",
+      "分类",
+      "回归拟合",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "灰色预测GM(1,1)",
+      "模糊综合评价",
+      "多元线性回归",
+      "信道建模/多径/OFDM"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "误差/残差分析",
+      "对比/比较分析",
+      "精度指标(RMSE/R²等)",
+      "模型检验/显著性检验"
+    ],
+    "figure_count": 27,
+    "figure_types": [
+      "折线/曲线图",
+      "散点/拟合图"
+    ],
+    "innovation_points": [],
+    "page_count": 50,
+    "section_structure": "一、合理地选择种植品种；二、引导居民理性消费；三、调控进出口贸易",
+    "source_locations": [
+      "模型求解≈p.1"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_E_E10079020_6ec70e72",
+    "year": 2014,
+    "track": "E",
+    "title": "乘用车物流运输计划问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "评价",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "线性规划",
+      "整数规划"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "灵敏度/敏感性分析"
+    ],
+    "figure_count": 5,
+    "figure_types": [],
+    "innovation_points": [
+      "本文构建“每种类型轿运车的满载方案”作为模型的决策对象，使得轿运",
+      "本文设计的冗余上限验证法的验证（13 页，17 页），证"
+    ],
+    "page_count": 32,
+    "section_structure": "一、问题重述；二、安全车距数据处理；三、问题分析；四、模型假设与符号说明；五、模型建立；六、模型的评价与改进",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.3",
+      "灵敏度分析≈p.14",
+      "模型评价/改进≈p.18"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_E_E10287023_da6704ec",
+    "year": 2014,
+    "track": "E",
+    "title": "乘用车物流运输计划问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "分类"
+    ],
+    "models_and_algorithms": [
+      "整数规划"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 1,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [],
+    "page_count": 23,
+    "section_structure": "一、问题重述；二、基本假设；三、参数与符号说明；四、问题分析；五、建立模型的准备；六、问题一到问题三的模型建立与求解；七、问题四的模型建立与求解；八、问题五的模型建立与求解；九、模型的改进与优缺点分析",
+    "source_locations": [
+      "模型建立≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_E_E10294001_dadc7831",
+    "year": 2014,
+    "track": "E",
+    "title": "轿运车装载和运输的数学建模",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "整数规划",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 4,
+    "figure_types": [
+      "折线/曲线图"
+    ],
+    "innovation_points": [],
+    "page_count": 42,
+    "section_structure": "一、 问题重述；二、 问题分析；三、 模型假设；四、 符号系统；五、 模型建立；六、 模型分析；七、 模型推广；八、 结论；九、 参考文献",
+    "source_locations": [
+      "模型建立≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_E_E10404005_5dd7bf55",
+    "year": 2014,
+    "track": "E",
+    "title": "乘用车物流运输计划问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "图论/最短路",
+      "线性规划",
+      "动态规划",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 5,
+    "figure_types": [
+      "流程图/框图",
+      "空间/地图"
+    ],
+    "innovation_points": [],
+    "page_count": 34,
+    "section_structure": "1 问题重述；3\n型的乘用车39 辆。；2 模型假设；3 符号说明；4 问题分析；5 模型的建立与求解；6 模型的评价；7 参考文献",
+    "source_locations": [
+      "模型建立≈p.4",
+      "模型求解≈p.18"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_E_E10477002_373df8cf",
+    "year": 2014,
+    "track": "E",
+    "title": "乘用车物流运输计划问题的探究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "整数规划",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 1,
+    "figure_types": [],
+    "innovation_points": [
+      "首次超越美国，成为世界汽车产销第一大国。2010 年，我国车市在购置税"
+    ],
+    "page_count": 46,
+    "section_structure": "一.问题背景；二.问题重述；三.问题分析；四.模型的建立和求解；五、模型评价与拓展",
+    "source_locations": [
+      "模型建立≈p.5",
+      "模型评价/改进≈p.37"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_E_E10613031_3e777eea",
+    "year": 2014,
+    "track": "E",
+    "title": "乘用车物流运输计划问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "空间图",
+      "控制决策"
+    ],
+    "models_and_algorithms": [
+      "整数规划"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 6,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [],
+    "page_count": 48,
+    "section_structure": "5\n运载方案约束",
+    "source_locations": [
+      "模型建立≈p.10"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_E_E10699014_63ae8d66",
+    "year": 2014,
+    "track": "E",
+    "title": "乘用车物流运输的最优规划",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "评价",
+      "分类",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "图论/最短路",
+      "线性规划",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "千-万级",
+    "validation_methods": [
+      "对比/比较分析"
+    ],
+    "figure_count": 14,
+    "figure_types": [],
+    "innovation_points": [
+      "本文对其进行建模并提出“车板”和“车板效率”",
+      "本文又建立了基于确定线路的整数线性规划模型，"
+    ],
+    "page_count": 41,
+    "section_structure": "1 问题重述；2 问题分析；3 符号说明；7\n                 轿运车车型（Type）；4 轿运车装载问题的解决；5 问题四的求解；6 问题五的求解；7 模型评价",
+    "source_locations": [
+      "模型建立≈p.24",
+      "模型求解≈p.26",
+      "模型评价/改进≈p.3"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_E_E10700002_286f2dd0",
+    "year": 2014,
+    "track": "E",
+    "title": "乘用车物流运输计划问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化",
+      "空间图"
+    ],
+    "models_and_algorithms": [
+      "整数规划",
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 9,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [],
+    "page_count": 37,
+    "section_structure": "一、 问题重述；二、 模型假设；三、 基本符号说明；四、 问题分析；五、 问题求解与算法设计；六、 通用性算法检验与测试；七、 模型的评价与推广；八、 参考文献；九、 附件",
+    "source_locations": [
+      "模型建立≈p.16",
+      "模型求解≈p.35"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_E_E10700006_4b354531",
+    "year": 2014,
+    "track": "E",
+    "title": "乘用车物流运输计划问题",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "优化"
+    ],
+    "models_and_algorithms": [
+      "线性规划"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 4,
+    "figure_types": [
+      "流程图/框图"
+    ],
+    "innovation_points": [],
+    "page_count": 34,
+    "section_structure": "一、 问题重述；二、问题假设；三、符号说明；四、模型的建立与求解；五、模型的评价",
+    "source_locations": [
+      "模型建立≈p.2",
+      "模型求解≈p.4"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "paper_id": "2014_E_E90019007_2ae90391",
+    "year": 2014,
+    "track": "E",
+    "title": "乘用车物流运输计划问题研究",
+    "award_level": "待确认",
+    "award_confidence": "unknown",
+    "problem_count": 5,
+    "task_types": [
+      "评价"
+    ],
+    "models_and_algorithms": [
+      "禁忌搜索/启发式"
+    ],
+    "data_modality": "结构化",
+    "data_scale": "小样本/题设数据",
+    "validation_methods": [],
+    "figure_count": 12,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 37,
+    "section_structure": "一、问题的重述；二、合理假设及符号系统；三、问题的分析；四、建模前的准备；五、模型的建立与求解；六、模型的评价与推广",
+    "source_locations": [
+      "模型求解≈p.11"
+    ],
+    "confidence": "medium",
+    "notes": ""
+  }
+]

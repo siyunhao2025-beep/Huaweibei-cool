@@ -1,0 +1,13 @@
+{
+  "kind": "TrajectoryProjection",
+  "data": "DEMO_PREVIEW_ONLY",
+  "rows": 600,
+  "statistics": {
+    "n": 600,
+    "endpoint": [
+      1.45238934211693,
+      -1.4229311671513829e-15,
+      -2.2043642384652358e-16
+    ]
+  }
+}

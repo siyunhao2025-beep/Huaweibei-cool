@@ -1,0 +1,122 @@
+{
+  "paper_id": "2024_B_B24116640167",
+  "year": 2024,
+  "track": "B",
+  "title": "WLAN 组网中网络吞吐量建模",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 3,
+  "task_types": [
+    "回归预测",
+    "回归映射",
+    "系统预测"
+  ],
+  "models_and_algorithms": [
+    "Pearson相关性",
+    "随机森林",
+    "LSTM",
+    "多元线性回归",
+    "梯度下降",
+    "SVM三种核函数",
+    "决策树"
+  ],
+  "data_modality": "结构化",
+  "data_scale": "万级",
+  "validation_methods": [
+    "Pearson相关分析",
+    "RF vs LSTM 对比",
+    "验证集选最优",
+    "三种核函数SVM对比"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "相关性热力图",
+    "RF/LSTM 训练曲线",
+    "特征筛选流程"
+  ],
+  "innovation_points": [
+    "问题一用 RF 与 LSTM 对比预测 AP 发送机会",
+    "问题二 RF/多元线性/LSTM 三模型预测 PHY Rate，通过(MCS,NSS)组合表映射",
+    "问题三 RF/三种核SVM/LSTM 预测系统吞吐量并通过验证集选最优"
+  ],
+  "page_count": 69,
+  "section_structure": "问题分析与数据预处理/模型假设/问题一~三/模型评价/附录",
+  "source_locations": [
+    "p.1-2 摘要"
+  ],
+  "confidence": "high",
+  "notes": "题B，ML+DL混合路线。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "相关性分析",
+      "main_model": "RF vs LSTM 预测AP发送机会",
+      "improvement": "验证集选最优",
+      "why_switch": "需量化多因素影响"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "直接回归",
+      "main_model": "RF/多元线性/LSTM 预测PHY Rate再映射(MCS,NSS)",
+      "improvement": "梯度下降优化",
+      "why_switch": "RSSI/门限到PHY Rate非线性"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "单模型",
+      "main_model": "RF/三种核SVM/LSTM 预测吞吐量",
+      "improvement": "验证集选最优",
+      "why_switch": "吞吐量综合影响因素多"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "RSSI 与 PHY Rate 映射",
+    "MCS+NSS 组合表"
+  ],
+  "objective_function": "min 吞吐量 MSE",
+  "evaluation_metrics": [
+    "MSE",
+    "特征重要性",
+    "验证集对比"
+  ],
+  "algorithm_details_and_complexity": "RF 与 LSTM 对比；三种核 SVM",
+  "independent_validation_design": "验证集选最优模型",
+  "sensitivity_robustness_ablation": [
+    "RF vs LSTM",
+    "三种核函数SVM对比"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "随着无线局域网(WLAN)的普及，在高密度部署环境中，由于节点密度的不断增大，导致了网络中的干扰、冲突等问题变得更加严重。",
+    "method_sentence": "Pearson+RF+LSTM / RF+多元线性+LSTM / RF+三核SVM+LSTM",
+    "result_sentence": "验证集选最优并预测测试集",
+    "numbers_presentation": "未给具体数字"
+  },
+  "figure_narrative_order": [
+    "WLAN背景",
+    "相关性热力图",
+    "RF/LSTM 对比",
+    "PHY Rate 映射",
+    "吞吐量预测"
+  ],
+  "judge_high_score_reasons": [
+    "RF/LSTM 时序与表格双模型对比",
+    "三种核SVM展示对核函数敏感性",
+    "PHY Rate→(MCS,NSS)组合表映射工程清晰"
+  ],
+  "reusable_patterns": [
+    "表格模型 vs 时序模型对比",
+    "连续量映射到离散组合表",
+    "验证集选最优"
+  ],
+  "transferable_ability_card_candidates": [
+    "LSTM",
+    "SVM核函数",
+    "PHY Rate映射"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "问题一": "p.8-17",
+    "问题二": "p.20-35",
+    "问题三": "p.40-55"
+  }
+}

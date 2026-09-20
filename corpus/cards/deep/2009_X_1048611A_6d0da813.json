@@ -1,0 +1,89 @@
+{
+  "paper_id": "2009_X_1048611A_6d0da813",
+  "year": 2009,
+  "track": null,
+  "track_confidence": "low",
+  "title": "我国城镇登记失业率的数学建模与预测",
+  "award_level": "优秀论文",
+  "award_confidence": "low",
+  "per_question_method_chain": [
+    {
+      "question_id": "Q1",
+      "baseline": "定性分析",
+      "main_model": "主成分分析(PCA)降维",
+      "improvement": "11指标→3主成分",
+      "why_switch": "指标间共线性严重"
+    },
+    {
+      "question_id": "Q2",
+      "baseline": "多元线性回归/逐步回归",
+      "main_model": "PCA+BP神经网络",
+      "improvement": "与MLR/逐步回归/最小二乘对比",
+      "why_switch": "失业率与因素非线性"
+    },
+    {
+      "question_id": "Q3",
+      "baseline": "全国统一模型",
+      "main_model": "分地区19指标PCA-BP",
+      "improvement": "6地区差异化模型",
+      "why_switch": "地区差异大"
+    },
+    {
+      "question_id": "Q4",
+      "baseline": "历史趋势外推",
+      "main_model": "政策情景+月度/季度数据预测",
+      "improvement": "2009=4.25%, 2010H1=4.14%",
+      "why_switch": "需结合政策规划"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "PCA: 主成分=∑a_i·x_i",
+    "BP网络: 输入层-隐层-输出层",
+    "假设经济指标线性影响主成分"
+  ],
+  "objective_function": "min 预测误差（MAPE=1.23%）",
+  "evaluation_metrics": [
+    "平均绝对误差1.23%",
+    "相关系数0.9977",
+    "R²"
+  ],
+  "algorithm_details_and_complexity": "PCA降维+BP反向传播，O(n·h·m)迭代",
+  "independent_validation_design": "与多元线性回归/逐步回归/最小二乘对比",
+  "sensitivity_robustness_ablation": [
+    "不同隐层节点数对比",
+    "不同主成分个数对比"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "建立PCA-BP神经网络预测城镇登记失业率",
+    "method_sentence": "PCA降维+BP神经网络+与MLR/逐步回归对比",
+    "result_sentence": "绝对平均误差1.23%，相关系数0.9977，2009=4.25%",
+    "numbers_presentation": "误差+相关系数+预测值三连"
+  },
+  "figure_narrative_order": [
+    "指标相关性热力图",
+    "PCA碎石图",
+    "BP预测拟合对比图",
+    "分地区预测对比",
+    "2009-2010预测曲线"
+  ],
+  "judge_high_score_reasons": [
+    "PCA+BP组合经典：降维解决共线性，网络解决非线性",
+    "多模型横向对比（4种）证明BP优",
+    "分地区差异化建模体现深入"
+  ],
+  "reusable_patterns": [
+    "经济指标预测→PCA降维+BP网络（来自1篇论文支持）",
+    "多模型对比选优范式"
+  ],
+  "transferable_ability_card_candidates": [
+    "经济预测卡：指标筛选→PCA降维→BP/回归对比→分地区建模→情景预测"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "PCA": "p.5-15",
+    "BP建模": "p.16-30",
+    "分地区": "p.31-50",
+    "预测": "p.51-65"
+  },
+  "confidence": "high"
+}

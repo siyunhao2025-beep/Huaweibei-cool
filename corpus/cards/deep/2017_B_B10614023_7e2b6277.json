@@ -1,0 +1,128 @@
+{
+  "paper_id": "2017_B_B10614023_7e2b6277",
+  "year": 2017,
+  "track": "B",
+  "title": "面向下一代光通信的VCSEL 激光器仿真模型",
+  "award_level": "待确认",
+  "award_confidence": "unknown",
+  "problem_count": 4,
+  "task_types": [
+    "预测",
+    "评价",
+    "回归拟合"
+  ],
+  "models_and_algorithms": [
+    "光通信/半导体仿真"
+  ],
+  "data_modality": "时序/信号",
+  "data_scale": "小样本/题设数据",
+  "validation_methods": [
+    "灵敏度/敏感性分析",
+    "误差/残差分析",
+    "对比/比较分析",
+    "精度指标(RMSE/R²等)"
+  ],
+  "figure_count": 24,
+  "figure_types": [
+    "折线/曲线图",
+    "散点/拟合图"
+  ],
+  "innovation_points": [],
+  "page_count": 75,
+  "section_structure": "一、问题重述与分析；二、模型假设与符号说明；三、问题1 模型的建立与求解；四、问题2 模型的建立与求解；五、问题3 模型的建立与求解；六、问题4 模型的建立与求解；六、模型评价",
+  "source_locations": [
+    "模型建立≈p.2",
+    "模型求解≈p.6",
+    "模型评价/改进≈p.2"
+  ],
+  "confidence": "high",
+  "notes": "2017年B题(VCSEL)，误差诊断-改进范式典型，定量精度好",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题1",
+      "baseline": "经典L-I模型",
+      "main_model": "最小二乘回归+Adagerd算法估参数",
+      "improvement": "得不同温度L-I曲线与最高工作温度39.3℃",
+      "why_switch": "经典模型误差大(MSE 4.9e-6)"
+    },
+    {
+      "question_id": "问题2",
+      "baseline": "问题1模型",
+      "main_model": "诊断三类误差(零值/过拟合/局部最优)",
+      "improvement": "ReLU修正+权重参数+正则项+Adam+初始化偏差修正",
+      "why_switch": "针对误差根因逐一对症下药，MSE降到4.8e-8，误差率降15.98%"
+    },
+    {
+      "question_id": "问题3",
+      "baseline": "经验带宽",
+      "main_model": "基于速率方程建带宽模型，LM算法估参",
+      "improvement": "分析G0/ηi/ε/τ对S21影响，给增带宽方案",
+      "why_switch": "需知参数如何影响带宽"
+    },
+    {
+      "question_id": "问题4",
+      "baseline": "完整带宽模型",
+      "main_model": "提出Faster SSECM快速小信号等效带宽模型，4种构造",
+      "improvement": "taoY构造100%保精度耗时缩至0.001261s(加速50.65%)",
+      "why_switch": "在不损精度下降复杂度"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "L-I特性:光功率-电流关系",
+    "LM(Levenberg-Marquardt):阻尼最小二乘迭代",
+    "ReLU max(0,x)修正零值干扰",
+    "速率方程推带宽S21"
+  ],
+  "objective_function": "min MSE(模型预测-实测)；在保精度下min运行时间",
+  "evaluation_metrics": [
+    "MSE",
+    "误差率",
+    "3dB/10dB带宽",
+    "运行时间/加速比",
+    "精度保持率"
+  ],
+  "algorithm_details_and_complexity": "LM阻尼最小二乘；4种Faster SSECM构造对比；复杂度从完整模型降到0.001261s",
+  "independent_validation_design": "问题1 vs 问题2改进模型MSE对比(4.9e-6→4.8e-8)；4种带宽构造精度/时间对比",
+  "sensitivity_robustness_ablation": [
+    "对L-I初始值敏感(自承缺点)",
+    "对G0/ηi/ε/τ做参数敏感性找增带宽方向",
+    "4种构造精度-时间权衡"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "L-I模型和带宽模型是VCSEL研究重点。",
+    "method_sentence": "最小二乘+Adagerd，ReLU/权重/正则/Adam改进L-I，LM建带宽，Faster SSECM降复杂度",
+    "result_sentence": "误差率从18.16%降到2.18%，taoY加速50.65%且100%保精度",
+    "numbers_presentation": "MSE、误差率、温度、带宽、时间"
+  },
+  "figure_narrative_order": [
+    "L-I曲线",
+    "误差原因诊断",
+    "改进L-I对比",
+    "S21带宽响应",
+    "Faster SSECM 4构造对比"
+  ],
+  "judge_high_score_reasons": [
+    "误差根因诊断→逐项改进的科学范式",
+    "对自己模型缺点(初始值敏感)诚实",
+    "精度-加速权衡定量"
+  ],
+  "reusable_patterns": [
+    "误差诊断→对症改进",
+    "LM非线性参数拟合",
+    "高精度低复杂度模型简化",
+    "参数敏感性找设计方向"
+  ],
+  "transferable_ability_card_candidates": [
+    "LM参数估计",
+    "ReLU正则改进回归",
+    "模型降复杂度加速",
+    "半导体器件建模"
+  ],
+  "page_locations": {
+    "摘要": "p.2-3",
+    "问题1 L-I": "≈p.8-14",
+    "问题2改进": "≈p.15-28",
+    "问题3带宽": "≈p.30-45",
+    "问题4 Faster SSECM": "≈p.46-60"
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "paper_id": "2024_A_A24103530117",
+  "year": 2024,
+  "track": "A",
+  "title": "风电场有功功率优化分配",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 4,
+  "task_types": [
+    "时序分段",
+    "回归",
+    "MPC滚动优化",
+    "鲁棒优化"
+  ],
+  "models_and_algorithms": [
+    "自适应动态三阶段滑动窗口",
+    "AB对抗算法",
+    "改进雨流计数",
+    "非线性回归(含交互项)",
+    "网格搜索",
+    "Pareto前沿",
+    "MPC模型预测控制",
+    "卡尔曼滤波",
+    "延迟补偿",
+    "粒子群鲁棒优化对比"
+  ],
+  "data_modality": "时序",
+  "data_scale": "万级",
+  "validation_methods": [
+    "与附件1参考数据对比",
+    "拟合度0.8632",
+    "分区域滚动时域结果可视化",
+    "PSO鲁棒优化对比"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "滑动窗口分段示意",
+    "应力拟合对比",
+    "MPC滚动时域动图",
+    "Pareto前沿"
+  ],
+  "innovation_points": [
+    "自适应动态三阶段滑动窗口+AB对抗搜索窗口参数，实现时序数据分段",
+    "Pareto前沿将多目标功率分配转化为权重自适应 MPC 模型",
+    "按风速波动分区进行滚动时域优化，并对比 PSO 鲁棒优化"
+  ],
+  "page_count": 73,
+  "section_structure": "前言/问题一~八求解/模型总结与评价/参考文献/附录代码",
+  "source_locations": [
+    "p.1-2 摘要",
+    "p.62 模型总结"
+  ],
+  "confidence": "high",
+  "notes": "题A，MPC+卡尔曼滤波路线。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "固定窗长雨流计数",
+      "main_model": "自适应动态三阶段滑动窗口+AB对抗搜索+改进雨流",
+      "improvement": "子段并行计算每秒疲劳损伤",
+      "why_switch": "固定窗长无法适应载荷波动"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "线性受力分析",
+      "main_model": "物理理论+数据驱动非线性回归(引入非线性项与交互项)",
+      "improvement": "三种分段拟合策略+网格搜索",
+      "why_switch": "风速波动下线性模型失准"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "平均分配/常规多目标优化",
+      "main_model": "Pareto前沿+权重自适应MPC+按风速分区滚动时域",
+      "improvement": "生成每秒实时功率分配动图",
+      "why_switch": "高维多目标实时分配需滚动优化"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "问题三直接使用",
+      "main_model": "卡尔曼滤波去噪+延迟补偿+分区域MPC鲁棒优化",
+      "improvement": "对比 PSO 鲁棒优化",
+      "why_switch": "噪声与通信延迟破坏 MPC 稳定性"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "MPC 滚动时域：min J=Σ‖y-y_ref‖²+λ‖Δu‖²",
+    "非线性回归引入交互项 f(x1,x2)=β0+β1x1+β2x2+β3x1x2+...",
+    "Pareto 前沿将多目标转化为权重自适应单目标"
+  ],
+  "objective_function": "min 全场累积疲劳损伤（MPC 滚动时域内）",
+  "evaluation_metrics": [
+    "与附件1参考数据增长趋势一致",
+    "应力拟合度 R=0.8632",
+    "分区滚动实时性",
+    "PSO 鲁棒优化对比"
+  ],
+  "algorithm_details_and_complexity": "自适应三阶段滑动窗配合 AB 对抗搜索；MPC 每步滚动求解；卡尔曼滤波 O(n)",
+  "independent_validation_design": "问题二拟合度 0.8632 与参考值对比；问题四 PSO 鲁棒优化作为对比模型",
+  "sensitivity_robustness_ablation": [
+    "问题一自适应窗 vs 固定窗对比",
+    "问题四 PSO 鲁棒优化 vs 所提分区域 MPC 鲁棒优化对比"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "随着我国大规模风电场的投入使用，风电产业面临着疲劳损伤加速和维护成本增加的挑战。",
+    "method_sentence": "自适应三阶段滑动窗+改进雨流 / 物理+数据非线性回归 / Pareto+MPC滚动 / 卡尔曼+延迟补偿+鲁棒优化",
+    "result_sentence": "应力拟合度0.8632；分区域MPC成功应对噪声与延迟",
+    "numbers_presentation": "给出拟合度 0.8632 等定量指标"
+  },
+  "figure_narrative_order": [
+    "三阶段滑动窗示意",
+    "AB对抗搜索",
+    "应力-风速-功率非线性拟合",
+    "分区MPC滚动动图",
+    "PSO vs MPC鲁棒对比"
+  ],
+  "judge_high_score_reasons": [
+    "问题一'自适应窗+AB对抗搜索'在窗口参数选取上有工程新意",
+    "问题三 MPC+分区滚动是工业界主流实时优化路线，落地性强",
+    "问题四用 PSO 鲁棒优化做对比模型，严谨性好"
+  ],
+  "reusable_patterns": [
+    "时序分段用自适应滑动窗+元启发式搜窗参数",
+    "多目标→权重自适应单目标→MPC 滚动求解",
+    "噪声用卡尔曼、延迟用补偿、鲁棒用最差场景的三件套",
+    "对比模型(PSO)验证所提 MPC 路线"
+  ],
+  "transferable_ability_card_candidates": [
+    "MPC 滚动优化",
+    "卡尔曼滤波",
+    "自适应滑动窗",
+    "Pareto 多目标"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "三阶段滑动窗": "p.11-18",
+    "MPC": "p.35-50",
+    "鲁棒优化": "p.55-62",
+    "模型总结": "p.62"
+  }
+}

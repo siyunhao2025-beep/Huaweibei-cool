@@ -1,0 +1,74 @@
+{
+  "paper_id": "2004_X_目标定位最优布局的研究（王郑耀，汪洪武，杨敏）",
+  "year": 2004,
+  "track": null,
+  "track_confidence": "low",
+  "title": "目标定位最优布局的研究",
+  "award_level": "优秀论文",
+  "award_confidence": "low",
+  "per_question_method_chain": [
+    {
+      "question_id": "Q1",
+      "baseline": "均匀网格布点",
+      "main_model": "基于覆盖概率的离散优化模型",
+      "improvement": "引入遗传算法求解最优布点",
+      "why_switch": "均匀网格无法在给定区域数下最大化覆盖范围"
+    },
+    {
+      "question_id": "Q2",
+      "baseline": "单一目标函数",
+      "main_model": "多目标优化（覆盖范围+重叠率+成本）",
+      "improvement": "Pareto最优权衡",
+      "why_switch": "实际布局需同时考虑覆盖与冗余"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "覆盖函数 f(r)=exp(-r²/2σ²) 类指数衰减",
+    "假设各传感器独立探测",
+    "目标区域离散化为网格点"
+  ],
+  "objective_function": "max 总覆盖概率 - λ·重叠冗余 - μ·部署成本",
+  "evaluation_metrics": [
+    "覆盖率",
+    "重叠率",
+    "部署成本"
+  ],
+  "algorithm_details_and_complexity": "遗传算法编码为布局坐标向量，O(G·P·N) 复杂度",
+  "independent_validation_design": "网格点穷举对比局部最优",
+  "sensitivity_robustness_ablation": [
+    "传感器探测半径敏感性分析"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "针对目标定位布局问题建立覆盖优化模型",
+    "method_sentence": "采用遗传算法求解多目标布点",
+    "result_sentence": "给出最优布局方案",
+    "numbers_presentation": "覆盖率提升百分比"
+  },
+  "figure_narrative_order": [
+    "问题示意图",
+    "覆盖函数曲线",
+    "迭代收敛曲线",
+    "最优布局图"
+  ],
+  "judge_high_score_reasons": [
+    "将抽象布局问题转化为可计算的覆盖概率模型",
+    "多目标权衡而非单目标",
+    "算法可复现"
+  ],
+  "reusable_patterns": [
+    "空间布局问题→覆盖函数+优化算法（来自1篇论文支持）",
+    "多目标Pareto权衡思路"
+  ],
+  "transferable_ability_card_candidates": [
+    "空间覆盖优化能力卡：覆盖函数定义→多目标建模→GA/PSO求解",
+    "适用条件：传感器/基站/监测点布局"
+  ],
+  "page_locations": {
+    "摘要": "p.1",
+    "模型建立": "p.5-12",
+    "算法求解": "p.13-20",
+    "结果": "p.21-28"
+  },
+  "confidence": "medium",
+  "notes": "早期论文无标准摘要格式，页码为估算"
+}

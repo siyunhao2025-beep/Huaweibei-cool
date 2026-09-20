@@ -1,0 +1,95 @@
+{
+  "paper_id": "2010_X_10422016_8ef15332",
+  "year": 2010,
+  "track": null,
+  "track_confidence": "low",
+  "title": "基于多分类器集成的神经元特征选择及分类",
+  "award_level": "优秀论文",
+  "award_confidence": "low",
+  "per_question_method_chain": [
+    {
+      "question_id": "Q1",
+      "baseline": "全特征输入",
+      "main_model": "差分特征选择",
+      "improvement": "43几何特征→强判别子集",
+      "why_switch": "特征冗余"
+    },
+    {
+      "question_id": "Q1",
+      "baseline": "单分类器",
+      "main_model": "差分KNN+决策树+SVM集成",
+      "improvement": "三分类器投票",
+      "why_switch": "单分类器不稳定"
+    },
+    {
+      "question_id": "Q2",
+      "baseline": "已知类封闭",
+      "main_model": "类边界距离参数",
+      "improvement": "发现新神经元类别",
+      "why_switch": "开放集识别"
+    },
+    {
+      "question_id": "Q3",
+      "baseline": "固定知识库",
+      "main_model": "反馈学习策略",
+      "improvement": "启发式新类命名",
+      "why_switch": "需在线更新"
+    },
+    {
+      "question_id": "Q5",
+      "baseline": "静态分类",
+      "main_model": "Burke算法+Markov M随机采样仿真",
+      "improvement": "神经元生长预测",
+      "why_switch": "需动态建模"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "差分特征选择评分",
+    "Markov M生长转移概率",
+    "假设神经元生长为随机过程"
+  ],
+  "objective_function": "max 分类准确率 / min 生长预测误差",
+  "evaluation_metrics": [
+    "分类准确率",
+    "新类发现率",
+    "生长拟合误差"
+  ],
+  "algorithm_details_and_complexity": "差分选择+三分类器投票+Markov链仿真",
+  "independent_validation_design": "训练集C验证+跨物种验证",
+  "sensitivity_robustness_ablation": [
+    "特征数敏感性",
+    "分类器权重敏感性"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "提出鲁棒的神经元几何特征选择与多分类模型",
+    "method_sentence": "差分特征选择+KNN/决策树/SVM集成+Markov生长仿真",
+    "result_sentence": "正确分类并发现新类",
+    "numbers_presentation": "43特征"
+  },
+  "figure_narrative_order": [
+    "神经元三维形态",
+    "特征分布",
+    "分类器集成架构",
+    "新类边界",
+    "生长仿真"
+  ],
+  "judge_high_score_reasons": [
+    "集成学习三分类器投票",
+    "开放集新类发现（类边界距离）",
+    "从分类延伸到生长预测"
+  ],
+  "reusable_patterns": [
+    "高维生物信号→特征选择+集成分类（来自1篇论文支持）"
+  ],
+  "transferable_ability_card_candidates": [
+    "神经元/细胞分类卡：几何特征提取→差分选择→KNN+DT+SVM集成→开放集新类发现→Markov生长仿真"
+  ],
+  "page_locations": {
+    "摘要": "p.1",
+    "特征选择": "p.5-15",
+    "集成分类": "p.16-30",
+    "新类发现": "p.31-38",
+    "生长仿真": "p.39-45"
+  },
+  "confidence": "high"
+}

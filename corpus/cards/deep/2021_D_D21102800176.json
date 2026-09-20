@@ -1,0 +1,89 @@
+{
+  "paper_id": "2021_D_D21102800176",
+  "year": 2021,
+  "track": "D",
+  "title": "抗乳腺癌候选药物的优化建模",
+  "confidence": "high",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一(特征筛选)",
+      "baseline": "单一方法筛选",
+      "main_model": "方差信息过滤→类内/类间相关性分步冗余过滤→四法(Spearman/距离相关/随机森林/弹性网)集成排序选20",
+      "improvement": "分步集成",
+      "why_switch": "单法不稳定；分步过滤降维再集成重要性鲁棒选变量"
+    },
+    {
+      "question_id": "问题二(活性回归)",
+      "baseline": "Stacking集成",
+      "main_model": "深度森林Deep Forest+TPE调参，对比Stacking",
+      "improvement": "Deep Forest更准且更快",
+      "why_switch": "Stacking训练慢；Deep Forest性能更高训练时间更短"
+    },
+    {
+      "question_id": "问题三(ADMET分类)",
+      "baseline": "普通分类器",
+      "main_model": "原型网络小样本学习+神经网络嵌入函数，Borderline-SMOTE解不平衡",
+      "improvement": "小样本元学习",
+      "why_switch": "ADMET类别不平衡且样本少；原型网络适合小样本，SMOTE处理不平衡"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "1974化合物729描述符",
+    "无关过滤后341维→类间冗余137维",
+    "四法集成重要性",
+    "Borderline-SMOTE过采样",
+    "TPE超参优化",
+    "MIV解释"
+  ],
+  "objective_function": "选≤20描述符同时预测ERα活性与ADMET，兼顾活性与药代安全",
+  "evaluation_metrics": [
+    "20变量代表性经主流ML回归验证",
+    "Deep Forest性能高且训练快",
+    "ADMET类别不平衡处理"
+  ],
+  "algorithm_details_and_complexity": "分步集成特征筛选→Deep Forest回归→原型网络小样本分类",
+  "independent_validation_design": "集成筛选变量送入主流ML回归对比验证代表性；Deep Forest与Stacking详细对比实验",
+  "sensitivity_robustness_ablation": [
+    "集成筛选 vs 单法筛选对比",
+    "Deep Forest vs Stacking性能/时间",
+    "Borderline-SMOTE前后分类精度"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "用QSAR模型筛选活性化合物同时保证ADMET性质",
+    "method_sentence": "分步冗余过滤+四法集成选20变量，Deep Forest回归，原型网络小样本分类",
+    "result_sentence": "Deep Forest性能更高且训练更短，原型网络解ADMET小样本",
+    "numbers_presentation": "用维度变化729→341→137→20体现筛选漏斗"
+  },
+  "figure_narrative_order": [
+    "分步筛选流程图",
+    "四法集成重要性排序",
+    "Deep Forest结构图",
+    "原型网络嵌入可视化"
+  ],
+  "judge_high_score_reasons": [
+    "特征筛选做成'分步过滤+四法集成'流水线，鲁棒且可解释",
+    "回归用Deep Forest替代Stacking，兼顾性能与效率",
+    "ADMET小样本分类想到原型网络+SMOTE，问题理解到位",
+    "MIV做模型解释，不止报精度"
+  ],
+  "reusable_patterns": [
+    "分步冗余过滤+多法集成选变量",
+    "Deep Forest替代重型集成",
+    "小样本原型网络+Borderline-SMOTE"
+  ],
+  "transferable_ability_card_candidates": [
+    "QSAR活性预测",
+    "集成特征选择",
+    "小样本分类"
+  ],
+  "page_locations": {
+    "摘要": "p2-3",
+    "深度森林": "p30-34",
+    "原型网络": "p41-46",
+    "Borderline-SMOTE": "p42",
+    "模型评价": "p64"
+  },
+  "notes": "数模之星提名奖",
+  "award_level": "一等奖",
+  "award_confidence": "high"
+}

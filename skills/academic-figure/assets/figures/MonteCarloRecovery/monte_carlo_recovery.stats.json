@@ -1,0 +1,11 @@
+{
+  "kind": "MonteCarloRecovery",
+  "data": "DEMO_PREVIEW_ONLY",
+  "rows": 900,
+  "statistics": {
+    "n": 900,
+    "bias": -0.010406674545560008,
+    "rmse": 0.1494729437153594,
+    "coverage": 0.95
+  }
+}

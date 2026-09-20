@@ -1,0 +1,4092 @@
+[
+ {
+  "rel": "22华为杯研究生数模思路\\会员专享\\2022研赛 E题参考资料\\E 题第五问代码.m",
+  "ext": ".m",
+  "chars": 1735,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "22华为杯研究生数模思路\\会员专享\\2022研赛 E题参考资料\\E题第三问代码.m",
+  "ext": ".m",
+  "chars": 989,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "22华为杯研究生数模思路\\会员专享\\2022研赛 E题参考资料\\2022年研赛E题（已经更新到第三问代码+视频解析））\\代码（已经更新到Q3））\\Q1code.ipynb",
+  "ext": ".ipynb",
+  "chars": 5508,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "xgboost",
+    "lightgbm",
+    "randomforest",
+    "RandomForest",
+    "LogisticRegression"
+   ],
+   "统计/时序": [
+    "regression"
+   ]
+  },
+  "imports": [
+   "pandas",
+   "warnings",
+   "numpy",
+   "sys",
+   "xgboost",
+   "lightgbm",
+   "sklearn.ensemble",
+   "sklearn.linear_model",
+   "sklearn.metrics",
+   "sklearn.model_selection"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "22华为杯研究生数模思路\\会员专享\\2022研赛 E题参考资料\\2022年研赛E题（已经更新到第三问代码+视频解析））\\代码（已经更新到Q3））\\Q2code.ipynb",
+  "ext": ".ipynb",
+  "chars": 20375,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "tensorflow",
+    "keras",
+    "lstm"
+   ]
+  },
+  "imports": [
+   "pandas",
+   "warnings",
+   "sklearn.metrics",
+   "sys",
+   "sys",
+   "matplotlib.pyplot",
+   "numpy",
+   "sklearn.preprocessing",
+   "keras.models",
+   "keras.layers",
+   "keras.layers",
+   "keras.models",
+   "sklearn.preprocessing",
+   "pylab",
+   "seaborn",
+   "numpy",
+   "sklearn",
+   "sklearn.metrics",
+   "sklearn.metrics",
+   "numpy"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "22华为杯研究生数模思路\\会员专享\\2022研赛 E题参考资料\\2022年研赛E题（已经更新到第三问代码+视频解析））\\代码（已经更新到Q3））\\Q3_1.ipynb",
+  "ext": ".ipynb",
+  "chars": 5653,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "xgboost",
+    "lightgbm",
+    "randomforest",
+    "RandomForest",
+    "LogisticRegression"
+   ],
+   "统计/时序": [
+    "regression"
+   ]
+  },
+  "imports": [
+   "pandas",
+   "warnings",
+   "numpy",
+   "sys",
+   "xgboost",
+   "lightgbm",
+   "sklearn.ensemble",
+   "sklearn.linear_model",
+   "sklearn.metrics",
+   "sklearn.model_selection"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "22华为杯研究生数模思路\\会员专享\\2022研赛 E题参考资料\\2022年研赛E题（已经更新到第三问代码+视频解析））\\代码（已经更新到Q3））\\Q3_2.ipynb",
+  "ext": ".ipynb",
+  "chars": 21208,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "keras",
+    "lstm"
+   ]
+  },
+  "imports": [
+   "pandas",
+   "warnings",
+   "sklearn.metrics",
+   "matplotlib.pyplot",
+   "numpy",
+   "sklearn.preprocessing",
+   "keras.models",
+   "keras.layers",
+   "keras.layers",
+   "keras.models",
+   "sklearn.preprocessing",
+   "pylab",
+   "seaborn",
+   "numpy",
+   "sklearn",
+   "sklearn.metrics",
+   "sklearn.metrics"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "22华为杯研究生数模思路\\会员专享\\2022研赛 F题参考资料\\F题第一问图片代码.ipynb",
+  "ext": ".ipynb",
+  "chars": 2829,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "pandas",
+   "matplotlib.pyplot",
+   "seaborn",
+   "scipy",
+   "warnings",
+   "palettable"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "22华为杯研究生数模思路\\会员专享\\2022研赛 F题参考资料\\2022研赛F题 一二问代码及结果\\代码\\m21.m",
+  "ext": ".m",
+  "chars": 440,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "22华为杯研究生数模思路\\会员专享\\2022研赛 F题参考资料\\2022研赛F题 一二问代码及结果\\代码\\m22.m",
+  "ext": ".m",
+  "chars": 4490,
+  "hits": {
+   "机器学习": [
+    "KMeans",
+    "kmeans"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "kmeans"
+  ]
+ },
+ {
+  "rel": "22华为杯研究生数模思路\\会员专享\\2022研赛 F题参考资料\\2022研赛F题 选址问题资料\\关于多目标选址规划问题的flod算法matlab代码实现.m",
+  "ext": ".m",
+  "chars": 24356,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "22华为杯研究生数模思路\\会员专享\\2022研赛 F题参考资料\\2022研赛F题 额外资料（含处理好数据和代码）\\F题第一问图片代码.ipynb",
+  "ext": ".ipynb",
+  "chars": 2829,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "pandas",
+   "matplotlib.pyplot",
+   "seaborn",
+   "scipy",
+   "warnings",
+   "palettable"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "22华为杯研究生数模思路\\会员专享\\不分类-都是付费购买来的资料\\E题第三问代码.m",
+  "ext": ".m",
+  "chars": 989,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "24年研究生建模思路代码\\2024研赛A题思路+代码+参考论文（持续更新）\\2024数模研赛A题思路代码-three_point_rainflow.m",
+  "ext": ".m",
+  "chars": 743,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "24年研究生建模思路代码\\2024研赛A题思路+代码+参考论文（持续更新）\\2024数模研赛A题思路代码-windTurbineModel.m",
+  "ext": ".m",
+  "chars": 1279,
+  "hits": {
+   "优化": [
+    "ga"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛E题思路+代码+答案+论文汇总！\\YS05+YT02：强烈推荐！2025华为杯研究生数学建模竞赛E题1-4问超详细保奖级思路解析+模型建立+代码调试+结果分析！2025研赛E题拿奖必看！\\2025研赛E题1-4问完整代码+答案解析！\\2025e 代码解析.ipynb",
+  "ext": ".ipynb",
+  "chars": 234510,
+  "hits": {
+   "优化": [
+    "ga"
+   ],
+   "机器学习": [
+    "sklearn",
+    "randomforest",
+    "RandomForest",
+    "svm",
+    "SVC",
+    "LogisticRegression",
+    "pca",
+    "neural",
+    "mlp",
+    "transfer",
+    "domain"
+   ],
+   "统计/时序": [
+    "gray",
+    "regression",
+    "ols",
+    "welch",
+    "hilbert",
+    "fft"
+   ],
+   "图论/网络": [
+    "graph"
+   ],
+   "评价": [
+    "dea",
+    "DEA"
+   ]
+  },
+  "imports": [
+   "os",
+   "numpy",
+   "pandas",
+   "scipy.io",
+   "scipy",
+   "scipy.fft",
+   "sklearn.preprocessing",
+   "matplotlib.pyplot",
+   "seaborn",
+   "pathlib",
+   "warnings",
+   "scipy.signal",
+   "os",
+   "numpy",
+   "pandas",
+   "scipy.io",
+   "scipy",
+   "scipy.fft",
+   "sklearn.preprocessing",
+   "sklearn.decomposition"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛E题思路+代码+答案+论文汇总！\\YS05+YT02：强烈推荐！2025华为杯研究生数学建模竞赛E题1-4问超详细保奖级思路解析+模型建立+代码调试+结果分析！2025研赛E题拿奖必看！\\2025研赛E题1-4问完整代码+答案解析！\\2025e对答案.ipynb",
+  "ext": ".ipynb",
+  "chars": 234508,
+  "hits": {
+   "优化": [
+    "ga"
+   ],
+   "机器学习": [
+    "sklearn",
+    "randomforest",
+    "RandomForest",
+    "svm",
+    "SVC",
+    "LogisticRegression",
+    "pca",
+    "neural",
+    "mlp",
+    "transfer",
+    "domain"
+   ],
+   "统计/时序": [
+    "gray",
+    "regression",
+    "ols",
+    "welch",
+    "hilbert",
+    "fft"
+   ],
+   "图论/网络": [
+    "graph"
+   ],
+   "评价": [
+    "dea",
+    "DEA"
+   ]
+  },
+  "imports": [
+   "os",
+   "numpy",
+   "pandas",
+   "scipy.io",
+   "scipy",
+   "scipy.fft",
+   "sklearn.preprocessing",
+   "matplotlib.pyplot",
+   "seaborn",
+   "pathlib",
+   "warnings",
+   "scipy.signal",
+   "os",
+   "numpy",
+   "pandas",
+   "scipy.io",
+   "scipy",
+   "scipy.fft",
+   "sklearn.preprocessing",
+   "sklearn.decomposition"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛E题思路+代码+答案+论文汇总！\\YT02：代码答案！2025华为杯研赛E题1-4问完整解题代码+答案结果+模型建立完整教程！运行代码  参考答案  模型建立！\\2025研赛E题1-4问完整代码+答案解析！\\2025e 代码解析.ipynb",
+  "ext": ".ipynb",
+  "chars": 234510,
+  "hits": {
+   "优化": [
+    "ga"
+   ],
+   "机器学习": [
+    "sklearn",
+    "randomforest",
+    "RandomForest",
+    "svm",
+    "SVC",
+    "LogisticRegression",
+    "pca",
+    "neural",
+    "mlp",
+    "transfer",
+    "domain"
+   ],
+   "统计/时序": [
+    "gray",
+    "regression",
+    "ols",
+    "welch",
+    "hilbert",
+    "fft"
+   ],
+   "图论/网络": [
+    "graph"
+   ],
+   "评价": [
+    "dea",
+    "DEA"
+   ]
+  },
+  "imports": [
+   "os",
+   "numpy",
+   "pandas",
+   "scipy.io",
+   "scipy",
+   "scipy.fft",
+   "sklearn.preprocessing",
+   "matplotlib.pyplot",
+   "seaborn",
+   "pathlib",
+   "warnings",
+   "scipy.signal",
+   "os",
+   "numpy",
+   "pandas",
+   "scipy.io",
+   "scipy",
+   "scipy.fft",
+   "sklearn.preprocessing",
+   "sklearn.decomposition"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛E题思路+代码+答案+论文汇总！\\YT02：代码答案！2025华为杯研赛E题1-4问完整解题代码+答案结果+模型建立完整教程！运行代码  参考答案  模型建立！\\2025研赛E题1-4问完整代码+答案解析！\\2025e对答案.ipynb",
+  "ext": ".ipynb",
+  "chars": 234508,
+  "hits": {
+   "优化": [
+    "ga"
+   ],
+   "机器学习": [
+    "sklearn",
+    "randomforest",
+    "RandomForest",
+    "svm",
+    "SVC",
+    "LogisticRegression",
+    "pca",
+    "neural",
+    "mlp",
+    "transfer",
+    "domain"
+   ],
+   "统计/时序": [
+    "gray",
+    "regression",
+    "ols",
+    "welch",
+    "hilbert",
+    "fft"
+   ],
+   "图论/网络": [
+    "graph"
+   ],
+   "评价": [
+    "dea",
+    "DEA"
+   ]
+  },
+  "imports": [
+   "os",
+   "numpy",
+   "pandas",
+   "scipy.io",
+   "scipy",
+   "scipy.fft",
+   "sklearn.preprocessing",
+   "matplotlib.pyplot",
+   "seaborn",
+   "pathlib",
+   "warnings",
+   "scipy.signal",
+   "os",
+   "numpy",
+   "pandas",
+   "scipy.io",
+   "scipy",
+   "scipy.fft",
+   "sklearn.preprocessing",
+   "sklearn.decomposition"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛E题思路+代码+答案+论文汇总！\\YT10：研赛答案！2025华为杯研赛E题1-4问完整答案解析！解题思路 模型建立 代码运行 成品论文！\\2025e对答案.ipynb",
+  "ext": ".ipynb",
+  "chars": 234508,
+  "hits": {
+   "优化": [
+    "ga"
+   ],
+   "机器学习": [
+    "sklearn",
+    "randomforest",
+    "RandomForest",
+    "svm",
+    "SVC",
+    "LogisticRegression",
+    "pca",
+    "neural",
+    "mlp",
+    "transfer",
+    "domain"
+   ],
+   "统计/时序": [
+    "gray",
+    "regression",
+    "ols",
+    "welch",
+    "hilbert",
+    "fft"
+   ],
+   "图论/网络": [
+    "graph"
+   ],
+   "评价": [
+    "dea",
+    "DEA"
+   ]
+  },
+  "imports": [
+   "os",
+   "numpy",
+   "pandas",
+   "scipy.io",
+   "scipy",
+   "scipy.fft",
+   "sklearn.preprocessing",
+   "matplotlib.pyplot",
+   "seaborn",
+   "pathlib",
+   "warnings",
+   "scipy.signal",
+   "os",
+   "numpy",
+   "pandas",
+   "scipy.io",
+   "scipy",
+   "scipy.fft",
+   "sklearn.preprocessing",
+   "sklearn.decomposition"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\0-1规划模型Matlab+Python代码\\zero_one_programming.m",
+  "ext": ".m",
+  "chars": 1034,
+  "hits": {
+   "优化": [
+    "intlinprog",
+    "linprog"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "intlinprog"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\0-1规划模型Matlab+Python代码\\zero_one_programming.py",
+  "ext": ".py",
+  "chars": 1125,
+  "hits": {},
+  "imports": [
+   "pulp"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\ARMA时间序列预测模型Matlab+Python代码\\arma_model.m",
+  "ext": ".m",
+  "chars": 3913,
+  "hits": {
+   "统计/时序": [
+    "arima"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\ARMA时间序列预测模型Matlab+Python代码\\arma_prediction.py",
+  "ext": ".py",
+  "chars": 2578,
+  "hits": {
+   "统计/时序": [
+    "arima",
+    "ols"
+   ],
+   "图论/网络": [
+    "graph"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "statsmodels.tsa.arima.model",
+   "statsmodels.graphics.tsaplots",
+   "statsmodels.tsa.stattools"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\BP 神经网络分类模型Matlab+Python代码\\bp_neural_network.m",
+  "ext": ".m",
+  "chars": 3836,
+  "hits": {
+   "机器学习": [
+    "pca",
+    "neural",
+    "transfer"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "feedforwardnet",
+   "pca"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\BP 神经网络分类模型Matlab+Python代码\\bp_neural_network.py",
+  "ext": ".py",
+  "chars": 3885,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "pca",
+    "neural",
+    "mlp"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "pandas",
+   "sklearn.datasets",
+   "sklearn.model_selection",
+   "sklearn.preprocessing",
+   "sklearn.neural_network",
+   "sklearn.metrics",
+   "sklearn.decomposition"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\BP神经网络预测模型Matlab+Python代码\\bp_neural_network.m",
+  "ext": ".m",
+  "chars": 4464,
+  "hits": {
+   "机器学习": [
+    "transfer"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "feedforwardnet"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\BP神经网络预测模型Matlab+Python代码\\bp_neural_network.py",
+  "ext": ".py",
+  "chars": 3970,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "neural",
+    "mlp"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "sklearn.neural_network",
+   "sklearn.preprocessing",
+   "sklearn.model_selection",
+   "sklearn.metrics"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\DEA综合评价法Matlab+Python代码\\dea_matlab_final.m",
+  "ext": ".m",
+  "chars": 2211,
+  "hits": {
+   "优化": [
+    "linprog"
+   ],
+   "评价": [
+    "dea",
+    "DEA"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "linprog"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\DEA综合评价法Matlab+Python代码\\dea_python_final.py",
+  "ext": ".py",
+  "chars": 2172,
+  "hits": {
+   "优化": [
+    "linprog",
+    "scipy.optimize"
+   ],
+   "评价": [
+    "dea",
+    "DEA"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "scipy.optimize"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\Dijkstra 算法（最短路径算法）Matlab+Python代码\\dijkstra_algorithm.m",
+  "ext": ".m",
+  "chars": 4381,
+  "hits": {
+   "图论/网络": [
+    "dijkstra",
+    "graph"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\Dijkstra 算法（最短路径算法）Matlab+Python代码\\dijkstra_algorithm.py",
+  "ext": ".py",
+  "chars": 4163,
+  "hits": {
+   "统计/时序": [
+    "gray"
+   ],
+   "图论/网络": [
+    "dijkstra",
+    "networkx",
+    "graph"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "networkx"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\Floyd 算法（全源最短路径算法）Matlab+Python代码\\floyd_algorithm.m",
+  "ext": ".m",
+  "chars": 5221,
+  "hits": {
+   "图论/网络": [
+    "dijkstra",
+    "floyd",
+    "graph"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\Floyd 算法（全源最短路径算法）Matlab+Python代码\\floyd_algorithm.py",
+  "ext": ".py",
+  "chars": 4302,
+  "hits": {
+   "统计/时序": [
+    "gray"
+   ],
+   "图论/网络": [
+    "dijkstra",
+    "floyd",
+    "networkx",
+    "graph"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "networkx"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\K-means 聚类算法Matlab+Python代码\\kmeans_clustering.m",
+  "ext": ".m",
+  "chars": 2852,
+  "hits": {
+   "机器学习": [
+    "KMeans",
+    "kmeans",
+    "pca"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "kmeans",
+   "pca"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\K-means 聚类算法Matlab+Python代码\\kmeans_clustering.py",
+  "ext": ".py",
+  "chars": 2629,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "KMeans",
+    "kmeans",
+    "pca"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "sklearn.datasets",
+   "sklearn.preprocessing",
+   "sklearn.decomposition",
+   "sklearn.cluster"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\Kendall 相关系数（特殊的相关性分析）Matlab+Python代码\\kendall_correlation.m",
+  "ext": ".m",
+  "chars": 4099,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\Kendall 相关系数（特殊的相关性分析）Matlab+Python代码\\kendall_correlation.py",
+  "ext": ".py",
+  "chars": 3573,
+  "hits": {
+   "统计/时序": [
+    "gray"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "pandas",
+   "matplotlib.pyplot",
+   "seaborn",
+   "scipy.stats"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\KNN 分类模型Matlab+Python代码\\knn_classification.m",
+  "ext": ".m",
+  "chars": 3789,
+  "hits": {
+   "机器学习": [
+    "pca"
+   ],
+   "评价": [
+    "dea",
+    "DEA"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "pca"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\KNN 分类模型Matlab+Python代码\\knn_classification.py",
+  "ext": ".py",
+  "chars": 3898,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "pca"
+   ],
+   "评价": [
+    "dea",
+    "DEA"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "pandas",
+   "sklearn.datasets",
+   "sklearn.model_selection",
+   "sklearn.preprocessing",
+   "sklearn.neighbors",
+   "sklearn.metrics",
+   "sklearn.decomposition"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\Logistic预测模型Matlab+Python代码\\logistic_prediction.m",
+  "ext": ".m",
+  "chars": 1759,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "lsqnonlin"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\Logistic预测模型Matlab+Python代码\\logistic_prediction.py",
+  "ext": ".py",
+  "chars": 1695,
+  "hits": {
+   "优化": [
+    "scipy.optimize",
+    "curve_fit"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "scipy.optimize"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\PCA 主成分分析法Matlab+Python代码\\pca_analysis.m",
+  "ext": ".m",
+  "chars": 1749,
+  "hits": {
+   "机器学习": [
+    "pca"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "pca"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\PCA 主成分分析法Matlab+Python代码\\pca_analysis.py",
+  "ext": ".py",
+  "chars": 2389,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "pca"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "sklearn.datasets",
+   "sklearn.preprocessing",
+   "sklearn.decomposition",
+   "pandas"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\SOM 自组织神经网络Matlab+Python代码\\som_clustering.m",
+  "ext": ".m",
+  "chars": 4152,
+  "hits": {
+   "机器学习": [
+    "neural"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "mapminmax"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\SOM 自组织神经网络Matlab+Python代码\\som_clustering.py",
+  "ext": ".py",
+  "chars": 3111,
+  "hits": {
+   "优化": [
+    "ga"
+   ],
+   "机器学习": [
+    "sklearn"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "sklearn.datasets",
+   "sklearn.preprocessing",
+   "minisom"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\T-SNE 降维算法Matlab+Python代码\\t_sne_analysis.m",
+  "ext": ".m",
+  "chars": 1993,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\T-SNE 降维算法Matlab+Python代码\\t_sne_analysis.py",
+  "ext": ".py",
+  "chars": 1921,
+  "hits": {
+   "机器学习": [
+    "sklearn"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "sklearn.datasets",
+   "sklearn.preprocessing",
+   "sklearn.manifold",
+   "sklearn.model_selection"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\TOPSIS综合评价法Matlab+Python代码\\topsis_matlab_final.m",
+  "ext": ".m",
+  "chars": 1769,
+  "hits": {
+   "评价": [
+    "topsis",
+    "TOPSIS"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\TOPSIS综合评价法Matlab+Python代码\\topsis_python_final.py",
+  "ext": ".py",
+  "chars": 1830,
+  "hits": {
+   "评价": [
+    "topsis",
+    "TOPSIS"
+   ]
+  },
+  "imports": [
+   "numpy"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\UMAP 降维法Matlab+Python代码\\umap_analysis.m",
+  "ext": ".m",
+  "chars": 1688,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\UMAP 降维法Matlab+Python代码\\umap_analysis.py",
+  "ext": ".py",
+  "chars": 1950,
+  "hits": {
+   "机器学习": [
+    "sklearn"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "sklearn.datasets",
+   "sklearn.preprocessing",
+   "umap"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\二次指数平滑预测Matlab+Python代码\\quadratic_exponential_smoothing.m",
+  "ext": ".m",
+  "chars": 1863,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\二次指数平滑预测Matlab+Python代码\\quadratic_exponential_smoothing.py",
+  "ext": ".py",
+  "chars": 1901,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\人口模型Matlab+Python代码\\population_model.m",
+  "ext": ".m",
+  "chars": 2199,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "ode45"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\人口模型Matlab+Python代码\\population_model.py",
+  "ext": ".py",
+  "chars": 2500,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "scipy.integrate"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\传染病模型Matlab+Python代码\\epidemic_model.m",
+  "ext": ".m",
+  "chars": 4454,
+  "hits": {
+   "优化": [
+    "ga"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "ode45"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\传染病模型Matlab+Python代码\\epidemic_model.py",
+  "ext": ".py",
+  "chars": 4120,
+  "hits": {
+   "优化": [
+    "ga"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "scipy.integrate"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\决策树分类模型Matlab+Python代码\\decision_tree_classification.m",
+  "ext": ".m",
+  "chars": 4229,
+  "hits": {
+   "机器学习": [
+    "pca"
+   ],
+   "图论/网络": [
+    "graph"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "pca"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\决策树分类模型Matlab+Python代码\\decision_tree_classification.py",
+  "ext": ".py",
+  "chars": 4499,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "pca"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "pandas",
+   "sklearn.datasets",
+   "sklearn.model_selection",
+   "sklearn.preprocessing",
+   "sklearn.tree",
+   "sklearn.metrics",
+   "sklearn.decomposition"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\动态优化模型Matlab+Python代码\\dynamic_programming.m",
+  "ext": ".m",
+  "chars": 1845,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\动态优化模型Matlab+Python代码\\dynamic_programming.py",
+  "ext": ".py",
+  "chars": 1718,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\回归分析预测模型Matlab+Python代码\\regression_analysis.m",
+  "ext": ".m",
+  "chars": 5601,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\回归分析预测模型Matlab+Python代码\\regression_analysis.py",
+  "ext": ".py",
+  "chars": 5528,
+  "hits": {
+   "机器学习": [
+    "sklearn"
+   ],
+   "统计/时序": [
+    "regression"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "pandas",
+   "sklearn.linear_model",
+   "sklearn.preprocessing",
+   "sklearn.metrics",
+   "sklearn.model_selection"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\多目标规划模型Matlab+Python代码\\multi_objective_programming.m",
+  "ext": ".m",
+  "chars": 1746,
+  "hits": {
+   "优化": [
+    "fmincon"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "fmincon"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\多目标规划模型Matlab+Python代码\\multi_objective_programming.py",
+  "ext": ".py",
+  "chars": 1897,
+  "hits": {
+   "优化": [
+    "scipy.optimize"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "scipy.optimize"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\季节指数预测模型Matlab+Python代码\\seasonal_index_prediction.m",
+  "ext": ".m",
+  "chars": 2699,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\季节指数预测模型Matlab+Python代码\\seasonal_index_prediction.py",
+  "ext": ".py",
+  "chars": 2592,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\层次分析法Matlab+Python代码\\ahp_matlab_final.m",
+  "ext": ".m",
+  "chars": 1056,
+  "hits": {
+   "评价": [
+    "ahp",
+    "AHP"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\层次分析法Matlab+Python代码\\ahp_python_final.py",
+  "ext": ".py",
+  "chars": 1086,
+  "hits": {
+   "评价": [
+    "ahp",
+    "AHP"
+   ]
+  },
+  "imports": [
+   "numpy"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\层次聚类算法Matlab+Python代码\\hierarchical_clustering.m",
+  "ext": ".m",
+  "chars": 2910,
+  "hits": {
+   "机器学习": [
+    "pca"
+   ],
+   "评价": [
+    "dea",
+    "DEA"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "pca"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\层次聚类算法Matlab+Python代码\\hierarchical_clustering.py",
+  "ext": ".py",
+  "chars": 3156,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "pca"
+   ],
+   "统计/时序": [
+    "gray"
+   ],
+   "评价": [
+    "dea",
+    "DEA"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "pandas",
+   "sklearn.datasets",
+   "sklearn.preprocessing",
+   "sklearn.decomposition",
+   "scipy.cluster.hierarchy"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\战争模型Matlab+Python代码\\war_model.m",
+  "ext": ".m",
+  "chars": 3716,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "ode45"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\战争模型Matlab+Python代码\\war_model.py",
+  "ext": ".py",
+  "chars": 4016,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "scipy.integrate"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\拉格朗日插值法Matlab+Python代码\\lagrange_interpolation.m",
+  "ext": ".m",
+  "chars": 1487,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\拉格朗日插值法Matlab+Python代码\\lagrange_interpolation.py",
+  "ext": ".py",
+  "chars": 1503,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\整数规划模型\\integer_programming.m",
+  "ext": ".m",
+  "chars": 1071,
+  "hits": {
+   "优化": [
+    "intlinprog",
+    "linprog"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "intlinprog"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\整数规划模型\\integer_programming.py",
+  "ext": ".py",
+  "chars": 1125,
+  "hits": {},
+  "imports": [
+   "pulp"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\最速下降法\\steepest_descent.m",
+  "ext": ".m",
+  "chars": 1847,
+  "hits": {
+   "统计/时序": [
+    "ols"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\最速下降法\\steepest_descent.py",
+  "ext": ".py",
+  "chars": 2286,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\朴素贝叶斯分类模型Matlab+Python代码\\naive_bayes_classification.m",
+  "ext": ".m",
+  "chars": 4142,
+  "hits": {
+   "机器学习": [
+    "pca"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "pca"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\朴素贝叶斯分类模型Matlab+Python代码\\naive_bayes_classification.py",
+  "ext": ".py",
+  "chars": 4475,
+  "hits": {
+   "优化": [
+    "ga"
+   ],
+   "机器学习": [
+    "sklearn"
+   ],
+   "图论/网络": [
+    "graph"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "pandas",
+   "sklearn.datasets",
+   "sklearn.feature_extraction.text",
+   "sklearn.model_selection",
+   "sklearn.naive_bayes",
+   "sklearn.metrics",
+   "sklearn.decomposition"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\标准差法检测异常值Matlab+Python代码\\std_outlier_detection.m",
+  "ext": ".m",
+  "chars": 2141,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\标准差法检测异常值Matlab+Python代码\\std_outlier_detection.py",
+  "ext": ".py",
+  "chars": 2423,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "matplotlib.patches"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\模拟退火Matlab+Python代码\\simulated_annealing.m",
+  "ext": ".m",
+  "chars": 2885,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\模拟退火Matlab+Python代码\\simulated_annealing.py",
+  "ext": ".py",
+  "chars": 3639,
+  "hits": {
+   "优化": [
+    "simulated_annealing"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "mpl_toolkits.mplot3d"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\模糊综合评价法Matlab+Python代码\\fuzzy_matlab_final.m",
+  "ext": ".m",
+  "chars": 3249,
+  "hits": {
+   "评价": [
+    "模糊综合"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\模糊综合评价法Matlab+Python代码\\fuzzy_python_final.py",
+  "ext": ".py",
+  "chars": 2351,
+  "hits": {
+   "评价": [
+    "模糊综合"
+   ]
+  },
+  "imports": [
+   "numpy"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\灰色关联分析法Matlab+Python代码\\grey_matlab_final.m",
+  "ext": ".m",
+  "chars": 1626,
+  "hits": {
+   "优化": [
+    "ga"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\灰色关联分析法Matlab+Python代码\\grey_python_final.py",
+  "ext": ".py",
+  "chars": 1696,
+  "hits": {
+   "优化": [
+    "ga"
+   ]
+  },
+  "imports": [
+   "numpy"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\灰色预测模型Matlab+Python代码\\grey_prediction.m",
+  "ext": ".m",
+  "chars": 2273,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\灰色预测模型Matlab+Python代码\\grey_prediction.py",
+  "ext": ".py",
+  "chars": 2360,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\熵权法Matlab+Python代码\\entropy_matlab_final.m",
+  "ext": ".m",
+  "chars": 1570,
+  "hits": {
+   "评价": [
+    "熵权"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\熵权法Matlab+Python代码\\entropy_python_final.py",
+  "ext": ".py",
+  "chars": 1648,
+  "hits": {
+   "评价": [
+    "熵权"
+   ]
+  },
+  "imports": [
+   "numpy"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\神经网络综合评价法Matlab+Python代码\\nn_matlab_final.m",
+  "ext": ".m",
+  "chars": 2121,
+  "hits": {
+   "机器学习": [
+    "transfer"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "feedforwardnet"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\神经网络综合评价法Matlab+Python代码\\nn_python_final.py",
+  "ext": ".py",
+  "chars": 2109,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "neural",
+    "mlp"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "sklearn.neural_network",
+   "sklearn.preprocessing"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\离散变量和连续变量的相关性分析：箱型图Matlab+Python代码\\boxplot_discrete_continuous.m",
+  "ext": ".m",
+  "chars": 3569,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\离散变量和连续变量的相关性分析：箱型图Matlab+Python代码\\boxplot_discrete_continuous.py",
+  "ext": ".py",
+  "chars": 2876,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "pandas",
+   "matplotlib.pyplot",
+   "seaborn",
+   "scipy"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\离散变量相关性分析：卡方检验Matlab+Python代码\\chi_square_test.m",
+  "ext": ".m",
+  "chars": 1584,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\离散变量相关性分析：卡方检验Matlab+Python代码\\chi_square_test.py",
+  "ext": ".py",
+  "chars": 1792,
+  "hits": {
+   "机器学习": [
+    "sklearn"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "pandas",
+   "matplotlib.pyplot",
+   "scipy.stats",
+   "sklearn.datasets"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\秩和比综合评价法\\rsr_matlab_final.m",
+  "ext": ".m",
+  "chars": 1539,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\秩和比综合评价法\\rsr_python_final.py",
+  "ext": ".py",
+  "chars": 1681,
+  "hits": {},
+  "imports": [
+   "numpy"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\箱型图检测异常值Matlab+Python代码\\boxplot_outlier_detection.m",
+  "ext": ".m",
+  "chars": 1840,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\箱型图检测异常值Matlab+Python代码\\boxplot_outlier_detection.py",
+  "ext": ".py",
+  "chars": 1924,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "pandas"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\粒子群算法Matlab+Python代码\\particle_swarm.m",
+  "ext": ".m",
+  "chars": 3335,
+  "hits": {
+   "优化": [
+    "pso"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\粒子群算法Matlab+Python代码\\particle_swarm.py",
+  "ext": ".py",
+  "chars": 4033,
+  "hits": {
+   "优化": [
+    "pso"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "mpl_toolkits.mplot3d"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\线性规划模型Matlab+Python代码\\linear_programming.m",
+  "ext": ".m",
+  "chars": 979,
+  "hits": {
+   "优化": [
+    "linprog"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "linprog"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\线性规划模型Matlab+Python代码\\linear_programming.py",
+  "ext": ".py",
+  "chars": 1030,
+  "hits": {},
+  "imports": [
+   "pulp"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\连续变量相关性分析：协方差、Pearson、SpearmanMatlab+Python代码\\continuous_correlation_analysis.m",
+  "ext": ".m",
+  "chars": 3930,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\连续变量相关性分析：协方差、Pearson、SpearmanMatlab+Python代码\\continuous_correlation_analysis.py",
+  "ext": ".py",
+  "chars": 3598,
+  "hits": {
+   "统计/时序": [
+    "gray"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "pandas",
+   "matplotlib.pyplot",
+   "seaborn",
+   "scipy.stats"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\遗传算法Matlab+Python代码\\genetic_algorithm.m",
+  "ext": ".m",
+  "chars": 4416,
+  "hits": {
+   "统计/时序": [
+    "ols"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\遗传算法Matlab+Python代码\\genetic_algorithm.py",
+  "ext": ".py",
+  "chars": 5059,
+  "hits": {
+   "优化": [
+    "genetic"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "mpl_toolkits.mplot3d"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\非线性规划模型Matlab+Python代码\\nonlinear_programming.m",
+  "ext": ".m",
+  "chars": 1450,
+  "hits": {
+   "优化": [
+    "fmincon"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "fmincon"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\非线性规划模型Matlab+Python代码\\nonlinear_programming.py",
+  "ext": ".py",
+  "chars": 1550,
+  "hits": {
+   "优化": [
+    "scipy.optimize"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "scipy.optimize"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\马尔可夫预测模型Matlab+Python代码\\markov_prediction.m",
+  "ext": ".m",
+  "chars": 3307,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\马尔可夫预测模型Matlab+Python代码\\markov_prediction.py",
+  "ext": ".py",
+  "chars": 3353,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\高斯回归预测模型Matlab+Python代码\\gaussian_process_regression.m",
+  "ext": ".m",
+  "chars": 4195,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\高斯回归预测模型Matlab+Python代码\\gaussian_process_regression.py",
+  "ext": ".py",
+  "chars": 4557,
+  "hits": {
+   "优化": [
+    "ga"
+   ],
+   "机器学习": [
+    "sklearn"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "sklearn.gaussian_process",
+   "sklearn.gaussian_process.kernels",
+   "sklearn.preprocessing",
+   "sklearn.metrics"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\高斯混合聚类模型（GMM）\\gaussian_mixture.m",
+  "ext": ".m",
+  "chars": 3533,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\50多种常用算法源代码！（Matlab+Python）\\高斯混合聚类模型（GMM）\\gaussian_mixture.py",
+  "ext": ".py",
+  "chars": 3461,
+  "hits": {
+   "优化": [
+    "ga"
+   ],
+   "机器学习": [
+    "sklearn"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "matplotlib.patches",
+   "sklearn.mixture",
+   "sklearn.preprocessing"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Matlab版本）\\arima_model.m",
+  "ext": ".m",
+  "chars": 2600,
+  "hits": {
+   "统计/时序": [
+    "arima"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Matlab版本）\\differential_equation.m",
+  "ext": ".m",
+  "chars": 3378,
+  "hits": {
+   "优化": [
+    "ga",
+    "aco"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "ode45"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Matlab版本）\\dynamic_programming.m",
+  "ext": ".m",
+  "chars": 5186,
+  "hits": {
+   "图论/网络": [
+    "graph"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Matlab版本）\\genetic_algorithm.m",
+  "ext": ".m",
+  "chars": 2075,
+  "hits": {
+   "优化": [
+    "ga",
+    "genetic"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "ga"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Matlab版本）\\integer_programming.m",
+  "ext": ".m",
+  "chars": 3725,
+  "hits": {
+   "优化": [
+    "intlinprog",
+    "linprog"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "intlinprog"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Matlab版本）\\lstm_model.m",
+  "ext": ".m",
+  "chars": 3273,
+  "hits": {
+   "机器学习": [
+    "lstm"
+   ],
+   "统计/时序": [
+    "regression"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Matlab版本）\\multi_objective.m",
+  "ext": ".m",
+  "chars": 4469,
+  "hits": {
+   "优化": [
+    "ga",
+    "nsga"
+   ],
+   "评价": [
+    "dea",
+    "DEA"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Matlab版本）\\particle_swarm.m",
+  "ext": ".m",
+  "chars": 5883,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Matlab版本）\\pca.m",
+  "ext": ".m",
+  "chars": 2865,
+  "hits": {
+   "机器学习": [
+    "pca"
+   ],
+   "统计/时序": [
+    "gray"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "pca"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Matlab版本）\\random_forest.m",
+  "ext": ".m",
+  "chars": 3278,
+  "hits": {
+   "统计/时序": [
+    "regression"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Python版本）\\arima_model.py",
+  "ext": ".py",
+  "chars": 3465,
+  "hits": {
+   "机器学习": [
+    "sklearn"
+   ],
+   "统计/时序": [
+    "arima",
+    "gray"
+   ],
+   "图论/网络": [
+    "graph"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "pandas",
+   "statsmodels.tsa.arima.model",
+   "statsmodels.graphics.tsaplots",
+   "sklearn.metrics"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Python版本）\\differential_equations.py",
+  "ext": ".py",
+  "chars": 4129,
+  "hits": {
+   "优化": [
+    "ga"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "scipy.integrate"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Python版本）\\dynamic_programming.py",
+  "ext": ".py",
+  "chars": 2073,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Python版本）\\genetic_algorithm.py",
+  "ext": ".py",
+  "chars": 3917,
+  "hits": {
+   "优化": [
+    "genetic"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Python版本）\\integer_programming.py",
+  "ext": ".py",
+  "chars": 3423,
+  "hits": {
+   "优化": [
+    "linprog",
+    "scipy.optimize"
+   ],
+   "统计/时序": [
+    "ols"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "scipy.optimize"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Python版本）\\lstm_model.py",
+  "ext": ".py",
+  "chars": 4460,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "tensorflow",
+    "keras",
+    "lstm"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "sklearn.preprocessing",
+   "tensorflow.keras.models",
+   "tensorflow.keras.layers"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Python版本）\\multi_objective_optimization.py",
+  "ext": ".py",
+  "chars": 3955,
+  "hits": {
+   "优化": [
+    "ga",
+    "nsga"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "pymoo.algorithms.moo.nsga2",
+   "pymoo.factory",
+   "pymoo.optimize",
+   "pymoo.visualization.scatter",
+   "pymoo.core.problem"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Python版本）\\particle_swarm.py",
+  "ext": ".py",
+  "chars": 4296,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Python版本）\\pca_model.py",
+  "ext": ".py",
+  "chars": 4760,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "KMeans",
+    "kmeans",
+    "pca"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "pandas",
+   "sklearn.decomposition",
+   "sklearn.preprocessing",
+   "sklearn.datasets",
+   "sklearn.cluster"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\2025研赛十大必备模型源代码（Matlab+Python版本）\\十大数学建模研赛必备算法！（Python版本）\\random_forest.py",
+  "ext": ".py",
+  "chars": 3890,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "randomforest",
+    "RandomForest"
+   ],
+   "统计/时序": [
+    "regression"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "pandas",
+   "sklearn.ensemble",
+   "sklearn.model_selection",
+   "sklearn.metrics",
+   "sklearn.datasets"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\0-1规划模型Matlab+Python代码\\zero_one_programming.m",
+  "ext": ".m",
+  "chars": 1034,
+  "hits": {
+   "优化": [
+    "intlinprog",
+    "linprog"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "intlinprog"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\0-1规划模型Matlab+Python代码\\zero_one_programming.py",
+  "ext": ".py",
+  "chars": 1125,
+  "hits": {},
+  "imports": [
+   "pulp"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\ARMA时间序列预测模型Matlab+Python代码\\arma_model.m",
+  "ext": ".m",
+  "chars": 3913,
+  "hits": {
+   "统计/时序": [
+    "arima"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\ARMA时间序列预测模型Matlab+Python代码\\arma_prediction.py",
+  "ext": ".py",
+  "chars": 2578,
+  "hits": {
+   "统计/时序": [
+    "arima",
+    "ols"
+   ],
+   "图论/网络": [
+    "graph"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "statsmodels.tsa.arima.model",
+   "statsmodels.graphics.tsaplots",
+   "statsmodels.tsa.stattools"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\BP 神经网络分类模型Matlab+Python代码\\bp_neural_network.m",
+  "ext": ".m",
+  "chars": 3836,
+  "hits": {
+   "机器学习": [
+    "pca",
+    "neural",
+    "transfer"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "feedforwardnet",
+   "pca"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\BP 神经网络分类模型Matlab+Python代码\\bp_neural_network.py",
+  "ext": ".py",
+  "chars": 3885,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "pca",
+    "neural",
+    "mlp"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "pandas",
+   "sklearn.datasets",
+   "sklearn.model_selection",
+   "sklearn.preprocessing",
+   "sklearn.neural_network",
+   "sklearn.metrics",
+   "sklearn.decomposition"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\BP神经网络预测模型Matlab+Python代码\\bp_neural_network.m",
+  "ext": ".m",
+  "chars": 4464,
+  "hits": {
+   "机器学习": [
+    "transfer"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "feedforwardnet"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\BP神经网络预测模型Matlab+Python代码\\bp_neural_network.py",
+  "ext": ".py",
+  "chars": 3970,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "neural",
+    "mlp"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "sklearn.neural_network",
+   "sklearn.preprocessing",
+   "sklearn.model_selection",
+   "sklearn.metrics"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\DEA综合评价法Matlab+Python代码\\dea_matlab_final.m",
+  "ext": ".m",
+  "chars": 2211,
+  "hits": {
+   "优化": [
+    "linprog"
+   ],
+   "评价": [
+    "dea",
+    "DEA"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "linprog"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\DEA综合评价法Matlab+Python代码\\dea_python_final.py",
+  "ext": ".py",
+  "chars": 2172,
+  "hits": {
+   "优化": [
+    "linprog",
+    "scipy.optimize"
+   ],
+   "评价": [
+    "dea",
+    "DEA"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "scipy.optimize"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\Dijkstra 算法（最短路径算法）Matlab+Python代码\\dijkstra_algorithm.m",
+  "ext": ".m",
+  "chars": 4381,
+  "hits": {
+   "图论/网络": [
+    "dijkstra",
+    "graph"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\Dijkstra 算法（最短路径算法）Matlab+Python代码\\dijkstra_algorithm.py",
+  "ext": ".py",
+  "chars": 4163,
+  "hits": {
+   "统计/时序": [
+    "gray"
+   ],
+   "图论/网络": [
+    "dijkstra",
+    "networkx",
+    "graph"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "networkx"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\Floyd 算法（全源最短路径算法）Matlab+Python代码\\floyd_algorithm.m",
+  "ext": ".m",
+  "chars": 5221,
+  "hits": {
+   "图论/网络": [
+    "dijkstra",
+    "floyd",
+    "graph"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\Floyd 算法（全源最短路径算法）Matlab+Python代码\\floyd_algorithm.py",
+  "ext": ".py",
+  "chars": 4302,
+  "hits": {
+   "统计/时序": [
+    "gray"
+   ],
+   "图论/网络": [
+    "dijkstra",
+    "floyd",
+    "networkx",
+    "graph"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "networkx"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\K-means 聚类算法Matlab+Python代码\\kmeans_clustering.m",
+  "ext": ".m",
+  "chars": 2852,
+  "hits": {
+   "机器学习": [
+    "KMeans",
+    "kmeans",
+    "pca"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "kmeans",
+   "pca"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\K-means 聚类算法Matlab+Python代码\\kmeans_clustering.py",
+  "ext": ".py",
+  "chars": 2629,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "KMeans",
+    "kmeans",
+    "pca"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "sklearn.datasets",
+   "sklearn.preprocessing",
+   "sklearn.decomposition",
+   "sklearn.cluster"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\Kendall 相关系数（特殊的相关性分析）Matlab+Python代码\\kendall_correlation.m",
+  "ext": ".m",
+  "chars": 4099,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\Kendall 相关系数（特殊的相关性分析）Matlab+Python代码\\kendall_correlation.py",
+  "ext": ".py",
+  "chars": 3573,
+  "hits": {
+   "统计/时序": [
+    "gray"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "pandas",
+   "matplotlib.pyplot",
+   "seaborn",
+   "scipy.stats"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\KNN 分类模型Matlab+Python代码\\knn_classification.m",
+  "ext": ".m",
+  "chars": 3789,
+  "hits": {
+   "机器学习": [
+    "pca"
+   ],
+   "评价": [
+    "dea",
+    "DEA"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "pca"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\KNN 分类模型Matlab+Python代码\\knn_classification.py",
+  "ext": ".py",
+  "chars": 3898,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "pca"
+   ],
+   "评价": [
+    "dea",
+    "DEA"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "pandas",
+   "sklearn.datasets",
+   "sklearn.model_selection",
+   "sklearn.preprocessing",
+   "sklearn.neighbors",
+   "sklearn.metrics",
+   "sklearn.decomposition"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\Logistic预测模型Matlab+Python代码\\logistic_prediction.m",
+  "ext": ".m",
+  "chars": 1759,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "lsqnonlin"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\Logistic预测模型Matlab+Python代码\\logistic_prediction.py",
+  "ext": ".py",
+  "chars": 1695,
+  "hits": {
+   "优化": [
+    "scipy.optimize",
+    "curve_fit"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "scipy.optimize"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\PCA 主成分分析法Matlab+Python代码\\pca_analysis.m",
+  "ext": ".m",
+  "chars": 1749,
+  "hits": {
+   "机器学习": [
+    "pca"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "pca"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\PCA 主成分分析法Matlab+Python代码\\pca_analysis.py",
+  "ext": ".py",
+  "chars": 2389,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "pca"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "sklearn.datasets",
+   "sklearn.preprocessing",
+   "sklearn.decomposition",
+   "pandas"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\SOM 自组织神经网络Matlab+Python代码\\som_clustering.m",
+  "ext": ".m",
+  "chars": 4152,
+  "hits": {
+   "机器学习": [
+    "neural"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "mapminmax"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\SOM 自组织神经网络Matlab+Python代码\\som_clustering.py",
+  "ext": ".py",
+  "chars": 3111,
+  "hits": {
+   "优化": [
+    "ga"
+   ],
+   "机器学习": [
+    "sklearn"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "sklearn.datasets",
+   "sklearn.preprocessing",
+   "minisom"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\T-SNE 降维算法Matlab+Python代码\\t_sne_analysis.m",
+  "ext": ".m",
+  "chars": 1993,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\T-SNE 降维算法Matlab+Python代码\\t_sne_analysis.py",
+  "ext": ".py",
+  "chars": 1921,
+  "hits": {
+   "机器学习": [
+    "sklearn"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "sklearn.datasets",
+   "sklearn.preprocessing",
+   "sklearn.manifold",
+   "sklearn.model_selection"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\TOPSIS综合评价法Matlab+Python代码\\topsis_matlab_final.m",
+  "ext": ".m",
+  "chars": 1769,
+  "hits": {
+   "评价": [
+    "topsis",
+    "TOPSIS"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\TOPSIS综合评价法Matlab+Python代码\\topsis_python_final.py",
+  "ext": ".py",
+  "chars": 1830,
+  "hits": {
+   "评价": [
+    "topsis",
+    "TOPSIS"
+   ]
+  },
+  "imports": [
+   "numpy"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\UMAP 降维法Matlab+Python代码\\umap_analysis.m",
+  "ext": ".m",
+  "chars": 1688,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\UMAP 降维法Matlab+Python代码\\umap_analysis.py",
+  "ext": ".py",
+  "chars": 1950,
+  "hits": {
+   "机器学习": [
+    "sklearn"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "sklearn.datasets",
+   "sklearn.preprocessing",
+   "umap"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\二次指数平滑预测Matlab+Python代码\\quadratic_exponential_smoothing.m",
+  "ext": ".m",
+  "chars": 1863,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\二次指数平滑预测Matlab+Python代码\\quadratic_exponential_smoothing.py",
+  "ext": ".py",
+  "chars": 1901,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\人口模型Matlab+Python代码\\population_model.m",
+  "ext": ".m",
+  "chars": 2199,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "ode45"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\人口模型Matlab+Python代码\\population_model.py",
+  "ext": ".py",
+  "chars": 2500,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "scipy.integrate"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\传染病模型Matlab+Python代码\\epidemic_model.m",
+  "ext": ".m",
+  "chars": 4454,
+  "hits": {
+   "优化": [
+    "ga"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "ode45"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\传染病模型Matlab+Python代码\\epidemic_model.py",
+  "ext": ".py",
+  "chars": 4120,
+  "hits": {
+   "优化": [
+    "ga"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "scipy.integrate"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\决策树分类模型Matlab+Python代码\\decision_tree_classification.m",
+  "ext": ".m",
+  "chars": 4229,
+  "hits": {
+   "机器学习": [
+    "pca"
+   ],
+   "图论/网络": [
+    "graph"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "pca"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\决策树分类模型Matlab+Python代码\\decision_tree_classification.py",
+  "ext": ".py",
+  "chars": 4499,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "pca"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "pandas",
+   "sklearn.datasets",
+   "sklearn.model_selection",
+   "sklearn.preprocessing",
+   "sklearn.tree",
+   "sklearn.metrics",
+   "sklearn.decomposition"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\动态优化模型Matlab+Python代码\\dynamic_programming.m",
+  "ext": ".m",
+  "chars": 1845,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\动态优化模型Matlab+Python代码\\dynamic_programming.py",
+  "ext": ".py",
+  "chars": 1718,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\回归分析预测模型Matlab+Python代码\\regression_analysis.m",
+  "ext": ".m",
+  "chars": 5601,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\回归分析预测模型Matlab+Python代码\\regression_analysis.py",
+  "ext": ".py",
+  "chars": 5528,
+  "hits": {
+   "机器学习": [
+    "sklearn"
+   ],
+   "统计/时序": [
+    "regression"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "pandas",
+   "sklearn.linear_model",
+   "sklearn.preprocessing",
+   "sklearn.metrics",
+   "sklearn.model_selection"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\多目标规划模型Matlab+Python代码\\multi_objective_programming.m",
+  "ext": ".m",
+  "chars": 1746,
+  "hits": {
+   "优化": [
+    "fmincon"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "fmincon"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\多目标规划模型Matlab+Python代码\\multi_objective_programming.py",
+  "ext": ".py",
+  "chars": 1897,
+  "hits": {
+   "优化": [
+    "scipy.optimize"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "scipy.optimize"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\季节指数预测模型Matlab+Python代码\\seasonal_index_prediction.m",
+  "ext": ".m",
+  "chars": 2699,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\季节指数预测模型Matlab+Python代码\\seasonal_index_prediction.py",
+  "ext": ".py",
+  "chars": 2592,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\层次分析法Matlab+Python代码\\ahp_matlab_final.m",
+  "ext": ".m",
+  "chars": 1056,
+  "hits": {
+   "评价": [
+    "ahp",
+    "AHP"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\层次分析法Matlab+Python代码\\ahp_python_final.py",
+  "ext": ".py",
+  "chars": 1086,
+  "hits": {
+   "评价": [
+    "ahp",
+    "AHP"
+   ]
+  },
+  "imports": [
+   "numpy"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\层次聚类算法Matlab+Python代码\\hierarchical_clustering.m",
+  "ext": ".m",
+  "chars": 2910,
+  "hits": {
+   "机器学习": [
+    "pca"
+   ],
+   "评价": [
+    "dea",
+    "DEA"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "pca"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\层次聚类算法Matlab+Python代码\\hierarchical_clustering.py",
+  "ext": ".py",
+  "chars": 3156,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "pca"
+   ],
+   "统计/时序": [
+    "gray"
+   ],
+   "评价": [
+    "dea",
+    "DEA"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "pandas",
+   "sklearn.datasets",
+   "sklearn.preprocessing",
+   "sklearn.decomposition",
+   "scipy.cluster.hierarchy"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\战争模型Matlab+Python代码\\war_model.m",
+  "ext": ".m",
+  "chars": 3716,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "ode45"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\战争模型Matlab+Python代码\\war_model.py",
+  "ext": ".py",
+  "chars": 4016,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "scipy.integrate"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\拉格朗日插值法Matlab+Python代码\\lagrange_interpolation.m",
+  "ext": ".m",
+  "chars": 1487,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\拉格朗日插值法Matlab+Python代码\\lagrange_interpolation.py",
+  "ext": ".py",
+  "chars": 1503,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\整数规划模型\\integer_programming.m",
+  "ext": ".m",
+  "chars": 1071,
+  "hits": {
+   "优化": [
+    "intlinprog",
+    "linprog"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "intlinprog"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\整数规划模型\\integer_programming.py",
+  "ext": ".py",
+  "chars": 1125,
+  "hits": {},
+  "imports": [
+   "pulp"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\最速下降法\\steepest_descent.m",
+  "ext": ".m",
+  "chars": 1847,
+  "hits": {
+   "统计/时序": [
+    "ols"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\最速下降法\\steepest_descent.py",
+  "ext": ".py",
+  "chars": 2286,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\朴素贝叶斯分类模型Matlab+Python代码\\naive_bayes_classification.m",
+  "ext": ".m",
+  "chars": 4142,
+  "hits": {
+   "机器学习": [
+    "pca"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "pca"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\朴素贝叶斯分类模型Matlab+Python代码\\naive_bayes_classification.py",
+  "ext": ".py",
+  "chars": 4475,
+  "hits": {
+   "优化": [
+    "ga"
+   ],
+   "机器学习": [
+    "sklearn"
+   ],
+   "图论/网络": [
+    "graph"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "pandas",
+   "sklearn.datasets",
+   "sklearn.feature_extraction.text",
+   "sklearn.model_selection",
+   "sklearn.naive_bayes",
+   "sklearn.metrics",
+   "sklearn.decomposition"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\标准差法检测异常值Matlab+Python代码\\std_outlier_detection.m",
+  "ext": ".m",
+  "chars": 2141,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\标准差法检测异常值Matlab+Python代码\\std_outlier_detection.py",
+  "ext": ".py",
+  "chars": 2423,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "matplotlib.patches"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\模拟退火Matlab+Python代码\\simulated_annealing.m",
+  "ext": ".m",
+  "chars": 2885,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\模拟退火Matlab+Python代码\\simulated_annealing.py",
+  "ext": ".py",
+  "chars": 3639,
+  "hits": {
+   "优化": [
+    "simulated_annealing"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "mpl_toolkits.mplot3d"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\模糊综合评价法Matlab+Python代码\\fuzzy_matlab_final.m",
+  "ext": ".m",
+  "chars": 3249,
+  "hits": {
+   "评价": [
+    "模糊综合"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\模糊综合评价法Matlab+Python代码\\fuzzy_python_final.py",
+  "ext": ".py",
+  "chars": 2351,
+  "hits": {
+   "评价": [
+    "模糊综合"
+   ]
+  },
+  "imports": [
+   "numpy"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\灰色关联分析法Matlab+Python代码\\grey_matlab_final.m",
+  "ext": ".m",
+  "chars": 1626,
+  "hits": {
+   "优化": [
+    "ga"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\灰色关联分析法Matlab+Python代码\\grey_python_final.py",
+  "ext": ".py",
+  "chars": 1696,
+  "hits": {
+   "优化": [
+    "ga"
+   ]
+  },
+  "imports": [
+   "numpy"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\灰色预测模型Matlab+Python代码\\grey_prediction.m",
+  "ext": ".m",
+  "chars": 2273,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\灰色预测模型Matlab+Python代码\\grey_prediction.py",
+  "ext": ".py",
+  "chars": 2360,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\熵权法Matlab+Python代码\\entropy_matlab_final.m",
+  "ext": ".m",
+  "chars": 1570,
+  "hits": {
+   "评价": [
+    "熵权"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\熵权法Matlab+Python代码\\entropy_python_final.py",
+  "ext": ".py",
+  "chars": 1648,
+  "hits": {
+   "评价": [
+    "熵权"
+   ]
+  },
+  "imports": [
+   "numpy"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\神经网络综合评价法Matlab+Python代码\\nn_matlab_final.m",
+  "ext": ".m",
+  "chars": 2121,
+  "hits": {
+   "机器学习": [
+    "transfer"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "feedforwardnet"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\神经网络综合评价法Matlab+Python代码\\nn_python_final.py",
+  "ext": ".py",
+  "chars": 2109,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "neural",
+    "mlp"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "sklearn.neural_network",
+   "sklearn.preprocessing"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\离散变量和连续变量的相关性分析：箱型图Matlab+Python代码\\boxplot_discrete_continuous.m",
+  "ext": ".m",
+  "chars": 3569,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\离散变量和连续变量的相关性分析：箱型图Matlab+Python代码\\boxplot_discrete_continuous.py",
+  "ext": ".py",
+  "chars": 2876,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "pandas",
+   "matplotlib.pyplot",
+   "seaborn",
+   "scipy"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\离散变量相关性分析：卡方检验Matlab+Python代码\\chi_square_test.m",
+  "ext": ".m",
+  "chars": 1584,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\离散变量相关性分析：卡方检验Matlab+Python代码\\chi_square_test.py",
+  "ext": ".py",
+  "chars": 1792,
+  "hits": {
+   "机器学习": [
+    "sklearn"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "pandas",
+   "matplotlib.pyplot",
+   "scipy.stats",
+   "sklearn.datasets"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\秩和比综合评价法\\rsr_matlab_final.m",
+  "ext": ".m",
+  "chars": 1539,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\秩和比综合评价法\\rsr_python_final.py",
+  "ext": ".py",
+  "chars": 1681,
+  "hits": {},
+  "imports": [
+   "numpy"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\箱型图检测异常值Matlab+Python代码\\boxplot_outlier_detection.m",
+  "ext": ".m",
+  "chars": 1840,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\箱型图检测异常值Matlab+Python代码\\boxplot_outlier_detection.py",
+  "ext": ".py",
+  "chars": 1924,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "pandas"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\粒子群算法Matlab+Python代码\\particle_swarm.m",
+  "ext": ".m",
+  "chars": 3335,
+  "hits": {
+   "优化": [
+    "pso"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\粒子群算法Matlab+Python代码\\particle_swarm.py",
+  "ext": ".py",
+  "chars": 4033,
+  "hits": {
+   "优化": [
+    "pso"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "mpl_toolkits.mplot3d"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\线性规划模型Matlab+Python代码\\linear_programming.m",
+  "ext": ".m",
+  "chars": 979,
+  "hits": {
+   "优化": [
+    "linprog"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "linprog"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\线性规划模型Matlab+Python代码\\linear_programming.py",
+  "ext": ".py",
+  "chars": 1030,
+  "hits": {},
+  "imports": [
+   "pulp"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\连续变量相关性分析：协方差、Pearson、SpearmanMatlab+Python代码\\continuous_correlation_analysis.m",
+  "ext": ".m",
+  "chars": 3930,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\连续变量相关性分析：协方差、Pearson、SpearmanMatlab+Python代码\\continuous_correlation_analysis.py",
+  "ext": ".py",
+  "chars": 3598,
+  "hits": {
+   "统计/时序": [
+    "gray"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "pandas",
+   "matplotlib.pyplot",
+   "seaborn",
+   "scipy.stats"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\遗传算法Matlab+Python代码\\genetic_algorithm.m",
+  "ext": ".m",
+  "chars": 4416,
+  "hits": {
+   "统计/时序": [
+    "ols"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\遗传算法Matlab+Python代码\\genetic_algorithm.py",
+  "ext": ".py",
+  "chars": 5059,
+  "hits": {
+   "优化": [
+    "genetic"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "mpl_toolkits.mplot3d"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\非线性规划模型Matlab+Python代码\\nonlinear_programming.m",
+  "ext": ".m",
+  "chars": 1450,
+  "hits": {
+   "优化": [
+    "fmincon"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "fmincon"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\非线性规划模型Matlab+Python代码\\nonlinear_programming.py",
+  "ext": ".py",
+  "chars": 1550,
+  "hits": {
+   "优化": [
+    "scipy.optimize"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "scipy.optimize"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\马尔可夫预测模型Matlab+Python代码\\markov_prediction.m",
+  "ext": ".m",
+  "chars": 3307,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\马尔可夫预测模型Matlab+Python代码\\markov_prediction.py",
+  "ext": ".py",
+  "chars": 3353,
+  "hits": {},
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\高斯回归预测模型Matlab+Python代码\\gaussian_process_regression.m",
+  "ext": ".m",
+  "chars": 4195,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\高斯回归预测模型Matlab+Python代码\\gaussian_process_regression.py",
+  "ext": ".py",
+  "chars": 4557,
+  "hits": {
+   "优化": [
+    "ga"
+   ],
+   "机器学习": [
+    "sklearn"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "sklearn.gaussian_process",
+   "sklearn.gaussian_process.kernels",
+   "sklearn.preprocessing",
+   "sklearn.metrics"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\高斯混合聚类模型（GMM）\\gaussian_mixture.m",
+  "ext": ".m",
+  "chars": 3533,
+  "hits": {},
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道一\\2025研赛论文模版、AI提示词、冲刺资料等！\\50多种常用算法源代码！（Matlab+Python）\\高斯混合聚类模型（GMM）\\gaussian_mixture.py",
+  "ext": ".py",
+  "chars": 3461,
+  "hits": {
+   "优化": [
+    "ga"
+   ],
+   "机器学习": [
+    "sklearn"
+   ]
+  },
+  "imports": [
+   "numpy",
+   "matplotlib.pyplot",
+   "matplotlib.patches",
+   "sklearn.mixture",
+   "sklearn.preprocessing"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道二\\0-2025 B题思路+参考文献+代码+成品论文\\Z老师\\第二部分：B题问题1-3代码与结果可视化\\code\\问题一代码.py",
+  "ext": ".py",
+  "chars": 15372,
+  "hits": {
+   "统计/时序": [
+    "fft"
+   ]
+  },
+  "imports": [
+   "pandas",
+   "numpy",
+   "ast",
+   "matplotlib",
+   "matplotlib.pyplot",
+   "seaborn",
+   "matplotlib.patches",
+   "matplotlib.patches",
+   "mpl_toolkits.mplot3d",
+   "warnings"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道二\\0-2025 B题思路+参考文献+代码+成品论文\\Z老师\\第二部分：B题问题1-3代码与结果可视化\\code\\问题三代码.py",
+  "ext": ".py",
+  "chars": 12068,
+  "hits": {
+   "优化": [
+    "ga"
+   ]
+  },
+  "imports": [
+   "pandas",
+   "numpy",
+   "scipy.linalg",
+   "matplotlib",
+   "matplotlib.pyplot",
+   "seaborn",
+   "mpl_toolkits.mplot3d",
+   "warnings"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道二\\0-2025 B题思路+参考文献+代码+成品论文\\Z老师\\第二部分：B题问题1-3代码与结果可视化\\code\\问题二代码.py",
+  "ext": ".py",
+  "chars": 14084,
+  "hits": {
+   "机器学习": [
+    "sklearn",
+    "randomforest",
+    "RandomForest",
+    "pca"
+   ],
+   "统计/时序": [
+    "ols"
+   ]
+  },
+  "imports": [
+   "pandas",
+   "numpy",
+   "scipy.stats",
+   "sklearn.ensemble",
+   "typing",
+   "matplotlib",
+   "matplotlib.pyplot",
+   "seaborn",
+   "sklearn.metrics",
+   "warnings",
+   "sklearn.decomposition",
+   "sklearn.impute"
+  ],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道二\\0-2025 C题思路+参考文献+代码+成品论文\\L老师\\C题 问题代码包-L老师\\main_q1.m",
+  "ext": ".m",
+  "chars": 7516,
+  "hits": {
+   "优化": [
+    "ga"
+   ],
+   "统计/时序": [
+    "gray"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道二\\0-2025 C题思路+参考文献+代码+成品论文\\L老师\\C题 问题代码包-L老师\\main_q2.m",
+  "ext": ".m",
+  "chars": 8361,
+  "hits": {
+   "优化": [
+    "ga"
+   ],
+   "机器学习": [
+    "pca"
+   ],
+   "统计/时序": [
+    "gray"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": [
+   "pca"
+  ]
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道二\\0-2025 C题思路+参考文献+代码+成品论文\\L老师\\C题 问题代码包-L老师\\main_q3.m",
+  "ext": ".m",
+  "chars": 9253,
+  "hits": {
+   "优化": [
+    "ga"
+   ],
+   "机器学习": [
+    "pca"
+   ],
+   "统计/时序": [
+    "gray",
+    "ols",
+    "fft"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ },
+ {
+  "rel": "25华为杯研赛思路代码\\渠道二\\0-2025 C题思路+参考文献+代码+成品论文\\L老师\\C题 问题代码包-L老师\\main_q4.m",
+  "ext": ".m",
+  "chars": 13517,
+  "hits": {
+   "优化": [
+    "ga",
+    "aco"
+   ],
+   "机器学习": [
+    "pca"
+   ],
+   "统计/时序": [
+    "gray",
+    "ols"
+   ]
+  },
+  "imports": [],
+  "funcs": [],
+  "matlab_solvers": []
+ }
+]

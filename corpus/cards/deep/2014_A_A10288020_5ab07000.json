@@ -1,0 +1,136 @@
+{
+  "paper_id": "2014_A_A10288020_5ab07000",
+  "year": 2014,
+  "track": "A",
+  "title": "水面舰艇编队防空和信息化战争评估模型",
+  "award_level": "待确认",
+  "award_confidence": "unknown",
+  "problem_count": 5,
+  "task_types": [
+    "优化",
+    "预测",
+    "评价",
+    "分类",
+    "空间图",
+    "排队库存"
+  ],
+  "models_and_algorithms": [
+    "BP神经网络",
+    "深度学习",
+    "排队论"
+  ],
+  "data_modality": "结构化",
+  "data_scale": "小样本/题设数据",
+  "validation_methods": [
+    "对比/比较分析",
+    "鲁棒性/稳定性分析",
+    "仿真/数值验证",
+    "精度指标(RMSE/R²等)"
+  ],
+  "figure_count": 24,
+  "figure_types": [
+    "流程图/框图",
+    "折线/曲线图"
+  ],
+  "innovation_points": [],
+  "page_count": 37,
+  "section_structure": "1 问题重述；2 模型假设；3 符号说明；4 问题一模型建立与求解；5 问题二模型建立与求解；6 问题三模型建立与求解；7 问题四模型建立与求解；8 问题五模型建立与求解；9 总 结",
+  "source_locations": [
+    "模型建立≈p.2",
+    "模型求解≈p.13",
+    "模型评价/改进≈p.3"
+  ],
+  "confidence": "high",
+  "notes": "按索引year归为2014(实为第十二届/2015赛题内容)，五问方法跨度大",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "常见横队/纵队",
+      "main_model": "半环形防守阵型几何优化",
+      "improvement": "给出各护卫舰距离角度(42.89km,45/95/145/195°)",
+      "why_switch": "论证常规阵型不适用，半环对20-220°扇面覆盖最优"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "逐舰独立拦截",
+      "main_model": "最佳防御纵深模型+排队论思想排拦截时序",
+      "improvement": "解出最危险方向最大抗饱和9批",
+      "why_switch": "拦截准备7s+一艘舰一次一批，需排队论排时间"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "无预警机",
+      "main_model": "配预警机扩大探测，沿用纵深模型",
+      "improvement": "抗饱和提升到18批(+100%)",
+      "why_switch": "探测距离扩展后重新算纵深"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "规则判断目标意图",
+      "main_model": "三层BP神经网络对预处理后目标特征分类",
+      "improvement": "输出攻击/掩护/监听/其他四类意图",
+      "why_switch": "规则样本有限，神经网络做意图识别"
+    },
+    {
+      "question_id": "问题五",
+      "baseline": "传统兰彻斯特方程",
+      "main_model": "非对称信息战争评估模型",
+      "improvement": "海湾战争实例验证损耗比预测",
+      "why_switch": "兰彻斯特在信息化战争失真，需信息优势维度"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "拦截准备7s，路径为最快相遇",
+    "一艘舰一次只拦一批，不二次拦截",
+    "抗饱和=安全防御纵深内可拦截批数",
+    "BP网络输入经纬度/距离/方位/RRS/意图规则"
+  ],
+  "objective_function": "最大化对扇面来袭导弹的拦截批数；队形几何最优",
+  "evaluation_metrics": [
+    "抗饱和批数",
+    "BP意图分类正确率",
+    "非对称模型对海湾战争损耗比拟合"
+  ],
+  "algorithm_details_and_complexity": "排队论排时序O(批数)；三层BP前向O(隐层节点×样本)",
+  "independent_validation_design": "问题三与问题二对照(配预警机前后)；BP用已知意图样本训练后测12批；问题五用海湾战争实例回测",
+  "sensitivity_robustness_ablation": [
+    "队形角度/距离对防护的敏感性",
+    "BP训练样本/隐含层讨论",
+    "与兰彻斯特传统模型对比说明其失真"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "防空队形是影响水面舰艇编队防空能力的重要因素。",
+    "method_sentence": "几何定半环阵型、排队论算纵深、BP识意图、非对称信息战争评估",
+    "result_sentence": "最大抗饱和9批，配预警机18批，12批目标意图判定",
+    "numbers_presentation": "给出距离角度、抗饱和批数、意图ID清单"
+  },
+  "figure_narrative_order": [
+    "半环阵型图9",
+    "最危险方向",
+    "防御纵深",
+    "BP意图分类",
+    "非对称战争评估"
+  ],
+  "judge_high_score_reasons": [
+    "一题五问覆盖几何/排队/神经/战争论",
+    "排队论处理拦截时序很贴切",
+    "对传统兰彻斯特做批判性改进"
+  ],
+  "reusable_patterns": [
+    "几何阵型+排队论时序",
+    "BP神经网络意图/状态分类",
+    "传统模型批判→信息维度改进"
+  ],
+  "transferable_ability_card_candidates": [
+    "排队论资源调度",
+    "BP意图识别",
+    "非对称对抗评估模型"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "半环阵型": "≈p.5-10",
+    "排队论纵深": "≈p.12-20",
+    "BP意图": "≈p.22-30",
+    "非对称战争": "≈p.31-36"
+  }
+}

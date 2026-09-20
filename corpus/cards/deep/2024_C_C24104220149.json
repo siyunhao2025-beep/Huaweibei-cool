@@ -1,0 +1,153 @@
+{
+  "paper_id": "2024_C_C24104220149",
+  "year": 2024,
+  "track": "C",
+  "title": "基于多因素分析与深度学习的磁芯损耗建模",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 5,
+  "task_types": [
+    "分类",
+    "参数寻优",
+    "差异性分析",
+    "预测",
+    "多目标优化"
+  ],
+  "models_and_algorithms": [
+    "FFT",
+    "PCA",
+    "SVM/决策树/集成学习",
+    "比例/二次/三次/指数/幂级数温度修正",
+    "动态参数PSO",
+    "最小二乘",
+    "模拟退火",
+    "特征权重Bi-LSTM",
+    "GBDT/CNN对比",
+    "GA/PSO/NSGA-II/MOPSO"
+  ],
+  "data_modality": "结构化",
+  "data_scale": "百级样本",
+  "validation_methods": [
+    "训练集/测试集",
+    "加噪测试集",
+    "决定系数对比",
+    "Pareto前沿对比"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "时频域特征",
+    "Bi-LSTM结构",
+    "热点图",
+    "Pareto前沿"
+  ],
+  "innovation_points": [
+    "PCA+FFT 时频特征，SVM/决策树/集成学习三类分类器均 100% 准确",
+    "动态参数 PSO 比常值 PSO 决定系数提升 0.041；三次函数温度修正最优 R²=0.9955",
+    "特征权重 Bi-LSTM 预测磁芯损耗 R²=0.998，加噪测试仍 0.9952",
+    "问题五 NSGA-II 优于 MOPSO 求 Pareto"
+  ],
+  "page_count": 71,
+  "section_structure": "问题重述/问题一~十/模型评价与推广/参考文献/附录",
+  "source_locations": [
+    "p.1-2 摘要",
+    "p.54 模型评价"
+  ],
+  "confidence": "high",
+  "notes": "题C，Bi-LSTM+NSGA-II路线。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "人工分类",
+      "main_model": "FFT+PCA+SVM/决策树/集成学习",
+      "improvement": "三算法均100%",
+      "why_switch": "需自动识别励磁波形"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "原始SE/常值PSO",
+      "main_model": "5种温度修正+动态参数PSO/最小二乘/模拟退火",
+      "improvement": "三次函数温度修正",
+      "why_switch": "原SE缺温度项；动态PSO优于常值"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "单因素",
+      "main_model": "单因素+交叉分类双因素热点图",
+      "improvement": "90°/正弦/材料4最优",
+      "why_switch": "需独立与协同影响"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "GBDT/CNN",
+      "main_model": "特征权重Bi-LSTM",
+      "improvement": "ln变换长尾+独热编码",
+      "why_switch": "GBDT/CNN R² 0.995/0.9837 不及Bi-LSTM"
+    },
+    {
+      "question_id": "问题五",
+      "baseline": "单目标转化",
+      "main_model": "NSGA-II/MOPSO求Pareto",
+      "improvement": "NSGA-II优于MOPSO",
+      "why_switch": "双目标(损耗最小+磁能最大)"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "Steinmetz + 三次温度修正",
+    "Bi-LSTM 双向时序",
+    "Pareto 双目标"
+  ],
+  "objective_function": "min P_v 且 max f·B_peak",
+  "evaluation_metrics": [
+    "分类准确率100%",
+    "动态PSO R²+0.041",
+    "三次修正R²=0.9955",
+    "Bi-LSTM R²=0.998(加噪0.9952)",
+    "GBDT 0.995/CNN 0.9837"
+  ],
+  "algorithm_details_and_complexity": "动态参数PSO；Bi-LSTM；NSGA-II",
+  "independent_validation_design": "测试集+加噪测试集双重验证",
+  "sensitivity_robustness_ablation": [
+    "SVM/决策树/集成学习对比",
+    "动态PSO vs 常值PSO vs 模拟退火",
+    "Bi-LSTM vs GBDT vs CNN",
+    "NSGA-II vs MOPSO"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "磁性元件是第三代功率半导体发展必须要研究的重点，而现有的磁芯材料损耗模型与实际应用的需求有较大差异。",
+    "method_sentence": "FFT+PCA+SVM / 5温度修正+动态PSO / 双因素热点图 / 特征权重Bi-LSTM / NSGA-II",
+    "result_sentence": "分类100%；三次修正R²=0.9955；Bi-LSTM R²=0.998；NSGA-II最优",
+    "numbers_presentation": "完整给出 R² 对比与加噪鲁棒性"
+  },
+  "figure_narrative_order": [
+    "时频特征",
+    "5温度修正",
+    "热点图",
+    "Bi-LSTM结构",
+    "Pareto"
+  ],
+  "judge_high_score_reasons": [
+    "动态参数 PSO 对常值 PSO 的改进是方法论亮点",
+    "Bi-LSTM 加噪测试 R² 仍 0.9952，鲁棒性论证扎实",
+    "NSGA-II vs MOPSO 对比选 Pareto",
+    "五问方法层层递进"
+  ],
+  "reusable_patterns": [
+    "动态参数 PSO 优于常值 PSO",
+    "Bi-LSTM 做跨工况回归",
+    "加噪测试集验证鲁棒性",
+    "NSGA-II vs MOPSO 双目标对比"
+  ],
+  "transferable_ability_card_candidates": [
+    "Bi-LSTM",
+    "动态PSO",
+    "NSGA-II",
+    "加噪鲁棒性验证"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "问题一": "p.8-19",
+    "动态PSO": "p.20-30",
+    "Bi-LSTM": "p.40-50",
+    "模型评价": "p.54"
+  }
+}

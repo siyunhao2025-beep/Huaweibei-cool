@@ -1,0 +1,151 @@
+{
+  "paper_id": "2016_E_E10357003_821c54b8",
+  "year": 2016,
+  "track": "E",
+  "title": "基于多目标规划和智能优化算法的粮",
+  "award_level": "待确认",
+  "award_confidence": "unknown",
+  "problem_count": 6,
+  "task_types": [
+    "优化",
+    "预测",
+    "评价",
+    "分类",
+    "回归拟合",
+    "排队库存",
+    "控制决策"
+  ],
+  "models_and_algorithms": [
+    "因子分析",
+    "投影寻踪",
+    "系统聚类/层次聚类",
+    "灰色预测GM(1,1)",
+    "BP神经网络",
+    "深度学习",
+    "支持向量机SVM",
+    "粒子群算法PSO",
+    "多元线性回归",
+    "信道建模/多径/OFDM"
+  ],
+  "data_modality": "结构化",
+  "data_scale": "小样本/题设数据",
+  "validation_methods": [
+    "灵敏度/敏感性分析",
+    "误差/残差分析",
+    "鲁棒性/稳定性分析",
+    "精度指标(RMSE/R²等)"
+  ],
+  "figure_count": 6,
+  "figure_types": [
+    "流程图/框图",
+    "折线/曲线图"
+  ],
+  "innovation_points": [],
+  "page_count": 108,
+  "section_structure": "2 问题分析；3 重要符号说明；4 模型假设；5 模型的建立与求解",
+  "source_locations": [
+    "模型建立≈p.4",
+    "模型求解≈p.77",
+    "灵敏度分析≈p.2",
+    "模型评价/改进≈p.3"
+  ],
+  "confidence": "high",
+  "notes": "2016年E题(粮食最低收购价)，6问108页，计量经济学规范，代表大体量国一水平",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "直接回归",
+      "main_model": "KS检验/相关/主成分因子分析筛13因素+Granger因果检验",
+      "improvement": "固定影响变系数面板回归，似然比/单位根/协整检验",
+      "why_switch": "面板跨区域跨年份，需变系数与平稳性检验"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "加权评价",
+      "main_model": "PSO-PPE(投影寻踪)定权重+SOM聚类建评价标准",
+      "improvement": "五维贡献度综合评价政策执行效果",
+      "why_switch": "投影寻踪处理高维非线性，SOM给客观分级"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "简单供需",
+      "main_model": "蛛网模型+价格局部均衡正反馈系统",
+      "improvement": "面积/产量/消费/联系方程联立",
+      "why_switch": "粮食价格有蛛网震荡和反馈"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "经验定价",
+      "main_model": "ND-GA(正态随机数遗传)多目标合理定价+OWA合理性指数",
+      "improvement": "WPA组合预测输入变量，给2017合理价区间",
+      "why_switch": "定价涉国家/粮农/企业多方多目标"
+    },
+    {
+      "question_id": "问题五",
+      "baseline": "经验调整",
+      "main_model": "对数逐步回归+多重回归面积调整优化",
+      "improvement": "达面积+5%目标的定价测算",
+      "why_switch": "需量化政策杠杆弹性"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "面板模型:y_it=α_i+β_i x_it+ε_it",
+    "投影寻踪把高维投影到低维找最优方向",
+    "蛛网模型:供给滞后于价格",
+    "OWA/WPA算子聚合多目标"
+  ],
+  "objective_function": "ND-GA多目标:库存稳定/价稳/财政/粮农收益/企业收益综合最优",
+  "evaluation_metrics": [
+    "面板R²/似然比/单位根/协整检验",
+    "政策执行效果指数",
+    "2017合理价区间",
+    "面积调整弹性"
+  ],
+  "algorithm_details_and_complexity": "面板回归+Granger；PSO-PPE投影寻踪；ND-GA；WPA组合预测",
+  "independent_validation_design": "似然比检验固定效应；单位根/协整检验模型有效性；SOM聚类建标准后回测",
+  "sensitivity_robustness_ablation": [
+    "对定价参数做灵敏度分析",
+    "WPA组合vs单预测对比",
+    "各品种分区域分品种分别建模"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "粮食最低收购价政策研究。",
+    "method_sentence": "面板回归+Granger、PSO-PPE评价、蛛网局部均衡、ND-GA多目标定价、WPA组合预测",
+    "result_sentence": "2017四品种合理价122-172元/50kg，小麦需到2028面积+5%",
+    "numbers_presentation": "给具体价区间、贡献度、回归系数"
+  },
+  "figure_narrative_order": [
+    "因素指标体系",
+    "面板回归结果",
+    "政策效果评价",
+    "蛛网价格均衡",
+    "ND-GA定价",
+    "面积调整"
+  ],
+  "judge_high_score_reasons": [
+    "108页大体量，6问全链",
+    "面板数据计量规范(单位根/协整/Granger)",
+    "自创PSO-PPE/ND-GA/WPA组合"
+  ],
+  "reusable_patterns": [
+    "面板数据计量全流程",
+    "投影寻踪客观评价权重",
+    "蛛网+局部均衡政策建模",
+    "多目标启发式定价"
+  ],
+  "transferable_ability_card_candidates": [
+    "面板回归",
+    "Granger因果",
+    "PSO-PPE投影寻踪",
+    "ND-GA多目标",
+    "WPA组合预测"
+  ],
+  "page_locations": {
+    "摘要": "p.2-3",
+    "面板回归": "≈p.10-30",
+    "PSO-PPE评价": "≈p.35-50",
+    "蛛网均衡": "≈p.55-70",
+    "ND-GA定价": "≈p.75-95",
+    "灵敏度": "≈p.100-106"
+  }
+}

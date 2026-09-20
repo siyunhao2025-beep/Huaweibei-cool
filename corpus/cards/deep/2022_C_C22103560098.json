@@ -1,0 +1,114 @@
+{
+  "paper_id": "2022_C_C22103560098",
+  "year": 2022,
+  "track": "C",
+  "title": "汽车制造涂装-总装PBS缓存调序调度优化",
+  "award_level": "待确认",
+  "award_confidence": "low",
+  "problem_count": 2,
+  "task_types": [
+    "调度优化",
+    "动态规划",
+    "智能算法"
+  ],
+  "models_and_algorithms": [
+    "动态规划多目标模型",
+    "时间状态矩阵递推",
+    "卷积核处理目标1",
+    "灰狼算法GWO"
+  ],
+  "data_modality": "PBS调度仿真数据",
+  "data_scale": "附件1/附件2",
+  "validation_methods": [
+    "附件1得分18.916/用时3056s/返回道6次",
+    "附件2得分44.469/用时2996s"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "PBS车道示意图",
+    "时间状态矩阵图",
+    "调度流程图",
+    "得分表"
+  ],
+  "innovation_points": [
+    "卷积核思想形式化优化目标1",
+    "时间状态矩阵递推模拟PBS车辆流转",
+    "灰狼算法求解多目标调度"
+  ],
+  "page_count": 56,
+  "section_structure": "问题重述/问题分析/问题一(4章)模型+算法+结果(p.8-24)/问题二(5章)(p.25-30)/评价(p.31)",
+  "source_locations": [
+    "p.8-20 问题一模型",
+    "p.21-23 灰狼算法",
+    "p.23-24 结果",
+    "p.25-29 问题二"
+  ],
+  "confidence": "high",
+  "notes": "C题动态规划+灰狼算法代表。卷积核处理目标1有新意。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "规则调度",
+      "main_model": "动态规划多目标+GWO",
+      "improvement": "时间状态矩阵递推+卷积核形式化目标1",
+      "why_switch": "PBS多目标NP-hard"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "问题一(含横移机优先级)",
+      "main_model": "取消优先级+等待时间决策变量",
+      "improvement": "新增返回道等待时间决策",
+      "why_switch": "约束6放宽后需重新建模"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "接车横移机优先返回道10号位",
+    "送车横移机优先1号位",
+    "假设横移机工作时间已知"
+  ],
+  "objective_function": "max z1+z2+z3+z4 (四目标加权)",
+  "evaluation_metrics": [
+    "附件1得分18.916/3056s/返回道6次",
+    "附件2得分44.469/2996s/返回道6次"
+  ],
+  "algorithm_details_and_complexity": "时间状态矩阵O(T·N_lane)递推；GWO迭代G轮O(G·N·D)",
+  "independent_validation_design": [
+    "附件1/附件2两数据集验证"
+  ],
+  "sensitivity_robustness_ablation": [
+    "返回道使用次数扫描"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "PBS缓存调序是汽车工业重要调度问题，本文建动态规划多目标模型。",
+    "method_sentence": "时间状态矩阵递推+卷积核处理目标1+灰狼算法求解。",
+    "result_sentence": "附件1得分18.916/3056s；附件2得分44.469/2996s。",
+    "numbers_presentation": "两数据集各给得分/用时/返回道次数。"
+  },
+  "figure_narrative_order": [
+    "PBS结构示意",
+    "时间状态矩阵",
+    "GWO收敛曲线",
+    "调度结果"
+  ],
+  "judge_high_score_reasons": [
+    "卷积核形式化优化目标1是亮点",
+    "动态规划递推+GWO混合完整",
+    "两数据集验证鲁棒"
+  ],
+  "reusable_patterns": [
+    "流水线调度用时间状态矩阵递推",
+    "多目标评价项可用卷积核/滑动窗口形式化",
+    "调度类问题'精确建模+群智能求解'两段式"
+  ],
+  "transferable_ability_card_candidates": [
+    "离散事件调度",
+    "动态规划",
+    "灰狼算法"
+  ],
+  "page_locations": {
+    "问题一模型": "p.8-20",
+    "GWO算法": "p.21-23",
+    "问题一结果": "p.23-24",
+    "问题二": "p.25-29"
+  }
+}

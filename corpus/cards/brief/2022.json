@@ -1,0 +1,1737 @@
+[
+  {
+    "paper_id": "2022_A_A22100070190",
+    "year": 2022,
+    "track": "A",
+    "title": "移动场景超分辨定位问题",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "信号处理",
+      "DOA估计",
+      "轨迹跟踪",
+      "鲁棒性改进"
+    ],
+    "models_and_algorithms": [
+      "FFT距离估计",
+      "MTOEP算法",
+      "距离多普勒像",
+      "数据关联",
+      "子阵分解+滑窗"
+    ],
+    "data_modality": "仿真雷达中频信号",
+    "data_scale": "仿真MIMO阵列chirp数据",
+    "validation_methods": [
+      "不同DOA算法RMSE对比",
+      "SNR扫描",
+      "蒙特卡洛"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "极坐标定位图",
+      "距离多普勒图",
+      "轨迹图",
+      "RMSE-SNR曲线"
+    ],
+    "innovation_points": [
+      "多DOA算法横向评估选型(MTOEP胜出)",
+      "测向交叉定位新算法(弃距离估计)",
+      "子阵分解+滑窗类平均抑制天线老化误差"
+    ],
+    "page_count": 33,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "A题典型代表：FFT+MTOEP组合，四问递进结构清晰"
+  },
+  {
+    "paper_id": "2022_A_A22100070195",
+    "year": 2022,
+    "track": "A",
+    "title": "移动场景超分辨定位问题",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "路径优化",
+      "鲁棒调度"
+    ],
+    "models_and_algorithms": [
+      "鲁棒规划",
+      "滚动时域",
+      "多目标调度"
+    ],
+    "data_modality": "",
+    "data_scale": "",
+    "validation_methods": [],
+    "figure_count": null,
+    "figure_types": [],
+    "innovation_points": [
+      "滚动时域处理动态调度"
+    ],
+    "page_count": 17,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "low",
+    "notes": "摘要抽文残缺/疑似与A题赛题不符，关键词指向应急物流，疑似文件命名错位"
+  },
+  {
+    "paper_id": "2022_A_A22100130054",
+    "year": 2022,
+    "track": "A",
+    "title": "移动场景超分辨定位问题",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "信号处理",
+      "压缩感知",
+      "在线追踪"
+    ],
+    "models_and_algorithms": [
+      "时空分块压缩感知",
+      "密度峰值聚类",
+      "局部压缩感知",
+      "数据同化",
+      "Dropout随机丢块"
+    ],
+    "data_modality": "仿真雷达信号",
+    "data_scale": "稀疏网格重建",
+    "validation_methods": [
+      "与传统CS对比",
+      "重建分辨率对比",
+      "运行时间对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "重建极坐标图",
+      "运行时间对比表",
+      "轨迹图"
+    ],
+    "innovation_points": [
+      "时空分块CS降计算量",
+      "密度峰值聚类解决欠稀疏重叠信号",
+      "局部CS+前帧约束在线追踪"
+    ],
+    "page_count": 32,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "A题方法创新突出：压缩感知路线的代表作"
+  },
+  {
+    "paper_id": "2022_A_A22102460007",
+    "year": 2022,
+    "track": "A",
+    "title": "移动场景超分辨定位问题",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "线谱估计",
+      "DOA估计",
+      "目标跟踪",
+      "鲁棒估计"
+    ],
+    "models_and_algorithms": [
+      "MDVALSE多维变分贝叶斯线谱估计",
+      "BIC模型阶数选择",
+      "最近邻数据关联",
+      "扩展卡尔曼滤波",
+      "MUSIC+fmincon结构噪声估计",
+      "CRB克拉美罗界"
+    ],
+    "data_modality": "仿真雷达中频信号",
+    "data_scale": "多算法选型对比",
+    "validation_methods": [
+      "CRB理论下界分析",
+      "四种先进算法横向选型",
+      "定位极坐标结果"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "极坐标定位图",
+      "轨迹图",
+      "RMSE曲线"
+    ],
+    "innovation_points": [
+      "MDVALSE自动估计噪声方差与模型阶数",
+      "BIC阶数选择+EKF在线跟踪",
+      "CRB理论下界推导"
+    ],
+    "page_count": 56,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "A题方法论最完整：含CRB理论分析"
+  },
+  {
+    "paper_id": "2022_A_A22103040090",
+    "year": 2022,
+    "track": "A",
+    "title": "移动场景超分辨定位问题",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "信号处理",
+      "DOA估计",
+      "在线低复杂度算法"
+    ],
+    "models_and_algorithms": [
+      "FFT",
+      "DFT方位频谱插值",
+      "L1正则化最小二乘",
+      "CFAR恒虚警检测",
+      "低通平滑滤波"
+    ],
+    "data_modality": "仿真FMCW毫米波雷达信号",
+    "data_scale": "虚拟天线阵列",
+    "validation_methods": [
+      "无噪/噪声场景对比",
+      "分辨率从1.33°提升至0.4°"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "极坐标定位图",
+      "方位谱图",
+      "CFAR检测图"
+    ],
+    "innovation_points": [
+      "L1正则化最小二乘突破物理阵列极限分辨率",
+      "CFAR+噪声项重推导抗噪声",
+      "复杂度分析满足在线要求"
+    ],
+    "page_count": 52,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "A题正则化路线代表"
+  },
+  {
+    "paper_id": "2022_A_A22104860055",
+    "year": 2022,
+    "track": "A",
+    "title": "移动场景超分辨定位问题",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "DOA估计",
+      "效率优化",
+      "在线跟踪"
+    ],
+    "models_and_algorithms": [
+      "2D-MUSIC",
+      "FMCW-MUSIC",
+      "频谱峰值辅助+多层级分辨率搜索",
+      "运动连续性预测+梯度下降"
+    ],
+    "data_modality": "仿真FMCW雷达信号",
+    "data_scale": "阵列多目标",
+    "validation_methods": [
+      "定位精度约1cm",
+      "优化后求解0.22s(提速200倍)",
+      "四种跟踪方案对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "极坐标定位图",
+      "轨迹图",
+      "求解时间对比表"
+    ],
+    "innovation_points": [
+      "自研FMCW-MUSIC",
+      "频谱峰值辅助+多层级搜索提速200倍",
+      "运动连续性约束+梯度下降在线跟踪"
+    ],
+    "page_count": 59,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "A题效率优化标杆：提速200倍是亮点"
+  },
+  {
+    "paper_id": "2022_A_A22107010047",
+    "year": 2022,
+    "track": "A",
+    "title": "移动场景超分辨定位问题",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "DOA估计",
+      "压缩感知",
+      "在线定位"
+    ],
+    "models_and_algorithms": [
+      "基线法+盖尔圆MUSIC",
+      "修正L1-SVD混合范数CS-DOA",
+      "子空间旋转变换快速DOA",
+      "三维联合映射"
+    ],
+    "data_modality": "仿真FMCV-MIMO雷达信号",
+    "data_scale": "两发四十三收虚拟孔径",
+    "validation_methods": [
+      "基线法 vs 盖尔圆MUSIC vs CS-DOA对比",
+      "低SNR性能"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "极坐标定位图",
+      "阵列结构图",
+      "DOA谱图"
+    ],
+    "innovation_points": [
+      "盖尔圆MUSIC+基线法联合",
+      "修正L1-SVD迭代正则化消伪峰",
+      "子空间旋转变换实现在线"
+    ],
+    "page_count": 60,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "A题CS+MUSIC混合路线"
+  },
+  {
+    "paper_id": "2022_A_A22116460175",
+    "year": 2022,
+    "track": "A",
+    "title": "移动场景超分辨定位问题",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "DOA估计",
+      "空间平滑解相干",
+      "轨迹关联",
+      "阵列误差校正"
+    ],
+    "models_and_algorithms": [
+      "MUSIC",
+      "MLE最大似然",
+      "空间平滑",
+      "压缩感知",
+      "稀疏矩阵补全"
+    ],
+    "data_modality": "仿真雷达中频信号",
+    "data_scale": "相干多目标",
+    "validation_methods": [
+      "蒙特卡洛SNR扫描",
+      "SNR=0dB距离误差近0/角度误差<0.1°"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "极坐标定位图",
+      "轨迹图",
+      "RMSE-SNR曲线"
+    ],
+    "innovation_points": [
+      "空间平滑解相干后MUSIC+MLE精修",
+      "压缩感知+稀疏矩阵补全补偿天线阵列扰动误差"
+    ],
+    "page_count": 23,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "A题MUSIC+MLE经典路线"
+  },
+  {
+    "paper_id": "2022_B_B22100070171",
+    "year": 2022,
+    "track": "B",
+    "title": "方形件排样优化与订单组批",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "排样优化",
+      "订单组批",
+      "整数规划"
+    ],
+    "models_and_algorithms": [
+      "混合整数规划MIP",
+      "均匀三阶段排样生成算法TUSP",
+      "顺序价值修正启发式SVC",
+      "杰拉德距离层次聚类"
+    ],
+    "data_modality": "排样数据集",
+    "data_scale": "A1-A4/B1-B5数据集",
+    "validation_methods": [
+      "板材利用率96.02%/94.08%等",
+      "复杂度评估"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "排样效果图",
+      "利用率对比表"
+    ],
+    "innovation_points": [
+      "'割'转'拼'的TUSP生成算法",
+      "SVC顺序价值修正全局优化",
+      "杰拉德距离定义订单材质相似性"
+    ],
+    "page_count": 62,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题排样代表作：TUSP+SVC"
+  },
+  {
+    "paper_id": "2022_B_B22102860210",
+    "year": 2022,
+    "track": "B",
+    "title": "方形件排样优化与订单组批",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "排样优化",
+      "订单组批",
+      "整数规划"
+    ],
+    "models_and_algorithms": [
+      "混合整数线性规划",
+      "列生成思想+贪心DFS",
+      "类平均距离凝聚层次聚类"
+    ],
+    "data_modality": "排样数据集",
+    "data_scale": "A1-A4/B1-B5",
+    "validation_methods": [
+      "板材利用率93.87%~95.15%",
+      "板材数89/89/88/87"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "排样效果图",
+      "板材数对比表"
+    ],
+    "innovation_points": [
+      "列生成+贪心DFS(优先大Item横向)",
+      "类平均距离凝聚层次聚类组批"
+    ],
+    "page_count": 75,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题列生成路线"
+  },
+  {
+    "paper_id": "2022_B_B22103360018",
+    "year": 2022,
+    "track": "B",
+    "title": "方形件排样优化与订单组批",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "排样优化",
+      "订单组批",
+      "整数规划"
+    ],
+    "models_and_algorithms": [
+      "整数规划",
+      "自底向上构建",
+      "贪心迭代顺序价值修正算法"
+    ],
+    "data_modality": "排样数据集",
+    "data_scale": "dataA1-A4",
+    "validation_methods": [
+      "利用率93.87%~94.08%",
+      "运行时间0.22~0.28s"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "排样效果图",
+      "运行时间表"
+    ],
+    "innovation_points": [
+      "自底向上stack-strip-bin构建",
+      "item价值迭代更新重排"
+    ],
+    "page_count": 53,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题价值修正路线"
+  },
+  {
+    "paper_id": "2022_B_B22104870143",
+    "year": 2022,
+    "track": "B",
+    "title": "方形件排样优化与订单组批",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "排样优化",
+      "订单组批",
+      "启发式搜索"
+    ],
+    "models_and_algorithms": [
+      "整数规划",
+      "三阶段启发式搜索树3-SHST",
+      "FFDH后序遍历",
+      "杰卡德距离凝聚层次聚类"
+    ],
+    "data_modality": "排样数据集",
+    "data_scale": "dataA1-A4",
+    "validation_methods": [
+      "板材89/89/89/87",
+      "运行时间0.09~0.13s"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "排样效果图",
+      "切割树图"
+    ],
+    "innovation_points": [
+      "3-SHST搜索树+后序遍历找最优插入位",
+      "杰卡德距离定义订单材质差异"
+    ],
+    "page_count": 41,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题搜索树路线"
+  },
+  {
+    "paper_id": "2022_B_B22105300030",
+    "year": 2022,
+    "track": "B",
+    "title": "方形件排样优化与订单组批",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "排样优化",
+      "订单组批",
+      "聚类"
+    ],
+    "models_and_algorithms": [
+      "混合整数规划",
+      "迭代法",
+      "K-Means聚类",
+      "超参数调整"
+    ],
+    "data_modality": "排样数据集",
+    "data_scale": "数据集A/B",
+    "validation_methods": [
+      "平均利用率94.06%",
+      "组批后利用率83.32%"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "排样效果图",
+      "K-Means簇图"
+    ],
+    "innovation_points": [
+      "自写迭代法不调第三方库",
+      "K-Means+欧氏/类平均距离定K"
+    ],
+    "page_count": 39,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题K-Means组批路线"
+  },
+  {
+    "paper_id": "2022_B_B22106140009",
+    "year": 2022,
+    "track": "B",
+    "title": "方形件排样优化与订单组批",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "排样优化",
+      "订单组批",
+      "启发式"
+    ],
+    "models_and_algorithms": [
+      "混合整数规划",
+      "启发式",
+      "变异系数",
+      "聚类"
+    ],
+    "data_modality": "排样数据集",
+    "data_scale": "",
+    "validation_methods": [],
+    "figure_count": null,
+    "figure_types": [],
+    "innovation_points": [
+      "变异系数衡量排样稳定性"
+    ],
+    "page_count": 46,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "low",
+    "notes": "摘要抽文残缺，仅关键词可用"
+  },
+  {
+    "paper_id": "2022_B_B22110490001",
+    "year": 2022,
+    "track": "B",
+    "title": "方形件排样优化与订单组批",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "排样优化",
+      "订单组批",
+      "0-1线性规划"
+    ],
+    "models_and_algorithms": [
+      "全局0-1线性规划",
+      "组批系数(不同订单同材质相关系数)"
+    ],
+    "data_modality": "排样数据集",
+    "data_scale": "dataA1-A4",
+    "validation_methods": [
+      "利用率94.38%~95.46%",
+      "理论最小板材数对照"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "排样效果图",
+      "利用率分布表"
+    ],
+    "innovation_points": [
+      "考虑Item旋转提升利用率",
+      "引入组批系数提升组批效率"
+    ],
+    "page_count": 35,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "B题0-1线性规划精确建模路线"
+  },
+  {
+    "paper_id": "2022_C_C22103190082",
+    "year": 2022,
+    "track": "C",
+    "title": "汽车制造涂装-总装缓存调序区调度优化",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "调度优化",
+      "仿真模拟",
+      "智能算法"
+    ],
+    "models_and_algorithms": [
+      "0-1整数规划",
+      "改进遗传算法",
+      "启发式初始种群策略",
+      "混沌序列交叉+单点变异"
+    ],
+    "data_modality": "PBS调度仿真数据",
+    "data_scale": "附件1/附件2",
+    "validation_methods": [
+      "附件1总分26.91",
+      "附件2总分53.04",
+      "对比全走4车道35.1分"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "车道示意图",
+      "调度甘特图",
+      "得分对比表"
+    ],
+    "innovation_points": [
+      "4种启发式策略找初始种群",
+      "混沌序列交叉防早熟",
+      "MATLAB动态仿真PBS操作"
+    ],
+    "page_count": 49,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "C题遗传算法代表作"
+  },
+  {
+    "paper_id": "2022_C_C22103360057",
+    "year": 2022,
+    "track": "C",
+    "title": "汽车制造涂装-总装缓存调序区调度优化",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "调度优化",
+      "混合整数规划"
+    ],
+    "models_and_algorithms": [
+      "混合整数规划"
+    ],
+    "data_modality": "PBS调度数据",
+    "data_scale": "",
+    "validation_methods": [],
+    "figure_count": null,
+    "figure_types": [],
+    "innovation_points": [],
+    "page_count": 39,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "low",
+    "notes": "摘要抽文残缺"
+  },
+  {
+    "paper_id": "2022_C_C22103560098",
+    "year": 2022,
+    "track": "C",
+    "title": "汽车制造涂装-总装缓存调序区调度优化",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "调度优化",
+      "动态规划",
+      "智能算法"
+    ],
+    "models_and_algorithms": [
+      "动态规划多目标优化",
+      "灰狼算法",
+      "卷积核处理目标1",
+      "时间状态矩阵递推"
+    ],
+    "data_modality": "PBS调度仿真数据",
+    "data_scale": "附件1/附件2",
+    "validation_methods": [
+      "附件1得分18.916/用时3056s",
+      "附件2得分44.469/用时2996s"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "车道状态矩阵图",
+      "调度流程图",
+      "得分表"
+    ],
+    "innovation_points": [
+      "卷积思想处理优化目标1",
+      "时间状态矩阵递推模拟",
+      "灰狼算法寻优"
+    ],
+    "page_count": 56,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "C题动态规划+灰狼路线，方法组合有特色"
+  },
+  {
+    "paper_id": "2022_C_C22105330245",
+    "year": 2022,
+    "track": "C",
+    "title": "汽车制造涂装-总装缓存调序区调度优化",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "调度优化",
+      "逆向求解",
+      "智能算法对比"
+    ],
+    "models_and_algorithms": [
+      "逆向求解+动态规划",
+      "模拟退火",
+      "遗传算法"
+    ],
+    "data_modality": "PBS调度数据",
+    "data_scale": "脱敏大数据集",
+    "validation_methods": [
+      "模拟退火 vs 遗传算法对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "调度流程图",
+      "收敛曲线"
+    ],
+    "innovation_points": [
+      "逆向求解思想",
+      "模拟退火更适合脱敏大数据集的对比结论"
+    ],
+    "page_count": 48,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "C题SA vs GA对比路线"
+  },
+  {
+    "paper_id": "2022_C_C22105930028",
+    "year": 2022,
+    "track": "C",
+    "title": "汽车制造涂装-总装缓存调序区调度优化",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "调度优化",
+      "遗传算法",
+      "马尔可夫决策"
+    ],
+    "models_and_algorithms": [
+      "遗传算法",
+      "马尔可夫决策过程",
+      "多目标排序调度算法"
+    ],
+    "data_modality": "PBS调度数据",
+    "data_scale": "",
+    "validation_methods": [
+      "GA+MDP混合算法精度高于传统算法"
+    ],
+    "figure_count": null,
+    "figure_types": [],
+    "innovation_points": [
+      "问题2引入马尔可夫决策处理随机性"
+    ],
+    "page_count": 23,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": "C题GA+MDP路线"
+  },
+  {
+    "paper_id": "2022_C_C22106130232",
+    "year": 2022,
+    "track": "C",
+    "title": "汽车制造涂装-总装缓存调序区调度优化",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "调度优化",
+      "多目标建模",
+      "遗传算法"
+    ],
+    "models_and_algorithms": [
+      "多目标优化线性规划",
+      "OD对决策变量",
+      "遗传算法"
+    ],
+    "data_modality": "PBS调度数据",
+    "data_scale": "",
+    "validation_methods": [
+      "评分13.67",
+      "总耗时4022秒"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "车道转移图",
+      "得分表"
+    ],
+    "innovation_points": [
+      "OD对为下标的决策变量刻画车身位置转移"
+    ],
+    "page_count": 38,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "C题多目标线性规划路线"
+  },
+  {
+    "paper_id": "2022_C_C22106140003",
+    "year": 2022,
+    "track": "C",
+    "title": "汽车制造涂装-总装缓存调序区调度优化",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "调度优化",
+      "启发式规则",
+      "贪心"
+    ],
+    "models_and_algorithms": [
+      "启发式规则(按拥塞度选进车道)",
+      "贪心准则送车",
+      "返回道使用次数惩罚项"
+    ],
+    "data_modality": "PBS调度数据",
+    "data_scale": "",
+    "validation_methods": [],
+    "figure_count": null,
+    "figure_types": [],
+    "innovation_points": [
+      "入口处按预期送车时间最短选车道",
+      "出口处贪心比较加权目标决定送/返",
+      "返回道使用次数随时间惩罚均衡"
+    ],
+    "page_count": 50,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "C题启发式规则路线(无智能算法)"
+  },
+  {
+    "paper_id": "2022_D_D22102920026",
+    "year": 2022,
+    "track": "D",
+    "title": "PISA架构芯片资源排布",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "芯片资源排布",
+      "启发式",
+      "DAG调度"
+    ],
+    "models_and_algorithms": [
+      "有向无环图DAG",
+      "基本块重排",
+      "启发函数si(到结束最少级数)",
+      "优先级队列"
+    ],
+    "data_modality": "PISA编译中间表示",
+    "data_scale": "365+基本块",
+    "validation_methods": [
+      "流水线占用44级"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "DAG图",
+      "排布结果表",
+      "资源利用率图"
+    ],
+    "innovation_points": [
+      "基本块重排消除控制依赖",
+      "启发函数si优先排布",
+      "优先级队列实现"
+    ],
+    "page_count": 46,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题启发式+优先级队列代表"
+  },
+  {
+    "paper_id": "2022_D_D22102930009",
+    "year": 2022,
+    "track": "D",
+    "title": "PISA架构芯片资源排布",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "芯片资源排布",
+      "0-1整数规划",
+      "遗传算法"
+    ],
+    "models_and_algorithms": [
+      "0-1整数规划",
+      "贪婪思想初始化",
+      "遗传算法"
+    ],
+    "data_modality": "PISA资源约束",
+    "data_scale": "",
+    "validation_methods": [
+      "问题一40级/利用率39.5%",
+      "问题二23级/利用率65.52%"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "排布图",
+      "资源利用率堆叠图"
+    ],
+    "innovation_points": [
+      "贪婪+遗传混合",
+      "问题二引入执行流程共享资源"
+    ],
+    "page_count": 49,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题贪婪-遗传路线"
+  },
+  {
+    "paper_id": "2022_D_D22103360092",
+    "year": 2022,
+    "track": "D",
+    "title": "PISA架构芯片资源排布",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "芯片资源排布",
+      "0-1线性规划",
+      "精确求解"
+    ],
+    "models_and_algorithms": [
+      "0-1线性规划",
+      "Gurobi求解器",
+      "BFS通路矩阵",
+      "模拟退火"
+    ],
+    "data_modality": "PISA依赖/资源数据",
+    "data_scale": "607阶邻接矩阵/30958变量",
+    "validation_methods": [
+      "51级",
+      "求解时间3596.97s",
+      "问题二SA优化"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "DAG图",
+      "排布甘特图",
+      "求解日志"
+    ],
+    "innovation_points": [
+      "Gurobi精确求解0-1LP",
+      "BFS算通路矩阵",
+      "问题二SA优化共享资源"
+    ],
+    "page_count": 30,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题精确求解标杆：Gurobi+0-1LP"
+  },
+  {
+    "paper_id": "2022_D_D22104760020",
+    "year": 2022,
+    "track": "D",
+    "title": "PISA架构芯片资源排布",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "芯片资源排布",
+      "BFS",
+      "智能算法对比"
+    ],
+    "models_and_algorithms": [
+      "BFS遍历",
+      "拉格朗日乘子法",
+      "贪心策略",
+      "遗传算法",
+      "SVM优化"
+    ],
+    "data_modality": "P4编译基本块数据",
+    "data_scale": "",
+    "validation_methods": [
+      "贪心51级→GA优化36级/SVM优化38级"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "DAG可视化",
+      "排布对比图"
+    ],
+    "innovation_points": [
+      "BFS确定遍历序",
+      "SVM/GA两种优化手段对比",
+      "拉格朗日乘子建模"
+    ],
+    "page_count": 43,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题SVM+GA对比路线"
+  },
+  {
+    "paper_id": "2022_D_D22106990096",
+    "year": 2022,
+    "track": "D",
+    "title": "PISA架构芯片资源排布",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "芯片资源排布",
+      "目标规划",
+      "随机启发式"
+    ],
+    "models_and_algorithms": [
+      "CFG/FDT控制依赖",
+      "BFS数据依赖",
+      "目标规划模型",
+      "随机规则排布"
+    ],
+    "data_modality": "PISA数据",
+    "data_scale": "",
+    "validation_methods": [
+      "问题一40级"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "CFG图",
+      "排布图"
+    ],
+    "innovation_points": [
+      "CFG与FDT差集求控制依赖",
+      "串行排布+随机选块"
+    ],
+    "page_count": 56,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题图论建模路线"
+  },
+  {
+    "paper_id": "2022_D_D22900310001",
+    "year": 2022,
+    "track": "D",
+    "title": "PISA架构芯片资源排布",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "芯片资源排布",
+      "整数规划",
+      "松弛/约束生成"
+    ],
+    "models_and_algorithms": [
+      "整数规划",
+      "松弛与约束生成",
+      "目标松弛诱导与可行性证明"
+    ],
+    "data_modality": "PISA数据",
+    "data_scale": "",
+    "validation_methods": [],
+    "figure_count": null,
+    "figure_types": [],
+    "innovation_points": [
+      "松弛约束生成方法",
+      "目标松弛诱导+可行性证明"
+    ],
+    "page_count": 69,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": "理论性最强：约束生成方法，摘要抽文短"
+  },
+  {
+    "paper_id": "2022_D_D22910040028",
+    "year": 2022,
+    "track": "D",
+    "title": "PISA架构芯片资源排布",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 2,
+    "task_types": [
+      "芯片资源排布",
+      "图论",
+      "混合智能算法"
+    ],
+    "models_and_algorithms": [
+      "决策矩阵",
+      "DAG拓扑排序优先度",
+      "DFS执行流程识别",
+      "模拟退火+粒子群混合CRSA2"
+    ],
+    "data_modality": "PISA数据",
+    "data_scale": "",
+    "validation_methods": [
+      "问题一39级/HASH利用率98.44%",
+      "问题二34级/多非劣解"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "决策矩阵热图",
+      "排布图",
+      "Pareto前沿"
+    ],
+    "innovation_points": [
+      "逻辑合并构造决策矩阵",
+      "SA+PSO混合CRSA2算法",
+      "DFS识别执行流程共享资源"
+    ],
+    "page_count": 38,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "D题SA+PSO混合路线"
+  },
+  {
+    "paper_id": "2022_E_E22100160013",
+    "year": 2022,
+    "track": "E",
+    "title": "草原放牧策略研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "机理建模",
+      "时间序列预测",
+      "主成分分析"
+    ],
+    "models_and_algorithms": [
+      "微分方程",
+      "SPSS皮尔逊相关",
+      "LSTM",
+      "ARIMA",
+      "主成分分析"
+    ],
+    "data_modality": "草原监测面板数据",
+    "data_scale": "2012-2020年多站点",
+    "validation_methods": [
+      "相关性显著筛选",
+      "时序预测对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "土壤湿度折线图",
+      "箱线图",
+      "预测对比图"
+    ],
+    "innovation_points": [
+      "分问题多模型并行(微分/LSTM/ARIMA/PCA)"
+    ],
+    "page_count": 45,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题多模型拼盘路线"
+  },
+  {
+    "paper_id": "2022_E_E22103040108",
+    "year": 2022,
+    "track": "E",
+    "title": "草原放牧策略研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "机理建模",
+      "时间序列预测",
+      "交互因子"
+    ],
+    "models_and_algorithms": [
+      "Spearman相关",
+      "ARI差分自回归",
+      "LSTM-SA(自注意力)"
+    ],
+    "data_modality": "锡林郭勒草原数据",
+    "data_scale": "附件3-15多数据集",
+    "validation_methods": [
+      "LSTM初步验证",
+      "LSTM-SA二次验证"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "湿度预测图",
+      "相关图"
+    ],
+    "innovation_points": [
+      "融入植被交互因子的ARI模型",
+      "LSTM-SA自注意力二次验证"
+    ],
+    "page_count": 69,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题ARI+LSTM-SA路线"
+  },
+  {
+    "paper_id": "2022_E_E22103350038",
+    "year": 2022,
+    "track": "E",
+    "title": "草原放牧策略研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "机理建模",
+      "时间序列预测",
+      "多目标优化"
+    ],
+    "models_and_algorithms": [
+      "改进Woodward放牧-植被模型",
+      "分步特征过滤+随机森林",
+      "LSTM-FC",
+      "Stacking集成",
+      "遗传粒子群优化",
+      "熵权法"
+    ],
+    "data_modality": "锡林郭勒草原数据",
+    "data_scale": "12个月份模型",
+    "validation_methods": [
+      "Stacking对比验证",
+      "特征独立性检验"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "特征重要性图",
+      "湿度预测图",
+      "优化结果图"
+    ],
+    "innovation_points": [
+      "按月份分别建12个LSTM-FC模型",
+      "遗传粒子群优化最大放牧羊群"
+    ],
+    "page_count": 104,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题LSTM-FC+Stacking路线，篇幅104页"
+  },
+  {
+    "paper_id": "2022_E_E22104860014",
+    "year": 2022,
+    "track": "E",
+    "title": "草原放牧策略研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "机理建模",
+      "回归",
+      "机器学习",
+      "多目标优化"
+    ],
+    "models_and_algorithms": [
+      "ARIMA时序",
+      "多项式回归+OLS",
+      "RandomForest",
+      "PSO粒子群",
+      "SHAP特征解释",
+      "熵值法",
+      "多目标进化算法"
+    ],
+    "data_modality": "全球+文献土壤数据",
+    "data_scale": "多源融合",
+    "validation_methods": [
+      "自相关/偏自相关/BIC定阶",
+      "残差分析"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "时序图",
+      "SHAP力图",
+      "多目标Pareto"
+    ],
+    "innovation_points": [
+      "SHAP解释放牧因子影响",
+      "多模型组合+PSO调权"
+    ],
+    "page_count": 120,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题方法最杂：120页大论文，SHAP是亮点"
+  },
+  {
+    "paper_id": "2022_E_E22104870114",
+    "year": 2022,
+    "track": "E",
+    "title": "草原放牧策略研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "机理建模",
+      "时间序列预测",
+      "评价模型"
+    ],
+    "models_and_algorithms": [
+      "修正Logistic阻滞增长模型",
+      "神经网络预测",
+      "季节系数法",
+      "主成分分析",
+      "层次分析法AHP"
+    ],
+    "data_modality": "草原监测数据",
+    "data_scale": "",
+    "validation_methods": [
+      "文献数据验证模型",
+      "神经网络与季节微分方程吻合"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "演化模拟图",
+      "沙漠化指数图"
+    ],
+    "innovation_points": [
+      "含水率修正Logistic植被模型",
+      "化学元素递推演化矩阵",
+      "AHP构建沙漠化评价"
+    ],
+    "page_count": 76,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题机理模型+AHP评价路线"
+  },
+  {
+    "paper_id": "2022_E_E22106110005",
+    "year": 2022,
+    "track": "E",
+    "title": "草原放牧策略研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "机理建模",
+      "组合预测",
+      "综合评价"
+    ],
+    "models_and_algorithms": [
+      "水分平衡方程",
+      "K-Means量化",
+      "Pearson/LASSO/Isomap/XGBoost特征筛选",
+      "随机森林-LightGBM组合预测",
+      "熵权-TOPSIS",
+      "精英遗传算法"
+    ],
+    "data_modality": "草原监测数据",
+    "data_scale": "",
+    "validation_methods": [
+      "5折交叉验证",
+      "MSE=0.6479",
+      "11类算法对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "特征筛选流程图",
+      "湿度预测图",
+      "TOPSIS排序图"
+    ],
+    "innovation_points": [
+      "RF(低方差)+LightGBM(低偏差)串并联组合预测",
+      "正态分布随机模拟羊采食"
+    ],
+    "page_count": 57,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题RF-LightGBM组合预测代表"
+  },
+  {
+    "paper_id": "2022_E_E22107100039",
+    "year": 2022,
+    "track": "E",
+    "title": "草原放牧策略研究",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "机理建模",
+      "时序预测",
+      "深度学习"
+    ],
+    "models_and_algorithms": [
+      "一阶线性微分方程组",
+      "改进欧拉法",
+      "BP神经网络",
+      "LSTM",
+      "Attention-BiLSTM"
+    ],
+    "data_modality": "锡林郭勒草原数据",
+    "data_scale": "",
+    "validation_methods": [
+      "BP拟合度低被淘汰",
+      "Attention-BiLSTM最优"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "湿度预测图",
+      "注意力权重图"
+    ],
+    "innovation_points": [
+      "一阶微分方程组+欧拉法",
+      "Attention-BiLSTM时序预测"
+    ],
+    "page_count": 92,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "E题Attention-BiLSTM路线"
+  },
+  {
+    "paper_id": "2022_F_F22100090053",
+    "year": 2022,
+    "track": "F",
+    "title": "长春市疫情期间蔬菜包物资科学管理",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "传染病建模",
+      "评价",
+      "聚类",
+      "路径规划"
+    ],
+    "models_and_algorithms": [
+      "SIR微分方程",
+      "最小二乘拟合",
+      "熵权法",
+      "K-means聚类",
+      "多车型VRP启发式"
+    ],
+    "data_modality": "长春疫情+蔬菜包数据",
+    "data_scale": "9城区",
+    "validation_methods": [
+      "延后5天达峰/提早10天消亡/减少感染20020",
+      "轮廓值定K"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "感染曲线对比图",
+      "投放点地图",
+      "聚类图"
+    ],
+    "innovation_points": [
+      "SIR对比无蔬菜包反事实",
+      "按需分配投放点1556→1000"
+    ],
+    "page_count": 70,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题SIR反事实路线"
+  },
+  {
+    "paper_id": "2022_F_F22101470006",
+    "year": 2022,
+    "track": "F",
+    "title": "长春市疫情期间蔬菜包物资科学管理",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "时序预测",
+      "评价",
+      "选址",
+      "分配优化"
+    ],
+    "models_and_algorithms": [
+      "LSTM预测",
+      "ploy2D非线性曲面拟合+LM最小二乘",
+      "熵权-模糊综合评价",
+      "超效率DEA",
+      "系统聚类",
+      "遗传算法多目标最大覆盖选址"
+    ],
+    "data_modality": "长春疫情数据",
+    "data_scale": "9城区/36聚类中心",
+    "validation_methods": [
+      "F值/残差验证拟合",
+      "遗传算法选址20个储备中心"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "感染预测对比图",
+      "选址地图",
+      "评价雷达图"
+    ],
+    "innovation_points": [
+      "LSTM反事实预测无投放感染",
+      "三级拓扑(储备中心-集散点-小区)分配"
+    ],
+    "page_count": 68,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题LSTM+DEA+遗传选址路线"
+  },
+  {
+    "paper_id": "2022_F_F22102540295",
+    "year": 2022,
+    "track": "F",
+    "title": "长春市疫情期间蔬菜包物资科学管理",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "统计分析",
+      "传染病建模",
+      "选址",
+      "数据挖掘"
+    ],
+    "models_and_algorithms": [
+      "SEIR模型",
+      "Person相关",
+      "层次分析",
+      "K-means",
+      "多层物流网络优化",
+      "图优化"
+    ],
+    "data_modality": "长春疫情数据",
+    "data_scale": "9城区",
+    "validation_methods": [
+      "Person相关系数",
+      "SEIR预测对比"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "感染时序图",
+      "选址图",
+      "网络图"
+    ],
+    "innovation_points": [
+      "SEIR反事实",
+      "隔离人口与投放点极低正相关揭示不合理"
+    ],
+    "page_count": 86,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题SEIR+多层网络路线"
+  },
+  {
+    "paper_id": "2022_F_F22102980006",
+    "year": 2022,
+    "track": "F",
+    "title": "长春市疫情期间蔬菜包物资科学管理",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "时序预测",
+      "多目标优化",
+      "聚类",
+      "供需优化"
+    ],
+    "models_and_algorithms": [
+      "Prophet时序预测",
+      "滞后相关分析",
+      "熵权法",
+      "NSGA-II",
+      "变分贝叶斯高斯混合聚类",
+      "SDO供需优化算法"
+    ],
+    "data_modality": "长春疫情数据",
+    "data_scale": "",
+    "validation_methods": [
+      "拐点滞后天数匹配人流量滞后",
+      "随机关闭发放点鲁棒测试"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "Prophet预测图",
+      "选址图",
+      "供需热力图"
+    ],
+    "innovation_points": [
+      "Prophet反事实+滞后性验证",
+      "变分贝叶斯高斯混合聚类选址",
+      "余弦相似度鲁棒选址"
+    ],
+    "page_count": 51,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题Prophet+NSGA-II路线"
+  },
+  {
+    "paper_id": "2022_F_F22103570053",
+    "year": 2022,
+    "track": "F",
+    "title": "长春市疫情期间蔬菜包物资科学管理",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "时序预测",
+      "传染病建模",
+      "选址",
+      "关联规则挖掘"
+    ],
+    "models_and_algorithms": [
+      "ARIMA",
+      "ADF平稳性检验",
+      "SEIR",
+      "CFLP多中心选址",
+      "系统聚类+LU分解",
+      "MD-Apriori关联规则",
+      "熵权-TOPSIS",
+      "K-means"
+    ],
+    "data_modality": "长春疫情数据",
+    "data_scale": "9城区",
+    "validation_methods": [
+      "ARIMA+SEIR交叉验证",
+      "Apriori挖供需规律"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "感染预测图",
+      "选址图",
+      "关联规则图"
+    ],
+    "innovation_points": [
+      "ARIMA+SEIR双模型交叉验证",
+      "MD-Apriori挖供需规律",
+      "CFLP多中心选址"
+    ],
+    "page_count": 87,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "high",
+    "notes": "F题方法最全：ARIMA+SEIR+CFLP+Apriori"
+  },
+  {
+    "paper_id": "2022_F_F22105330345",
+    "year": 2022,
+    "track": "F",
+    "title": "长春市疫情期间蔬菜包物资科学管理",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "传染病建模",
+      "选址",
+      "聚类",
+      "整数规划"
+    ],
+    "models_and_algorithms": [
+      "SIR模型",
+      "Python+SCIP求解器",
+      "聚类"
+    ],
+    "data_modality": "长春疫情数据",
+    "data_scale": "9城区/583个投放点",
+    "validation_methods": [
+      "投放点从原683优化至583(降63%)"
+    ],
+    "figure_count": null,
+    "figure_types": [],
+    "innovation_points": [
+      "SCIP精确求解投放点选址"
+    ],
+    "page_count": 52,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "low",
+    "notes": "原文编码损坏，摘要乱码，仅从乱码解码片段提取"
+  },
+  {
+    "paper_id": "2022_F_F22106150018",
+    "year": 2022,
+    "track": "F",
+    "title": "长春市疫情期间蔬菜包物资科学管理",
+    "award_level": "待确认",
+    "award_confidence": "low",
+    "problem_count": 4,
+    "task_types": [
+      "统计检验",
+      "聚类",
+      "网络设计"
+    ],
+    "models_and_algorithms": [
+      "标准正态同质性检验",
+      "基于人数权重小区聚类",
+      "三层有序网络图",
+      "负载覆盖回路"
+    ],
+    "data_modality": "长春疫情数据",
+    "data_scale": "",
+    "validation_methods": [
+      "同质性检验",
+      "负载平衡"
+    ],
+    "figure_count": null,
+    "figure_types": [
+      "网络图",
+      "发放预案图"
+    ],
+    "innovation_points": [
+      "标准正态同质性检验评价蔬菜包效果",
+      "负载覆盖回路居民发放预案"
+    ],
+    "page_count": 138,
+    "section_structure": null,
+    "source_locations": [],
+    "confidence": "medium",
+    "notes": "F题统计检验+网络设计路线，138页长文"
+  }
+]

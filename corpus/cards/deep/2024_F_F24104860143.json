@@ -1,0 +1,140 @@
+{
+  "paper_id": "2024_F_F24104860143",
+  "year": 2024,
+  "track": "F",
+  "title": "X 射线脉冲星光子到达时间建模",
+  "award_level": "待确认",
+  "award_confidence": "medium",
+  "problem_count": 4,
+  "task_types": [
+    "轨道力学",
+    "时间尺度转换",
+    "精密时延",
+    "光子序列仿真"
+  ],
+  "models_and_algorithms": [
+    "二体开普勒",
+    "TT→TDB时间转换",
+    "平行光传播",
+    "Roemer",
+    "Shapiro",
+    "引力红移",
+    "狭义相对论动钟变慢",
+    "χ²拟合优度",
+    "逆变换采样法"
+  ],
+  "data_modality": "物理时序",
+  "data_scale": "单点高精度",
+  "validation_methods": [
+    "反算轨道根数一致",
+    "θ角时变预报",
+    "χ²拟合优度",
+    "Pearson 0.99351"
+  ],
+  "figure_count": null,
+  "figure_types": [
+    "二体轨道",
+    "TT→TDB",
+    "时延分解",
+    "逆变换采样轮廓"
+  ],
+  "innovation_points": [
+    "理想二体模型严格推导开普勒六根数与位置速度函数",
+    "反算轨道根数+θ角时变预报一整周期双重验证",
+    "χ²拟合优度检验光子序列服从泊松分布",
+    "逆变换采样法提升脉冲轮廓一致性"
+  ],
+  "page_count": 79,
+  "section_structure": "问题重述/问题一~X/模型评价/参考文献/附录",
+  "source_locations": [
+    "p.1-2 摘要"
+  ],
+  "confidence": "high",
+  "notes": "题F，χ²检验+逆变换采样路线。",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "无",
+      "main_model": "理想二体开普勒",
+      "improvement": "反算+θ预报验证",
+      "why_switch": "需严格推导"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "无",
+      "main_model": "TT→TDB+平行光传播+自行修正",
+      "improvement": "-277.924s",
+      "why_switch": "需时间尺度转换"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "几何",
+      "main_model": "Roemer+Shapiro+红移+变慢",
+      "improvement": "-473.884s",
+      "why_switch": "需精密"
+    },
+    {
+      "question_id": "问题四",
+      "baseline": "标准泊松",
+      "main_model": "非齐次泊松+χ²检验+逆变换采样",
+      "improvement": "Pearson 0.99351",
+      "why_switch": "需高精度+分布检验"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "二体开普勒方程",
+    "TT↔TDB 时间尺度转换",
+    "χ² 拟合优度",
+    "逆变换采样 F⁻¹(u)"
+  ],
+  "objective_function": "min 仿真轮廓与标准轮廓 Pearson",
+  "evaluation_metrics": [
+    "位置(1274.9,-1848.9,6507.3)km",
+    "时间差-277.924s",
+    "总时延-473.884s",
+    "Pearson 0.99351",
+    "χ² 检验通过"
+  ],
+  "algorithm_details_and_complexity": "二体解析；逆变换采样 O(N)",
+  "independent_validation_design": "反算轨道根数一致；θ角一周期预报",
+  "sensitivity_robustness_ablation": [
+    "逆变换采样 vs 直接仿真"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "脉冲星由于自转的连续性和稳定性，其被认为是宇宙中最精确的时钟。",
+    "method_sentence": "二体开普勒 / TT→TDB+平行光 / Roemer+Shapiro+红移+变慢 / χ²+逆变换采样",
+    "result_sentence": "Pearson 0.99351；χ² 检验通过",
+    "numbers_presentation": "完整给出各时延分量数值"
+  },
+  "figure_narrative_order": [
+    "二体轨道",
+    "TT→TDB",
+    "时延分解",
+    "χ²检验",
+    "逆变换采样"
+  ],
+  "judge_high_score_reasons": [
+    "理想二体严格推导",
+    "反算+θ预报双重验证",
+    "χ² 拟合优度检验分布假设少见",
+    "逆变换采样工程合理"
+  ],
+  "reusable_patterns": [
+    "理想二体严格推导",
+    "反算+θ预报验证",
+    "χ² 拟合优度检验",
+    "逆变换采样"
+  ],
+  "transferable_ability_card_candidates": [
+    "二体开普勒",
+    "TT→TDB",
+    "χ²检验",
+    "逆变换采样"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "二体推导": "p.8-18",
+    "TT→TDB": "p.25-35",
+    "χ²检验": "p.50-65"
+  }
+}

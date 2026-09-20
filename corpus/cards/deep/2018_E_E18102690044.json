@@ -1,0 +1,130 @@
+{
+  "paper_id": "2018_E_E18102690044",
+  "year": 2018,
+  "track": "E",
+  "title": "多无人机对组网雷达的协同干扰",
+  "award_level": "待确认",
+  "award_confidence": "unknown",
+  "problem_count": 3,
+  "task_types": [
+    "优化",
+    "机理建模"
+  ],
+  "models_and_algorithms": [
+    "禁忌搜索/启发式",
+    "航迹规划/协同"
+  ],
+  "data_modality": "时序/信号",
+  "data_scale": "小样本/题设数据",
+  "validation_methods": [
+    "灵敏度/敏感性分析",
+    "对比/比较分析",
+    "鲁棒性/稳定性分析",
+    "模型检验/显著性检验"
+  ],
+  "figure_count": 25,
+  "figure_types": [
+    "流程图/框图",
+    "折线/曲线图",
+    "对比/雷达图"
+  ],
+  "innovation_points": [],
+  "page_count": 37,
+  "section_structure": "1 给出的虚假目标点进行对比，验证了模型的可靠性。；3\n            一 问题重述",
+  "source_locations": [
+    "模型建立≈p.2",
+    "模型求解≈p.2",
+    "灵敏度分析≈p.1",
+    "模型检验/验证≈p.2",
+    "模型评价/改进≈p.3"
+  ],
+  "confidence": "high",
+  "notes": "2018年E题(多无人机协同干扰)，几何化+禁忌搜索，验证具体",
+  "per_question_method_chain": [
+    {
+      "question_id": "问题一",
+      "baseline": "随机放无人机",
+      "main_model": "五棱柱几何约束，以无人机数最少为目标",
+      "improvement": "禁忌搜索遍历2000-2500m空间得最少31架",
+      "why_switch": "几何节点约束下组合优化，禁忌搜索避局部最优"
+    },
+    {
+      "question_id": "问题二",
+      "baseline": "仅匀速直线",
+      "main_model": "机动飞行(最大转弯半径/加速度/速度)最少架数模型",
+      "improvement": "3架实现+余9架再产4条虚假航迹",
+      "why_switch": "机动飞行增加单架能力"
+    },
+    {
+      "question_id": "问题三",
+      "baseline": "固定航迹",
+      "main_model": "协同飞行轨迹补偿模型(空缺点复用)",
+      "improvement": "调度22个备选点拼一条完整虚假航迹",
+      "why_switch": "雷达组网可被干扰，需补偿维持"
+    },
+    {
+      "question_id": "验证",
+      "baseline": "无校验",
+      "main_model": "航迹重构与附件虚假目标点对比",
+      "improvement": "运动合理性分析",
+      "why_switch": "几何解需运动学合理性校验"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "节点位于雷达-虚假目标连线与2000/2500m平面截得的20个五棱柱棱上",
+    "每棱至少3架",
+    "约束:最大转弯半径/最大加速度/速度范围/5分钟飞行",
+    "匀速直线+机动两类"
+  ],
+  "objective_function": "min 无人机架数 s.t. 几何/运动约束",
+  "evaluation_metrics": [
+    "最少架数(31/3)",
+    "可额外产生虚假航迹数",
+    "航迹重构误差",
+    "运动合理性"
+  ],
+  "algorithm_details_and_complexity": "禁忌搜索遍历空间O(iter×邻域)；几何推算补点",
+  "independent_validation_design": "31架航迹重构虚假目标点与附件对比；问题二运动合理性分析",
+  "sensitivity_robustness_ablation": [
+    "飞行时间限制(5min)对可产航迹影响",
+    "转弯半径/加速度约束敏感性",
+    "空缺点复用对新航迹贡献"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "组网雷达抗干扰强，多无人机协同可理想干扰。",
+    "method_sentence": "五棱柱几何建模+禁忌搜索最少架数+机动飞行+轨迹补偿",
+    "result_sentence": "最少31架，机动用3架实现并余产4条虚假航迹",
+    "numbers_presentation": "架数、五棱柱数、时间窗、备选点数"
+  },
+  "figure_narrative_order": [
+    "五棱柱几何",
+    "禁忌搜索流程",
+    "机动轨迹",
+    "航迹重构",
+    "补偿调度"
+  ],
+  "judge_high_score_reasons": [
+    "把电子对抗问题转成清晰几何+组合优化",
+    "禁忌搜索配运动约束",
+    "有重构对比和运动合理性校验"
+  ],
+  "reusable_patterns": [
+    "电子/对抗问题几何化",
+    "禁忌搜索组合优化",
+    "约束最少资源",
+    "解的运动学合理性校验"
+  ],
+  "transferable_ability_card_candidates": [
+    "禁忌搜索",
+    "几何约束优化",
+    "航迹规划",
+    "解的合理性后验"
+  ],
+  "page_locations": {
+    "摘要": "p.1-2",
+    "五棱柱几何": "≈p.5-15",
+    "禁忌搜索": "≈p.15-25",
+    "机动飞行": "≈p.25-32",
+    "重构验证": "≈p.33-37"
+  }
+}

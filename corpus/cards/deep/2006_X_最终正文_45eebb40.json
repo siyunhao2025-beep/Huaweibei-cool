@@ -1,0 +1,76 @@
+{
+  "paper_id": "2006_X_最终正文_45eebb40",
+  "year": 2006,
+  "track": null,
+  "track_confidence": "low",
+  "title": "二体轨道力学与运动方程建模",
+  "award_level": "优秀论文",
+  "award_confidence": "low",
+  "per_question_method_chain": [
+    {
+      "question_id": "Q1",
+      "baseline": "一般二体方程",
+      "main_model": "简化轨道运动方程",
+      "improvement": "几何方程推导",
+      "why_switch": "题面要求从二体到简化"
+    },
+    {
+      "question_id": "Q2-1",
+      "baseline": "数值积分",
+      "main_model": "解析解模型",
+      "improvement": "闭式轨道参数解",
+      "why_switch": "解析解物理意义明确"
+    },
+    {
+      "question_id": "Q2-2",
+      "baseline": "试凑",
+      "main_model": "最小二乘法求最小组数",
+      "improvement": "离散格式下求最小m值",
+      "why_switch": "需最优分组数"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "二体运动方程 r¨=-μr/r³",
+    "假设中心天体质量远大于飞行器",
+    "忽略大气阻力/三体摄动"
+  ],
+  "objective_function": "min 轨道拟合残差",
+  "evaluation_metrics": [
+    "轨道参数误差",
+    "最小二乘残差"
+  ],
+  "algorithm_details_and_complexity": "解析推导+离散最小二乘",
+  "independent_validation_design": "与已知轨道根数对比",
+  "sensitivity_robustness_ablation": [
+    "初值误差对轨道的影响"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "建立二体轨道力学模型",
+    "method_sentence": "解析解+最小二乘求最小组数",
+    "result_sentence": "给出轨道方程与最优分组",
+    "numbers_presentation": "轨道根数"
+  },
+  "figure_narrative_order": [
+    "轨道几何图",
+    "二体受力图",
+    "最小二乘收敛"
+  ],
+  "judge_high_score_reasons": [
+    "从物理机理严格推导而非黑箱",
+    "解析解+数值方法结合"
+  ],
+  "reusable_patterns": [
+    "天体力学问题→二体简化→解析解（来自1篇论文支持）"
+  ],
+  "transferable_ability_card_candidates": [
+    "轨道力学建模卡：二体方程→简化假设→解析解/数值积分"
+  ],
+  "page_locations": {
+    "目录": "p.1",
+    "二体方程": "p.4-7",
+    "解析解": "p.7-9",
+    "最小二乘": "p.9-15"
+  },
+  "confidence": "medium",
+  "notes": "从目录推断为轨道力学题"
+}

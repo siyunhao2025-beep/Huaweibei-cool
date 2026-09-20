@@ -1,0 +1,87 @@
+{
+  "paper_id": "2012_A_A90005004杨丁刘",
+  "year": 2012,
+  "track": "A",
+  "track_confidence": "high",
+  "title": "DNA序列表示及基因识别方法研究",
+  "award_level": "优秀论文",
+  "award_confidence": "low",
+  "per_question_method_chain": [
+    {
+      "question_id": "Q1",
+      "baseline": "FFT功率谱",
+      "main_model": "SNR-F公式（核苷酸频次统计）",
+      "improvement": "免FFT直接计算",
+      "why_switch": "FFT计算量大"
+    },
+    {
+      "question_id": "Q1",
+      "baseline": "Voss映射",
+      "main_model": "Z-curve映射",
+      "improvement": "推导Ez=4E, Rz=R关系",
+      "why_switch": "对比两种映射"
+    },
+    {
+      "question_id": "Q2",
+      "baseline": "固定阈值",
+      "main_model": "重采样最佳阈值算法",
+      "improvement": "人鼠1.7773/哺乳动物2.18",
+      "why_switch": "不同物种阈值不同"
+    },
+    {
+      "question_id": "Q3",
+      "baseline": "单一窗口",
+      "main_model": "多窗口+SNR检测",
+      "improvement": "外显子预测",
+      "why_switch": "外显子长度不一"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "SNR-F: R=RA·(NA/N)+RC·(NC/N)+RG·(NG/N)+RT·(NT/N)",
+    "Z-curve: Ez=4E, Rz=R",
+    "假设编码区3-1周期性"
+  ],
+  "objective_function": "max 基因预测准确率",
+  "evaluation_metrics": [
+    "SNR",
+    "最佳阈值",
+    "预测灵敏度/特异度"
+  ],
+  "algorithm_details_and_complexity": "FFT→频次统计简化 O(N)",
+  "independent_validation_design": "已知基因标注数据验证",
+  "sensitivity_robustness_ablation": [
+    "窗口大小敏感性",
+    "不同物种阈值重采样"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "研究DNA序列表示及基因识别算法",
+    "method_sentence": "FFT/AR快速算法+SNR-F公式+重采样最佳阈值",
+    "result_sentence": "人鼠阈值1.7773，哺乳动物2.18",
+    "numbers_presentation": "具体阈值数值"
+  },
+  "figure_narrative_order": [
+    "Voss/Z-curve映射对比",
+    "功率谱SNR曲线",
+    "阈值ROC",
+    "外显子检测结果"
+  ],
+  "judge_high_score_reasons": [
+    "理论推导SNR-F公式将FFT简化为频次统计",
+    "Z-curve与Voss映射理论关系",
+    "重采样自适应阈值"
+  ],
+  "reusable_patterns": [
+    "生物序列信号→映射+功率谱+阈值检测（来自1篇论文支持）",
+    "理论简化替代暴力计算"
+  ],
+  "transferable_ability_card_candidates": [
+    "基因/生物序列识别卡：数字映射→功率谱SNR→理论公式简化→重采样阈值→外显子检测"
+  ],
+  "page_locations": {
+    "摘要": "p.1-3",
+    "SNR-F推导": "p.5-20",
+    "阈值算法": "p.21-35",
+    "外显子预测": "p.36-50"
+  },
+  "confidence": "high"
+}

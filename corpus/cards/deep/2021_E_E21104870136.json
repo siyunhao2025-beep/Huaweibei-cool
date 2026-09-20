@@ -1,0 +1,88 @@
+{
+  "paper_id": "2021_E_E21104870136",
+  "year": 2021,
+  "track": "E",
+  "title": "基于多层感知机的最小二乘优化定位模型",
+  "confidence": "high",
+  "per_question_method_chain": [
+    {
+      "question_id": "任务一(预处理)",
+      "baseline": "普通清洗",
+      "main_model": "3σ+1cm精度准则相似度聚类去相似",
+      "improvement": "按预测精度定相似度阈值",
+      "why_switch": "相似样本增负担"
+    },
+    {
+      "question_id": "任务二(定位)",
+      "baseline": "数值最小二乘依赖初值",
+      "main_model": "LS-MLP把最小二乘建成可微优化用MLP求解；异常数据用置信度赋权CE-CL(假设最多一基站异常切片采样+Softmax置信度加权)",
+      "improvement": "神经网络优化器+置信度联合",
+      "why_switch": "数值法依赖初值抗噪差；MLP不依赖初值"
+    },
+    {
+      "question_id": "任务三(场景迁移)",
+      "baseline": "重训",
+      "main_model": "把场景信息编码进损失函数，新场景只重编码损失不重训网络",
+      "improvement": "网络与场景剥离",
+      "why_switch": "LS-MLP本质是可微优化器，场景变只改损失函数"
+    }
+  ],
+  "key_formulas_and_assumptions": [
+    "LS-MLP最小二乘优化",
+    "假设任一时刻最多一基站异常",
+    "Softmax交叉熵置信度",
+    "场景信息编码进损失函数",
+    "K-means选一致解"
+  ],
+  "objective_function": "最小化定位RMSE，异常数据用置信度加权",
+  "evaluation_metrics": [
+    "正常XY平面RMSE6.95cm/三维37.04cm",
+    "异常XY RMSE18.24cm/三维46.21cm",
+    "不依赖初值抗噪"
+  ],
+  "algorithm_details_and_complexity": "LS-MLP可微优化→K-means选一致解→CE-CL置信度加权→场景信息重编码",
+  "independent_validation_design": "多维相对误差(xy 3%)与RMSE联合评价；与传统数值法对比",
+  "sensitivity_robustness_ablation": [
+    "正常vs异常RMSE对比",
+    "多预测值K-means一致性",
+    "场景迁移损失重编码"
+  ],
+  "abstract_deconstruction": {
+    "first_sentence": "基于位置服务室内定位需求，UWB受多径延时产生误差",
+    "method_sentence": "LS-MLP把最小二乘建成可微优化，CE-CL置信度加权，场景编码进损失",
+    "result_sentence": "正常XY RMSE6.95cm，异常18.24cm，不依赖初值",
+    "numbers_presentation": "RMSE精确到小数点后两位cm"
+  },
+  "figure_narrative_order": [
+    "LS-MLP结构图",
+    "置信度聚类图",
+    "RMSE对比表",
+    "场景迁移示意"
+  ],
+  "judge_high_score_reasons": [
+    "把最小二乘拟合重新表述为可微优化用MLP求解，概念新颖且不依赖初值",
+    "CE-CL假设最多一基站异常做切片采样+Softmax置信度，异常鲁棒性设计巧",
+    "把场景信息编码进损失函数实现网络与场景剥离，迁移性强",
+    "理论分析LS-MLP本质，不是黑箱调用"
+  ],
+  "reusable_patterns": [
+    "把经典优化重述为可微神经网络问题",
+    "单基站异常假设+置信度加权联合定位",
+    "场景信息入损失函数的迁移设计"
+  ],
+  "transferable_ability_card_candidates": [
+    "MLP优化求解器",
+    "鲁棒定位",
+    "模型迁移"
+  ],
+  "page_locations": {
+    "摘要": "p2-4",
+    "LS-MLP": "p12-16",
+    "置信度CE-CL": "p20-24",
+    "任务三场景迁移": "p22-23,31-33",
+    "模型评价": "p35"
+  },
+  "notes": "数模之星提名奖",
+  "award_level": "一等奖",
+  "award_confidence": "high"
+}

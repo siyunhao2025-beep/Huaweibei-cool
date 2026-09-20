@@ -1,0 +1,212 @@
+{
+  "shard": "S4",
+  "year_range": "2022-2024",
+  "brief_counts": {
+    "2022": 43,
+    "2023": 58,
+    "2024": 24
+  },
+  "brief_total": 125,
+  "deep_cards": {
+    "count": 30,
+    "list": [
+      "2022_A_A22104860055",
+      "2022_B_B22100070171",
+      "2022_C_C22103560098",
+      "2022_D_D22103360092",
+      "2022_E_E22103350038",
+      "2023_F_F23910020096",
+      "2024_A_A24102940057",
+      "2024_A_A24103350007",
+      "2024_A_A24103530117",
+      "2024_A_A24107120016",
+      "2024_B_B24102860287",
+      "2024_B_B24103530099",
+      "2024_B_B24104760033",
+      "2024_B_B24116640167",
+      "2024_C_C24102890089",
+      "2024_C_C24103860012",
+      "2024_C_C24104220149",
+      "2024_C_C24106130096",
+      "2024_D_D24103850092",
+      "2024_D_D24104250063",
+      "2024_D_D24104460003",
+      "2024_D_D24106570027",
+      "2024_E_E24101480006",
+      "2024_E_E24102870008",
+      "2024_E_E24102910005",
+      "2024_E_E24106980067",
+      "2024_F_F24102870082",
+      "2024_F_F24103360083",
+      "2024_F_F24104860143",
+      "2024_F_F24910020063"
+    ],
+    "by_year": {
+      "2022": 5,
+      "2023": 1,
+      "2024": 24
+    }
+  },
+  "track_prototype_distribution": {
+    "A": {
+      "2022": 8,
+      "2023": 10,
+      "2024": 4
+    },
+    "B": {
+      "2022": 7,
+      "2023": 9,
+      "2024": 4
+    },
+    "C": {
+      "2022": 7,
+      "2023": 10,
+      "2024": 4
+    },
+    "D": {
+      "2022": 7,
+      "2023": 9,
+      "2024": 4
+    },
+    "E": {
+      "2022": 7,
+      "2023": 10,
+      "2024": 4
+    },
+    "F": {
+      "2022": 7,
+      "2023": 10,
+      "2024": 4
+    }
+  },
+  "method_frequency_top20": [
+    [
+      "ARIMA",
+      9
+    ],
+    [
+      "随机森林",
+      9
+    ],
+    [
+      "遗传算法",
+      8
+    ],
+    [
+      "LSTM",
+      6
+    ],
+    [
+      "XGBoost",
+      6
+    ],
+    [
+      "模拟退火",
+      4
+    ],
+    [
+      "熵权法",
+      4
+    ],
+    [
+      "BP神经网络",
+      4
+    ],
+    [
+      "K-means",
+      4
+    ],
+    [
+      "NSGA-II",
+      4
+    ],
+    [
+      "SVM",
+      4
+    ],
+    [
+      "整数规划",
+      3
+    ],
+    [
+      "混合整数规划",
+      3
+    ],
+    [
+      "最小二乘拟合",
+      3
+    ],
+    [
+      "Bianchi模型",
+      3
+    ],
+    [
+      "最小二乘",
+      3
+    ],
+    [
+      "Pearson",
+      3
+    ],
+    [
+      "ConvLSTM",
+      3
+    ],
+    [
+      "引力红移",
+      3
+    ],
+    [
+      "动钟变慢",
+      3
+    ]
+  ],
+  "task_type_distribution": {
+    "多目标优化": 11,
+    "通信建模": 10,
+    "聚类": 9,
+    "时序预测": 9,
+    "矩阵分解": 9,
+    "排样优化": 7,
+    "订单组批": 7,
+    "调度优化": 7,
+    "芯片资源排布": 7,
+    "机理建模": 7,
+    "DOA估计": 6,
+    "整数规划": 6,
+    "预测": 6,
+    "Markov链": 5,
+    "仿真": 5,
+    "回归预测": 5,
+    "遗传算法": 4,
+    "时间序列预测": 4,
+    "回归": 4,
+    "传染病建模": 4
+  },
+  "award_level_distribution": {
+    "待确认": 125
+  },
+  "validation_coverage": {
+    "total": 125,
+    "with_validation_methods": 119,
+    "coverage_pct": 95.2
+  },
+  "innovation_coverage_pct": 99.2,
+  "figure_types_coverage_pct": 93.6,
+  "validation_errors_after_fix": [
+    "brief 2022_A_A22100130054 innovation_points=4 >3, truncating",
+    "brief 2024_C_C24103860012 innovation_points=4 >3, truncating",
+    "brief 2024_C_C24104220149 innovation_points=4 >3, truncating",
+    "brief 2024_C_C24106130096 innovation_points=4 >3, truncating",
+    "brief 2024_D_D24103850092 innovation_points=4 >3, truncating",
+    "brief 2024_D_D24104460003 innovation_points=4 >3, truncating",
+    "brief 2024_D_D24106570027 innovation_points=4 >3, truncating",
+    "brief 2024_E_E24101480006 innovation_points=4 >3, truncating",
+    "brief 2024_E_E24102870008 innovation_points=4 >3, truncating",
+    "brief 2024_E_E24102910005 innovation_points=5 >3, truncating",
+    "brief 2024_E_E24106980067 innovation_points=4 >3, truncating",
+    "brief 2024_F_F24103360083 innovation_points=4 >3, truncating",
+    "brief 2024_F_F24104860143 innovation_points=4 >3, truncating",
+    "brief 2024_F_F24910020063 innovation_points=4 >3, truncating"
+  ]
+}
