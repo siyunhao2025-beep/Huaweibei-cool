@@ -35,7 +35,7 @@ description: 华为杯（中国研究生数学建模竞赛）AI 作战中枢。�
 | `modules/evidence-ledger.md` | 证据账本与 AI 来源标注 |
 | `modules/figures-interface.md` | 论文图规范与求解图接口 |
 | `modules/technical-roadmap.md` | 技术路线图（论文图1）：YAML 规格 + 8 原型模板 + 渲染/审计脚本 |
-| `modules/paper-writing.md` | 论文章节结构与页数基线；**逐章内嵌 138 条优秀论文自检表，写完即勾**（F03 字体冲突见 §6.1） |
+| `modules/paper-writing.md` | 论文章节结构与页数基线；**逐章内嵌 138 条优秀论文自检表，写完即勾**（F03 二三级标题字体已按官方规范裁决为小四宋体，见 §6.1） |
 | `modules/abstract.md` | 摘要写法专项（国一模板） |
 | `modules/deai-writing.md` | 反模板/反 AI 味写作 |
 | `modules/innovation.md` | 创新点提炼与伪创新识别 |

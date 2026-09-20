@@ -65,8 +65,8 @@
 
 - **F01** 论文题目用**三号黑体字**。
 - **F02** 一级标题用**四号黑体字，居中**。
-- **F03** 二级、三级标题用**小四号黑体字，左端对齐（不居中）**。
-  > ⚠ **与华为杯官方规范冲突，已核对两个模板**：官方 `华为杯_论文章节规范.md` §2.3(1) 明确"二级/三级标题使用小四号**宋体**"，且 `gmcmthesis.cls` 现状正是宋体（`\subsection`/`\subsubsection` = `{\normalfont\normalsize\songti}`，左对齐）；Word 模板 Heading 2/3 也是宋体小四。**按"当届官方规范优先于第三方自检表"原则，二三级标题保持宋体小四，不改模板**；F03 黑体要求作为第三方意见记录，待用户最终裁决。
+- **F03** 二级、三级标题用**小四号宋体字，左端对齐（不居中）**。
+  > ✅ **已裁决（2026-09-21 用户裁定）：以华为杯官方格式规范为准，二三级标题为小四号宋体**。官方原文："论文题目用三号黑体字、一级标题用四号黑体字，并居中。论文中其他汉字一律采用小四号宋体字，行距用单倍行距"（来源：cmathc.org.cn 2025 第二十二届论文格式规范）。`gmcmthesis.cls` 现状正是宋体（`\subsection`/`\subsubsection` = `{\normalfont\normalsize\songti}`，左对齐），Word 模板 Heading 2/3 同为宋体小四，与官方一致，**不改模板**。第三方自检表原写"小四黑体"，经裁决不采纳。
 - **F04** 论文中其他汉字一律用**小四号宋体字**。
 - **F05** 行距用**单倍行距**。
 - **F06** 打印文字内容尽量避免彩色打印（必要的彩色图形、图表除外）。
@@ -77,12 +77,12 @@
 |---|---|---|---|
 | F01 | 三号黑体题目 | `\makenametitle` 内 `\zihao{3}\heiti \@title`（cls 第 481 行） | ✅ |
 | F02 | 四号黑体居中一级标题 | `\renewcommand\section` 格式串 `{\bfseries\centering\zihao{4}\heiti}`（cls 第 499–502 行） | ✅ |
-| F03 | 小四黑体左对齐二三级标题 | `\subsection`/`\subsubsection` = `{\normalfont\normalsize\songti}`（cls 第 503–510 行），左对齐(`\z@`)满足但字体为宋体 | ⚠ 字体冲突（见上，保持宋体） |
+| F03 | 小四宋体左对齐二三级标题（已裁决：以官方为准，第三方"黑体"不采纳） | `\subsection`/`\subsubsection` = `{\normalfont\normalsize\songti}`（cls 第 503–510 行），左对齐(`\z@`)，字体为宋体与官方一致 | ✅ 合规 |
 | F04 | 小四宋体正文 | 类加载 `\LoadClass[a4paper,zihao=-4]{ctexart}` + `\setCJKmainfont{SimSun}`（cls 第 36、281/284 行） | ✅ |
 | F05 | 单倍行距 | `\setstretch{1}` + `\renewcommand*{\baselinestretch}{1}`（cls 第 144、199 行） | ✅ |
 | F06 | 避免彩色打印 | 类选项 `bwprint`（cls 第 29 行）；正文出图走 `figures-interface.md` 配色规范 | 由选项/出图控制 |
 
-Word 模板（`assets/paper-template/研赛论文Word标准模板.docx`）样式核对：Title=黑体 16pt 居中（F01✅）、Heading 1=黑体 14pt 居中（F02✅）、Normal=宋体 12pt 单倍（F04✅/F05✅）、Heading 2/3=宋体 12pt 左对齐（F03 同样为宋体，与 cls 一致，保持不改）。
+Word 模板（`assets/paper-template/研赛论文Word标准模板.docx`）样式核对：Title=黑体 16pt 居中（F01✅）、Heading 1=黑体 14pt 居中（F02✅）、Normal=宋体 12pt 单倍（F04✅/F05✅）、Heading 2/3=宋体 12pt 左对齐（F03 同为宋体，与 cls 及官方规范一致，已裁决不改）。
 
 ### 6.2 篇幅基线（L01–L17，按章节窗口控制）
 

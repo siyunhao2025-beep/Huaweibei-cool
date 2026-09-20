@@ -26,12 +26,12 @@
     {
       "id": "F03",
       "section": "全局格式",
-      "item": "二级、三级标题用小四号黑体字，左端对齐（不居中）",
+      "item": "二级、三级标题用小四号宋体字，左端对齐（不居中）（以官方格式规范为准；第三方自检表原写“黑体”，经裁决不采纳）",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
       "length_requirement": null,
-      "notes": null
+      "notes": "用户2026-09-21裁决：以官方格式规范为准（小四宋体）。官方原文：论文中其他汉字一律采用小四号宋体字。来源：cmathc.org.cn 2025第二十二届论文格式规范。第三方自检表原写“黑体”不采纳。"
     },
     {
       "id": "F04",
