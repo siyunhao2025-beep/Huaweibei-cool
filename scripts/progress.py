@@ -98,6 +98,56 @@ def has_validation_result(root: Path) -> bool:
     return bool(re.search(r"(误差|RMSE|对比|灵敏度|鲁棒|消融|交叉验证|对标)", text))
 
 
+def has_locked_figure_count(root: Path) -> bool:
+    """Check the user-confirmed top-level Figure lock without duplicating full plan QA."""
+    candidates = [root / "求解" / "视觉计划.json", root / "visual-plan.json", root / "视觉计划.json"]
+    for path in candidates:
+        if not path.is_file():
+            continue
+        try:
+            plan = json.loads(path.read_text(encoding="utf-8-sig"))
+        except Exception:
+            continue
+        lock = plan.get("figure_count_lock", {})
+        actual = len(plan.get("global_figures", []))
+        for problem in plan.get("problems", []):
+            actual += len(problem.get("figures", [])) + len(problem.get("schematics", []))
+        proposed = int(lock.get("proposed_total", 0) or 0)
+        requested = lock.get("user_requested_total")
+        expected = int(requested) if requested is not None else proposed
+        if (
+            plan.get("schema_version") == "1.2"
+            and plan.get("plan_status") == "ready"
+            and lock.get("status") == "locked"
+            and lock.get("counting_rule") == "numbered_top_level_figures"
+            and proposed > 0
+            and int(lock.get("final_total", 0) or 0) == expected == actual > 0
+            and len(str(lock.get("confirmation_record", "")).strip()) >= 4
+        ):
+            return True
+    return False
+
+
+def has_user_page_decision(root: Path) -> bool:
+    """Accept a numeric user lock or an explicit user choice of no fixed target."""
+    candidates = [root / "config" / "contest.json", root / "contest.json"]
+    for path in candidates:
+        if not path.is_file():
+            continue
+        try:
+            config = json.loads(path.read_text(encoding="utf-8-sig"))
+        except Exception:
+            continue
+        target = config.get("paper", {}).get("internal_total_page_target", {})
+        mode = str(target.get("mode", ""))
+        authority = str(target.get("authority", ""))
+        if mode == "user_locked" and int(target.get("target", 0) or 0) > 0 and authority.startswith("user_"):
+            return True
+        if mode == "off" and authority == "user_decision_no_fixed_target":
+            return True
+    return False
+
+
 # --- 优秀论文自检表门禁（Wave6-B）---
 
 def _find_selfcheck(root: Path, names):
@@ -189,6 +239,7 @@ def check_phase(phase: str, root: Path) -> tuple:
         need(re.search(r"原型|optimization|prediction|evaluation|匹配", text) or
              any(root.rglob("*match*")), "有题型/原型判定记录")
         need(has_user_confirmation(root), "反AI读题审计：存在用户确认记录（evidence-ledger user_confirmation=true）")
+        need(has_locked_figure_count(root), "Figure 总数已由用户确认并写入视觉计划 1.2 锁")
 
     elif phase == "P2":
         text = _gather_text(root)
@@ -202,6 +253,7 @@ def check_phase(phase: str, root: Path) -> tuple:
         need(any(root.rglob("*.mat")) or any(root.rglob("*.csv")) or any(root.rglob("*.json")),
              "有结构化结果落盘")
         need(has_validation_result(root), "有 ≥1 种验证手段的结果/记录")
+        need(has_locked_figure_count(root), "visual plan 的 Figure 总数锁仍有效且与计划项一致")
 
     elif phase == "P4":
         text = _gather_text(root)
@@ -211,6 +263,8 @@ def check_phase(phase: str, root: Path) -> tuple:
         # 分章节清单检查：写作阶段边写边勾，工作目录下应有自检表
         need(find_p4_checklist(root) is not None,
              "分章节清单检查：比赛工作目录存在自检表（论文/优秀论文自检表.md）")
+        need(has_user_page_decision(root),
+             "用户已选择具体完整 PDF 页数，或明确选择“证据充分即可”")
 
     elif phase == "P5":
         text = _gather_text(root)

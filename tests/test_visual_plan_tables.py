@@ -52,15 +52,37 @@ def _figure(fid: str, evidence_ids: list[str], question: str, family: str) -> di
 def test_schema_and_initializer_include_table_ledger():
     schema = json.loads((ROOT / "scripts" / "视觉计划.schema.json").read_text(encoding="utf-8"))
     Draft202012Validator.check_schema(schema)
-    assert schema["properties"]["schema_version"]["const"] == "1.1"
+    assert schema["properties"]["schema_version"]["const"] == "1.2"
     assert "global_tables" in schema["required"]
     assert "color_semantics" in schema["required"]
+    assert "figure_count_lock" in schema["required"]
     assert schema["$defs"]["table"]["properties"]["paper"]["$ref"].endswith("table_paper_link")
 
     problem = visual_plan_init.make_problem("问题一", "standard")
     assert problem["tables"] == []
     assert problem["low_table_exception"] is None
     assert all(item["table_ids"] == [] for item in problem["evidence_matrix"])
+
+
+def test_initializer_starts_with_unconfirmed_figure_count_lock(tmp_path, monkeypatch):
+    output = tmp_path / "plan.json"
+    monkeypatch.setattr(
+        "sys.argv",
+        ["visual_plan_init.py", "--output", str(output), "--project-title", "测试", "--problem-id", "问题一"],
+    )
+    visual_plan_init.main()
+    plan = json.loads(output.read_text(encoding="utf-8"))
+    schema = json.loads((ROOT / "scripts" / "视觉计划.schema.json").read_text(encoding="utf-8"))
+    Draft202012Validator(schema).validate(plan)
+    assert plan["schema_version"] == "1.2"
+    assert plan["figure_count_lock"] == {
+        "status": "proposed",
+        "proposed_total": 0,
+        "user_requested_total": None,
+        "final_total": 0,
+        "counting_rule": "numbered_top_level_figures",
+        "confirmation_record": "",
+    }
 
 
 def test_plan_audit_counts_non_redundant_tables(tmp_path):
@@ -91,9 +113,17 @@ def test_plan_audit_counts_non_redundant_tables(tmp_path):
         },
     ]
     plan = {
-        "schema_version": "1.1",
+        "schema_version": "1.2",
         "project_title": "视觉计划测试",
         "plan_status": "ready",
+        "figure_count_lock": {
+            "status": "locked",
+            "proposed_total": 1,
+            "user_requested_total": 2,
+            "final_total": 2,
+            "counting_rule": "numbered_top_level_figures",
+            "confirmation_record": "用户明确回复：图片总数 2 张。",
+        },
         "visual_encoding_path": "求解/视觉编码表.md",
         "color_semantics": visual_plan_audit.EXPECTED_COLOR_SEMANTICS,
         "problems": [{
@@ -136,10 +166,27 @@ def test_plan_audit_counts_non_redundant_tables(tmp_path):
     }
     plan_path = tmp_path / "visual-plan.json"
     plan_path.write_text(json.dumps(plan, ensure_ascii=False), encoding="utf-8")
+    schema = json.loads((ROOT / "scripts" / "视觉计划.schema.json").read_text(encoding="utf-8"))
+    Draft202012Validator(schema).validate(plan)
 
     result = visual_plan_audit.audit(plan_path, "plan", tmp_path, None)
 
     assert result["status"] == "PASS"
     assert result["summary"]["figures"] == 2
+    assert result["summary"]["numbered_figures"] == 2
     assert result["summary"]["tables"] == 1
     assert not result["failures"]
+
+    plan["figure_count_lock"]["final_total"] = 3
+    plan_path.write_text(json.dumps(plan, ensure_ascii=False), encoding="utf-8")
+    mismatch = visual_plan_audit.audit(plan_path, "plan", tmp_path, None)
+    assert mismatch["status"] == "FAIL"
+    assert "figure_count_matches_plan" in {item["code"] for item in mismatch["failures"]}
+
+
+def test_count_numbered_figures_excludes_subfigure_panels():
+    tex = r"""
+    \begin{figure}\begin{subfigure}{.5\textwidth}\end{subfigure}\end{figure}
+    \begin{figure*}\end{figure*}
+    """
+    assert visual_plan_audit.count_numbered_figures(tex) == 2

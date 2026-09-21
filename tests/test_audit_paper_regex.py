@@ -58,3 +58,30 @@ def test_internal_total_page_target_is_separate_from_official_gate():
         "evidence_conditional",
         "user_internal_preference",
     )
+
+
+def test_internal_total_page_target_can_wait_for_user_or_lock_user_value():
+    pending = {
+        "internal_total_page_target": {
+            "target": None,
+            "mode": "user_decides",
+            "authority": "pending_user_confirmation_after_figure_lock",
+        }
+    }
+    locked = {
+        "internal_total_page_target": {
+            "target": 56,
+            "mode": "user_locked",
+            "authority": "user_confirmation",
+        }
+    }
+    assert audit_paper.resolve_internal_total_target(pending, {}) == (
+        0,
+        "user_decides",
+        "pending_user_confirmation_after_figure_lock",
+    )
+    assert audit_paper.resolve_internal_total_target(locked, {}) == (
+        56,
+        "user_locked",
+        "user_confirmation",
+    )

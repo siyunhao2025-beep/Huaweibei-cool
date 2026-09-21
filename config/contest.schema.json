@@ -50,8 +50,8 @@
           "type": "object",
           "required": ["mode", "target", "scope", "authority"],
           "properties": {
-            "mode": {"enum": ["off", "evidence_conditional"]},
-            "target": {"type": "integer", "minimum": 1},
+            "mode": {"enum": ["off", "user_decides", "user_locked", "evidence_conditional"]},
+            "target": {"type": ["integer", "null"], "minimum": 1},
             "scope": {"const": "physical_pdf_pages"},
             "authority": {"type": "string", "minLength": 1},
             "note": {"type": "string"}

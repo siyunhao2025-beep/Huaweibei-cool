@@ -17,7 +17,7 @@
 
 - [ ] `modules/kickoff-audit.md` 含：反 AI 陷阱清单（≥7 类）+ 逐段拆解四元组流程 + 读题审计报告 7 节 + 人工确认门禁。
 - [ ] `modules/problem-typing.md` 明确：判型器只出候选原型假设，须经题面证据质证与用户确认，禁止"判型=定模型"。
-- [ ] `modules/figures-interface.md` 明确：图表计划源自读题审计报告 §6 且经用户确认后才执行。
+- [ ] `modules/figures-interface.md` 明确：图表计划源自读题审计报告 §6；逐图清单与建议总数须经用户明确锁定，visual plan、锁定值与最终 LaTeX 顶层 Figure 数一致后才放行。
 - [ ] P1 门禁定义为硬退出：**无用户确认记录 = 不通过**（见 `docs/PHASE_GATES.md`）。
 - [ ] SKILL.md 硬规则含"反 AI 读题：未确认不得求解"；启动路由 C 提示先过读题审计。
 - [ ] tests 含正反例：**无用户确认记录不得进入求解**（Wave3 负责实现）。

@@ -38,6 +38,16 @@ def _copy_checklist(workdir: Path) -> None:
         shutil.copy2(CHECKLIST_MD, target_dir / CHECKLIST_MD.name)
 
 
+def _copy_contest_config(workdir: Path) -> None:
+    """Seed a per-contest config so user Figure/page decisions have one writable home."""
+    if not CONTEST_JSON.is_file():
+        return
+    target = workdir / "config" / "contest.json"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    if not target.exists():
+        shutil.copy2(CONTEST_JSON, target)
+
+
 def init_workdir(workdir: Path) -> None:
     workdir.mkdir(parents=True, exist_ok=True)
     if SCAFFOLD.exists():
@@ -52,6 +62,7 @@ def init_workdir(workdir: Path) -> None:
         for name in ["题目", "数据/原始", "数据/中间", "求解", "论文", "提交附件"]:
             (workdir / name).mkdir(parents=True, exist_ok=True)
     _copy_checklist(workdir)
+    _copy_contest_config(workdir)
     print(f"工作目录已初始化: {workdir}")
 
 

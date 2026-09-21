@@ -33,11 +33,11 @@
       "note": "截至 2026-09-21，已核对的当届官方材料未规定附录页数上限；保持关闭，并在赛题或后续通知明确要求时更新。"
     },
     "internal_total_page_target": {
-      "mode": "evidence_conditional",
-      "target": 50,
+      "mode": "user_decides",
+      "target": null,
       "scope": "physical_pdf_pages",
-      "authority": "user_internal_preference_2026-09-21",
-      "note": "内部目标而非官方要求。只有证据链闭合、图表各有独立信息增量时才追求 50+；若没有真实内容缺口，允许低于 50 页并明确说明。"
+      "authority": "pending_user_confirmation_after_figure_lock",
+      "note": "非官方要求。先锁定有证据支撑的 Figure 总数并给出预计页数区间，再由用户选择具体总页数；若用户选择“证据充分即可”，将 mode 设为 off 并记录该裁决。禁止为达到页数而注水。"
     },
     "role_windows_enabled": false,
     "word_template": "研赛论文Word标准模板.docx",

@@ -51,10 +51,11 @@ def test_2026_page_gate_is_off_until_an_official_limit_exists():
     assert targets["required_body_pages"] == 0
     assert targets["role_windows_enabled"] is False
     internal = contest["paper"]["internal_total_page_target"]
-    assert internal["mode"] == "evidence_conditional"
-    assert internal["target"] == 50
+    assert internal["mode"] == "user_decides"
+    assert internal["target"] is None
     assert internal["scope"] == "physical_pdf_pages"
-    assert targets["internal_total_page_target"]["target"] == 50
+    assert targets["internal_total_page_target"]["mode"] == "user_decides"
+    assert targets["internal_total_page_target"]["target"] is None
 
     official = (ROOT / "docs" / "OFFICIAL_FORMAT_2026.md").read_text(encoding="utf-8")
     assert "没有给出正文页数上限、全文总页数上限或正文最低页数" in official
@@ -76,3 +77,15 @@ def test_times_family_and_abstract_emphasis_rules_are_built_in():
     assert "年份、题号" in abstract_guide
     assert "不机械加粗" in abstract_guide
     assert "整句、整段加粗" in abstract_guide
+
+
+def test_identity_cover_hides_zero_but_abstract_starts_at_one():
+    cls = (ROOT / "assets" / "paper-template" / "gmcmthesis.cls").read_text(encoding="utf-8")
+    cover = cls.split(r"\newcommand{\makeidentitycover}", 1)[1].split(r"\renewcommand{\maketitle}", 1)[0]
+    title = cls.split(r"\renewcommand{\maketitle}", 1)[1]
+
+    assert r"\thispagestyle{empty}" in cover
+    assert r"\thispagestyle{plain}" not in cover
+    assert r"\setcounter{page}{0}" in cover
+    assert r"\thispagestyle{plain}" in title
+    assert r"\setcounter{page}{1}" in title

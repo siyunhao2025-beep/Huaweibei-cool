@@ -63,6 +63,11 @@ def tex_closure(main: Path) -> str:
     return read(main)
 
 
+def count_numbered_figures(tex: str) -> int:
+    """Count top-level numbered Figure environments; subfigures are panels, not figures."""
+    return len(re.findall(r"\\begin\s*\{figure\*?\}", tex))
+
+
 def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None) -> dict:
     checks: list[dict] = []
     failures: list[dict] = []
@@ -87,15 +92,20 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
         return {"status": "FAIL", "stage": stage, "checks": checks, "failures": failures, "warnings": warnings}
 
     schema_version = str(plan["schema_version"])
-    add("schema_version_supported", schema_version in {"1.0", "1.1"}, actual=schema_version)
-    if schema_version == "1.1":
+    add("schema_version_supported", schema_version in {"1.0", "1.1", "1.2"}, actual=schema_version)
+    if schema_version in {"1.1", "1.2"}:
         add("table_ledger_root_present", "global_tables" in plan)
         add("semantic_palette_declared", plan.get("color_semantics") == EXPECTED_COLOR_SEMANTICS,
             actual=plan.get("color_semantics"), expected=EXPECTED_COLOR_SEMANTICS,
             message="全文统一语义色：蓝基线、红风险/唯一重点、绿改进、橙紫扩展、灰背景")
     else:
         add("legacy_schema_without_table_ledger", False, severity="WARN",
-            actual=schema_version, message="1.0 计划仍可读取，但应升级到 1.1 以审计三线表证据")
+            actual=schema_version, message="1.0 计划仍可读取，但应升级到 1.2 以审计三线表与图数锁定")
+    if schema_version == "1.2":
+        add("figure_count_lock_present", "figure_count_lock" in plan)
+    elif schema_version in {"1.0", "1.1"}:
+        add("legacy_schema_without_figure_count_lock", False, severity="WARN",
+            actual=schema_version, message="旧视觉计划没有用户确认的 Figure 总数硬锁；正式出图前应升级到 1.2")
     add("plan_marked_ready", plan["plan_status"] == "ready", actual=plan["plan_status"])
     problems = plan.get("problems", [])
     add("problems_present", bool(problems), count=len(problems))
@@ -121,7 +131,7 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
         all_tables.extend(tables)
         all_schematics.extend(schematics)
 
-        if schema_version == "1.1":
+        if schema_version in {"1.1", "1.2"}:
             add(f"{pid}:table_ledger_fields_present",
                 "tables" in problem and "low_table_exception" in problem)
 
@@ -137,7 +147,7 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
             missing=sorted(REQUIRED_CATEGORIES - categories))
         add(f"{pid}:evidence_ids_unique", len(evidence_ids) == len(set(evidence_ids)), ids=evidence_ids)
         all_evidence_ids.update(evidence_ids)
-        if schema_version == "1.1":
+        if schema_version in {"1.1", "1.2"}:
             missing_table_links = [item.get("evidence_id") for item in evidence if "table_ids" not in item]
             add(f"{pid}:evidence_table_links_declared", not missing_table_links, ids=missing_table_links)
 
@@ -190,7 +200,7 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
             add(f"{pid}:figure_family_diversity", len(families) >= 2, severity="WARN", families=sorted(f for f in families if f))
 
         table_families = {str(item.get("table_family", "")) for item in tables if item.get("table_family")}
-        if schema_version == "1.1":
+        if schema_version in {"1.1", "1.2"}:
             table_threshold = 1 if complexity == "simple" else 2 if complexity == "standard" else 3
             table_upper_review = 2 if complexity == "simple" else 4 if complexity == "standard" else 5
             table_exception = str(problem.get("low_table_exception") or "").strip()
@@ -250,8 +260,33 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
     all_schematic_ids = [str(item.get("schematic_id", "")) for item in all_schematics]
     add("schematic_ids_unique", len(all_schematic_ids) == len(set(all_schematic_ids)),
         ids=all_schematic_ids)
+    numbered_visual_ids = all_figure_ids + all_schematic_ids
+    add("numbered_visual_ids_unique", len(numbered_visual_ids) == len(set(numbered_visual_ids)),
+        ids=numbered_visual_ids)
     all_table_ids = [str(item.get("table_id", "")) for item in all_tables]
     add("table_ids_unique", len(all_table_ids) == len(set(all_table_ids)), ids=all_table_ids)
+
+    actual_figure_total = len(numbered_visual_ids)
+    if schema_version == "1.2":
+        count_lock = plan.get("figure_count_lock", {})
+        proposed_total = int(count_lock.get("proposed_total", 0) or 0)
+        requested_total = count_lock.get("user_requested_total")
+        final_total = int(count_lock.get("final_total", 0) or 0)
+        add("figure_count_lock_status", count_lock.get("status") == "locked",
+            actual=count_lock.get("status"), message="须先向用户展示逐图清单和建议总数，得到明确确认后才能锁定")
+        add("figure_count_proposal_is_nonzero", proposed_total >= 1, proposed_total=proposed_total)
+        add("figure_count_rule_is_top_level",
+            count_lock.get("counting_rule") == "numbered_top_level_figures",
+            actual=count_lock.get("counting_rule"),
+            message="每个顶层 figure/figure* 环境计 1 张；子图面板、封皮 logo 与表格不计")
+        add("figure_count_user_decision_consistent",
+            final_total == (int(requested_total) if requested_total is not None else proposed_total),
+            proposed_total=proposed_total, user_requested_total=requested_total, final_total=final_total)
+        add("figure_count_matches_plan", final_total == actual_figure_total,
+            final_total=final_total, planned_top_level_figures=actual_figure_total)
+        confirmation = str(count_lock.get("confirmation_record", "")).strip()
+        add("figure_count_confirmation_recorded", len(confirmation) >= 4,
+            confirmation_record=confirmation)
 
     for table in all_tables:
         tid = str(table.get("table_id", ""))
@@ -369,7 +404,7 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
         if len(all_figures) > 25:
             add("portfolio_above_25_review", False, severity="WARN", count=len(all_figures),
                 message="全篇 Figure 超过 25 个时逐张复核信息增量，优先合并或删除重复证据")
-        if schema_version == "1.1":
+        if schema_version in {"1.1", "1.2"}:
             add("table_portfolio_target_8_to_16_review", len(all_tables) >= 8, severity="WARN",
                 count=len(all_tables), message="四个标准/复杂问题通常规划 8--16 张承担精确查值任务的非冗余三线表")
             if len(all_tables) > 16:
@@ -403,6 +438,11 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
                                 (item.get("plan_id") is not None or item.get("status") != "not_applicable"))]
     add("flowchart_plan_contracts_valid", not flow_contract_errors, scopes=flow_contract_errors,
         message="需要流程图时必须登记 plan_id；不需要时 plan_id 为空且状态为 not_applicable")
+    unresolved_flow_ids = [item.get("plan_id") for item in flowcharts
+                           if item.get("needed") == "yes" and item.get("plan_id") not in allowed_visual_ids]
+    add("flowchart_plan_ids_resolve", not unresolved_flow_ids,
+        ids=sorted(set(str(item) for item in unresolved_flow_ids)),
+        message="流程图必须登记为已计入总数的 Figure 或 Schematic，不能游离在图数锁之外")
     if stage in {"render", "paper"}:
         flow_not_passed = [item.get("scope") for item in flowcharts
                            if item.get("needed") == "yes" and item.get("status") != "qa_pass"]
@@ -427,6 +467,12 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
                                  for key in ("output_pdf", "preview_png"))
             unplanned = [raw for raw in graphics if "求解" in raw and Path(raw).name not in planned_names]
             add("paper_result_graphics_are_planned", not unplanned, unplanned=unplanned)
+            if schema_version == "1.2":
+                actual_tex_total = count_numbered_figures(tex)
+                locked_total = int(plan.get("figure_count_lock", {}).get("final_total", 0) or 0)
+                add("paper_figure_count_matches_lock", actual_tex_total == locked_total,
+                    locked_total=locked_total, tex_top_level_figures=actual_tex_total,
+                    message="最终 LaTeX 的顶层 Figure 数必须与用户锁定值完全一致")
 
     status = "FAIL" if failures else "PASS"
     return {
@@ -437,6 +483,7 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
         "summary": {
             "problems": problem_summaries,
             "figures": len(all_figures),
+            "numbered_figures": actual_figure_total,
             "tables": len(all_tables),
             "schematics": len(all_schematics),
             "failures": len(failures),

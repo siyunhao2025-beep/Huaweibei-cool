@@ -142,4 +142,8 @@ def test_contest_init_copies_checklist(tmp_path, monkeypatch):
     contest_init.init_workdir(workdir)
     target = workdir / "论文" / "优秀论文自检表.md"
     assert target.exists(), f"contest_init 未复制自检表到 {target}"
+    config = workdir / "config" / "contest.json"
+    assert config.exists(), f"contest_init 未复制比赛配置到 {config}"
+    data = json.loads(config.read_text(encoding="utf-8"))
+    assert data["paper"]["internal_total_page_target"]["mode"] == "user_decides"
     assert "执行要求" in target.read_text(encoding="utf-8")

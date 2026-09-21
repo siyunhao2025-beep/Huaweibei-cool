@@ -59,9 +59,17 @@ def main() -> None:
     if output.exists() and not args.force:
         raise SystemExit(f"Refusing to overwrite existing plan: {output}")
     plan = {
-        "schema_version": "1.1",
+        "schema_version": "1.2",
         "project_title": args.project_title,
         "plan_status": "draft",
+        "figure_count_lock": {
+            "status": "proposed",
+            "proposed_total": 0,
+            "user_requested_total": None,
+            "final_total": 0,
+            "counting_rule": "numbered_top_level_figures",
+            "confirmation_record": "",
+        },
         "visual_encoding_path": "求解/视觉编码表.md",
         "color_semantics": {
             "baseline": "#2166AC",

@@ -6,6 +6,7 @@
     "schema_version",
     "project_title",
     "plan_status",
+    "figure_count_lock",
     "visual_encoding_path",
     "color_semantics",
     "problems",
@@ -15,9 +16,29 @@
   ],
   "additionalProperties": false,
   "properties": {
-    "schema_version": {"const": "1.1"},
+    "schema_version": {"const": "1.2"},
     "project_title": {"type": "string", "minLength": 1},
     "plan_status": {"enum": ["draft", "ready"]},
+    "figure_count_lock": {
+      "type": "object",
+      "required": [
+        "status",
+        "proposed_total",
+        "user_requested_total",
+        "final_total",
+        "counting_rule",
+        "confirmation_record"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {"enum": ["proposed", "locked"]},
+        "proposed_total": {"type": "integer", "minimum": 0},
+        "user_requested_total": {"type": ["integer", "null"], "minimum": 1},
+        "final_total": {"type": "integer", "minimum": 0},
+        "counting_rule": {"const": "numbered_top_level_figures"},
+        "confirmation_record": {"type": "string"}
+      }
+    },
     "visual_encoding_path": {"type": "string", "minLength": 1},
     "color_semantics": {
       "type": "object",

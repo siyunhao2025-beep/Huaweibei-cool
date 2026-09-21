@@ -57,12 +57,12 @@ def resolve_body_gate(targets: dict, contest_config: dict) -> tuple[int, int | N
 
 
 def resolve_internal_total_target(targets: dict, contest_config: dict) -> tuple[int, str, str]:
-    """Return (target, mode, authority) for the non-official physical-PDF goal."""
+    """Return (target, mode, authority) for the user's non-official PDF decision."""
     fallback = targets.get("internal_total_page_target", {}) if targets else {}
     configured = contest_config.get("paper", {}).get("internal_total_page_target", {}) if contest_config else {}
     target_config = configured or fallback
     mode = str(target_config.get("mode", "off")).lower()
-    if mode not in {"off", "evidence_conditional"}:
+    if mode not in {"off", "user_decides", "user_locked", "evidence_conditional"}:
         raise ValueError(f"internal_total_page_target.mode 无效: {mode}")
     target = int(target_config.get("target", 0) or 0)
     authority = str(target_config.get("authority", "not_configured"))
@@ -284,7 +284,26 @@ def main():
         issues.append({"code": "body_pages_below_minimum", "severity": "error" if body_gate_mode == "error" else "warning", "actual": body["pages"], "required": required_body, "gate_mode": body_gate_mode, "authority": body_gate_authority, "message": "页数门禁按比赛配置执行；当届官方规则优先于项目经验阈值。"})
     if body_gate_mode != "off" and maximum_body is not None and body["pages"] > maximum_body:
         issues.append({"code": "body_pages_above_maximum", "severity": "error" if body_gate_mode == "error" else "warning", "actual": body["pages"], "maximum": maximum_body, "gate_mode": body_gate_mode, "authority": body_gate_authority, "message": "正文页数超过已配置的当届明确上限；请先确认该上限口径，再删减冗余并保留核心证据链。"})
-    if internal_target_mode == "evidence_conditional" and internal_total_target > 0 and len(records) < internal_total_target:
+    if internal_target_mode == "user_decides":
+        issues.append({
+            "code": "internal_total_page_target_pending_user_decision",
+            "severity": "warning",
+            "actual": len(records),
+            "scope": "physical_pdf_pages",
+            "authority": internal_target_authority,
+            "message": "Figure 总数锁定后，须把证据支撑的预计页数区间交给用户；由用户回复“论文总页数：XX”或“论文长度：证据充分即可”。",
+        })
+    elif internal_target_mode == "user_locked" and internal_total_target > 0 and len(records) != internal_total_target:
+        issues.append({
+            "code": "user_locked_total_page_target_not_met",
+            "severity": "warning",
+            "actual": len(records),
+            "target": internal_total_target,
+            "scope": "physical_pdf_pages",
+            "authority": internal_target_authority,
+            "message": "完整 PDF 页数与用户锁定值不同。先调整真实证据的取舍与编排；不得用套话、重复图表、放大图表或强制分页凑到目标。",
+        })
+    elif internal_target_mode == "evidence_conditional" and internal_total_target > 0 and len(records) < internal_total_target:
         issues.append({
             "code": "internal_total_page_target_not_reached",
             "severity": "warning",
@@ -319,11 +338,11 @@ def main():
         })
     cover_footer = centered_footer_numbers(records[0]) if records else []
     abstract_footer = centered_footer_numbers(records[1]) if len(records) >= 2 else []
-    if 0 not in cover_footer:
+    if cover_footer:
         issues.append({
-            "code": "cover_page_number_missing",
+            "code": "cover_page_number_visible",
             "severity": "error",
-            "message": "正式封皮页脚中部必须显示页码 0。",
+            "message": "按本项目用户裁决，正式封皮不得显示页码；匿名摘要页仍从 1 开始编号。",
             "labels": cover_footer,
         })
     if 1 not in abstract_footer:
@@ -365,7 +384,7 @@ def main():
             "中文字体 CMap 损坏时，章节/身份检测可能需要 OCR 或 Word 标题 JSON 交叉验证。",
             "历史论文的章节页数只作描述性观察，不要求所有章节等长，也不参与默认通过/失败判定。",
             "contest.json 中的 official_rules_priority=true：仅在当届题面或官方通知明确给出页数限制时开启页数门禁；截至 2026-09-21，默认关闭。",
-            "50+ 是用户设定的证据条件式内部目标，不是官方门槛；未达到只触发内容缺口复核，不得以凑页方式修复。",
+            "论文长度由用户在 Figure 总数锁定后决定；数值目标不是官方门槛，也不得以凑页方式修复。",
         ],
     }
     args.report.parent.mkdir(parents=True, exist_ok=True)

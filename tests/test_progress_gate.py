@@ -42,6 +42,24 @@ def _seed_reading_audit(root: Path):
     (root / "原型判定.md").write_text(
         "题型判定：主原型 optimization，辅 prediction。", encoding="utf-8")
     (root / "contest.json").write_text("{}", encoding="utf-8")
+    (root / "求解").mkdir(exist_ok=True)
+    (root / "求解" / "视觉计划.json").write_text(
+        json.dumps({
+            "schema_version": "1.2",
+            "plan_status": "ready",
+            "figure_count_lock": {
+                "status": "locked",
+                "proposed_total": 1,
+                "user_requested_total": None,
+                "final_total": 1,
+                "counting_rule": "numbered_top_level_figures",
+                "confirmation_record": "用户确认锁定 1 张",
+            },
+            "global_figures": [{"figure_id": "F01"}],
+            "problems": [],
+        }, ensure_ascii=False),
+        encoding="utf-8",
+    )
 
 
 def test_p1_fails_without_user_confirmation(tmp_path):
@@ -68,6 +86,16 @@ def test_p1_passes_with_markdown_ledger(tmp_path):
         encoding="utf-8")
     passed, _ = prog.check_phase("P1", tmp_path)
     assert passed is True, "markdown 台账含确认标记时 P1 应 PASS"
+
+
+def test_p1_fails_when_figure_count_is_not_locked(tmp_path):
+    _seed_reading_audit(tmp_path)
+    (tmp_path / "evidence-ledger.json").write_text(
+        json.dumps({"user_confirmation": True}, ensure_ascii=False), encoding="utf-8")
+    (tmp_path / "求解" / "视觉计划.json").unlink()
+    passed, items = prog.check_phase("P1", tmp_path)
+    assert passed is False
+    assert "Figure 总数" in " ".join(desc for _, desc in items)
 
 
 def test_p2_passes_with_three_assumptions(tmp_path):
@@ -101,6 +129,18 @@ def _seed_p4_base(root: Path):
     (root / "论文" / "paper.md").write_text(
         "摘要：本文做了功率分配。\n模型假设：...\n问题重述：...\n参考文献：[1]\n结论：完成。\n",
         encoding="utf-8")
+    (root / "contest.json").write_text(
+        json.dumps({
+            "paper": {
+                "internal_total_page_target": {
+                    "mode": "off",
+                    "target": None,
+                    "authority": "user_decision_no_fixed_target",
+                }
+            }
+        }, ensure_ascii=False),
+        encoding="utf-8",
+    )
 
 
 def test_p4_fails_without_checklist(tmp_path):
@@ -117,6 +157,26 @@ def test_p4_passes_with_checklist(tmp_path):
         "# 优秀论文自检表\n- [ ] A01 ...\n", encoding="utf-8")
     passed, items = prog.check_phase("P4", tmp_path)
     assert passed is True, f"有自检表文件时 P4 应 PASS，items={items}"
+
+
+def test_p4_fails_while_page_length_still_awaits_user(tmp_path):
+    _seed_p4_base(tmp_path)
+    (tmp_path / "论文" / "优秀论文自检表.md").write_text("# 自检表\n", encoding="utf-8")
+    (tmp_path / "contest.json").write_text(
+        json.dumps({
+            "paper": {
+                "internal_total_page_target": {
+                    "mode": "user_decides",
+                    "target": None,
+                    "authority": "pending_user_confirmation_after_figure_lock",
+                }
+            }
+        }, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    passed, items = prog.check_phase("P4", tmp_path)
+    assert passed is False
+    assert "用户已选择" in " ".join(desc for _, desc in items)
 
 
 def _seed_p6_base(root: Path):

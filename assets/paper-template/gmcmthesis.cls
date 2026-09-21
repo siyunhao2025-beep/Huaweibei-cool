@@ -416,9 +416,9 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 
 %% Document Markup
 
-% The 2026 submission PDF requires a page-0 identity cover and forbids
+% The 2026 submission PDF requires a logical page-0 identity cover and forbids
 % identifying marks after that cover.  Keep the two zones explicit:
-% \makeidentitycover emits the required cover, while \maketitle starts the
+% \makeidentitycover emits the unnumbered cover, while \maketitle starts the
 % anonymous abstract at printed page 1.
 \newcommand*\baominghao[1]{%
   \renewcommand{\gmcm@tokens@baominghao}{#1}}
@@ -433,7 +433,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 
 \newcommand{\makeidentitycover}{%
   \clearpage
-  \thispagestyle{plain}%
+  \thispagestyle{empty}%
   \setcounter{page}{0}%
   \pdfbookmark[1]{参赛信息封面}{identity-cover}%
   \IfFileExists{figures/identity-cpipc.png}{}{%
