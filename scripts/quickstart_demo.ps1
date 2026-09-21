@@ -4,6 +4,10 @@
 # 全程中文打印进度；不碰 Desktop 语料，只用内置虚构题。
 # Step 7 跑 paper_checklist.py 自检闭环：机检 0 错 + 人工裁决 sidecar + --strict 退出 0。
 $ErrorActionPreference = "Stop"
+$Utf8NoBom = [System.Text.UTF8Encoding]::new($false)
+[Console]::OutputEncoding = $Utf8NoBom
+$OutputEncoding = $Utf8NoBom
+$env:PYTHONUTF8 = "1"
 $repo = Split-Path -Parent $PSScriptRoot   # scripts\ 的上一级 = 仓库根
 Set-Location $repo
 $demoDir = Join-Path $repo "docs\examples\quickstart"
