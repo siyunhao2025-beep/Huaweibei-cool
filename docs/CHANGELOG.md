@@ -2,6 +2,9 @@
 
 ## Unreleased — 2026-09-21（第二十三届社区 LaTeX 内容融合与自检表纠错）
 
+- 统一西文排版：官方 Word 模板中 ASCII/HAnsi 的 Times New Roman 设置已映射到 LaTeX；本地使用 Times New Roman，Overleaf 合法回退为 TeX Gyre Termes，公式改用 TeX Gyre Termes Math，代码保留等宽字体。
+- 摘要模板、句式库和终审清单新增选择性粗体规则：只强调主要模型、决定性数值（含单位）及核心结论/创新点；禁止把所有数字或整句机械加粗。
+
 - 装载并逐页核验用户提供的 12 页社区 LaTeX 参考 PDF 及五个配套文件；新增 SHA-256 清单和 `docs/TEMPLATE_CONTENT_MAPPING_23RD.md`。源包无明确再分发许可，原件只保留在本机 skill，公开仓库不复制。
 - 将任务卡、数据审计、变量字典、Baseline—主模型证据链、结果解释、数据结构感知验证、三类不确定性、评价/结论和复现元数据融合进章节模板与写作/验证模块。
 - 明确拒绝参考包的两页目录、社区类文件、组合 logo 与写有“第二十二届”的过期标题资产；官方 Word/通知继续拥有最高优先级。

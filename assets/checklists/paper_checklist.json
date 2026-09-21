@@ -36,12 +36,12 @@
     {
       "id": "F04",
       "section": "全局格式",
-      "item": "论文中其他汉字一律用小四号宋体字",
+      "item": "论文中其他汉字一律用小四号宋体字；排版文本中的英文、阿拉伯数字和西文标点用 Times New Roman（Overleaf 缺少该字体时用 TeX Gyre Termes 兼容回退；公式与代码分别保留数学字体和等宽字体）",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
       "length_requirement": null,
-      "notes": null
+      "notes": "官方 Word 模板样式将 ASCII/HAnsi 字体设为 Times New Roman；数学运算符不能用普通文本字体替代，代码为保证可读性保留等宽字体。"
     },
     {
       "id": "F05",
@@ -286,12 +286,12 @@
     {
       "id": "A06",
       "section": "摘要",
-      "item": "展示可追溯的关键结果、单位和评价口径",
+      "item": "展示可追溯的关键结果、单位和评价口径；主要模型、决定性数值及核心结论/创新点适度加粗，普通数字不机械加粗且不整句加粗",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
       "length_requirement": null,
-      "notes": null
+      "notes": "加粗是本 skill 的摘要可读性规则，不冒充官方硬性格式；仅强调有证据支撑、能影响评审判断的信息。"
     },
     {
       "id": "A07",

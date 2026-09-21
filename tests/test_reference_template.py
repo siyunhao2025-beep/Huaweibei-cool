@@ -53,3 +53,21 @@ def test_2026_page_gate_is_off_until_an_official_limit_exists():
 
     official = (ROOT / "docs" / "OFFICIAL_FORMAT_2026.md").read_text(encoding="utf-8")
     assert "没有给出正文页数上限、全文总页数上限或正文最低页数" in official
+
+
+def test_times_family_and_abstract_emphasis_rules_are_built_in():
+    template = ROOT / "assets" / "paper-template"
+    cls = (template / "gmcmthesis.cls").read_text(encoding="utf-8")
+    abstract_fragment = (template / "章节模板" / "摘要模板.tex").read_text(encoding="utf-8")
+    abstract_guide = (ROOT / "modules" / "abstract.md").read_text(encoding="utf-8")
+
+    assert "\\setmainfont{Times New Roman}" in cls
+    assert "\\setsansfont{Times New Roman}" in cls
+    assert "texgyretermes" in cls
+    assert "texgyreheros" not in cls
+    assert "\\setmathfont{TeX Gyre Termes Math}" in cls
+    assert "\\urlstyle{same}" in cls
+    assert "\\textbf{【主要模型/算法】}" in abstract_fragment
+    assert "年份、题号" in abstract_guide
+    assert "不机械加粗" in abstract_guide
+    assert "整句、整段加粗" in abstract_guide

@@ -5,7 +5,7 @@
 %
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{gmcmthesis}[2026/09/21 v2.7 Huawei Cup paper class with 2026 identity cover]
+\ProvidesClass{gmcmthesis}[2026/09/21 v2.8 Huawei Cup paper class with Times-style Latin text and mathematics]
 %% Inital Code
 \newif\if@gmcm@bwprint\@gmcm@bwprintfalse
 \newif\if@gmcm@preface\@gmcm@prefacetrue
@@ -50,6 +50,10 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{amsfonts}
 \RequirePackage{amssymb}
 \RequirePackage{bm}
+% Keep Latin letters, digits and operators in formulae visually consistent with
+% the Times-family body text.  Times New Roman itself is not a math font, so a
+% dedicated Times-compatible OpenType math font is required here.
+\RequirePackage{unicode-math}
 % 设置颜色
 \RequirePackage{color,xcolor}
 % 插入图片
@@ -96,7 +100,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
   xrightmargin=10pt,
   frame=tlbr,framesep=4pt,framerule=0.5pt, % sets the frame style
   %frame=shadowbox,rulesepcolor=\color{red!20!green!20!blue!20},
-  basicstyle=\small\fontspec{Courier New},
+  basicstyle=\small\ttfamily,
   keywordstyle={\color{mKeyword}},     % sets color for keywords
   stringstyle={\color{mString}},       % sets color for strings
   commentstyle={\color{mComment}},     % sets color for comments
@@ -179,6 +183,9 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 % 尺寸计算
 \RequirePackage{calc}
 \RequirePackage{url}
+% URLs are prose/reference content, not source code: keep their Latin glyphs in
+% the document's Times-family text face instead of url.sty's monospaced default.
+\urlstyle{same}
 %参考文献
 \RequirePackage[numbers]{natbib}
 \setlength{\bibsep}{0pt plus 0.3ex}
@@ -223,6 +230,8 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 }
 
 \ifmcm@fandol
+  % Overleaf/TeX Live cannot redistribute Microsoft's Times New Roman.  TeX
+  % Gyre Termes is the metrically compatible, redistributable fallback.
   \setmainfont[
     Extension      = .otf,
     UprightFont    = *-regular,
@@ -236,7 +245,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
     BoldFont       = *-bold,
     ItalicFont     = *-italic,
     BoldItalicFont = *-bolditalic,
-  ]{texgyreheros}
+  ]{texgyretermes}
   \setmonofont[
     Extension      = .otf,
     UprightFont    = *-regular,
@@ -246,14 +255,19 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
     Scale          = MatchLowercase,
   ]{texgyrecursor}
 \else
+  % The official Word template assigns Times New Roman to ASCII/HAnsi text.
   \setmainfont{Times New Roman}
-  \setsansfont{Arial}
+  \setsansfont{Times New Roman}
   \ifmcm@mac
     \setmonofont[Scale=MatchLowercase]{Menlo}
   \else
     \setmonofont[Scale=MatchLowercase]{Courier New}
   \fi
 \fi
+
+% Mathematical alphabets/operators must come from an OpenType math font; using
+% a normal text font here would damage spacing and glyph coverage.
+\setmathfont{TeX Gyre Termes Math}
 
 \ifmcm@mac
   \setCJKmainfont[
