@@ -50,6 +50,11 @@ def test_2026_page_gate_is_off_until_an_official_limit_exists():
     assert targets["body_page_gate_mode"] == "off"
     assert targets["required_body_pages"] == 0
     assert targets["role_windows_enabled"] is False
+    internal = contest["paper"]["internal_total_page_target"]
+    assert internal["mode"] == "evidence_conditional"
+    assert internal["target"] == 50
+    assert internal["scope"] == "physical_pdf_pages"
+    assert targets["internal_total_page_target"]["target"] == 50
 
     official = (ROOT / "docs" / "OFFICIAL_FORMAT_2026.md").read_text(encoding="utf-8")
     assert "没有给出正文页数上限、全文总页数上限或正文最低页数" in official

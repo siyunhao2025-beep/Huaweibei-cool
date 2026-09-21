@@ -46,6 +46,17 @@
             "note": {"type": "string"}
           }
         },
+        "internal_total_page_target": {
+          "type": "object",
+          "required": ["mode", "target", "scope", "authority"],
+          "properties": {
+            "mode": {"enum": ["off", "evidence_conditional"]},
+            "target": {"type": "integer", "minimum": 1},
+            "scope": {"const": "physical_pdf_pages"},
+            "authority": {"type": "string", "minLength": 1},
+            "note": {"type": "string"}
+          }
+        },
         "word_template": {"type": "string"},
         "latex_engine": {"type": "string"},
         "contest_title_font": {"type": "string"}

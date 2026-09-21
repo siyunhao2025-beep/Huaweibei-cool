@@ -56,6 +56,19 @@ def resolve_body_gate(targets: dict, contest_config: dict) -> tuple[int, int | N
     return int(minimum or 0), int(maximum) if maximum is not None else None, mode, authority
 
 
+def resolve_internal_total_target(targets: dict, contest_config: dict) -> tuple[int, str, str]:
+    """Return (target, mode, authority) for the non-official physical-PDF goal."""
+    fallback = targets.get("internal_total_page_target", {}) if targets else {}
+    configured = contest_config.get("paper", {}).get("internal_total_page_target", {}) if contest_config else {}
+    target_config = configured or fallback
+    mode = str(target_config.get("mode", "off")).lower()
+    if mode not in {"off", "evidence_conditional"}:
+        raise ValueError(f"internal_total_page_target.mode 无效: {mode}")
+    target = int(target_config.get("target", 0) or 0)
+    authority = str(target_config.get("authority", "not_configured"))
+    return target, mode, authority
+
+
 def pdf_pages(pdf: Path) -> int:
     doc = pymupdf.open(str(pdf))
     count = len(doc)
@@ -247,6 +260,9 @@ def main():
     targets = json.loads(args.targets.read_text(encoding="utf-8-sig")) if args.targets and args.targets.exists() else {}
     contest_config = load_contest_config(pdf.parent, args.contest_config)
     required_body, maximum_body, body_gate_mode, body_gate_authority = resolve_body_gate(targets, contest_config)
+    internal_total_target, internal_target_mode, internal_target_authority = resolve_internal_total_target(
+        targets, contest_config
+    )
     paper_config = contest_config.get("paper", {}) if contest_config else {}
     role_windows_enabled = bool(paper_config.get("role_windows_enabled", targets.get("role_windows_enabled", False)))
     role_targets = targets.get("role_targets", {}) if role_windows_enabled else {}
@@ -268,6 +284,16 @@ def main():
         issues.append({"code": "body_pages_below_minimum", "severity": "error" if body_gate_mode == "error" else "warning", "actual": body["pages"], "required": required_body, "gate_mode": body_gate_mode, "authority": body_gate_authority, "message": "页数门禁按比赛配置执行；当届官方规则优先于项目经验阈值。"})
     if body_gate_mode != "off" and maximum_body is not None and body["pages"] > maximum_body:
         issues.append({"code": "body_pages_above_maximum", "severity": "error" if body_gate_mode == "error" else "warning", "actual": body["pages"], "maximum": maximum_body, "gate_mode": body_gate_mode, "authority": body_gate_authority, "message": "正文页数超过已配置的当届明确上限；请先确认该上限口径，再删减冗余并保留核心证据链。"})
+    if internal_target_mode == "evidence_conditional" and internal_total_target > 0 and len(records) < internal_total_target:
+        issues.append({
+            "code": "internal_total_page_target_not_reached",
+            "severity": "warning",
+            "actual": len(records),
+            "target": internal_total_target,
+            "scope": "physical_pdf_pages",
+            "authority": internal_target_authority,
+            "message": f"内部 {internal_total_target}+ 目标尚未达到。先审计真实证据缺口；严禁用套话、重复图表、放大图表、强制分页或无效模型凑页。若证据已完整，应接受较短稿并说明原因。",
+        })
     if not matched:
         issues.append({"code": "headings_not_detected", "severity": "warning", "message": "未检测到可靠的章节标题；请提供 Word 标题 JSON 或开启 OCR 复核。"})
     cover_text = re.sub(r"\s+", "", records[0]["text"]) if records else ""
@@ -322,6 +348,13 @@ def main():
         "header_text_spans": header_hits,
         "body": body,
         "body_page_gate": {"minimum": required_body, "maximum": maximum_body, "mode": body_gate_mode, "authority": body_gate_authority},
+        "internal_total_page_target": {
+            "target": internal_total_target,
+            "mode": internal_target_mode,
+            "scope": "physical_pdf_pages",
+            "authority": internal_target_authority,
+            "official_requirement": False,
+        },
         "role_windows_enabled": role_windows_enabled,
         "chapter_ranges": ranges,
         "detected_fonts": fonts,
@@ -332,6 +365,7 @@ def main():
             "中文字体 CMap 损坏时，章节/身份检测可能需要 OCR 或 Word 标题 JSON 交叉验证。",
             "历史论文的章节页数只作描述性观察，不要求所有章节等长，也不参与默认通过/失败判定。",
             "contest.json 中的 official_rules_priority=true：仅在当届题面或官方通知明确给出页数限制时开启页数门禁；截至 2026-09-21，默认关闭。",
+            "50+ 是用户设定的证据条件式内部目标，不是官方门槛；未达到只触发内容缺口复核，不得以凑页方式修复。",
         ],
     }
     args.report.parent.mkdir(parents=True, exist_ok=True)

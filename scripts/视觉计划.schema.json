@@ -7,16 +7,31 @@
     "project_title",
     "plan_status",
     "visual_encoding_path",
+    "color_semantics",
     "problems",
     "global_figures",
+    "global_tables",
     "flowcharts"
   ],
   "additionalProperties": false,
   "properties": {
-    "schema_version": {"const": "1.0"},
+    "schema_version": {"const": "1.1"},
     "project_title": {"type": "string", "minLength": 1},
     "plan_status": {"enum": ["draft", "ready"]},
     "visual_encoding_path": {"type": "string", "minLength": 1},
+    "color_semantics": {
+      "type": "object",
+      "required": ["baseline", "risk_highlight", "improvement", "secondary", "additional_model", "background"],
+      "additionalProperties": false,
+      "properties": {
+        "baseline": {"const": "#2166AC"},
+        "risk_highlight": {"const": "#B2182B"},
+        "improvement": {"const": "#1B7837"},
+        "secondary": {"const": "#F1A340"},
+        "additional_model": {"const": "#762A83"},
+        "background": {"const": "#999999"}
+      }
+    },
     "problems": {
       "type": "array",
       "minItems": 1,
@@ -25,6 +40,10 @@
     "global_figures": {
       "type": "array",
       "items": {"$ref": "#/$defs/figure"}
+    },
+    "global_tables": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/table"}
     },
     "flowcharts": {
       "type": "array",
@@ -43,7 +62,8 @@
         "data_shape",
         "representation",
         "result_files",
-        "figure_ids"
+        "figure_ids",
+        "table_ids"
       ],
       "additionalProperties": false,
       "properties": {
@@ -82,7 +102,8 @@
         },
         "representation": {"enum": ["pending", "figure", "schematic", "table", "text", "na"]},
         "result_files": {"type": "array", "items": {"type": "string", "minLength": 1}},
-        "figure_ids": {"type": "array", "items": {"type": "string", "minLength": 1}}
+        "figure_ids": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "table_ids": {"type": "array", "items": {"type": "string", "minLength": 1}}
       }
     },
     "panel": {
@@ -134,6 +155,17 @@
       "properties": {
         "chapter": {"type": "string"},
         "label": {"type": "string", "pattern": "^fig:"},
+        "caption": {"type": "string"},
+        "reference_context": {"type": "string"}
+      }
+    },
+    "table_paper_link": {
+      "type": "object",
+      "required": ["chapter", "label", "caption", "reference_context"],
+      "additionalProperties": false,
+      "properties": {
+        "chapter": {"type": "string"},
+        "label": {"type": "string", "pattern": "^tab:"},
         "caption": {"type": "string"},
         "reference_context": {"type": "string"}
       }
@@ -212,6 +244,47 @@
         "status": {"enum": ["planned", "rendered", "qa_pass", "incomplete"]}
       }
     },
+    "table": {
+      "type": "object",
+      "required": [
+        "table_id",
+        "scope",
+        "question",
+        "claim_ids",
+        "evidence_ids",
+        "table_family",
+        "result_files",
+        "columns",
+        "paper",
+        "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "table_id": {"type": "string", "minLength": 1},
+        "scope": {"type": "string", "minLength": 1},
+        "question": {"type": "string", "minLength": 1},
+        "claim_ids": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "evidence_ids": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "table_family": {
+          "enum": [
+            "data_quality",
+            "variable_definition",
+            "parameter_setting",
+            "baseline_comparison",
+            "main_result",
+            "error_budget",
+            "robustness_sensitivity",
+            "scenario_decision",
+            "runtime_complexity",
+            "reproducibility"
+          ]
+        },
+        "result_files": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "columns": {"type": "array", "minItems": 2, "items": {"type": "string", "minLength": 1}},
+        "paper": {"$ref": "#/$defs/table_paper_link"},
+        "status": {"enum": ["planned", "data_ready", "qa_pass", "incomplete"]}
+      }
+    },
     "problem": {
       "type": "object",
       "required": [
@@ -220,8 +293,10 @@
         "claims",
         "evidence_matrix",
         "figures",
+        "tables",
         "schematics",
-        "low_figure_exception"
+        "low_figure_exception",
+        "low_table_exception"
       ],
       "additionalProperties": false,
       "properties": {
@@ -242,8 +317,10 @@
         },
         "evidence_matrix": {"type": "array", "minItems": 4, "items": {"$ref": "#/$defs/evidence"}},
         "figures": {"type": "array", "items": {"$ref": "#/$defs/figure"}},
+        "tables": {"type": "array", "items": {"$ref": "#/$defs/table"}},
         "schematics": {"type": "array", "items": {"$ref": "#/$defs/schematic"}},
-        "low_figure_exception": {"type": ["string", "null"]}
+        "low_figure_exception": {"type": ["string", "null"]},
+        "low_table_exception": {"type": ["string", "null"]}
       }
     },
     "flowchart": {

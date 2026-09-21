@@ -24,6 +24,14 @@ VISUAL_FIRST_SHAPES = {
     "spatial_geometry",
 }
 VECTOR_EXTENSIONS = {".pdf", ".svg"}
+EXPECTED_COLOR_SEMANTICS = {
+    "baseline": "#2166AC",
+    "risk_highlight": "#B2182B",
+    "improvement": "#1B7837",
+    "secondary": "#F1A340",
+    "additional_model": "#762A83",
+    "background": "#999999",
+}
 
 
 def load_json(path: Path) -> dict:
@@ -78,13 +86,23 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
     if failures:
         return {"status": "FAIL", "stage": stage, "checks": checks, "failures": failures, "warnings": warnings}
 
-    add("schema_version_supported", plan["schema_version"] == "1.0", actual=plan["schema_version"])
+    schema_version = str(plan["schema_version"])
+    add("schema_version_supported", schema_version in {"1.0", "1.1"}, actual=schema_version)
+    if schema_version == "1.1":
+        add("table_ledger_root_present", "global_tables" in plan)
+        add("semantic_palette_declared", plan.get("color_semantics") == EXPECTED_COLOR_SEMANTICS,
+            actual=plan.get("color_semantics"), expected=EXPECTED_COLOR_SEMANTICS,
+            message="全文统一语义色：蓝基线、红风险/唯一重点、绿改进、橙紫扩展、灰背景")
+    else:
+        add("legacy_schema_without_table_ledger", False, severity="WARN",
+            actual=schema_version, message="1.0 计划仍可读取，但应升级到 1.1 以审计三线表证据")
     add("plan_marked_ready", plan["plan_status"] == "ready", actual=plan["plan_status"])
     problems = plan.get("problems", [])
     add("problems_present", bool(problems), count=len(problems))
     add("visual_encoding_declared", bool(str(plan.get("visual_encoding_path", "")).strip()))
 
     all_figures: list[dict] = list(plan.get("global_figures", []))
+    all_tables: list[dict] = list(plan.get("global_tables", []))
     all_schematics: list[dict] = []
     all_figure_ids: list[str] = []
     all_claim_ids: set[str] = set()
@@ -95,11 +113,17 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
         pid = str(problem.get("problem_id", ""))
         complexity = problem.get("complexity")
         figures = problem.get("figures", [])
+        tables = problem.get("tables", [])
         schematics = problem.get("schematics", [])
         evidence = problem.get("evidence_matrix", [])
         claims = problem.get("claims", [])
         all_figures.extend(figures)
+        all_tables.extend(tables)
         all_schematics.extend(schematics)
+
+        if schema_version == "1.1":
+            add(f"{pid}:table_ledger_fields_present",
+                "tables" in problem and "low_table_exception" in problem)
 
         add(f"{pid}:complexity_valid", complexity in {"simple", "standard", "complex"}, actual=complexity)
         claim_ids = [str(item.get("claim_id", "")) for item in claims]
@@ -113,6 +137,9 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
             missing=sorted(REQUIRED_CATEGORIES - categories))
         add(f"{pid}:evidence_ids_unique", len(evidence_ids) == len(set(evidence_ids)), ids=evidence_ids)
         all_evidence_ids.update(evidence_ids)
+        if schema_version == "1.1":
+            missing_table_links = [item.get("evidence_id") for item in evidence if "table_ids" not in item]
+            add(f"{pid}:evidence_table_links_declared", not missing_table_links, ids=missing_table_links)
 
         pending = [item.get("evidence_id") for item in evidence
                    if item.get("applicability") == "pending" or item.get("representation") == "pending"
@@ -145,17 +172,41 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
         add(f"{pid}:validation_has_figure", validation_ok,
             message="标准/复杂问题必须有独立验证 Figure；简单问题可用可复核表或解析证据")
 
-        threshold = 2 if complexity == "simple" else 3
+        threshold = 2 if complexity == "simple" else 3 if complexity == "standard" else 4
+        upper_review = 3 if complexity == "simple" else 5 if complexity == "standard" else 7
         exception = str(problem.get("low_figure_exception") or "").strip()
         count_ok = len(figures) >= threshold or len(exception) >= 20
         add(f"{pid}:figure_review_threshold", count_ok, count=len(figures), threshold=threshold,
             exception=exception, message="少于审查阈值时必须提供具体不适用理由和替代证据")
         if len(figures) < threshold and len(exception) >= 20:
             add(f"{pid}:low_figure_exception_used", False, severity="WARN", count=len(figures), exception=exception)
+        if len(figures) > upper_review:
+            add(f"{pid}:high_figure_count_review", False, severity="WARN",
+                count=len(figures), upper_review=upper_review,
+                message="逐张证明独立信息增量；能合并面板或改表格的重复 Figure 应删除")
 
         families = {panel.get("figure_family") for fig in figures for panel in fig.get("panels", [])}
         if len(figures) >= 3:
             add(f"{pid}:figure_family_diversity", len(families) >= 2, severity="WARN", families=sorted(f for f in families if f))
+
+        table_families = {str(item.get("table_family", "")) for item in tables if item.get("table_family")}
+        if schema_version == "1.1":
+            table_threshold = 1 if complexity == "simple" else 2 if complexity == "standard" else 3
+            table_upper_review = 2 if complexity == "simple" else 4 if complexity == "standard" else 5
+            table_exception = str(problem.get("low_table_exception") or "").strip()
+            table_count_ok = len(tables) >= table_threshold or len(table_exception) >= 20
+            add(f"{pid}:table_review_threshold", table_count_ok, count=len(tables), threshold=table_threshold,
+                exception=table_exception, message="少于表格审查阈值时必须说明精确数值由何种可复核载体替代")
+            if len(tables) < table_threshold and len(table_exception) >= 20:
+                add(f"{pid}:low_table_exception_used", False, severity="WARN",
+                    count=len(tables), exception=table_exception)
+            if len(tables) > table_upper_review:
+                add(f"{pid}:high_table_count_review", False, severity="WARN",
+                    count=len(tables), upper_review=table_upper_review,
+                    message="逐表证明精确查值任务不同；只重复正文数字或 Figure 结论的表应删除")
+            if len(tables) >= 3:
+                add(f"{pid}:table_family_diversity", len(table_families) >= 2, severity="WARN",
+                    families=sorted(table_families))
 
         for schematic in schematics:
             add(f"{pid}:{schematic.get('schematic_id')}:sources_traceable",
@@ -187,8 +238,10 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
             "problem_id": pid,
             "complexity": complexity,
             "figures": len(figures),
+            "tables": len(tables),
             "schematics": len(schematics),
             "families": sorted(f for f in families if f),
+            "table_families": sorted(table_families),
         })
 
     all_figure_ids = [str(fig.get("figure_id", "")) for fig in all_figures]
@@ -197,6 +250,36 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
     all_schematic_ids = [str(item.get("schematic_id", "")) for item in all_schematics]
     add("schematic_ids_unique", len(all_schematic_ids) == len(set(all_schematic_ids)),
         ids=all_schematic_ids)
+    all_table_ids = [str(item.get("table_id", "")) for item in all_tables]
+    add("table_ids_unique", len(all_table_ids) == len(set(all_table_ids)), ids=all_table_ids)
+
+    for table in all_tables:
+        tid = str(table.get("table_id", ""))
+        add(f"{tid}:question_declared", bool(str(table.get("question", "")).strip()))
+        add(f"{tid}:claim_links_resolve", set(table.get("claim_ids", [])) <= all_claim_ids,
+            unknown=sorted(set(table.get("claim_ids", [])) - all_claim_ids))
+        add(f"{tid}:evidence_links_resolve", set(table.get("evidence_ids", [])) <= all_evidence_ids,
+            unknown=sorted(set(table.get("evidence_ids", [])) - all_evidence_ids))
+        add(f"{tid}:columns_declared", len(table.get("columns", [])) >= 2,
+            columns=table.get("columns", []))
+        add(f"{tid}:result_files_declared", bool(table.get("result_files")),
+            result_files=table.get("result_files", []))
+        paper = table.get("paper", {})
+        add(f"{tid}:paper_contract_declared", str(paper.get("label", "")).startswith("tab:")
+            and bool(str(paper.get("caption", "")).strip())
+            and bool(str(paper.get("reference_context", "")).strip()))
+        if stage in {"render", "paper"}:
+            missing = []
+            for raw in table.get("result_files", []):
+                try:
+                    path = project_path(project_root, str(raw))
+                except (ValueError, OSError):
+                    missing.append(str(raw))
+                    continue
+                if not path.is_file() or path.stat().st_size == 0:
+                    missing.append(str(raw))
+            add(f"{tid}:result_files_exist", not missing, missing=missing)
+            add(f"{tid}:qa_status_pass", table.get("status") == "qa_pass", actual=table.get("status"))
 
     layouts: list[str] = []
     archetypes: list[str] = []
@@ -241,6 +324,39 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
             add(f"{fid}:render_artifacts_exist", not missing, missing=missing)
             add(f"{fid}:qa_status_pass", fig.get("status") == "qa_pass", actual=fig.get("status"))
 
+    figure_signatures: dict[tuple[tuple[str, ...], str], list[str]] = {}
+    for fig in all_figures:
+        signature = (
+            tuple(sorted(str(item) for item in fig.get("evidence_ids", []))),
+            re.sub(r"\s+", "", str(fig.get("scientific_question", ""))).lower(),
+        )
+        figure_signatures.setdefault(signature, []).append(str(fig.get("figure_id", "")))
+    duplicate_figures = [ids for signature, ids in figure_signatures.items()
+                         if signature[0] and signature[1] and len(ids) > 1]
+    add("figure_question_evidence_not_duplicated", not duplicate_figures, severity="WARN",
+        duplicates=duplicate_figures,
+        message="相同问题与证据不得仅换图型重复展示；应合并面板或保留信息增量更高者")
+
+    table_signatures: dict[tuple[tuple[str, ...], str], list[str]] = {}
+    for table in all_tables:
+        signature = (
+            tuple(sorted(str(item) for item in table.get("evidence_ids", []))),
+            re.sub(r"\s+", "", str(table.get("question", ""))).lower(),
+        )
+        table_signatures.setdefault(signature, []).append(str(table.get("table_id", "")))
+    duplicate_tables = [ids for signature, ids in table_signatures.items()
+                        if signature[0] and signature[1] and len(ids) > 1]
+    add("table_question_evidence_not_duplicated", not duplicate_tables, severity="WARN",
+        duplicates=duplicate_tables,
+        message="相同问题与证据不得拆成多张表重复列值")
+    cross_media_duplicates = []
+    for signature, figure_ids in figure_signatures.items():
+        if signature in table_signatures and signature[0] and signature[1]:
+            cross_media_duplicates.append({"figures": figure_ids, "tables": table_signatures[signature]})
+    add("figure_table_roles_are_distinct", not cross_media_duplicates, severity="WARN",
+        duplicates=cross_media_duplicates,
+        message="图与表可共享实验，但必须分别回答趋势/结构与精确查值的不同问题")
+
     add("output_paths_unique", len(output_paths) == len(set(output_paths)), duplicates=sorted({p for p in output_paths if output_paths.count(p) > 1}))
     if len(all_figures) >= 4:
         add("layout_not_monoculture", len(set(layouts)) >= 2, severity="WARN", layouts=layouts)
@@ -250,6 +366,15 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
     if standard_complex >= 4:
         add("portfolio_target_15_to_25_review", len(all_figures) >= 15, severity="WARN",
             count=len(all_figures), message="四个标准/复杂问题通常规划 15--25 个非冗余 Figure")
+        if len(all_figures) > 25:
+            add("portfolio_above_25_review", False, severity="WARN", count=len(all_figures),
+                message="全篇 Figure 超过 25 个时逐张复核信息增量，优先合并或删除重复证据")
+        if schema_version == "1.1":
+            add("table_portfolio_target_8_to_16_review", len(all_tables) >= 8, severity="WARN",
+                count=len(all_tables), message="四个标准/复杂问题通常规划 8--16 张承担精确查值任务的非冗余三线表")
+            if len(all_tables) > 16:
+                add("table_portfolio_above_16_review", False, severity="WARN", count=len(all_tables),
+                    message="全篇表格超过 16 张时逐表复核独立查值任务，删除重复列表")
 
     allowed_visual_ids = figure_id_set | set(all_schematic_ids)
     unknown_figure_links = []
@@ -258,6 +383,13 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
             unknown_figure_links.extend(fid for fid in item.get("figure_ids", []) if fid not in allowed_visual_ids)
     add("evidence_visual_links_resolve", not unknown_figure_links,
         unknown=sorted(set(unknown_figure_links)))
+    table_id_set = set(all_table_ids)
+    unknown_table_links = []
+    for problem in problems:
+        for item in problem.get("evidence_matrix", []):
+            unknown_table_links.extend(tid for tid in item.get("table_ids", []) if tid not in table_id_set)
+    add("evidence_table_links_resolve", not unknown_table_links,
+        unknown=sorted(set(unknown_table_links)))
 
     flowcharts = plan.get("flowcharts", [])
     flow_pending = [item.get("scope") for item in flowcharts if item.get("needed") == "pending"]
@@ -286,6 +418,8 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
                               if fig.get("paper", {}).get("label") not in labels]
             missing_labels.extend(item.get("paper", {}).get("label") for item in all_schematics
                                   if item.get("paper", {}).get("label") not in labels)
+            missing_labels.extend(item.get("paper", {}).get("label") for item in all_tables
+                                  if item.get("paper", {}).get("label") not in labels)
             add("planned_visual_labels_in_tex", not missing_labels,
                 missing=sorted(set(label for label in missing_labels if label)))
             planned_names = {Path(str(fig.get("outputs", {}).get(key, ""))).name for fig in all_figures for key in ("vector", "preview")}
@@ -303,6 +437,7 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
         "summary": {
             "problems": problem_summaries,
             "figures": len(all_figures),
+            "tables": len(all_tables),
             "schematics": len(all_schematics),
             "failures": len(failures),
             "warnings": len(warnings),

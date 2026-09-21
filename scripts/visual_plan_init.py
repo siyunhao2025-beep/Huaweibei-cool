@@ -30,6 +30,7 @@ def make_problem(problem_id: str, complexity: str) -> dict:
             "representation": "pending",
             "result_files": [],
             "figure_ids": [],
+            "table_ids": [],
         })
     return {
         "problem_id": problem_id,
@@ -37,8 +38,10 @@ def make_problem(problem_id: str, complexity: str) -> dict:
         "claims": [{"claim_id": f"{prefix}-C01", "text": "待填写：可复算的核心结论"}],
         "evidence_matrix": evidence,
         "figures": [],
+        "tables": [],
         "schematics": [],
         "low_figure_exception": None,
+        "low_table_exception": None,
     }
 
 
@@ -56,12 +59,21 @@ def main() -> None:
     if output.exists() and not args.force:
         raise SystemExit(f"Refusing to overwrite existing plan: {output}")
     plan = {
-        "schema_version": "1.0",
+        "schema_version": "1.1",
         "project_title": args.project_title,
         "plan_status": "draft",
         "visual_encoding_path": "求解/视觉编码表.md",
+        "color_semantics": {
+            "baseline": "#2166AC",
+            "risk_highlight": "#B2182B",
+            "improvement": "#1B7837",
+            "secondary": "#F1A340",
+            "additional_model": "#762A83",
+            "background": "#999999",
+        },
         "problems": [make_problem(pid, args.complexity) for pid in args.problem_id],
         "global_figures": [],
+        "global_tables": [],
         "flowcharts": [{
             "scope": "全篇",
             "needed": "pending",

@@ -1,11 +1,18 @@
 {
-  "version": 2,
+  "version": 3,
   "required_body_pages": 0,
   "body_page_gate_mode": "off",
   "body_page_gate_authority": "official_2026_no_limit_stated",
   "page_system": "printed",
   "body_definition": "正文从摘要结束后的下一页开始，到参考文献标题前一页结束；附录不计入正文。",
   "role_windows_enabled": false,
+  "internal_total_page_target": {
+    "mode": "evidence_conditional",
+    "target": 50,
+    "scope": "physical_pdf_pages",
+    "authority": "user_internal_preference_2026-09-21",
+    "note": "这是内部写作目标，不是官方页数要求。仅在每问证据链闭合且图表不重复时追求；未达到时先审计证据缺口，禁止用套话、重复图表、放大图表、强制分页或无效模型凑页。"
+  },
   "role_targets": {
     "evaluation": {
       "min_pages": 1,
@@ -21,5 +28,5 @@
     }
   },
   "observations": [],
-  "policy": "As of 2026-09-21, reviewed official materials state no body minimum, body maximum, or total-page maximum. Page gates and historical role windows are disabled by default; enable only when the current problem statement or a later official notice gives an explicit limit. Historical page observations must never be used as a writing target."
+  "policy": "As of 2026-09-21, reviewed official materials state no body minimum, body maximum, or total-page maximum. Official page gates and historical role windows are disabled by default. The 50-page value is a user-requested, evidence-conditional internal target for the complete physical PDF, never an official requirement or permission to pad."
 }

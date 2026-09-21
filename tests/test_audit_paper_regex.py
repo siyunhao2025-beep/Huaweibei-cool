@@ -39,3 +39,22 @@ def test_page_gate_reads_an_explicit_official_maximum():
         }
     }
     assert audit_paper.resolve_body_gate({}, config) == (0, 60, "error", "official_notice")
+
+
+def test_internal_total_page_target_defaults_off():
+    assert audit_paper.resolve_internal_total_target({}, {}) == (0, "off", "not_configured")
+
+
+def test_internal_total_page_target_is_separate_from_official_gate():
+    targets = {
+        "internal_total_page_target": {
+            "target": 50,
+            "mode": "evidence_conditional",
+            "authority": "user_internal_preference",
+        }
+    }
+    assert audit_paper.resolve_internal_total_target(targets, {}) == (
+        50,
+        "evidence_conditional",
+        "user_internal_preference",
+    )
