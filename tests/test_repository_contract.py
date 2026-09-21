@@ -40,17 +40,33 @@ def test_literal_local_references_from_skill_and_modules_exist():
 def test_distributed_files_do_not_embed_person_specific_windows_paths():
     forbidden = ("C:" + "\\Users\\ASUS", "Dou" + "bao")
     suffixes = {".md", ".py", ".tex", ".json", ".yml", ".yaml", ".txt"}
+    excluded_parts = {
+        ".git",
+        ".pytest_cache",
+        ".ruff_cache",
+        "__pycache__",
+        "_work",
+        "tmp",
+    }
     hits: list[str] = []
-    listed = subprocess.check_output(
-        ["git", "ls-files", "-z"], cwd=REPO_ROOT
-    ).decode("utf-8").split("\0")
-    for relative in filter(None, listed):
-        path = REPO_ROOT / relative
-        if not path.is_file() or path.suffix.lower() not in suffixes:
+    if (REPO_ROOT / ".git").is_dir():
+        listed = subprocess.check_output(
+            ["git", "ls-files", "-z"], cwd=REPO_ROOT
+        ).decode("utf-8").split("\0")
+        candidates = (REPO_ROOT / relative for relative in filter(None, listed))
+    else:
+        candidates = REPO_ROOT.rglob("*")
+    for path in candidates:
+        relative = path.relative_to(REPO_ROOT)
+        if (
+            not path.is_file()
+            or path.suffix.lower() not in suffixes
+            or excluded_parts.intersection(relative.parts)
+        ):
             continue
         text = path.read_text(encoding="utf-8-sig", errors="replace")
         if any(token in text for token in forbidden):
-            hits.append(str(path.relative_to(REPO_ROOT)))
+            hits.append(str(relative))
     assert not hits, f"分发文件含个人机器路径/旧客户端绑定: {hits}"
 
 
