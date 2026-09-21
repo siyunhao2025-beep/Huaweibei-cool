@@ -17,7 +17,7 @@ from pathlib import Path
 
 IDENTITY_PAT = re.compile(
     r"学校|学院|实验室|参赛队号|队员姓名|指导教师|学号|邮箱|"
-    r"\\(?:schoolname|baominghao|member[abc])\b|"
+    r"\\(?:schoolname|baominghao|member[abc]|makeidentitycover)\b|"
     r"\b(?:school\s*name|team\s*(?:number|id)|member\s*name|"
     r"advisor\s*name|student\s*(?:id|number)|e-?mail)\b|"
     r"C:\\Users\\",

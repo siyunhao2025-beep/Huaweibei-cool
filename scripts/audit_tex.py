@@ -154,7 +154,12 @@ def audit(manifest_path: Path, main_path: Path) -> dict:
             missing_graphics.append(raw)
     add("graphics_paths_exist", not missing_graphics, missing=missing_graphics)
 
-    identity_hits = sorted(set(re.findall(r"学校|学院|实验室|参赛队号|队员姓名|指导教师|学号|邮箱|C:\\Users\\", all_text, re.I)))
+    identity_hits = sorted(set(re.findall(
+        r"学校|学院|实验室|参赛队号|队员姓名|指导教师|学号|邮箱|"
+        r"\\(?:schoolname|baominghao|member[abc]|makeidentitycover)\b|C:\\Users\\",
+        all_text,
+        re.I,
+    )))
     add("anonymous_source", not identity_hits, matches=identity_hits)
     add("no_markdown_chapter_sources", not any(path.suffix.lower() == ".md" for path in fragment_paths), files=[str(path) for path in fragment_paths if path.suffix.lower() == ".md"])
 

@@ -5,7 +5,7 @@
 %
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{gmcmthesis}[2026/09/21 v2.5 anonymous Huawei Cup paper class]
+\ProvidesClass{gmcmthesis}[2026/09/21 v2.6 Huawei Cup paper class with opt-in identity cover]
 %% Inital Code
 \newif\if@gmcm@bwprint\@gmcm@bwprintfalse
 \newif\if@gmcm@preface\@gmcm@prefacetrue
@@ -402,6 +402,64 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 
 %% Document Markup
 
+% The official Word template contains a page-0 identity cover, while the
+% official submission rule forbids identifying marks in the anonymous paper.
+% Keep both requirements separate: the cover is available only through the
+% explicit \makeidentitycover command and is never emitted by \maketitle.
+\newcommand*\baominghao[1]{%
+  \renewcommand{\gmcm@tokens@baominghao}{#1}}
+\newcommand*\schoolname[1]{%
+  \renewcommand{\gmcm@tokens@schoolname}{#1}}
+\newcommand*\membera[1]{%
+  \renewcommand{\gmcm@tokens@membera}{#1}}
+\newcommand*\memberb[1]{%
+  \renewcommand{\gmcm@tokens@memberb}{#1}}
+\newcommand*\memberc[1]{%
+  \renewcommand{\gmcm@tokens@memberc}{#1}}
+
+\newcommand{\makeidentitycover}{%
+  \clearpage
+  \thispagestyle{plain}%
+  \setcounter{page}{0}%
+  \pdfbookmark[1]{参赛信息封面}{identity-cover}%
+  \IfFileExists{figures/identity-cpipc.png}{}{%
+    \ClassError{gmcmthesis}{缺少实名封面图形资源}{%
+      请同时上传 figures/identity-cpipc.png、identity-gmcm.png、identity-huawei.jpg 和 identity-xjtu.png。}}%
+  {\centering
+    \begin{tabular}{@{}c@{\hspace{10pt}}c@{\hspace{10pt}}c@{\hspace{10pt}}c@{}}
+      \includegraphics[width=102.45pt,height=65.25pt]{figures/identity-cpipc.png} &
+      \includegraphics[width=78.3pt,height=75.3pt]{figures/identity-gmcm.png} &
+      \includegraphics[width=79.5pt,height=79.5pt]{figures/identity-huawei.jpg} &
+      \includegraphics[viewport=0 0 200.5 188.6,clip,width=68.35pt,height=64.5pt]{figures/identity-xjtu.png}
+    \end{tabular}\par
+  }%
+  \vspace{0.9cm}%
+  \GMCMContestTitle{\GMCMContestEdition}%
+  \vspace{1.4cm}%
+  {\centering
+    \setlength{\arrayrulewidth}{0.6pt}%
+    \begin{tabularx}{.90\textwidth}{@{}>{\raggedright\arraybackslash}p{3.4cm}X@{}}
+      {\heiti\fontsize{18pt}{24pt}\selectfont 学\quad 校} &
+      {\songti\zihao{3}\gmcm@tokens@schoolname}\rule{0pt}{1.35cm}\\ \hline
+      {\heiti\fontsize{18pt}{24pt}\selectfont 参赛队号} &
+      {\songti\zihao{3}\gmcm@tokens@baominghao}\rule{0pt}{1.35cm}\\ \hline
+      \multirow{3}{*}{{\heiti\fontsize{18pt}{24pt}\selectfont 队员姓名}} &
+      {\heiti\zihao{3}1.}\quad{\songti\zihao{3}\gmcm@tokens@membera}\rule{0pt}{1.15cm}\\ \cline{2-2}
+      &
+      {\heiti\zihao{3}2.}\quad{\songti\zihao{3}\gmcm@tokens@memberb}\rule{0pt}{1.15cm}\\ \cline{2-2}
+      &
+      {\heiti\zihao{3}3.}\quad{\songti\zihao{3}\gmcm@tokens@memberc}\rule{0pt}{1.15cm}\\ \hline
+    \end{tabularx}\par
+  }%
+  \vfill
+  {\centering
+    {\CJKfamily{hwxw}\bfseries\zihao{-4}中国研究生创新实践系列大赛\par}%
+    \vspace*{0.4cm}%
+  }%
+  \clearpage
+  \setcounter{page}{1}%
+}
+
 % The official 2026 submission rule forbids identifying marks.  Therefore
 % \maketitle creates the anonymous title/abstract page directly; it never
 % emits a school/team/member cover.  The page number remains visible and
@@ -486,18 +544,6 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 	\vskip1ex
 	{\noindent\lishu\fontsize{18pt}{24pt}\selectfont\gmcm@cap@keywordsname：}~{\gmcm@tokens@keywords}
 	}
-
-
-\newcommand*\baominghao[1]{%
-	\ClassError{gmcmthesis}{参赛队号不得写入正式论文}{当前官方格式要求匿名提交；请删除 \string\baominghao 命令。}}
-\newcommand*\schoolname[1]{%
-	\ClassError{gmcmthesis}{学校信息不得写入正式论文}{当前官方格式要求匿名提交；请删除 \string\schoolname 命令。}}
-\newcommand*\membera[1]{%
-	\ClassError{gmcmthesis}{队员信息不得写入正式论文}{当前官方格式要求匿名提交；请删除 \string\membera 命令。}}
-\newcommand*\memberb[1]{%
-	\ClassError{gmcmthesis}{队员信息不得写入正式论文}{当前官方格式要求匿名提交；请删除 \string\memberb 命令。}}
-\newcommand*\memberc[1]{%
-	\ClassError{gmcmthesis}{队员信息不得写入正式论文}{当前官方格式要求匿名提交；请删除 \string\memberc 命令。}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

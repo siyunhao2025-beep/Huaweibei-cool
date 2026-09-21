@@ -421,6 +421,14 @@ def render_report(checklist: dict, results: dict[str, CheckResult],
 
 
 def main(argv: Optional[list[str]] = None) -> int:
+    # Redirected Windows streams may default to GBK, which cannot encode
+    # checklist markers such as “☐”. Keep console output aligned with the
+    # UTF-8 report file instead of crashing after the report is generated.
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is not None:
+            reconfigure(encoding="utf-8", errors="replace")
+
     ap = argparse.ArgumentParser(description="优秀论文自检表机检（Wave6-A）。")
     ap.add_argument("--tex", help="输入 .tex 论文路径")
     ap.add_argument("--docx", help="输入 .docx 论文路径（尽力做）")

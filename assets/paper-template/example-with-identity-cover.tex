@@ -1,0 +1,37 @@
+% !TEX program = xelatex
+% Optional administrative-cover example.
+% Do not submit this identified version unless the contest platform or
+% organizer explicitly requests the page-0 identity cover.
+\def\GMCMContestEdition{二十三}
+\documentclass[bwprint]{gmcmthesis}
+\hypersetup{hidelinks}
+
+\title{请替换为匿名论文题目}
+\schoolname{}
+\baominghao{}
+\membera{}
+\memberb{}
+\memberc{}
+
+\begin{document}
+\makeidentitycover
+\maketitle
+
+\begin{abstract}
+本文档演示可选的参赛信息封面与匿名论文正文如何分离。封面编号为第 0 页；匿名题目、摘要和关键词仍从第 1 页开始。正式摘要应简洁说明建模思路、主要方法、建立的模型、关键求解结果、结论与创新点，并只陈述能够由求解结果支撑的内容。
+
+\keywords{数学建模\quad 匿名提交\quad 格式核对\quad 可复现}
+\end{abstract}
+
+\section{问题重述}
+此处替换为论文正文。若上传系统只接收匿名论文，应改用 \texttt{example.tex}，不要调用 \texttt{\string\makeidentitycover}。
+
+\section{模型建立与求解}
+在此给出可追溯的模型、推导、算法和结果。
+
+\begin{thebibliography}{9}
+\bibitem{format}
+“华为杯”第二十三届中国研究生数学建模竞赛论文格式规范，2026 年 9 月 16 日。
+\end{thebibliography}
+
+\end{document}
