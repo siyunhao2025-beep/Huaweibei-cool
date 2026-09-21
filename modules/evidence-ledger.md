@@ -18,6 +18,30 @@
 | 置信度 | A=自己复算+对标过；B=有文献/数据支撑未独立复算；C=假设/推断/AI 未核实 |
 | 验证状态 | 已验证 / 待验证 / 风险（无来源） |
 
+### 2.1 策略裁决记录
+
+策略选择不是论文结论，单独放在账本 JSON 顶层的 `strategy_decisions`，由人工核对：
+
+```json
+{
+  "entries": [],
+  "strategy_decisions": [
+    {
+      "question": "问题一",
+      "baseline_evidence": "results/q1_baseline.csv",
+      "candidate_evidence": "results/q1_candidate.csv",
+      "recommendation": "A",
+      "user_choice": "B",
+      "reason": "用户接受运行时间换精度",
+      "rollback": "git commit/版本目录",
+      "decided_at": "时间"
+    }
+  ]
+}
+```
+
+`scripts/evidence.py` 继续校验证据 `entries`；`strategy_decisions` 只记录可追溯的用户裁决，不伪装成 A 级证据。
+
 ## 3. 证据等级 A/B/C 定义
 
 - **A**：代码跑出、有验证（对比/误差/灵敏度），或有官方/权威文献直接支持。
