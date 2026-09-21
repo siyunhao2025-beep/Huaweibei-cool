@@ -10,7 +10,7 @@
     {"rule_id": "R05", "keywords": ["微分方程", "动力学", "机理", "传染病", "种群", "稳定性", "分岔", "物理模型", "演化方程", "马尔可夫链", "Markov", "马尔可夫", "通信协议", "信道", "状态转移", "状态机", "神经元", "物理机理", "状态空间"], "archetype": "mechanism", "confidence": 0.85, "evidence_papers": 50, "note": "第一性原理/随机状态机机理建模（Markov 链、通信协议、信道、状态转移、微分方程、物理机理）；'用仿真做验证'不单独归 simulation"},
     {"rule_id": "R06", "keywords": ["信号", "回波", "频谱", "滤波", "雷达", "DOA", "波达方向", "阵列", "振动", "包络谱", "到达时间", "SINR", "链路", "子载波", "调制", "解调", "载波"], "archetype": "signal", "confidence": 0.85, "evidence_papers": 45, "note": "采样信号谱分析/滤波/超分辨/通信链路与载波处理"},
     {"rule_id": "R07", "keywords": ["路径", "网络", "图", "空间分布", "GIS", "选址布局", "节点", "边", "空间插值", "轨迹", "最短路", "航迹", "空间自相关"], "archetype": "spatial-graph", "confidence": 0.75, "evidence_papers": 55, "note": "地理/图结构/空间插值/航迹最短路问题"},
-    {"rule_id": "R08", "keywords": ["仿真", "模拟", "蒙特卡洛", "排队", "随机", "多智能体", "随机事件", "演化模拟", "博弈推演", "栅格", "器件仿真"], "archetype": "simulation", "confidence": 0.78, "evidence_papers": 40, "note": "随机抽样/数值/器件/多智能体博弈仿真为核心建模范式；置信度低于 mechanism，故当题面同时含机理/状态机/微分方程等机理词时，判定为'仿真仅作验证手段'而归 mechanism，不单独触发 simulation"},
+    {"rule_id": "R08", "keywords": ["仿真", "模拟", "蒙特卡洛", "排队", "随机", "多智能体", "随机事件", "演化模拟", "博弈推演", "栅格", "器件仿真", "器件级仿真"], "archetype": "simulation", "confidence": 0.78, "evidence_papers": 40, "note": "随机抽样/数值/器件/多智能体博弈仿真为核心建模范式；置信度低于 mechanism，故当题面同时含机理/状态机/微分方程等机理词时，判定为'仿真仅作验证手段'而归 mechanism，不单独触发 simulation"},
     {"rule_id": "R09", "keywords": ["遗传算法", "粒子群", "模拟退火", "启发式", "智能优化"], "archetype": "optimization", "confidence": 0.6, "evidence_papers": 82, "note": "方法名触发→优化原型（弱信号，需结合题面）"},
     {"rule_id": "R10", "keywords": ["LSTM", "ARIMA", "XGBoost", "随机森林", "BP神经", "回归预测"], "archetype": "prediction", "confidence": 0.6, "evidence_papers": 100, "note": "预测方法名触发"},
     {"rule_id": "R11", "keywords": ["TOPSIS", "AHP", "熵权", "模糊综合", "灰色关联", "DEA", "熵值"], "archetype": "evaluation", "confidence": 0.7, "evidence_papers": 60, "note": "评价方法名触发"},
@@ -18,6 +18,6 @@
     {"rule_id": "R13", "keywords": ["排队论", "泊松过程", "离散事件", "非齐次泊松"], "archetype": "simulation", "confidence": 0.6, "evidence_papers": 20, "note": "排队/点过程/离散事件触发仿真原型（弱信号；Markov 链已移至 R05 mechanism）"}
   ],
   "tie_break": "多规则命中时按 confidence 高者优先；同分取 rule_id 小者；均<0.5 则标 unknown 人工判断。同原型多条规则命中合并取最高。",
-  "tuning_note_wave4c": "据 30 题盲检调优：①R13 把马尔可夫链/Markov 从 simulation 移到 R05 mechanism（修 WLAN 误判 simulation）；②R02 补 评审/权重/多指标/去偏/德尔菲，R11 补 DEA/熵值（修评价题误判 optimization）；③R08 基置信度降到 0.78 并加博弈推演/器件仿真，使机理词在场时仿真仅作验证不压过 mechanism；④R05 补 Markov/通信协议/信道/状态转移/状态机/神经元/物理机理；⑤R06 补 SINR/链路/子载波/调制解调。",
+  "tuning_note_wave4c": "据 30 题盲检调优：①R13 把马尔可夫链/Markov 从 simulation 移到 R05 mechanism（修 WLAN 误判 simulation）；②R02 补 评审/权重/多指标/去偏/德尔菲，R11 补 DEA/熵值（修评价题误判 optimization）；③R08 基置信度降到 0.78 并加博弈推演/器件仿真/器件级仿真，使机理词在场时仿真仅作验证不压过 mechanism；④R05 补 Markov/通信协议/信道/状态转移/状态机/神经元/物理机理；⑤R06 补 SINR/链路/子载波/调制解调。",
   "limitation": "关键词规则为粗筛，单篇论文常跨多原型（如优化+评价），脚本输出 top1 仅供建议；命中置信度随关键词数量小幅加权，不保证对新题型泛化。"
 }

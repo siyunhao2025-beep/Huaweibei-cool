@@ -2,7 +2,7 @@ name: CI
 
 # 华为杯研赛 AI 作战中枢 持续集成（Wave5-C）
 # Ubuntu + Python 3.12（兼容性最稳）；装依赖后跑 pytest 与 doctor 自检。
-# MATLAB 用例默认 skip（CI 无 MATLAB，也未设 HUAWEI_RUN_MATLAB）。
+# CI 无 MATLAB 时校验已提交的 R2024b 真机证据；有 MATLAB 时自动真机运行。
 
 on:
   push:
@@ -40,5 +40,5 @@ jobs:
         run: python -m pytest tests/ -v
 
       # 说明：
-      # - 无中文字体时 render_roadmap / matplotlib 用例走英文标签优雅回退，不应因缺字体失败。
-      # - MATLAB 用例（test_matlab_smoke.py）在无 matlab.exe / 未设 HUAWEI_RUN_MATLAB 时自动 skip。
+      # - CI 已安装 Noto CJK；严格绘图测试把缺少中文字体视为失败，生产渲染器仍保留英文回退。
+      # - MATLAB 用例在 CI 无 matlab.exe 时校验 R2024b 真机证据日志，不产生 skip。

@@ -54,20 +54,19 @@ def test_year_range(index):
     assert not bad, f"year 越界条目: {bad[:10]}"
 
 
-def test_text_files_exist(index):
-    """抽文覆盖率：每条 text_path 指向的 .txt 必须真实落盘。
+def test_text_path_contract_and_local_coverage(index):
+    """便携安装检查索引契约；本地有全文抽文时再检查 729 篇覆盖率。"""
+    paths = [Path(p["text_path"]) for p in index["papers"]]
+    bad = [str(p) for p in paths
+           if p.is_absolute() or ".." in p.parts
+           or p.parts[:2] != ("corpus", "text") or p.suffix != ".txt"]
+    assert not bad, f"text_path 越界或格式错误（前10）: {bad[:10]}"
+    assert len(paths) == len(set(paths)), "存在重复 text_path"
 
-    corpus/text 由 corpus_build.py 在本地生成、.gitignore 排除；
-    干净检出（含 GitHub Actions CI）上该目录不存在，此时 skip 而非失败。
-    """
-    if not TEXT_ROOT.is_dir():
-        pytest.skip("corpus/text 为本地生成产物不入库；如需覆盖率先本地跑 corpus_build.py")
-    missing = []
-    for p in index["papers"]:
-        tp = REPO_ROOT / p["text_path"]
-        if not tp.is_file():
-            missing.append(p["text_path"])
-    assert not missing, f"抽文缺失 {len(missing)} 篇（前10）: {missing[:10]}"
+    # 全文抽文因版权与体积不随 skill 分发；若本机明确装载，则必须一篇不少。
+    if TEXT_ROOT.is_dir():
+        missing = [str(p) for p in paths if not (REPO_ROOT / p).is_file()]
+        assert not missing, f"抽文缺失 {len(missing)} 篇（前10）: {missing[:10]}"
 
 
 def test_extract_status_ok(index):

@@ -62,4 +62,4 @@ Step 7 在编译出 PDF 之后，对玩具论文跑 `scripts\paper_checklist.py`
 ## 说明与边界
 - 第 5 步依赖 Wave5-A 的 `scripts/render_roadmap.py`；本仓库已就绪，若缺失脚本会打印"待就绪"并跳过。
 - `build_latex.py` 面向完整论文模板（需 manifest + template-dir），本玩具样例按任务约定**手动 xelatex 编译极简 tex**，不跑完整模板链。
-- 正式比赛请把本样例的桩内容替换为真实题面；MATLAB 求解在有 MATLAB 且 `HUAWEI_RUN_MATLAB=1` 时才跑。
+- 正式比赛请把本样例的桩内容替换为真实题面；本 quickstart 不调用 MATLAB，完整测试在检测到 MATLAB 时会自动执行真机烟雾测试。

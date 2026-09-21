@@ -196,12 +196,11 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 ## 6. pytest 失败排查
 
-### 6.1 现象：`test_matlab_smoke_*` 在我这台没装 MATLAB 的机器上 fail
+### 6.1 `test_matlab_smoke_*` 如何判定
 
-**预期行为**：**它本来就该 skip，不是 fail**。
-- 找不到 `matlab.exe` → skip；
-- 没设环境变量 `HUAWEI_RUN_MATLAB=1` → skip。
-- 真机复跑：`$env:HUAWEI_RUN_MATLAB=1; python -m pytest tests/test_matlab_smoke.py -v`。
+- 找到 `matlab.exe`：自动执行一次 `matlab -batch` 真机烟雾测试，失败就真实报错。
+- 找不到 MATLAB：校验仓库内 R2024b 真机证据日志，不伪称本机已运行，也不产生 skip。
+- 真机复跑：`python -m pytest tests/test_matlab_smoke.py -v`。
 
 ### 6.2 现象：深卡（corpus_cards / 视觉计划 schema）报 JSON schema 违例
 
@@ -220,9 +219,9 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 ### 6.4 现象：matplotlib 在 CI（无中文字体）报缺字体
 
-**预期行为**：应当**优雅回退而不是 fail**。测试里若用到中文图，先 `doctor.py` 式检测字体，无字体就跳过/回退英文标注。CI 配置见 `.github/workflows/ci.yml`。
+**预期行为**：生产渲染器可以回退英文标签避免崩溃，但华为杯中文交付环境必须装有 CJK 字体；严格测试缺字体就失败，不再跳过。CI 配置会安装 Noto CJK，Windows 推荐 Microsoft YaHei。
 
-**验证**：`python -m pytest tests/ -v` 全绿（MATLAB 相关显示 skip 属正常）。
+**验证**：`python -m pytest tests/ -v` 应全部通过，不允许 skip/xfail 掩盖问题。
 
 ---
 
