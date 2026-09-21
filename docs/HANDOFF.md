@@ -1,5 +1,7 @@
 ﻿# huawei-mcm 深化交接包（给 GPT / 下一位优化者）
 
+> **历史归档说明**：本文记录 2026-09-20 早期构建过程，不代表当前测试数、模板页数、安装路径或待办状态。当前事实以仓库根 `交付说明.md`、`docs/CHANGELOG.md` 的 Unreleased 段和 CI 为准；本机路径已经脱敏，禁止据此推断默认目录。
+>
 > 本文件用于把"华为杯中国研究生数学建模竞赛 AI 作战中枢"（仓库名 **Huaweibei-cool**，skill 名 **huawei-mcm**，当前版本 **v0.4.1**）无缝交给下一位 AI/开发者继续深化。
 > 写作日期：2026-09-20。交接对象：GPT（或任何 Agent）。
 > 阅读顺序：第 0 节宣传物料 → 第 2 节全部路径 → 第 4 节仓库结构 → 第 6 节全部已知局限 → 第 7 节优化路线图 → 第 8 节红线。
@@ -53,9 +55,9 @@
 
 | 项 | 路径 / URL |
 |---|---|
-| 目标仓库（工作副本，所有产物落地处） | `C:\Users\ASUS\Doubao\chats\2026-09-20\new-chat-12\Huaweibei-cool` |
+| 目标仓库（工作副本，所有产物落地处） | `<仓库根>` |
 | GitHub 远端 | 仓库自身的 `origin`（仓库名 Huaweibei-cool；公开文档中不写含真实姓名拼音的完整 URL） |
-| 已安装 junction（Doubao 发现入口） | `C:\Users\ASUS\Doubao\skills\huawei-mcm` → 仓库根 |
+| 已安装 Skill 入口 | `<Codex skills 根>/Huaweibei-cool` |
 | 分支 / 最新 commit | `main`；v0.1.1 = `a68b9fb`（远端已同步，upstream 已配） |
 | 交付说明 | 仓库根 `交付说明.md` |
 
@@ -63,19 +65,19 @@
 
 | 语料 | 路径 |
 |---|---|
-| 获奖论文根（729 PDF，21 个年份文件夹，2.26GB） | `C:\Users\ASUS\Desktop\26华为杯研赛1\②历年获奖作品（04-24年）\中国研究生数学建模竞赛优秀论文\` |
-| 赛题解析根（1368 文件，29GB） | `C:\Users\ASUS\Desktop\26华为杯研赛1\④赛题解析（22-25年）\` |
+| 获奖论文根（729 PDF，21 个年份文件夹，2.26GB） | `<本机只读获奖论文语料根>` |
+| 赛题解析根（1368 文件，29GB） | `<本机只读赛题解析语料根>` |
 | ├ 2022 思路 | `22华为杯研究生数模思路\会员专享\`、`22华为杯研究生数模思路\免费思路资料\` |
 | ├ 2023 思路代码（仅 C–F，**A/B 缺失**） | `23年研究生建模思路代码\C` … `F` |
 | ├ 2024 思路代码（A–F，部分思路 PDF 为扫描件） | `24年研究生建模思路代码\A` … `F` |
 | └ 2025 思路代码（渠道一含论文模版/AI提示词/冲刺资料 306 文件；渠道二） | `25华为杯研赛思路代码\渠道一\`、`渠道二\` |
 | v2.1 工程包 zip 原件 | 本机微信文件接收目录（xwechat_files）下 `2026-09\huawei_skillsv2_v2.1_competition_ready.zip`（路径含账号标识，公开文档不写全） |
-| v2.1 解压目录 | `C:\Users\ASUS\Doubao\chats\2026-09-20\new-chat-12\zip_extract\huawei_skillsv2_v2.1_competition_ready` |
-| 风格标杆仓库（已 clone） | `C:\Users\ASUS\Doubao\chats\2026-09-20\new-chat-12\Ku-academic` |
+| v2.1 解压目录 | `<本机历史工程包解压目录>` |
+| 风格标杆仓库（历史构建时使用） | `<本机历史参考仓库>` |
 
 ### 2.3 构建过程中读过的 Skill（方法论来源，深化时按需重读）
 
-skill 根：`C:\Users\ASUS\AppData\Local\Doubao\User Data\Profile 1\.doubao\agent_mode\workspace\.skills\`
+历史 skill 根：`<历史客户端 skills 根>`
 
 | skill | 相对路径 | 用途 |
 |---|---|---|
@@ -200,7 +202,7 @@ skill 根：`C:\Users\ASUS\AppData\Local\Doubao\User Data\Profile 1\.doubao\agen
 17. **通用标签污染**：60 张简卡的 models_and_algorithms 含"禁忌搜索/启发式"泛化标签（并非真用禁忌搜索），已在 AGGREGATE_STATS 标注，待逐条清洗。
 18. **标题启发式粗糙**：部分早期论文标题取成正文首句（如 2005 出租车题）；v0.1.1 已清洗 81 条广告水印标题（"有偿…加微 anjia…"），但其余低质量标题仍在（置信度 low 是设计使然）。
 19. **抽文 txt 仍含水印文本**：txt 不入库（.gitignore），若未来要分发语料文本，需先做全文水印清洗。
-20. 截至 2026-09-21，当届已核对的官方材料未规定正文/全文页数上限；`contest.json` 默认关闭页数门禁。每届仍须重查赛题与后续通知，只有明确上限时才启用。
+20. 截至 2026-09-22，当届已核对的官方材料未规定正文/全文页数上限；`contest.json` 默认关闭页数门禁。每届仍须重查赛题与后续通知，只有明确上限时才启用。
 
 ### C. 知识与判型
 

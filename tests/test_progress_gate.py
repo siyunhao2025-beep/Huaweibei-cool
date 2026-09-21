@@ -9,10 +9,8 @@
   - 模型假设 ≥3 条 + 目标函数 + 求解脚本 → P2 PASS
 """
 import json
-import sys
 from pathlib import Path
 
-import pytest
 
 from conftest import SCRIPTS
 

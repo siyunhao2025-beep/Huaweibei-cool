@@ -9,11 +9,9 @@ from __future__ import annotations
 
 import argparse
 import json
-import logging
 import warnings
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Iterable
 
 
 REQUIRED_GLYPHS = "中文测量单位预测残差模型基线改进值"

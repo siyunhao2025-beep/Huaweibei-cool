@@ -234,4 +234,4 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 | git push 失败 | `netstat -ano \| findstr 7897`，再 `git config --global http.proxy ...` |
 | xelatex 中文缺字 | 保持正文宋体；检查 SimSun，赛事标题允许模板自动回退 |
 | MATLAB license/0 字节日志 | `cmd /c "... > log 2>&1"`，别并发起第二个 |
-| pytest 红 | 看是不是 MATLAB 用例在 skip（正常）；中文路径就换目录 |
+| pytest 红 | 直接查看首个失败；本仓库禁止用 skip/xfail 掩盖缺失验证。无 MATLAB 的环境应核验已提交的真机证据，而不是跳过测试 |

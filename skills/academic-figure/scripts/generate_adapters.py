@@ -15,14 +15,13 @@ Usage:
 
 from __future__ import annotations
 
-import os
 import re
 import sys
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-SKILL_MD = PROJECT_ROOT / "academic-figure-skill" / "SKILL.md"
-INSTALL_DIR = PROJECT_ROOT / "install"
+SKILL_DIR = Path(__file__).resolve().parent.parent
+SKILL_MD = SKILL_DIR / "SKILL.md"
+INSTALL_DIR = SKILL_DIR / "install"
 
 # ═══════════════════════════════════════════════════════════
 # Core rule extractor — pulls the 50-line essence from SKILL.md
@@ -33,13 +32,10 @@ def extract_core_rules() -> str:
     These rules work across all agents — they don't depend on Claude Code's
     skill system (file loading, multi-step workflow, etc.).
     """
-    with open(SKILL_MD, "r", encoding="utf-8") as f:
-        full = f.read()
-
     # Extract flat rules: BASELINE blocks from color-palettes.md
-    color_md = PROJECT_ROOT / "academic-figure-skill" / "references" / "color-palettes.md"
-    typo_md  = PROJECT_ROOT / "academic-figure-skill" / "references" / "typography.md"
-    export_md = PROJECT_ROOT / "academic-figure-skill" / "references" / "export-specs.md"
+    color_md = SKILL_DIR / "references" / "color-palettes.md"
+    typo_md = SKILL_DIR / "references" / "typography.md"
+    export_md = SKILL_DIR / "references" / "export-specs.md"
 
     palette_py = _extract_code_block(color_md, "python")
     palette_r  = _extract_code_block(color_md, "r")

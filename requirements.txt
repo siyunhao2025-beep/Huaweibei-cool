@@ -1,23 +1,22 @@
-# 华为杯研赛 AI 作战中枢 运行依赖
-# 本文件由 Wave5-C 对 scripts/*.py 与根 s1_*.py 做 AST import 审计后补全。
-# 版本为开发机实测（pip show）；下限取 ">=实测下限附近"。
-# 标注：[必需] 主链路直接 import；[可选] 按需，缺失可单独装。
+# Runtime dependencies for the Huawei Cup skill.
+# Keep this machine-readable file ASCII-only for Windows tooling that uses the
+# active ANSI code page instead of UTF-8. Human-facing notes live in the docs.
 
-# ---- PDF / 文档解析（必需）----
-pymupdf>=1.28.2          # [必需] fitz；audit_paper.py / submission_audit.py / corpus_build.py
-pypdf>=6.19.0            # [必需] corpus_build.py / submission_audit.py
+# Required: PDF and document parsing
+pymupdf>=1.28.2          # audit_paper.py, submission_audit.py, corpus_build.py
+pypdf>=6.19.0            # corpus_build.py, submission_audit.py
 
-# ---- docx 读写（必需）----
-python-docx>=1.1.2        # [必需] docx；build_docx.py
-lxml>=6.1.0               # [必需] build_docx.py / audit_docx.py（python-docx 底层 + 直接解析 .docx XML）
+# Required: DOCX generation and package inspection
+python-docx>=1.1.2        # build_docx.py
+lxml>=6.1.0               # build_docx.py, audit_docx.py
 
-# ---- 测试 / YAML / 图（必需）----
-pytest>=8.0               # [必需] tests/
-pyyaml>=6.0.3             # [必需] yaml；render_roadmap.py / audit_roadmap.py
-matplotlib>=3.8           # [必需] render_roadmap.py / doctor.py（技术路线图、自检）
-jsonschema>=4.20          # [必需] audit_roadmap.py（路线图/视觉 schema 校验）
+# Required: tests, YAML, validation, and figures
+pytest>=8.0               # tests/
+pyyaml>=6.0.3             # render_roadmap.py, audit_roadmap.py
+matplotlib>=3.8           # render_roadmap.py, doctor.py
+jsonschema>=4.20          # audit_roadmap.py
 
-# ---- 数值与数据分析（可选：MATLAB .mat 互操作 / 数据处理；scripts 未直接 import）----
-numpy>=2.0                # [可选] .mat/.csv 回读、快速原型
-pandas>=2.0               # [可选] 表格分析
-scipy>=1.10               # [可选] 仅用于 scipy.io.loadmat 读 MATLAB v7 .mat；不做 MATLAB 互操作可不装
+# Figure assets and MATLAB .mat interoperability
+numpy>=2.0
+pandas>=2.0
+scipy>=1.10

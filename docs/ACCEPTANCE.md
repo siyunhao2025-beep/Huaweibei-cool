@@ -9,9 +9,9 @@
 - [ ] `corpus/cards/`：729 简卡（brief/）+ 80 深卡（deep/）+ AGGREGATE_STATS/S3/S4 存在。
 - [ ] `corpus/problem_analysis/`：innovation_algorithms/ai_prompts_distilled/CODE_INVENTORY 存在。
 
-## 2. 模块（modules/ 20 个）
+## 2. 模块（modules/ 21 个）
 
-- [ ] workflow/phases/kickoff-audit/track-selection/problem-typing/solving/validation/evidence-ledger/figures-interface/paper-writing/abstract/deai-writing/innovation/submission/review-panel/polishing/change-management/distillation/matlab-conventions/training 全部存在且非空。
+- [ ] workflow/phases/kickoff-audit/track-selection/problem-typing/solving/validation/evidence-ledger/figures-interface/technical-roadmap/paper-writing/abstract/deai-writing/innovation/submission/review-panel/polishing/change-management/distillation/matlab-conventions/training 全部存在且非空。
 
 ## 3. 反 AI 读题审计（硬要求）
 
@@ -40,7 +40,7 @@
 ## 6. SKILL.md
 
 - [ ] 移除"Wave0 骨架版"标记。
-- [ ] 模块路由表含全部 20 模块（状态"已完成"）。
+- [ ] 模块路由表含全部 21 模块（状态"已完成"）。
 - [ ] ≤500 行，frontmatter 仅 name/description。
 
 ## 7. 引用真实性

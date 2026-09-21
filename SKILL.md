@@ -6,7 +6,7 @@ description: 华为杯（中国研究生数学建模竞赛）AI 作战中枢。�
 # Huaweibei-cool · 华为杯研赛 AI 作战中枢
 
 以 2004–2024 共 729 篇获奖论文语料为底座，把"建模—求解—论文—打磨—赛后蒸馏"
-固化成 20 个任务契约模块、8 原型 51 张方法卡、24 题赛道档案与一组门禁脚本。
+固化成 21 个任务契约模块、8 原型 51 张方法卡、24 题赛道档案与一组门禁脚本。
 知识库蒸馏方法与已知局限见 `docs/DISTILLATION_METHOD.md`。
 
 ## 0. 首次使用钩子
@@ -66,7 +66,7 @@ description: 华为杯（中国研究生数学建模竞赛）AI 作战中枢。�
 | `modules/figures-interface.md` | 论文图表证据组合、求解图接口、三线表与基线—候选对比图 |
 | `modules/technical-roadmap.md` | 技术路线图（论文图1）：YAML 规格 + 8 原型模板 + 渲染/审计脚本 |
 | `modules/paper-writing.md` | 论文章节结构、内容密度与官方页数限制核对；**138 条优秀论文自检表按单一来源逐章闭环**（F03 二三级标题字体已按官方规范裁决为小四宋体，见 §6.1） |
-| `modules/abstract.md` | 摘要写法专项（国一模板） |
+| `modules/abstract.md` | 摘要写法专项（高质量竞赛摘要结构） |
 | `modules/deai-writing.md` | 反模板/反 AI 味写作 |
 | `modules/innovation.md` | 创新点提炼与伪创新识别 |
 | `modules/submission.md` | 提交规范与 AI 披露 |

@@ -73,6 +73,8 @@ def relative_file(root: Path, raw: str, *, label: str) -> Path:
 
 def load_manifest(path: Path) -> dict:
     data = json.loads(path.read_text(encoding="utf-8-sig"))
+    if not isinstance(data, dict):
+        raise ValueError("manifest 必须是 JSON 对象")
     required = {"title", "keywords", "abstract_tex_path", "chapters"}
     missing = sorted(required - set(data))
     if missing:
@@ -80,24 +82,39 @@ def load_manifest(path: Path) -> dict:
     forbidden = {"abstract", "content", "content_file"} & set(data)
     if forbidden:
         raise ValueError(f"LaTeX-first manifest 禁止字段: {', '.join(sorted(forbidden))}")
+    if not str(data["title"]).strip():
+        raise ValueError("论文题目不能为空")
     if not isinstance(data["keywords"], list) or not data["keywords"]:
         raise ValueError("关键词必须至少提供一个条目")
     if any(not str(item).strip() for item in data["keywords"]):
         raise ValueError("关键词不能包含空字符串")
     if not isinstance(data["chapters"], list) or not data["chapters"]:
         raise ValueError("chapters 不能为空")
+    chapter_ids: set[str] = set()
+    orders: list[int] = []
     for index, chapter in enumerate(data["chapters"], start=1):
+        if not isinstance(chapter, dict):
+            raise ValueError(f"第 {index} 个章节必须是对象")
         required_chapter = {"chapter_id", "title", "role", "order", "tex_path"}
         missing_chapter = sorted(required_chapter - set(chapter))
         if missing_chapter:
             raise ValueError(f"第 {index} 个章节缺少字段: {', '.join(missing_chapter)}")
         if chapter["role"] not in ROLES:
             raise ValueError(f"章节角色无效: {chapter['role']}")
+        chapter_id = str(chapter["chapter_id"]).strip()
+        if not chapter_id or chapter_id in chapter_ids:
+            raise ValueError(f"chapter_id 不能为空且不得重复: {chapter_id!r}")
+        chapter_ids.add(chapter_id)
+        if not str(chapter["title"]).strip():
+            raise ValueError(f"章节 {chapter_id} 的 title 不能为空")
+        try:
+            orders.append(int(chapter["order"]))
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f"章节 {chapter_id} 的 order 必须是整数") from exc
         if "content_file" in chapter or "content" in chapter:
             raise ValueError(f"章节 {chapter['chapter_id']} 仍使用旧 content/content_file 字段")
         if str(chapter["tex_path"]).lower().endswith(".md"):
             raise ValueError(f"章节 {chapter['chapter_id']} 禁止使用 Markdown 源文件")
-    orders = [int(chapter["order"]) for chapter in data["chapters"]]
     if orders != sorted(orders) or len(set(orders)) != len(orders):
         raise ValueError("章节 order 必须严格递增且不重复")
     return data
@@ -105,6 +122,8 @@ def load_manifest(path: Path) -> dict:
 
 def check_fragment(path: Path) -> None:
     text = path.read_text(encoding="utf-8-sig")
+    if not text.strip():
+        raise ValueError(f"章节 fragment 不能为空: {path}")
     if "\\documentclass" in text or "\\begin{document}" in text or "\\end{document}" in text:
         raise ValueError(f"章节 fragment 不得包含 document 级结构: {path}")
     if re.search(r"(?m)^\s*#{1,6}\s", text) or re.search(r"(?m)^\s*\|[^|]+\|", text) or "![" in text:
@@ -113,6 +132,7 @@ def check_fragment(path: Path) -> None:
 
 def build_main(manifest: dict, root: Path, contest_config: dict) -> tuple[str, list[str]]:
     abstract = relative_file(root, manifest["abstract_tex_path"], label="abstract_tex_path")
+    check_fragment(abstract)
     inputs = [abstract.relative_to(root).as_posix()]
     for chapter in manifest["chapters"]:
         fragment = relative_file(root, str(chapter["tex_path"]), label=f"章节 {chapter['chapter_id']}")
@@ -177,21 +197,34 @@ def build_main(manifest: dict, root: Path, contest_config: dict) -> tuple[str, l
 
 
 def copy_assets(template_dir: Path, output_dir: Path) -> None:
-    for name in ("gmcmthesis.cls", "gmcm.bst", "reference.bib", "gmcm-title.sty"):
-        source = template_dir / name
-        if source.is_file():
-            shutil.copy2(source, output_dir / name)
-    figure_output = output_dir / "figures"
-    for name in (
+    root_assets = ("gmcmthesis.cls", "gmcm.bst", "reference.bib", "gmcm-title.sty")
+    figure_assets = (
         "identity-cpipc.png",
         "identity-gmcm.png",
         "identity-huawei.jpg",
         "identity-xjtu.png",
-    ):
+    )
+    missing = [str(template_dir / name) for name in root_assets if not (template_dir / name).is_file()]
+    missing.extend(
+        str(template_dir / "figures" / name)
+        for name in figure_assets
+        if not (template_dir / "figures" / name).is_file()
+    )
+    if missing:
+        raise FileNotFoundError("LaTeX 模板资产不完整:\n- " + "\n- ".join(missing))
+
+    for name in root_assets:
+        source = template_dir / name
+        destination = output_dir / name
+        if source.resolve() != destination.resolve():
+            shutil.copy2(source, destination)
+    figure_output = output_dir / "figures"
+    figure_output.mkdir(parents=True, exist_ok=True)
+    for name in figure_assets:
         source = template_dir / "figures" / name
-        if source.is_file():
-            figure_output.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(source, figure_output / name)
+        destination = figure_output / name
+        if source.resolve() != destination.resolve():
+            shutil.copy2(source, destination)
 
 
 def main() -> None:
@@ -208,10 +241,30 @@ def main() -> None:
     contest_config = load_contest_config(root, args.contest_config)
     main_text, inputs = build_main(manifest, root, contest_config)
     output = args.output.resolve()
-    output.parent.mkdir(parents=True, exist_ok=True)
-    copy_assets(args.template_dir.resolve(), output.parent)
-    output.write_text(main_text, encoding="utf-8")
+    template_dir = args.template_dir.resolve()
+    if output.suffix.lower() != ".tex":
+        raise ValueError(f"主文件输出必须是 .tex: {output}")
+    try:
+        output.relative_to(template_dir)
+    except ValueError:
+        pass
+    else:
+        raise ValueError("不得把主文件写进模板源目录")
+    protected_inputs = {manifest_path}
+    protected_inputs.update((root / raw).resolve() for raw in inputs)
+    if output in protected_inputs:
+        raise ValueError(f"输出不得覆盖 manifest 或章节源文件: {output}")
     out_manifest = args.manifest_out.resolve() if args.manifest_out else output.with_suffix(".inputs.json")
+    if out_manifest.suffix.lower() != ".json":
+        raise ValueError(f"构建清单必须是 .json: {out_manifest}")
+    if args.contest_config:
+        protected_inputs.add(args.contest_config.resolve())
+    if out_manifest == output or out_manifest in protected_inputs:
+        raise ValueError(f"构建清单不得覆盖论文源文件: {out_manifest}")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    copy_assets(template_dir, output.parent)
+    output.write_text(main_text, encoding="utf-8")
+    out_manifest.parent.mkdir(parents=True, exist_ok=True)
     out_manifest.write_text(json.dumps({"main": output.name, "inputs": inputs, "title": manifest["title"], "contest_edition_cn": contest_edition(contest_config)}, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps({"output": str(output), "inputs": inputs, "manifest": str(out_manifest)}, ensure_ascii=False, indent=2))
 

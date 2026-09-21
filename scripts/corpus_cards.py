@@ -458,7 +458,7 @@ def main_stats():
 
     # 控制台摘要
     print(f"[OK] briefs={n_brief} deeps={n_deep} methods={len(method_freq)}")
-    print(f"[OK] method_frequency.json, track_archetype_matrix.json, AGGREGATE_STATS.md written")
+    print("[OK] method_frequency.json, track_archetype_matrix.json, AGGREGATE_STATS.md written")
     print("Top10 methods:")
     for m in method_freq[:10]:
         print(f"  {m['method']}: {m['paper_count']} ({m['pct_of_corpus']*100:.1f}%)")

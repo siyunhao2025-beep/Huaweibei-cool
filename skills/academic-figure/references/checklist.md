@@ -1,6 +1,6 @@
 ﻿# QA Protocol
 
-This is an **LLM-executable** quality assurance protocol. After generating figure code, the LLM executes this protocol automatically as Step 5 of the Hub workflow. Each check specifies what to look for in the generated code and how to verify it 鈥?no external scripts required.
+This is an **LLM-executable** quality assurance protocol. After generating figure code, the LLM executes this protocol automatically as Step 5 of the Hub workflow. Each check specifies what to look for in the generated code and how to verify it—no external scripts required.
 
 ## Automated Validation
 
@@ -14,7 +14,7 @@ This validates AP-0 through CL-7 without human review. See `academic-figure-skil
 
 The protocol runs in four passes. Pass 0 catches common anti-patterns. Pass 1 verifies code-level compliance. Pass 2 checks visual logic and data integrity. Pass 3 verifies the rendered output. Each failed check includes the fix action.
 
-**Stop condition:** If Pass 0 or Pass 1 finds >2 failures, fix them and re-run the pass before proceeding. A pass with 鈮? minor issues can proceed with warnings noted in the report.
+**Stop condition:** If Pass 0 or Pass 1 finds >2 failures, fix them and re-run the pass before proceeding. A pass with no failures and at most 2 minor warnings can proceed with those warnings recorded in the report.
 
 ---
 
@@ -28,7 +28,7 @@ Run these checks first. They catch the issues reviewers flag most often and take
 
 1. Typography baseline: must contain ALL of: `font.family`, `font.sans-serif`, `font.size: 8`, `axes.spines.top: False`, `axes.spines.right: False`, `axes.linewidth: 0.6`, `xtick.direction: 'out'`, `legend.frameon: False`
 2. Color palette baseline must contain: `CATEGORICAL = ["#2166AC", "#B2182B", "#1B7837", "#F1A340", "#762A83", "#666666"]` AND `DIVERGING = ["#2166AC", "#F7F7F7", "#B2182B"]`
-3. Export baseline 鈥?must contain: `pdf.fonttype: 42` AND `svg.fonttype: 'none'` AND a function named `save_cns_figure`
+3. Export baseline—must contain: `pdf.fonttype: 42` AND `svg.fonttype: 'none'` AND a function named `save_cns_figure`
 
 **Pass condition:** All three baseline blocks present, with exact values. No modification, no omission, no "similar version."
 
@@ -48,7 +48,7 @@ Run these checks first. They catch the issues reviewers flag most often and take
 | `scale_color_brewer(palette='Set1')`, `scale_fill_brewer(palette='Set2')` | ggplot2 Brewer qualitative scale |
 | `brewer.pal(n, 'Set1')`, `brewer.pal(n, 'Paired')` | RColorBrewer qualitative palette |
 
-**Fix if FAIL:** Replace with custom hex colors. Load `references/color-palettes.md` and choose a semantic palette. Never just swap to viridis 鈥?choose colors that serve the figure's scientific message.
+**Fix if FAIL:** Replace with custom hex colors. Load `references/color-palettes.md` and choose a semantic palette. Never just swap to viridis—choose colors that serve the figure's scientific message.
 
 **Pass condition:** None of the above patterns appear in the code. Custom hex colors (`#XXXXXX`) are used instead.
 
@@ -116,9 +116,9 @@ Each check includes: **what to scan for**, **the pass condition**, and **the fix
 - Python: `font.size`, `fontsize=`, `labelsize`, `titlesize` parameters
 - R: `base_size`, `element_text(size=)`, `gpar(fontsize=)`
 
-**Pass condition:** No fontsize value < 5. The base/default fontsize is 鈮? (typically 6-7 for journal figures).
+**Pass condition:** No fontsize value < 5 pt. The base/default fontsize is at least 5 pt (typically 6–7 pt for journal figures).
 
-**Fix if FAIL:** Bump the sub-5pt value to 鈮?. For axis tick labels on dense figures, 5pt is acceptable. For anything else, use 6-7pt minimum.
+**Fix if FAIL:** Raise the sub-5 pt value to at least 5 pt. For axis tick labels on dense figures, 5 pt is acceptable. For anything else, use 6–7 pt minimum.
 
 ### CL-2: Figure Dimensions
 
@@ -126,7 +126,7 @@ Each check includes: **what to scan for**, **the pass condition**, and **the fix
 - Python: `figsize=(W, H)`, `W * mm_to_inch`, `W / 25.4`
 - R: `width = W, height = H` with `units = 'mm'` or `'in'`
 
-**Pass condition:** Width is within 卤3mm of 89mm (single-column) or 183mm (double-column). Height 鈮?247mm.
+**Pass condition:** Width is within ±3 mm of 89 mm (single-column) or 183 mm (double-column). Height is at most 247 mm.
 
 **Fix if FAIL:** Adjust dimensions to match the target column width. Recalculate: `figsize=(89/25.4, height/25.4)` for single-column.
 
@@ -134,9 +134,9 @@ Each check includes: **what to scan for**, **the pass condition**, and **the fix
 
 **Scan for:** `dpi=` in savefig/ggsave, `res=` in R png/tiff devices.
 
-**Pass condition:** DPI 鈮?300 for raster exports. Vector exports (PDF/SVG) don't need DPI but having dpi=300 is harmless.
+**Pass condition:** DPI is at least 300 for raster exports. Vector exports (PDF/SVG) don't need DPI but having `dpi=300` is harmless.
 
-**Fix if FAIL:** Set `dpi=300` in all save calls. Default matplotlib DPI is 100 鈥?insufficient for print.
+**Fix if FAIL:** Set `dpi=300` in all raster save calls. Default matplotlib DPI is 100—insufficient for print.
 
 ### CL-4: Font Embedding
 
@@ -166,7 +166,7 @@ Each check includes: **what to scan for**, **the pass condition**, and **the fix
 
 **Scan for:** Save/export calls in the code.
 
-**Pass condition:** At least one vector save (`*.pdf`, `*.svg`, or `*.eps`) AND at least one raster preview (`*.png` or `*.tiff` at 鈮?00 dpi). Both must exist in the delivered code.
+**Pass condition:** At least one vector save (`*.pdf`, `*.svg`, or `*.eps`) AND at least one raster preview (`*.png` or `*.tiff` at ≥300 dpi). Both must exist in the delivered code.
 
 **Fix if FAIL:** Add the missing export. Always deliver both formats.
 
@@ -180,11 +180,11 @@ These checks require reasoning about what the code produces, not just pattern ma
 
 **Question:** If a reviewer looks at this figure for 3 seconds, do they see the core conclusion from Step 0?
 
-**How to check:** Look at the code's visual hierarchy 鈥?which element has the strongest visual weight (largest, most saturated color, most prominent position)? Does that element carry the conclusion? Or is a secondary element visually dominant?
+**How to check:** Look at the code's visual hierarchy—which element has the strongest visual weight (largest, most saturated color, most prominent position)? Does that element carry the conclusion? Or is a secondary element visually dominant?
 
 **Pass condition:** The element carrying the core conclusion is visually dominant. If the hero element and the conclusion don't align, FAIL.
 
-**Fix if FAIL:** Adjust visual weights 鈥?increase hero element size/saturation, reduce competing elements, reposition. If the conclusion can't be made visually dominant, the figure needs restructuring.
+**Fix if FAIL:** Adjust visual weights—increase hero element size/saturation, reduce competing elements, reposition. If the conclusion can't be made visually dominant, the figure needs restructuring.
 
 ### VI-2: Color Accessibility
 
@@ -213,7 +213,7 @@ These checks require reasoning about what the code produces, not just pattern ma
 **Question:** Does the y-axis range serve the data, or does it mislead?
 
 **How to check:**
-1. Does the y-axis start at 0 for bar charts? (Required 鈥?bars encode value by length from baseline)
+1. Does the y-axis start at 0 for bar charts? (Required—bars encode value by length from baseline.)
 2. For non-bar charts, is the axis range close to the data range? (If all values are 80-95, the axis should be ~75-100, not 0-100)
 3. For log scales, is the scale explicitly noted in the axis label?
 
@@ -227,7 +227,7 @@ These checks require reasoning about what the code produces, not just pattern ma
 
 **How to check:** If the code includes significance brackets, p-values, or statistical annotations, verify:
 1. The test used is named or inferable from context
-2. Error bars are defined (SD, SEM, CI 鈥?which one?)
+2. Error bars are defined (SD, SEM, or CI—which one?)
 3. n is stated or computable from the data
 4. Asterisk thresholds are defined if asterisks used
 
@@ -288,11 +288,11 @@ Passes 0-2 verify the **code**. Pass 3 verifies the **output**. These are proble
 | Panel labels covering data | Top-left corner of each panel |
 
 **Fix if FAIL:**
-- Legend occlusion 鈫?`bbox_to_anchor=(1.02, 1)` to move outside, or adjust `loc` to an empty corner
-- Label overlap 鈫?reduce fontsize by 1pt, increase xytext offset, or label fewer items; use `adjustText` (Python) or `ggrepel` (R) for automatic label avoidance
-- Colorbar crowding 鈫?increase `pad` parameter, reduce `shrink`, or move colorbar to horizontal below the plot
-- Error bar collision 鈫?increase y-axis upper limit by 10-15%
-- Panel label occlusion 鈫?move label offset from (-0.08, 1.02) to (-0.15, 1.04)
+- Legend occlusion → use `bbox_to_anchor=(1.02, 1)` to move outside, or adjust `loc` to an empty corner
+- Label overlap → reduce fontsize by 1 pt, increase `xytext` offset, or label fewer items; use `adjustText` (Python) or `ggrepel` (R) for automatic label avoidance
+- Colorbar crowding → increase `pad`, reduce `shrink`, or move the colorbar horizontally below the plot
+- Error-bar collision → increase the y-axis upper limit by 10–15%
+- Panel-label occlusion → move the label offset from (-0.08, 1.02) to (-0.15, 1.04)
 
 **Pass condition:** No data occlusion visible. All labels, legends, and annotations are clearly separated from data elements.
 
@@ -309,10 +309,10 @@ Passes 0-2 verify the **code**. Pass 3 verifies the **output**. These are proble
 - Colorbar extending beyond panel boundary
 
 **Fix if FAIL:**
-- Uneven panels 鈫?enforce explicit `width_ratios` and `height_ratios` in gridspec; use `sharex=True, sharey=True` for same-axis panels
-- Text cut off 鈫?increase figure margins: `gs.update(left=0.12, bottom=0.12)` or use `bbox_inches='tight'`
-- Uneven spacing 鈫?use consistent `wspace` and `hspace` values across the entire gridspec
-- One panel dominating 鈫?check if it's the intended hero panel; if not, adjust `height_ratios` or `width_ratios`
+- Uneven panels → enforce explicit `width_ratios` and `height_ratios` in gridspec; use `sharex=True, sharey=True` for same-axis panels
+- Text cut off → increase figure margins: `gs.update(left=0.12, bottom=0.12)` or use `bbox_inches='tight'`
+- Uneven spacing → use consistent `wspace` and `hspace` values across the entire gridspec
+- One panel dominating → check whether it is the intended hero panel; if not, adjust `height_ratios` or `width_ratios`
 
 **Pass condition:** Panels are aligned, margins are consistent, no text is cut off, and the layout looks intentional.
 
@@ -320,18 +320,18 @@ Passes 0-2 verify the **code**. Pass 3 verifies the **output**. These are proble
 
 **Question:** Is all text actually readable at the rendered size?
 
-**How to check:** Inspect the rendered PNG. This is the ground truth 鈥?code-level fontsize checks in CL-1 verify the setting, but only visual inspection verifies the result. Check:
-- Axis tick labels 鈥?especially long strings or rotated labels
-- Gene/protein names 鈥?italic text at small sizes can blur
-- Legend text 鈥?often the smallest text on the figure
-- Colorbar tick labels 鈥?can be crushed if the colorbar is narrow
-- Panel labels 鈥?should be immediately visible, not lost in margin clutter
+**How to check:** Inspect the rendered PNG. This is the ground truth—code-level fontsize checks in CL-1 verify the setting, but only visual inspection verifies the result. Check:
+- Axis tick labels—especially long strings or rotated labels
+- Gene/protein names—italic text at small sizes can blur
+- Legend text—often the smallest text on the figure
+- Colorbar tick labels—can be crushed if the colorbar is narrow
+- Panel labels—should be immediately visible, not lost in margin clutter
 
 **Fix if FAIL:**
-- Tick labels too small 鈫?bump from 5pt to 6pt, or rotate 45掳 instead of 90掳
-- Gene labels illegible 鈫?increase from 4pt to 5pt, or switch from italic to regular (regular text is more legible at small sizes than italic)
-- Legend unreadable 鈫?increase fontsize by 1pt, reduce legend content, or move to larger panel
-- Colorbar labels crushed 鈫?increase colorbar width (`aspect=10` instead of `aspect=15`)
+- Tick labels too small → raise from 5 pt to 6 pt, or rotate 45° instead of 90°
+- Gene labels illegible → increase from 4 pt to 5 pt, or switch from italic to regular (regular text is more legible at small sizes than italic)
+- Legend unreadable → increase fontsize by 1 pt, reduce legend content, or move to a larger panel
+- Colorbar labels crushed → increase colorbar width (`aspect=10` instead of `aspect=15`)
 
 **Pass condition:** The reader can read every text element without squinting, at the intended print size.
 
@@ -347,66 +347,63 @@ Passes 0-2 verify the **code**. Pass 3 verifies the **output**. These are proble
 - White or very light elements are visible against white background
 
 **Fix if FAIL:**
-- Adjacent colors too similar 鈫?increase hue separation; swap one for a color further away on the color wheel
-- Gradient invisible 鈫?increase `vmin`/`vmax` range, or switch to a higher-contrast colormap
-- Threshold line lost 鈫?darken line color to `#444444`, increase linewidth to 0.8pt, or add a subtle annotation
-- NS points overpower signal 鈫?reduce NS point alpha from 0.4 to 0.25, or plot NS points first (lower zorder)
-- Light elements invisible 鈫?add a very thin dark edge (`edgecolors='#CCCCCC', linewidth=0.1`)
+- Adjacent colors too similar → increase hue separation; swap one for a color farther away on the color wheel
+- Gradient invisible → adjust `vmin`/`vmax` to the declared scientific scale, or switch to a higher-contrast colormap without clipping observations
+- Threshold line lost → darken the line to `#444444`, increase linewidth to 0.8 pt, or add a subtle annotation
+- NS points overpower signal → reduce NS-point alpha from 0.4 to 0.25, or plot NS points first (lower z-order)
+- Light elements invisible → add a very thin dark edge (`edgecolors='#CCCCCC', linewidth=0.1`)
 
 **Pass condition:** All color distinctions are clearly visible. Nothing blends into the background or another category.
 
-### VV-5: Data Signal Integrity
+### VV-5: Data Integrity and Faithful Rendering
 
-**Question:** Does the plotted data actually carry the signal this chart type requires? This is the most common class of silent failure 鈥?the code runs, the figure renders, but the underlying data generation is mathematically broken, producing an empty or saturated plot.
+**Question:** Does the figure faithfully render the supplied or computed data, including valid null or weak results? A chart must never manufacture, amplify, filter, or resimulate a signal merely to satisfy a visual threshold.
 
-**This check applies to ALL figure types.** The LLM scans the generated data values and the rendered pixel output simultaneously.
+**This check applies to ALL figure types.** Inspect the source values, transformations, row counts, summary statistics, and rendered output together. A flat line, overlapping groups, zero significant features, or AUC near 0.5 can be a legitimate result; report it honestly instead of changing the data.
 
-**How to check per chart type 鈥?run these quantitative checks on the generated data before plotting:**
+**How to check per chart type:**
 
-| Chart Type | Check | Pass Condition | Common Failure |
-|-----------|-------|---------------|----------------|
-| **Volcano** | `(padj < 0.05).sum()` | 鈮?0 DE genes, 鈮?0% of total | All points grey (p-values too large) or all points colored (p-values artificially small) |
-| **AUROC / ROC** | `(tpr - fpr).max()` at any FPR point | 鈮?.15 for any curve | Curves follow the diagonal (AUC鈮?.5) or saturate instantly (formula blowup at high AUC) |
-| **Heatmap** | `np.std(data, axis=1).mean()` | Row variance > 0.2 | Flat rows 鈥?all Z-scores near 0, clustering meaningless |
-| | `len(np.unique(data))` | > 30 unique values | Data is all identical or binary |
-| **Bar chart** | `abs(means.max() - means.min())` | Range > 0.05脳 means.max() | All bars equal height 鈥?no signal |
-| | `(sem / mean).max()` | < 1.0 per group | Error bars larger than the measurement |
-| **Correlation matrix** | `abs(corr_mat).max()` (off-diagonal) | 鈮?.3 | No correlations 鈥?plot is an identity matrix |
-| **RDA / PCA** | Between-group variance / within-group variance (for labeled groups) | Ratio > 1.0 | Groups completely overlap 鈥?ordination failed |
-| **Box / Violin** | `abs(medians.max() - medians.min())` | 鈮?0% of data range | All groups same distribution |
-| **Scatter** | `abs(pearson_r)` | 鈮?.15 for labeled regression | Points form a shapeless cloud |
-| **Line / Trend** | `(y.max() - y.min()) / y.mean()` | Range > 0.1 | Flat line 鈥?no trend |
-| **Multi-panel general** | Pixel content density per panel | Each panel: content density > 1.5% | Panel is blank or invisible |
+| Chart Type | Integrity check | Pass condition | Failure to flag |
+|-----------|-----------------|----------------|-----------------|
+| **Volcano** | finite fold changes; adjusted p-values in [0,1]; threshold and multiple-testing method recorded | plotted row count matches the declared filtered count; 0 significant features is allowed | silent row loss, invalid p-values, or a threshold changed after seeing results |
+| **AUROC / ROC** | finite monotone FPR/TPR in [0,1]; AUC recomputed from plotted points | reported and recomputed AUC agree within numeric tolerance; a diagonal curve is allowed | fabricated smoothing, impossible coordinates, or label/AUC mismatch |
+| **Heatmap** | finite matrix; dimensions and any scaling/clustering recorded | displayed rows/columns and scaling match the source; constant rows are reported, not altered | silent feature removal, per-panel rescaling that changes comparisons, or all-NaN blocks |
+| **Bar / Box / Violin** | group n, center statistic, spread definition, and raw-to-summary mapping | bars/distributions reproduce the source groups; equal groups are allowed | SEM/SD/CI mislabeled, hidden groups, or summaries computed from different rows |
+| **Correlation matrix** | symmetry, diagonal, value range, missing-data rule, and sample n | coefficients match a recomputation under the stated rule; weak correlations are allowed | mixing pairwise/listwise deletion silently or masking inconvenient values |
+| **RDA / PCA** | preprocessing, matrix orientation, component order, and explained variance | plotted scores/loadings and explained-variance labels match the fitted result; overlap is allowed | transposed input, label permutation, or hand-separated groups |
+| **Scatter / Regression** | finite x/y pairs, n after filtering, fitted equation and metric | plotted points and reported fit use the same paired rows; weak association is allowed | dropping outliers without disclosure or reporting a metric from another split |
+| **Line / Trend** | x ordering, units, aggregation and missingness | plotted order and aggregation match the declared procedure; a flat trend is allowed | implicit sorting, interpolation presented as observation, or clipped extrema |
+| **Multi-panel general** | source-to-panel row counts and panel content bounds | each panel is non-empty, legible, and traceable to a declared result file | blank panels, accidental overplotting, or panels backed by different undeclared data versions |
 
 **How to run the check (two-phase):**
 
-**Phase A 鈥?Code-level check (before rendering):** Scan the data generation code. For each chart type present in the figure, compute the relevant statistic from the data arrays. If any statistic fails the pass condition, flag VV-5 FAIL with the specific chart type and value.
+**Phase A—data/code check (before rendering):** Recompute each displayed statistic from the declared source rows. Record input count, excluded count with reasons, output count, units, and transformation. A mismatch is FAIL; a scientifically null result is PASS with an honest caption.
 
-**Phase B 鈥?Pixel-level check (after rendering):** Compute per-panel content density from the rendered PNG. If any panel has <1.5% non-background pixels, flag VV-5 WARN. If >50% non-background pixels, flag VV-5 WARN (possible overplotting).
+**Phase B—render check (after rendering):** Confirm that every expected layer is visible and that axes, clipping, scales, legends, and annotations do not change the meaning. Pixel-content heuristics may raise a WARN for inspection, but they are not evidence that the scientific signal is too weak or too strong.
 
 **Fix if FAIL:**
-- Data generation formula wrong 鈫?debug the formula; verify with a quick prototype test before embedding in the full figure
-- Parameter too extreme 鈫?adjust simulation parameters (effect size, noise level, sample count)
-- All-one-value 鈫?check for division by zero, log(0), or constant arrays
-- Panel invisible 鈫?verify data arrays are non-empty and within the axis range; check for `set_xlim`/`set_ylim` excluding all data
+- Data/code mismatch → trace the transformation and correct the implementation; do not tune the data to the expected picture
+- Invalid or non-finite values → correct the upstream computation or disclose and justify the exclusion count
+- Legitimate null/weak result → keep it, state the uncertainty and limitation, and reconsider whether this chart adds evidence
+- Panel invisible → verify non-empty arrays and axis limits; never replace real values with demo data in a contest deliverable
 
-**Pass condition:** All chart-type-specific checks pass. All panels have 1.5%-50% content density.
+**Pass condition:** Displayed values reproduce the declared source and computation; every exclusion and transformation is traceable; null results remain unaltered; all rendered panels are visible and semantically faithful.
 
 ### Visual Verification Protocol
 
-1. **Render the figure** 鈥?Run the generated code. If Python/R is not available locally, skip Pass 3 and flag the limitation to the user.
-2. **Inspect methodically** 鈥?Check VV-1 through VV-5 in order. Do not scan 鈥?focus on each check individually.
-3. **Fix and re-render** 鈥?Each FAIL requires a code fix AND re-rendering. Fix all VV issues, re-render, and re-inspect. Maximum 3 render-fix cycles.
-4. **Escalate if stuck** 鈥?If 3 cycles don't resolve the issues, the layout likely needs restructuring. Escalate to Reviewer Simulation Mode for a wider diagnosis.
+1. **Render the figure**—run the generated code. If Python/R is not available locally, mark Pass 3 as not run and flag the limitation to the user.
+2. **Inspect methodically**—check VV-1 through VV-5 in order. Do not skim; focus on each check individually.
+3. **Fix and re-render**—each FAIL requires a code fix AND re-rendering. Fix all VV issues, re-render, and re-inspect. Maximum 3 render-fix cycles.
+4. **Escalate if stuck**—if 3 cycles do not resolve the issues, the layout likely needs restructuring. Escalate to Reviewer Simulation Mode for a wider diagnosis.
 
 **Pass 3 report format:**
 ```
-Pass 3 鈥?Visual Verification:
+Pass 3 — Visual Verification:
   [PASS] VV-1: No data occlusion
-  [FAIL] VV-2: Panel (c) legend extends beyond figure right edge 鈥?adjust bbox_to_anchor
+  [FAIL] VV-2: Panel (c) legend extends beyond figure right edge — adjust bbox_to_anchor
   [PASS] VV-3: All text legible at 300dpi
   [WARN] VV-4: Treatment blue (#2166AC) vs Knockout green (#1B7837) distinct but check greyscale
-  [FAIL] VV-5: AUROC AUC=0.94 curve saturates 鈥?tpr>0.99 at fpr=0.05, formula blowup
+  [FAIL] VV-5: reported AUC differs from the value recomputed from the plotted ROC coordinates
 ```
 
 ---
@@ -423,46 +420,46 @@ Figure: [brief description]
 Target: [journal], [single/double] column
 Backend: [Python/R]
 
-Pass 0 鈥?Anti-Pattern Scan:
+Pass 0 — Anti-Pattern Scan:
   [PASS] AP-1 Default Color Palette
   [PASS] AP-2 Jet/Rainbow Colormap
-  [FAIL] AP-3 Four-Sided Borders 鈥?top/right spines not removed
+  [FAIL] AP-3 Four-Sided Borders — top/right spines not removed
   [PASS] AP-4 Legend Occlusion
   ...
 
-Pass 1 鈥?Code Compliance:
+Pass 1 — Code Compliance:
   [PASS] CL-1 Font Size Floor (min 6pt)
-  [FAIL] CL-2 Figure Dimensions 鈥?width 120mm, not 89mm or 183mm
+  [FAIL] CL-2 Figure Dimensions — width 120 mm, not 89 mm or 183 mm
   ...
 
-Pass 2 鈥?Visual Logic:
+Pass 2 — Visual Logic:
   [PASS] VI-1 Core Conclusion Visibility
-  [WARN] VI-2 Color Accessibility 鈥?red-green pair used, add shape differentiation
+  [WARN] VI-2 Color Accessibility — red-green pair used, add shape differentiation
   ...
 
-Pass 3 鈥?Visual Verification (render required):
+Pass 3 — Visual Verification (render required):
   [PASS] VV-1: No data occlusion
   [PASS] VV-2: Layout regular, panels aligned
-  [FAIL] VV-3: Gene labels at 4pt italic are illegible 鈥?increase to 5pt
+  [FAIL] VV-3: Gene labels at 4 pt italic are illegible — increase to 5 pt
   ...
 
 Summary:
   Pass: X/Y   Fail: X/Y   Warn: X/Y
 
 Verdict:
-  [READY] 鈥?All checks passed. Deliver.
-  [FIX]  鈥?N failures need attention. Fix and re-run this protocol.
-  [WARN] 鈥?Deliverable with caveats noted above.
+  [READY] — All checks passed. Deliver.
+  [FIX] — N failures need attention. Fix and re-run this protocol.
+  [WARN] — Deliverable with caveats noted above.
 
 ============================================================
 ```
 
 ## After QA
 
-- **READY 鈫?* All passes (0-3) clear. Proceed to Hub Step 6 (Deliver). Include the full QA report with delivery.
-- **FIX 鈫?* Fix failed items, re-run only the failed pass, then re-render for Pass 3 if visual changes were made. Maximum 3 render-fix cycles.
-- **WARN 鈫?* Deliver with warnings noted. Flag to the user.
-- **SKIP Pass 3 鈫?* If Python/R runtime is not available locally, skip Pass 3 (Visual Verification) and warn the user: "Pass 3 (visual verification) was skipped 鈥?no local Python/R runtime. Please visually inspect the output before submission."
+- **READY →** All passes (0–3) clear. Proceed to Hub Step 6 (Deliver). Include the full QA report with delivery.
+- **FIX →** Fix failed items, re-run only the failed pass, then re-render for Pass 3 if visual changes were made. Maximum 3 render-fix cycles.
+- **WARN →** Deliver with warnings noted. Flag them to the user.
+- **NOT RUN: Pass 3 →** If Python/R is unavailable locally, state: "Pass 3 (visual verification) was not run because no local Python/R runtime was available. Please run and visually inspect the output before submission." Do not count it as a pass.
 
 If >2 failures remain after one round of fixes, or Pass 3 issues persist after 3 render-fix cycles, escalate to **Reviewer Simulation Mode** (Hub SKILL.md, Reviewer Simulation section) for a wider diagnosis.
 

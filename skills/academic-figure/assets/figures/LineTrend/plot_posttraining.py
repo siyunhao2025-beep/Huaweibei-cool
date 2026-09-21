@@ -38,7 +38,7 @@ def plot_curves(data_posttraining):
     results = data_posttraining['results'] # shape (n_methods, n_steps)
     x_pos = np.arange(len(x))
     ax.axhline(y=results[0][0], color='black', alpha=0.3, linewidth=4, linestyle='--')
-    for m, (method, color) in enumerate(zip(methods, colors)):
+    for m, (_method, color) in enumerate(zip(methods, colors)):
         y = results[m]
         # Segments with alpha increasing left to right
         pts = np.column_stack([x_pos, y])

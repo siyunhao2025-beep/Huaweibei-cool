@@ -5,7 +5,6 @@ import subprocess
 import sys
 from pathlib import Path
 
-import pytest
 
 from conftest import ASSETS, REPO_ROOT, SCRIPTS
 

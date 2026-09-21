@@ -7,7 +7,6 @@ Output: structured PASS/FAIL/WARN report with line-level issue locations.
 Usage:
     python qa_validator.py <script.py>              # validate a file
     python qa_validator.py "<code string>"          # validate inline code
-    python qa_validator.py my_fig.py --journal nature  # journal-specific checks
 
 Checks: AP-0 through AP-7, CL-1 through CL-7 (≈20 automated checks).
 Pass 2 (VI-1..VI-6) and Pass 3 (VV-1..VV-5) are LLM-executed per checklist.md.
@@ -15,12 +14,11 @@ No AI needed for automated checks — runs anywhere Python is installed.
 """
 
 from __future__ import annotations
-import argparse, ast, os, re, sys
-from collections import Counter
-from dataclasses import dataclass, field
-from itertools import chain
+import argparse
+import json
+import re
+from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Any, Iterable
 
 
 @dataclass
@@ -30,6 +28,29 @@ class Finding:
     category: str  # "PASS", "FAIL", "WARN"
     message: str
     line: int | None = None  # best-effort line number
+
+
+def _rc_setting(source: str, key: str, value_pattern: str) -> bool:
+    """Match a matplotlib rcParams key in dict or indexed-assignment form."""
+    quoted_key = rf'["\']{re.escape(key)}["\']'
+    pattern = rf'{quoted_key}\s*(?::|\]\s*=)\s*{value_pattern}'
+    return bool(re.search(pattern, source, re.IGNORECASE))
+
+
+def _has_vector_export(source: str) -> bool:
+    return bool(
+        re.search(r'(?:savefig|ggsave)\s*\([^\n)]*\.(?:pdf|svg|eps)', source, re.IGNORECASE)
+        or re.search(r'\b(?:cairo_pdf|pdf)\s*\(', source)
+        or ("def save_cns_figure" in source and ".pdf" in source)
+    )
+
+
+def _has_raster_export(source: str) -> bool:
+    return bool(
+        re.search(r'(?:savefig|ggsave)\s*\([^\n)]*\.(?:png|tiff?)', source, re.IGNORECASE)
+        or re.search(r'\b(?:png|tiff)\s*\(', source)
+        or ("def save_cns_figure" in source and ".png" in source)
+    )
 
 
 # ═══════════════════════════════════════════════════════════
@@ -43,27 +64,34 @@ def check_ap0_style_baseline(source: str) -> list[Finding]:
     # Typography baseline
     typo_required = ["font.family", "font.sans-serif", "font.size", "axes.spines.top",
                      "axes.spines.right", "axes.linewidth", "xtick.direction", "legend.frameon"]
-    typo_ok = all(kw in source for kw in typo_required)
+    typo_ok = all(kw in source for kw in typo_required) and any(
+        family in source for family in ("Arial", "Helvetica", "Liberation Sans")
+    )
     findings.append(Finding("AP-0", typo_ok,
         "PASS" if typo_ok else "FAIL",
         "Typography baseline present" if typo_ok else
         f"Missing typography baseline. Need: {', '.join(k for k in typo_required if k not in source)}"))
 
     # Color baseline
-    color_patterns = ['CATEGORICAL = [', 'DIVERGING = [', '#2166AC', '#B2182B', '#999999']
-    color_ok = all(p in source for p in color_patterns)
+    color_ok = bool(
+        re.search(r'CATEGORICAL\s*=\s*\[[^]]*#2166AC[^]]*#B2182B[^]]*#1B7837', source, re.DOTALL)
+        and re.search(r'DIVERGING\s*=\s*\[[^]]*#2166AC[^]]*#F7F7F7[^]]*#B2182B', source, re.DOTALL)
+    )
     findings.append(Finding("AP-0", color_ok,
         "PASS" if color_ok else "FAIL",
         "Color palette baseline present" if color_ok else
         "Missing CNS color palette (CATEGORICAL/DIVERGING)"))
 
     # Export baseline
-    export_patterns = ["pdf.fonttype", "svg.fonttype", "save_cns_figure"]
-    export_ok = "pdf.fonttype" in source and ("42" in source or "'42'" in source or '"42"' in source)
+    export_ok = (
+        _rc_setting(source, "pdf.fonttype", r'["\']?42["\']?')
+        and _rc_setting(source, "svg.fonttype", r'["\']none["\']')
+        and "def save_cns_figure" in source
+    )
     findings.append(Finding("AP-0", export_ok,
         "PASS" if export_ok else "FAIL",
         "Export baseline (pdf.fonttype=42, svg.fonttype='none') present" if export_ok else
-        "Missing export baseline — pdf.fonttype should be 42"))
+        "Missing export baseline — require pdf.fonttype=42, svg.fonttype='none', and save_cns_figure"))
 
     return findings
 
@@ -100,10 +128,14 @@ def check_ap2_jet_rainbow(source: str) -> Finding:
 
 def check_ap3_four_sided_borders(source: str) -> Finding:
     """Verify top and right spines are removed."""
-    top_off = "spines.top" in source and ("False" in source.split("spines.top", 1)[1][:20] or
-                                           "set_visible(False)" in source)
-    right_off = "spines.right" in source and ("False" in source.split("spines.right", 1)[1][:20] or
-                                               "set_visible(False)" in source)
+    top_off = _rc_setting(source, "axes.spines.top", r'False')
+    right_off = _rc_setting(source, "axes.spines.right", r'False')
+    combined = bool(
+        re.search(r'spines\s*\[[^]]*["\']top["\'][^]]*["\']right["\'][^]]*\]\s*\.set_visible\(False\)', source)
+        or re.search(r'spines\s*\[[^]]*["\']right["\'][^]]*["\']top["\'][^]]*\]\s*\.set_visible\(False\)', source)
+    )
+    top_off = top_off or combined or bool(re.search(r'spines\[["\']top["\']\]\.set_visible\(False\)', source))
+    right_off = right_off or combined or bool(re.search(r'spines\[["\']right["\']\]\.set_visible\(False\)', source))
     ok = top_off and right_off
     return Finding("AP-3", ok,
         "PASS" if ok else "FAIL",
@@ -112,8 +144,10 @@ def check_ap3_four_sided_borders(source: str) -> Finding:
 
 def check_ap4_legend_occlusion(source: str) -> Finding:
     """Check legend placement avoids data occlusion."""
-    # bbox_to_anchor within 30 chars of .legend( — true external placement
-    has_external = bool(re.search(r'\.legend\s*\(.{0,30}bbox_to_anchor', source))
+    has_legend = bool(re.search(r'(?:\.legend|geom_legend|legend\.position)\b', source))
+    if not has_legend:
+        return Finding("AP-4", True, "PASS", "N/A — no legend call detected")
+    has_external = bool(re.search(r'\.legend\s*\([^)]*bbox_to_anchor', source, re.DOTALL))
     has_direct = "direct label" in source.lower()
     # In R: theme(legend.position = 'right') or 'bottom' or 'none'
     has_r_external = "legend.position" in source and any(p in source for p in ["'right'", "'bottom'", "'none'"])
@@ -125,10 +159,7 @@ def check_ap4_legend_occlusion(source: str) -> Finding:
 
 def check_ap5_low_res_export(source: str) -> Finding:
     """Verify vector export + 300dpi raster."""
-    has_pdf = ".pdf" in source or "'pdf'" in source or '"pdf"' in source
-    has_svg = ".svg" in source or "'svg'" in source or '"svg"' in source
-    has_eps = ".eps" in source or "'eps'" in source or '"eps"' in source
-    ok = has_pdf or has_svg or has_eps
+    ok = _has_vector_export(source)
     return Finding("AP-5", ok,
         "PASS" if ok else "FAIL",
         "Vector export present" if ok else "No vector export (PDF/SVG/EPS) — only raster found")
@@ -139,7 +170,7 @@ def check_ap6_missing_points(source: str) -> Finding:
     has_points = any(kw in source for kw in
         ["stripplot", "swarmplot", "geom_point", "geom_jitter",
          "scatter", "sns.stripplot", "position_jitter"])
-    has_bar = any(kw in source for kw in ["bar", "boxplot", "barh", "geom_boxplot"])
+    has_bar = bool(re.search(r'\b(?:bar|barh|boxplot|geom_boxplot)\s*\(', source))
     if not has_bar:
         return Finding("AP-6", True, "PASS", "N/A — not a bar/box plot")
     return Finding("AP-6", has_points,
@@ -162,15 +193,16 @@ def check_ap7_default_font(source: str) -> Finding:
 def _find_fontsizes(source: str) -> list[int]:
     """Parse all fontSize params from code."""
     sizes = []
-    for match in re.finditer(r'(?:fontsize|font\.size|labelsize|titlesize|size)\s*[=:]\s*(\d+)', source):
-        sizes.append(int(match.group(1)))
+    pattern = r'(?<![A-Za-z_])(?:fontsize|font\.size|labelsize|titlesize|base_size)\b["\']?\s*[=:]\s*(\d+(?:\.\d+)?)'
+    for match in re.finditer(pattern, source):
+        sizes.append(float(match.group(1)))
     return sizes
 
 
 def check_cl1_fontsize(source: str) -> Finding:
     sizes = _find_fontsizes(source)
     if not sizes:
-        return Finding("CL-1", True, "PASS", "No fontsize declarations — relying on defaults (verify manually)")
+        return Finding("CL-1", False, "WARN", "No fontsize declarations — cannot verify the 5pt floor")
     too_small = [s for s in sizes if s < 5]
     ok = len(too_small) == 0
     return Finding("CL-1", ok,
@@ -184,11 +216,12 @@ def check_cl2_dimensions(source: str) -> Finding:
     mm_patterns = re.findall(r'figsize\s*=\s*\(\s*(\d+)\s*\*\s*mm_to_inch', source)
     inch_patterns = re.findall(r'figsize\s*=\s*\(\s*(\d+\.?\d*)\s*,\s*(\d+\.?\d*)\s*\)', source)
     # compose.py style: fig_width_mm / MM_PER_INCH
-    compose_patterns = re.findall(r'(?:fig_width_mm|fig_w_mm)\s*=\s*(\d+\.?\d*)', source)
-    ratio_divs = re.findall(r'(\d+\.?\d*)\s*/\s*MM_PER_INCH', source)
-    ratio_slash = re.findall(r'(\d+\.?\d*)\s*/\s*mm_to_inch', source)
+    compose_patterns = re.findall(r'(?:fig_width_mm|fig_w_mm)(?:\s*:\s*[A-Za-z_][\w. |]*)?\s*=\s*(\d+\.?\d*)', source)
+    ratio_divs = re.findall(r'figsize\s*=\s*\(\s*(\d+\.?\d*)\s*/\s*MM_PER_INCH', source)
+    ratio_slash = re.findall(r'figsize\s*=\s*\(\s*(\d+\.?\d*)\s*/\s*mm_to_inch', source)
+    ratio_numeric = re.findall(r'figsize\s*=\s*\(\s*(\d+\.?\d*)\s*/\s*25\.4', source)
     # R: ggsave(width = XX, height = YY, units = "mm")
-    r_mm = re.findall(r'width\s*=\s*(\d+\.?\d*)\s*,\s*(?:height|units\s*=\s*["\']mm)', source)
+    r_mm = re.findall(r'width\s*=\s*(\d+\.?\d*)[^)]*units\s*=\s*["\']mm["\']', source, re.DOTALL)
 
     widths_found = []
     if mm_patterns:
@@ -201,18 +234,20 @@ def check_cl2_dimensions(source: str) -> Finding:
         widths_found = [float(w) for w in ratio_divs]
     elif ratio_slash:
         widths_found = [float(w) for w in ratio_slash]
+    elif ratio_numeric:
+        widths_found = [float(w) for w in ratio_numeric]
+    elif r_mm:
+        widths_found = [float(w) for w in r_mm]
 
     if not widths_found:
-        return Finding("CL-2", True, "WARN", "No explicit dimension declaration — verify matches 89/183mm column")
+        return Finding("CL-2", False, "WARN", "No explicit dimension declaration — cannot verify 89/183mm width")
 
-    w = widths_found[0]
-    is_single = abs(w - 89) <= 3
-    is_double = abs(w - 183) <= 5
-    ok = is_single or is_double
+    invalid = [w for w in widths_found if abs(w - 89) > 3 and abs(w - 183) > 3]
+    ok = not invalid
     return Finding("CL-2", ok,
         "PASS" if ok else "FAIL",
-        f"Width {w:.0f}mm matches {'single' if is_single else 'double'}-column" if ok
-        else f"Width {w:.0f}mm matches neither single (89mm) nor double (183mm)")
+        f"All declared widths match 89/183mm: {[round(w, 2) for w in widths_found]}" if ok
+        else f"Invalid widths {invalid}; require 89±3mm or 183±3mm")
 
 
 def check_cl3_dpi(source: str) -> Finding:
@@ -228,24 +263,25 @@ def check_cl3_dpi(source: str) -> Finding:
     ok = len(too_low) == 0
     return Finding("CL-3", ok,
         "PASS" if ok else "FAIL",
-        f"All DPI values >= 300" if ok else f"DPI below 300: {too_low}")
+        "All DPI values >= 300" if ok else f"DPI below 300: {too_low}")
 
 
 def check_cl4_font_embedding(source: str) -> Finding:
-    has_pdf_type = "pdf.fonttype" in source and ("42" in source.split("pdf.fonttype", 1)[1][:20])
-    has_svg_type = "svg.fonttype" in source and ("none" in source.split("svg.fonttype", 1)[1][:20].lower())
-    has_cairo = "cairo_pdf" in source or "cairo_png" in source
-    ok = has_pdf_type or has_cairo
+    has_pdf_type = _rc_setting(source, "pdf.fonttype", r'["\']?42["\']?')
+    has_svg_type = _rc_setting(source, "svg.fonttype", r'["\']none["\']')
+    has_cairo_pdf = "cairo_pdf" in source
+    exports_svg = ".svg" in source
+    ok = (has_pdf_type or has_cairo_pdf) and (not exports_svg or has_svg_type)
     return Finding("CL-4", ok,
         "PASS" if ok else "FAIL",
-        "Font embedding configured" if ok else "No pdf.fonttype=42 or cairo_pdf — fonts may not embed")
+        "Font embedding configured" if ok else "Require pdf.fonttype=42 or cairo_pdf; SVG export also requires svg.fonttype='none'")
 
 
 def check_cl5_spine_linewidth(source: str) -> Finding:
     """Check spine linewidth is thin (0.5-0.8)."""
-    lw_match = re.search(r'axes\.linewidth["\']?\s*[:=]\s*(\d+\.?\d*)', source)
+    lw_match = re.search(r'["\']axes\.linewidth["\']\s*(?::|\]\s*=)\s*(\d+\.?\d*)', source)
     if not lw_match:
-        return Finding("CL-5", True, "PASS", "Spine linewidth default (verify 0.5-0.8)")
+        return Finding("CL-5", False, "WARN", "Spine linewidth not declared — cannot verify 0.5-0.8pt")
     lw = float(lw_match.group(1))
     ok = 0.4 <= lw <= 1.0
     return Finding("CL-5", ok,
@@ -255,16 +291,83 @@ def check_cl5_spine_linewidth(source: str) -> Finding:
 
 def check_cl6_tick_direction(source: str) -> Finding:
     """Verify tick direction is set outward."""
-    has_out = "direction" in source and "out" in source.split("direction", 1)[1][:20].strip().strip(":'\"")
+    has_out = (
+        _rc_setting(source, "xtick.direction", r'["\']out["\']')
+        and _rc_setting(source, "ytick.direction", r'["\']out["\']')
+    ) or bool(re.search(r'tick_params\s*\([^)]*direction\s*=\s*["\']out["\']', source, re.DOTALL))
     if has_out:
         return Finding("CL-6", True, "PASS", "Ticks outward")
     return Finding("CL-6", False, "WARN", "Tick direction not explicitly set to 'out' — verify")
 
 
 def check_cl7_export_completeness(source: str) -> Finding:
-    has_vector = ".pdf" in source or ".svg" in source or ".eps" in source
-    has_raster = ".png" in source or ".tif" in source
+    has_vector = _has_vector_export(source)
+    has_raster = _has_raster_export(source)
     ok = has_vector and has_raster
     return Finding("CL-7", ok,
         "PASS" if ok else "FAIL",
         "Vector + raster both exported" if ok else "Missing export — need both PDF and PNG")
+
+
+CHECK_FUNCTIONS = (
+    check_ap0_style_baseline,
+    check_ap1_default_palette,
+    check_ap2_jet_rainbow,
+    check_ap3_four_sided_borders,
+    check_ap4_legend_occlusion,
+    check_ap5_low_res_export,
+    check_ap6_missing_points,
+    check_ap7_default_font,
+    check_cl1_fontsize,
+    check_cl2_dimensions,
+    check_cl3_dpi,
+    check_cl4_font_embedding,
+    check_cl5_spine_linewidth,
+    check_cl6_tick_direction,
+    check_cl7_export_completeness,
+)
+
+
+def validate_source(source: str) -> list[Finding]:
+    findings: list[Finding] = []
+    for check in CHECK_FUNCTIONS:
+        result = check(source)
+        findings.extend(result if isinstance(result, list) else [result])
+    return findings
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("target", help="Python/R script path, or an inline source string")
+    parser.add_argument("--json", action="store_true", help="Emit machine-readable JSON")
+    parser.add_argument("--strict-warnings", action="store_true", help="Return non-zero for WARN as well as FAIL")
+    args = parser.parse_args(argv)
+
+    target = Path(args.target)
+    if target.is_file():
+        source = target.read_text(encoding="utf-8", errors="replace")
+        source_name = str(target.resolve())
+    else:
+        source = args.target
+        source_name = "<inline>"
+
+    findings = validate_source(source)
+    counts = {category: sum(item.category == category for item in findings) for category in ("PASS", "FAIL", "WARN")}
+    report = {
+        "source": source_name,
+        "summary": counts,
+        "passed": counts["FAIL"] == 0 and (not args.strict_warnings or counts["WARN"] == 0),
+        "findings": [asdict(item) for item in findings],
+    }
+    if args.json:
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+    else:
+        print(f"Academic Figure Skill QA: {source_name}")
+        for item in findings:
+            print(f"[{item.category}] {item.check_id}: {item.message}")
+        print(f"Summary: {counts['PASS']} PASS, {counts['FAIL']} FAIL, {counts['WARN']} WARN")
+    return 0 if report["passed"] else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

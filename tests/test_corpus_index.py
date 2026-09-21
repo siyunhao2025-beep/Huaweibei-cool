@@ -70,8 +70,6 @@ def test_text_path_contract_and_local_coverage(index):
 
 
 def test_extract_status_ok(index):
-    bad = [p["paper_id"] for p in index["papers"]
-           if str(p.get("extract_status", "")).lower() not in ("ok",)]
     # 允许极少数抽文降级记录存在但需在 notes 标注；这里只统计 ok 比例
     ok_ratio = sum(1 for p in index["papers"]
                    if str(p.get("extract_status", "")).lower() == "ok") / len(index["papers"])

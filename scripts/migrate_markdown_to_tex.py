@@ -274,16 +274,48 @@ def convert_fragment(markdown: str, title: str | None = None, role: str | None =
 
 
 def migrate(input_path: Path, source_dir: Path, output_dir: Path) -> dict:
+    project_root = input_path.parent.resolve()
+    source_root = source_dir.resolve()
+    output_root = output_dir.resolve()
+    try:
+        source_root.relative_to(project_root)
+        output_root.relative_to(project_root)
+    except ValueError as exc:
+        raise ValueError("--source-dir 与 --output-dir 必须位于旧 manifest 所在项目目录内") from exc
+
     data = json.loads(input_path.read_text(encoding="utf-8-sig"))
-    output_dir.mkdir(parents=True, exist_ok=True)
-    abstract_path = output_dir / "00_摘要.tex"
-    abstract_path.write_text(convert_fragment(str(data["abstract"])), encoding="utf-8")
-    chapters = []
-    for chapter in data["chapters"]:
-        source = (input_path.parent / str(chapter["content_file"])).resolve()
+    if "abstract" not in data or not str(data["abstract"]).strip():
+        raise ValueError("旧 manifest 的 abstract 必须是非空文本")
+    chapters_data = data.get("chapters")
+    if not isinstance(chapters_data, list) or not chapters_data:
+        raise ValueError("旧 manifest 的 chapters 必须是非空列表")
+
+    resolved_sources: list[tuple[dict, Path]] = []
+    target_names: set[str] = set()
+    for index, chapter in enumerate(chapters_data, start=1):
+        if not isinstance(chapter, dict) or "content_file" not in chapter or "title" not in chapter:
+            raise ValueError(f"第 {index} 个章节缺少 title/content_file")
+        source = (source_root / str(chapter["content_file"])).resolve()
+        try:
+            source.relative_to(source_root)
+        except ValueError as exc:
+            raise ValueError(f"章节源文件必须位于 --source-dir 内: {chapter['content_file']}") from exc
         if source.suffix.lower() != ".md":
             raise ValueError(f"迁移输入必须是旧 Markdown 文件: {source}")
-        target = output_dir / f"{source.stem}.tex"
+        if not source.is_file():
+            raise FileNotFoundError(f"章节源文件不存在: {source}")
+        target_name = f"{source.stem}.tex"
+        if target_name.casefold() in target_names:
+            raise ValueError(f"章节输出文件名冲突: {target_name}")
+        target_names.add(target_name.casefold())
+        resolved_sources.append((chapter, source))
+
+    output_root.mkdir(parents=True, exist_ok=True)
+    abstract_path = output_root / "00_摘要.tex"
+    abstract_path.write_text(convert_fragment(str(data["abstract"])), encoding="utf-8")
+    chapters = []
+    for chapter, source in resolved_sources:
+        target = output_root / f"{source.stem}.tex"
         content = source.read_text(encoding="utf-8-sig")
         target.write_text(
             convert_fragment(
@@ -298,11 +330,11 @@ def migrate(input_path: Path, source_dir: Path, output_dir: Path) -> dict:
             "title": chapter["title"],
             "role": chapter.get("role", "problem"),
             "level": chapter.get("level", 1),
-            "source_md": str(source.relative_to(input_path.parent)),
-            "tex_path": str(target.relative_to(input_path.parent)).replace("\\", "/"),
+            "source_md": str(source.relative_to(project_root)).replace("\\", "/"),
+            "tex_path": str(target.relative_to(project_root)).replace("\\", "/"),
         })
     return {
-        "abstract_tex_path": str(abstract_path.relative_to(input_path.parent)).replace("\\", "/"),
+        "abstract_tex_path": str(abstract_path.relative_to(project_root)).replace("\\", "/"),
         "chapters": chapters,
     }
 

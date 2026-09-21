@@ -15,10 +15,16 @@ W_NS = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
 W = "{" + W_NS + "}"
 NS = {"w": W_NS}
 IDENTITY_RE = re.compile(
-    r"学校|学院|实验室|参赛队号|队员姓名|指导教师|学号|邮箱|email|"
-    r"\b(?:school|student|team|member|advisor)\b|C:\\Users\\",
+    r"(?:学校|学院|实验室|参赛队号|队员姓名|指导教师|学号|邮箱)\s*[:：]|"
+    r"\b(?:school|student|team|member|advisor|e-?mail)\s*(?:name|id|number)?\s*[:：]|"
+    r"C:\\Users\\",
     re.IGNORECASE,
 )
+
+
+def parse_xml(data: bytes):
+    parser = etree.XMLParser(resolve_entities=False, no_network=True)
+    return etree.fromstring(data, parser=parser)
 
 
 def local_attrs(element):
@@ -62,6 +68,7 @@ def run_measurements(run):
     return {
         "eastAsia": fonts.get(W + "eastAsia") if fonts is not None else None,
         "ascii": fonts.get(W + "ascii") if fonts is not None else None,
+        "hAnsi": fonts.get(W + "hAnsi") if fonts is not None else None,
         "size_half_points": int(size.get(W + "val")) if size is not None and size.get(W + "val", "").isdigit() else None,
         "bold": on(rpr.find("w:b", NS) if rpr is not None else None),
         "italic": on(rpr.find("w:i", NS) if rpr is not None else None)
@@ -92,6 +99,8 @@ def style_measurements(styles, style_id):
     return {
         "name": (style.xpath("./w:name/@w:val", namespaces=NS) or [style_id])[0],
         "eastAsia": fonts.get(W + "eastAsia") if fonts is not None else None,
+        "ascii": fonts.get(W + "ascii") if fonts is not None else None,
+        "hAnsi": fonts.get(W + "hAnsi") if fonts is not None else None,
         "size_half_points": int(size.get(W + "val")) if size is not None and size.get(W + "val", "").isdigit() else None,
         "bold": on(rpr.find("w:b", NS) if rpr is not None else None),
         "italic": on(rpr.find("w:i", NS) if rpr is not None else None)
@@ -119,13 +128,34 @@ def audit(path: Path):
         names = set(package.namelist())
         checks.append({"code": "hidden_custom_xml", "ok": not any(name.startswith("customXml/") for name in names)})
         checks.append({"code": "hidden_ole_payload", "ok": not any(name.startswith("word/embeddings/") for name in names)})
-        document = etree.fromstring(package.read("word/document.xml"))
-        styles = etree.fromstring(package.read("word/styles.xml"))
-        paragraphs = document.xpath(".//w:body/w:p", namespaces=NS)
-        text = "\n".join("".join(p.xpath(".//w:t/text()", namespaces=NS)) for p in paragraphs)
-        identity_hits = sorted(set(IDENTITY_RE.findall(text)))
+        document = parse_xml(package.read("word/document.xml"))
+        styles = parse_xml(package.read("word/styles.xml"))
+        paragraphs = document.xpath(".//w:body//w:p", namespaces=NS)
+        text = "\n".join(document.xpath(".//w:body//w:t/text()", namespaces=NS))
+        package_text = [text]
+        for name in sorted(
+            item for item in names
+            if re.fullmatch(r"word/(?:header\d+|footer\d+|comments|footnotes|endnotes)\.xml", item)
+        ):
+            part = parse_xml(package.read(name))
+            package_text.extend(part.xpath(".//w:t/text()", namespaces=NS))
+        identity_hits = sorted({match.group(0) for match in IDENTITY_RE.finditer("\n".join(package_text))})
         checks.append({"code": "identity_text", "ok": not identity_hits, "matches": identity_hits})
-        checks.append({"code": "template_placeholders", "ok": "xx" not in text, "matches": ["xx"] if "xx" in text else []})
+        placeholders = sorted(set(re.findall(r"(?<![A-Za-z0-9])x{2,}(?![A-Za-z0-9])", text, re.I)))
+        checks.append({"code": "template_placeholders", "ok": not placeholders, "matches": placeholders})
+
+        core = parse_xml(package.read("docProps/core.xml")) if "docProps/core.xml" in names else None
+        core_fields = {}
+        if core is not None:
+            for element in core.iter():
+                local = etree.QName(element).localname
+                if local in {"creator", "lastModifiedBy", "description", "subject", "keywords", "category"}:
+                    core_fields[local] = (element.text or "").strip()
+        checks.append({
+            "code": "personal_metadata_empty",
+            "ok": bool(core_fields) and all(not value for value in core_fields.values()),
+            "fields": core_fields,
+        })
 
         paragraph_texts = ["".join(p.xpath(".//w:t/text()", namespaces=NS)).strip() for p in paragraphs]
         toc_titles = [index for index, value in enumerate(paragraph_texts) if value == "目录"]
@@ -202,6 +232,20 @@ def audit(path: Path):
             "message": "关键词后仅分页进入正文；不得额外插入目录页。",
         })
 
+        ascii_font_violations = []
+        for run in document.xpath(".//w:body//w:r", namespaces=NS):
+            run_text = "".join(run.xpath(".//w:t/text()", namespaces=NS))
+            if run_text and re.search(r"[A-Za-z0-9]", run_text):
+                measurements = run_measurements(run)
+                if measurements.get("ascii") != "Times New Roman" or measurements.get("hAnsi") != "Times New Roman":
+                    ascii_font_violations.append({"text": run_text[:100], "measurements": measurements})
+        checks.append({
+            "code": "latin_runs_times_new_roman",
+            "ok": not ascii_font_violations,
+            "violations": ascii_font_violations[:20],
+            "violation_count": len(ascii_font_violations),
+        })
+
         label_measurements = {}
         for label in ("题 目：", "摘 要：", "关键词："):
             paragraph = next(
@@ -239,6 +283,8 @@ def audit(path: Path):
         style_ok = (
             style_results["body"] is not None
             and style_results["body"]["eastAsia"] == "宋体"
+            and style_results["body"]["ascii"] == "Times New Roman"
+            and style_results["body"]["hAnsi"] == "Times New Roman"
             and style_results["body"]["size_half_points"] == 24
             and style_results["body"]["line_twips"] in {None, 240}
             and style_results["body"]["line_rule"] in {None, "auto"}
@@ -265,11 +311,11 @@ def audit(path: Path):
 
         headers = []
         for name in sorted(item for item in names if item.startswith("word/header") and item.endswith(".xml")):
-            header = etree.fromstring(package.read(name))
+            header = parse_xml(package.read(name))
             headers.append({"part": name, "text": "".join(header.xpath(".//w:t/text()", namespaces=NS)).strip()})
         footer_fields = []
         for name in sorted(item for item in names if item.startswith("word/footer") and item.endswith(".xml")):
-            footer = etree.fromstring(package.read(name))
+            footer = parse_xml(package.read(name))
             footer_fields.append({
                 "part": name,
                 "has_page_field": bool(footer.xpath('.//w:instrText[contains(., "PAGE")]', namespaces=NS)),

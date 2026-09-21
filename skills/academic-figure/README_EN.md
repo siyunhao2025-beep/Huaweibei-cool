@@ -255,7 +255,7 @@ For other AI coding assistants:
     │   ├── qa_coverage.py             ← QA check coverage verification
     │   ├── qa_validator.py            ← Automated code check (AP-0~CL-7)
     │   ├── check_references.py        ← Reference integrity check
-    │   ├── e2e_runner.py              ← E2E integration test (A/B scenario auto-scoring)
+    │   ├── e2e_runner.py              ← Generated-source structural contract checker
     │   ├── check_colors.py            ← Color compliance check
     │   ├── check_dimensions.py        ← Dimension specification check
     │   ├── check_export.py            ← Export parameter check
@@ -263,9 +263,9 @@ For other AI coding assistants:
     │   ├── check_figure.py            ← Figure comprehensive check
     │   ├── generate_adapters.py       ← Cross-platform adapter generation
     │   ├── generate_atlas.py          ← Figure atlas auto-generation
-    │   └── run_ab_tests.py            ← A/B test runner
+    │   └── run_ab_tests.py            ← Static capability audit (no empirical gain claim)
     ├── assets/
-    │   ├── figures/                   ← 39 figure asset families with production scripts and previews
+    │   ├── figures/                   ← 39 production-script families; previews are centralized in figure-atlas/
     │   │   ├── 3DHeatmap/             ← 3-D heatmap (R/ComplexHeatmap)
     │   │   ├── AUROC/                 ← AUROC curves
     │   │   ├── BarAblation/           ← Ablation study bars
@@ -328,8 +328,8 @@ python scripts/eval_runner.py
 # Single type audit
 python scripts/eval_runner.py --type Heatmap
 
-# E2E integration tests
-python scripts/e2e_runner.py
+# One-scenario generated-source check (not empirical A/B evidence)
+python scripts/e2e_runner.py --scenario S1_pca generated_script.py
 
 # Trigger accuracy benchmark
 python scripts/trigger_benchmark.py
@@ -342,7 +342,7 @@ python scripts/trigger_benchmark.py
 Academic Figure Skill uses a skill plugin architecture. To add a new figure type:
 
 1. Create a new directory `<FigureType>/` under `assets/figures/`
-2. Add production scripts (`.py` or `.R`) and a preview PNG
+2. Add production scripts (`.py` or `.R`); add a representative preview to centralized `assets/figure-atlas/` only for a genuinely new visual pattern
 3. Add keyword mappings in `references/directory-map.md`
 4. Run `python scripts/eval_runner.py --type <FigureType>` to verify
 

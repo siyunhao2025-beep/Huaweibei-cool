@@ -5,7 +5,7 @@ Validates:
   1. directory-map.md ↔ assets/figures/ bidirectional coverage
   2. compose.py PANEL_ASPECT covers all figure types in directory-map
   3. SKILL.md references only existing files
-  4. Every assets/figures/<type>/ has at least one script + one preview PNG
+  4. The centralized assets/figure-atlas/ contains preview PNGs
 
 Usage:
     py check_references.py          # full integrity scan
@@ -16,12 +16,12 @@ from __future__ import annotations
 import json, os, re, sys
 from pathlib import Path
 
-PROJECT = Path(__file__).resolve().parents[2]
-SKILL_DIR = PROJECT / "academic-figure-skill"
+SKILL_DIR = Path(__file__).resolve().parent.parent
 SKILL_MD = SKILL_DIR / "SKILL.md"
 DIRMAP_MD = SKILL_DIR / "references" / "directory-map.md"
 COMPOSE_PY = SKILL_DIR / "scripts" / "compose.py"
 FIGURES_DIR = SKILL_DIR / "assets" / "figures"
+ATLAS_DIR = SKILL_DIR / "assets" / "figure-atlas"
 REFERENCES = SKILL_DIR / "references"
 
 
@@ -122,19 +122,18 @@ def check_bidirectional_coverage(map_dirs: dict, asset_dirs: set) -> list[dict]:
             "detail": f"assets/figures/{d}/ has scripts but directory-map.md has no entry — users cannot route to it",
         })
 
-    # Every asset dir has ≥1 script + ≥1 preview
-    for d in sorted(asset_dirs):
-        p = FIGURES_DIR / d
-        scripts = list(p.glob("*.py")) + list(p.glob("*.R")) + list(p.glob("*.r"))
-        pngs = list(p.glob("*.png"))
-        if not pngs:
-            findings.append({
-                "check": "missing_preview_png",
-                "severity": "WARN",
-                "detail": f"assets/figures/{d}/ has {len(scripts)} script(s) but 0 preview PNGs",
-            })
-
     return findings
+
+
+def check_atlas_health() -> list[dict]:
+    pngs = list(ATLAS_DIR.glob("*.png")) if ATLAS_DIR.is_dir() else []
+    if pngs:
+        return []
+    return [{
+        "check": "missing_centralized_previews",
+        "severity": "FAIL",
+        "detail": "assets/figure-atlas/ must contain at least one preview PNG",
+    }]
 
 
 def _to_snake(name: str) -> str:
@@ -221,6 +220,7 @@ def run_all() -> dict:
     findings += check_aspect_coverage(map_dirs, aspect_keys)
     findings += check_skill_refs_exist(skill_refs)
     findings += check_reference_md_health()
+    findings += check_atlas_health()
 
     fails = [f for f in findings if f["severity"] == "FAIL"]
     warns = [f for f in findings if f["severity"] == "WARN"]

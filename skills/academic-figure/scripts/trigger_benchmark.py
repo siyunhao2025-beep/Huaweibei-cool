@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Academic Figure Skill Trigger Accuracy Benchmark.
+"""Academic Figure Skill local trigger-heuristic fixture.
 
-Simulates Claude's skill dispatcher by scoring prompts against the SKILL.md
-description field. Reports precision / recall / F1 / false-positive and
-false-negative rates with misclassification analysis.
+Scores a fixed prompt set with this repository's local rules. It does not call
+or estimate any platform's real skill dispatcher, and its in-sample metrics
+must not be presented as production accuracy. Reports fixture precision,
+recall, F1, and misclassifications for regression detection.
 
 Test cases: 40 prompts (20 should-trigger + 20 should-not-trigger).
 Expanded from the original 20 in boundary_tests.py.
@@ -18,8 +19,8 @@ from __future__ import annotations
 import json, re, sys
 from pathlib import Path
 
-PROJECT = Path(__file__).resolve().parents[2]
-SKILL_MD = PROJECT / "academic-figure-skill" / "SKILL.md"
+SKILL_DIR = Path(__file__).resolve().parent.parent
+SKILL_MD = SKILL_DIR / "SKILL.md"
 
 # ═══════════════════════════════════════════════════════════
 # Test prompts — 40 cases
@@ -249,6 +250,8 @@ def run_benchmark(threshold: int = 2) -> dict:
         "false_positives": fp_cases,
         "false_negatives": fn_cases,
         "all_scores": prompt_scores,
+        "passed": fp == 0 and fn == 0,
+        "evaluation_scope": "fixed 40-case in-sample regression fixture; no external-validity claim",
     }
 
 
@@ -276,10 +279,10 @@ if __name__ == "__main__":
         print(json.dumps({
             k: v for k, v in result.items() if k != "all_scores"
         }, indent=2, ensure_ascii=False))
-        sys.exit(0)
+        sys.exit(0 if result["passed"] else 1)
 
     print("=" * 64)
-    print("Academic Figure Skill Trigger Accuracy Benchmark")
+    print("Academic Figure Skill Local Trigger-Heuristic Fixture")
     print(f"Skill: {_load_description()[:80]}...")
     print("=" * 64)
     print(f"Threshold: score >= {result['threshold']}")
@@ -314,14 +317,11 @@ if __name__ == "__main__":
         print("All 40 prompts correctly classified.")
 
     print("=" * 64)
-    if result["f1"] >= 0.95:
-        print("Verdict: EXCELLENT — trigger accuracy is production-grade")
-    elif result["f1"] >= 0.85:
-        print("Verdict: GOOD — minor tuning needed")
-    elif result["f1"] >= 0.70:
-        print("Verdict: ADEQUATE — review misclassifications above")
+    if result["passed"]:
+        print("Verdict: FIXTURE PASS — all 40 curated cases match their labels")
     else:
-        print("Verdict: NEEDS WORK — significant misclassification rate")
+        print("Verdict: FIXTURE FAIL — review the curated-case misclassifications")
+    print("Scope: fixed in-sample regression fixture; this is not platform or production accuracy")
 
     if verbose and result.get("all_scores"):
         print()
@@ -330,3 +330,5 @@ if __name__ == "__main__":
             tag = "TRIGGER" if p["triggered"] else "skip"
             expected = "EXPECTED" if p["correct"] else "WRONG"
             print(f"  [{tag:7}] [{expected:8}] score={p['score']:2d}  {p['id']:20s}  \"{p['prompt'][:80]}\"")
+
+    sys.exit(0 if result["passed"] else 1)

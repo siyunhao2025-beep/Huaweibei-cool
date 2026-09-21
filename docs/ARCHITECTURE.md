@@ -5,10 +5,10 @@
 ```
 Huaweibei-cool/
 ├─ SKILL.md                  # 入口：启动路由 + 模块表 + 硬规则 + 脚本索引
-├─ modules/                  # 20 个任务契约模块（本 Wave2B 产物）
+├─ modules/                  # 21 个任务契约模块
 │  ├─ workflow.md phases.md kickoff-audit.md track-selection.md
 │  ├─ problem-typing.md solving.md validation.md evidence-ledger.md
-│  ├─ figures-interface.md paper-writing.md abstract.md deai-writing.md
+│  ├─ figures-interface.md technical-roadmap.md paper-writing.md abstract.md deai-writing.md
 │  ├─ innovation.md submission.md review-panel.md polishing.md
 │  └─ change-management.md distillation.md matlab-conventions.md training.md
 ├─ playbooks/                # 8 原型 51 方法卡 + INDEX + match_rules.json
@@ -39,7 +39,7 @@ Huaweibei-cool/
   → corpus/cards/brief(729) + deep(80)
   → 统计聚合：AGGREGATE_STATS / S3 / S4 / method_frequency
   → 蒸馏：playbooks(51 方法卡) + tracks(24 题档案)
-  → 工程化：modules(20 契约) + scripts(门禁/匹配/评审脚本)
+  → 工程化：modules(21 契约) + scripts(门禁/匹配/评审脚本)
   → 比赛日：SKILL.md 路由 → 用户按 phases 执行
 ```
 

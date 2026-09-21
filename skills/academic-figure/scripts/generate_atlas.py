@@ -9,14 +9,12 @@ Output: academic-figure-skill/assets/chart-atlas/atlas-*.png
 """
 
 import os
-import sys
 import warnings
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
-import matplotlib.patches as mpatches
 from matplotlib.colors import LinearSegmentedColormap
 from scipy import stats
 from scipy.cluster.hierarchy import linkage, dendrogram
@@ -377,10 +375,8 @@ def _bar_nested(ax):
     n_outer = 2
     n_inner = 2
     x = np.arange(groups)
-    outer_w = 0.55
     inner_w = 0.22
     offsets = [-0.15, 0.15]
-    outer_colors = [CNS_COLORS["blue"], CNS_COLORS["green"]]
     inner_colors = [_alpha_color(CNS_COLORS["blue"], 0.6), _alpha_color(CNS_COLORS["blue"], 0.35),
                     _alpha_color(CNS_COLORS["green"], 0.6), _alpha_color(CNS_COLORS["green"], 0.35)]
     for j in range(n_outer):
@@ -593,7 +589,6 @@ def _scatter_connected(ax):
     x = np.arange(n)
     y = np.random.RandomState(216).normal(loc=0, scale=1, size=n).cumsum() + 5
     ax.plot(x, y, "-", color=CNS_COLORS["light_gray"], linewidth=0.6, zorder=1)
-    colors = plt.cm.RdYlGn((y - y.min()) / (y.max() - y.min() + 1e-9))
     ax.scatter(x, y, s=14, c=[CNS_COLORS["blue"] if yi < y.mean() else CNS_COLORS["red"]
                              for yi in y],
                edgecolors="white", linewidth=0.2, zorder=2)
@@ -713,7 +708,7 @@ LINE_SCATTER_PANELS = [
 def _heatmap_diverging(ax):
     """a) Diverging expression heatmap."""
     data = np.random.RandomState(300).normal(loc=0, scale=1, size=(10, 14))
-    im = ax.imshow(data, cmap=CNS_DIVERGING_CMAP, aspect="auto", vmin=-2.5, vmax=2.5)
+    ax.imshow(data, cmap=CNS_DIVERGING_CMAP, aspect="auto", vmin=-2.5, vmax=2.5)
     ax.set_xticks([])
     ax.set_yticks([])
     style_ax(ax)
@@ -726,7 +721,7 @@ def _heatmap_correlation_masked(ax):
     corr = np.corrcoef(raw.T)
     mask = np.tril(np.ones_like(corr, dtype=bool))
     corr_masked = np.ma.array(corr, mask=mask)
-    im = ax.imshow(corr_masked, cmap=CNS_SEQUENTIAL_CMAP, aspect="auto",
+    ax.imshow(corr_masked, cmap=CNS_SEQUENTIAL_CMAP, aspect="auto",
                    vmin=0, vmax=1)
     ax.set_xticks([])
     ax.set_yticks([])
@@ -736,7 +731,7 @@ def _heatmap_correlation_masked(ax):
 def _heatmap_annotated(ax):
     """c) Annotated heatmap with values."""
     data = np.random.RandomState(302).uniform(0, 1, (5, 6))
-    im = ax.imshow(data, cmap=CNS_SEQUENTIAL_CMAP, aspect="auto", vmin=0, vmax=1)
+    ax.imshow(data, cmap=CNS_SEQUENTIAL_CMAP, aspect="auto", vmin=0, vmax=1)
     for i in range(data.shape[0]):
         for j in range(data.shape[1]):
             ax.text(j, i, f"{data[i, j]:.1f}", ha="center", va="center",
@@ -751,10 +746,10 @@ def _heatmap_split(ax):
     data = np.random.RandomState(303).normal(loc=0, scale=1, size=(10, 12))
     left = data[:, :6]
     right = data[:, 6:]
-    im_left = ax.imshow(left, cmap=CNS_DIVERGING_CMAP, aspect="auto", vmin=-2.5, vmax=2.5,
+    ax.imshow(left, cmap=CNS_DIVERGING_CMAP, aspect="auto", vmin=-2.5, vmax=2.5,
                        extent=[0, 6, 0, 10])
     ax.axvline(6, color="white", linewidth=1.5)
-    im_right = ax.imshow(right, cmap=CNS_SEQUENTIAL_CMAP, aspect="auto", vmin=-2.5, vmax=2.5,
+    ax.imshow(right, cmap=CNS_SEQUENTIAL_CMAP, aspect="auto", vmin=-2.5, vmax=2.5,
                          extent=[6, 12, 0, 10])
     ax.set_xlim(0, 12)
     ax.set_ylim(0, 10)
@@ -770,20 +765,17 @@ def _heatmap_clustermap(ax):
     col_order = np.argsort(data.sum(axis=0))
     data_sorted = data[row_order][:, col_order]
     # Main heatmap with reduced extent to leave room for dendrogram
-    im = ax.imshow(data_sorted, cmap=CNS_DIVERGING_CMAP, aspect="auto", vmin=-2.5, vmax=2.5,
+    ax.imshow(data_sorted, cmap=CNS_DIVERGING_CMAP, aspect="auto", vmin=-2.5, vmax=2.5,
                    extent=[0, data.shape[1], 0, data.shape[0]])
     # Column dendrogram above
     Z_col = linkage(data.T, method="ward")
     dn_col = dendrogram(Z_col, no_plot=True)
-    leaves_col = dn_col["leaves"]
     # Draw simple tree lines above the heatmap
-    from collections import defaultdict
     icoord = dn_col["icoord"]
     dcoord = dn_col["dcoord"]
     # Scale dendrogram coordinates to fit above heatmap
     d_max = max(max(d) for d in dcoord) if dcoord else 1
     scale_y = 1.5 / d_max
-    scale_x = data.shape[1] / 10.0
     for ic, dc in zip(icoord, dcoord):
         xs = [(v / 10.0) * data.shape[1] for v in ic]
         ys = [data.shape[0] + v * scale_y for v in dc]
@@ -799,7 +791,7 @@ def _heatmap_density(ax):
     """f) Density heatmap (2D histogram)."""
     x = np.random.RandomState(305).normal(loc=0, scale=1, size=500)
     y = 0.5 * x + np.random.RandomState(306).normal(loc=0, scale=0.8, size=500)
-    h = ax.hist2d(x, y, bins=20, cmap=CNS_SEQUENTIAL_CMAP, edgecolor="none")[3]
+    ax.hist2d(x, y, bins=20, cmap=CNS_SEQUENTIAL_CMAP, edgecolor="none")
     ax.set_xticks([])
     ax.set_yticks([])
     style_ax(ax)
@@ -812,7 +804,7 @@ def _heatmap_categorical(ax):
         [CNS_COLORS["bg"], CNS_COLORS["light_gray"], CNS_COLORS["orange"],
          CNS_COLORS["blue"], CNS_COLORS["red"]]
     )
-    im = ax.imshow(data, cmap=cat_cmap, aspect="auto", vmin=0, vmax=4)
+    ax.imshow(data, cmap=cat_cmap, aspect="auto", vmin=0, vmax=4)
     ax.set_xticks([])
     ax.set_yticks([])
     ax.set_xlim(-0.5, data.shape[1] - 0.5)
@@ -853,7 +845,7 @@ def _heatmap_upper_tri(ax):
     corr = np.corrcoef(raw.T)
     mask = np.tril(np.ones_like(corr, dtype=bool), k=-1)
     corr_masked = np.ma.array(corr, mask=mask)
-    im = ax.imshow(corr_masked, cmap=CNS_DIVERGING_CMAP, aspect="auto", vmin=-1, vmax=1)
+    ax.imshow(corr_masked, cmap=CNS_DIVERGING_CMAP, aspect="auto", vmin=-1, vmax=1)
     ax.set_xticks([])
     ax.set_yticks([])
     style_ax(ax)
@@ -863,7 +855,7 @@ def _heatmap_row_norm(ax):
     """j) Row-normalized (z-score) heatmap."""
     data = np.random.RandomState(310).uniform(0, 10, (10, 12))
     data_z = (data - data.mean(axis=1, keepdims=True)) / (data.std(axis=1, keepdims=True) + 1e-9)
-    im = ax.imshow(data_z, cmap=CNS_DIVERGING_CMAP, aspect="auto", vmin=-2, vmax=2)
+    ax.imshow(data_z, cmap=CNS_DIVERGING_CMAP, aspect="auto", vmin=-2, vmax=2)
     ax.set_xticks([])
     ax.set_yticks([])
     style_ax(ax)
@@ -873,7 +865,7 @@ def _heatmap_discrete(ax):
     """k) Discrete/Boolean heatmap."""
     data = np.random.RandomState(311).choice([0, 0.5, 1], size=(8, 10))
     cmap = matplotlib.colors.ListedColormap([CNS_COLORS["bg"], CNS_COLORS["orange"], CNS_COLORS["blue"]])
-    im = ax.imshow(data, cmap=cmap, aspect="auto", vmin=0, vmax=1)
+    ax.imshow(data, cmap=cmap, aspect="auto", vmin=0, vmax=1)
     ax.set_xticks([])
     ax.set_yticks([])
     ax.set_xlim(-0.5, data.shape[1] - 0.5)
@@ -884,7 +876,7 @@ def _heatmap_discrete(ax):
 def _heatmap_sparse(ax):
     """l) Sparse matrix heatmap."""
     data = np.random.RandomState(312).choice([0, 0, 0, 0.5, 1, 1.5, 2], size=(10, 12))
-    im = ax.imshow(data, cmap=CNS_SEQUENTIAL_CMAP, aspect="auto", vmin=0, vmax=2)
+    ax.imshow(data, cmap=CNS_SEQUENTIAL_CMAP, aspect="auto", vmin=0, vmax=2)
     ax.set_xticks([])
     ax.set_yticks([])
     style_ax(ax)
@@ -893,7 +885,7 @@ def _heatmap_sparse(ax):
 def _heatmap_annotations(ax):
     """m) Heatmap with row/column annotations."""
     data = np.random.RandomState(313).normal(loc=0, scale=1, size=(10, 12))
-    im = ax.imshow(data, cmap=CNS_DIVERGING_CMAP, aspect="auto", vmin=-2.5, vmax=2.5,
+    ax.imshow(data, cmap=CNS_DIVERGING_CMAP, aspect="auto", vmin=-2.5, vmax=2.5,
                    extent=[0, 12, 0, 10])
     # column annotation strip
     for j in range(data.shape[1]):
@@ -924,7 +916,7 @@ def _heatmap_binary(ax):
     """o) Binary/Boolean heatmap (presence/absence)."""
     data = np.random.RandomState(315).binomial(1, 0.35, size=(8, 10))
     cmap = matplotlib.colors.ListedColormap([CNS_COLORS["bg"], CNS_COLORS["blue"]])
-    im = ax.imshow(data, cmap=cmap, aspect="auto", vmin=0, vmax=1)
+    ax.imshow(data, cmap=cmap, aspect="auto", vmin=0, vmax=1)
     ax.set_xticks([])
     ax.set_yticks([])
     style_ax(ax)
@@ -936,7 +928,7 @@ def _heatmap_gradient(ax):
     y = np.linspace(0, 3 * np.pi, 10)
     X, Y = np.meshgrid(x, y)
     Z = np.sin(X) * np.cos(Y)
-    im = ax.imshow(Z, cmap=CNS_DIVERGING_CMAP, aspect="auto", vmin=-1, vmax=1,
+    ax.imshow(Z, cmap=CNS_DIVERGING_CMAP, aspect="auto", vmin=-1, vmax=1,
                    interpolation="bilinear")
     ax.set_xticks([])
     ax.set_yticks([])
@@ -1397,9 +1389,6 @@ def _upset_matrix(ax):
     col_sums = membership.sum(axis=0)
     sort_order = np.argsort(col_sums)[::-1]
     membership = membership[:, sort_order]
-    labels = ["A", "B", "C", "D", "E"]
-    cmap = matplotlib.colors.ListedColormap([CNS_COLORS["bg"], CNS_COLORS["blue"]])
-    ax_top = ax
     # bottom: combination matrix
     for j in range(sets):
         for i in range(items):
@@ -1624,7 +1613,7 @@ def build_atlas(panel_funcs, title, output_path, figsize=(11, 9)):
 def main():
     """Generate all 5 chart atlas images."""
     os.makedirs(OUTPUT_DIR, exist_ok=True)
-    print(f"\nAcademic Figure Skill Chart Atlas Generator")
+    print("\nAcademic Figure Skill Chart Atlas Generator")
     print(f"Output directory: {OUTPUT_DIR}\n")
 
     atlases = [
@@ -1641,7 +1630,7 @@ def main():
         print(f"Generating {short_name} ...")
         build_atlas(panels, filename, output_path)
 
-    print(f"\nAll 5 atlas images generated successfully.")
+    print("\nAll 5 atlas images generated successfully.")
     print(f"Location: {OUTPUT_DIR}\n")
 
     # List output files

@@ -15,24 +15,25 @@ DATA = {
          [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 1, 2, 1, 0, 2, 3, 0, 1, 2, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0]]
     ),
     # NOTE: Use `*` to move the label up in the annotation. Each `*` moves it up a bit.
-    'dates_llm': {
-        '2022-11': 'ChatGPT\n(GPT-3.5)',
-        '2023-02': 'Bard',
-        '2023-02': 'LlaMA 1',
-        '2023-03': 'GPT-4*',
-        '2025-08': 'GPT-5',
-        '2023-07': 'LlaMA 2',
-        '2024-04': 'LlaMA 3',
-        '2025-04': 'LlaMA 4',
-        '2023-12': 'Gemini 1.0',
-        '2024-02': 'Gemini 1.5',
-        '2024-12': 'Gemini 2.0',
-        '2025-06': 'Gemini 2.5*',
-    },
+    # A sequence preserves events that share the same month.
+    'dates_llm': [
+        ('2022-11', 'ChatGPT\n(GPT-3.5)'),
+        ('2023-02', 'Bard'),
+        ('2023-02', 'LlaMA 1'),
+        ('2023-03', 'GPT-4*'),
+        ('2025-08', 'GPT-5'),
+        ('2023-07', 'LlaMA 2'),
+        ('2024-04', 'LlaMA 3'),
+        ('2025-04', 'LlaMA 4'),
+        ('2023-12', 'Gemini 1.0'),
+        ('2024-02', 'Gemini 1.5'),
+        ('2024-12', 'Gemini 2.0'),
+        ('2025-06', 'Gemini 2.5*'),
+    ],
     'dates_vlm': {
         '2023-02': 'BLIP-2',
         '2023-07': 'LlaVA 1.0',
-        '2023-9': 'GPT-4v',
+        '2023-09': 'GPT-4v',
         '2023-10': 'LlaVA 1.5*',
         '2023-12': 'Gemini 1.0',
         '2024-02': 'Gemini 1.5',
@@ -52,10 +53,8 @@ def month_year_list(start_year, start_month, n_months):
 def mark_events(ax, time_arr, y_curve, events, dy=0.1):
     x_idx = {t: i for i, t in enumerate(time_arr)}
     y0, y1 = ax.get_ylim()
-    prev_date = None
-    for date, label in events.items():
-        if prev_date is None:
-            prev_date = date
+    items = events.items() if hasattr(events, "items") else events
+    for date, label in items:
         if date in x_idx:
             i = x_idx[date]
             x, y = i, y_curve[i]
@@ -72,15 +71,17 @@ def mark_events(ax, time_arr, y_curve, events, dy=0.1):
     return
 
 def plot_curve(fig_name: str):
-    plt.rcParams['text.usetex'] = True
-    plt.rcParams['font.family'] = 'helvetica'
+    plt.rcParams['text.usetex'] = False
+    plt.rcParams['font.family'] = ['Arial', 'DejaVu Sans']
     plt.rcParams['font.size'] = 15
     plt.rcParams['axes.spines.right'] = False
     plt.rcParams['axes.spines.top'] = False
     plt.rcParams['axes.linewidth'] = 2
     colors = ["#9BC8FA", "#ffa8a6", "#13457E", "#850c0a"]
 
-    os.makedirs(os.path.dirname(fig_name), exist_ok=True)
+    output_dir = os.path.dirname(fig_name)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
     fig = plt.figure(figsize=(14, 8))
     num_months = DATA['pub_by_month'].shape[1]
 
@@ -118,6 +119,7 @@ def plot_curve(fig_name: str):
 
     fig.tight_layout(pad=2)
     fig.savefig(fig_name, dpi=300)
+    plt.close(fig)
     return
 
 

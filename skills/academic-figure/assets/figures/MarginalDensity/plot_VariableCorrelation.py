@@ -298,8 +298,6 @@ def plot_cds_vs_genome_size(
         styled = custom_display_fn(
             results_df, exclude_diag=False, mask=mask, hl_max=False
         ).format("{:e}", subset=["pvalue"], precision=2)
-        display(styled)
-
         stem = os.path.join(table_dir, "dRep95_CDSvsGenomeSize_byorigin_mannwhitneyu-test")
         styled.to_excel(stem + ".xlsx")
         styled.to_html(stem  + ".html")
@@ -312,9 +310,11 @@ def plot_cds_vs_genome_size(
 
     return results_df
     
-cogcat_df = pd.read_csv('./data.csv')
-results = plot_cds_vs_genome_size(
-    df=cogcat_df,
-    config=CONFIG,
-    custom_display_fn=custom_display, 
-)
+def main():
+    """Render the example dataset without requiring notebook globals."""
+    cogcat_df = pd.read_csv("./data.csv")
+    plot_cds_vs_genome_size(df=cogcat_df, config=CONFIG)
+
+
+if __name__ == "__main__":
+    main()

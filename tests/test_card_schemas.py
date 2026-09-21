@@ -10,11 +10,10 @@
 """
 import glob
 import json
-from pathlib import Path
 
 import pytest
 
-from conftest import CORPUS, REPO_ROOT
+from conftest import CORPUS
 
 SCHEMAS = CORPUS / "schemas"
 

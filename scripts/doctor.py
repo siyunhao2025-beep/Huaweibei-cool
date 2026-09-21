@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """doctor.py — 华为杯研赛 AI 作战中枢 一键环境自检（Wave5-C）。
 
-逐项检查本机跑通本仓库所需的环境，每项给出 PASS / WARN / FAIL / SKIP、
+逐项检查本机跑通本仓库所需的环境，每项给出 PASS / WARN / FAIL、
 详情与修复建议，最后汇总并给出修复清单。
 
 用法：
@@ -104,7 +104,7 @@ def _try_import(dist: str) -> tuple[bool, str]:
 def check_deps() -> dict:
     rows = []
     missing = []
-    for mod, dist, required in REQUIRED_DEPS:
+    for _mod, dist, _required in REQUIRED_DEPS:
         ok, ver = _try_import(dist)
         if ok:
             rows.append(f"{dist}=={ver}")
@@ -229,6 +229,40 @@ def check_cn_font_matplotlib() -> dict:
     }
 
 
+def find_rscript() -> str | None:
+    executable = shutil.which("Rscript")
+    if executable:
+        return executable
+    candidates = []
+    for base in (Path("C:/Program Files/R"), Path("C:/Program Files (x86)/R")):
+        candidates.extend(base.glob("R-*/bin/Rscript.exe"))
+    if not candidates:
+        return None
+
+    def version_key(path: Path) -> tuple[int, ...]:
+        return tuple(int(value) for value in re.findall(r"\d+", path.parts[-3]))
+
+    return str(max(candidates, key=version_key))
+
+
+def check_r() -> dict:
+    executable = find_rscript()
+    if executable is None:
+        return {
+            "id": "rscript", "name": "Rscript（R 图资产解析）", "status": "WARN",
+            "detail": "未找到 Rscript；Python 图链可用，但 R 图资产尚未本机验证",
+            "fix": "安装当前 R for Windows/macOS/Linux，并重新运行 academic-figure/scripts/eval_runner.py。",
+        }
+    rc, out = _run([executable, "--version"], timeout=30)
+    first = next((line for line in out.splitlines() if line.strip()), executable)
+    return {
+        "id": "rscript", "name": "Rscript（R 图资产解析）",
+        "status": "PASS" if rc == 0 else "WARN",
+        "detail": first,
+        "fix": "" if rc == 0 else "检查 R 安装与 Rscript 路径。",
+    }
+
+
 def find_matlab() -> str | None:
     exe = shutil.which("matlab")
     if exe:
@@ -252,7 +286,7 @@ def check_matlab(probe: bool) -> dict:
             "status": "WARN",
             "detail": "未在常见路径/PATH 找到 matlab.exe",
             "fix": ("若需 MATLAB 求解，安装 R2023b+ 并把 bin 加入 PATH；"
-                    "纯 Python 链可不装（MATLAB 用例在 pytest 中默认 skip）。"),
+                    "纯 Python 链可不装；仓库使用已提交的真机证据做非 MATLAB 环境回归。"),
         }
     detail = f"找到 {exe}"
     if not probe:
@@ -280,7 +314,8 @@ def check_matlab(probe: bool) -> dict:
 def check_word_com() -> dict:
     if sys.platform != "win32":
         return {"id": "word_com", "name": "Word COM（docx 渲染）",
-                "status": "SKIP", "detail": "非 Windows，跳过", "fix": ""}
+                "status": "WARN", "detail": "非 Windows，无法执行 Word COM 在线渲染验证",
+                "fix": "在装有 Microsoft Word 的 Windows 终验 DOCX→PDF；python-docx 包级审计仍会执行。"}
     # 只查 ProgID 是否已注册，不启动 Word（启动慢且可能弹窗）
     rc, out = _run(
         ["powershell", "-NoProfile", "-Command",
@@ -299,7 +334,14 @@ def check_word_com() -> dict:
 
 
 def check_graphviz() -> dict:
-    rc, out = _run(["dot", "-V"], timeout=10)
+    executable = shutil.which("dot")
+    if executable is None and sys.platform == "win32":
+        candidates = (
+            Path("C:/Program Files/Graphviz/bin/dot.exe"),
+            Path("C:/Program Files (x86)/Graphviz/bin/dot.exe"),
+        )
+        executable = next((str(path) for path in candidates if path.is_file()), None)
+    rc, out = _run([executable or "dot", "-V"], timeout=10)
     if rc == 0 or (rc != 127 and out):
         first = out.splitlines()[0] if out else "dot"
         return {"id": "graphviz", "name": "graphviz dot（可选 .dot 渲染）",
@@ -319,6 +361,7 @@ def run_all(matlab_probe: bool) -> list[dict]:
         check_git(),
         check_xelatex(),
         check_cn_font_matplotlib(),
+        check_r(),
         check_matlab(matlab_probe),
         check_word_com(),
         check_graphviz(),

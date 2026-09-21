@@ -17,9 +17,17 @@ function Step($i, $msg) { Write-Host "`n[$i] $msg" -ForegroundColor Cyan }
 
 Step 1/7 "环境自检（doctor.py）"
 python scripts\doctor.py
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "  [失败] 环境自检未通过，退出码 $LASTEXITCODE" -ForegroundColor Red
+    exit 1
+}
 
 Step 2/7 "contest_init 初始化工作目录 -> $workDir"
 python scripts\contest_init.py --workdir $workDir
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "  [失败] contest_init 未完成，退出码 $LASTEXITCODE" -ForegroundColor Red
+    exit 1
+}
 
 Step 3/7 "读题审计报告（桩内容，直接拷贝示例）"
 Copy-Item (Join-Path $demoDir "read_audit_report.md") (Join-Path $workDir "读题审计报告.md") -Force
@@ -28,29 +36,56 @@ Write-Host "  已写入 读题审计报告.md / problem.txt"
 
 Step 4/7 "playbook_match 题面原型匹配（应命中 optimization）"
 python scripts\playbook_match.py --txt (Join-Path $workDir "problem.txt")
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "  [失败] playbook_match 未完成，退出码 $LASTEXITCODE" -ForegroundColor Red
+    exit 1
+}
 
 Step 5/7 "技术路线图渲染（render_roadmap.py，optimization 模板）"
-if (Test-Path "scripts\render_roadmap.py") {
-    $roadmapSpec = Join-Path $repo "assets\roadmap\templates\optimization.yaml"
-    $roadmapOut  = Join-Path $workDir "roadmap"
-    python scripts\render_roadmap.py --spec $roadmapSpec --outdir $roadmapOut --fmt png,pdf
-    if (Test-Path (Join-Path $roadmapOut "*.png")) {
-        Write-Host "  路线图已渲染: $roadmapOut" -ForegroundColor Green
-    }
-} else {
-    Write-Host "  [跳过] render_roadmap.py 尚未就绪。" -ForegroundColor Yellow
+$roadmapScript = Join-Path $repo "scripts\render_roadmap.py"
+$roadmapSpec = Join-Path $repo "assets\roadmap\templates\optimization.yaml"
+$roadmapOut = Join-Path $workDir "roadmap"
+if (-not (Test-Path -LiteralPath $roadmapScript -PathType Leaf)) {
+    Write-Host "  [失败] 缺少必需脚本：$roadmapScript" -ForegroundColor Red
+    exit 1
 }
+python $roadmapScript --spec $roadmapSpec --outdir $roadmapOut --fmt png,pdf
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "  [失败] 路线图渲染未完成，退出码 $LASTEXITCODE" -ForegroundColor Red
+    exit 1
+}
+$roadmapPng = @(Get-ChildItem -LiteralPath $roadmapOut -File -Filter "*.png" | Where-Object Length -gt 0)
+$roadmapPdf = @(Get-ChildItem -LiteralPath $roadmapOut -File -Filter "*.pdf" | Where-Object Length -gt 0)
+if ($roadmapPng.Count -eq 0 -or $roadmapPdf.Count -eq 0) {
+    Write-Host "  [失败] 路线图必须同时生成非空 PNG 与 PDF。" -ForegroundColor Red
+    exit 1
+}
+Write-Host "  路线图已渲染: $roadmapOut" -ForegroundColor Green
 
 Step 6/7 "xelatex 编译极简论文 -> PDF"
 $texSrc = Join-Path $demoDir "main.tex"
 $texWork = Join-Path $workDir "main.tex"
+$pdfWork = Join-Path $workDir "main.pdf"
 Copy-Item $texSrc $texWork -Force
+if (Test-Path -LiteralPath $pdfWork) {
+    Remove-Item -LiteralPath $pdfWork -Force
+}
 Push-Location $workDir
 xelatex -interaction=nonstopmode main.tex > $null 2>&1
+if ($LASTEXITCODE -ne 0) {
+    Pop-Location
+    Write-Host "  编译失败：XeLaTeX 第一遍退出码 $LASTEXITCODE" -ForegroundColor Red
+    exit 1
+}
 xelatex -interaction=nonstopmode main.tex > $null 2>&1
+$xelatexExit = $LASTEXITCODE
 Pop-Location
-if (Test-Path (Join-Path $workDir "main.pdf")) {
-    $pdf = Get-Item (Join-Path $workDir "main.pdf")
+if ($xelatexExit -ne 0) {
+    Write-Host "  编译失败：XeLaTeX 第二遍退出码 $xelatexExit" -ForegroundColor Red
+    exit 1
+}
+if ((Test-Path -LiteralPath $pdfWork -PathType Leaf) -and (Get-Item -LiteralPath $pdfWork).Length -gt 0) {
+    $pdf = Get-Item -LiteralPath $pdfWork
     Write-Host ("  编译成功: {0} ({1:N0} bytes)" -f $pdf.FullName, $pdf.Length) -ForegroundColor Green
 } else {
     Write-Host "  编译失败：请在 $workDir 手动跑 xelatex main.tex 看报错" -ForegroundColor Red

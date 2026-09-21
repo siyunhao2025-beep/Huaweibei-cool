@@ -19,8 +19,8 @@ corpus_build.py — 华为杯研赛获奖论文语料全量勘察与抽文脚本
   - 数字、奖级、方法归属拿不准一律标“待确认”与低置信度，禁止脑补。
 
 用法（在仓库根目录运行）：
-  python scripts/corpus_build.py
-  python scripts/corpus_build.py --rescan
+  python scripts/corpus_build.py --corpus-root "D:\某语料根"
+  python scripts/corpus_build.py --corpus-root "D:\某语料根" --rescan
   python scripts/corpus_build.py --corpus-root "D:\某语料根" --repo-root .
 """
 from __future__ import annotations
@@ -29,18 +29,16 @@ import argparse
 import csv
 import hashlib
 import json
+import os
 import re
 import sys
 import time
 from pathlib import Path
 
 # ---------------------------------------------------------------------------
-# 默认路径（可被命令行覆盖）
+# 路径配置。公开仓库不得绑定某位使用者的桌面目录。
 # ---------------------------------------------------------------------------
-DEFAULT_CORPUS_ROOT = (
-    r"C:\Users\ASUS\Desktop\26华为杯研赛1"
-    r"\②历年获奖作品（04-24年）\中国研究生数学建模竞赛优秀论文"
-)
+DEFAULT_CORPUS_ROOT = os.environ.get("HUAWEI_CORPUS_ROOT")
 # 仓库根（默认：本脚本所在目录的上一级）
 DEFAULT_REPO_ROOT = Path(__file__).resolve().parent.parent
 
@@ -221,7 +219,10 @@ def build_index(corpus_root: Path, repo_root: Path, rescan: bool) -> list[dict]:
             team = infer_team_number(pdf)
             # 安全文件名 + 相对路径短哈希，保证跨目录同名（如多个“论文.pdf”）不碰撞
             raw_stem = safe_name(pdf.stem)
-            h8 = hashlib.md5(str(rel_to_year_root).encode("utf-8")).hexdigest()[:8]
+            # Compatibility-only short identifier, never a security digest.
+            h8 = hashlib.md5(
+                str(rel_to_year_root).encode("utf-8"), usedforsecurity=False
+            ).hexdigest()[:8]
             stem = f"{raw_stem}_{h8}" if len(raw_stem) < 12 else raw_stem
             out_txt = text_dir / str(year) / f"{stem}.txt"
             render_dir = text_dir / str(year) / "_rendered"
@@ -346,7 +347,7 @@ def main() -> None:
     )
     ap.add_argument(
         "--corpus-root", default=DEFAULT_CORPUS_ROOT,
-        help="获奖论文语料根（只读），默认指向本机已核实路径。",
+        help="获奖论文语料根（只读）；也可设置 HUAWEI_CORPUS_ROOT。",
     )
     ap.add_argument(
         "--repo-root", default=str(DEFAULT_REPO_ROOT),
@@ -358,7 +359,10 @@ def main() -> None:
     )
     args = ap.parse_args()
 
-    corpus_root = Path(args.corpus_root)
+    if not args.corpus_root:
+        ap.error("请用 --corpus-root 指定只读语料根，或设置 HUAWEI_CORPUS_ROOT")
+
+    corpus_root = Path(args.corpus_root).expanduser().resolve()
     repo_root = Path(args.repo_root)
     if not corpus_root.is_dir():
         print(f"错误：语料根不存在: {corpus_root}", file=sys.stderr)

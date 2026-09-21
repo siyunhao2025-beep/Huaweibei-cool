@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
-"""Academic Figure Skill A/B Test Framework — Academic Figure Skill vs Bare Claude.
+"""Manual paired-artifact rubric for academic-figure A/B evaluation.
 
 Defines 5 test scenarios with objective scoring criteria.
 Each scenario returns: asset_hit, font_ok, palette_ok, spine_ok, render_ok, vector_export.
 
-Usage:
-    python ab_test.py              # print all 5 scenarios and scoring rubrics
-    python ab_test.py --baseline   # run bare-Claude tests (generate without skill)
-    python ab_test.py --academic-figure-skill   # run Academic Figure Skill tests
-    python ab_test.py --compare    # compare both results
+This file does not generate figures or invent scores. With no arguments it
+prints the five rubrics. ``--compare`` reads two complete, independently
+recorded result files and reports only the observed rubric-score difference.
 """
 
 from __future__ import annotations
-import json, os, sys
+import argparse
+import json
+import math
+import sys
 from pathlib import Path
-from dataclasses import dataclass, field, asdict
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+SKILL_DIR = Path(__file__).resolve().parent.parent
 
 # ═══════════════════════════════════════════════════════════
 # Test scenarios
@@ -45,6 +45,7 @@ SCENARIOS = [
     },
     {
         "id": "S2_radar_violin_bar_pca",
+        "name": "Four-panel mixed-backend composition",
         "prompt": "画雷达图、小提琴图、分组柱状图、PCA图，组合成一张",
         "user_type": "knows_figure_types",
         "expected": {
@@ -65,6 +66,7 @@ SCENARIOS = [
     },
     {
         "id": "S3_heatmap_nature_genetics",
+        "name": "Nature Genetics-style heatmap",
         "prompt": "画一个 Nature Genetics 风格的差异基因表达热图",
         "user_type": "knows_journal",
         "expected": {
@@ -84,6 +86,7 @@ SCENARIOS = [
     },
     {
         "id": "S4_unknown_chart_type",
+        "name": "Unsupported long-tail chart",
         "prompt": "画一个弦图展示六个群组之间的流动物流量",
         "user_type": "wants_uncommon_chart",
         "expected": {
@@ -100,6 +103,7 @@ SCENARIOS = [
     },
     {
         "id": "S5_analyze_vague",
+        "name": "Vague data-visualization request",
         "prompt": "分析 simulated_data.csv 并可视化",
         "user_type": "vague_request",
         "expected": {
@@ -118,15 +122,6 @@ SCENARIOS = [
 # ═══════════════════════════════════════════════════════════
 # Scoring
 # ═══════════════════════════════════════════════════════════
-
-@dataclass
-class ScenarioResult:
-    scenario_id: str
-    passed_checks: int = 0
-    total_checks: int = 0
-    checks_detail: list[dict] = field(default_factory=list)
-    notes: str = ""
-
 
 def print_scenarios():
     """Print all 5 test scenarios with scoring rubrics."""
@@ -153,6 +148,12 @@ def score_scenario(scenario_id: str, checks_passed: list[bool], details: list[st
         return {"error": f"Unknown scenario: {scenario_id}"}
 
     total = len(scenario["expected"]["checks"])
+    if len(checks_passed) != total:
+        raise ValueError(
+            f"{scenario_id} requires exactly {total} check results; got {len(checks_passed)}"
+        )
+    if not all(isinstance(value, bool) for value in checks_passed):
+        raise TypeError("checks_passed must contain booleans only")
     passed = sum(1 for b in checks_passed if b)
 
     check_details = []
@@ -174,6 +175,42 @@ def score_scenario(scenario_id: str, checks_passed: list[bool], details: list[st
     }
 
 
+def validate_result_set(payload: object, label: str) -> dict:
+    """Reject missing or internally inconsistent manual measurements."""
+    if not isinstance(payload, dict):
+        raise ValueError(f"{label} result must be a JSON object")
+    validated = {}
+    for scenario in SCENARIOS:
+        scenario_id = scenario["id"]
+        row = payload.get(scenario_id)
+        if not isinstance(row, dict):
+            raise ValueError(f"{label} is missing scenario {scenario_id}")
+        expected_total = len(scenario["expected"]["checks"])
+        passed = row.get("passed")
+        total = row.get("total")
+        rate = row.get("pass_rate")
+        if isinstance(passed, bool) or not isinstance(passed, int):
+            raise ValueError(f"{label}/{scenario_id}.passed must be an integer")
+        if total != expected_total or not 0 <= passed <= total:
+            raise ValueError(
+                f"{label}/{scenario_id} must satisfy 0 <= passed <= total == {expected_total}"
+            )
+        expected_rate = passed / total
+        if isinstance(rate, bool) or not isinstance(rate, (int, float)):
+            raise ValueError(f"{label}/{scenario_id}.pass_rate must be numeric")
+        if not math.isclose(float(rate), expected_rate, rel_tol=0, abs_tol=1e-9):
+            raise ValueError(f"{label}/{scenario_id}.pass_rate is inconsistent with passed/total")
+        validated[scenario_id] = row
+    return validated
+
+
+def load_result_set(path: Path, label: str) -> dict:
+    if not path.is_file():
+        raise FileNotFoundError(f"{label} result file does not exist: {path}")
+    with path.open("r", encoding="utf-8-sig") as handle:
+        return validate_result_set(json.load(handle), label)
+
+
 def print_ab_report(baseline: dict, acad_fig_skill: dict):
     """Print A/B comparison report."""
     print("=" * 60)
@@ -189,8 +226,8 @@ def print_ab_report(baseline: dict, acad_fig_skill: dict):
         bl = baseline.get(sid, {})
         cn = acad_fig_skill.get(sid, {})
 
-        bl_rate = bl.get("pass_rate", 0)
-        cn_rate = cn.get("pass_rate", 0)
+        bl_rate = bl["pass_rate"]
+        cn_rate = cn["pass_rate"]
         delta = cn_rate - bl_rate
 
         if delta > 0:
@@ -202,10 +239,10 @@ def print_ab_report(baseline: dict, acad_fig_skill: dict):
 
         print(f"  {sid}: Baseline={bl_rate:.0%}  Academic Figure Skill={cn_rate:.0%}  ({arrow}{delta:+.0%})")
 
-        baseline_total += bl.get("total", 0)
-        acad_fig_skill_total += cn.get("total", 0)
-        baseline_pass += bl.get("passed", 0)
-        acad_fig_skill_pass += cn.get("passed", 0)
+        baseline_total += bl["total"]
+        acad_fig_skill_total += cn["total"]
+        baseline_pass += bl["passed"]
+        acad_fig_skill_pass += cn["passed"]
 
     bl_overall = baseline_pass / baseline_total if baseline_total > 0 else 0
     cn_overall = acad_fig_skill_pass / acad_fig_skill_total if acad_fig_skill_total > 0 else 0
@@ -215,24 +252,41 @@ def print_ab_report(baseline: dict, acad_fig_skill: dict):
     print("=" * 60)
 
     if cn_overall > bl_overall:
-        print("Verdict: Academic Figure Skill WINS — objective quality improvement confirmed")
+        print("Observed result: the skill artifact has the higher rubric score.")
     elif cn_overall == bl_overall:
-        print("Verdict: TIE — Academic Figure Skill does not degrade output; value is in automation")
+        print("Observed result: the paired artifacts have equal rubric scores.")
     else:
-        print("Verdict: Academic Figure Skill REGRESSION — need to investigate")
+        print("Observed result: the skill artifact has the lower rubric score; investigate before use.")
+    print("This comparison does not by itself establish causal or general quality improvement.")
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--compare", action="store_true", help="compare two complete measured result files")
+    parser.add_argument(
+        "--baseline-file", type=Path,
+        default=SKILL_DIR / "scripts" / ".ab_baseline.json",
+    )
+    parser.add_argument(
+        "--skill-file", type=Path,
+        default=SKILL_DIR / "scripts" / ".ab_academic-figure-skill.json",
+    )
+    args = parser.parse_args(argv)
+    if not args.compare:
+        print_scenarios()
+        print("Generate paired artifacts from identical inputs, then score both with the checks above.")
+        print()
+        print(f"Expected result files: {SKILL_DIR / 'scripts' / '.ab_baseline.json'} and .ab_academic-figure-skill.json")
+        return 0
+    try:
+        baseline = load_result_set(args.baseline_file, "baseline")
+        academic = load_result_set(args.skill_file, "skill")
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"A/B comparison refused: {exc}", file=sys.stderr)
+        return 2
+    print_ab_report(baseline, academic)
+    return 0
 
 
 if __name__ == "__main__":
-    if "--compare" in sys.argv:
-        # Load saved results if available
-        bl_path = PROJECT_ROOT / "academic-figure-skill" / "scripts" / ".ab_baseline.json"
-        cn_path = PROJECT_ROOT / "academic-figure-skill" / "scripts" / ".ab_academic-figure-skill.json"
-        baseline = json.load(open(bl_path)) if bl_path.exists() else {}
-        acad_fig_skill = json.load(open(cn_path)) if cn_path.exists() else {}
-        print_ab_report(baseline, acad_fig_skill)
-    else:
-        print_scenarios()
-        print("To run A/B tests: send each scenario prompt to both bare Claude and Academic Figure Skill.")
-        print("Score each run using the checks above. Save results with --baseline or --academic-figure-skill.")
-        print()
-        print(f"Results saved to: {PROJECT_ROOT}/academic-figure-skill/scripts/.ab_baseline.json and .ab_academic-figure-skill.json")
+    raise SystemExit(main())

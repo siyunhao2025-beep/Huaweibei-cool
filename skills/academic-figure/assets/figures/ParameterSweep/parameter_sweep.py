@@ -61,7 +61,6 @@ import numpy as np
 import pandas as pd
 from matplotlib.colors import LinearSegmentedColormap, TwoSlopeNorm
 from matplotlib.font_manager import FontProperties
-from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 
 
 TYPE_BY_STEM = {

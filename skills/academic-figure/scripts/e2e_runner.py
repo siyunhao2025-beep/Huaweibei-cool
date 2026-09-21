@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Academic Figure Skill E2E Integration Test Runner.
+"""Academic Figure Skill generated-source contract checker.
 
-Validates generated figure scripts against the A/B test scenario criteria from
-ab_test.py. Post-generation structural checks — no Claude needed.
+Validates a generated source file against one explicitly selected historical
+scenario. Pattern matches are structural checks, not rendered-image quality or
+evidence of a causal A/B improvement.
 
 Each scenario defines a set of MUST_HAVE (required patterns) and MUST_NOT
 (forbidden patterns) checks. The runner scores pass/fail per scenario.
@@ -15,11 +16,9 @@ Usage:
 """
 
 from __future__ import annotations
-import json, os, re, sys
+import re, sys
+from dataclasses import dataclass
 from pathlib import Path
-from dataclasses import dataclass, field
-
-PROJECT = Path(__file__).resolve().parents[2]
 
 
 @dataclass
@@ -215,7 +214,7 @@ if __name__ == "__main__":
             for sid in [s.id for s in SCENARIOS]:
                 print_score(report[sid])
             reports.append({"file": str(f), "scores": report})
-        print(f"\nSummary: scored {len(reports)} file(s)")
+        print(f"\nSummary: diagnostic scores for {len(reports)} file(s); no scenario was selected, so no pass claim is made")
         sys.exit(0)
 
     if "--scenario" in sys.argv:
@@ -238,7 +237,7 @@ if __name__ == "__main__":
         report = score_script(source, scenario)
         print(f"File: {label}")
         print_score(report)
-        sys.exit(0)
+        sys.exit(0 if report["meets_threshold"] else 1)
 
     # Default: score a single file against all scenarios
     if len(sys.argv) > 1:
@@ -259,4 +258,7 @@ if __name__ == "__main__":
     for sid in [s.id for s in SCENARIOS]:
         print_score(report[sid])
     ov = report["_overall"]
-    print(f"Overall: {ov['scenarios_pass']}/{ov['scenarios_total']} scenarios pass threshold")
+    print(
+        f"Diagnostic only: {ov['scenarios_pass']}/{ov['scenarios_total']} scenario patterns met. "
+        "Select one with --scenario for a gating result."
+    )

@@ -4,6 +4,7 @@ from matplotlib.patches import Wedge
 from matplotlib.colors import Normalize
 from matplotlib.cm import ScalarMappable
 from matplotlib import colormaps
+import numpy as np
 import pandas as pd
 import matplotlib.patches as patches
 
@@ -296,8 +297,15 @@ def plot_model_sector_matrices(model_results):
 # ================================================================
 # 12. 示例数据
 # ================================================================
-df = pd.read_csv('./dataset.csv')
-model_results = df.to_dict(orient='records')
-fig = plot_model_sector_matrices(model_results)
-plt.savefig("Confusion_Matrix.pdf", dpi=300, bbox_inches="tight")
-plt.show()
+def main():
+    """Render the example dataset without running on module import."""
+    df = pd.read_csv("./dataset.csv")
+    model_results = df.to_dict(orient="records")
+    fig = plot_model_sector_matrices(model_results)
+    fig.savefig("Confusion_Matrix.pdf", bbox_inches="tight")
+    fig.savefig("Confusion_Matrix.png", dpi=300, bbox_inches="tight")
+    plt.close(fig)
+
+
+if __name__ == "__main__":
+    main()

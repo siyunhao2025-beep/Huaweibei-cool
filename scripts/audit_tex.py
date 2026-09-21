@@ -9,27 +9,108 @@ import re
 from pathlib import Path
 
 
-INPUT_RE = re.compile(r"\\input\s*\{([^{}]+)\}")
+INPUT_RE = re.compile(r"\\(?:input|include)\s*\{([^{}]+)\}")
 GRAPHICS_RE = re.compile(r"\\includegraphics(?:\[[^]]*\])?\s*\{([^{}]+)\}")
 BEGIN_RE = re.compile(r"\\begin\s*\{([^{}]+)\}")
 END_RE = re.compile(r"\\end\s*\{([^{}]+)\}")
 LABEL_RE = re.compile(r"\\label\s*\{([^{}]+)\}")
 REF_RE = re.compile(r"\\(?:ref|eqref|autoref|pageref)\s*\{([^{}]+)\}")
 FORBIDDEN_UNICODE_MATH = set("ᐟ¹²³⁴⁵⁶⁷⁸⁹⁰⁻⁺Σ∑∫√∈∉≤≥≈μσπγδελρτφω̃ᵀĉŷ")
+GRAPHIC_EXTENSIONS = (".pdf", ".png", ".jpg", ".jpeg", ".eps")
+DANGEROUS_ANYWHERE_RE = re.compile(
+    r"\\(?:write18|openin|openout|read|newread|newwrite|catcode)\b",
+    re.IGNORECASE,
+)
+DANGEROUS_FRAGMENT_RE = re.compile(
+    r"\\(?:usepackage|documentclass|includeonly|subfile|import|subimport|"
+    r"includefrom|inputfrom|includepdf|lstinputlisting|verbatiminput|"
+    r"inputminted|bibliography|addbibresource)\b",
+    re.IGNORECASE,
+)
 
 
 def read_manifest(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8-sig"))
 
 
+def decode_tex_path(raw: str) -> str:
+    clean = raw.strip()
+    for escaped, literal in ((r"\ ", " "), (r"\#", "#"), (r"\%", "%"), (r"\&", "&")):
+        clean = clean.replace(escaped, literal)
+    return clean
+
+
 def inside(root: Path, raw: str) -> Path:
-    path = (root / raw).resolve()
+    clean = decode_tex_path(raw)
+    path = (root / clean).resolve()
     path.relative_to(root.resolve())
     return path
 
 
 def remove_comments(text: str) -> str:
-    return "\n".join(line.split("%", 1)[0] for line in text.splitlines())
+    cleaned = []
+    for line in text.splitlines():
+        cut = len(line)
+        for index, char in enumerate(line):
+            if char != "%":
+                continue
+            backslashes = 0
+            cursor = index - 1
+            while cursor >= 0 and line[cursor] == "\\":
+                backslashes += 1
+                cursor -= 1
+            if backslashes % 2 == 0:
+                cut = index
+                break
+        cleaned.append(line[:cut])
+    return "\n".join(cleaned)
+
+
+def find_project_root(paper_root: Path) -> Path:
+    """Use the nearest contest config as the file-access boundary."""
+    for candidate in (paper_root.resolve(), *paper_root.resolve().parents):
+        if (candidate / "比赛配置.json").is_file():
+            return candidate
+    return paper_root.resolve()
+
+
+def collect_fragment_chain(initial: list[Path], root: Path) -> tuple[list[Path], list[str]]:
+    r"""Collect static local ``\input`` files and reject cycles/dynamic inputs."""
+    collected: list[Path] = []
+    visited: set[Path] = set()
+    active: set[Path] = set()
+    errors: list[str] = []
+
+    def visit(path: Path) -> None:
+        resolved = path.resolve()
+        if resolved in active:
+            errors.append(f"TeX input cycle: {resolved}")
+            return
+        if resolved in visited:
+            return
+        visited.add(resolved)
+        active.add(resolved)
+        collected.append(resolved)
+        cleaned = remove_comments(resolved.read_text(encoding="utf-8-sig"))
+        inputs = INPUT_RE.findall(cleaned)
+        if len(re.findall(r"\\(?:input|include)\b", cleaned)) != len(inputs):
+            errors.append(f"dynamic or malformed \\input/\\include is not allowed: {resolved}")
+        for raw in inputs:
+            candidate = raw if raw.lower().endswith(".tex") else raw + ".tex"
+            try:
+                child = inside(root, candidate)
+            except (ValueError, OSError) as exc:
+                errors.append(f"{resolved}: {raw}: {exc}")
+                continue
+            if not child.is_file():
+                errors.append(f"{resolved}: nested input does not exist: {raw}")
+                continue
+            visit(child)
+        active.remove(resolved)
+
+    for path in initial:
+        visit(path)
+    return collected, errors
 
 
 def strip_identity_cover_commands(text: str) -> str:
@@ -58,7 +139,7 @@ def brace_balance(text: str) -> int:
 
 def audit(manifest_path: Path, main_path: Path) -> dict:
     root = manifest_path.parent.resolve()
-    project_root = root.parent
+    project_root = find_project_root(root)
     manifest = read_manifest(manifest_path)
     checks: list[dict] = []
     failures: list[dict] = []
@@ -127,12 +208,19 @@ def audit(manifest_path: Path, main_path: Path) -> dict:
         else:
             fragment_paths.append(path)
     add("all_manifest_fragments_exist_and_are_tex", not fragment_errors, errors=fragment_errors)
+    fragment_paths, nested_input_errors = collect_fragment_chain(fragment_paths, root)
+    add("nested_inputs_are_static_and_local", not nested_input_errors, errors=nested_input_errors)
 
     markdown_residue: list[str] = []
     document_commands: list[str] = []
     unbalanced: list[str] = []
     environment_errors: list[str] = []
-    all_text = strip_identity_cover_commands(remove_comments(main_text))
+    main_cleaned = strip_identity_cover_commands(remove_comments(main_text))
+    dangerous_commands = [
+        f"{main_path}: {match.group(0)}"
+        for match in DANGEROUS_ANYWHERE_RE.finditer(main_cleaned)
+    ]
+    all_text = main_cleaned
     for path in fragment_paths:
         text = path.read_text(encoding="utf-8-sig")
         all_text += "\n" + text
@@ -145,6 +233,11 @@ def audit(manifest_path: Path, main_path: Path) -> dict:
             unbalanced.append(str(path))
         stack: list[str] = []
         cleaned = remove_comments(text)
+        dangerous_commands.extend(
+            f"{path}: {match.group(0)}"
+            for regex in (DANGEROUS_ANYWHERE_RE, DANGEROUS_FRAGMENT_RE)
+            for match in regex.finditer(cleaned)
+        )
         for match in re.finditer(r"\\begin\s*\{([^{}]+)\}|\\end\s*\{([^{}]+)\}", cleaned):
             begin, end = match.groups()
             if begin:
@@ -155,6 +248,8 @@ def audit(manifest_path: Path, main_path: Path) -> dict:
     add("fragments_are_real_latex", not markdown_residue and not document_commands, markdown_residue=markdown_residue, document_commands=document_commands)
     add("fragment_braces_balanced", not unbalanced, files=unbalanced)
     add("fragment_environments_balanced", not environment_errors, errors=environment_errors)
+    dangerous_commands = sorted(set(dangerous_commands))
+    add("no_dangerous_tex_file_or_shell_commands", not dangerous_commands, commands=dangerous_commands)
 
     missing_graphics: list[str] = []
     for raw in GRAPHICS_RE.findall(all_text):
@@ -162,17 +257,18 @@ def audit(manifest_path: Path, main_path: Path) -> dict:
             # The paper source may reference real result figures stored in
             # the sibling 求解/ tree.  Inputs remain confined to 论文/;
             # graphics are allowed anywhere inside the project root.
-            path = (root / raw).resolve()
+            path = (root / decode_tex_path(raw)).resolve()
             path.relative_to(project_root.resolve())
         except (ValueError, OSError):
             missing_graphics.append(raw)
             continue
-        if not path.is_file():
+        candidates = [path] if path.suffix else [path.with_suffix(ext) for ext in GRAPHIC_EXTENSIONS]
+        if not any(candidate.is_file() for candidate in candidates):
             missing_graphics.append(raw)
     add("graphics_paths_exist", not missing_graphics, missing=missing_graphics)
 
     identity_hits = sorted(set(re.findall(
-        r"学校|学院|实验室|参赛队号|队员姓名|指导教师|学号|邮箱|"
+        r"(?:学校|学院|实验室|参赛队号|队员姓名|指导教师|学号|邮箱)\s*[:：]|"
         r"\\(?:schoolname|baominghao|member[abc]|makeidentitycover)\b|C:\\Users\\",
         all_text,
         re.I,

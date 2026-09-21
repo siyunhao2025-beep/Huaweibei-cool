@@ -6,7 +6,6 @@
 """
 import importlib.util
 
-import pytest
 
 from conftest import PLAYBOOKS, SCRIPTS
 

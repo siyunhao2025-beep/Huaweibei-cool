@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Academic Figure Skill Auto-Eval Generator.
+"""Academic Figure Skill static asset/parser audit.
 
 Scans assets/figures/ and automatically generates one eval per figure type.
-Runs: asset-found check → script-runnable check → baseline compliance check.
+Runs: asset-found check → syntax/parser check → baseline compliance check.
+It does not claim that data-dependent scripts rendered successfully.
 
 Usage:
     python eval_runner.py                  # run all evals
@@ -11,21 +12,20 @@ Usage:
 """
 
 from __future__ import annotations
+import argparse
 import json
 import os
+import re
 import subprocess
 import sys
-import tempfile
-import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-import numpy as np
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]  # Academic Figure Skill/
-FIGURES_DIR = PROJECT_ROOT / "academic-figure-skill" / "assets" / "figures"
-RESULTS_FILE = PROJECT_ROOT / "academic-figure-skill" / "scripts" / ".eval_results.json"
+SKILL_DIR = Path(__file__).resolve().parent.parent
+FIGURES_DIR = SKILL_DIR / "assets" / "figures"
+RESULTS_FILE = SKILL_DIR / "scripts" / ".eval_results.json"
 
 # ═══════════════════════════════════════════════════════════
 # Required baseline checks (same values as compose.py UNIFIED_RCPARAMS)
@@ -38,7 +38,7 @@ BASELINE_CHECKS = {
 }
 
 # Known-good directory names with production scripts (filter out empty/utility dirs)
-SKIP_DIRS = {"basic-plots", "multipanel", "other", "README.md"}
+EXCLUDED_DIRS = {"basic-plots", "multipanel", "other", "README.md"}
 
 
 # ═══════════════════════════════════════════════════════════
@@ -49,7 +49,7 @@ def list_figure_types() -> list[str]:
     """Return all figure type directories that contain production scripts."""
     types = []
     for name in sorted(os.listdir(FIGURES_DIR)):
-        if name in SKIP_DIRS:
+        if name in EXCLUDED_DIRS:
             continue
         path = FIGURES_DIR / name
         if not path.is_dir():
@@ -61,7 +61,7 @@ def list_figure_types() -> list[str]:
 
 
 def check_asset_found(figure_type: str) -> dict[str, Any]:
-    """Verify the figure type directory exists and has scripts + previews."""
+    """Verify the figure directory has scripts; report any local previews."""
     path = FIGURES_DIR / figure_type
     if not path.exists():
         return {"passed": False, "reason": f"Directory {figure_type} not found"}
@@ -82,7 +82,7 @@ def check_asset_found(figure_type: str) -> dict[str, Any]:
 
 
 def check_script_runnable(figure_type: str) -> dict[str, Any]:
-    """Check whether at least one script in the directory can be executed."""
+    """Parse every script; this is not a data-backed render test."""
     path = FIGURES_DIR / figure_type
     py_scripts = [f for f in os.listdir(path) if f.endswith(".py")]
     r_scripts = [f for f in os.listdir(path) if f.endswith((".R", ".r"))]
@@ -90,7 +90,7 @@ def check_script_runnable(figure_type: str) -> dict[str, Any]:
     results = {}
 
     # Check Python scripts (syntax only — don't run with unknown data dependencies)
-    for script in py_scripts[:1]:  # test 1 per type
+    for script in py_scripts:
         script_path = path / script
         try:
             with open(script_path, "r", encoding="utf-8", errors="replace") as f:
@@ -101,7 +101,7 @@ def check_script_runnable(figure_type: str) -> dict[str, Any]:
             results[f"py:{script}"] = {"passed": False, "reason": f"Syntax error: {e}"}
 
     # Check R scripts (syntax only)
-    for script in r_scripts[:1]:
+    for script in r_scripts:
         script_path = str(path / script).replace("\\", "/")
         r_bin = _find_r()
         if not r_bin:
@@ -111,13 +111,13 @@ def check_script_runnable(figure_type: str) -> dict[str, Any]:
             # Use temp .R file that sources the script, avoiding inline path escaping
             import tempfile
             with tempfile.NamedTemporaryFile(mode="w", suffix=".R", delete=False, encoding="utf-8") as tf:
-                tf.write(f'# R parse check\n')
-                tf.write(f'script_path <- "{script_path}"\n')
-                tf.write(f'if (file.exists(script_path)) {{\n')
-                tf.write(f'  tryCatch({{parse(file=script_path); cat("OK\\n")}}, error=function(e)cat("ERROR:", e$message, "\\n"))\n')
-                tf.write(f'}} else {{\n')
-                tf.write(f'  cat("SKIP: file not found\\n")\n')
-                tf.write(f'}}\n')
+                tf.write('# R parse check\n')
+                tf.write(f'script_path <- {json.dumps(script_path, ensure_ascii=False)}\n')
+                tf.write('if (file.exists(script_path)) {\n')
+                tf.write('  tryCatch({parse(file=script_path); cat("OK\\n")}, error=function(e)cat("ERROR:", e$message, "\\n"))\n')
+                tf.write('} else {\n')
+                tf.write('  cat("ERROR: file not found\\n")\n')
+                tf.write('}\n')
                 temp_r = tf.name
 
             result = subprocess.run(
@@ -125,15 +125,17 @@ def check_script_runnable(figure_type: str) -> dict[str, Any]:
                 capture_output=True, text=True, timeout=30,
                 encoding="utf-8", errors="replace",
             )
-            os.unlink(temp_r)
-
-            passed = "OK" in result.stdout and "ERROR" not in result.stdout
+            passed = result.returncode == 0 and "OK" in result.stdout and "ERROR" not in result.stdout
             results[f"r:{script}"] = {
                 "passed": passed,
                 "reason": "R parse OK" if passed else (result.stdout[:200] or result.stderr[:200]),
             }
         except Exception as e:
             results[f"r:{script}"] = {"passed": False, "reason": str(e)[:200]}
+        finally:
+            if "temp_r" in locals():
+                Path(temp_r).unlink(missing_ok=True)
+                del temp_r
 
     return results
 
@@ -147,9 +149,8 @@ def check_baseline_compliance() -> dict[str, Any]:
     results = {}
 
     # ── Python side ──
-    compose_py = PROJECT_ROOT / "academic-figure-skill" / "scripts" / "compose.py"
-    typo_md = PROJECT_ROOT / "academic-figure-skill" / "references" / "typography.md"
-    color_md = PROJECT_ROOT / "academic-figure-skill" / "references" / "color-palettes.md"
+    compose_py = SKILL_DIR / "scripts" / "compose.py"
+    color_md = SKILL_DIR / "references" / "color-palettes.md"
 
     # Read compose.py CATEGORICAL
     with open(compose_py, "r", encoding="utf-8", errors="replace") as f:
@@ -173,7 +174,6 @@ def check_baseline_compliance() -> dict[str, Any]:
 
     # Hex values must match
     py_hex = set()
-    import re
     for m in re.finditer(r'"#[0-9A-Fa-f]{6}"', py_src):
         py_hex.add(m.group(0).strip('"'))
     md_hex = set()
@@ -219,13 +219,16 @@ def _find_r() -> str | None:
     if rscript:
         return rscript
 
-    # Windows fallback: check Program Files
-    for ver in ["4.4", "4.3", "4.2", "4.1", "4.0"]:
-        for base in ["C:/Program Files", "C:/Program Files (x86)"]:
-            for patch in range(10, -1, -1):
-                p = f"{base}/R/R-{ver}.{patch}/bin/Rscript.exe"
-                if os.path.exists(p):
-                    return p
+    # Windows fallback: discover installed versions instead of hard-coding a
+    # list that becomes stale as soon as a new R minor version is released.
+    candidates = []
+    for base in (Path("C:/Program Files/R"), Path("C:/Program Files (x86)/R")):
+        candidates.extend(base.glob("R-*/bin/Rscript.exe"))
+    if candidates:
+        def version_key(path: Path) -> tuple[int, ...]:
+            return tuple(int(value) for value in re.findall(r"\d+", path.parts[-3]))
+
+        return str(max(candidates, key=version_key))
     return None
 
 
@@ -233,12 +236,14 @@ def _find_r() -> str | None:
 # Main
 # ═══════════════════════════════════════════════════════════
 
-def run_all(single_type: str | None = None) -> dict[str, Any]:
+def run_all(single_type: str | None = None, save_path: Path | None = None) -> dict[str, Any]:
     """Run all evals and return results dict."""
+    python_runtime = _find_python()
+    r_runtime = _find_r()
     report = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
-        "python": _find_python(),
-        "r": _find_r(),
+        "python": Path(python_runtime).name if python_runtime else None,
+        "r": Path(r_runtime).name if r_runtime else None,
         "baseline": check_baseline_compliance(),
         "figures": {},
     }
@@ -247,15 +252,25 @@ def run_all(single_type: str | None = None) -> dict[str, Any]:
     for ftype in types_to_test:
         entry = {}
         entry["asset"] = check_asset_found(ftype)
-        entry["runnable"] = check_script_runnable(ftype)
-        entry["overall_pass"] = entry["asset"]["passed"] and all(
-            v["passed"] for v in entry["runnable"].values() if entry["runnable"]
+        entry["runnable"] = check_script_runnable(ftype) if entry["asset"]["passed"] else {}
+        entry["overall_pass"] = (
+            entry["asset"]["passed"]
+            and bool(entry["runnable"])
+            and all(v["passed"] for v in entry["runnable"].values())
         )
         report["figures"][ftype] = entry
 
-    # Save results
-    with open(RESULTS_FILE, "w", encoding="utf-8") as f:
-        json.dump(report, f, indent=2, ensure_ascii=False)
+    report["passed"] = (
+        all(item["passed"] for item in report["baseline"].values())
+        and bool(report["figures"])
+        and all(item["overall_pass"] for item in report["figures"].values())
+    )
+
+    if save_path is not None:
+        save_path = save_path.resolve()
+        save_path.parent.mkdir(parents=True, exist_ok=True)
+        with save_path.open("w", encoding="utf-8") as handle:
+            json.dump(report, handle, indent=2, ensure_ascii=False)
 
     return report
 
@@ -276,7 +291,7 @@ def print_report(report: dict[str, Any]):
     print(f"R: {report['r'] or 'NOT FOUND'}")
     print("=" * 60)
 
-    print(f"\nBaseline compliance:")
+    print("\nBaseline compliance:")
     for key, val in baseline.items():
         status = "PASS" if val["passed"] else "FAIL"
         print(f"  [{status}] {key}: {val['reason']}")
@@ -285,7 +300,7 @@ def print_report(report: dict[str, Any]):
     for ftype, entry in sorted(figures.items()):
         a = entry["asset"]
         if not a["passed"]:
-            print(f"  [SKIP] {ftype}: {a['reason']}")
+            print(f"  [FAIL] {ftype}: {a['reason']}")
             continue
         r_status = "PASS" if entry["overall_pass"] else "WARN"
         print(f"  [{r_status}] {ftype} — {a['scripts']} scripts, {a['previews']} previews")
@@ -296,26 +311,38 @@ def print_report(report: dict[str, Any]):
                     print(f"         {rkey}: {reason_text}")
 
     print(f"\nSummary: {run_ok}/{total} figure types pass")
-    if run_ok == total:
-        print("Verdict: READY — all production scripts parse successfully")
+    if report.get("passed", False):
+        print("Verdict: STATIC READY — baseline and all production scripts passed syntax checks")
+    elif run_ok == total:
+        print("Verdict: baseline compliance failed")
     else:
         print(f"Verdict: {total - run_ok} types need attention")
     print("=" * 60)
 
 
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--type", dest="figure_type", help="audit one figure type")
+    parser.add_argument("--report", type=Path, help="write the result JSON to this path")
+    parser.add_argument(
+        "--report-only", nargs="?", const=str(RESULTS_FILE), metavar="PATH",
+        help="print an existing report (defaults to the bundled evidence file)",
+    )
+    args = parser.parse_args(argv)
+    if args.report_only:
+        result_path = Path(args.report_only)
+        if not result_path.is_file():
+            print(f"Report not found: {result_path}", file=sys.stderr)
+            return 1
+        with result_path.open("r", encoding="utf-8-sig") as handle:
+            previous = json.load(handle)
+        print_report(previous)
+        return 0 if previous.get("passed", False) else 1
+
+    report = run_all(args.figure_type, args.report)
+    print_report(report)
+    return 0 if report.get("passed", False) else 1
+
+
 if __name__ == "__main__":
-    if "--report-only" in sys.argv:
-        if RESULTS_FILE.exists():
-            with open(RESULTS_FILE, "r", encoding="utf-8") as f:
-                print_report(json.load(f))
-        else:
-            print("No previous eval results found. Run without --report-only first.")
-            sys.exit(1)
-    else:
-        single = None
-        if "--type" in sys.argv:
-            idx = sys.argv.index("--type")
-            if idx + 1 < len(sys.argv):
-                single = sys.argv[idx + 1]
-        report = run_all(single)
-        print_report(report)
+    raise SystemExit(main())

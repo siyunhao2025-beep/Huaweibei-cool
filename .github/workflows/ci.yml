@@ -1,5 +1,12 @@
 name: CI
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 # 华为杯研赛 AI 作战中枢 持续集成（Wave5-C）
 # Ubuntu + Python 3.12（兼容性最稳）；装依赖后跑完整 pytest。
 # CI 无 MATLAB 时校验已提交的 R2024b 真机证据；有 MATLAB 时自动真机运行。
@@ -13,12 +20,13 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: 检出代码
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: 安装 Python 3.12
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
           cache: pip
@@ -29,10 +37,25 @@ jobs:
       - name: 安装依赖
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          python -m pip install -r requirements.txt
+          python -m pip install bandit==1.9.4 detect-secrets==1.5.0 pip-audit==2.10.1 ruff==0.13.2
+
+      - name: 依赖与安全审计
+        run: |
+          python -m pip check
+          python -m pip_audit -r requirements.txt --progress-spinner off
+          python -m bandit -q -r scripts skills/academic-figure/scripts skills/academic-figure/assets/figures -ll
+          # source-manifest.json contains published SHA-256 checksums, not credentials.
+          python -m detect_secrets scan --all-files --exclude-lines 'detect[-_]secrets' --exclude-files '(^|[\\/])(\.git|__pycache__|\.pytest_cache|\.ruff_cache)([\\/]|$)|\.eval_results\.json$|(^|[\\/])assets[\\/]paper-template[\\/]reference-23rd-latex[\\/]source-manifest\.json$' > /tmp/secrets.json
+          python -c 'import json; data=json.load(open("/tmp/secrets.json", encoding="utf-8")); assert not data["results"], data["results"]'
+
+      - name: 全仓静态与语法检查
+        run: |
+          python -m ruff check . --select E9,F,B
+          python -m compileall -q scripts skills/academic-figure
 
       - name: 运行测试
-        run: python -m pytest tests/ -v
+        run: python -m pytest tests/ -q -ra
 
       # 说明：
       # - CI 已安装 Noto CJK；严格绘图测试把缺少中文字体视为失败，生产渲染器仍保留英文回退。

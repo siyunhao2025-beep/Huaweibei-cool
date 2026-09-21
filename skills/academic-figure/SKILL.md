@@ -395,7 +395,7 @@ Execute the 4-pass QA protocol from `references/checklist.md`.
 
 QA Gateway: READY (all pass) → Deliver. FIX (≤2) → Fix and re-run. ESCALATE (>2) → Reviewer Simulation Mode.
 
-If Python/R runtime is unavailable, skip Pass 3 and warn the user.
+If the required Python/R runtime is unavailable, mark Pass 3 **NOT RUN**, warn the user, and do not report the figure as READY until it has been rendered and inspected in a working environment.
 
 ---
 
@@ -489,7 +489,7 @@ All figure types routed through `assets/figures/<type>/`. Adding a new type = ad
 py academic-figure-skill/scripts/eval_runner.py
 py academic-figure-skill/scripts/eval_runner.py --type PCA
 
-# Trigger accuracy benchmark — 40 prompts, F1/precision/recall
+# Local trigger-heuristic regression fixture — 40 curated prompts; not platform accuracy
 py academic-figure-skill/scripts/trigger_benchmark.py
 py academic-figure-skill/scripts/trigger_benchmark.py --calibrate
 
@@ -500,9 +500,9 @@ py academic-figure-skill/scripts/qa_coverage.py
 py academic-figure-skill/scripts/check_references.py
 py academic-figure-skill/scripts/check_references.py --json
 
-# E2E integration — automated A/B scenario scoring
-py academic-figure-skill/scripts/e2e_runner.py
-py academic-figure-skill/scripts/e2e_runner.py --scenario S1_pca
+# Generated-source structural contract (not an empirical A/B result)
+py academic-figure-skill/scripts/e2e_runner.py --list
+py academic-figure-skill/scripts/e2e_runner.py --scenario S1_pca generated_script.py
 ```
 
 ## Cross-Platform Adapters

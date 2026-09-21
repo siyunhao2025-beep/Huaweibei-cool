@@ -13,9 +13,7 @@ import json
 import os
 import subprocess
 import sys
-from pathlib import Path
 
-import pytest
 
 from conftest import REPO_ROOT, SCRIPTS
 
@@ -28,6 +26,7 @@ EXPECTED_IDS = {
     "git",
     "xelatex",
     "matplotlib_cn_font",
+    "rscript",
     "matlab",
     "word_com",
     "graphviz",
@@ -77,7 +76,7 @@ def test_doctor_json_shape():
     ids = {c["id"] for c in data["checks"]}
     assert EXPECTED_IDS <= ids, f"缺检查项: {EXPECTED_IDS - ids}"
     # 干净 CI 环境（CI=true）没有 xelatex/MATLAB/Word，FAIL 属预期；
-    # 仅在开发机上要求零 FAIL（本机已验证 8 PASS / 1 WARN）。
+    # 开发机要求零 FAIL；可选工具的精确数量随环境变化，不写死历史计数。
     if not os.environ.get("CI"):
         assert summ["fail"] == 0, f"doctor 报告 FAIL：{[c for c in data['checks'] if c['status']=='FAIL']}"
         # 退出码与 FAIL 数一致：有 FAIL 才非 0

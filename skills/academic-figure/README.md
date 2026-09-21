@@ -259,7 +259,7 @@ cp academic-figure-skill/install/copilot/copilot-instructions.md <your-project>/
     │   ├── qa_coverage.py             ← QA 检查覆盖度验证
     │   ├── qa_validator.py            ← 代码自动检查（AP-0~CL-7）
     │   ├── check_references.py        ← 引用完整性校验
-    │   ├── e2e_runner.py              ← E2E 集成测试（A/B 场景自动评分）
+    │   ├── e2e_runner.py              ← 指定场景的生成源码结构校验
     │   ├── check_colors.py            ← 配色合规检查
     │   ├── check_dimensions.py        ← 尺寸规范检查
     │   ├── check_export.py            ← 导出参数检查
@@ -267,9 +267,9 @@ cp academic-figure-skill/install/copilot/copilot-instructions.md <your-project>/
     │   ├── check_figure.py            ← 图表综合检查
     │   ├── generate_adapters.py       ← 跨平台适配文件生成
     │   ├── generate_atlas.py          ← 图鉴自动生成
-    │   └── run_ab_tests.py            ← A/B 测试运行器
+    │   └── run_ab_tests.py            ← 静态能力审计（不声称实证增益）
     ├── assets/
-    │   ├── figures/                   ← 39 类图形资产生产脚本与预览
+    │   ├── figures/                   ← 39 类图形资产生产脚本（预览集中在 figure-atlas/）
     │   │   ├── 3DHeatmap/             ← 3D 热图（R/ComplexHeatmap）
     │   │   ├── AUROC/                 ← AUROC 曲线
     │   │   ├── BarAblation/           ← 消融实验柱状图
@@ -332,8 +332,8 @@ python scripts/eval_runner.py
 # 单类型评估
 python scripts/eval_runner.py --type Heatmap
 
-# E2E 集成测试
-python scripts/e2e_runner.py
+# 指定场景的生成源码结构校验（不等同于实证 A/B 质量比较）
+python scripts/e2e_runner.py --scenario S1_pca generated_script.py
 
 # 触发准确率基准
 python scripts/trigger_benchmark.py
@@ -346,7 +346,7 @@ python scripts/trigger_benchmark.py
 Academic Figure Skill 采用 Skill 插件架构，添加新图型只需：
 
 1. 在 `assets/figures/` 下创建新目录 `<FigureType>/`
-2. 放入生产脚本（`.py` 或 `.R`）和预览 PNG
+2. 放入生产脚本（`.py` 或 `.R`）；若新增独特视觉范式，再把代表性预览加入集中式 `assets/figure-atlas/`
 3. 在 `references/directory-map.md` 中添加关键词映射
 4. 运行 `python scripts/eval_runner.py --type <FigureType>` 验证通过
 

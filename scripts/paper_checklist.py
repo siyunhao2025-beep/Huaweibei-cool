@@ -260,7 +260,12 @@ def save_decisions(path: Path, decisions: dict) -> None:
 def render_report(checklist: dict, results: dict[str, CheckResult],
                   ctx: PaperContext) -> str:
     lines = ["# 论文自检表_已勾选", ""]
-    lines.append(f"- 论文: `{ctx.tex_path or ctx.docx_path}`")
+    paper_path = ctx.tex_path or ctx.docx_path
+    try:
+        display_path = paper_path.relative_to(Path.cwd()) if paper_path else ""
+    except ValueError:
+        display_path = paper_path.name if paper_path else ""
+    lines.append(f"- 论文: `{display_path}`")
     if ctx.problems is not None:
         lines.append(f"- 问题数: {ctx.problems}")
     if ctx.archetype:
@@ -382,7 +387,6 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     # 退出码
     n_fail = sum(1 for r in results.values() if r.status == "fail")
-    n_pending = sum(1 for r in results.values() if r.status == "pending")
     if args.strict:
         # 人工条目未裁决：统计 checklist 中 manual 且未在 decisions 里的
         manual_unresolved = 0

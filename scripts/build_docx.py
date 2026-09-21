@@ -13,7 +13,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
-import shutil
+import time
 import zipfile
 from pathlib import Path
 
@@ -51,6 +51,7 @@ from docx.shared import Cm, Inches, Pt
 
 W_NS = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
 W = "{" + W_NS + "}"
+ROLES = {"preliminary", "problem", "evaluation", "conclusion", "references", "appendix"}
 
 IDENTITY_RE = re.compile(
     r"学校|学院|实验室|参赛队号|队员姓名|指导教师|学号|邮箱|email|"
@@ -301,6 +302,7 @@ TEX_IMAGE_RE = re.compile(r"\\includegraphics(?:\[[^]]*\])?\s*\{([^{}]+)\}")
 TEX_CAPTION_RE = re.compile(r"\\caption\s*\{([^{}]*)\}")
 TEX_HEADING_RE = re.compile(r"\\(section|subsection|subsubsection)\*?\s*\{([^{}]*)\}")
 TEX_BEGIN_RE = re.compile(r"\\begin\s*\{([^{}]+)\}")
+WORD_IMAGE_SUFFIXES = {".bmp", ".gif", ".jpeg", ".jpg", ".png", ".tif", ".tiff"}
 
 
 def _replace_braced_command(text: str, command: str, replacement=None) -> str:
@@ -366,10 +368,27 @@ def tex_table_rows(text: str) -> list[list[str]]:
     return rows
 
 
-def add_tex_figure(document, raw_path: str, caption: str, base_dir: Path):
-    image_path = (base_dir / raw_path).resolve()
+def resolve_figure_path(base_dir: Path, raw_path: str) -> Path:
+    """Resolve a TeX image path without allowing project-root escape."""
+    clean_path = raw_path.strip()
+    for escaped, literal in ((r"\ ", " "), (r"\#", "#"), (r"\%", "%"), (r"\&", "&")):
+        clean_path = clean_path.replace(escaped, literal)
+    image_path = (base_dir.resolve() / clean_path).resolve()
+    try:
+        image_path.relative_to(base_dir.resolve())
+    except ValueError as exc:
+        raise ValueError(f"图片必须位于论文工作目录内: {raw_path}") from exc
+    if image_path.suffix.lower() not in WORD_IMAGE_SUFFIXES:
+        raise ValueError(
+            f"Word 衍生稿不支持图片格式 {image_path.suffix or '(无扩展名)'}: {raw_path}"
+        )
     if not image_path.is_file():
         raise FileNotFoundError(f"图片不存在: {image_path}")
+    return image_path
+
+
+def add_tex_figure(document, raw_path: str, caption: str, base_dir: Path):
+    image_path = resolve_figure_path(base_dir, raw_path)
     p = document.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p.paragraph_format.first_line_indent = Inches(0)
@@ -522,33 +541,68 @@ def read_tex_source(path: Path, root: Path, seen=None) -> str:
 
 def read_input(path: Path):
     data = json.loads(path.read_text(encoding="utf-8-sig"))
+    if not isinstance(data, dict):
+        raise ValueError("论文输入必须是 JSON 对象")
     for key in ("title", "abstract_tex_path", "keywords", "chapters"):
         if key not in data:
             raise ValueError(f"输入缺少字段: {key}")
     forbidden = {"abstract", "content", "content_file"} & set(data)
     if forbidden:
         raise ValueError(f"TeX-first 输入禁止旧字段: {', '.join(sorted(forbidden))}")
+    if not str(data["title"]).strip():
+        raise ValueError("论文题目不能为空")
     if not isinstance(data["keywords"], list) or not data["keywords"]:
         raise ValueError("关键词必须至少提供一个条目")
     if any(not str(k).strip() for k in data["keywords"]):
         raise ValueError("关键词不能是空字符串")
     root = path.parent.resolve()
     abstract_path = resolve_tex_path(root, str(data["abstract_tex_path"]), "abstract_tex_path")
+    if not read_tex_source(abstract_path, root).strip():
+        raise ValueError("摘要 TeX 内容不能为空")
+    if not isinstance(data["chapters"], list) or not data["chapters"]:
+        raise ValueError("chapters 必须是非空列表")
     identity_values = [data.get("title", ""), data.get("abstract_tex_path", "")]
     identity_values.extend(str(k) for k in data["keywords"])
+    chapter_ids: set[str] = set()
+    chapter_orders: set[int] = set()
     for chapter in data["chapters"]:
+        if not isinstance(chapter, dict):
+            raise ValueError("chapters 中的每一项都必须是对象")
         required = {"chapter_id", "title", "role", "order", "tex_path"}
         missing = sorted(required - set(chapter))
         if missing:
             raise ValueError(f"章节缺少字段: {', '.join(missing)}")
         if {"content", "content_file"} & set(chapter):
             raise ValueError(f"章节 {chapter.get('chapter_id', '?')} 禁止旧 content/content_file 字段")
+        chapter_id = str(chapter["chapter_id"]).strip()
+        if not chapter_id or chapter_id in chapter_ids:
+            raise ValueError(f"chapter_id 不能为空且不得重复: {chapter_id!r}")
+        chapter_ids.add(chapter_id)
+        try:
+            chapter_order = int(chapter["order"])
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f"章节 {chapter_id} 的 order 必须是整数") from exc
+        if chapter_order in chapter_orders:
+            raise ValueError(f"章节 order 不得重复: {chapter_order}")
+        chapter_orders.add(chapter_order)
+        if not str(chapter["title"]).strip():
+            raise ValueError(f"章节 {chapter_id} 的 title 不能为空")
+        if chapter["role"] not in ROLES:
+            raise ValueError(f"章节 {chapter_id} 的 role 无效: {chapter['role']}")
+        try:
+            level = int(chapter.get("level", 1))
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f"章节 {chapter_id} 的 level 必须是 1、2 或 3") from exc
+        if level not in {1, 2, 3}:
+            raise ValueError(f"章节 {chapter_id} 的 level 必须是 1、2 或 3")
         chapter_path = resolve_tex_path(root, str(chapter["tex_path"]), f"章节 {chapter['chapter_id']}")
         identity_values.extend([str(chapter.get("title", "")), str(chapter["tex_path"])])
         # Read now so the Word derivative fails early on malformed encoding or
         # a recursive input chain instead of producing a partial document.
         read_tex_source(chapter_path, root)
-    read_tex_source(abstract_path, root)
+    orders = [int(chapter["order"]) for chapter in data["chapters"]]
+    if orders != sorted(orders):
+        raise ValueError("章节 order 必须严格递增")
     leaked = [value for value in identity_values if IDENTITY_RE.search(value)]
     if leaked:
         raise ValueError("输入疑似含身份信息，请清理学校/队号/姓名/路径后再生成")
@@ -600,12 +654,22 @@ def scrub_package(path: Path):
                         root.remove(override)
                 data = xml_bytes(root)
             dst.writestr(info, data)
-    temp.replace(path)
+    for attempt in range(6):
+        try:
+            temp.replace(path)
+            break
+        except PermissionError:
+            if attempt == 5:
+                raise
+            # Antivirus/indexing can briefly lock a newly written DOCX on
+            # Windows. Keep replacement atomic and retry only this transient.
+            time.sleep(0.05 * (attempt + 1))
 
 
 def etree_from_bytes(data):
     from lxml import etree
-    return etree.fromstring(data)
+    parser = etree.XMLParser(resolve_entities=False, no_network=True)
+    return etree.fromstring(data, parser=parser)
 
 
 def xml_bytes(root):
@@ -615,14 +679,29 @@ def xml_bytes(root):
 
 def build(args):
     input_path = args.input.resolve()
+    if not input_path.is_file() or input_path.suffix.lower() != ".json":
+        raise FileNotFoundError(f"论文输入不存在或不是 .json: {input_path}")
     contest_config = load_contest_config(input_path.parent, args.contest_config)
     edition = contest_edition(contest_config)
     data = read_input(input_path)
     template = args.template.resolve()
     output = args.output.resolve()
+    if not template.is_file() or template.suffix.lower() != ".docx":
+        raise FileNotFoundError(f"Word 模板不存在或不是 .docx: {template}")
+    if output.suffix.lower() != ".docx":
+        raise ValueError(f"输出文件必须是 .docx: {output}")
+    if output == template:
+        raise ValueError("不得覆盖原始 Word 模板；请指定不同的 --output")
+    manifest_out = args.manifest_out.resolve() if args.manifest_out else output.with_suffix(".chapters.json")
+    if manifest_out.suffix.lower() != ".json":
+        raise ValueError(f"--manifest-out 必须是 .json: {manifest_out}")
+    protected = {input_path, template, output}
+    if args.contest_config:
+        protected.add(args.contest_config.resolve())
+    if manifest_out in protected:
+        raise ValueError("--manifest-out 不得覆盖输入、模板、配置或 DOCX 输出")
     output.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copyfile(template, output)
-    document = Document(str(output))
+    document = Document(str(template))
     section = clear_body_keep_final_section(document)
     configure_section(section)
     configure_header_footer(section)
@@ -716,7 +795,7 @@ def build(args):
     document.core_properties.keywords = ""
     document.save(str(output))
     scrub_package(output)
-    manifest_out = args.manifest_out.resolve() if args.manifest_out else output.with_suffix(".chapters.json")
+    manifest_out.parent.mkdir(parents=True, exist_ok=True)
     manifest_out.write_text(json.dumps({
         "title": data["title"],
         "keywords": data["keywords"],

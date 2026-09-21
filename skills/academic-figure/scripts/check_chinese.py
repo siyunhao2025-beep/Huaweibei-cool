@@ -30,8 +30,9 @@ def check(target, journal="nature-genetics"):
     if suffix == ".pdf":
         ok = Path(target).is_file() and Path(target).stat().st_size > 0
         messages = ["PDF exists" if ok else "PDF missing or empty"]
-        if ok and shutil.which("pdftotext"):
-            extracted = subprocess.run(["pdftotext", "-layout", target, "-"], capture_output=True, text=True,
+        pdftotext = shutil.which("pdftotext")
+        if ok and pdftotext:
+            extracted = subprocess.run([pdftotext, "-layout", target, "-"], capture_output=True, text=True,
                                        encoding="utf-8", errors="replace", check=False).stdout
             has_cjk = bool(CJK_RE.search(extracted))
             messages.append("PDF contains extractable Chinese glyph text" if has_cjk else

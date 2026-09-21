@@ -1,7 +1,7 @@
 {
-  "timestamp": "2026-07-06T12:54:22.751502+00:00",
+  "timestamp": "2026-09-21T18:54:36.851490+00:00",
   "python": "python3",
-  "r": "C:/Program Files/R/R-4.4.3/bin/Rscript.exe",
+  "r": "Rscript.exe",
   "baseline": {
     "py:CATEGORICAL": {
       "passed": true,
@@ -21,16 +21,11 @@
       "asset": {
         "passed": true,
         "scripts": 1,
-        "previews": 4,
+        "previews": 0,
         "script_names": [
           "plot_3Dheatmap.R"
         ],
-        "preview_names": [
-          "plot_3Dheatmap_1.png",
-          "plot_3Dheatmap_2.png",
-          "plot_3Dheatmap_3.png",
-          "plot_3Dheatmap_4.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "r:plot_3Dheatmap.R": {
@@ -44,20 +39,24 @@
       "asset": {
         "passed": true,
         "scripts": 3,
-        "previews": 3,
+        "previews": 0,
         "script_names": [
           "plot_AUROC1.py",
           "plot_AUROC2.py",
           "plot_AUROC3.py"
         ],
-        "preview_names": [
-          "plot_AUROC1_1.png",
-          "plot_AUROC2.png",
-          "plot_AUROC3.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "py:plot_AUROC1.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        },
+        "py:plot_AUROC2.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        },
+        "py:plot_AUROC3.py": {
           "passed": true,
           "reason": "Python syntax OK"
         }
@@ -68,23 +67,24 @@
       "asset": {
         "passed": true,
         "scripts": 3,
-        "previews": 6,
+        "previews": 0,
         "script_names": [
           "plot_bars_ablation.py",
           "plot_bar_ablation.py",
           "plot_comparison_ablation.py"
         ],
-        "preview_names": [
-          "bars_ablation_Cancer.png",
-          "bars_ablation_IEDB.png",
-          "bars_comparison_Cancer.png",
-          "bars_comparison_IEDB.png",
-          "plot_bar_ablation.png",
-          "plot_comparison_ablation.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "py:plot_bars_ablation.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        },
+        "py:plot_bar_ablation.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        },
+        "py:plot_comparison_ablation.py": {
           "passed": true,
           "reason": "Python syntax OK"
         }
@@ -95,18 +95,19 @@
       "asset": {
         "passed": true,
         "scripts": 2,
-        "previews": 2,
+        "previews": 0,
         "script_names": [
           "plot_correctness_by_category.py",
           "plot_correctness_by_subcategory.py"
         ],
-        "preview_names": [
-          "plot_correctness_by_category.png",
-          "plot_correctness_by_subcategory.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "py:plot_correctness_by_category.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        },
+        "py:plot_correctness_by_subcategory.py": {
           "passed": true,
           "reason": "Python syntax OK"
         }
@@ -117,19 +118,24 @@
       "asset": {
         "passed": true,
         "scripts": 3,
-        "previews": 2,
+        "previews": 0,
         "script_names": [
           "plot_comparison_GeneRegulatory.py",
           "plot_comparison_Trajectory.py",
           "raw_data.py"
         ],
-        "preview_names": [
-          "plot_comparison_GeneRegulatory.png",
-          "plot_comparison_Trajectory.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "py:plot_comparison_GeneRegulatory.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        },
+        "py:plot_comparison_Trajectory.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        },
+        "py:raw_data.py": {
           "passed": true,
           "reason": "Python syntax OK"
         }
@@ -140,18 +146,19 @@
       "asset": {
         "passed": true,
         "scripts": 2,
-        "previews": 2,
+        "previews": 0,
         "script_names": [
           "plot_brute_force.py",
           "plot_rewriting.py"
         ],
-        "preview_names": [
-          "plot_brute_force.png",
-          "plot_rewriting.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "py:plot_brute_force.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        },
+        "py:plot_rewriting.py": {
           "passed": true,
           "reason": "Python syntax OK"
         }
@@ -162,13 +169,11 @@
       "asset": {
         "passed": true,
         "scripts": 1,
-        "previews": 1,
+        "previews": 0,
         "script_names": [
           "plot_selfcorrection_math.py"
         ],
-        "preview_names": [
-          "plot_selfcorrection_math.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "py:plot_selfcorrection_math.py": {
@@ -182,16 +187,50 @@
       "asset": {
         "passed": true,
         "scripts": 1,
-        "previews": 1,
+        "previews": 0,
         "script_names": [
           "plot_SectorConfusionMatrix.py"
         ],
-        "preview_names": [
-          "plot_SectorConfusionMatrix.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "py:plot_SectorConfusionMatrix.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        }
+      },
+      "overall_pass": true
+    },
+    "ContributionWaterfall": {
+      "asset": {
+        "passed": true,
+        "scripts": 1,
+        "previews": 0,
+        "script_names": [
+          "contribution_waterfall.py"
+        ],
+        "preview_names": []
+      },
+      "runnable": {
+        "py:contribution_waterfall.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        }
+      },
+      "overall_pass": true
+    },
+    "ConvergenceBand": {
+      "asset": {
+        "passed": true,
+        "scripts": 1,
+        "previews": 0,
+        "script_names": [
+          "convergence_band.py"
+        ],
+        "preview_names": []
+      },
+      "runnable": {
+        "py:convergence_band.py": {
           "passed": true,
           "reason": "Python syntax OK"
         }
@@ -202,20 +241,24 @@
       "asset": {
         "passed": true,
         "scripts": 3,
-        "previews": 3,
+        "previews": 0,
         "script_names": [
           "plot_CorrelationHeatmap_v1.R",
           "plot_CorrelationHeatmap_v2.R",
           "plot_CorrelationHeatmap_v3.R"
         ],
-        "preview_names": [
-          "plot_CorrelationHeatmap_v1.png",
-          "plot_CorrelationHeatmap_v2.png",
-          "plot_CorrelationHeatmap_v3.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "r:plot_CorrelationHeatmap_v1.R": {
+          "passed": true,
+          "reason": "R parse OK"
+        },
+        "r:plot_CorrelationHeatmap_v2.R": {
+          "passed": true,
+          "reason": "R parse OK"
+        },
+        "r:plot_CorrelationHeatmap_v3.R": {
           "passed": true,
           "reason": "R parse OK"
         }
@@ -226,19 +269,11 @@
       "asset": {
         "passed": true,
         "scripts": 1,
-        "previews": 7,
+        "previews": 0,
         "script_names": [
           "plot_DensityHeatmap.R"
         ],
-        "preview_names": [
-          "plot_DensityHeatmap_2.png",
-          "plot_DensityHeatmap_3.png",
-          "plot_DensityHeatmap_4.png",
-          "plot_DensityHeatmap_5.png",
-          "plot_DensityHeatmap_6.png",
-          "plot_DensityHeatmap_7.png",
-          "plot_DensityHeatmap_8.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "r:plot_DensityHeatmap.R": {
@@ -252,18 +287,11 @@
       "asset": {
         "passed": true,
         "scripts": 1,
-        "previews": 6,
+        "previews": 0,
         "script_names": [
           "plot_Frequency_3DHeatmap.R"
         ],
-        "preview_names": [
-          "plot_Frequency_3DHeatmap_1.png",
-          "plot_Frequency_3DHeatmap_2.png",
-          "plot_Frequency_3DHeatmap_3.png",
-          "plot_Frequency_3DHeatmap_4.png",
-          "plot_Frequency_3DHeatmap_5.png",
-          "plot_Frequency_3DHeatmap_6.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "r:plot_Frequency_3DHeatmap.R": {
@@ -277,20 +305,29 @@
       "asset": {
         "passed": true,
         "scripts": 4,
-        "previews": 2,
+        "previews": 0,
         "script_names": [
           "plot_GroupedBarChartv1.py",
           "plot_GroupedBarChartv2.py",
           "plot_GroupedBarChartv3.py",
           "plot_GroupedBarChartv4.py"
         ],
-        "preview_names": [
-          "plot_GroupedBarChartv1_1.png",
-          "plot_GroupedBarChartv1_2.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "py:plot_GroupedBarChartv1.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        },
+        "py:plot_GroupedBarChartv2.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        },
+        "py:plot_GroupedBarChartv3.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        },
+        "py:plot_GroupedBarChartv4.py": {
           "passed": true,
           "reason": "Python syntax OK"
         }
@@ -301,17 +338,11 @@
       "asset": {
         "passed": true,
         "scripts": 1,
-        "previews": 5,
+        "previews": 0,
         "script_names": [
           "plot_GroupCorrelationHeatmap.R"
         ],
-        "preview_names": [
-          "plot_GroupCorrelationHeatmap_1.png",
-          "plot_GroupCorrelationHeatmap_2.png",
-          "plot_GroupCorrelationHeatmap_3.png",
-          "plot_GroupCorrelationHeatmap_4.png",
-          "plot_GroupCorrelationHeatmap_5.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "r:plot_GroupCorrelationHeatmap.R": {
@@ -325,13 +356,11 @@
       "asset": {
         "passed": true,
         "scripts": 1,
-        "previews": 1,
+        "previews": 0,
         "script_names": [
           "plot_GroupedViolin.py"
         ],
-        "preview_names": [
-          "plot_GroupedViolin.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "py:plot_GroupedViolin.py": {
@@ -345,23 +374,24 @@
       "asset": {
         "passed": true,
         "scripts": 3,
-        "previews": 6,
+        "previews": 0,
         "script_names": [
           "plot_CorrelationDensity1.R",
           "plot_CorrelationDensity2.R",
           "plot_CorrelationDensity3.R"
         ],
-        "preview_names": [
-          "plot_CorrelationDensity1.png",
-          "plot_CorrelationDensity1_detail.png",
-          "plot_CorrelationDensity2.png",
-          "plot_CorrelationDensity2_detail.png",
-          "plot_CorrelationDensity3.png",
-          "plot_CorrelationDensity3_detail.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "r:plot_CorrelationDensity1.R": {
+          "passed": true,
+          "reason": "R parse OK"
+        },
+        "r:plot_CorrelationDensity2.R": {
+          "passed": true,
+          "reason": "R parse OK"
+        },
+        "r:plot_CorrelationDensity3.R": {
           "passed": true,
           "reason": "R parse OK"
         }
@@ -372,20 +402,24 @@
       "asset": {
         "passed": true,
         "scripts": 3,
-        "previews": 3,
+        "previews": 0,
         "script_names": [
           "plot_posttraining.py",
           "plot_sweep.py",
           "plot_trend.py"
         ],
-        "preview_names": [
-          "comparison_posttraining.png",
-          "results_sweep.png",
-          "trend_by_month.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "py:plot_posttraining.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        },
+        "py:plot_sweep.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        },
+        "py:plot_trend.py": {
           "passed": true,
           "reason": "Python syntax OK"
         }
@@ -396,20 +430,24 @@
       "asset": {
         "passed": true,
         "scripts": 3,
-        "previews": 3,
+        "previews": 0,
         "script_names": [
           "diffusion_swiss_roll.py",
           "plot_hole_manifold.py",
           "plot_manifold.py"
         ],
-        "preview_names": [
-          "diffusion_swiss_roll.png",
-          "manifold.png",
-          "manifold_holes.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "py:diffusion_swiss_roll.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        },
+        "py:plot_hole_manifold.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        },
+        "py:plot_manifold.py": {
           "passed": true,
           "reason": "Python syntax OK"
         }
@@ -420,20 +458,24 @@
       "asset": {
         "passed": true,
         "scripts": 3,
-        "previews": 3,
+        "previews": 0,
         "script_names": [
           "plot_MantelCorrelation1.r",
           "plot_MantelCorrelation2.r",
           "plot_MantelCorrelation3.r"
         ],
-        "preview_names": [
-          "plot_MantelCorrelation1_1.png",
-          "plot_MantelCorrelation2.png",
-          "plot_MantelCorrelation3.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "r:plot_MantelCorrelation1.r": {
+          "passed": true,
+          "reason": "R parse OK"
+        },
+        "r:plot_MantelCorrelation2.r": {
+          "passed": true,
+          "reason": "R parse OK"
+        },
+        "r:plot_MantelCorrelation3.r": {
           "passed": true,
           "reason": "R parse OK"
         }
@@ -444,18 +486,11 @@
       "asset": {
         "passed": true,
         "scripts": 1,
-        "previews": 6,
+        "previews": 0,
         "script_names": [
           "plot_VariableCorrelation.py"
         ],
-        "preview_names": [
-          "plot_VariableCorrelation_1.png",
-          "plot_VariableCorrelation_2.png",
-          "plot_VariableCorrelation_3.png",
-          "plot_VariableCorrelation_4.png",
-          "plot_VariableCorrelation_5.png",
-          "plot_VariableCorrelation_6.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "py:plot_VariableCorrelation.py": {
@@ -469,16 +504,32 @@
       "asset": {
         "passed": true,
         "scripts": 1,
-        "previews": 1,
+        "previews": 0,
         "script_names": [
           "plot_MarkerGeneDotPlot.py"
         ],
-        "preview_names": [
-          "plot_MarkerGeneDotPlot.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "py:plot_MarkerGeneDotPlot.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        }
+      },
+      "overall_pass": true
+    },
+    "MonteCarloRecovery": {
+      "asset": {
+        "passed": true,
+        "scripts": 1,
+        "previews": 0,
+        "script_names": [
+          "monte_carlo_recovery.py"
+        ],
+        "preview_names": []
+      },
+      "runnable": {
+        "py:monte_carlo_recovery.py": {
           "passed": true,
           "reason": "Python syntax OK"
         }
@@ -489,18 +540,19 @@
       "asset": {
         "passed": true,
         "scripts": 2,
-        "previews": 2,
+        "previews": 0,
         "script_names": [
           "plot_PCA.R",
           "plot_PCAa.R"
         ],
-        "preview_names": [
-          "plot_PCA_1.png",
-          "plot_PCA_coactivity.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "r:plot_PCA.R": {
+          "passed": true,
+          "reason": "R parse OK"
+        },
+        "r:plot_PCAa.R": {
           "passed": true,
           "reason": "R parse OK"
         }
@@ -511,25 +563,62 @@
       "asset": {
         "passed": true,
         "scripts": 3,
-        "previews": 6,
+        "previews": 0,
         "script_names": [
           "plot_PairedBoxScatter1.R",
           "plot_PairedBoxScatter2.R",
           "plot_PairedBoxScatter3.R"
         ],
-        "preview_names": [
-          "plot_PairedBoxScatter1.png",
-          "plot_PairedBoxScatter1_detail.png",
-          "plot_PairedBoxScatter2.png",
-          "plot_PairedBoxScatter2_detail.png",
-          "plot_PairedBoxScatter3.png",
-          "plot_PairedBoxScatter3_detail.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "r:plot_PairedBoxScatter1.R": {
           "passed": true,
           "reason": "R parse OK"
+        },
+        "r:plot_PairedBoxScatter2.R": {
+          "passed": true,
+          "reason": "R parse OK"
+        },
+        "r:plot_PairedBoxScatter3.R": {
+          "passed": true,
+          "reason": "R parse OK"
+        }
+      },
+      "overall_pass": true
+    },
+    "ParameterSweep": {
+      "asset": {
+        "passed": true,
+        "scripts": 1,
+        "previews": 0,
+        "script_names": [
+          "parameter_sweep.py"
+        ],
+        "preview_names": []
+      },
+      "runnable": {
+        "py:parameter_sweep.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        }
+      },
+      "overall_pass": true
+    },
+    "PhaseProfile": {
+      "asset": {
+        "passed": true,
+        "scripts": 1,
+        "previews": 0,
+        "script_names": [
+          "phase_profile.py"
+        ],
+        "preview_names": []
+      },
+      "runnable": {
+        "py:phase_profile.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
         }
       },
       "overall_pass": true
@@ -538,16 +627,50 @@
       "asset": {
         "passed": true,
         "scripts": 1,
-        "previews": 1,
+        "previews": 0,
         "script_names": [
           "plot_comparison_radar.py"
         ],
-        "preview_names": [
-          "comparison_radar.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "py:plot_comparison_radar.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        }
+      },
+      "overall_pass": true
+    },
+    "ResidualDiagnostics": {
+      "asset": {
+        "passed": true,
+        "scripts": 1,
+        "previews": 0,
+        "script_names": [
+          "residual_diagnostics.py"
+        ],
+        "preview_names": []
+      },
+      "runnable": {
+        "py:residual_diagnostics.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        }
+      },
+      "overall_pass": true
+    },
+    "ResourceDesign": {
+      "asset": {
+        "passed": true,
+        "scripts": 1,
+        "previews": 0,
+        "script_names": [
+          "resource_design.py"
+        ],
+        "preview_names": []
+      },
+      "runnable": {
+        "py:resource_design.py": {
           "passed": true,
           "reason": "Python syntax OK"
         }
@@ -558,20 +681,19 @@
       "asset": {
         "passed": true,
         "scripts": 2,
-        "previews": 4,
+        "previews": 0,
         "script_names": [
           "plot_RidgePlot1.R",
           "plot_RidgePlot2.r"
         ],
-        "preview_names": [
-          "plot_RidgePlot1_1.png",
-          "plot_RidgePlot1_detail.png",
-          "plot_RidgePlot2.png",
-          "plot_RidgePlot2_detail.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "r:plot_RidgePlot1.R": {
+          "passed": true,
+          "reason": "R parse OK"
+        },
+        "r:plot_RidgePlot2.r": {
           "passed": true,
           "reason": "R parse OK"
         }
@@ -582,18 +704,50 @@
       "asset": {
         "passed": true,
         "scripts": 1,
-        "previews": 3,
+        "previews": 0,
         "script_names": [
           "plot_SankeyDiagram.py"
         ],
-        "preview_names": [
-          "plot_SankeyDiagram_1.png",
-          "plot_SankeyDiagram_2.png",
-          "plot_SankeyDiagram_3.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "py:plot_SankeyDiagram.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        }
+      },
+      "overall_pass": true
+    },
+    "ScenarioHeatmap": {
+      "asset": {
+        "passed": true,
+        "scripts": 1,
+        "previews": 0,
+        "script_names": [
+          "scenario_heatmap.py"
+        ],
+        "preview_names": []
+      },
+      "runnable": {
+        "py:scenario_heatmap.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        }
+      },
+      "overall_pass": true
+    },
+    "SensitivityTornado": {
+      "asset": {
+        "passed": true,
+        "scripts": 1,
+        "previews": 0,
+        "script_names": [
+          "sensitivity_tornado.py"
+        ],
+        "preview_names": []
+      },
+      "runnable": {
+        "py:sensitivity_tornado.py": {
           "passed": true,
           "reason": "Python syntax OK"
         }
@@ -604,17 +758,32 @@
       "asset": {
         "passed": true,
         "scripts": 1,
-        "previews": 2,
+        "previews": 0,
         "script_names": [
           "plot_StackedBarScatter.py"
         ],
-        "preview_names": [
-          "plot_StackedBarScatter_1.png",
-          "plot_StackedBarScatter_2.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "py:plot_StackedBarScatter.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        }
+      },
+      "overall_pass": true
+    },
+    "TrajectoryProjection": {
+      "asset": {
+        "passed": true,
+        "scripts": 1,
+        "previews": 0,
+        "script_names": [
+          "trajectory_projection.py"
+        ],
+        "preview_names": []
+      },
+      "runnable": {
+        "py:trajectory_projection.py": {
           "passed": true,
           "reason": "Python syntax OK"
         }
@@ -625,13 +794,11 @@
       "asset": {
         "passed": true,
         "scripts": 1,
-        "previews": 1,
+        "previews": 0,
         "script_names": [
           "plot_Violin.py"
         ],
-        "preview_names": [
-          "plot_Violin.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "py:plot_Violin.py": {
@@ -645,18 +812,19 @@
       "asset": {
         "passed": true,
         "scripts": 2,
-        "previews": 2,
+        "previews": 0,
         "script_names": [
           "plot_comparison.py",
           "plot_composition.py"
         ],
-        "preview_names": [
-          "composition_heatmap.png",
-          "results_comparison_optimization.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "py:plot_comparison.py": {
+          "passed": true,
+          "reason": "Python syntax OK"
+        },
+        "py:plot_composition.py": {
           "passed": true,
           "reason": "Python syntax OK"
         }
@@ -667,13 +835,11 @@
       "asset": {
         "passed": true,
         "scripts": 1,
-        "previews": 1,
+        "previews": 0,
         "script_names": [
           "rnaseq_deseq2_standard.py"
         ],
-        "preview_names": [
-          "rnaseq_deseq2_standard.png"
-        ]
+        "preview_names": []
       },
       "runnable": {
         "py:rnaseq_deseq2_standard.py": {
@@ -683,5 +849,6 @@
       },
       "overall_pass": true
     }
-  }
+  },
+  "passed": true
 }

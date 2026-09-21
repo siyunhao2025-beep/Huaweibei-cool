@@ -10,9 +10,9 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import shutil
 import subprocess
 from pathlib import Path
-from typing import Any
 
 try:
     import pymupdf
@@ -21,8 +21,9 @@ except ImportError:  # compatibility with older installations
 
 
 IDENTITY_RE = re.compile(
-    r"学校|学院|实验室|参赛队号|队员姓名|指导教师|学号|邮箱|email|"
-    r"\b(?:school|student|team|member|advisor)\b|C:\\Users\\",
+    r"(?:学校|学院|实验室|参赛队号|队员姓名|指导教师|学号|邮箱)\s*[:：]|"
+    r"\b(?:school\s+of|student\s*(?:id|number)|team\s*(?:id|number)|"
+    r"member\s+name|advisor\s+name|e-?mail)\b|C:\\Users\\",
     re.IGNORECASE,
 )
 REFERENCE_RE = re.compile(r"^\s*(参考文献|References?)\s*$", re.IGNORECASE)
@@ -98,6 +99,7 @@ def extract_page_records(pdf: Path):
             "spans": spans,
             "width": float(page.rect.width),
             "height": float(page.rect.height),
+            "image_count": len(page.get_images(full=True)),
         })
     doc.close()
     return records
@@ -214,8 +216,11 @@ def body_pages(chapter_ranges):
 
 
 def pdfinfo(pdf: Path) -> dict[str, str]:
+    executable = shutil.which("pdfinfo")
+    if executable is None:
+        return {}
     try:
-        proc = subprocess.run(["pdfinfo", str(pdf)], capture_output=True, check=True)
+        proc = subprocess.run([executable, str(pdf)], capture_output=True, check=True)
     except (OSError, subprocess.CalledProcessError):
         return {}
     # 中文 Windows 上 pdfinfo 可能输出 GBK 字节；按字节安全解码，避免 UnicodeDecodeError 崩溃。
@@ -314,7 +319,29 @@ def main():
             "message": f"内部 {internal_total_target}+ 目标尚未达到。先审计真实证据缺口；严禁用套话、重复图表、放大图表、强制分页或无效模型凑页。若证据已完整，应接受较短稿并说明原因。",
         })
     if not matched:
-        issues.append({"code": "headings_not_detected", "severity": "warning", "message": "未检测到可靠的章节标题；请提供 Word 标题 JSON 或开启 OCR 复核。"})
+        issues.append({
+            "code": "headings_not_detected",
+            "severity": "error" if manifest.get("chapters") else "warning",
+            "message": "未检测到可靠的章节标题；已提供章节清单时不能据此声称正文页数审计通过。",
+        })
+    if len(records) < 2:
+        issues.append({
+            "code": "paper_too_short_for_cover_and_abstract",
+            "severity": "error",
+            "actual_pages": len(records),
+            "message": "正式稿至少需要独立封皮页和匿名摘要页。",
+        })
+    non_a4_pages = [
+        record["physical_page"] for record in records
+        if abs(record["width"] - 595.28) > 3 or abs(record["height"] - 841.89) > 3
+    ]
+    if non_a4_pages:
+        issues.append({
+            "code": "non_a4_page_geometry",
+            "severity": "error",
+            "pages": non_a4_pages,
+            "message": "所有页面必须保持 A4 纵向尺寸。",
+        })
     cover_text = re.sub(r"\s+", "", records[0]["text"]) if records else ""
     missing_cover_markers = [marker for marker in COVER_MARKERS if marker not in cover_text]
     if missing_cover_markers:
@@ -324,7 +351,21 @@ def main():
             "missing_markers": missing_cover_markers,
             "message": "2026 正式提交 PDF 的物理首页必须是官方参赛信息封皮。",
         })
+    cover_image_count = records[0]["image_count"] if records else 0
+    if cover_image_count < 4:
+        issues.append({
+            "code": "official_cover_logos_not_confirmed",
+            "severity": "error",
+            "image_count": cover_image_count,
+            "message": "封皮未检测到四个独立图像对象，不能确认四个官方 logo 均保留；请人工复核渲染页。",
+        })
     anonymous_text = "\n".join(record["text"] for record in records[1:])
+    if not anonymous_text.strip():
+        issues.append({
+            "code": "anonymous_pages_text_unreadable",
+            "severity": "error",
+            "message": "封皮后的文字无法提取，匿名性与章节结构不能自动确认。",
+        })
     identity_hits = sorted(set(IDENTITY_RE.findall(anonymous_text)))
     if identity_hits:
         issues.append({"code": "possible_identity_text_after_cover", "severity": "error", "matches": identity_hits[:20]})
@@ -357,6 +398,32 @@ def main():
     forbidden_fonts = [font for font in fonts if any(token in font.lower() for token in ("lishu", "kaiti"))]
     if forbidden_fonts:
         issues.append({"code": "non_body_font_detected", "severity": "warning", "fonts": forbidden_fonts, "message": "标签可使用隶书；正文/关键词内容应人工确认是否为宋体。"})
+    latin_fonts = sorted({
+        span["font"]
+        for record in records
+        for span in record["spans"]
+        if re.search(r"[A-Za-z0-9]", span.get("text", "")) and span.get("font")
+    })
+    exact_times = [font for font in latin_fonts if "timesnewroman" in re.sub(r"[^a-z]", "", font.lower())]
+    compatible_times = [font for font in latin_fonts if any(
+        token in re.sub(r"[^a-z]", "", font.lower())
+        for token in ("texgyretermes", "timesroman", "nimbusroman")
+    )]
+    unexpected_latin_fonts = [font for font in latin_fonts if font not in exact_times and font not in compatible_times]
+    if unexpected_latin_fonts:
+        issues.append({
+            "code": "latin_text_not_times_family",
+            "severity": "error",
+            "fonts": unexpected_latin_fonts,
+            "message": "含英文或数字的文本使用了非 Times 系字体。",
+        })
+    if compatible_times and not exact_times:
+        issues.append({
+            "code": "overleaf_times_new_roman_fallback",
+            "severity": "warning",
+            "fonts": compatible_times,
+            "message": "当前 PDF 使用可再分发的 Times 兼容字体而非微软 Times New Roman；若必须逐字体一致，需在有授权的环境编译并复核。",
+        })
     report = {
         "pdf": str(pdf),
         "pdfinfo": pdfinfo(pdf),
@@ -377,13 +444,15 @@ def main():
         "role_windows_enabled": role_windows_enabled,
         "chapter_ranges": ranges,
         "detected_fonts": fonts,
+        "latin_fonts": latin_fonts,
+        "cover_image_count": cover_image_count,
         "issues": issues,
         "status": "FAIL" if any(item["severity"] == "error" for item in issues) else "PASS_WITH_WARNINGS" if issues else "PASS",
         "limitations": [
             "最终页数以本 PDF 为准；DOCX docProps/app.xml 的 Pages 不参与验收。",
             "中文字体 CMap 损坏时，章节/身份检测可能需要 OCR 或 Word 标题 JSON 交叉验证。",
             "历史论文的章节页数只作描述性观察，不要求所有章节等长，也不参与默认通过/失败判定。",
-            "contest.json 中的 official_rules_priority=true：仅在当届题面或官方通知明确给出页数限制时开启页数门禁；截至 2026-09-21，默认关闭。",
+            "contest.json 中的 official_rules_priority=true：仅在当届题面或官方通知明确给出页数限制时开启页数门禁；截至 2026-09-22，默认关闭。",
             "论文长度由用户在 Figure 总数锁定后决定；数值目标不是官方门槛，也不得以凑页方式修复。",
         ],
     }

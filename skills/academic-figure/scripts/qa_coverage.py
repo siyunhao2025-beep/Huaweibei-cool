@@ -285,6 +285,27 @@ CHECK_FUNCTIONS = {
     "check_cl7_export_completeness": check_cl7_export_completeness,
 }
 
+PASS_CASE_TARGETS = {
+    "AP0_good_baseline": ["check_ap0_style_baseline"],
+    "AP3_spines_off": ["check_ap3_four_sided_borders"],
+    "AP4_external_legend": ["check_ap4_legend_occlusion"],
+    "AP5_has_pdf": ["check_ap5_low_res_export"],
+    "AP6_not_bar": ["check_ap6_missing_points"],
+    "CL2_good_183": ["check_cl2_dimensions"],
+    "CL3_rcparams_dpi": ["check_cl3_dpi"],
+}
+
+# One complete positive fixture prevents a detector that always fails from
+# masquerading as "100% coverage".  Earlier versions only measured whether
+# bad snippets were caught and therefore had no false-positive measurement.
+TEST_CASES.append({
+    "id": "ALL_good_baseline",
+    "description": "Complete baseline should pass every automated check",
+    "source": GOOD_BASELINE,
+    "expected_fail": [],
+    "expected_pass": list(CHECK_FUNCTIONS),
+})
+
 
 def run_all_functions(source: str) -> dict[str, bool]:
     """Run all QA checks on source, return {func_name: passed_bool}."""
@@ -301,21 +322,25 @@ def run_all_functions(source: str) -> dict[str, bool]:
 
 def run_coverage() -> dict:
     results = []
-    total_targeted = 0
+    total_assertions = 0
+    correct_assertions = 0
     false_negatives = 0  # targeted check didn't fire (bug in validator)
+    false_positives = 0  # known-good target was rejected
     uncovered_funcs = set(CHECK_FUNCTIONS.keys())
 
     for tc in TEST_CASES:
         source = tc["source"]
         actual = run_all_functions(source)
         target_fails = set(tc["expected_fail"])
+        target_passes = set(tc.get("expected_pass", PASS_CASE_TARGETS.get(tc["id"], [])))
 
         case_result = {"id": tc["id"], "description": tc["description"],
-                       "targets": sorted(tc["expected_fail"]),
-                       "fired": [], "missed": [], "correct": True}
+                       "expected_fail": sorted(target_fails),
+                       "expected_pass": sorted(target_passes),
+                       "fired": [], "missed": [], "false_alarms": [], "correct": True}
 
         for func_name in target_fails:
-            total_targeted += 1
+            total_assertions += 1
             uncovered_funcs.discard(func_name)
             check_passed = actual[func_name]
             if check_passed:
@@ -325,21 +350,34 @@ def run_coverage() -> dict:
                 case_result["correct"] = False
             else:
                 case_result["fired"].append(func_name)
+                correct_assertions += 1
+
+        for func_name in target_passes:
+            total_assertions += 1
+            uncovered_funcs.discard(func_name)
+            if actual[func_name]:
+                correct_assertions += 1
+            else:
+                false_positives += 1
+                case_result["false_alarms"].append(func_name)
+                case_result["correct"] = False
 
         results.append(case_result)
 
     total = len(TEST_CASES)
     all_correct = sum(1 for r in results if r["correct"])
-    accuracy = all_correct / total if total > 0 else 0
+    assertion_accuracy = correct_assertions / total_assertions if total_assertions else 0
     coverage_rate = 1 - (len(uncovered_funcs) / len(CHECK_FUNCTIONS)) if CHECK_FUNCTIONS else 0
 
     return {
         "summary": {
             "test_cases": total,
             "all_correct": all_correct,
-            "accuracy": round(accuracy, 3),
-            "total_targeted_checks": total_targeted,
+            "assertions": total_assertions,
+            "correct_assertions": correct_assertions,
+            "assertion_accuracy": round(assertion_accuracy, 3),
             "false_negatives": false_negatives,
+            "false_positives": false_positives,
             "check_coverage": f"{len(CHECK_FUNCTIONS) - len(uncovered_funcs)}/{len(CHECK_FUNCTIONS)} ({coverage_rate:.0%})",
             "uncovered_functions": sorted(uncovered_funcs),
         },
@@ -355,7 +393,8 @@ def check_function_coverage() -> dict[str, list[str]]:
     """Return {func_name: [test_case_ids]} showing which tests exercise each check."""
     covered = {name: [] for name in CHECK_FUNCTIONS}
     for tc in TEST_CASES:
-        for name in tc["expected_fail"]:
+        names = [*tc["expected_fail"], *tc.get("expected_pass", PASS_CASE_TARGETS.get(tc["id"], []))]
+        for name in names:
             if name in covered:
                 covered[name].append(tc["id"])
     return covered
@@ -370,15 +409,16 @@ if __name__ == "__main__":
 
     if use_json:
         print(json.dumps(report, indent=2, ensure_ascii=False))
-        sys.exit(0)
+        sys.exit(0 if s["false_negatives"] == 0 and s["false_positives"] == 0 else 1)
 
     print("=" * 64)
     print("Academic Figure Skill QA Validator Coverage Report")
     print("=" * 64)
     print(f"Test cases        : {s['test_cases']}")
-    print(f"Correct targets   : {s['all_correct']}/{s['test_cases']} ({s['accuracy']:.0%})")
-    print(f"Targeted checks   : {s['total_targeted_checks']}")
+    print(f"Correct cases     : {s['all_correct']}/{s['test_cases']}")
+    print(f"Assertions        : {s['correct_assertions']}/{s['assertions']} ({s['assertion_accuracy']:.0%})")
     print(f"False negatives   : {s['false_negatives']} (targeted check missed)")
+    print(f"False positives   : {s['false_positives']} (known-good target rejected)")
     print(f"Check coverage    : {s['check_coverage']}")
     print()
 
@@ -389,7 +429,10 @@ if __name__ == "__main__":
                 print(f"         Fired: {', '.join(case['fired'])}")
         else:
             print(f"  FAIL  {case['id']}: {case['description']}")
-            print(f"         Missed (FN): {', '.join(case['missed'])}")
+            if case["missed"]:
+                print(f"         Missed (FN): {', '.join(case['missed'])}")
+            if case["false_alarms"]:
+                print(f"         False alarms (FP): {', '.join(case['false_alarms'])}")
 
     if s["uncovered_functions"]:
         print()
@@ -398,7 +441,8 @@ if __name__ == "__main__":
             print(f"  UNCOVERED {fn}")
 
     print("=" * 64)
-    if s["false_negatives"] == 0:
-        print("Verdict: ALL TARGETED CHECKS WORK — no false negatives")
+    if s["false_negatives"] == 0 and s["false_positives"] == 0:
+        print("Verdict: ALL ASSERTIONS PASS — no false negatives or false positives")
     else:
-        print(f"Verdict: {s['false_negatives']} FN — checks missed their target, fix validator")
+        print(f"Verdict: {s['false_negatives']} FN, {s['false_positives']} FP — fix validator")
+    sys.exit(0 if s["false_negatives"] == 0 and s["false_positives"] == 0 else 1)

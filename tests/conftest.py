@@ -3,6 +3,8 @@
 import sys
 from pathlib import Path
 
+import pytest
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SCRIPTS = REPO_ROOT / "scripts"
 CORPUS = REPO_ROOT / "corpus"
@@ -13,3 +15,18 @@ ASSETS = REPO_ROOT / "assets"
 for p in (str(SCRIPTS), str(REPO_ROOT)):
     if p not in sys.path:
         sys.path.insert(0, p)
+
+
+def pytest_sessionfinish(session, exitstatus):
+    """The repository promises zero skipped/xfail/xpass tests."""
+    reporter = session.config.pluginmanager.getplugin("terminalreporter")
+    if reporter is None:
+        return
+    forbidden = {
+        state: len(reporter.stats.get(state, []))
+        for state in ("skipped", "xfailed", "xpassed")
+        if reporter.stats.get(state)
+    }
+    if forbidden:
+        reporter.write_sep("=", f"forbidden non-pass test outcomes: {forbidden}", red=True)
+        session.exitstatus = pytest.ExitCode.TESTS_FAILED

@@ -16,7 +16,7 @@ from pathlib import Path
 
 
 IDENTITY_PAT = re.compile(
-    r"学校|学院|实验室|参赛队号|队员姓名|指导教师|学号|邮箱|"
+    r"(?:学校|学院|实验室|参赛队号|队员姓名|指导教师|学号|邮箱)\s*[:：]|"
     r"\\(?:schoolname|baominghao|member[abc]|makeidentitycover)\b|"
     r"\b(?:school\s*name|team\s*(?:number|id)|member\s*name|"
     r"advisor\s*name|student\s*(?:id|number)|e-?mail)\b|"
@@ -56,7 +56,22 @@ def count_pdf_pages(pdf: Path) -> int | None:
 
 
 def strip_tex_comments(text: str) -> str:
-    return "\n".join(line.split("%", 1)[0] for line in text.splitlines())
+    cleaned = []
+    for line in text.splitlines():
+        cut = len(line)
+        for index, char in enumerate(line):
+            if char != "%":
+                continue
+            backslashes = 0
+            cursor = index - 1
+            while cursor >= 0 and line[cursor] == "\\":
+                backslashes += 1
+                cursor -= 1
+            if backslashes % 2 == 0:
+                cut = index
+                break
+        cleaned.append(line[:cut])
+    return "\n".join(cleaned)
 
 
 def extract_pdf_pages(path: Path) -> list[str]:
@@ -94,13 +109,21 @@ def extract_text(path: Path) -> str:
         except Exception:
             return ""
     if suffix in {".tex", ".txt", ".md"}:
-        text = path.read_text(encoding="utf-8", errors="ignore")
+        try:
+            text = path.read_text(encoding="utf-8-sig")
+        except (OSError, UnicodeError):
+            return ""
         return strip_tex_comments(text) if suffix == ".tex" else text
     if suffix == ".docx":
         try:
             from docx import Document  # type: ignore
             document = Document(str(path))
-            return "\n".join(paragraph.text for paragraph in document.paragraphs)
+            blocks = [paragraph.text for paragraph in document.paragraphs]
+            blocks.extend(cell.text for table in document.tables for row in table.rows for cell in row.cells)
+            for section in document.sections:
+                blocks.extend(paragraph.text for paragraph in section.header.paragraphs)
+                blocks.extend(paragraph.text for paragraph in section.footer.paragraphs)
+            return "\n".join(blocks)
         except Exception:
             return ""
     return ""
@@ -151,8 +174,11 @@ def main(argv: list[str] | None = None) -> int:
     else:
         warnings.append("非 PDF 文件未统计页数；请以最终 PDF 人工核对摘要页、页码和版式。")
 
-    text = extract_text(paper)
     suffix = paper.suffix.lower()
+    supported_suffix = suffix in {".pdf", ".tex", ".txt", ".md", ".docx"}
+    check(supported_suffix, f"文件类型受支持: {suffix or '(无扩展名)'}")
+    text = extract_text(paper) if supported_suffix else ""
+    check(bool(text.strip()), "正文文本可读取，匿名与披露检查可执行")
     cover_present = False
     anonymous_text = text
     can_separate_cover = False
@@ -193,7 +219,11 @@ def main(argv: list[str] | None = None) -> int:
     # false automated failure.
     check(True, "引用格式：如使用公开资料或程序，正文应按 [n] 引用并列完整参考文献。")
 
-    disclosure_exists = bool(args.ai_file and Path(args.ai_file).is_file())
+    disclosure_exists = bool(
+        args.ai_file
+        and Path(args.ai_file).is_file()
+        and Path(args.ai_file).stat().st_size > 0
+    )
     marker_exists = bool(text and AI_MARKER.search(text))
     if args.ai_used == "none":
         check(True, "AI 使用声明为 none；不要求附加 AI 标注。")

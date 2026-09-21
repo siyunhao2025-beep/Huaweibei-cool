@@ -35,6 +35,8 @@ mpl.rcParams["ps.fonttype"] = 42
 def plot_reference_style(dot_df: pd.DataFrame, out_png: Path, out_pdf: Path | None = None) -> None:
     required = {"cell_type", "gene", "pct_exp", "avg_exp_scaled"}
     missing = required - set(dot_df.columns)
+    if missing:
+        raise ValueError(f"dataset.csv missing required columns: {sorted(missing)}")
     df = dot_df.copy()
     df["cell_type"] = pd.Categorical(df["cell_type"], categories=CELL_TYPES, ordered=True)
     df["gene"] = pd.Categorical(df["gene"], categories=GENES, ordered=True)

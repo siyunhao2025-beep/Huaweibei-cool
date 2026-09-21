@@ -6,13 +6,13 @@ consistent across Python-only and mixed Python/R figures.
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 from typing import Callable, Iterable
 
 import matplotlib.gridspec as gridspec
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
-import numpy as np
 
 MM_PER_INCH = 25.4
 MAX_HEIGHT_MM = 247
@@ -425,8 +425,13 @@ def compose_figure(
 def r_png_device(spec: dict, output_path: str) -> str:
     """Return an R png() call that matches the panel spec's exact physical dimensions.
 
-    Usage in R script:
-        eval(parse(text=Sys.getenv("CNS_PNG_DEVICE")))
+    Write the returned call directly into a generated, trusted R script.  Do
+    not pass it through ``eval(parse(...))`` or an environment variable: that
+    turns a filename into executable R source.
+
+    Usage in a Python generator::
+
+        r_source = f"{r_png_device(spec, output_path)}\n... draw ...\ndev.off()\n"
         ... draw ...
         dev.off()
 
@@ -440,7 +445,10 @@ def r_png_device(spec: dict, output_path: str) -> str:
     w_in = spec["width_mm"] / MM_PER_INCH
     h_in = spec["height_mm"] / MM_PER_INCH
     dpi = spec["dpi"]
-    return f'png("{output_path}", width={w_in:.3f}, height={h_in:.3f}, units="in", res={dpi}, type="cairo")'
+    # JSON double-quoted strings are valid R string literals for ordinary
+    # paths and safely escape quotes, backslashes and control characters.
+    output_literal = json.dumps(str(output_path).replace("\\", "/"), ensure_ascii=False)
+    return f'png({output_literal}, width={w_in:.3f}, height={h_in:.3f}, units="in", res={dpi}, type="cairo")'
 
 
 def render_python_panel(panel_func: Callable, spec: dict, output_path: str | Path):
