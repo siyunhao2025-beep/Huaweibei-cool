@@ -1,135 +1,176 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""submission_audit.py — 提交前审计。
+"""Conservative pre-submission audit for a Huawei Cup paper.
 
-对论文（PDF / .tex / .docx 文本）做提交前检查：
-  - 页数（正文是否超门禁，--body-gate 指定，默认不硬卡）
-  - 无页眉、无身份标志（学校/姓名/导师/队号）
-  - 参考文献格式（方括号编号、按序）
-  - AI 披露是否存在（--ai-file 指定，或在论文文本中检出 AI 标注）
-  - 附件清单完整（--attachments 目录）
-
-PDF 页数统计优先用 pypdf，缺失时退化为只做文本检查并提示。
-
-用法:
-  python scripts/submission_audit.py --paper 论文.pdf
-  python scripts/submission_audit.py --paper 论文.tex --body-gate 45
-  python scripts/submission_audit.py --paper 论文.docx --ai-file AI披露.txt --attachments 提交附件
+The 2026 AI rules are conditional on how AI was used. This script never
+treats an absent disclosure as evidence of a violation unless the user
+explicitly declares relevant AI use with --ai-used.
 """
+from __future__ import annotations
+
 import argparse
+import json
 import re
 import sys
 from pathlib import Path
 
-IDENTITY_PAT = re.compile(r"(大学|学院|导师|教授|同学|队|学号|姓名|指导教师)")
-HEADER_PAT = re.compile(r"(页眉|runninghead)")
+
+IDENTITY_PAT = re.compile(
+    r"学校|学院|实验室|参赛队号|队员姓名|指导教师|学号|邮箱|"
+    r"\\(?:schoolname|baominghao|member[abc])\b|"
+    r"\b(?:school\s*name|team\s*(?:number|id)|member\s*name|"
+    r"advisor\s*name|student\s*(?:id|number)|e-?mail)\b|"
+    r"C:\\Users\\",
+    re.IGNORECASE,
+)
+AI_MARKER = re.compile(
+    r"人工智能工具|人工智能辅助|AI\s*(?:工具|辅助|生成)|"
+    r"本程序及代码是在人工智能工具辅助下完成",
+    re.IGNORECASE,
+)
 
 
-def count_pdf_pages(pdf: Path):
+def count_pdf_pages(pdf: Path) -> int | None:
     try:
         import pypdf  # type: ignore
-        with open(pdf, "rb") as f:
-            return len(pypdf.PdfReader(f).pages)
+        with pdf.open("rb") as handle:
+            return len(pypdf.PdfReader(handle).pages)
     except Exception:
         pass
     try:
         import fitz  # type: ignore
-        with fitz.open(pdf) as doc:
-            return doc.page_count
+        with fitz.open(pdf) as document:
+            return document.page_count
     except Exception:
         return None
 
 
+def strip_tex_comments(text: str) -> str:
+    return "\n".join(line.split("%", 1)[0] for line in text.splitlines())
+
+
 def extract_text(path: Path) -> str:
-    """从 pdf/tex/docx 提取可审计文本（docx 仅做启发式，二进制不强解）。"""
-    suf = path.suffix.lower()
-    if suf == ".pdf":
+    """Extract enough text for conservative content checks."""
+    suffix = path.suffix.lower()
+    if suffix == ".pdf":
         try:
             import fitz  # type: ignore
-            with fitz.open(path) as doc:
-                return "\n".join(pg.get_text() for pg in doc)
+            with fitz.open(path) as document:
+                return "\n".join(page.get_text() for page in document)
         except Exception:
             return ""
-    if suf in (".tex", ".txt", ".md"):
-        return path.read_text(encoding="utf-8", errors="ignore")
-    if suf == ".docx":
-        return ""  # docx 二进制，文本检查跳过，仅页数/附件/披露检查
+    if suffix in {".tex", ".txt", ".md"}:
+        text = path.read_text(encoding="utf-8", errors="ignore")
+        return strip_tex_comments(text) if suffix == ".tex" else text
+    if suffix == ".docx":
+        try:
+            from docx import Document  # type: ignore
+            document = Document(str(path))
+            return "\n".join(paragraph.text for paragraph in document.paragraphs)
+        except Exception:
+            return ""
     return ""
 
 
-def main(argv=None):
-    ap = argparse.ArgumentParser(description="提交前审计")
-    ap.add_argument("--paper", required=True, help="论文 PDF/tex/docx 路径")
-    ap.add_argument("--body-gate", type=int, default=None,
-                    help="正文页数门禁（可选，官方未明确时不硬卡）")
-    ap.add_argument("--ai-file", help="AI 披露说明文件")
-    ap.add_argument("--attachments", help="附件目录")
-    ap.add_argument("--json", action="store_true")
-    args = ap.parse_args(argv)
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="华为杯提交前审计")
+    parser.add_argument("--paper", required=True, help="论文 PDF / tex / docx 路径")
+    parser.add_argument(
+        "--max-total-pages", "--body-gate", dest="max_total_pages", type=int,
+        help="总页数上限（仅在当届官方明确时使用；--body-gate 为兼容别名）",
+    )
+    parser.add_argument(
+        "--ai-used", choices=("unknown", "none", "writing", "analysis", "programming", "mixed"),
+        default="unknown", help="实际 AI 使用方式；默认 unknown 不将未披露误判为违规",
+    )
+    parser.add_argument("--ai-file", help="AI 使用/标注说明文件（声明使用 AI 时的审计证据）")
+    parser.add_argument("--attachments", help="提交附件目录")
+    parser.add_argument("--json", action="store_true")
+    args = parser.parse_args(argv)
 
     paper = Path(args.paper)
-    if not paper.exists():
-        print(f"[FAIL] 论文不存在: {paper}")
+    if not paper.is_file():
+        print(f"[FAIL] 论文不存在: {paper}", file=sys.stderr)
         return 1
 
-    findings = []  # (ok, desc)
-    def chk(ok, desc): findings.append((bool(ok), desc))
+    checks: list[dict] = []
+    warnings: list[str] = []
 
-    # 页数
+    def check(ok: bool, desc: str) -> None:
+        checks.append({"ok": bool(ok), "desc": desc})
+
     pages = None
     if paper.suffix.lower() == ".pdf":
         pages = count_pdf_pages(paper)
-        if pages is None:
-            chk(False, "无法统计 PDF 页数（缺 pypdf/fitz），请人工核对")
-        else:
-            chk(True, f"PDF 共 {pages} 页")
-            if args.body_gate:
-                chk(pages <= args.body_gate, f"总页数 {pages} ≤ 门禁 {args.body_gate}")
+        check(pages is not None, "PDF 页数可读取")
+        if pages is not None:
+            check(True, f"PDF 共 {pages} 页")
+            if args.max_total_pages is not None:
+                check(
+                    pages <= args.max_total_pages,
+                    f"总页数 {pages} ≤ 官方上限 {args.max_total_pages}",
+                )
     else:
-        chk(True, "非 PDF，页数请人工核对（研赛摘要≤2页、无页眉无身份标志）")
+        warnings.append("非 PDF 文件未统计页数；请以最终 PDF 人工核对摘要页、页码和版式。")
 
     text = extract_text(paper)
     if text:
-        # 身份标志
-        id_hits = IDENTITY_PAT.findall(text)
-        chk(len(id_hits) == 0, f"无身份标志（检出 {len(id_hits)} 处疑似: {set(id_hits) if id_hits else ''}）")
-        # 参考文献方括号
-        chk(bool(re.search(r"\[\d+\]", text)), "正文有方括号引用编号 [n]")
-        # AI 披露
-        ai_in_text = bool(re.search(r"人工智能工具|AI工具|人工智能辅助|AI辅助", text))
+        hits = sorted(set(IDENTITY_PAT.findall(text)))
+        check(not hits, f"无身份标志（检出 {len(hits)} 处疑似项：{hits[:10]}）")
     else:
-        ai_in_text = False
+        warnings.append("未能抽取正文文本，身份信息需人工复核。")
 
-    # AI 披露文件
-    ai_ok = False
+    # Public sources and borrowed programs need formal references. A template
+    # need not manufacture a citation, so this is a review reminder, not a
+    # false automated failure.
+    check(True, "引用格式：如使用公开资料或程序，正文应按 [n] 引用并列完整参考文献。")
+
+    disclosure_exists = bool(args.ai_file and Path(args.ai_file).is_file())
+    marker_exists = bool(text and AI_MARKER.search(text))
+    if args.ai_used == "none":
+        check(True, "AI 使用声明为 none；不要求附加 AI 标注。")
+    elif args.ai_used == "unknown":
+        warnings.append("尚未声明是否使用 AI；提交前须人工确认 --ai-used=none 或相应使用方式。")
+    else:
+        check(
+            disclosure_exists or marker_exists,
+            "已声明使用 AI，且存在 AI 使用/标注证据（说明文件或论文内标注）。",
+        )
+        if args.ai_used in {"analysis", "mixed"}:
+            warnings.append("人工核对：AI 辅助数据分析的结果前后须标明工具、版本、开发者和发布日期。")
+        if args.ai_used in {"programming", "mixed"}:
+            warnings.append("人工核对：AI 辅助代码开头须有规定的工具信息注释。")
+        if args.ai_used in {"writing", "mixed"}:
+            warnings.append("人工核对：最终文字须经队伍理解并用自己的语言表述。")
+
     if args.ai_file:
-        ai_ok = Path(args.ai_file).exists()
-        chk(ai_ok, f"AI 披露文件存在: {args.ai_file}")
-    elif ai_in_text:
-        ai_ok = True
-        chk(True, "论文文本内含 AI 标注")
-    else:
-        chk(False, "未检出 AI 披露（按2026规定辅助写作/分析/编程须标注）")
+        check(disclosure_exists, f"AI 说明文件存在: {args.ai_file}")
 
-    # 附件
     if args.attachments:
-        d = Path(args.attachments)
-        files = list(d.rglob("*")) if d.is_dir() else []
-        chk(d.is_dir() and len(files) > 0, f"附件目录 {args.attachments} 含 {len(files)} 项")
+        attachment_dir = Path(args.attachments)
+        files = [item for item in attachment_dir.rglob("*") if item.is_file()] if attachment_dir.is_dir() else []
+        check(attachment_dir.is_dir() and bool(files), f"附件目录含 {len(files)} 个文件")
 
-    passed = all(ok for ok, _ in findings)
+    passed = all(item["ok"] for item in checks)
+    payload = {
+        "paper": str(paper),
+        "passed": passed,
+        "pages": pages,
+        "ai_used": args.ai_used,
+        "checks": checks,
+        "warnings": warnings,
+    }
     if args.json:
-        print(__import__("json").dumps({"paper": str(paper), "passed": passed,
-                                        "pages": pages,
-                                        "checks": [{"ok": o, "desc": d} for o, d in findings]},
-                                       ensure_ascii=False, indent=2))
+        print(json.dumps(payload, ensure_ascii=False, indent=2))
     else:
-        print(f"=== 提交前审计: {paper.name} ===")
-        for ok, desc in findings:
-            print(f"  [{'x' if ok else ' '}] {desc}")
-        print(f"\n结果: {'PASS' if passed else 'FAIL（有上述未通过项）'}")
+        print(f"=== 提交前审计：{paper.name} ===")
+        for item in checks:
+            print(f"  [{'x' if item['ok'] else ' '}] {item['desc']}")
+        for warning in warnings:
+            print(f"  [!] {warning}")
+        print(f"\n结果: {'PASS' if passed else 'FAIL'}")
     return 0 if passed else 1
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(main())

@@ -142,7 +142,7 @@ skill 根：`C:\Users\ASUS\AppData\Local\Doubao\User Data\Profile 1\.doubao\agen
 | evidence-ledger.md | 证据台账与 AI 来源标注 |
 | figures-interface.md | 论文图规范与求解图接口；图表计划必须源自读题审计报告 |
 | paper-writing.md | 章节结构与页数基线 |
-| abstract.md | 摘要专项（国一模板，摘要 ≤2 页） |
+| abstract.md | 摘要专项（国一模板；官方表述为摘要一般不超过两页） |
 | deai-writing.md | 反模板/反 AI 味（源自 human-signal，需继续吸收其 references） |
 | innovation.md | 创新点提炼与伪创新识别 |
 | submission.md | 提交规范与 AI 披露（2026 规定） |

@@ -5,7 +5,7 @@
 %
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{gmcmthesis}[2025/09/16 v2.4 update by andy123t]
+\ProvidesClass{gmcmthesis}[2026/09/21 v2.5 anonymous Huawei Cup paper class]
 %% Inital Code
 \newif\if@gmcm@bwprint\@gmcm@bwprintfalse
 \newif\if@gmcm@preface\@gmcm@prefacetrue
@@ -73,9 +73,6 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 % 设置代码环境
 \RequirePackage{listings}
 
-% 设置代码环境
-\usepackage{listings,color}
-
 % Matlab highlight color settings
 %\definecolor{mBasic}{RGB}{248,248,242}       % default
 \definecolor{mKeyword}{RGB}{0,0,255}          % bule
@@ -131,7 +128,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
   rulecolor=\color{gray!50},
   title=#1,                            % \lstnames how the filename of files
   emph={format_string,eff_ana_bf,permute,eff_ana_btr},
-  emphstyle=\color{pIdentifier}
+  emphstyle=\color{pIdentifier},
   showspaces=false,                    % show spaces adding particular underscores
   showstringspaces=false,              % underline spaces within strings
   showtabs=false,                      % show tabs within strings adding particular underscores
@@ -181,7 +178,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{ulem}
 % 尺寸计算
 \RequirePackage{calc}
-\RequirePackage{titletoc,url}
+\RequirePackage{url}
 %参考文献
 \RequirePackage[numbers]{natbib}
 \setlength{\bibsep}{0pt plus 0.3ex}
@@ -189,13 +186,12 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{etoolbox}
 \AtBeginEnvironment{thebibliography}{%
     \phantomsection
-    \addcontentsline{toc}{section}{\refname}
     }
 % 超链接 hyperref 的设置
 \RequirePackage{hyperref}
 %% Document Layout
 % 页面布局
-\geometry{top=30.0mm,bottom=25.0mm,left=22.5mm,right=22.5mm,headsep=8mm}
+\geometry{top=30.0mm,bottom=17.5mm,left=22.5mm,right=22.5mm,headsep=15mm}
 \renewcommand*{\baselinestretch}{1}
 % 每行缩进两个汉字
 \setlength\parindent{2em}
@@ -379,10 +375,8 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 
 % 超链接
 % \AtBeginDocument{%
-	 \hypersetup{%
+\hypersetup{%
 		% % unicode=false, % hyperref 和 xetex 同时使用时不能开启 Unicode 选项.
-		 hyperfootnotes=true,
-		 hyperindex=true,
 		 colorlinks=true,
 		 bookmarksnumbered=true,
 		 bookmarksopen=true,
@@ -408,83 +402,29 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 
 %% Document Markup
 
-% 生成封面, 使用\maketitle
-\renewcommand{\maketitle}{\par
-	\begingroup
-      \newpage
-      \global\@topnum\z@ % Prevents figures from going at top of page.
-      \ge@maketitle      %
-    \endgroup
-  \global\let\thanks\relax
-  \global\let\maketitle\relax
-  \global\let\@maketitle\relax
-  \global\let\@thanks\@empty
-  \global\let\@author\@empty
-  \global\let\@date\@empty
-  \global\let\@title\@empty
-  \global\let\title\relax
-  \global\let\author\relax
-  \global\let\date\relax
-  \global\let\and\relax
-}
-\def\ge@maketitle{%
+% The official 2026 submission rule forbids identifying marks.  Therefore
+% \maketitle creates the anonymous title/abstract page directly; it never
+% emits a school/team/member cover.  The page number remains visible and
+% starts at 1, as required by the official format specification.
+\renewcommand{\maketitle}{%
   \clearpage
-  %\thispagestyle{plain}%
-  \thispagestyle{empty}
-  \pdfbookmark[1]{封~面}{cover}
-  \if@gmcm@preface
-  %\setcounter{page}{0}
-  %\def\thepage{0}
-
- \begin{center}
- {\includegraphics{logo}}
-
-  \vskip1.5cm
- \GMCMContestTitle{\GMCMContestEdition}
- \end{center}
-
- \vskip4em
-
- % \thispagestyle{gmcmheadings}
- \renewcommand\arraystretch{1.5}
- %\noindent 
- \begin{tabularx}{\textwidth-40pt}{lX}
-  \zihao{-2}\bfseries 学\qquad 校&\zihao{-2}\bfseries\gmcm@tokens@schoolname\\
-  \Xhline{1.2pt}\\
-  \zihao{-2}\bfseries 参赛队号&\zihao{-2}\bfseries\gmcm@tokens@baominghao\\
-  \Xhline{1.2pt}\\[-15pt]
-   \multirow{3}{*}{\zihao{-2}\bfseries 队员姓名}&\zihao{-2}\bfseries   1. \gmcm@tokens@membera\hfill\null\\
-   \cline{2-2}\\[-15pt]
-                               &\zihao{-2}\bfseries 2. \gmcm@tokens@memberb\hfill\null\\
-   \cline{2-2}\\[-15pt]
-                        &\zihao{-2}\bfseries 3.  \gmcm@tokens@memberc\hfill\null\\
-   \Xhline{1.2pt}
-  \end{tabularx}
-
-	\makenametitle
-	}
-
-\def\makenametitle{
-\clearpage
-\thispagestyle{plain}%
-\pdfbookmark[1]{标~题}{title}
-\setcounter{page}{1}
-\begin{center}
-%{\includegraphics[width=4cm]{logo}}
-\GMCMContestTitle{\GMCMContestEdition}
-\end{center}
-
-\vskip0.6cm%
-
-\begin{center}
-\begin{tabularx}{.95\textwidth}{@{}lX@{}}
-{\zihao{-4}\songti 题\quad 目: } &\hfill\zihao{3}\heiti \@title\hfill\null\\
-\cline{2-2}
-\end{tabularx}
-\end{center}
-
-\vskip0.2cm%
+  \thispagestyle{plain}%
+  \setcounter{page}{1}%
+  \pdfbookmark[1]{标题和摘要}{title}%
+  \GMCMContestTitle{\GMCMContestEdition}%
+  \vskip0.6cm%
+  \begin{center}
+    \begin{tabularx}{.95\textwidth}{@{}lX@{}}
+      {\lishu\fontsize{18pt}{24pt}\selectfont 题\quad 目：} &
+      \hfill{\zihao{3}\heiti \@title}\hfill\null\\
+      \cline{2-2}
+    \end{tabularx}
+  \end{center}
+  \vskip0.2cm%
 }
+
+% Legacy name retained only as an anonymous alias for old drafts.
+\newcommand{\makenametitle}{\maketitle}
 
 
 % 中文标题格式设置
@@ -526,11 +466,11 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 		\section*{\gmcm@cap@abstractname}%
 	\else
 	 \begin{center}%
-	{\zihao{-4}\songti\gmcm@cap@abstractname\vspace{\z@}}%
+	{\lishu\fontsize{18pt}{24pt}\selectfont\gmcm@cap@abstractname\vspace{\z@}}%
 	 \end{center}%
  	 \quotation
 	\fi}
-	{\if@twocolumn\else\endquotation\newpage\null\fi}
+	{\if@twocolumn\else\endquotation\clearpage\fi}
 \renewenvironment{quotation}
 	{\list{}{\listparindent 2em%
 	 \itemindent \listparindent
@@ -544,20 +484,20 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 	\renewcommand{\gmcm@tokens@keywords}{#1}
 	\par
 	\vskip1ex
-	{\noindent\zihao{-4}\songti\gmcm@cap@keywordsname：}~{\gmcm@tokens@keywords}
+	{\noindent\lishu\fontsize{18pt}{24pt}\selectfont\gmcm@cap@keywordsname：}~{\gmcm@tokens@keywords}
 	}
 
 
 \newcommand*\baominghao[1]{%
-	\renewcommand{\gmcm@tokens@baominghao}{#1}}
+	\ClassError{gmcmthesis}{参赛队号不得写入正式论文}{当前官方格式要求匿名提交；请删除 \string\baominghao 命令。}}
 \newcommand*\schoolname[1]{%
-	\renewcommand{\gmcm@tokens@schoolname}{#1}}
+	\ClassError{gmcmthesis}{学校信息不得写入正式论文}{当前官方格式要求匿名提交；请删除 \string\schoolname 命令。}}
 \newcommand*\membera[1]{%
-	\renewcommand{\gmcm@tokens@membera}{#1}}
+	\ClassError{gmcmthesis}{队员信息不得写入正式论文}{当前官方格式要求匿名提交；请删除 \string\membera 命令。}}
 \newcommand*\memberb[1]{%
-	\renewcommand{\gmcm@tokens@memberb}{#1}}
+	\ClassError{gmcmthesis}{队员信息不得写入正式论文}{当前官方格式要求匿名提交；请删除 \string\memberb 命令。}}
 \newcommand*\memberc[1]{%
-	\renewcommand{\gmcm@tokens@memberc}{#1}}
+	\ClassError{gmcmthesis}{队员信息不得写入正式论文}{当前官方格式要求匿名提交；请删除 \string\memberc 命令。}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -589,28 +529,14 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
 \renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
 
-% 字图与子标题
-% \RequirePackage{subcaption}
-\RequirePackage[titles]{tocloft}
-%\renewcommand{\cftdot}{$\cdot$}
-%\renewcommand{\cftsecdotsep}{1.5}
-\renewcommand{\cftsecdotsep}{4.5}
-\setlength{\cftbeforesecskip}{7pt}
-\setlength{\cftbeforesubsecskip}{3pt}
-%\setlength{\cftbeforesubsecskip}{5pt}
-\renewcommand{\cftsecfont}{\zihao{-4}\songti}
-\renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}
-\renewcommand{\cftsecaftersnumb}{\hskip.4em}
-
-% ----------- 设置新的生成目录命令 -------------
-\newcommand{\maketoc}{
-  \phantomsection
-  \pdfbookmark[1]{目~录}{contents}
-  \tableofcontents
+% The official format says that the page following the complete abstract
+% begins the paper body.  A table of contents must therefore not be emitted.
+\newcommand{\maketoc}{%
+  \ClassError{gmcmthesis}{目录不属于当前官方匿名论文模板}%
+  {请删除 \string\maketoc；摘要结束后的下一页应直接开始正文。}%
 }
 
-\RequirePackage{titletoc}
-\RequirePackage[title,titletoc]{appendix}
+\RequirePackage[title]{appendix}
 
 \newcommand*{\gmcm@cap@appendixname}{附录}
 \renewcommand*\appendixname{\gmcm@cap@appendixname}
@@ -636,6 +562,8 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 % \titlecontents{subsubsection}[55pt]{\songti}
 % {\thecontentslabel\hskip.5em}{}{\titlerule*[0.5pc]{.}\contentspage}
 
-% \pagestyle{plain}
+% ctex may install its headings style at \begin{document}; install the
+% official no-header page style after that hook has run.
+\AtBeginDocument{\pagestyle{plain}}
 
 \endinput

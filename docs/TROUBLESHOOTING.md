@@ -106,16 +106,13 @@ Test-NetConnection 127.0.0.1 -Port 7897   # TcpTestSucceeded = True 才通
 
 ### 3.1 现象：`xelatex` 编译中文论文报 `fontspec` 错，或中文出方块/缺字
 
-**原因**：模板指定的中文字体（如 `STXinwei`/"华文新魏"）本机没有；xelatex 默认字体不含中文。
+**原因**：赛事标题优先使用的华文新魏可能不在本机；或正文宋体缺失。正文不能随意换成微软雅黑、黑体等非官方字体。
 
 **解决步骤**：
 1. 先自检：`python scripts/doctor.py` 看"xelatex + 中文字体"项。
-2. 本机常见可用字体：`Microsoft YaHei`（微软雅黑，必装）、`SimHei`（黑体）。`STXinwei` 只在装有"华文新魏"的机器上才有（`C:\Windows\Fonts\STXINWEI.TTF`）。
-3. 把 tex 里的 `\setCJKmainfont{...}` 改成本机存在的字体：
-   ```latex
-   \setCJKmainfont{Microsoft YaHei}   % 或 SimHei；不要写 STXinwei 除非它确实在
-   ```
-4. 找不到字体时查本机列表：`fc-list :lang=zh`（TeX Live）或 `Get-ChildItem C:\Windows\Fonts`。
+2. 正文优先使用宋体（Windows 常见为 SimSun）；题目和一级标题由模板使用黑体。华文新魏只影响三行赛事标题。
+3. 不要在正文里把 `\setCJKmainfont` 改成 Microsoft YaHei 或 SimHei。Overleaf 缺少华文新魏时，已修正的 gmcm-title.sty 会自动用 Fandol 中文回退字体，只影响赛事标题。
+4. 找不到宋体时，先在本机检查字体列表：`fc-list :lang=zh`（TeX Live）或 `Get-ChildItem C:\Windows\Fonts`；最终 PDF 应人工确认正文中文为宋体风格。
 
 > 历史说明：旧模板曾因引用不存在的 `loglo.png`（日志图占位）导致编译失败，**该缺陷已在 Wave 早期修复**；现在若再报缺图，先 `ls 论文/` 确认图片真的生成了，而不是复制旧占位名。
 
@@ -236,6 +233,6 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 | 不知道哪坏了 | `python scripts/doctor.py` |
 | 中文乱码 | `chcp 65001` + 文件存 UTF-8 with BOM |
 | git push 失败 | `netstat -ano \| findstr 7897`，再 `git config --global http.proxy ...` |
-| xelatex 中文缺字 | 把字体改成 `Microsoft YaHei` |
+| xelatex 中文缺字 | 保持正文宋体；检查 SimSun，赛事标题允许模板自动回退 |
 | MATLAB license/0 字节日志 | `cmd /c "... > log 2>&1"`，别并发起第二个 |
 | pytest 红 | 看是不是 MATLAB 用例在 skip（正常）；中文路径就换目录 |

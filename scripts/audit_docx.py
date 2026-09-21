@@ -134,26 +134,17 @@ def audit(path: Path):
             instructions = " ".join(paragraph.xpath(".//w:instrText/text()", namespaces=NS))
             if re.search(r"\bTOC\b", instructions, re.I):
                 toc_fields.append({"paragraph": index, "instruction": instructions})
-        toc_switch_ok = bool(toc_fields and re.search(r"\\o\s+\"1-3\"", toc_fields[0]["instruction"]) and
-                              re.search(r"\\h", toc_fields[0]["instruction"]) and
-                              re.search(r"\\z", toc_fields[0]["instruction"]) and
-                              re.search(r"\\u", toc_fields[0]["instruction"]))
         heading_indexes = [index for index, paragraph in enumerate(paragraphs)
                            if paragraph_outline_level(paragraph) in {0, 1, 2} and paragraph_texts[index]]
-        toc_order_ok = bool(toc_titles and toc_fields and heading_indexes and
-                            toc_titles[0] < toc_fields[0]["paragraph"] < heading_indexes[0])
-        checks.append({"code": "dynamic_toc_field", "ok": toc_switch_ok, "fields": toc_fields,
-                       "message": 'TOC \\o "1-3" \\h \\z \\u field is required'})
-        checks.append({"code": "toc_title_and_order", "ok": toc_order_ok,
-                       "title_paragraphs": toc_titles, "heading_paragraphs": heading_indexes[:20]})
+        checks.append({
+            "code": "no_toc_between_abstract_and_body",
+            "ok": not toc_titles and not toc_fields,
+            "titles": toc_titles,
+            "fields": toc_fields,
+            "message": "官方规定：完整摘要后的下一页直接开始正文，不插入目录。",
+        })
         checks.append({"code": "non_empty_outline_headings", "ok": bool(heading_indexes),
                        "count": len(heading_indexes)})
-
-        settings_update = False
-        if "word/settings.xml" in names:
-            settings = etree.fromstring(package.read("word/settings.xml"))
-            settings_update = bool(settings.xpath('.//w:updateFields[@w:val="true"]', namespaces=NS))
-        checks.append({"code": "toc_update_on_open", "ok": settings_update})
 
         chinese_italic_runs = []
         for paragraph_index, paragraph in enumerate(paragraphs, start=1):
@@ -185,14 +176,17 @@ def audit(path: Path):
                 "different_first_page": section.find("w:titlePg", NS) is not None,
             })
         expected_size = {"w": "11906", "h": "16838"}
-        expected_margins = {"top": "1418", "right": "1418", "bottom": "1418", "left": "1418"}
+        expected_margins = {
+            "top": "1701", "right": "1276", "bottom": "992", "left": "1276",
+            "header": "850", "footer": "992",
+        }
         geometry_ok = bool(section_results) and all(
             item["page_size"].get("w") == expected_size["w"]
             and item["page_size"].get("h") == expected_size["h"]
             and all(abs(int(item["margins"].get(key, "0")) - int(value)) <= 1 for key, value in expected_margins.items())
             for item in section_results
         )
-        checks.append({"code": "a4_and_25mm_margins", "ok": geometry_ok, "sections": section_results})
+        checks.append({"code": "a4_and_official_margins", "ok": geometry_ok, "sections": section_results})
 
         page_numbering_ok = bool(section_results) and all(
             item["page_number_start"] == "1" and not item["different_first_page"]
@@ -201,7 +195,12 @@ def audit(path: Path):
         checks.append({"code": "page_number_starts_at_1", "ok": page_numbering_ok, "sections": section_results})
 
         body_breaks = len(document.xpath('.//w:body//w:br[@w:type="page"]', namespaces=NS))
-        checks.append({"code": "abstract_to_toc_and_body_page_breaks", "ok": body_breaks >= 2, "page_breaks": body_breaks})
+        checks.append({
+            "code": "abstract_to_body_page_break",
+            "ok": body_breaks >= 1,
+            "page_breaks": body_breaks,
+            "message": "关键词后仅分页进入正文；不得额外插入目录页。",
+        })
 
         label_measurements = {}
         for label in ("题 目：", "摘 要：", "关键词："):
@@ -241,8 +240,8 @@ def audit(path: Path):
             style_results["body"] is not None
             and style_results["body"]["eastAsia"] == "宋体"
             and style_results["body"]["size_half_points"] == 24
-            and style_results["body"]["line_twips"] == 360
-            and style_results["body"]["line_rule"] == "exact"
+            and style_results["body"]["line_twips"] in {None, 240}
+            and style_results["body"]["line_rule"] in {None, "auto"}
             and not style_results["body"]["italic"]
             and style_results["heading1"] is not None
             and style_results["heading1"]["eastAsia"] == "黑体"
@@ -250,13 +249,13 @@ def audit(path: Path):
             and style_results["heading1"]["bold"]
             and not style_results["heading1"]["italic"]
             and style_results["heading1"]["outline_level"] == "0"
-            and style_results["heading1"]["line_twips"] == 480
-            and style_results["heading1"]["line_rule"] == "exact"
+            and style_results["heading1"]["line_twips"] in {None, 240}
+            and style_results["heading1"]["line_rule"] in {None, "auto"}
             and style_results["heading2"] is not None
             and style_results["heading2"]["eastAsia"] == "宋体"
             and style_results["heading2"]["size_half_points"] == 24
-            and style_results["heading2"]["line_twips"] == 360
-            and style_results["heading2"]["line_rule"] == "exact"
+            and style_results["heading2"]["line_twips"] in {None, 240}
+            and style_results["heading2"]["line_rule"] in {None, "auto"}
             and not style_results["heading2"]["italic"]
             and style_results["heading2"]["outline_level"] == "1"
             and style_results["heading3"] is not None

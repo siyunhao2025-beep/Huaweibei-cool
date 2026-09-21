@@ -1,6 +1,6 @@
 ﻿#!/usr/bin/env python3
 # [来源] 移植自 v2.1 华为杯_论文规范模板/tools/，相对路径已改为 CLI 参数驱动，Wave3 验证编译链路。
-"""Audit the TeX-only paper source and its generated ``\input`` chain."""
+r"""Audit the TeX-only paper source and its generated ``\input`` chain."""
 from __future__ import annotations
 
 import argparse
@@ -15,7 +15,6 @@ BEGIN_RE = re.compile(r"\\begin\s*\{([^{}]+)\}")
 END_RE = re.compile(r"\\end\s*\{([^{}]+)\}")
 LABEL_RE = re.compile(r"\\label\s*\{([^{}]+)\}")
 REF_RE = re.compile(r"\\(?:ref|eqref|autoref|pageref)\s*\{([^{}]+)\}")
-TOC_DEPTH_RE = re.compile(r"\\setcounter\s*\{tocdepth\}\s*\{\s*(\d+)\s*\}")
 FORBIDDEN_UNICODE_MATH = set("ᐟ¹²³⁴⁵⁶⁷⁸⁹⁰⁻⁺Σ∑∫√∈∉≤≥≈μσπγδελρτφω̃ᵀĉŷ")
 
 
@@ -74,21 +73,27 @@ def audit(manifest_path: Path, main_path: Path) -> dict:
     add("input_order_matches_manifest", actual == expected, expected=expected, actual=actual)
     add("main_has_no_markdown_input", not any(path.lower().endswith(".md") for path in actual), actual=actual)
 
-    # The TOC is a production contract: it must follow the complete
-    # abstract/keywords block and precede the first body input.
+    # Attachment 2 states that the page after the complete abstract begins
+    # the body.  A generated table of contents between them is non-compliant.
     clean_main = remove_comments(main_text)
-    toc_match = re.search(r"\\maketoc\b", clean_main)
     abstract_end = clean_main.find(r"\end{abstract}")
     after_abstract = clean_main[abstract_end + len(r"\end{abstract}"):] if abstract_end >= 0 else ""
     first_input_match = re.search(r"\\input\s*\{", after_abstract)
     first_input_pos = abstract_end + len(r"\end{abstract}") + first_input_match.start() if abstract_end >= 0 and first_input_match else -1
-    toc_order_ok = bool(toc_match and abstract_end >= 0 and first_input_pos >= 0 and abstract_end < toc_match.start() < first_input_pos)
-    add("toc_command_order", toc_order_ok, maketoc_position=toc_match.start() if toc_match else None,
-        abstract_end=abstract_end, first_body_input=first_input_pos)
-    depth_values = [int(value) for value in TOC_DEPTH_RE.findall(clean_main)]
-    add("toc_depth_is_three", depth_values == [3], values=depth_values)
-    add("toc_hyperlinks_enabled", bool(re.search(r"\\hypersetup\s*\{[^}]*hidelinks", clean_main, re.S)),
-        message="hyperref is configured for linked TOC/bookmarks")
+    toc_commands = re.findall(r"\\(?:maketoc|tableofcontents)\b", clean_main)
+    add("no_toc_in_official_submission", not toc_commands, commands=toc_commands,
+        message="官方规定：完整摘要后的下一页直接开始正文。")
+    between = after_abstract[:first_input_match.start()] if first_input_match else ""
+    only_page_breaks = re.sub(r"\\(?:clearpage|newpage)\b", "", between).strip()
+    add("body_follows_complete_abstract", abstract_end >= 0 and first_input_pos >= 0 and not only_page_breaks,
+        abstract_end=abstract_end, first_body_input=first_input_pos, intervening=between.strip())
+    add("main_does_not_override_official_geometry", not re.search(r"\\geometry\s*\{", clean_main),
+        message="页边距由 gmcmthesis.cls 统一设为官方 Word 模板的 30/17.5/22.5/22.5 mm。")
+    add("uses_anonymous_title_page", bool(re.search(r"\\maketitle\b", clean_main))
+        and r"\HuaweiTitlePage" not in clean_main,
+        message="默认 \\maketitle 生成匿名摘要页并显示第 1 页页码。")
+    add("plain_page_style", bool(re.search(r"\\pagestyle\s*\{plain\}", clean_main)),
+        message="plain 页式确保无页眉、页脚居中阿拉伯页码。")
 
     fragment_paths: list[Path] = []
     fragment_errors: list[str] = []
@@ -133,26 +138,6 @@ def audit(manifest_path: Path, main_path: Path) -> dict:
     add("fragments_are_real_latex", not markdown_residue and not document_commands, markdown_residue=markdown_residue, document_commands=document_commands)
     add("fragment_braces_balanced", not unbalanced, files=unbalanced)
     add("fragment_environments_balanced", not environment_errors, errors=environment_errors)
-
-    # After XeLaTeX, inspect the generated auxiliary file when it exists.  A
-    # pre-compilation audit remains useful and reports this check as pending
-    # rather than manufacturing a failure from a missing build artifact.
-    toc_path = main_path.with_suffix(".toc")
-    if toc_path.is_file():
-        toc_text = toc_path.read_text(encoding="utf-8", errors="replace")
-        toc_levels = {
-            level: bool(re.search(rf"\\contentsline\s*\{{{level}\}}", toc_text))
-            for level in ("section", "subsection", "subsubsection")
-        }
-        expected_levels = {
-            level: bool(re.search(rf"\\{level}\*?\s*(?:\[[^]]*\])?\s*\{{", remove_comments(all_text)))
-            for level in toc_levels
-        }
-        toc_content_ok = all((not expected_levels[level]) or toc_levels[level] for level in toc_levels)
-        add("toc_auxiliary_content", toc_content_ok, path=str(toc_path), expected=expected_levels, found=toc_levels)
-    else:
-        add("toc_auxiliary_content", True, available=False, path=str(toc_path),
-            message=".toc not present; run XeLaTeX before auxiliary-content validation")
 
     missing_graphics: list[str] = []
     for raw in GRAPHICS_RE.findall(all_text):

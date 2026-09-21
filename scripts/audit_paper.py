@@ -22,12 +22,12 @@ except ImportError:  # compatibility with older installations
 
 IDENTITY_RE = re.compile(
     r"学校|学院|实验室|参赛队号|队员姓名|指导教师|学号|邮箱|email|"
-    r"\\b(?:school|student|team|member|advisor)\\b|C:\\\\Users\\\\",
+    r"\b(?:school|student|team|member|advisor)\b|C:\\Users\\",
     re.IGNORECASE,
 )
-REFERENCE_RE = re.compile(r"^\\s*(参考文献|References?)\\s*$", re.IGNORECASE)
-APPENDIX_RE = re.compile(r"^\\s*(附录|Appendix)\\s*[A-ZＡ-Ｚ0-9０-９]*\\s*$", re.IGNORECASE)
-PAGE_RE = re.compile(r"(?<!\\d)(\\d{1,3})(?!\\d)")
+REFERENCE_RE = re.compile(r"^\s*(参考文献|References?)\s*$", re.IGNORECASE)
+APPENDIX_RE = re.compile(r"^\s*(附录|Appendix)\s*[A-ZＡ-Ｚ0-9０-９]*\s*$", re.IGNORECASE)
+PAGE_RE = re.compile(r"(?<!\d)(\d{1,3})(?!\d)")
 
 
 def load_contest_config(start: Path, explicit: Path | None = None) -> dict:
@@ -77,7 +77,13 @@ def extract_page_records(pdf: Path):
                         "size": span.get("size", 0),
                         "bbox": span.get("bbox", []),
                     })
-        records.append({"physical_page": physical, "text": text, "spans": spans})
+        records.append({
+            "physical_page": physical,
+            "text": text,
+            "spans": spans,
+            "width": float(page.rect.width),
+            "height": float(page.rect.height),
+        })
     doc.close()
     return records
 
@@ -125,11 +131,39 @@ def printed_page_offset(records):
             text = span["text"].strip()
             if PAGE_RE.fullmatch(text):
                 y = span["bbox"][3] if len(span["bbox"]) >= 4 else 0
-                if y > 700:
+                if y > record.get("height", 842) - 100:
                     candidates.append(int(text))
         if candidates:
             return candidates[0] - record["physical_page"]
     return 0
+
+
+def centered_footer_numbers(record):
+    """Return short numeric footer labels centered on the physical page."""
+    labels = []
+    width = record.get("width", 595)
+    height = record.get("height", 842)
+    for span in record["spans"]:
+        text = span["text"].strip()
+        bbox = span.get("bbox", [])
+        if not PAGE_RE.fullmatch(text) or len(bbox) < 4:
+            continue
+        center_x = (bbox[0] + bbox[2]) / 2
+        if bbox[3] > height - 100 and abs(center_x - width / 2) <= max(40, width * 0.1):
+            labels.append(int(text))
+    return labels
+
+
+def header_text_spans(records):
+    """Collect visible text in the header zone; official papers must have none."""
+    hits = []
+    for record in records:
+        for span in record["spans"]:
+            text = span["text"].strip()
+            bbox = span.get("bbox", [])
+            if text and len(bbox) >= 4 and bbox[1] < 55:
+                hits.append({"page": record["physical_page"], "text": text[:100], "bbox": bbox})
+    return hits
 
 
 def role_ranges(chapters, records):
@@ -234,6 +268,22 @@ def main():
     identity_hits = sorted(set(IDENTITY_RE.findall(full_text)))
     if identity_hits:
         issues.append({"code": "possible_identity_text", "severity": "error", "matches": identity_hits[:20]})
+    header_hits = header_text_spans(records)
+    if header_hits:
+        issues.append({
+            "code": "header_text_detected",
+            "severity": "error",
+            "message": "官方格式要求无页眉。",
+            "spans": header_hits[:20],
+        })
+    first_page_footer = centered_footer_numbers(records[0]) if records else []
+    if 1 not in first_page_footer:
+        issues.append({
+            "code": "abstract_page_number_missing",
+            "severity": "error",
+            "message": "摘要页页脚中部必须显示阿拉伯页码 1。",
+            "labels": first_page_footer,
+        })
     # We cannot prove font correctness from a PDF with broken CMaps, but can flag obvious fonts.
     fonts = sorted({span["font"] for record in records for span in record["spans"] if span.get("font")})
     forbidden_fonts = [font for font in fonts if any(token in font.lower() for token in ("lishu", "kaiti"))]
@@ -244,6 +294,8 @@ def main():
         "pdfinfo": pdfinfo(pdf),
         "physical_pages": len(records),
         "printed_page_offset": printed_page_offset(records),
+        "first_page_centered_footer_numbers": first_page_footer,
+        "header_text_spans": header_hits,
         "body": body,
         "body_page_gate": {"minimum": required_body, "mode": body_gate_mode, "authority": body_gate_authority},
         "chapter_ranges": ranges,

@@ -54,7 +54,7 @@ W = "{" + W_NS + "}"
 
 IDENTITY_RE = re.compile(
     r"学校|学院|实验室|参赛队号|队员姓名|指导教师|学号|邮箱|email|"
-    r"\\b(?:school|student|team|member|advisor)\\b|C:\\\\Users\\\\",
+    r"\b(?:school|student|team|member|advisor)\b|C:\\Users\\",
     re.IGNORECASE,
 )
 
@@ -93,12 +93,11 @@ def set_style_font(style, east_asia: str, size_pt: float, *, bold: bool = False,
     fonts.set(qn("w:hint"), "eastAsia")
 
 
-def set_spacing(paragraph, *, before=0, after=0, line=18, first_line=True):
+def set_spacing(paragraph, *, before=0, after=0, first_line=True):
     fmt = paragraph.paragraph_format
     fmt.space_before = Pt(before)
     fmt.space_after = Pt(after)
-    fmt.line_spacing = Pt(line)
-    fmt.line_spacing_rule = WD_LINE_SPACING.EXACTLY
+    fmt.line_spacing_rule = WD_LINE_SPACING.SINGLE
     fmt.first_line_indent = Inches(1 / 3) if first_line else Inches(0)
     fmt.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
 
@@ -125,10 +124,10 @@ def clear_body_keep_final_section(document):
 def configure_section(section):
     section.page_width = Cm(21.0)
     section.page_height = Cm(29.7)
-    section.top_margin = Cm(2.5)
-    section.bottom_margin = Cm(2.5)
-    section.left_margin = Cm(2.5)
-    section.right_margin = Cm(2.5)
+    section.top_margin = Cm(3.0)
+    section.bottom_margin = Cm(1.75)
+    section.left_margin = Cm(2.25)
+    section.right_margin = Cm(2.25)
     section.header_distance = Cm(1.5)
     section.footer_distance = Cm(1.75)
     section.different_first_page_header_footer = False
@@ -185,8 +184,7 @@ def add_style(document, name, east_asia, size, *, bold=False, align=WD_ALIGN_PAR
     set_style_font(style, east_asia, size, bold=bold)
     style.paragraph_format.space_before = Pt(0)
     style.paragraph_format.space_after = Pt(0)
-    style.paragraph_format.line_spacing = Pt(18 if size <= 12 else 24)
-    style.paragraph_format.line_spacing_rule = WD_LINE_SPACING.EXACTLY
+    style.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
     style.paragraph_format.first_line_indent = Inches(1 / 3) if align == WD_ALIGN_PARAGRAPH.JUSTIFY else Inches(0)
     style.paragraph_format.alignment = align
     # Avoid inheriting the template's automatic numbering when we write our own.
@@ -209,8 +207,7 @@ def configure_styles(document):
     set_style_font(normal, "宋体", 12)
     normal.paragraph_format.first_line_indent = Inches(1 / 3)
     normal.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-    normal.paragraph_format.line_spacing = Pt(18)
-    normal.paragraph_format.line_spacing_rule = WD_LINE_SPACING.EXACTLY
+    normal.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
     normal.paragraph_format.space_before = Pt(0)
     normal.paragraph_format.space_after = Pt(0)
 
@@ -218,7 +215,6 @@ def configure_styles(document):
     add_style(document, "Huawei Heading 1", "黑体", 14, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, outline_level=0)
     add_style(document, "Huawei Heading 2", "宋体", 12, bold=True, align=WD_ALIGN_PARAGRAPH.LEFT, outline_level=1)
     add_style(document, "Huawei Heading 3", "宋体", 12, bold=False, align=WD_ALIGN_PARAGRAPH.LEFT, outline_level=2)
-    add_style(document, "Huawei TOC Title", "黑体", 14, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER)
     add_style(document, "Huawei Appendix Code", "Courier New", 9, align=WD_ALIGN_PARAGRAPH.LEFT)
     add_style(document, "Huawei Table Caption", "宋体", 12, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER)
 
@@ -237,7 +233,7 @@ def add_body_run(paragraph, text, *, bold=False, italic=False):
 
 def add_body_paragraph(document, text, *, style="Huawei Body", first_line=True, space_before=0, space_after=0):
     p = document.add_paragraph(style=style)
-    set_spacing(p, before=space_before, after=space_after, line=18, first_line=first_line)
+    set_spacing(p, before=space_before, after=space_after, first_line=first_line)
     # TeX is converted to plain text before it reaches Word. Always write
     # upright runs here; LaTeX remains the authoritative formatting route.
     add_body_run(p, text.strip())
@@ -255,8 +251,8 @@ def add_heading(document, text, level, number=None, *, role=None):
     p.paragraph_format.first_line_indent = Inches(0)
     p.paragraph_format.space_before = Pt(6 if level == 1 else 3)
     p.paragraph_format.space_after = Pt(6 if level == 1 else 3)
-    # Match the line spacing declared by the corresponding paragraph style.
-    p.paragraph_format.line_spacing = Pt(24 if level == 1 else 18)
+    # The official format requires single line spacing for all Chinese text.
+    p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
     p.paragraph_format.keep_with_next = True
     ppr = p._p.get_or_add_pPr()
     outline = ppr.find(qn("w:outlineLvl"))
@@ -268,31 +264,6 @@ def add_heading(document, text, level, number=None, *, role=None):
     set_run_font(run, "黑体" if level == 1 else "宋体", 14 if level == 1 else 12, bold=level <= 2)
     p._p.set(qn("w:rsidR"), "00000000")
     return p, rendered
-
-
-def add_toc_field(document):
-    """Insert a dynamic Word TOC field with heading levels 1--3."""
-    paragraph = document.add_paragraph()
-    paragraph.alignment = WD_ALIGN_PARAGRAPH.LEFT
-    paragraph.paragraph_format.first_line_indent = Inches(0)
-    paragraph.paragraph_format.space_before = Pt(0)
-    paragraph.paragraph_format.space_after = Pt(0)
-    run = paragraph.add_run()
-    set_run_font(run, "宋体", 12)
-    begin = OxmlElement("w:fldChar")
-    begin.set(qn("w:fldCharType"), "begin")
-    begin.set(qn("w:dirty"), "true")
-    instr = OxmlElement("w:instrText")
-    instr.set(qn("xml:space"), "preserve")
-    instr.text = ' TOC \\o "1-3" \\h \\z \\u '
-    separate = OxmlElement("w:fldChar")
-    separate.set(qn("w:fldCharType"), "separate")
-    placeholder = OxmlElement("w:t")
-    placeholder.text = "目录将在打开文档时更新"
-    end = OxmlElement("w:fldChar")
-    end.set(qn("w:fldCharType"), "end")
-    run._r.extend([begin, instr, separate, placeholder, end])
-    return paragraph
 
 
 def enable_update_fields(document):
@@ -320,7 +291,7 @@ def add_table(document, rows):
             for p in cell.paragraphs:
                 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
                 p.paragraph_format.first_line_indent = Inches(0)
-                p.paragraph_format.line_spacing = Pt(18)
+                p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
                 for run in p.runs:
                     set_run_font(run, "宋体", 12, bold=row_index == 0)
     document.add_paragraph().paragraph_format.space_after = Pt(0)
@@ -557,8 +528,8 @@ def read_input(path: Path):
     forbidden = {"abstract", "content", "content_file"} & set(data)
     if forbidden:
         raise ValueError(f"TeX-first 输入禁止旧字段: {', '.join(sorted(forbidden))}")
-    if not isinstance(data["keywords"], list) or not 4 <= len(data["keywords"]) <= 6:
-        raise ValueError("关键词数量必须为 4–6 个")
+    if not isinstance(data["keywords"], list) or not data["keywords"]:
+        raise ValueError("关键词必须至少提供一个条目")
     if any(not str(k).strip() for k in data["keywords"]):
         raise ValueError("关键词不能是空字符串")
     root = path.parent.resolve()
@@ -668,7 +639,7 @@ def build(args):
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p.paragraph_format.first_line_indent = Inches(0)
         p.paragraph_format.space_after = Pt(0)
-        p.paragraph_format.line_spacing = Pt(24)
+        p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
         r = p.add_run(text)
         set_run_font(r, "华文新魏", size, bold=True)
 
@@ -677,7 +648,7 @@ def build(args):
     title_p.paragraph_format.first_line_indent = Inches(0)
     title_p.paragraph_format.space_before = Pt(12)
     title_p.paragraph_format.space_after = Pt(6)
-    title_p.paragraph_format.line_spacing = Pt(18)
+    title_p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
     add_label_run(title_p, "题 目：")
     title_run = title_p.add_run(str(data["title"]).strip())
     set_run_font(title_run, "黑体", 16)
@@ -687,7 +658,7 @@ def build(args):
     abs_heading.paragraph_format.first_line_indent = Inches(0)
     abs_heading.paragraph_format.space_before = Pt(6)
     abs_heading.paragraph_format.space_after = Pt(6)
-    abs_heading.paragraph_format.line_spacing = Pt(18)
+    abs_heading.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
     add_label_run(abs_heading, "摘 要：")
     abstract_path = resolve_tex_path(input_path.parent.resolve(), str(data["abstract_tex_path"]), "abstract_tex_path")
     add_tex_content(document, read_tex_source(abstract_path, input_path.parent.resolve()), input_path.parent.resolve(), skip_first_section=False)
@@ -697,21 +668,12 @@ def build(args):
     keywords.paragraph_format.first_line_indent = Inches(1 / 3)
     keywords.paragraph_format.space_before = Pt(6)
     keywords.paragraph_format.space_after = Pt(0)
-    keywords.paragraph_format.line_spacing = Pt(18)
+    keywords.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
     add_label_run(keywords, "关键词：")
     add_body_run(keywords, "  ".join(str(k).strip() for k in data["keywords"]))
 
-    # Dynamic TOC follows the complete abstract/keywords block and precedes
-    # the body.  The second page break keeps the first heading out of the TOC
-    # page even when Word has not refreshed the field yet.
-    document.add_page_break()
-    toc_title = document.add_paragraph(style="Huawei TOC Title")
-    toc_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    toc_title.paragraph_format.first_line_indent = Inches(0)
-    toc_title.paragraph_format.space_before = Pt(0)
-    toc_title.paragraph_format.space_after = Pt(12)
-    add_body_run(toc_title, "目录", bold=True)
-    add_toc_field(document)
+    # The official format requires the next page after the complete abstract
+    # to begin the body; do not insert a table of contents here.
     document.add_page_break()
 
     chapter_manifest = []
