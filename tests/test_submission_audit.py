@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Smoke-test the official-format submission audit against the anonymous sample."""
+"""Smoke-test the 2026 cover-aware submission audit."""
 
 import json
 import subprocess
@@ -11,8 +11,8 @@ EXAMPLE = ASSETS / "paper-template" / "example.tex"
 COVER_EXAMPLE = ASSETS / "paper-template" / "example-with-identity-cover.tex"
 
 
-def test_submission_audit_accepts_anonymous_sample_without_ai_use():
-    """An anonymous sample with no AI use must pass; disclosure is conditional."""
+def test_submission_audit_accepts_formal_sample_without_ai_use():
+    """The formal sample has a cover; all following pages remain anonymous."""
     assert EXAMPLE.is_file(), f"missing example.tex: {EXAMPLE}"
     proc = subprocess.run(
         [
@@ -40,8 +40,8 @@ def test_submission_audit_accepts_anonymous_sample_without_ai_use():
     assert "身份" in descs and "AI" in descs
 
 
-def test_submission_audit_rejects_identity_cover_sample():
-    """The opt-in administrative cover must never pass as an anonymous paper."""
+def test_submission_audit_accepts_explicit_cover_entry():
+    """The explicitly named compatibility entry is also a formal submission."""
     assert COVER_EXAMPLE.is_file(), f"missing cover example: {COVER_EXAMPLE}"
     proc = subprocess.run(
         [
@@ -62,7 +62,38 @@ def test_submission_audit_rejects_identity_cover_sample():
         errors="replace",
         timeout=60,
     )
+    assert proc.returncode == 0, proc.stderr
+    out = json.loads(proc.stdout)
+    assert out["passed"] is True
+    assert any(check["ok"] and "封皮" in check["desc"] for check in out["checks"])
+
+
+def test_submission_audit_rejects_identity_after_cover(tmp_path):
+    """Identity text outside the permitted cover must fail."""
+    leaked = tmp_path / "leaked.tex"
+    text = EXAMPLE.read_text(encoding="utf-8")
+    text = text.replace(r"\section{问题重述}", "学校：测试大学\n" + r"\section{问题重述}")
+    leaked.write_text(text, encoding="utf-8")
+    proc = subprocess.run(
+        [
+            sys.executable,
+            "-X",
+            "utf8",
+            str(SCRIPTS / "submission_audit.py"),
+            "--paper",
+            str(leaked),
+            "--ai-used",
+            "none",
+            "--json",
+        ],
+        cwd=str(REPO_ROOT),
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        timeout=60,
+    )
     assert proc.returncode == 1
     out = json.loads(proc.stdout)
     assert out["passed"] is False
-    assert any(not check["ok"] and "身份" in check["desc"] for check in out["checks"])
+    assert any(not check["ok"] and "封皮之后" in check["desc"] for check in out["checks"])

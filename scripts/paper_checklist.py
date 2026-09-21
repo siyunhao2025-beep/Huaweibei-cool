@@ -102,7 +102,8 @@ def split_sections(tex: str) -> tuple[dict, list]:
                 key = k
                 break
         if key is None:
-            key = f"sec_{idx}_{re.sub(r'[^\\w一-龥]', '_', title)[:20]}"
+            safe_title = re.sub(r"[^\w一-龥]", "_", title)[:20]
+            key = f"sec_{idx}_{safe_title}"
         sections[key] = (start, end, body)
         order.append((key, title, start))
     # preamble = 第一条 \section 之前

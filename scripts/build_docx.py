@@ -629,7 +629,8 @@ def build(args):
     configure_styles(document)
     enable_update_fields(document)
 
-    # Official front matter: no school/team/member fields and no identity cover.
+    # Drafting DOCX front matter stays anonymous.  The formal 2026 upload is a
+    # PDF and must receive the official identity cover in the final template.
     for text, size in [
         ("中国研究生创新实践系列大赛", 18),
         (f"“华为杯”第{edition}届中国研究生", 22),

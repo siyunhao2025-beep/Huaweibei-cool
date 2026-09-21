@@ -216,7 +216,11 @@ def check_phase(phase: str, root: Path) -> tuple:
         text = _gather_text(root)
         need(not re.search(r"TODO|待补|占位|XXX|FIXME", text), "无 TODO/占位符残留")
         need(re.search(r"参考文献|References|\[\d+\]", text), "有参考文献/引用标注")
-        need(not re.search(r"大学|学院|导师|姓名", text), "匿名化（无学校/姓名字样，启发式）")
+        anonymous_text = text
+        for command in ("schoolname", "baominghao", "membera", "memberb", "memberc"):
+            anonymous_text = re.sub(rf"\\{command}\s*\{{[^{{}}]*\}}", "", anonymous_text, flags=re.S)
+        need(not re.search(r"大学|学院|导师|姓名", anonymous_text),
+             "封皮后匿名化（官方封皮字段除外；启发式）")
 
     elif phase == "P6":
         sub = root / "提交附件"

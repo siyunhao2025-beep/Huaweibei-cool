@@ -28,6 +28,16 @@ AI_MARKER = re.compile(
     r"本程序及代码是在人工智能工具辅助下完成",
     re.IGNORECASE,
 )
+COVER_MARKERS = ("学校", "参赛队号", "队员姓名")
+COVER_FIELDS = ("schoolname", "baominghao", "membera", "memberb", "memberc")
+
+
+def load_pymupdf():
+    try:
+        import pymupdf  # type: ignore
+    except ImportError:
+        import fitz as pymupdf  # type: ignore
+    return pymupdf
 
 
 def count_pdf_pages(pdf: Path) -> int | None:
@@ -38,8 +48,8 @@ def count_pdf_pages(pdf: Path) -> int | None:
     except Exception:
         pass
     try:
-        import fitz  # type: ignore
-        with fitz.open(pdf) as document:
+        pymupdf = load_pymupdf()
+        with pymupdf.open(pdf) as document:
             return document.page_count
     except Exception:
         return None
@@ -49,13 +59,37 @@ def strip_tex_comments(text: str) -> str:
     return "\n".join(line.split("%", 1)[0] for line in text.splitlines())
 
 
+def extract_pdf_pages(path: Path) -> list[str]:
+    try:
+        pymupdf = load_pymupdf()
+        with pymupdf.open(path) as document:
+            return [page.get_text() for page in document]
+    except Exception:
+        return []
+
+
+def strip_tex_cover(text: str) -> str:
+    """Remove only the officially permitted page-0 identity commands."""
+    clean = strip_tex_comments(text)
+    for command in COVER_FIELDS:
+        clean = re.sub(rf"\\{command}\s*\{{[^{{}}]*\}}", "", clean, flags=re.S)
+    return re.sub(r"\\makeidentitycover\b", "", clean)
+
+
+def tex_cover_present(text: str) -> bool:
+    clean = strip_tex_comments(text)
+    return bool(re.search(r"\\makeidentitycover\b", clean)) and all(
+        re.search(rf"\\{command}\s*\{{", clean) for command in COVER_FIELDS
+    )
+
+
 def extract_text(path: Path) -> str:
     """Extract enough text for conservative content checks."""
     suffix = path.suffix.lower()
     if suffix == ".pdf":
         try:
-            import fitz  # type: ignore
-            with fitz.open(path) as document:
+            pymupdf = load_pymupdf()
+            with pymupdf.open(path) as document:
                 return "\n".join(page.get_text() for page in document)
         except Exception:
             return ""
@@ -85,6 +119,10 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument("--ai-file", help="AI 使用/标注说明文件（声明使用 AI 时的审计证据）")
     parser.add_argument("--attachments", help="提交附件目录")
+    parser.add_argument(
+        "--cover-policy", choices=("required", "forbidden"), default="required",
+        help="2026 正式提交默认 required；纯匿名内部审阅稿使用 forbidden",
+    )
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args(argv)
 
@@ -114,11 +152,41 @@ def main(argv: list[str] | None = None) -> int:
         warnings.append("非 PDF 文件未统计页数；请以最终 PDF 人工核对摘要页、页码和版式。")
 
     text = extract_text(paper)
-    if text:
-        hits = sorted(set(IDENTITY_PAT.findall(text)))
-        check(not hits, f"无身份标志（检出 {len(hits)} 处疑似项：{hits[:10]}）")
+    suffix = paper.suffix.lower()
+    cover_present = False
+    anonymous_text = text
+    can_separate_cover = False
+    if suffix == ".pdf":
+        page_texts = extract_pdf_pages(paper)
+        if page_texts:
+            cover_compact = re.sub(r"\s+", "", page_texts[0])
+            cover_present = all(marker in cover_compact for marker in COVER_MARKERS)
+            anonymous_text = "\n".join(page_texts[1:])
+            can_separate_cover = len(page_texts) >= 2
+    elif suffix == ".tex":
+        cover_present = tex_cover_present(text)
+        anonymous_text = strip_tex_cover(text)
+        can_separate_cover = True
+    elif suffix == ".docx":
+        compact = re.sub(r"\s+", "", text)
+        cover_present = all(marker in compact for marker in COVER_MARKERS)
+        warnings.append("DOCX 无法可靠按页分离封皮；封皮后的匿名性须以最终 PDF 再审计。")
+
+    if args.cover_policy == "required":
+        check(cover_present, "2026 正式提交含第 0 页官方参赛信息封皮")
+        warnings.append("人工核对：封皮四个官方 logo 未删除、替换或变形。")
+        if can_separate_cover and anonymous_text:
+            hits = sorted(set(IDENTITY_PAT.findall(anonymous_text)))
+            check(not hits, f"封皮之后无身份标志（检出 {len(hits)} 处疑似项：{hits[:10]}）")
+        elif not can_separate_cover:
+            warnings.append("未能可靠分离封皮与正文，封皮后的身份信息需人工复核。")
     else:
-        warnings.append("未能抽取正文文本，身份信息需人工复核。")
+        check(not cover_present, "内部纯匿名审阅稿不含参赛信息封皮")
+        if text:
+            hits = sorted(set(IDENTITY_PAT.findall(text)))
+            check(not hits, f"纯匿名稿无身份标志（检出 {len(hits)} 处疑似项：{hits[:10]}）")
+        else:
+            warnings.append("未能抽取正文文本，身份信息需人工复核。")
 
     # Public sources and borrowed programs need formal references. A template
     # need not manufacture a citation, so this is a review reminder, not a
@@ -157,6 +225,7 @@ def main(argv: list[str] | None = None) -> int:
         "passed": passed,
         "pages": pages,
         "ai_used": args.ai_used,
+        "cover_policy": args.cover_policy,
         "checks": checks,
         "warnings": warnings,
     }

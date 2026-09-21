@@ -22,7 +22,7 @@ Wave0 整理，后续新增上游资产时追加。
 | `华为杯_论文规范模板/章节页数基线.json` | 同名 | 章节页数基线 |
 | `华为杯_论文规范模板/章节模板/` | `assets/paper-template/章节模板/` | 各章节 .tex 模板 |
 | `华为杯_论文规范模板/figures/` | `assets/paper-template/figures/` | 论文图占位/logo |
-| 第二十三届官方附件 3 Word 内嵌 `image1`–`image4` | `figures/identity-*` | 第 0 页四个徽标；仅供明确要求的实名封面 |
+| 第二十三届官方附件 3 Word 内嵌 `image1`–`image4` | `figures/identity-*` | 2026 正式提交第 0 页封皮的四个徽标 |
 | `华为杯_论文规范模板/华为杯_论文章节规范.md` | 同名 | 章节规范 |
 | `研赛论文Word标准模板.docx` | `assets/paper-template/研赛论文Word标准模板.docx` | Word 官方模板 |
 

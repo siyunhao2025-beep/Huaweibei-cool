@@ -70,9 +70,9 @@
 ## P5 打磨审校（预算 ~12%）
 
 - **输入**：初稿。
-- **必做动作**：去 AI 味（`deai-writing.md`）、格式审校、引用审校、数字一致性、匿名化（见 `polishing.md`）。
+- **必做动作**：去 AI 味（`deai-writing.md`）、格式审校、引用审校、数字一致性、封皮后匿名化（见 `polishing.md`）。
 - **产物**：终稿。
-- **门禁**：`scripts/audit_tex.py`/`audit_docx.py` PASS；无页眉无身份标志；摘要-正文-附录数字一致；无残留 TODO。
+- **门禁**：`scripts/audit_tex.py`/`audit_docx.py` PASS；无页眉且封皮后无身份标志；摘要-正文-附录数字一致；无残留 TODO。
 - **卡点**：学校名/姓名漏在页眉或图里；AI 生成段落未改写。
 
 ## P6 提交与蒸馏（预算 ~5%）

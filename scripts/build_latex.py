@@ -147,10 +147,17 @@ def build_main(manifest: dict, root: Path, contest_config: dict) -> tuple[str, l
         r"\usepackage{tikz}",
         r"\usetikzlibrary{arrows.meta,positioning,fit,calc,shapes.geometric,shapes.arrows}",
         rf"\title{{{title}}}",
+        r"% 2026 正式提交必须填写以下封皮字段。",
+        r"\schoolname{}",
+        r"\baominghao{}",
+        r"\membera{}",
+        r"\memberb{}",
+        r"\memberc{}",
         "",
         r"\begin{document}",
-        # gmcmthesis renders an anonymous abstract page, begins numbering at
-        # 1, and keeps the centered footer number visible.
+        # Physical page 1 is the required identity cover (printed page 0).
+        # The abstract/body remain anonymous and restart at printed page 1.
+        r"\makeidentitycover",
         r"\maketitle",
         r"\begin{abstract}",
         rf"\input{{{inputs[0]}}}",
@@ -174,6 +181,17 @@ def copy_assets(template_dir: Path, output_dir: Path) -> None:
         source = template_dir / name
         if source.is_file():
             shutil.copy2(source, output_dir / name)
+    figure_output = output_dir / "figures"
+    for name in (
+        "identity-cpipc.png",
+        "identity-gmcm.png",
+        "identity-huawei.jpg",
+        "identity-xjtu.png",
+    ):
+        source = template_dir / "figures" / name
+        if source.is_file():
+            figure_output.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, figure_output / name)
 
 
 def main() -> None:

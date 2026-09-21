@@ -32,6 +32,14 @@ def remove_comments(text: str) -> str:
     return "\n".join(line.split("%", 1)[0] for line in text.splitlines())
 
 
+def strip_identity_cover_commands(text: str) -> str:
+    """Remove the one officially permitted identity zone from TeX text."""
+    clean = text
+    for command in ("schoolname", "baominghao", "membera", "memberb", "memberc"):
+        clean = re.sub(rf"\\{command}\s*\{{[^{{}}]*\}}", "", clean, flags=re.S)
+    return re.sub(r"\\makeidentitycover\b", "", clean)
+
+
 def brace_balance(text: str) -> int:
     balance = 0
     escaped = False
@@ -89,9 +97,18 @@ def audit(manifest_path: Path, main_path: Path) -> dict:
         abstract_end=abstract_end, first_body_input=first_input_pos, intervening=between.strip())
     add("main_does_not_override_official_geometry", not re.search(r"\\geometry\s*\{", clean_main),
         message="页边距由 gmcmthesis.cls 统一设为官方 Word 模板的 30/17.5/22.5/22.5 mm。")
-    add("uses_anonymous_title_page", bool(re.search(r"\\maketitle\b", clean_main))
-        and r"\HuaweiTitlePage" not in clean_main,
-        message="默认 \\maketitle 生成匿名摘要页并显示第 1 页页码。")
+    cover_pos = clean_main.find(r"\makeidentitycover")
+    title_pos = clean_main.find(r"\maketitle")
+    cover_fields = {
+        command: bool(re.search(rf"\\{command}\s*\{{", clean_main))
+        for command in ("schoolname", "baominghao", "membera", "memberb", "memberc")
+    }
+    add(
+        "uses_required_identity_cover",
+        cover_pos >= 0 and title_pos > cover_pos and all(cover_fields.values()),
+        fields=cover_fields,
+        message="2026 正式提交：先输出第 0 页封皮，再输出页码 1 的匿名摘要页。",
+    )
     add("plain_page_style", bool(re.search(r"\\pagestyle\s*\{plain\}", clean_main)),
         message="plain 页式确保无页眉、页脚居中阿拉伯页码。")
 
@@ -115,7 +132,7 @@ def audit(manifest_path: Path, main_path: Path) -> dict:
     document_commands: list[str] = []
     unbalanced: list[str] = []
     environment_errors: list[str] = []
-    all_text = main_text
+    all_text = strip_identity_cover_commands(remove_comments(main_text))
     for path in fragment_paths:
         text = path.read_text(encoding="utf-8-sig")
         all_text += "\n" + text
@@ -160,7 +177,7 @@ def audit(manifest_path: Path, main_path: Path) -> dict:
         all_text,
         re.I,
     )))
-    add("anonymous_source", not identity_hits, matches=identity_hits)
+    add("anonymous_source_after_cover", not identity_hits, matches=identity_hits)
     add("no_markdown_chapter_sources", not any(path.suffix.lower() == ".md" for path in fragment_paths), files=[str(path) for path in fragment_paths if path.suffix.lower() == ".md"])
 
     labels = LABEL_RE.findall(remove_comments(all_text))

@@ -5,7 +5,7 @@
 %
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{gmcmthesis}[2026/09/21 v2.6 Huawei Cup paper class with opt-in identity cover]
+\ProvidesClass{gmcmthesis}[2026/09/21 v2.7 Huawei Cup paper class with 2026 identity cover]
 %% Inital Code
 \newif\if@gmcm@bwprint\@gmcm@bwprintfalse
 \newif\if@gmcm@preface\@gmcm@prefacetrue
@@ -402,10 +402,10 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 
 %% Document Markup
 
-% The official Word template contains a page-0 identity cover, while the
-% official submission rule forbids identifying marks in the anonymous paper.
-% Keep both requirements separate: the cover is available only through the
-% explicit \makeidentitycover command and is never emitted by \maketitle.
+% The 2026 submission PDF requires a page-0 identity cover and forbids
+% identifying marks after that cover.  Keep the two zones explicit:
+% \makeidentitycover emits the required cover, while \maketitle starts the
+% anonymous abstract at printed page 1.
 \newcommand*\baominghao[1]{%
   \renewcommand{\gmcm@tokens@baominghao}{#1}}
 \newcommand*\schoolname[1]{%
@@ -460,10 +460,8 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
   \setcounter{page}{1}%
 }
 
-% The official 2026 submission rule forbids identifying marks.  Therefore
-% \maketitle creates the anonymous title/abstract page directly; it never
-% emits a school/team/member cover.  The page number remains visible and
-% starts at 1, as required by the official format specification.
+% \maketitle creates only the anonymous title/abstract page.  The caller must
+% invoke \makeidentitycover first for a formal 2026 submission.
 \renewcommand{\maketitle}{%
   \clearpage
   \thispagestyle{plain}%

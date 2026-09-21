@@ -1,0 +1,4 @@
+interface:
+  display_name: "华为杯研赛 AI 作战中枢"
+  short_description: "首次引导、读题建模、求解验证、论文写作、排版审计与提交终审"
+  default_prompt: "使用 $huawei-mcm 开始首次使用引导：先判断我的阶段，再告诉我需要提供的最少文件和下一步三件事。"

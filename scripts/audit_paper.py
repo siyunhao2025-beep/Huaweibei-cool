@@ -28,6 +28,7 @@ IDENTITY_RE = re.compile(
 REFERENCE_RE = re.compile(r"^\s*(参考文献|References?)\s*$", re.IGNORECASE)
 APPENDIX_RE = re.compile(r"^\s*(附录|Appendix)\s*[A-ZＡ-Ｚ0-9０-９]*\s*$", re.IGNORECASE)
 PAGE_RE = re.compile(r"(?<!\d)(\d{1,3})(?!\d)")
+COVER_MARKERS = ("学校", "参赛队号", "队员姓名")
 
 
 def load_contest_config(start: Path, explicit: Path | None = None) -> dict:
@@ -264,11 +265,20 @@ def main():
         issues.append({"code": "body_pages_below_minimum", "severity": "error" if body_gate_mode == "error" else "warning", "actual": body["pages"], "required": required_body, "gate_mode": body_gate_mode, "authority": body_gate_authority, "message": "页数门禁按比赛配置执行；当届官方规则优先于项目经验阈值。"})
     if not matched:
         issues.append({"code": "headings_not_detected", "severity": "warning", "message": "未检测到可靠的章节标题；请提供 Word 标题 JSON 或开启 OCR 复核。"})
-    full_text = "\n".join(record["text"] for record in records)
-    identity_hits = sorted(set(IDENTITY_RE.findall(full_text)))
+    cover_text = re.sub(r"\s+", "", records[0]["text"]) if records else ""
+    missing_cover_markers = [marker for marker in COVER_MARKERS if marker not in cover_text]
+    if missing_cover_markers:
+        issues.append({
+            "code": "required_identity_cover_missing",
+            "severity": "error",
+            "missing_markers": missing_cover_markers,
+            "message": "2026 正式提交 PDF 的物理首页必须是官方参赛信息封皮。",
+        })
+    anonymous_text = "\n".join(record["text"] for record in records[1:])
+    identity_hits = sorted(set(IDENTITY_RE.findall(anonymous_text)))
     if identity_hits:
-        issues.append({"code": "possible_identity_text", "severity": "error", "matches": identity_hits[:20]})
-    header_hits = header_text_spans(records)
+        issues.append({"code": "possible_identity_text_after_cover", "severity": "error", "matches": identity_hits[:20]})
+    header_hits = header_text_spans(records[1:])
     if header_hits:
         issues.append({
             "code": "header_text_detected",
@@ -276,13 +286,21 @@ def main():
             "message": "官方格式要求无页眉。",
             "spans": header_hits[:20],
         })
-    first_page_footer = centered_footer_numbers(records[0]) if records else []
-    if 1 not in first_page_footer:
+    cover_footer = centered_footer_numbers(records[0]) if records else []
+    abstract_footer = centered_footer_numbers(records[1]) if len(records) >= 2 else []
+    if 0 not in cover_footer:
+        issues.append({
+            "code": "cover_page_number_missing",
+            "severity": "error",
+            "message": "正式封皮页脚中部必须显示页码 0。",
+            "labels": cover_footer,
+        })
+    if 1 not in abstract_footer:
         issues.append({
             "code": "abstract_page_number_missing",
             "severity": "error",
             "message": "摘要页页脚中部必须显示阿拉伯页码 1。",
-            "labels": first_page_footer,
+            "labels": abstract_footer,
         })
     # We cannot prove font correctness from a PDF with broken CMaps, but can flag obvious fonts.
     fonts = sorted({span["font"] for record in records for span in record["spans"] if span.get("font")})
@@ -294,7 +312,8 @@ def main():
         "pdfinfo": pdfinfo(pdf),
         "physical_pages": len(records),
         "printed_page_offset": printed_page_offset(records),
-        "first_page_centered_footer_numbers": first_page_footer,
+        "cover_page_centered_footer_numbers": cover_footer,
+        "abstract_page_centered_footer_numbers": abstract_footer,
         "header_text_spans": header_hits,
         "body": body,
         "body_page_gate": {"minimum": required_body, "mode": body_gate_mode, "authority": body_gate_authority},
