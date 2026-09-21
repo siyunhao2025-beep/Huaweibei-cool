@@ -13,6 +13,10 @@ env/
 # ===== 语料原始文件（禁止入库）=====
 # 获奖论文 PDF 原件不入库
 *.pdf
+# 用户提供的第 23 届社区 LaTeX 包在本机 skill 中装载，但无明确再分发许可，
+# 公开仓库只保留哈希清单和逐页映射，不提交原 PDF/TeX/类文件/图像。
+assets/paper-template/reference-23rd-latex/*
+!assets/paper-template/reference-23rd-latex/source-manifest.json
 # 全文抽文文本（由 scripts/corpus_build.py 本地生成，不入 git）
 corpus/text/
 # low_text 渲染的封面 PNG（本地多模态读图用）
@@ -20,6 +24,9 @@ corpus/text/**/_rendered/*.png
 
 # ===== 工作区临时产物 =====
 _work/
+tmp/
+output/pdf/
+output/overleaf/HuaweiCup-2026-Overleaf/
 *.log
 *.tmp
 *.bak

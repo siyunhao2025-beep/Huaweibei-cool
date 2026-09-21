@@ -48,7 +48,7 @@ description: 华为杯（中国研究生数学建模竞赛）AI 作战中枢。�
 | A | 赛前训练：刷题、方法体系、模拟赛 | `modules/training.md` |
 | B | 比赛日全流程：题面到提交 | `modules/workflow.md` + `modules/phases.md`，先跑 `scripts/contest_init.py` |
 | C | 单题卡点：某问建模/求解卡住 | **先过读题审计**（`modules/kickoff-audit.md`），再 `modules/solving.md` + `modules/validation.md` |
-| D | 论文打磨：成稿/排版/审校 | `modules/polishing.md` + `modules/figures-interface.md` |
+| D | 论文写作/打磨：正文骨架、成稿、排版、审校 | `modules/paper-writing.md` + `modules/polishing.md` + `modules/figures-interface.md`；涉及模板内容时再读 `docs/TEMPLATE_CONTENT_MAPPING_23RD.md` |
 | E | 赛后蒸馏：复盘、方法卡沉淀 | `modules/distillation.md` |
 
 ## 1. 模块路由表（全部已完成）
@@ -61,11 +61,11 @@ description: 华为杯（中国研究生数学建模竞赛）AI 作战中枢。�
 | `modules/track-selection.md` | 选题决策（字母按届重置） |
 | `modules/problem-typing.md` | 题面→8 原型匹配流程 |
 | `modules/solving.md` | 求解主线：读题→假设→建模→算法→结果；证据型策略选择 |
-| `modules/validation.md` | 验证门禁：公平对比/误差/灵敏度/消融 |
+| `modules/validation.md` | 验证门禁：公平对比/误差/灵敏度/按风险配置证据，消融仅在适用时执行 |
 | `modules/evidence-ledger.md` | 证据账本与 AI 来源标注 |
 | `modules/figures-interface.md` | 论文图规范、求解图接口与基线—候选对比图 |
 | `modules/technical-roadmap.md` | 技术路线图（论文图1）：YAML 规格 + 8 原型模板 + 渲染/审计脚本 |
-| `modules/paper-writing.md` | 论文章节结构与页数基线；**逐章内嵌 138 条优秀论文自检表，写完即勾**（F03 二三级标题字体已按官方规范裁决为小四宋体，见 §6.1） |
+| `modules/paper-writing.md` | 论文章节结构、内容密度与官方页数限制核对；**138 条优秀论文自检表按单一来源逐章闭环**（F03 二三级标题字体已按官方规范裁决为小四宋体，见 §6.1） |
 | `modules/abstract.md` | 摘要写法专项（国一模板） |
 | `modules/deai-writing.md` | 反模板/反 AI 味写作 |
 | `modules/innovation.md` | 创新点提炼与伪创新识别 |
@@ -109,6 +109,7 @@ description: 华为杯（中国研究生数学建模竞赛）AI 作战中枢。�
 10. **2026 封皮硬规则**：正式提交 PDF 的物理首页必须是第 0 页参赛信息封皮，四个 logo 不替换；
     第二页起为页码 1 的摘要与匿名正文。学校、姓名和队伍编号只允许出现在封皮；纯匿名稿只能用于内部审阅，不能作为 2026 正式上传稿。
 11. **证据型策略门**：内置 grill-me 式“每次只问一个决策并给推荐”与 ponytail 式“最简充分”原则。每个小问的基线跑通后，如候选方案已有同口径实测且形成真实取舍，最多暂停一次，按 `solving.md` 给出一个 A/B/C 选择、推荐答案、数据与图；用户选择写入 evidence-ledger 后再切换主路线。未实测不得称“优化”，收益不确定或复杂度代价不成比例时推荐保留基线。
+12. **参考模板隔离**：用户提供的第二十三届 LaTeX 包是社区内容参考，不是官方模板。写作阶段可按 `docs/TEMPLATE_CONTENT_MAPPING_23RD.md` 吸收任务映射、数据审计、证据链、不确定性与复现元数据；生产 LaTeX 禁止引用其类文件、目录、组合 logo 或带“第二十二届”的过期标题资产。任何冲突均由 `docs/OFFICIAL_FORMAT_2026.md` 与官方 Word 文件裁决。
 
 ## 4. 本地脚本索引
 

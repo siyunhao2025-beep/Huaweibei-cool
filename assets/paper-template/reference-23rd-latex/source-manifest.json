@@ -1,0 +1,55 @@
+{
+  "name": "第23届华为杯LaTeX模板",
+  "status": "user-provided-community-reference",
+  "ingested_on": "2026-09-21",
+  "production_dependency": false,
+  "local_skill_loaded": true,
+  "git_distribution": false,
+  "distribution_reason": "源包未附明确再分发许可；公开仓库仅保存哈希、映射和融合后的原创规则。",
+  "files": [
+    {
+      "path": "第23届华为杯LaTeX模板.pdf",
+      "bytes": 2658911,
+      "sha256": "A5317448802BD8792057B00DC025D91F2A4303E5D9B043D26E293AD32AF2B0B4",
+      "local_loaded": true,
+      "git_distributed": false
+    },
+    {
+      "path": "main.tex",
+      "bytes": 18663,
+      "sha256": "2F91203292509BE9D9EE1B181B1B631CFF51418CF3E40762D6E9EAFFF9017B27",
+      "local_loaded": true,
+      "git_distributed": false
+    },
+    {
+      "path": "gmcmthesis.cls",
+      "bytes": 21663,
+      "sha256": "09AED0CA54931F16631C91FC1FDA1375B2D4C998A008A69DDC864C9D793DDE40",
+      "local_loaded": true,
+      "git_distributed": false
+    },
+    {
+      "path": "gmcm.bst",
+      "bytes": 35572,
+      "sha256": "CFD2ED609CFC7C7D5C2C2F4D84EE5F1A2300510CC22F5C3F6CF67D81E82AE03E",
+      "local_loaded": true,
+      "git_distributed": false
+    },
+    {
+      "path": "figures/logo.pdf",
+      "bytes": 2254787,
+      "sha256": "AF377062350F6F181DDD89F22DA3543E482C00B4F6B9A9131D6C3B679746113F",
+      "local_loaded": true,
+      "git_distributed": false,
+      "reason": "仅供源包核验；生产模板已使用从官方 Word 模板提取的四个独立徽标。"
+    },
+    {
+      "path": "figures/title.pdf",
+      "bytes": 256223,
+      "sha256": "19EEE18DE63633104DC4829439700FD30A7279549DFA12F71FD7D8F76D158BD7",
+      "local_loaded": true,
+      "git_distributed": false,
+      "reason": "未被 main.tex 调用，且图中文字仍为第二十二届，禁止用于第 23 届生产稿。"
+    }
+  ]
+}

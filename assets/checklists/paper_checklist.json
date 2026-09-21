@@ -26,7 +26,7 @@
     {
       "id": "F03",
       "section": "全局格式",
-      "item": "二级、三级标题用小四号宋体字；左端对齐为官方 Word 模板默认（第三方自检表原写“黑体”，不采纳）",
+      "item": "二级、三级标题用小四号宋体字，左端对齐（不居中）【以官方格式规范为准，第三方原写“黑体”不采纳】",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -56,7 +56,7 @@
     {
       "id": "F06",
       "section": "全局格式",
-      "item": "打印文字内容尽量避免彩色打印（必要的彩色图形、图表除外）",
+      "item": "打印文字尽量避免不必要的彩色；必要彩图须保证灰度打印仍可辨",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -66,7 +66,7 @@
     {
       "id": "L01",
       "section": "章节结构与篇幅",
-      "item": "流程图篇幅",
+      "item": "流程图仅在能提升理解时使用，缩放后文字、箭头和层级清楚",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -76,7 +76,7 @@
     {
       "id": "L02",
       "section": "章节结构与篇幅",
-      "item": "模型假设篇幅",
+      "item": "模型假设只保留真正影响模型的条目，篇幅从简",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -86,7 +86,7 @@
     {
       "id": "L03",
       "section": "章节结构与篇幅",
-      "item": "符号说明篇幅",
+      "item": "符号说明覆盖核心符号、含义与必要单位，表格紧凑可读",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -96,7 +96,7 @@
     {
       "id": "L04",
       "section": "章节结构与篇幅",
-      "item": "具体分析篇幅",
+      "item": "问题分析足以说明输入、输出、目标、约束、成功标准和问题依赖",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -106,7 +106,7 @@
     {
       "id": "L05",
       "section": "章节结构与篇幅",
-      "item": "模型准备篇幅",
+      "item": "数据与模型准备篇幅与实际数据审计、预处理和选型工作量相称",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -116,7 +116,7 @@
     {
       "id": "L06",
       "section": "章节结构与篇幅",
-      "item": "模型建立篇幅",
+      "item": "模型建立完整呈现变量、假设、目标/方程、约束和参数来源，不按固定页数凑篇幅",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -126,7 +126,7 @@
     {
       "id": "L07",
       "section": "章节结构与篇幅",
-      "item": "模型求解篇幅",
+      "item": "模型求解写清算法/求解器、关键参数、停止条件及必要的复杂度或收敛信息",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -136,7 +136,7 @@
     {
       "id": "L08",
       "section": "章节结构与篇幅",
-      "item": "模型检验（选）篇幅",
+      "item": "模型检验按题型、数据结构和结论风险选择，不机械单列或凑篇幅",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -146,7 +146,7 @@
     {
       "id": "L09",
       "section": "章节结构与篇幅",
-      "item": "“模型建立与求解”整块合计篇幅",
+      "item": "每个问题都形成“任务—模型—求解—结果—验证—结论”的闭合证据链",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -156,7 +156,7 @@
     {
       "id": "L10",
       "section": "章节结构与篇幅",
-      "item": "模型检验与分析篇幅",
+      "item": "统一检验章只容纳跨问题的共享验证，避免重复各问已有内容",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -166,7 +166,7 @@
     {
       "id": "L11",
       "section": "章节结构与篇幅",
-      "item": "模型评价·优点篇幅",
+      "item": "模型优势只写有结果、对比或理论依据支持的部分",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -176,7 +176,7 @@
     {
       "id": "L12",
       "section": "章节结构与篇幅",
-      "item": "模型评价·缺点篇幅",
+      "item": "模型局限按真实风险完整披露，不为版面或数量对称而删减",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -186,7 +186,7 @@
     {
       "id": "L13",
       "section": "章节结构与篇幅",
-      "item": "模型的改进篇幅",
+      "item": "已验证的改进与尚未实现的未来改进分开陈述",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -196,7 +196,7 @@
     {
       "id": "L14",
       "section": "章节结构与篇幅",
-      "item": "模型的推广篇幅",
+      "item": "推广说明新场景差异、重标定需求与重新验证条件",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -206,7 +206,7 @@
     {
       "id": "L15",
       "section": "章节结构与篇幅",
-      "item": "参考文献篇幅",
+      "item": "参考文献数量由实际引用决定，确保正文引用闭合、格式合规",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -216,7 +216,7 @@
     {
       "id": "L16",
       "section": "章节结构与篇幅",
-      "item": "附录·附件说明表篇幅",
+      "item": "附件说明按题面和竞赛系统要求提供，不为凑页新增材料",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -226,7 +226,7 @@
     {
       "id": "L17",
       "section": "章节结构与篇幅",
-      "item": "附录·代码（选）篇幅",
+      "item": "附录代码/结果按需要提供，并包含最小复现元数据",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -236,7 +236,7 @@
     {
       "id": "A01",
       "section": "摘要",
-      "item": "开头段两句话点出问题主旨、引出下文具体摘要部分",
+      "item": "用最短篇幅点明核心任务或矛盾，不强制两句话或固定段数",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -246,9 +246,9 @@
     {
       "id": "A02",
       "section": "摘要",
-      "item": "每一问的结构都是“针对问题#，……”",
+      "item": "每一问均可清楚识别，不强制使用“针对问题#”固定句式",
       "check_method": "machine",
-      "machine_rule": "摘要正文含“针对问题\\d+”",
+      "machine_rule": "摘要正文能识别问题编号（如问题一/第1问），不限定固定句式",
       "applicable_archetypes": null,
       "length_requirement": null,
       "notes": null
@@ -256,7 +256,7 @@
     {
       "id": "A03",
       "section": "摘要",
-      "item": "点出问题类型",
+      "item": "说明该问的任务类型或核心目标，避免只报算法名",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -266,7 +266,7 @@
     {
       "id": "A04",
       "section": "摘要",
-      "item": "点出主要建模方法",
+      "item": "点出主要模型/方法及其作用",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -276,7 +276,7 @@
     {
       "id": "A05",
       "section": "摘要",
-      "item": "用“首先、接着……最后”结构化表达关键步骤",
+      "item": "按真实逻辑连接关键步骤，不机械堆“首先、接着、最后”",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -286,7 +286,7 @@
     {
       "id": "A06",
       "section": "摘要",
-      "item": "展示求解结果",
+      "item": "展示可追溯的关键结果、单位和评价口径",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -296,7 +296,7 @@
     {
       "id": "A07",
       "section": "摘要",
-      "item": "每个问的摘要里不写模型检验",
+      "item": "不展开检验过程，但核心结论需要时保留一项关键验证证据或风险边界",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -306,7 +306,7 @@
     {
       "id": "A08",
       "section": "摘要",
-      "item": "摘要中不能出现任何解释性语言，直接一步接一步陈述",
+      "item": "删除空泛解释，保留理解结果所必需的因果、意义、代价和适用边界",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -316,7 +316,7 @@
     {
       "id": "A09",
       "section": "摘要",
-      "item": "结尾段两句话表达整个问题求解完成、模型性能优越",
+      "item": "用 1–2 句概括有证据的贡献、适用边界或决策价值；无比较证据不得称“性能优越”",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -326,7 +326,7 @@
     {
       "id": "A10",
       "section": "摘要",
-      "item": "关键词占一行；包含问题领域词、方法、技术、框架、创新点",
+      "item": "关键词通常 3–6 个，覆盖问题领域与核心方法，不重复堆同义词",
       "check_method": "machine",
       "machine_rule": "摘要环境内出现“关键词”或 \\keywords 行",
       "applicable_archetypes": null,
@@ -336,7 +336,7 @@
     {
       "id": "B01",
       "section": "引言",
-      "item": "开头两句话纯背景引入",
+      "item": "只保留理解题目所需背景，不强制纯背景开头或固定句数",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -346,7 +346,7 @@
     {
       "id": "B02",
       "section": "引言",
-      "item": "讲清楚问题来源与原因",
+      "item": "说明问题来源、应用语境或数据语境，来源可核查",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -356,7 +356,7 @@
     {
       "id": "B03",
       "section": "引言",
-      "item": "表达问题的目前困境",
+      "item": "明确现有困难、信息缺口或决策冲突",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -366,7 +366,7 @@
     {
       "id": "B04",
       "section": "引言",
-      "item": "表达需要解决的渴求",
+      "item": "说明本文需要完成的具体任务，不写空泛“迫切需求”",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -376,7 +376,7 @@
     {
       "id": "B05",
       "section": "引言",
-      "item": "背景段落数在 2–3 段之间",
+      "item": "段落数量服从逻辑，不机械限制为 2–3 段",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -386,7 +386,7 @@
     {
       "id": "B06",
       "section": "引言",
-      "item": "背景不要出现分点表达",
+      "item": "以自然段为主；确需列任务或约束时可使用清晰列表",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -396,7 +396,7 @@
     {
       "id": "B07",
       "section": "引言",
-      "item": "研究意义主题为社会、科研方面",
+      "item": "仅在有助于理解任务时写社会、工程或科研意义",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -406,7 +406,7 @@
     {
       "id": "B08",
       "section": "引言",
-      "item": "研究意义达到两点以上",
+      "item": "每项意义能与题目目标或实际决策对应，不凑数量",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -416,7 +416,7 @@
     {
       "id": "B09",
       "section": "引言",
-      "item": "研究意义不要用分点符号、序号",
+      "item": "意义表述可用自然段或短列表，以清晰为准",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -426,7 +426,7 @@
     {
       "id": "B10",
       "section": "引言",
-      "item": "研究意义段落 1–2 段最好，1 段最优",
+      "item": "删除宣传式、不可验证或与赛题无关的价值判断",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -436,7 +436,7 @@
     {
       "id": "B11",
       "section": "引言",
-      "item": "每个问题的重述保持 2 行之内",
+      "item": "每问准确提炼输入、输出、目标和约束，长度按复杂度决定",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -446,9 +446,9 @@
     {
       "id": "B12",
       "section": "引言",
-      "item": "加粗“问题#”等字样",
-      "check_method": "machine",
-      "machine_rule": "问题重述章节含 \\textbf{\\s*问题\\d+\\s*} 或等价加粗",
+      "item": "问题编号或标签清楚一致；是否加粗服从版式与可读性",
+      "check_method": "manual",
+      "machine_rule": null,
       "applicable_archetypes": null,
       "length_requirement": null,
       "notes": null
@@ -456,7 +456,7 @@
     {
       "id": "B13",
       "section": "引言",
-      "item": "在“问题#”等后面加冒号，然后再写重述",
+      "item": "问题标签后的标点和句式统一",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -466,7 +466,7 @@
     {
       "id": "B14",
       "section": "引言",
-      "item": "问题重述不要用分点符号、序号",
+      "item": "多项任务可使用列表，避免因禁止分点而写成长句",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -476,7 +476,7 @@
     {
       "id": "B15",
       "section": "引言",
-      "item": "问题重述是问题的本质缩写，删除背景、附属解释",
+      "item": "用自己的话提炼题意，不复制背景和附属说明，也不改变原意",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -486,7 +486,7 @@
     {
       "id": "T01",
       "section": "总体分析",
-      "item": "总体分析三段式写作",
+      "item": "结构服从整体逻辑，不强制三段式",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -496,7 +496,7 @@
     {
       "id": "T02",
       "section": "总体分析",
-      "item": "第一段引文：总体表达题目意思、引入分析，一句话即可",
+      "item": "简要说明总体主线和建模边界",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -506,7 +506,7 @@
     {
       "id": "T03",
       "section": "总体分析",
-      "item": "第二段分析：理清楚问题之间的联系",
+      "item": "明确各问的依赖、共享数据/参数及误差传递关系",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -516,7 +516,7 @@
     {
       "id": "T04",
       "section": "总体分析",
-      "item": "第二段分析模板：“针对问题#，本问建立了#来解决#，”",
+      "item": "为各问说明方法选择理由，不使用固定占位句",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -526,7 +526,7 @@
     {
       "id": "T05",
       "section": "总体分析",
-      "item": "第三段图引文：“具体流程如图#所示”，不需要额外说明",
+      "item": "只有正文需要引用流程图时才写图引文，并说明图表达的主线",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -536,7 +536,7 @@
     {
       "id": "T06",
       "section": "总体分析",
-      "item": "流程图可用模板式或自定义（要求配色清晰）",
+      "item": "流程图由真实任务、数据、模型、求解和验证关系生成，不套固定框图",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -546,7 +546,7 @@
     {
       "id": "T07",
       "section": "总体分析",
-      "item": "流程图同总体分析配套",
+      "item": "图中节点、箭头、正文叙述和实际代码/模型一致",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -556,7 +556,7 @@
     {
       "id": "T08",
       "section": "总体分析",
-      "item": "总体分析里不要讲检验、不要讲结果（此时尚未求解）",
+      "item": "可说明计划采用的验证逻辑，但不得提前虚构检验结果或求解数字",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -566,7 +566,7 @@
     {
       "id": "H01",
       "section": "模型假设",
-      "item": "模型假设两段式写作",
+      "item": "假设按逻辑组织，不强制两段式",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -576,7 +576,7 @@
     {
       "id": "H02",
       "section": "模型假设",
-      "item": "第一段引文：“为简化问题，本文做出以下假设：”",
+      "item": "说明每条假设为何必要、依据何在",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -586,7 +586,7 @@
     {
       "id": "H03",
       "section": "模型假设",
-      "item": "每条假设控制在两行内",
+      "item": "每条假设表述清楚，并指出可能影响的变量或结论",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -596,9 +596,9 @@
     {
       "id": "H04",
       "section": "模型假设",
-      "item": "假设开头必须是“假设#：”",
-      "check_method": "machine",
-      "machine_rule": "正则 ^\\s*假设\\d+[：:] 在假设章节内匹配",
+      "item": "假设编号与正文引用一致，不强制使用“假设#：”字面格式",
+      "check_method": "manual",
+      "machine_rule": null,
       "applicable_archetypes": null,
       "length_requirement": null,
       "notes": null
@@ -606,9 +606,9 @@
     {
       "id": "H05",
       "section": "模型假设",
-      "item": "假设条数 = 问题数量",
-      "check_method": "machine",
-      "machine_rule": "假设条数 == --problems N",
+      "item": "假设数量由模型需要决定，不与问题数量机械相等",
+      "check_method": "manual",
+      "machine_rule": null,
       "applicable_archetypes": null,
       "length_requirement": null,
       "notes": null
@@ -616,7 +616,7 @@
     {
       "id": "H06",
       "section": "模型假设",
-      "item": "假设之间用分点符号区分",
+      "item": "重要假设在灵敏度、鲁棒性或局限部分得到检验或讨论",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -626,7 +626,7 @@
     {
       "id": "S01",
       "section": "符号说明",
-      "item": "开头引文：表达符号说明意义、引出表",
+      "item": "用一句话引出符号表或变量字典，避免重复正文",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -636,7 +636,7 @@
     {
       "id": "S02",
       "section": "符号说明",
-      "item": "引文篇幅控制在 2 行内",
+      "item": "只收录核心或易混符号，普通临时量可在首次出现处解释",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -646,9 +646,9 @@
     {
       "id": "S03",
       "section": "符号说明",
-      "item": "表格用 2 列三线表",
+      "item": "使用三线表；按需要选择“符号/含义”或增加“单位/取值域”等列",
       "check_method": "machine",
-      "machine_rule": "符号说明章节含 \\toprule/\\midrule/\\bottomrule 且列数=2",
+      "machine_rule": "符号说明章节含 \\toprule/\\midrule/\\bottomrule；列数按内容决定",
       "applicable_archetypes": null,
       "length_requirement": null,
       "notes": null
@@ -656,7 +656,7 @@
     {
       "id": "S04",
       "section": "符号说明",
-      "item": "表一定要有名字（表题）",
+      "item": "表题和唯一标签完整，正文有引用时引用闭合",
       "check_method": "machine",
       "machine_rule": "符号说明章节的表格含 \\caption",
       "applicable_archetypes": null,
@@ -666,7 +666,7 @@
     {
       "id": "S05",
       "section": "符号说明",
-      "item": "表内每行字段不换行",
+      "item": "每行字段尽量短；确需换行时保证对齐与可读性",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -676,7 +676,7 @@
     {
       "id": "S06",
       "section": "符号说明",
-      "item": "列名不要加粗",
+      "item": "列名样式与全文表格一致，不以是否加粗作为质量标准",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -686,7 +686,7 @@
     {
       "id": "C01",
       "section": "具体分析",
-      "item": "具体分析说明针对问题几",
+      "item": "明确正在回答的题目小问",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -696,7 +696,7 @@
     {
       "id": "C02",
       "section": "具体分析",
-      "item": "具体分析点出问题类型",
+      "item": "说明任务性质、评价标准或主要难点",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -706,7 +706,7 @@
     {
       "id": "C03",
       "section": "具体分析",
-      "item": "具体分析点出本问大致建模方法",
+      "item": "给出所选方法及选择依据，而非只列算法名称",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -716,7 +716,7 @@
     {
       "id": "C04",
       "section": "具体分析",
-      "item": "按“首先、接着、然后……最后”写具体步骤",
+      "item": "按真实依赖关系描述步骤，不强制固定连接词",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -726,7 +726,7 @@
     {
       "id": "C05",
       "section": "具体分析",
-      "item": "具体分析三段式写作，不要分点表达",
+      "item": "结构可用自然段、短列表或小图，以读者能复现思路为准",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -736,7 +736,7 @@
     {
       "id": "C06",
       "section": "具体分析",
-      "item": "具体分析开头段满足 C01/C02/C03",
+      "item": "包含输入、输出、目标、约束和成功标准的最小任务卡信息",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -746,7 +746,7 @@
     {
       "id": "C07",
       "section": "具体分析",
-      "item": "具体分析中间段满足 C04，每个步骤不换行",
+      "item": "说明本问与前后问题的数据/参数/误差传递；无依赖时明确说明",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -756,7 +756,7 @@
     {
       "id": "C08",
       "section": "具体分析",
-      "item": "具体分析结尾段引出图：“具体分析如图#所示”",
+      "item": "仅当流程复杂且图能增益理解时使用流程图",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -766,7 +766,7 @@
     {
       "id": "P01",
       "section": "模型准备",
-      "item": "数据预处理开头引文",
+      "item": "交代数据来源、规模、字段、单位、时间/空间粒度和使用去向",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -776,7 +776,7 @@
     {
       "id": "P02",
       "section": "模型准备",
-      "item": "数据预处理表达预处理原因",
+      "item": "说明缺失、异常、重复、噪声或量纲问题及判据",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -786,7 +786,7 @@
     {
       "id": "P03",
       "section": "模型准备",
-      "item": "数据预处理讲预处理步骤及其对应方法",
+      "item": "写明实际执行的预处理步骤、顺序和参数来源",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -796,7 +796,7 @@
     {
       "id": "P04",
       "section": "模型准备",
-      "item": "理论结合公式表达预处理方法",
+      "item": "给出必要公式，并说明归一化参数如何估计与反变换",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -806,7 +806,7 @@
     {
       "id": "P05",
       "section": "模型准备",
-      "item": "给出预处理前后对比图",
+      "item": "仅在能证明处理效果时给前后对比图/表；否则用可核查统计量",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -816,7 +816,7 @@
     {
       "id": "P06",
       "section": "模型准备",
-      "item": "编码结果展示（选）",
+      "item": "编码、特征或中间数据可追溯到脚本和结果文件",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -826,7 +826,7 @@
     {
       "id": "P07",
       "section": "模型准备",
-      "item": "算法选择开头过渡文字，承接预处理引入算法选择",
+      "item": "先建立朴素规则、经典方法、理论边界或精确小规模解作为 Baseline",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -836,7 +836,7 @@
     {
       "id": "P08",
       "section": "模型准备",
-      "item": "引入对问题的算法适用性讨论",
+      "item": "只比较适用于本题且能公平实现的候选方法",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -846,7 +846,7 @@
     {
       "id": "P09",
       "section": "模型准备",
-      "item": "用表格展示算法对比结果",
+      "item": "候选比较使用同一数据、划分、指标和计算预算；图表形式按证据选择",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -856,7 +856,7 @@
     {
       "id": "P10",
       "section": "模型准备",
-      "item": "对表格结果进行分析，表明要选的算法",
+      "item": "同时报效果、稳定性、约束满足、计算成本和解释代价，给出选择理由",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -866,7 +866,7 @@
     {
       "id": "P11",
       "section": "模型准备",
-      "item": "结尾段引出模型求解",
+      "item": "明确最终方法及不选择其他候选的原因，随后进入模型建立/求解",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -876,7 +876,7 @@
     {
       "id": "M01",
       "section": "模型建立",
-      "item": "建立目标函数",
+      "item": "决策变量、目标函数及方向定义完整",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": [
@@ -888,7 +888,7 @@
     {
       "id": "M02",
       "section": "模型建立",
-      "item": "设定约束条件",
+      "item": "硬约束、软约束、变量域与可行性处理完整",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": [
@@ -900,7 +900,7 @@
     {
       "id": "M03",
       "section": "模型建立",
-      "item": "选定求解算法；开头展示整个优化模型公式（目标函数+约束条件）后再讨论",
+      "item": "说明求解算法为何适用，并给必要的精确解/下界/小规模互验方案",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": [
@@ -912,7 +912,7 @@
     {
       "id": "M04",
       "section": "模型建立",
-      "item": "机理分析合理规划步骤，3–4 步即可",
+      "item": "核心变量关系、方程、初/边界条件和参数来源完整，步骤数量按实际决定",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": [
@@ -924,7 +924,7 @@
     {
       "id": "M05",
       "section": "模型建立",
-      "item": "结尾段总结建模成果，引出模型求解",
+      "item": "用一句或一段总结模型输入、输出和待求量，自然引出求解",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -934,7 +934,7 @@
     {
       "id": "M06",
       "section": "模型建立",
-      "item": "评价类选指标",
+      "item": "指标体系与题目目标对应，处理同向化、量纲和冗余相关性",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": [
@@ -946,7 +946,7 @@
     {
       "id": "M07",
       "section": "模型建立",
-      "item": "熵权法定权重（中间结果需展示）",
+      "item": "权重方法依据数据与决策语义选择，不默认熵权法；展示权重及其稳定性",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": [
@@ -958,7 +958,7 @@
     {
       "id": "M08",
       "section": "模型建立",
-      "item": "任选一个评价方法进行运算",
+      "item": "综合评价方法与数据性质匹配，并说明排序/分级规则",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": [
@@ -970,7 +970,7 @@
     {
       "id": "M09",
       "section": "模型建立",
-      "item": "分类特征工程（选指标），中间结果需展示",
+      "item": "特征工程只使用训练阶段可获得的信息，并展示关键中间结果",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": [
@@ -982,7 +982,7 @@
     {
       "id": "M10",
       "section": "模型建立",
-      "item": "选定模型（逻辑回归、XGBoost 等）",
+      "item": "分类模型由任务、样本量、非线性和解释需求选择，不预设逻辑回归/XGBoost",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": [
@@ -994,7 +994,7 @@
     {
       "id": "M11",
       "section": "模型建立",
-      "item": "分类模型评估（讲如何控制输出）",
+      "item": "说明数据划分、类别不平衡处理、阈值和评价指标",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": [
@@ -1006,7 +1006,7 @@
     {
       "id": "M12",
       "section": "模型建立",
-      "item": "预测特征工程（选指标），中间结果需展示",
+      "item": "特征工程避免未来信息泄漏，并展示关键中间结果",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": [
@@ -1018,7 +1018,7 @@
     {
       "id": "M13",
       "section": "模型建立",
-      "item": "预测选定模型（XGBoost 等）",
+      "item": "预测模型由时间/空间结构、样本量和外推需求选择，不预设 XGBoost",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": [
@@ -1030,7 +1030,7 @@
     {
       "id": "M14",
       "section": "模型建立",
-      "item": "预测模型评估（讲如何控制输出）",
+      "item": "说明验证划分、损失/指标、超参数选择和输出约束",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": [
@@ -1042,7 +1042,7 @@
     {
       "id": "Q01",
       "section": "模型求解",
-      "item": "开头段引文，表达求解完成，引出结果表、图",
+      "item": "先直接回答本问，再引出支撑答案的结果表/图",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1052,9 +1052,9 @@
     {
       "id": "Q02",
       "section": "模型求解",
-      "item": "图、表宽度设置为正文的 0.8",
-      "check_method": "machine",
-      "machine_rule": "LaTeX includegraphics/table 宽度 ∈ [0.6,0.95]；>0.95 或缺失即 flag",
+      "item": "图表尺寸按内容和版心调整，缩放后文字清晰、无溢出；不固定为 0.8 倍正文宽",
+      "check_method": "manual",
+      "machine_rule": null,
       "applicable_archetypes": null,
       "length_requirement": null,
       "notes": null
@@ -1062,7 +1062,7 @@
     {
       "id": "Q03",
       "section": "模型求解",
-      "item": "图字一定要清晰，全部为中文",
+      "item": "图题、轴名和图例以中文为主；公认缩写、变量和单位可保留英文/符号",
       "check_method": "machine",
       "machine_rule": "caption 纯 ASCII 即 flag",
       "applicable_archetypes": null,
@@ -1072,7 +1072,7 @@
     {
       "id": "Q04",
       "section": "模型求解",
-      "item": "图和表一定要有正文引用（“如图1所示”“如表1所示”）",
+      "item": "每张图表有唯一题注和标签，并在正文按出现顺序引用",
       "check_method": "machine",
       "machine_rule": "caption/label/ref 对账：每个浮动体编号必须在正文出现",
       "applicable_archetypes": null,
@@ -1082,7 +1082,7 @@
     {
       "id": "Q05",
       "section": "模型求解",
-      "item": "结果展示三段式：文字引入 + 表/图展示 + 分析文字",
+      "item": "按“答案—证据—比较—解释—边界/代价”组织结果，不强制三段式",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1092,7 +1092,7 @@
     {
       "id": "Q06",
       "section": "模型求解",
-      "item": "数值型结果一定要用单独表格突出表示",
+      "item": "精确数字适合用表时用表；少量关键数字可直接写入正文",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1102,7 +1102,7 @@
     {
       "id": "Q07",
       "section": "模型求解",
-      "item": "非数值结果、预测趋势线、对比效果用醒目的图表示",
+      "item": "趋势、分布、关系或方案差异适合用图时才用图",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1112,7 +1112,7 @@
     {
       "id": "Q08",
       "section": "模型求解",
-      "item": "不要放看起来高大上、但莫名其妙的图",
+      "item": "删除装饰性、无法支撑结论或无法追溯数据的图",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1122,9 +1122,9 @@
     {
       "id": "Q09",
       "section": "模型求解",
-      "item": "模型求解部分不要出现分点、任何加粗",
-      "check_method": "machine",
-      "machine_rule": "“模型求解”章节内无 \\textbf/\\textbf* 等加粗命令（公式内 \\mathbf 允许）",
+      "item": "分点和加粗只在确能提升结构与可读性时使用，并保持克制一致",
+      "check_method": "manual",
+      "machine_rule": null,
       "applicable_archetypes": null,
       "length_requirement": null,
       "notes": null
@@ -1132,9 +1132,9 @@
     {
       "id": "V01",
       "section": "模型检验",
-      "item": "评价类：不作检验",
+      "item": "评价类检验权重敏感性、排序稳定性和必要的一致性/外部对照",
       "check_method": "machine",
-      "machine_rule": "archetype=evaluation 时不应出现“检验结果”二级章",
+      "machine_rule": "archetype=evaluation 时检验章节含权重/排序稳定性、敏感性、一致性或外部对照",
       "applicable_archetypes": [
         "evaluation"
       ],
@@ -1144,9 +1144,9 @@
     {
       "id": "V02",
       "section": "模型检验",
-      "item": "分类类：验证准确率",
+      "item": "分类类按任务报告混淆矩阵、精确率、召回率、F1；准确率/AUC 仅在适用时使用",
       "check_method": "machine",
-      "machine_rule": "archetype=classification-cv 时检验章节含“准确率”或 Accuracy",
+      "machine_rule": "archetype=classification-cv 时检验章节含混淆矩阵、精确率、召回率或 F1",
       "applicable_archetypes": [
         "classification-cv"
       ],
@@ -1156,7 +1156,7 @@
     {
       "id": "V03",
       "section": "模型检验",
-      "item": "预测类：验证误差",
+      "item": "预测类报告合适的误差、残差与外推/滚动表现",
       "check_method": "machine",
       "machine_rule": "archetype=prediction 时检验章节含“误差”/RMSE/MAE/MAPE",
       "applicable_archetypes": [
@@ -1168,9 +1168,9 @@
     {
       "id": "V04",
       "section": "模型检验",
-      "item": "优化类：验证灵敏度",
+      "item": "优化类检查约束可行性、收敛、最优性边界和关键参数敏感性",
       "check_method": "machine",
-      "machine_rule": "archetype=optimization 时检验章节含“灵敏度”/Sensitivity",
+      "machine_rule": "archetype=optimization 时检验章节含可行性、收敛、最优性/边界或灵敏度证据",
       "applicable_archetypes": [
         "optimization"
       ],
@@ -1180,16 +1180,13 @@
     {
       "id": "V05",
       "section": "模型检验",
-      "item": "误差检验优先使用五折交叉验证",
+      "item": "划分服从数据结构：IID 用 k 折，分组用组间留出，时序用滚动/扩展窗口，空间用分块",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": [
-        [
-          "classification-cv"
-        ],
-        [
-          "prediction"
-        ]
+        "classification-cv",
+        "prediction",
+        "spatial-graph"
       ],
       "length_requirement": null,
       "notes": null
@@ -1197,7 +1194,7 @@
     {
       "id": "V06",
       "section": "模型检验",
-      "item": "灵敏度分析 = 改输入/参数，看输出稳定性",
+      "item": "灵敏度分析明确扰动对象、范围、依据和输出稳定性指标",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1207,7 +1204,7 @@
     {
       "id": "V07",
       "section": "模型检验",
-      "item": "可用 AI 辅助起草，作者核验并按当届规定披露 AI 使用；写作风格为“文字引入+表格+文字分析”",
+      "item": "检验结论由真实结果文件支持；AI 可辅助表述，但作者须核验并按当届规定披露",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1217,7 +1214,7 @@
     {
       "id": "W01",
       "section": "模型检验与分析",
-      "item": "开头段文字引入",
+      "item": "说明每项检验要排除的风险或要支持的结论",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1227,7 +1224,7 @@
     {
       "id": "W02",
       "section": "模型检验与分析",
-      "item": "用二级标题区分不同的检验类型",
+      "item": "多种检验用清晰小标题区分，单一检验不为形式强拆标题",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1237,7 +1234,7 @@
     {
       "id": "W03",
       "section": "模型检验与分析",
-      "item": "文字解释检验的必要性",
+      "item": "解释检验设计、数据隔离和适用前提",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1247,7 +1244,7 @@
     {
       "id": "W04",
       "section": "模型检验与分析",
-      "item": "用图或表列出检验结果（表优先）",
+      "item": "按信息类型选图、表或统计量，不机械“表优先”",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1257,7 +1254,7 @@
     {
       "id": "W05",
       "section": "模型检验与分析",
-      "item": "对检验结果进行分析",
+      "item": "解释结果、失败情形、置信范围和对正文结论的影响",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1267,9 +1264,9 @@
     {
       "id": "E01",
       "section": "模型的评价",
-      "item": "优点格式按“优点#：”",
-      "check_method": "machine",
-      "machine_rule": "正则 ^\\s*优点\\d+[：:]",
+      "item": "优势标题格式简洁一致，不强制“优点#：”字面样式",
+      "check_method": "manual",
+      "machine_rule": null,
       "applicable_archetypes": null,
       "length_requirement": null,
       "notes": null
@@ -1277,7 +1274,7 @@
     {
       "id": "E02",
       "section": "模型的评价",
-      "item": "优点按模型来写，不要按问题来写",
+      "item": "按模型机制或证据写优势，必要时指出对应问题",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1287,9 +1284,9 @@
     {
       "id": "E03",
       "section": "模型的评价",
-      "item": "优点数量要大于缺点",
-      "check_method": "machine",
-      "machine_rule": "count(优点\\d+) > count(缺点\\d+)",
+      "item": "优势数量由证据决定，不要求机械多于局限",
+      "check_method": "manual",
+      "machine_rule": null,
       "applicable_archetypes": null,
       "length_requirement": null,
       "notes": null
@@ -1297,7 +1294,7 @@
     {
       "id": "E04",
       "section": "模型的评价",
-      "item": "每个优点字数不超过两行",
+      "item": "每项优势指向前文精度、稳定性、效率或解释性证据",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1307,9 +1304,9 @@
     {
       "id": "E05",
       "section": "模型的评价",
-      "item": "缺点格式按“缺点#：”",
-      "check_method": "machine",
-      "machine_rule": "正则 ^\\s*缺点\\d+[：:]",
+      "item": "局限标题格式简洁一致，不强制“缺点#：”字面样式",
+      "check_method": "manual",
+      "machine_rule": null,
       "applicable_archetypes": null,
       "length_requirement": null,
       "notes": null
@@ -1317,7 +1314,7 @@
     {
       "id": "E06",
       "section": "模型的评价",
-      "item": "缺点按模型来写，不要按问题来写",
+      "item": "每项按“来源—偏差方向—影响范围—缓解办法”书写",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1327,7 +1324,7 @@
     {
       "id": "E07",
       "section": "模型的评价",
-      "item": "缺点数量小于优点",
+      "item": "重大局限不得因数量配额被隐藏",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1337,7 +1334,7 @@
     {
       "id": "E08",
       "section": "模型的评价",
-      "item": "每个缺点字数不超过两行",
+      "item": "表述简洁但信息完整，必要时可超过两行",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1347,7 +1344,7 @@
     {
       "id": "I01",
       "section": "模型的改进",
-      "item": "改进整段写（可 AI 辅助起草、作者核验并按当届规定披露）",
+      "item": "已实现且有同口径实验支持的改进才写成结果，AI 辅助文字须经作者核验与披露",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1357,7 +1354,7 @@
     {
       "id": "I02",
       "section": "模型的改进",
-      "item": "模型的改进以整段写为主、可以分点但一定不能跑题",
+      "item": "未来改进必须对应具体局限，并明确尚未验证；段落或分点以逻辑为准",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1367,7 +1364,7 @@
     {
       "id": "G01",
       "section": "模型的推广",
-      "item": "推广整段写（可 AI 辅助起草、作者核验并按当届规定披露）",
+      "item": "比较新场景与原问题在变量、约束、数据分布和评价指标上的差异",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1377,7 +1374,7 @@
     {
       "id": "G02",
       "section": "模型的推广",
-      "item": "推广不要分段写",
+      "item": "说明需要重新标定、重新训练或重新验证的部分，不强制单段写法",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1387,7 +1384,7 @@
     {
       "id": "R01",
       "section": "参考文献",
-      "item": "参考文献采用国标 GB/T 7714-2015",
+      "item": "以当届官方引用格式为准，按正文首次引用顺序编号；通用 GB/T 规则仅作补充",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1397,9 +1394,9 @@
     {
       "id": "R02",
       "section": "参考文献",
-      "item": "参考文献删除 DOI 号",
-      "check_method": "machine",
-      "machine_rule": "参考文献章节内无 DOI 正则 10\\.\\d{4,}",
+      "item": "文献真实可核查且字段完整；DOI 不是官方强制删除项，也不得伪造或写入未引用来源",
+      "check_method": "manual",
+      "machine_rule": null,
       "applicable_archetypes": null,
       "length_requirement": null,
       "notes": null
@@ -1407,7 +1404,7 @@
     {
       "id": "X01",
       "section": "附录",
-      "item": "附件说明表：用表，按模板（自适应，约 1 页）",
+      "item": "附件说明表仅在题面或提交系统要求时提供，并与实际上传文件一致",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1417,7 +1414,7 @@
     {
       "id": "X02",
       "section": "附录",
-      "item": "代码（选）：按模板",
+      "item": "代码/结果按需要附；至少记录环境版本、入口命令、输入输出、随机种子和关键参数",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,

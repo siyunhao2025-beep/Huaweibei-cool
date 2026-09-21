@@ -130,41 +130,13 @@ def _sec_body(ctx: PaperContext, key: str) -> str:
     return body
 
 
-def check_r02(ctx: PaperContext) -> CheckResult:
-    """R02 参考文献无 DOI。"""
-    body = _sec_body(ctx, "ref")
-    if not body:
-        return CheckResult("R02", "pending", "未找到“参考文献”章节，待人工确认")
-    m = re.search(r"10\.\d{4,}/\S+", body)
-    if m:
-        return CheckResult("R02", "fail", f"参考文献中含 DOI：{m.group(0)[:40]}")
-    return CheckResult("R02", "pass", "参考文献章节未发现 DOI 正则 10.\\d{4,}/")
-
-
-def check_q02(ctx: PaperContext) -> CheckResult:
-    """Q02 图表宽度≈0.8（>0.95 或缺失即 flag）。"""
-    issues = []
-    # \includegraphics[width=..., height=...]{...}
-    for m in re.finditer(r"\\includegraphics\[[^\]]*width\s*=\s*([0-9.]+)\\?\\textwidth", ctx.tex_text):
-        w = float(m.group(1))
-        if w > 0.95:
-            issues.append(f"图 width={w} > 0.95")
-    # 没带 width= 的 includegraphics
-    missing = len(re.findall(r"\\includegraphics(?!\[[^\]]*width)", ctx.tex_text))
-    if missing:
-        issues.append(f"{missing} 个 \\includegraphics 未声明 width")
-    if issues:
-        return CheckResult("Q02", "fail", "；".join(issues[:5]))
-    return CheckResult("Q02", "pass", "图宽度均在 [0.6,0.95] 区间且已声明")
-
-
 def check_q03(ctx: PaperContext) -> CheckResult:
-    """Q03 题注含中文。"""
+    """Q03 中文论文的图题至少包含中文；标准缩写/变量可保留。"""
     captions = re.findall(r"\\caption\s*\{([^}]*)\}", ctx.tex_text)
     bad = [c for c in captions if not has_chinese(c)]
     if bad:
         return CheckResult("Q03", "fail", f"{len(bad)} 个题注纯 ASCII，如：{bad[0][:40]}")
-    return CheckResult("Q03", "pass", f"全部 {len(captions)} 个 caption 含中文")
+    return CheckResult("Q03", "pass", f"全部 {len(captions)} 个 caption 均含中文说明")
 
 
 def check_q04(ctx: PaperContext) -> CheckResult:
@@ -179,21 +151,8 @@ def check_q04(ctx: PaperContext) -> CheckResult:
     return CheckResult("Q04", "pass", f"{len(labels)} 个 label 全部被引用")
 
 
-def check_q09(ctx: PaperContext) -> CheckResult:
-    """Q09 模型求解章节无分点加粗（允许公式内 \\mathbf）。"""
-    body = _sec_body(ctx, "solving")
-    if not body:
-        return CheckResult("Q09", "pending", "未找到“模型求解”章节，待人工确认")
-    # 去掉公式内 \mathbf
-    cleaned = re.sub(r"\\mathbf\s*\{", "", body)
-    bolds = re.findall(r"\\textbf(?:\*)?\s*\{", cleaned)
-    if bolds:
-        return CheckResult("Q09", "fail", f"模型求解章节含 {len(bolds)} 处 \\textbf")
-    return CheckResult("Q09", "pass", "模型求解章节未发现 \\textbf")
-
-
 def check_s03_s04(ctx: PaperContext) -> tuple[CheckResult, CheckResult]:
-    """S03 2 列三线表；S04 表有 caption。"""
+    """S03 使用三线表（列数按内容决定）；S04 表有 caption。"""
     body = _sec_body(ctx, "symbol")
     if not body:
         return (CheckResult("S03", "pending", "未找到“符号说明”章节"),
@@ -202,51 +161,13 @@ def check_s03_s04(ctx: PaperContext) -> tuple[CheckResult, CheckResult]:
     has_mid = bool(re.search(r"\\midrule", body))
     has_bot = bool(re.search(r"\\bottomrule", body))
     has_caption = bool(re.search(r"\\caption", body))
-    # 列数：取 tabular 环境列规格
-    col_spec = re.search(r"\\begin\{(?:table|table\*)\}.*?\\begin\{tabular\}\s*\{([^}]*)\}",
-                         body, re.S)
-    ncol = None
-    if col_spec:
-        spec = col_spec.group(1)
-        # 去掉 @{}、>{..}、<{..} 等，计 c/l/r/p 个数
-        cleaned = re.sub(r"[<>\@]\{[^}]*\}", "", spec)
-        ncol = len(re.findall(r"[clrp]", cleaned))
-    if has_top and has_mid and has_bot and ncol == 2:
-        s03 = CheckResult("S03", "pass", f"三线表齐全（top/mid/bottom），列数={ncol}")
+    if has_top and has_mid and has_bot:
+        s03 = CheckResult("S03", "pass", "三线表命令齐全（top/mid/bottom），列数留待内容审查")
     else:
-        s03 = CheckResult("S03", "fail",
-                          f"三线表/列数不符：top={has_top} mid={has_mid} bot={has_bot} cols={ncol}")
+        s03 = CheckResult("S03", "fail", f"三线表命令不全：top={has_top} mid={has_mid} bot={has_bot}")
     s04 = CheckResult("S04", "pass", "符号说明表含 \\caption") if has_caption \
         else CheckResult("S04", "fail", "符号说明表缺 \\caption")
     return s03, s04
-
-
-def check_h04_h05(ctx: PaperContext) -> tuple[CheckResult, CheckResult]:
-    body = _sec_body(ctx, "assumption")
-    if not body:
-        return (CheckResult("H04", "pending", "未找到“模型假设”章节"),
-                CheckResult("H05", "pending", "未找到“模型假设”章节"))
-    items = re.findall(r"^\s*假设\s*(\d+)\s*[：:]", body, re.M)
-    if not items:
-        return (CheckResult("H04", "fail", "未匹配到“假设#：”格式"),
-                CheckResult("H05", "fail", "未匹配到“假设#：”格式"))
-    h04 = CheckResult("H04", "pass", f"匹配到 {len(items)} 条“假设#：”")
-    if ctx.problems is None:
-        h05 = CheckResult("H05", "pending", "未提供 --problems，无法核对条数")
-    elif len(items) == ctx.problems:
-        h05 = CheckResult("H05", "pass", f"假设 {len(items)} 条 == 问题数 {ctx.problems}")
-    else:
-        h05 = CheckResult("H05", "fail", f"假设 {len(items)} 条 != 问题数 {ctx.problems}")
-    return h04, h05
-
-
-def check_b12(ctx: PaperContext) -> CheckResult:
-    body = _sec_body(ctx, "intro")
-    if not body:
-        return CheckResult("B12", "pending", "未找到“引言/问题重述”章节")
-    if re.search(r"\\textbf\s*\{\s*问题\s*\d+", body):
-        return CheckResult("B12", "pass", "问题重述中“问题#”已加粗")
-    return CheckResult("B12", "fail", "问题重述未发现 \\textbf{问题#...}")
 
 
 def check_a_series(ctx: PaperContext) -> list[CheckResult]:
@@ -256,40 +177,15 @@ def check_a_series(ctx: PaperContext) -> list[CheckResult]:
             CheckResult("A02", "pending", "未找到摘要章节"),
             CheckResult("A10", "pending", "未找到摘要章节"),
         ]
-    # A02: 含“针对问题#”
-    a02 = CheckResult("A02", "pass", "摘要含“针对问题\\d+”") if re.search(r"针对问题\s*\d+", body) \
-        else CheckResult("A02", "fail", "摘要未出现“针对问题#”")
+    # A02: 能识别问题编号，但不限定“针对问题#”固定句式。
+    problem_mark = r"(?:问题\s*[一二三四五六七八九十\d]+|第\s*[一二三四五六七八九十\d]+\s*问)"
+    a02 = CheckResult("A02", "pass", "摘要内能识别问题编号") if re.search(problem_mark, body) \
+        else CheckResult("A02", "fail", "摘要未发现可识别的问题编号")
     # A10: 关键词行
     a10 = CheckResult("A10", "pass", "摘要含“关键词”或 \\keywords") \
         if (re.search(r"关键词", body) or re.search(r"\\keywords", body)) \
         else CheckResult("A10", "fail", "摘要未发现“关键词”行")
-    # 摘要无公式：去掉环境外的 $ 计数
-    # 粗略：摘要内出现成对 $ 即视为公式
-    dollar_pairs = len(re.findall(r"\$[^$]+\$", body))
-    a_no_formula = CheckResult("A07", "pass", f"摘要内未发现 $...$ 公式") if dollar_pairs == 0 \
-        else CheckResult("A07", "fail", f"摘要内出现 {dollar_pairs} 处 $...$ 公式")
-    return [a02, a10, a_no_formula]
-
-
-def check_e_series(ctx: PaperContext) -> list[CheckResult]:
-    body = _sec_body(ctx, "eval")
-    if not body:
-        return [
-            CheckResult("E01", "pending", "未找到“模型评价”章节"),
-            CheckResult("E03", "pending", "未找到“模型评价”章节"),
-            CheckResult("E05", "pending", "未找到“模型评价”章节"),
-        ]
-    adv = re.findall(r"^\s*优点\s*(\d+)\s*[：:]", body, re.M)
-    dis = re.findall(r"^\s*缺点\s*(\d+)\s*[：:]", body, re.M)
-    e01 = CheckResult("E01", "pass", f"匹配 {len(adv)} 条“优点#：”") if adv \
-        else CheckResult("E01", "fail", "未匹配“优点#：”")
-    e05 = CheckResult("E05", "pass", f"匹配 {len(dis)} 条“缺点#：”") if dis \
-        else CheckResult("E05", "fail", "未匹配“缺点#：”")
-    if len(adv) > len(dis):
-        e03 = CheckResult("E03", "pass", f"优点 {len(adv)} > 缺点 {len(dis)}")
-    else:
-        e03 = CheckResult("E03", "fail", f"优点 {len(adv)} 不大于缺点 {len(dis)}")
-    return [e01, e03, e05]
+    return [a02, a10]
 
 
 def check_v_series(ctx: PaperContext) -> list[CheckResult]:
@@ -297,20 +193,20 @@ def check_v_series(ctx: PaperContext) -> list[CheckResult]:
         return [CheckResult(f"V0{i}", "pending", "未提供 --archetype") for i in range(1, 5)]
     body = _sec_body(ctx, "check")
     results = []
-    # V01 评价类：不应有“检验结果”章
+    # V01 评价类：至少出现稳定性/敏感性/一致性/外部对照证据之一。
     if ctx.archetype == "evaluation":
-        if re.search(r"检验结果|检验与分析|灵敏度|误差|准确率", body):
-            results.append(CheckResult("V01", "fail", "评价类不应有检验章节，但检出相关关键词"))
+        if re.search(r"权重.*(?:敏感|稳定)|排序.*稳定|一致性|外部对照|稳健性", body, re.S):
+            results.append(CheckResult("V01", "pass", "评价类含权重/排序稳定性、一致性或外部对照证据"))
         else:
-            results.append(CheckResult("V01", "pass", "评价类未发现检验章节"))
+            results.append(CheckResult("V01", "fail", "评价类未发现权重/排序稳定性、一致性或外部对照证据"))
     else:
         results.append(CheckResult("V01", "na", "非评价类，本条不适用"))
-    # V02 分类：准确率
+    # V02 分类：准确率可能误导不平衡任务，优先检查诊断性指标。
     if ctx.archetype == "classification-cv":
-        if re.search(r"准确率|Accuracy|accuracy", body):
-            results.append(CheckResult("V02", "pass", "检验章节含“准确率/Accuracy”"))
+        if re.search(r"混淆矩阵|精确率|召回率|F1|precision|recall", body, re.I):
+            results.append(CheckResult("V02", "pass", "分类检验含混淆矩阵、P/R 或 F1 证据"))
         else:
-            results.append(CheckResult("V02", "fail", "分类类检验章节未发现“准确率”"))
+            results.append(CheckResult("V02", "fail", "分类检验未发现混淆矩阵、P/R 或 F1 证据"))
     else:
         results.append(CheckResult("V02", "na", "非分类类，本条不适用"))
     # V03 预测：误差
@@ -321,12 +217,12 @@ def check_v_series(ctx: PaperContext) -> list[CheckResult]:
             results.append(CheckResult("V03", "fail", "预测类检验章节未发现“误差”"))
     else:
         results.append(CheckResult("V03", "na", "非预测类，本条不适用"))
-    # V04 优化：灵敏度
+    # V04 优化：可行性、收敛、最优性边界或灵敏度均可构成适配证据。
     if ctx.archetype == "optimization":
-        if re.search(r"灵敏度|Sensitivity|sensitivity", body):
-            results.append(CheckResult("V04", "pass", "检验章节含“灵敏度/Sensitivity”"))
+        if re.search(r"可行(?:性|解)|约束.*满足|收敛|最优性|上下界|误差界|灵敏度|sensitivity", body, re.I | re.S):
+            results.append(CheckResult("V04", "pass", "优化检验含可行性、收敛、边界或灵敏度证据"))
         else:
-            results.append(CheckResult("V04", "fail", "优化类检验章节未发现“灵敏度”"))
+            results.append(CheckResult("V04", "fail", "优化检验未发现可行性、收敛、边界或灵敏度证据"))
     else:
         results.append(CheckResult("V04", "na", "非优化类，本条不适用"))
     return results
@@ -337,19 +233,11 @@ def check_v_series(ctx: PaperContext) -> list[CheckResult]:
 # --------------------------------------------------------------------------- #
 def run_machine_checks(ctx: PaperContext) -> dict[str, CheckResult]:
     out: dict[str, CheckResult] = {}
-    out["R02"] = check_r02(ctx)
-    out["Q02"] = check_q02(ctx)
     out["Q03"] = check_q03(ctx)
     out["Q04"] = check_q04(ctx)
-    out["Q09"] = check_q09(ctx)
     s03, s04 = check_s03_s04(ctx)
     out["S03"], out["S04"] = s03, s04
-    h04, h05 = check_h04_h05(ctx)
-    out["H04"], out["H05"] = h04, h05
-    out["B12"] = check_b12(ctx)
     for r in check_a_series(ctx):
-        out[r.item_id] = r
-    for r in check_e_series(ctx):
         out[r.item_id] = r
     for r in check_v_series(ctx):
         out[r.item_id] = r

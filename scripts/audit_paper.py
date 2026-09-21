@@ -44,15 +44,16 @@ def load_contest_config(start: Path, explicit: Path | None = None) -> dict:
     return {}
 
 
-def resolve_body_gate(targets: dict, contest_config: dict) -> tuple[int, str, str]:
-    """Return (minimum, mode, authority). mode: off|warning|error."""
+def resolve_body_gate(targets: dict, contest_config: dict) -> tuple[int, int | None, str, str]:
+    """Return (minimum, maximum, mode, authority). mode: off|warning|error."""
     gate = contest_config.get("paper", {}).get("body_page_gate", {}) if contest_config else {}
     minimum = gate.get("minimum", targets.get("required_body_pages", 0))
-    mode = str(gate.get("mode", targets.get("body_page_gate_mode", "warning"))).lower()
-    authority = str(gate.get("authority", targets.get("body_page_gate_authority", "project_heuristic")))
+    maximum = gate.get("maximum", targets.get("maximum_body_pages"))
+    mode = str(gate.get("mode", targets.get("body_page_gate_mode", "off"))).lower()
+    authority = str(gate.get("authority", targets.get("body_page_gate_authority", "not_configured")))
     if mode not in {"off", "warning", "error"}:
         raise ValueError(f"body_page_gate.mode 无效: {mode}")
-    return int(minimum or 0), mode, authority
+    return int(minimum or 0), int(maximum) if maximum is not None else None, mode, authority
 
 
 def pdf_pages(pdf: Path) -> int:
@@ -245,8 +246,10 @@ def main():
     body = body_pages(ranges)
     targets = json.loads(args.targets.read_text(encoding="utf-8-sig")) if args.targets and args.targets.exists() else {}
     contest_config = load_contest_config(pdf.parent, args.contest_config)
-    required_body, body_gate_mode, body_gate_authority = resolve_body_gate(targets, contest_config)
-    role_targets = targets.get("role_targets", {})
+    required_body, maximum_body, body_gate_mode, body_gate_authority = resolve_body_gate(targets, contest_config)
+    paper_config = contest_config.get("paper", {}) if contest_config else {}
+    role_windows_enabled = bool(paper_config.get("role_windows_enabled", targets.get("role_windows_enabled", False)))
+    role_targets = targets.get("role_targets", {}) if role_windows_enabled else {}
     issues = []
     for chapter in ranges:
         role_target = role_targets.get(chapter.get("role"), {})
@@ -263,6 +266,8 @@ def main():
             })
     if body_gate_mode != "off" and required_body > 0 and body["pages"] < required_body:
         issues.append({"code": "body_pages_below_minimum", "severity": "error" if body_gate_mode == "error" else "warning", "actual": body["pages"], "required": required_body, "gate_mode": body_gate_mode, "authority": body_gate_authority, "message": "页数门禁按比赛配置执行；当届官方规则优先于项目经验阈值。"})
+    if body_gate_mode != "off" and maximum_body is not None and body["pages"] > maximum_body:
+        issues.append({"code": "body_pages_above_maximum", "severity": "error" if body_gate_mode == "error" else "warning", "actual": body["pages"], "maximum": maximum_body, "gate_mode": body_gate_mode, "authority": body_gate_authority, "message": "正文页数超过已配置的当届明确上限；请先确认该上限口径，再删减冗余并保留核心证据链。"})
     if not matched:
         issues.append({"code": "headings_not_detected", "severity": "warning", "message": "未检测到可靠的章节标题；请提供 Word 标题 JSON 或开启 OCR 复核。"})
     cover_text = re.sub(r"\s+", "", records[0]["text"]) if records else ""
@@ -316,7 +321,8 @@ def main():
         "abstract_page_centered_footer_numbers": abstract_footer,
         "header_text_spans": header_hits,
         "body": body,
-        "body_page_gate": {"minimum": required_body, "mode": body_gate_mode, "authority": body_gate_authority},
+        "body_page_gate": {"minimum": required_body, "maximum": maximum_body, "mode": body_gate_mode, "authority": body_gate_authority},
+        "role_windows_enabled": role_windows_enabled,
         "chapter_ranges": ranges,
         "detected_fonts": fonts,
         "issues": issues,
@@ -324,8 +330,8 @@ def main():
         "limitations": [
             "最终页数以本 PDF 为准；DOCX docProps/app.xml 的 Pages 不参与验收。",
             "中文字体 CMap 损坏时，章节/身份检测可能需要 OCR 或 Word 标题 JSON 交叉验证。",
-            "问题章节区间是历史经验先验，不是要求所有章节等长。",
-            "比赛配置.json 中的 official_rules_priority=true：当届官方页数/字数/格式规则优先；默认45页仅作经验预警。",
+            "历史论文的章节页数只作描述性观察，不要求所有章节等长，也不参与默认通过/失败判定。",
+            "contest.json 中的 official_rules_priority=true：仅在当届题面或官方通知明确给出页数限制时开启页数门禁；截至 2026-09-21，默认关闭。",
         ],
     }
     args.report.parent.mkdir(parents=True, exist_ok=True)

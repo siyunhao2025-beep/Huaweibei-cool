@@ -141,7 +141,7 @@ skill 根：`C:\Users\ASUS\AppData\Local\Doubao\User Data\Profile 1\.doubao\agen
 | validation.md | 验证门禁：误差/对比/灵敏度/消融 |
 | evidence-ledger.md | 证据台账与 AI 来源标注 |
 | figures-interface.md | 论文图规范与求解图接口；图表计划必须源自读题审计报告 |
-| paper-writing.md | 章节结构与页数基线 |
+| paper-writing.md | 章节结构、内容密度与官方页数限制核对（当前默认无页数门禁） |
 | abstract.md | 摘要专项（国一模板；官方表述为摘要一般不超过两页） |
 | deai-writing.md | 反模板/反 AI 味（源自 human-signal，需继续吸收其 references） |
 | innovation.md | 创新点提炼与伪创新识别 |
@@ -200,7 +200,7 @@ skill 根：`C:\Users\ASUS\AppData\Local\Doubao\User Data\Profile 1\.doubao\agen
 17. **通用标签污染**：60 张简卡的 models_and_algorithms 含"禁忌搜索/启发式"泛化标签（并非真用禁忌搜索），已在 AGGREGATE_STATS 标注，待逐条清洗。
 18. **标题启发式粗糙**：部分早期论文标题取成正文首句（如 2005 出租车题）；v0.1.1 已清洗 81 条广告水印标题（"有偿…加微 anjia…"），但其余低质量标题仍在（置信度 low 是设计使然）。
 19. **抽文 txt 仍含水印文本**：txt 不入库（.gitignore），若未来要分发语料文本，需先做全文水印清洗。
-20. 正文页数上限官方未明确，`contest.json` 门禁值标"待确认"，每届查参赛通知。
+20. 截至 2026-09-21，当届已核对的官方材料未规定正文/全文页数上限；`contest.json` 默认关闭页数门禁。每届仍须重查赛题与后续通知，只有明确上限时才启用。
 
 ### C. 知识与判型
 

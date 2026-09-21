@@ -37,17 +37,25 @@ def test_checklist_json_parseable_and_138():
     sections = {it["section"] for it in d["items"]}
     for sec in ["全局格式", "摘要", "模型求解", "参考文献"]:
         assert sec in sections
-    # 3 处存疑条目已经用户确认定稿（M14/V05/I02），notes 应为 null
+    # 旧截图的三处转录记录已闭合；当前语义由纠错后的 item 字段承载。
     notes = {it["id"]: it.get("notes") for it in d["items"]}
     assert notes["M14"] is None
     assert notes["I02"] is None
     assert notes["V05"] is None
+    by_id = {it["id"]: it for it in d["items"]}
+    assert "服从数据结构" in by_id["V05"]["item"]
+    assert by_id["V05"]["applicable_archetypes"] == [
+        "classification-cv", "prediction", "spatial-graph"
+    ]
+    for sid in ["B12", "H04", "H05", "Q02", "Q09", "E01", "E03", "E05", "R02"]:
+        assert by_id[sid]["check_method"] == "manual"
 
 
 def test_checklist_md_exists_and_has_execution_requirements():
     txt = CHECKLIST_MD.read_text(encoding="utf-8")
     assert "## 执行要求" in txt
-    assert "100% 闭环" in txt
+    assert "全量闭环" in txt
+    assert "不等于强行让 138 项全部通过" in txt
     # 不得出现具体商业 AI 产品名
     for banned in ["claude", "chatgpt", "Claude", "ChatGPT"]:
         assert banned not in txt
@@ -77,8 +85,7 @@ def test_pass_fixture_zero_fail(tmp_path):
     fail_lines = [ln for ln in report.splitlines() if ln.startswith("- ❌")]
     assert not fail_lines, f"正例 fixture 不应有 ❌：{fail_lines}"
     # 关键机检项
-    for sid in ["R02", "Q02", "Q03", "Q04", "Q09", "S03", "S04",
-                "H04", "H05", "B12", "A02", "A10", "E01", "E03", "E05", "V04"]:
+    for sid in ["Q03", "Q04", "S03", "S04", "A02", "A10", "V04"]:
         assert f"✅ **{sid}**" in report, f"正例 {sid} 应 ✅"
 
 
@@ -94,16 +101,14 @@ def test_fail_fixture_detects_all_planted_errors(tmp_path):
     report = (outdir / "论文自检表_已勾选.md").read_text(encoding="utf-8")
     # 每个故意埋的错误至少对应一条 ❌
     expected = {
-        "R02": "参考文献含 DOI",
-        "Q02": "图 width=0.99",
-        "Q04": "表未引用",
+        "Q04": "图表未引用",
         "Q03": "纯英文题注",
-        "Q09": "模型求解含 \\textbf",
-        "H05": "假设条数 != 问题数",
-        "E03": "优点数 <= 缺点数",
+        "V04": "优化检验缺少适配证据",
     }
     for sid, why in expected.items():
         assert f"❌ **{sid}**" in report, f"反例应检出 {sid}（{why}）"
+    for retired_false_positive in ["R02", "Q02", "Q09", "H05", "E03"]:
+        assert f"❌ **{retired_false_positive}**" not in report
 
 
 # --------------------------------------------------------------------------- #

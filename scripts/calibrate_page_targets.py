@@ -44,14 +44,15 @@ def main():
         targets[role] = {"min_pages": min_pages, "max_pages": max_pages, "observed": values}
     result = {
         "version": 1,
-        "required_body_pages": int(baseline.get("required_body_pages", 45)),
+        "required_body_pages": 0,
         "page_system": baseline.get("page_number_system", "printed"),
         "body_definition": baseline.get("body_definition"),
+        "role_windows_enabled": False,
         "role_targets": targets,
         "observations": observations,
-        "body_page_gate_mode": "warning",
-        "body_page_gate_authority": "project_heuristic",
-        "policy": "Use role windows and body minimum as historical warnings unless the current contest official rules explicitly make them hard requirements.",
+        "body_page_gate_mode": "off",
+        "body_page_gate_authority": "official_2026_no_limit_stated",
+        "policy": "Historical role windows are descriptive only. Keep the page gate off unless the current problem statement or a later official notice explicitly defines a limit.",
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")

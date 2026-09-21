@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "required_body_pages": 45,
-  "body_page_gate_mode": "warning",
-  "body_page_gate_authority": "project_heuristic",
+  "required_body_pages": 0,
+  "body_page_gate_mode": "off",
+  "body_page_gate_authority": "official_2026_no_limit_stated",
   "page_system": "printed",
   "body_definition": "正文从摘要结束后的下一页开始，到参考文献标题前一页结束；附录不计入正文。",
+  "role_windows_enabled": false,
   "role_targets": {
     "evaluation": {
       "min_pages": 1,
@@ -20,5 +21,5 @@
     }
   },
   "observations": [],
-  "policy": "Role windows and 45-page minimum are historical project heuristics. Official rules for the current contest always override them. Default body-page shortfall is a warning, not a hard failure."
+  "policy": "As of 2026-09-21, reviewed official materials state no body minimum, body maximum, or total-page maximum. Page gates and historical role windows are disabled by default; enable only when the current problem statement or a later official notice gives an explicit limit. Historical page observations must never be used as a writing target."
 }

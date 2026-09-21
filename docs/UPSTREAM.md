@@ -17,9 +17,9 @@ Wave0 整理，后续新增上游资产时追加。
 | `华为杯_论文规范模板/gmcm-title.sty` | 同名 | 标题样式 |
 | `华为杯_论文规范模板/example.tex` | 同名 | 示例论文 |
 | `华为杯_论文规范模板/reference.bib` | 同名 | 示例文献库 |
-| `华为杯_论文规范模板/page_targets.json` | 同名 | 页数目标 |
+| `华为杯_论文规范模板/page_targets.json` | 同名 | 页数门禁状态与历史观察（当前默认关闭） |
 | `华为杯_论文规范模板/agent_manifest.schema.json` | 同名 | 论文清单 schema |
-| `华为杯_论文规范模板/章节页数基线.json` | 同名 | 章节页数基线 |
+| `华为杯_论文规范模板/章节页数基线.json` | 同名 | 历史章节页数观察（不作目标或门禁） |
 | `华为杯_论文规范模板/章节模板/` | `assets/paper-template/章节模板/` | 各章节 .tex 模板 |
 | `华为杯_论文规范模板/figures/` | `assets/paper-template/figures/` | 论文图占位/logo |
 | 第二十三届官方附件 3 Word 内嵌 `image1`–`image4` | `figures/identity-*` | 2026 正式提交第 0 页封皮的四个徽标 |
@@ -106,13 +106,21 @@ Wave0 已逐个 `--help` 验证 import 不报错（编译链路 Wave3 验证）�
 - **处理**：7 张截图逐张转录为工作记录 `优秀论文自检表_原始转录.md`（本地 `_work/` 工作记录，已 gitignore 不入库），并固化为入库资产：
   - `assets/checklists/paper_checklist.json`（138 条结构化条目，机检用）
   - `assets/checklists/优秀论文自检表.md`（人读版，AI 相关措辞已中性化）
-- **机检与门禁**：`scripts/paper_checklist.py`（13 类可机检规则）；P4/P6 门禁打通。
+- **机检与门禁**：`scripts/paper_checklist.py` 仅自动判断可客观识别的结构项；需视觉或学术判断的条目保留人工裁决，P4/P6 门禁检查是否闭环而非强行全绿。
 - **3 处转录存疑（已经用户确认定稿，notes 置空）**：
   - **M14**（预测模型评估）：原图此行被水印遮挡，按"分类模型评估（M11）"同构补全；定稿为"模型评估（讲如何控制输出）"。
   - **I02**（改进可否分点）：原图两条互相矛盾；定稿为"以整段写为主、可以分点但不能跑题"。
-  - **V05**（误差检验）：定稿为"误差检验优先使用五折交叉验证"。
+  - **V05**（误差检验）：当时按截图定稿为“误差检验优先使用五折交叉验证”；2026-09-21 的内容审计确认该说法不能跨 IID、分组、时序和空间数据通用，现已改为“验证划分服从数据结构”。这属于纠错，不抹去原始转录历史。
 - **与官方规范的冲突（已按官方裁定）**：
   自检表 **F03** 原要求二三级标题"小四号**黑体**"；但华为杯官方 `华为杯_论文章节规范.md` §2.3(1)
   明确为"小四号**宋体**"，且禁止改 `gmcmthesis.cls`；`gmcmthesis.cls` 与 Word 模板现状均为宋体小四。
   经用户 2026-09-21 裁决：**以官方格式规范为准（小四宋体），第三方"黑体"不采纳，不改模板**，
   定稿记录在 `modules/paper-writing.md` §6.1 与 `docs/CHANGELOG.md` v0.4.1。
+
+## 六、第二十三届社区 LaTeX 参考包
+
+- **来源**：用户于 2026-09-21 提供的本机 PDF、`main.tex`、`gmcmthesis.cls`、`gmcm.bst`、`figures/logo.pdf` 与 `figures/title.pdf`。
+- **身份判断**：`gmcmthesis.cls` 文件头注明由 `latexstudio.net` 创建并由社区作者更新；不能称为组委会官方 LaTeX 模板。
+- **装载方式**：六个文件在用户本机 skill 中按 SHA-256 装载；公开仓库仅保存 `assets/paper-template/reference-23rd-latex/source-manifest.json` 与 `docs/TEMPLATE_CONTENT_MAPPING_23RD.md`。
+- **分发边界**：源包未附明确再分发许可，故不把原 PDF、源文件或图像提交到公开 GitHub。
+- **融合范围**：吸收任务卡、数据审计、Baseline—主模型证据链、按结构验证、不确定性、结果解释、模型评价、结论和复现元数据；拒绝目录、社区类文件、组合 logo 与写有“第二十二届”的过期标题资产。

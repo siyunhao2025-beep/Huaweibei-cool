@@ -1,335 +1,335 @@
 {
   "F01": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：论文题目用三号黑体字"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "F02": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：一级标题用四号黑体字，居中"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "F03": {
     "status": "pass",
-    "note": "已裁决：官方宋体，合规——二级、三级标题用小四号宋体字，左端对齐（不居中），第三方原写“黑体”不采纳"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "F04": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：论文中其他汉字一律用小四号宋体字"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "F05": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：行距用单倍行距"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "F06": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：打印文字内容尽量避免彩色打印（必要的彩色图形、图表除外）"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "L01": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：流程图篇幅"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "L02": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：模型假设篇幅"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "L03": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：符号说明篇幅"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "L04": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：具体分析篇幅"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "L05": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：模型准备篇幅"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "L06": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：模型建立篇幅"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "L07": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：模型求解篇幅"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "L08": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：模型检验（选）篇幅"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "L09": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：“模型建立与求解”整块合计篇幅"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "L10": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：模型检验与分析篇幅"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "L11": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：模型评价·优点篇幅"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "L12": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：模型评价·缺点篇幅"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "L13": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：模型的改进篇幅"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "L14": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：模型的推广篇幅"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "L15": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：参考文献篇幅"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "L16": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：附录·附件说明表篇幅"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "L17": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：附录·代码（选）篇幅"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "A01": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：开头段两句话点出问题主旨、引出下文具体摘要部分"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "A03": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：点出问题类型"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "A04": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：点出主要建模方法"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "A05": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：用“首先、接着……最后”结构化表达关键步骤"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "A06": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：展示求解结果"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "A07": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：每个问的摘要里不写模型检验"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "A08": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：摘要中不能出现任何解释性语言，直接一步接一步陈述"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "A09": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：结尾段两句话表达整个问题求解完成、模型性能优越"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "B01": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：开头两句话纯背景引入"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "B02": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：讲清楚问题来源与原因"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "B03": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：表达问题的目前困境"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "B04": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：表达需要解决的渴求"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "B05": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：背景段落数在 2–3 段之间"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "B06": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：背景不要出现分点表达"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "B07": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：研究意义主题为社会、科研方面"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "B08": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：研究意义达到两点以上"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "B09": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：研究意义不要用分点符号、序号"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "B10": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：研究意义段落 1–2 段最好，1 段最优"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "B11": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：每个问题的重述保持 2 行之内"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "B13": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：在“问题#”等后面加冒号，然后再写重述"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "B14": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：问题重述不要用分点符号、序号"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "B15": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：问题重述是问题的本质缩写，删除背景、附属解释"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "T01": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：总体分析三段式写作"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "T02": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：第一段引文：总体表达题目意思、引入分析，一句话即可"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "T03": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：第二段分析：理清楚问题之间的联系"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "T04": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：第二段分析模板：“针对问题#，本问建立了#来解决#，”"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "T05": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：第三段图引文：“具体流程如图#所示”，不需要额外说明"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "T06": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：流程图可用模板式或自定义（要求配色清晰）"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "T07": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：流程图同总体分析配套"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "T08": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：总体分析里不要讲检验、不要讲结果（此时尚未求解）"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "H01": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：模型假设两段式写作"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "H02": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：第一段引文：“为简化问题，本文做出以下假设：”"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "H03": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：每条假设控制在两行内"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "H06": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：假设之间用分点符号区分"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "S01": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：开头引文：表达符号说明意义、引出表"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "S02": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：引文篇幅控制在 2 行内"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "S05": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：表内每行字段不换行"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "S06": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：列名不要加粗"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "C01": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：具体分析说明针对问题几"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "C02": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：具体分析点出问题类型"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "C03": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：具体分析点出本问大致建模方法"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "C04": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：按“首先、接着、然后……最后”写具体步骤"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "C05": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：具体分析三段式写作，不要分点表达"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "C06": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：具体分析开头段满足 C01/C02/C03"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "C07": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：具体分析中间段满足 C04，每个步骤不换行"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "C08": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：具体分析结尾段引出图：“具体分析如图#所示”"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "P01": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：数据预处理开头引文"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "P02": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：数据预处理表达预处理原因"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "P03": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：数据预处理讲预处理步骤及其对应方法"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "P04": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：理论结合公式表达预处理方法"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "P05": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：给出预处理前后对比图"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "P06": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：编码结果展示（选）"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "P07": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：算法选择开头过渡文字，承接预处理引入算法选择"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "P08": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：引入对问题的算法适用性讨论"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "P09": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：用表格展示算法对比结果"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "P10": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：对表格结果进行分析，表明要选的算法"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "P11": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：结尾段引出模型求解"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "M01": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：建立目标函数"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "M02": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：设定约束条件"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "M03": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：选定求解算法；开头展示整个优化模型公式（目标函数+约束条件）后再讨论"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "M04": {
     "status": "na",
@@ -337,7 +337,7 @@
   },
   "M05": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：结尾段总结建模成果，引出模型求解"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "M06": {
     "status": "na",
@@ -377,102 +377,138 @@
   },
   "Q01": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：开头段引文，表达求解完成，引出结果表、图"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "Q05": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：结果展示三段式：文字引入 + 表/图展示 + 分析文字"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "Q06": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：数值型结果一定要用单独表格突出表示"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "Q07": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：非数值结果、预测趋势线、对比效果用醒目的图表示"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "Q08": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：不要放看起来高大上、但莫名其妙的图"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "V05": {
     "status": "na",
-    "note": "本题为 optimization 玩具样例，本条面向其他题型，不适用"
+    "note": "本优化玩具题不涉及训练/验证数据划分"
   },
   "V06": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：灵敏度分析 = 改输入/参数，看输出稳定性"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "V07": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：可用 AI 辅助起草，作者核验并按当届规定披露 AI 使用；写作风格为“文字引入+表格+文字分析”"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "W01": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：开头段文字引入"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "W02": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：用二级标题区分不同的检验类型"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "W03": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：文字解释检验的必要性"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "W04": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：用图或表列出检验结果（表优先）"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "W05": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：对检验结果进行分析"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "E02": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：优点按模型来写，不要按问题来写"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "E04": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：每个优点字数不超过两行"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "E06": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：缺点按模型来写，不要按问题来写"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "E07": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：缺点数量小于优点"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "E08": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：每个缺点字数不超过两行"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "I01": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：改进整段写（可 AI 辅助起草、作者核验并按当届规定披露）"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "I02": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：模型的改进以整段写为主、可以分点但一定不能跑题"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "G01": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：推广整段写（可 AI 辅助起草、作者核验并按当届规定披露）"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "G02": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：推广不要分段写"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "R01": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：参考文献采用国标 GB/T 7714-2015"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "X01": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：附件说明表：用表，按模板（自适应，约 1 页）"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "X02": {
     "status": "pass",
-    "note": "quickstart 玩具样例人工裁决通过：代码（选）：按模板"
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+  },
+  "B12": {
+    "status": "pass",
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+  },
+  "H04": {
+    "status": "pass",
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+  },
+  "H05": {
+    "status": "pass",
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+  },
+  "Q02": {
+    "status": "pass",
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+  },
+  "Q09": {
+    "status": "pass",
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+  },
+  "E01": {
+    "status": "pass",
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+  },
+  "E03": {
+    "status": "pass",
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+  },
+  "E05": {
+    "status": "pass",
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+  },
+  "R02": {
+    "status": "pass",
+    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   }
 }

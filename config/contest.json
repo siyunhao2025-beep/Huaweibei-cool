@@ -20,19 +20,19 @@
   },
   "paper": {
     "body_page_gate": {
-      "mode": "warning",
-      "minimum": 45,
+      "mode": "off",
+      "minimum": 0,
       "maximum": null,
-      "authority": "project_heuristic",
-      "note": "45 页下限仅为历史项目经验阈值，非官方规则。正文页数上限/附录页数上限待官方规则核对后填入；未确认前不得据此判整篇论文失败。"
+      "authority": "official_2026_no_limit_stated",
+      "note": "截至 2026-09-21，已核对的第二十三届官方格式规范、开赛公告和提交提醒未规定正文最低页数、正文上限或全文总页数上限，因此默认关闭页数门禁。仅在当届赛题或后续官方通知明确给出限制时启用。"
     },
     "appendix_page_gate": {
       "mode": "off",
       "maximum": null,
-      "authority": "pending_official",
-      "note": "待确认：附录页数上限按当届官方规则填写。"
+      "authority": "official_2026_no_limit_stated",
+      "note": "截至 2026-09-21，已核对的当届官方材料未规定附录页数上限；保持关闭，并在赛题或后续通知明确要求时更新。"
     },
-    "role_windows_enabled": true,
+    "role_windows_enabled": false,
     "word_template": "研赛论文Word标准模板.docx",
     "latex_engine": "xelatex",
     "contest_title_font": "STXinwei"
