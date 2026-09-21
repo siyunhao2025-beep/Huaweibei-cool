@@ -1,7 +1,7 @@
 name: CI
 
 # 华为杯研赛 AI 作战中枢 持续集成（Wave5-C）
-# Ubuntu + Python 3.12（兼容性最稳）；装依赖后跑 pytest 与 doctor 自检。
+# Ubuntu + Python 3.12（兼容性最稳）；装依赖后跑完整 pytest。
 # CI 无 MATLAB 时校验已提交的 R2024b 真机证据；有 MATLAB 时自动真机运行。
 
 on:
@@ -30,11 +30,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      - name: 环境自检（doctor.py --json）
-        # CI runner 无 xelatex/MATLAB/Word，doctor 会报 FAIL；用 continue-on-error 仅展示不阻塞。
-        continue-on-error: true
-        run: python scripts/doctor.py --json
 
       - name: 运行测试
         run: python -m pytest tests/ -v
