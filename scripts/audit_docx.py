@@ -20,6 +20,12 @@ IDENTITY_RE = re.compile(
     r"C:\\Users\\",
     re.IGNORECASE,
 )
+REFERENCE_HEADING_RE = re.compile(r"^\s*(?:\d+(?:\.\d+)*\s+)?(?:参考文献|References?)\s*$", re.I)
+APPENDIX_HEADING_RE = re.compile(
+    r"^\s*(?:\d+(?:\.\d+)*\s+)?(?:附录|Appendix)(?:\s*[A-ZＡ-Ｚ0-9０-９]+)?"
+    r"(?:\s*[:：—-]\s*.+|\s+.+)?\s*$",
+    re.I,
+)
 
 
 def parse_xml(data: bytes):
@@ -57,6 +63,16 @@ def on(element):
     if element is None:
         return False
     return element.get(W + "val", "true").lower() not in {"0", "false", "off", "no"}
+
+
+def paragraph_starts_new_page(paragraph, previous=None):
+    ppr = paragraph.find("w:pPr", NS)
+    page_break_before = ppr.find("w:pageBreakBefore", NS) if ppr is not None else None
+    if on(page_break_before):
+        return True
+    if paragraph.xpath('.//w:br[@w:type="page"]', namespaces=NS):
+        return True
+    return bool(previous is not None and previous.xpath('.//w:br[@w:type="page"]', namespaces=NS))
 
 
 def run_measurements(run):
@@ -158,6 +174,30 @@ def audit(path: Path):
         })
 
         paragraph_texts = ["".join(p.xpath(".//w:t/text()", namespaces=NS)).strip() for p in paragraphs]
+        terminal_headings = []
+        for index, value in enumerate(paragraph_texts):
+            role = "references" if REFERENCE_HEADING_RE.fullmatch(value) else (
+                "appendix" if APPENDIX_HEADING_RE.fullmatch(value) else None
+            )
+            if role:
+                terminal_headings.append({
+                    "paragraph": index,
+                    "title": value,
+                    "role": role,
+                    "starts_new_page": paragraph_starts_new_page(
+                        paragraphs[index], paragraphs[index - 1] if index > 0 else None
+                    ),
+                })
+        checks.append({
+            "code": "references_and_appendices_start_new_pages",
+            "ok": not ({"references", "appendix"} - {item["role"] for item in terminal_headings})
+            and all(item["starts_new_page"] for item in terminal_headings),
+            "headings": terminal_headings,
+            "missing_roles": sorted(
+                {"references", "appendix"} - {item["role"] for item in terminal_headings}
+            ),
+            "message": "必须识别参考文献与附录标题，且标题须设置段前分页或紧邻显式分页符。",
+        })
         toc_titles = [index for index, value in enumerate(paragraph_texts) if value == "目录"]
         toc_fields = []
         for index, paragraph in enumerate(paragraphs):

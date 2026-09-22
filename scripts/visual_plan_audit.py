@@ -24,6 +24,32 @@ VISUAL_FIRST_SHAPES = {
     "spatial_geometry",
 }
 VECTOR_EXTENSIONS = {".pdf", ".svg"}
+MIN_POST_NARRATIVE_CHARS = 60
+EVIDENCE_READOUT_RE = re.compile(
+    r"(?:\d|上升|下降|提高|降低|增大|减小|增长|集中|分布|差异|不同|趋势|波动|峰值|谷值|"
+    r"异常|负结果|不变|接近|超过|低于|高于|改善|退化|收敛|偏差|误差|区间|相关|"
+    r"占比|尺度|长尾|互斥|排序|覆盖|命中|虚警|效应|增益|损失|权衡|响应|支配|不跨|"
+    r"结构|路径|流向|依赖|隔离|模块|increase|decrease|improv|degrad|difference|trend|"
+    r"distribution|error|interval|correlat|structure|path|flow|depend|isolation|module)",
+    re.I,
+)
+REASON_OR_MECHANISM_RE = re.compile(
+    r"(?:因为|由于|源于|来自|归因|原因|机制|机理|导致|造成|使得|可解释为|由.+决定|"
+    r"受.+影响|与.+(?:一致|相符|对应)|反映.+(?:结构|机制|过程|约束|误差)|"
+    r"在.*(?:时间轴|样本|事件|空间|流程).*(?:分离|隔离)|这使|无法解释|门控.*抑制|"
+    r"(?:阈值|约束|规则).+(?:抑制|保护|隔离|限制)|"
+    r"原因尚未|原因尚不|机制待验证|待验证解释|because|due\s+to|arises?\s+from|"
+    r"caused\s+by|driven\s+by|attributable\s+to|consistent\s+with|mechanism|reflects?|"
+    r"hypothes|cause\s+is\s+unknown)",
+    re.I,
+)
+IMPLICATION_OR_BOUNDARY_RE = re.compile(
+    r"(?:因此|因而|由此|所以|意味着|说明|支持|据此|采用|保留|拒绝|调整|传给|进入下一|不能|"
+    r"不代表|并非|不作为|不承担|只作|只能|仅能|仅限|边界|适用|代价|风险|局限|异常样本|失效|外推|下一步|"
+    r"后续|待验证|therefore|thus|implies?|supports?|adopt|retain|reject|adjust|cannot|"
+    r"does\s+not|limitation|trade-?off|boundary|applicab|fail|extrapolat|next\s+step)",
+    re.I,
+)
 EXPECTED_COLOR_SEMANTICS = {
     "baseline": "#2166AC",
     "risk_highlight": "#B2182B",
@@ -92,6 +118,31 @@ def count_numbered_figures(tex: str) -> int:
     return max(0, environments - definitions) + calls
 
 
+def numbered_figure_labels(tex: str) -> list[str]:
+    """Return one source label per numbered top-level Figure when available."""
+    labels = [
+        call["args"][2].strip()
+        for call in _macro_calls(tex, ("evidencefigure", "frameworkfigure"))
+        if call["args"][2].strip()
+    ]
+    for block in re.findall(
+        r"\\begin\s*\{figure\*?\}.*?\\end\s*\{figure\*?\}",
+        tex,
+        re.S,
+    ):
+        # Wrapper definitions contain \label{#3}; they are templates, not
+        # source-level figures.  For a normal Figure the last label is the
+        # top-level label when subfigure panels also carry labels.
+        block_labels = [
+            label.strip()
+            for label in re.findall(r"\\label\s*\{([^{}]+)\}", block)
+            if label.strip() and "#" not in label
+        ]
+        if block_labels:
+            labels.append(block_labels[-1])
+    return labels
+
+
 def _macro_calls(tex: str, names: tuple[str, ...], argument_count: int = 3) -> list[dict]:
     """Return balanced-brace calls for the small paper figure wrappers."""
     calls: list[dict] = []
@@ -130,13 +181,17 @@ def _macro_calls(tex: str, names: tuple[str, ...], argument_count: int = 3) -> l
 
 
 def figure_binding_audit(tex: str, labels: list[str]) -> dict:
-    """Check source binding plus the pre/caption/post narrative contract."""
+    """Check source binding plus the full figure-explanation contract."""
     wrapper_calls = _macro_calls(tex, ("evidencefigure", "frameworkfigure"))
     call_by_label = {call["args"][2].strip(): call for call in wrapper_calls}
     explicit_labels = {item: None for item in re.findall(r"\\label\s*\{([^{}]+)\}", tex)}
     missing_binding: list[str] = []
     missing_pre_reference: list[str] = []
     missing_post_narrative: list[str] = []
+    shallow_post_narrative: list[str] = []
+    missing_evidence_readout: list[str] = []
+    missing_reason_or_mechanism: list[str] = []
+    missing_implication_or_boundary: list[str] = []
     weak_captions: list[str] = []
 
     for label in labels:
@@ -161,17 +216,44 @@ def figure_binding_audit(tex: str, labels: list[str]) -> dict:
             end = end_marker + 1
         if len(re.sub(r"\s+", "", caption)) < 12:
             weak_captions.append(label)
-        tail = tex[end:end + 900]
-        tail = re.split(r"\\(?:section|subsection|subsubsection|begin\s*\{figure)", tail, maxsplit=1)[0]
-        tail = re.sub(r"\\[A-Za-z@]+(?:\[[^]]*\])?|[{}$%]", " ", tail)
-        tail = re.sub(r"\s+", "", tail)
-        if len(tail) < 24:
+        tail = tex[end:end + 1800]
+        tail = re.split(
+            r"\\(?:section|subsection|subsubsection|begin\s*\{figure|evidencefigure|frameworkfigure)",
+            tail,
+            maxsplit=1,
+        )[0]
+        tail = re.sub(
+            r"\\(?:ref|autoref|eqref|pageref|cite\w*)\s*\{[^{}]*\}",
+            " ",
+            tail,
+        )
+        plain_tail = re.sub(r"\\[A-Za-z@]+(?:\[[^]]*\])?|[{}$%]", " ", tail)
+        plain_tail = re.sub(r"\s+", " ", plain_tail).strip()
+        compact_tail = re.sub(r"\s+", "", plain_tail)
+        clauses = [
+            item for item in re.split(r"[。！？；.!?;]+", plain_tail)
+            if len(re.sub(r"\s+", "", item)) >= 8
+        ]
+        if len(compact_tail) < 24:
             missing_post_narrative.append(label)
+            continue
+        if len(compact_tail) < MIN_POST_NARRATIVE_CHARS or len(clauses) < 2:
+            shallow_post_narrative.append(label)
+        if not EVIDENCE_READOUT_RE.search(plain_tail):
+            missing_evidence_readout.append(label)
+        if not REASON_OR_MECHANISM_RE.search(plain_tail):
+            missing_reason_or_mechanism.append(label)
+        if not IMPLICATION_OR_BOUNDARY_RE.search(plain_tail):
+            missing_implication_or_boundary.append(label)
 
     return {
         "missing_binding": missing_binding,
         "missing_pre_reference": missing_pre_reference,
         "missing_post_narrative": missing_post_narrative,
+        "shallow_post_narrative": shallow_post_narrative,
+        "missing_evidence_readout": missing_evidence_readout,
+        "missing_reason_or_mechanism": missing_reason_or_mechanism,
+        "missing_implication_or_boundary": missing_implication_or_boundary,
         "weak_captions": weak_captions,
     }
 
@@ -610,20 +692,30 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
                 for call in _macro_calls(tex, ("evidencefigure", "frameworkfigure"))
             )
             graphics = {raw.replace("\\", "/") for raw in re.findall(r"\\includegraphics(?:\[[^]]*\])?\s*\{([^{}]+)\}", tex)}
-            missing_labels = [fig.get("paper", {}).get("label") for fig in all_figures
-                              if fig.get("paper", {}).get("label") not in labels]
-            missing_labels.extend(item.get("paper", {}).get("label") for item in all_schematics
-                                  if item.get("paper", {}).get("label") not in labels)
-            missing_labels.extend(item.get("paper", {}).get("label") for item in all_tables
-                                  if item.get("paper", {}).get("label") not in labels)
+            declared_labels = [
+                str(item.get("paper", {}).get("label", "")).strip()
+                for item in [*all_figures, *all_schematics, *all_tables]
+                if str(item.get("paper", {}).get("label", "")).strip()
+            ]
+            missing_labels = [label for label in declared_labels if label not in labels]
             add("planned_visual_labels_in_tex", not missing_labels,
-                missing=sorted(set(label for label in missing_labels if label)))
+                missing=sorted(set(missing_labels)))
             planned_labels = [
                 str(item.get("paper", {}).get("label", "")).strip()
                 for item in [*all_figures, *all_schematics]
                 if str(item.get("paper", {}).get("label", "")).strip()
             ]
-            narrative = figure_binding_audit(tex, planned_labels)
+            source_figure_labels = numbered_figure_labels(tex)
+            actual_tex_total = count_numbered_figures(tex)
+            unique_source_labels = list(dict.fromkeys(source_figure_labels))
+            add("paper_figures_have_unique_source_labels",
+                len(source_figure_labels) == actual_tex_total
+                and len(unique_source_labels) == actual_tex_total,
+                tex_top_level_figures=actual_tex_total,
+                source_labels=source_figure_labels,
+                message="每个顶层 Figure 必须恰有一个唯一标签，供逐图解释审计绑定")
+            narrative_labels = list(dict.fromkeys([*planned_labels, *source_figure_labels]))
+            narrative = figure_binding_audit(tex, narrative_labels)
             add("planned_visuals_bound_to_source", not narrative["missing_binding"],
                 missing=narrative["missing_binding"])
             add("planned_visuals_have_pre_reference", not narrative["missing_pre_reference"],
@@ -634,14 +726,25 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
                 message="图注须说明对象、范围及必要的面板/颜色/箭头语义")
             add("planned_visuals_have_post_narrative", not narrative["missing_post_narrative"],
                 missing=narrative["missing_post_narrative"],
-                message="图后须解释至少一个具体证据、含义与边界，不能直接跳到下一标题")
+                message="图后须有正文详解，不能直接跳到下一标题")
+            add("planned_visuals_have_detailed_post_narrative", not narrative["shallow_post_narrative"],
+                missing=narrative["shallow_post_narrative"],
+                message="逐图解释不能只用一句话复述结果；至少形成两个完整语义单元并覆盖必要细节")
+            add("planned_visuals_explain_evidence_readout", not narrative["missing_evidence_readout"],
+                missing=narrative["missing_evidence_readout"],
+                message="每张图须读出具体数值、趋势、结构、异常或流程关系")
+            add("planned_visuals_explain_reason_or_mechanism", not narrative["missing_reason_or_mechanism"],
+                missing=narrative["missing_reason_or_mechanism"],
+                message="每张图须解释原因/机制；若证据不足，明确写为原因未知或待验证解释")
+            add("planned_visuals_explain_implication_or_boundary", not narrative["missing_implication_or_boundary"],
+                missing=narrative["missing_implication_or_boundary"],
+                message="每张图须说明对本问/模型选择的含义，以及边界、代价、异常或后续验证")
             planned_names = {Path(str(fig.get("outputs", {}).get(key, ""))).name for fig in all_figures for key in ("vector", "preview")}
             planned_names.update(Path(str(item.get(key, ""))).name for item in all_schematics
                                  for key in ("output_pdf", "preview_png"))
             unplanned = [raw for raw in graphics if "求解" in raw and Path(raw).name not in planned_names]
             add("paper_result_graphics_are_planned", not unplanned, unplanned=unplanned)
             if schema_version == "1.2":
-                actual_tex_total = count_numbered_figures(tex)
                 locked_total = int(plan.get("figure_count_lock", {}).get("final_total", 0) or 0)
                 add("paper_figure_count_matches_lock", actual_tex_total == locked_total,
                     locked_total=locked_total, tex_top_level_figures=actual_tex_total,

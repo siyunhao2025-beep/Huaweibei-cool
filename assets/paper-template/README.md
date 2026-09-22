@@ -12,6 +12,8 @@
 - 前置标签“题目/摘要/关键词”按官方 Word 模板使用隶书 18 pt。
 - 官方 Word 模板的 ASCII/HAnsi 样式使用 Times New Roman；模板将排版文本中的英文、阿拉伯数字和西文标点统一为 Times New Roman。Overleaf 没有该微软字体时自动回退为 TeX Gyre Termes；公式使用 TeX Gyre Termes Math，代码保留等宽字体。
 - 摘要使用 `\textbf{...}` 选择性突出主要模型、决定性数值（连同单位）和核心结论/创新点；普通数字不机械加粗，禁止整句或整段加粗。
+- 参考文献使用 `\clearpage` 另起一页；存在附录时，参考文献结束后再次 `\clearpage`，再执行 `\appendix`。这是用户确认的生产排版规则，不用于制造空白页。
+- 计算型论文的附录必须包含代码式伪代码，并以“步骤—实际脚本/函数—结果文件”闭环；完整源码留在复现包。`章节模板/附录模板.tex` 只保留生成期注释，不预置可能被误当成真实算法的通用假代码；源码审计会拒绝缺失代码环境、占位符和无输入—计算—验证—输出语义的代码块。
 
 ## Figure 锁定与用户篇幅裁决（核对至 2026-09-21）
 
@@ -55,6 +57,6 @@
 
 \`audit_tex.py\` 的 \`--manifest\` 应传入原始 TeX-only 清单（例如 \`论文输入.json\`），而不是生成后的 \`main.inputs.json\`；后者仅用于追溯本次生成时实际写入的输入文件。
 
-scripts/build_latex.py 从 TeX-only manifest 生成带正式封皮结构的主文件；scripts/audit_tex.py 检查输入顺序、无目录、封皮后匿名、页式和格式覆盖；scripts/visual_plan_audit.py 核对用户锁定 Figure 总数与最终 LaTeX；scripts/audit_paper.py 提醒尚未取得用户篇幅裁决或实际页数偏离用户目标，但不会把内部选择误判为官方违规；scripts/build_docx.py 与 scripts/audit_docx.py 提供可选 Word 派生链。最终版式仍须以 PDF 视觉检查为准。
+scripts/build_latex.py 从 TeX-only manifest 生成带正式封皮结构的主文件，并在参考文献、附录入口前写入 `\clearpage`；scripts/audit_tex.py 检查输入顺序、独立起页、附录可追溯伪代码、无目录、封皮后匿名、页式和格式覆盖；scripts/visual_plan_audit.py 核对用户锁定 Figure 总数与最终 LaTeX；scripts/audit_paper.py 提醒尚未取得用户篇幅裁决或实际页数偏离用户目标，但不会把内部选择误判为官方违规；scripts/build_docx.py 与 scripts/audit_docx.py 提供可选 Word 派生链并核对相应标题的段前分页。最终版式仍须以 PDF 视觉检查为准。
 
 交付前固定做三轮：源码/测试审计 → XeLaTeX 编译并逐页看图 → 解压最终 Overleaf 包后重新编译与复审。三轮都通过才算模板验收完成。

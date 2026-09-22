@@ -2,7 +2,7 @@
 
 > **目标**：把"数据→预处理→各小问模型链→求解→验证→结论"这条主链路画成一张**评审一眼看懂**的技术路线图，作为论文**图1**（结构图/流程图之首）。配套一套 YAML 规格 + 渲染器 + 校验器，保证图与正文、与读题审计约束**同源一致**，杜绝"图上一套、正文一套"的评审扣分项。
 >
-> 上游：读题审计（`kickoff-audit.md` §3.6 图表计划）把图1列为默认首图；方法链取自 `playbooks/<原型>/` 方法卡；配色对接 `skills/academic-figure`（色盲友好语义色板）。
+> 上游：读题审计（`kickoff-audit.md` §3.6 图表计划）在题目含相互关联的多问、跨问数据链或训练/验证/测试边界时把论文级总流程图列为必需的图1；方法链取自 `playbooks/<原型>/` 方法卡；配色对接 `skills/academic-figure`（色盲友好语义色板）。
 > 下游：渲染器 `scripts/render_roadmap.py`、校验器 `scripts/audit_roadmap.py`、规格 `assets/roadmap/roadmap.schema.json`、原型模板 `assets/roadmap/templates/`。
 
 ## 1. 为什么图1通常应是论文级总流程图
@@ -17,7 +17,7 @@
 
 ### 1.1 最终总图与结构草图不是同一种产物
 
-复杂、多问、数据密集论文的最终 F01 应是**论文专属完整框架图**，而不是把六层名称排成几只等权文本框。正式总图优先调用 `paper-framework-figure-studio-pro` 的完整论文框架路线，并以本项目题面、reading audit、evidence ledger、视觉计划、模型/求解脚本、结构化结果和论文源稿为唯一语义来源。其最低可见内容为：
+复杂、多问、数据密集论文的最终 F01 必须是**论文专属完整框架图**，而不是把六层名称排成几只等权文本框。正式总图调用 `paper-framework-figure-studio-pro` 的完整论文框架路线，并以本项目题面、reading audit、evidence ledger、视觉计划、模型/求解脚本、结构化结果和论文源稿为唯一语义来源。其最低可见内容为：
 
 1. 真实输入或数据对象，以及必要的质量控制与拆分；
 2. 每个小问的核心机制和真实输入/输出，不把变量或指标误画成同级大模块；
@@ -36,9 +36,35 @@
 - **版面可用**：按约 165 mm 版心设计；正式位图以实际插入宽度下 300 dpi 为目标，优先保留生成的最高分辨率原图。若用户明确选定的正式候选不足 300 dpi，不得用低清截图替代或用伪放大冒充新增细节；应记录例外，并以最终打印尺度逐字检查文字、箭头和小图确实清楚、无遮挡、无挤压。
 - **图文共生**：图片承载视觉路径，图注说明颜色/箭头/阶段语义，正文说明为什么看这张图以及它支持什么结论；图注不能替代图中不可省略的核心步骤。
 
-## 2. 要素规范（六层主链路 + 可选控制边）
+### 1.3 中文 F01 的可见文本合同
 
-路线图必须自上而下（或自左而右）按下列六层组织，每层是一个 `layer`：
+中文论文不能把英文候选原样塞进正文，也不能在最后一步凭感觉逐词覆盖。调用 `paper-framework-figure-studio-pro` 时，S1 与 S4 的现有 `visible_text_contract` 必须同时写入以下项目；这是对原合同的项目级补充，不另造阶段：
+
+1. **中文优先**：自然语言节点、边说明、图例和警示语默认使用简体中文。英文论文使用源语言，不强行中文化；普通结果图继续按通用图表规则执行。
+2. **技术 token 注册**：变量、数学符号、单位、数据集 ID、算法专名和公认缩写逐项登记精确写法、来源锚点与是否必须可见。例如 $Z_H$ 不能被改成 `ZH` 后再任意翻译，`IsotonicRegression` 应按真实含义写“保序回归”，不能望文写成“等距回归”。
+3. **逐标签账本**：对每个可见标签记录“源标签、中文显示、允许断行、保留英文/符号理由、证据锚点”。中文变长时先缩短同义表达、做最多两行的语义断行或扩框；不得拆开变量、数字与单位，也不得为塞字删除限定词。
+4. **最终尺度文字**：可编辑矢量文字按实际 LaTeX 插入宽度计算有效字号，宏观分区至少 11 pt、模块节点至少 10 pt，边/端口、内部微标签和图例至少 9 pt。生成式 PNG 没有可验证的字号元数据，不得把像素高度冒充 pt；栅格兜底改按原生像素和实际插入宽度计算物理墨迹高度，宏观分区至少 3.0 mm、模块节点至少 2.5 mm、边/端口与内部微标签至少 2.0 mm、图例至少 2.2 mm，并保存量测证据。达不到时必须重排；放大低清图或只看聊天预览不算通过。
+5. **零碰撞**：文字—文字、文字—连接线、文字—边界溢出、裁切、乱码各为 0；内边距至少约半个中文字宽，箭头端点和方向不得被中文标签覆盖。
+6. **语义先于翻译**：翻译前再次对照求解代码和正文公式。若原候选已经把并联误画成串联、把变量写错或把指标放入错误模块，先修语义，再做中文化，不能“忠实翻译错误图”。
+
+推荐把下列内容写进 S1/S4 提示包；S4 可以调整具体标签，但不能降低字号阈值或放松碰撞门禁：
+
+```yaml
+visible_text_contract:
+  language_policy: zh_primary_preserve_exact_tokens
+  label_ledger: <源标签 -> 中文标签 -> 断行 -> 证据锚点>
+  technical_token_registry: <精确缩写/符号/单位/专名及来源>
+  target_insert_width_mm: <实际插入宽度>
+  vector_minimum_effective_pt: {macro_group: 11, node: 10, edge_or_port: 9, internal_micro: 9, legend: 9}
+  raster_minimum_ink_mm: {macro_group: 3.0, node: 2.5, edge_or_port: 2.0, internal_micro: 2.0, legend: 2.2}
+  allowed_violations: {text_text_collision: 0, text_connector_collision: 0, boundary_overflow: 0, clipping: 0, garbled_cjk: 0}
+```
+
+`paper-framework-figure-studio-pro` 的公开流程仍止于 S5。若用户在 S5 后明确要求把已经选定的候选改成中文，华为杯流程可做一次**独立 consumer-side 本地化适配**：必须保留未改的 S5 源图，在独立目录记录用户授权、源/目标哈希、完整提示词、标签账本与视觉 QA；不得把它命名为 S6，也不得静默覆盖 stage-local 候选。最终以 `scripts/audit_framework_figure.py` 校验记录，再进入本模块 §7 的入稿门禁。
+
+## 2. YAML 结构草图分支的要素规范（六层主链路 + 可选控制边）
+
+本节只约束 `roadmap.yaml + render_roadmap.py` 的语义草图、低复杂度充分图或恢复后备，不约束 `paper-framework-figure-studio-pro` 生成的复杂论文正式 F01。YAML 路线图按下列六层组织，每层是一个 `layer`；不得把六层等权空框直接复制为复杂论文正式总图：
 
 | 层序 | layer id | 含义 | 节点必须标注 |
 |---|---|---|---|
@@ -60,12 +86,12 @@
 
 ## 4. 变更同步（图随模型走）
 
-模型/方法/数据一旦变更，按 `change-management.md` 的变更影响评估走，**必须同步改路线图**：
+模型/方法/数据一旦变更，按 `change-management.md` 的变更影响评估走，**必须同步改正式图及其语义来源**：
 
-1. 改 YAML spec 里对应节点的 `method`/`chapter_ref`/`constraint_ref`；
-2. 重新跑 `scripts/render_roadmap.py --spec <yaml>` 出 PNG+PDF；
-3. 重新跑 `scripts/audit_roadmap.py --spec <yaml>` 确认覆盖度/孤立节点仍 PASS；
-4. 在 `change-management.md` 的变更记录里加一行"技术路线图已同步"。
+1. 先更新 reading audit、evidence ledger、视觉计划、正文与真实结果文件，确保唯一事实来源一致；
+2. 若正式图属于复杂论文分支，更新 figure-studio 的 brief/state/manifest，重走受影响阶段，重新选择正式候选并更新校验和；再把**该候选**同步到 LaTeX，重跑六联门禁。任何 YAML 渲染脚本都不得覆盖这张正式 F01；
+3. 若正式图确属 YAML 低复杂度分支，再修改 spec 中的 `method`/`chapter_ref`/`constraint_ref`，运行 `render_roadmap.py` 和 `audit_roadmap.py`；
+4. 在 `change-management.md` 的变更记录里注明使用哪条分支、正式源图路径/校验和及“技术路线图已同步”。
 
 > **红线：图与正文章节号对不上 = 评审扣分项。** 换了模型却忘了改图，比没画路线图更糟——评委照着图找正文找不到对应章节，直接怀疑严谨性。
 
@@ -74,7 +100,7 @@
 - **色盲友好配色**：直接复用 `skills/academic-figure` 的语义色板（见 `references/color-palettes.md`），**禁止** jet/rainbow/hsv/tab10/Set1 等默认色板。各层配色按语义分配（蓝=输入/基准、绿=模型/治疗、橙=求解、紫=验证、红=强调/结论小面积、灰=背景），详见渲染器 `LAYER_COLORS`。
 - **冗余编码**：颜色**不单独承担区分**——每个节点同时有文字标签、层级位置、（可选）形状，满足色盲/黑白打印可区分。
 - **分层布局**：每层一列（或一排），层内节点纵向堆叠；若存在真实反馈/控制边，其虚线单独走线，不与主链路实线重叠。
-- **字号规范**：节点标题 ≥ 10pt（缩放后仍可读），层标签 ≥ 11pt，反馈箭头标注 ≥ 9pt；导出 PDF 矢量、PNG ≤ 500KB 预览。
+- **字号规范**：节点标题 ≥ 10pt（缩放后仍可读），层标签 ≥ 11pt，反馈箭头标注 ≥ 9pt。YAML 分支导出 PDF 矢量和 ≤500KB 的 PNG 预览；复杂论文正式 F01 不设 500KB 人为上限，以有效分辨率、文本可读性和无压缩伪影为准。
 - **中文字体**：优先 Microsoft YaHei，回退链 SimHei → Noto Sans CJK → Source Han；系统无任何 CJK 字体时，节点自动切换 `label_en` 英文标签优雅回退，**不崩溃、不出方块**。
 
 ## 6. 四种产物（同时导出）
@@ -101,6 +127,8 @@
 5. `post_figure_interpretation`：图后正文指出至少一个可核验关系、数字或边界，并承接下节；
 6. `compiled_pdf_visible`：从干净交付包双遍编译后，在最终 PDF 中定位图号并逐页肉眼检查，确认文字不挤、箭头不遮、缩略图可辨、没有裁切。
 
+中文复杂 F01 还必须附带哈希绑定的 `framework_text_qa`：文档语言、本地化来源（S1/S4 原生或用户明确授权的 S5 后 consumer 适配）、原 S5 与本地化图的双重来源、提示词/适配记录、标签账本、保留 token、实际插入宽度、矢量有效字号或栅格物理墨迹量测，以及碰撞/溢出/裁切/乱码/语义错配计数。任何计数非 0 或文字低于 §1.3 对应下限，均不得 `qa_pass`。论文阶段还须解析 `main.tex` 的真实 `\includegraphics` 或受控包装宏并精确定位目标文件，再核验哈希绑定的编译 PDF：位图比较实际显示对象的解码像素哈希，不能只比尺寸；矢量图记录 `compiled_pdf_figure_bbox_pt=[x0,y0,x1,y1]`，并将该页区域与源图渲染结果比对。不能只写 `compiled_pdf_visible: true`。
+
 推荐在视觉计划或 checkpoint 中记录：
 
 ```yaml
@@ -113,11 +141,14 @@ framework_figure_binding:
   body_reference_before_figure: true
   caption_complete: true
   post_figure_interpretation: true
+  compiled_pdf: <compiled PDF path>
+  compiled_pdf_sha256: <sha256>
   compiled_pdf_page: <physical page>
+  compiled_pdf_figure_bbox_pt: <[x0,y0,x1,y1]; vector_text only>
   compiled_pdf_visible: true
 ```
 
-## 8. 快速上手
+## 8. YAML 草图/低复杂度分支快速上手
 
 ```powershell
 # 1. 从对应原型模板复制一份，按题目改节点
@@ -130,7 +161,7 @@ python scripts/render_roadmap.py --spec my_roadmap.yaml --outdir 求解/路线�
 python scripts/audit_roadmap.py --spec my_roadmap.yaml
 ```
 
-8 个原型的预填模板见 `assets/roadmap/templates/`：optimization / evaluation / prediction / classification-cv / mechanism / signal / spatial-graph / simulation。每个模板的注释说明了如何改节点、如何补小问映射。
+8 个原型的预填模板见 `assets/roadmap/templates/`：optimization / evaluation / prediction / classification-cv / mechanism / signal / spatial-graph / simulation。每个模板的注释说明了如何改节点、如何补小问映射；这些模板不能直接作为复杂多问题的正式 F01。
 
 ## 9. 常见错误（评审扣分点，逐条对照）
 
@@ -147,6 +178,6 @@ python scripts/audit_roadmap.py --spec my_roadmap.yaml
 
 ## 10. 边界
 
-- 本模块只规定"路线图怎么画、怎么校验、怎么同步"，不替代 `figures-interface.md` 的通用出图规范；路线图是图1，其余结果图走 visual plan。
+- 本模块只规定"路线图怎么画、怎么校验、怎么同步"，不替代 `figures-interface.md` 的通用出图规范；满足复杂多问判定条件时论文级总流程图是图1，其余结果图走 visual plan。简单题若总图不能增加理解，不强行添加。
 - 样例数据一律虚构/脱敏（见 `docs/examples/roadmap/`），不碰 Desktop 真实语料。
 - 模型选型本身仍由 `kickoff-audit.md` 读题审计 + 用户 P1 确认决定；路线图只把已确认的模型链画出来，不替你选模型。

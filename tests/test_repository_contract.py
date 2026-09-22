@@ -21,6 +21,125 @@ def test_every_module_is_nonempty_and_listed_in_skill():
     assert not empty, f"空模块: {empty}"
 
 
+def test_first_use_card_is_direct_and_does_not_restore_removed_three_steps_copy():
+    skill = (REPO_ROOT / "SKILL.md").read_text(encoding="utf-8")
+    readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+    combined = skill + "\n" + readme
+    for field in ("你的学校是：", "参赛队号是：", "队员 1：", "队员 2：", "队员 3：", "A / B / C / D / E / F / 未定"):
+        assert field in combined
+    assert "下一步三件事" not in combined
+    assert "请先核对参赛信息是否齐全" not in combined
+
+
+def test_framework_figure_policy_has_no_stale_mandatory_tikz_or_every_paper_rule():
+    tracked = [
+        REPO_ROOT / "SKILL.md",
+        REPO_ROOT / "README.md",
+        *sorted((REPO_ROOT / "modules").glob("*.md")),
+        REPO_ROOT / "assets" / "paper-template" / "华为杯_论文章节规范.md",
+        REPO_ROOT / "assets" / "scaffold" / "题目" / "读题审计报告模板.md",
+    ]
+    combined = "\n".join(path.read_text(encoding="utf-8") for path in tracked)
+    assert "所有流程图必须使用 TikZ" not in combined
+    assert "流程图/结构图是绝对主力，每篇必有" not in combined
+    assert "复杂多问论文通常把论文级总流程图作为图1" not in combined
+    assert "复杂多问论文默认从“图1 论文级总流程图”起排" not in combined
+    roadmap = (REPO_ROOT / "modules" / "technical-roadmap.md").read_text(encoding="utf-8")
+    assert "YAML 结构草图分支" in roadmap
+    assert "任何 YAML 渲染脚本都不得覆盖这张正式 F01" in roadmap
+    assert "复杂论文正式 F01 不设 500KB 人为上限" in roadmap
+
+
+def test_every_figure_requires_evidence_reason_implication_and_boundary():
+    skill = (REPO_ROOT / "SKILL.md").read_text(encoding="utf-8")
+    figures = (REPO_ROOT / "modules" / "figures-interface.md").read_text(encoding="utf-8")
+    writing = (REPO_ROOT / "modules" / "paper-writing.md").read_text(encoding="utf-8")
+    polishing = (REPO_ROOT / "modules" / "polishing.md").read_text(encoding="utf-8")
+    template = (
+        REPO_ROOT / "assets" / "paper-template" / "章节模板" / "通用正文模板.tex"
+    ).read_text(encoding="utf-8")
+
+    assert "每张图都必须解释“为什么”" in skill
+    for text in (figures, writing, polishing, template):
+        assert "原因/机制" in text
+        assert "含义" in text
+        assert "边界" in text
+    assert "禁止偷换为因果" in figures
+    assert "复合图" in figures and "流程图/框架图" in figures
+
+
+def test_complex_framework_figure_requires_chinese_text_and_final_scale_qa():
+    skill = (REPO_ROOT / "SKILL.md").read_text(encoding="utf-8")
+    roadmap = (REPO_ROOT / "modules" / "technical-roadmap.md").read_text(encoding="utf-8")
+    figures = (REPO_ROOT / "modules" / "figures-interface.md").read_text(encoding="utf-8")
+    polishing = (REPO_ROOT / "modules" / "polishing.md").read_text(encoding="utf-8")
+    combined = "\n".join((skill, roadmap, figures, polishing))
+
+    assert "中文优先、符号忠实、最终尺度可读" in skill
+    assert "S1" in roadmap and "S4" in roadmap and "visible_text_contract" in roadmap
+    assert "consumer-side" in combined
+    assert "不得把它命名为 S6" in roadmap
+    assert "普通结果图" in figures and "英文稿保持英文" in figures
+    for threshold in ("11 pt", "10 pt", "9 pt"):
+        assert threshold in combined
+    for gate in ("乱码", "文字碰撞", "箭头遮挡", "边界溢出", "裁切"):
+        assert gate in combined
+    assert "audit_framework_figure.py" in skill
+
+
+def test_references_and_appendix_have_separate_page_contract():
+    skill = (REPO_ROOT / "SKILL.md").read_text(encoding="utf-8")
+    writing = (REPO_ROOT / "modules" / "paper-writing.md").read_text(encoding="utf-8")
+    polishing = (REPO_ROOT / "modules" / "polishing.md").read_text(encoding="utf-8")
+    example = (REPO_ROOT / "assets" / "paper-template" / "example.tex").read_text(encoding="utf-8")
+    identity_example = (
+        REPO_ROOT / "assets" / "paper-template" / "example-with-identity-cover.tex"
+    ).read_text(encoding="utf-8")
+
+    assert "参考文献与附录必须分别另起一页" in skill
+    assert "参考文献另起一页" in writing
+    assert "附录另起一页" in writing
+    assert "参考文献与附录" in polishing and "另起一页" in polishing
+    assert r"\clearpage" in example
+    assert r"\clearpage" in identity_example
+
+
+def test_computational_appendix_requires_traceable_code_style_pseudocode():
+    skill = (REPO_ROOT / "SKILL.md").read_text(encoding="utf-8")
+    writing = (REPO_ROOT / "modules" / "paper-writing.md").read_text(encoding="utf-8")
+    polishing = (REPO_ROOT / "modules" / "polishing.md").read_text(encoding="utf-8")
+    appendix_template = (
+        REPO_ROOT / "assets" / "paper-template" / "章节模板" / "附录模板.tex"
+    ).read_text(encoding="utf-8")
+    audit = (REPO_ROOT / "scripts" / "audit_tex.py").read_text(encoding="utf-8")
+
+    assert "计算型论文的附录必须有可追溯的代码式伪代码" in skill
+    for text in (writing, polishing, appendix_template):
+        assert "代码式伪代码" in text
+        assert "实际脚本/函数" in text
+        assert "结果文件" in text
+    assert "appendix_has_code_style_pseudocode" in audit
+    assert "appendix_pseudocode_is_traceable" in audit
+
+
+def test_numbered_problem_sections_require_reader_orienting_openers():
+    skill = (REPO_ROOT / "SKILL.md").read_text(encoding="utf-8")
+    writing = (REPO_ROOT / "modules" / "paper-writing.md").read_text(encoding="utf-8")
+    solving = (REPO_ROOT / "modules" / "solving.md").read_text(encoding="utf-8")
+    polishing = (REPO_ROOT / "modules" / "polishing.md").read_text(encoding="utf-8")
+    template = (
+        REPO_ROOT / "assets" / "paper-template" / "章节模板" / "问题章节模板.tex"
+    ).read_text(encoding="utf-8")
+    audit = (REPO_ROOT / "scripts" / "audit_tex.py").read_text(encoding="utf-8")
+
+    assert "每个编号问题先导读，再进入技术细节" in skill
+    assert "回溯—路线—交付" in writing
+    assert "每问启动：先回溯，再求解" in solving
+    assert "首个小标题、公式或图表前" in polishing
+    assert "REPLACE_WITH_ACTUAL_QUESTION_GUIDE" in template
+    assert "question_sections_open_with_recap_route_and_deliverable" in audit
+
+
 def test_literal_local_references_from_skill_and_modules_exist():
     sources = [REPO_ROOT / "SKILL.md", *sorted((REPO_ROOT / "modules").glob("*.md"))]
     pattern = re.compile(
@@ -38,7 +157,11 @@ def test_literal_local_references_from_skill_and_modules_exist():
 
 
 def test_distributed_files_do_not_embed_person_specific_windows_paths():
-    forbidden = ("C:" + "\\Users\\ASUS", "Dou" + "bao")
+    windows_user_path = re.compile(
+        re.escape("C:" + "\\Users\\") + r"(?P<user>[^\\/\s<>]+)", re.IGNORECASE
+    )
+    allowed_example_users = {"张三", "exampleuser", "username", "user", "用户"}
+    legacy_client = "Dou" + "bao"
     suffixes = {".md", ".py", ".tex", ".json", ".yml", ".yaml", ".txt"}
     excluded_parts = {
         ".git",
@@ -65,7 +188,13 @@ def test_distributed_files_do_not_embed_person_specific_windows_paths():
         ):
             continue
         text = path.read_text(encoding="utf-8-sig", errors="replace")
-        if any(token in text for token in forbidden):
+        personal_users = {
+            match.group("user")
+            for match in windows_user_path.finditer(text)
+            if match.group("user").casefold()
+            not in {value.casefold() for value in allowed_example_users}
+        }
+        if personal_users or legacy_client in text:
             hits.append(str(relative))
     assert not hits, f"分发文件含个人机器路径/旧客户端绑定: {hits}"
 

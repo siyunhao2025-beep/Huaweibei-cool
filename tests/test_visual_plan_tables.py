@@ -197,11 +197,67 @@ def test_count_numbered_figures_supports_wrapper_macros():
 \newcommand{\evidencefigure}[3]{\begin{figure}\includegraphics{#1}\caption{#2}\label{#3}\end{figure}}
 图~\ref{fig:a} 回答比较问题。
 \evidencefigure{a}{对象、范围、颜色与比较口径均已说明。}{fig:a}
-图后解释给出具体趋势、结论含义以及该证据不能外推的边界条件。
+图中候选方案的误差比基线降低 3.2%，且主要差异集中在高负荷区间。该现象源于约束项抑制了峰值附近的过度响应，因此本文保留候选方案；但该证据仅适用于当前样本范围，不能外推为所有场景均占优。
 """
     assert visual_plan_audit.count_numbered_figures(tex) == 1
     audit = visual_plan_audit.figure_binding_audit(tex, ["fig:a"])
     assert all(not value for value in audit.values()), audit
+
+
+def test_numbered_figure_labels_cover_wrappers_and_standard_figures():
+    tex = r"""
+\newcommand{\evidencefigure}[3]{\begin{figure}\caption{#2}\label{#3}\end{figure}}
+图~\ref{fig:wrapped} 说明包装图。
+\evidencefigure{a}{包装图的对象、范围与读图口径。}{fig:wrapped}
+图中误差降低且区间不跨零。由于约束抑制异常响应，因此保留该方案，但不能外推。
+\begin{figure}
+  \begin{subfigure}{.5\textwidth}\label{fig:panel-a}\end{subfigure}
+  \caption{标准图的对象、范围与读图口径。}\label{fig:standard}
+\end{figure}
+"""
+
+    assert visual_plan_audit.numbered_figure_labels(tex) == ["fig:wrapped", "fig:standard"]
+
+
+def test_paper_audit_checks_actual_figures_when_plan_labels_are_absent(tmp_path):
+    plan = {
+        "schema_version": "1.2",
+        "project_title": "实际图解释门禁回归",
+        "plan_status": "ready",
+        "figure_count_lock": {
+            "status": "locked",
+            "proposed_total": 1,
+            "user_requested_total": 1,
+            "final_total": 1,
+            "counting_rule": "numbered_top_level_figures",
+            "confirmation_record": "用户确认 1 张顶层 Figure。",
+        },
+        "visual_encoding_path": "视觉编码表.md",
+        "color_semantics": visual_plan_audit.EXPECTED_COLOR_SEMANTICS,
+        "problems": [],
+        "global_figures": [],
+        "global_tables": [],
+        "flowcharts": [],
+    }
+    plan_path = tmp_path / "plan.json"
+    plan_path.write_text(json.dumps(plan, ensure_ascii=False), encoding="utf-8")
+    main = tmp_path / "main.tex"
+    main.write_text(
+        r"\newcommand{\evidencefigure}[3]{\begin{figure}\caption{#2}\label{#3}\end{figure}}" "\n"
+        r"图~\ref{fig:actual} 比较两种方案。" "\n"
+        r"\evidencefigure{a}{同一测试集上的误差比较与置信区间。}{fig:actual}" "\n"
+        r"图中 RMSE 相对基线降低 3.2\%，候选方案在当前测试集上的结果更好。" "\n",
+        encoding="utf-8",
+    )
+
+    result = visual_plan_audit.audit(plan_path, "paper", tmp_path, main)
+    check = next(
+        item for item in result["checks"]
+        if item["code"] == "planned_visuals_explain_reason_or_mechanism"
+    )
+
+    assert check["ok"] is False
+    assert check["missing"] == ["fig:actual"]
 
 
 def test_tex_closure_preserves_escaped_percent_and_strips_real_comment(tmp_path):
@@ -209,7 +265,7 @@ def test_tex_closure_preserves_escaped_percent_and_strips_real_comment(tmp_path)
     main.write_text(
         r"图~\ref{fig:a} 给出区间。" "\n"
         r"\evidencefigure{a}{事件配对差异及 95\% Bootstrap 区间。}{fig:a}% 删除本注释" "\n"
-        "图后文字解释区间不跨零所支持的稳定权衡，并限定不能外推为全面提升。\n",
+        r"图中配对差异的 95\% 区间不跨零，说明当前样本内的权衡具有稳定方向。该现象与事件级配对消除样本难度偏差一致，因此支持保留当前方案；但不能外推为所有指标全面提升。" "\n",
         encoding="utf-8",
     )
 
@@ -228,6 +284,46 @@ def test_figure_binding_audit_rejects_unexplained_figure():
     assert audit["missing_pre_reference"] == ["fig:a"]
     assert audit["missing_post_narrative"] == ["fig:a"]
     assert audit["weak_captions"] == ["fig:a"]
+
+
+def test_figure_binding_audit_rejects_result_only_narrative():
+    tex = r"""
+图~\ref{fig:a} 比较两种方案。
+\evidencefigure{a}{同一测试集上的误差比较与置信区间。}{fig:a}
+图中 RMSE 相对基线降低 3.2\%，候选方案在当前测试集上的结果更好。
+"""
+
+    audit = visual_plan_audit.figure_binding_audit(tex, ["fig:a"])
+
+    assert audit["missing_post_narrative"] == []
+    assert audit["shallow_post_narrative"] == ["fig:a"]
+    assert audit["missing_evidence_readout"] == []
+    assert audit["missing_reason_or_mechanism"] == ["fig:a"]
+    assert audit["missing_implication_or_boundary"] == ["fig:a"]
+
+
+def test_figure_binding_audit_accepts_honest_unknown_mechanism():
+    tex = r"""
+图~\ref{fig:a} 比较两种方案。
+\evidencefigure{a}{同一测试集上的事件级误差分布与异常样本。}{fig:a}
+图中多数事件的误差下降，但三个强事件出现明显退化，差异集中在分布尾部。当前证据尚不能确定原因，可能机制仍待验证；因此本文只把它视为样本内相关现象，并保留异常事件复核，不能据此宣称模型全面占优。
+"""
+
+    audit = visual_plan_audit.figure_binding_audit(tex, ["fig:a"])
+
+    assert all(not value for value in audit.values()), audit
+
+
+def test_figure_binding_audit_accepts_detailed_structural_explanation():
+    tex = r"""
+图~\ref{fig:flow} 给出数据权限与验证流程。
+\frameworkfigure{flow}{训练、验证与留出测试的数据流、控制流和禁止反馈关系。}{fig:flow}
+图中三个事件集合互斥，验证控制与测试评价在时间轴上分离；这使参数冻结和最终评价使用不同信息。因而该图只定义数据权限、模块职责与防泄漏边界，不代表各模块均取得同方向性能收益。
+"""
+
+    audit = visual_plan_audit.figure_binding_audit(tex, ["fig:flow"])
+
+    assert all(not value for value in audit.values()), audit
 
 
 def test_plan_audit_reports_string_table_entries_instead_of_crashing(tmp_path):

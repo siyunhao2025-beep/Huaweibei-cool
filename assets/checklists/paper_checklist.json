@@ -206,12 +206,12 @@
     {
       "id": "L15",
       "section": "章节结构与篇幅",
-      "item": "参考文献数量由实际引用决定，确保正文引用闭合、格式合规",
+      "item": "参考文献另起一页；数量由实际引用决定，确保正文引用闭合、格式合规",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
       "length_requirement": "约 1/2 页（合计约 1 页）",
-      "notes": null
+      "notes": "分页为本 skill 的用户确认排版规则；LaTeX 用 clearpage，Word 用段前分页"
     },
     {
       "id": "L16",
@@ -226,12 +226,12 @@
     {
       "id": "L17",
       "section": "章节结构与篇幅",
-      "item": "附录代码/结果按需要提供，并包含最小复现元数据",
+      "item": "存在附录时须另起一页；计算型论文含可追溯的代码式伪代码与最小复现元数据，完整源码另入复现包",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
       "length_requirement": "自适应",
-      "notes": null
+      "notes": "附录整体与参考文献分开起页，不用空白页凑篇幅"
     },
     {
       "id": "A01",
@@ -436,7 +436,7 @@
     {
       "id": "B11",
       "section": "引言",
-      "item": "每问准确提炼输入、输出、目标和约束，长度按复杂度决定",
+      "item": "每个编号问题先用短导读回溯目标、输入及真实前问接口，概括方法顺序和结果交付，再展开模型与求解；不照抄题面，不用空泛‘本节将’过渡，长度按复杂度决定",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -1082,12 +1082,12 @@
     {
       "id": "Q05",
       "section": "模型求解",
-      "item": "按“答案—证据—比较—解释—边界/代价”组织结果，不强制三段式",
+      "item": "按“答案—证据—比较—原因/机制—对模型或决策的含义—边界/代价”组织结果；每张图均有正文详解，因果证据不足时明确标为相关现象或待验证解释，不强制三段式",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
       "length_requirement": null,
-      "notes": null
+      "notes": "图后不能只复述上升、下降或最优值；复合图解释关键面板，流程图解释模块、箭头与数据隔离"
     },
     {
       "id": "Q06",
@@ -1414,7 +1414,7 @@
     {
       "id": "X02",
       "section": "附录",
-      "item": "代码/结果按需要附；至少记录环境版本、入口命令、输入输出、随机种子和关键参数",
+      "item": "计算型论文附录的代码式伪代码覆盖输入审计、随机种子/冻结配置、数据或求解边界、真实算法、独立检验和结果导出，并逐步映射实际脚本/函数及结果文件；无占位符、未运行模块、绝对路径或身份信息",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,

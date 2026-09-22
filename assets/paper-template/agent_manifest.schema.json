@@ -16,6 +16,21 @@
       "type": "string",
       "pattern": "\\.tex$"
     },
+    "appendix_pseudocode": {
+      "type": "object",
+      "required": ["required"],
+      "additionalProperties": false,
+      "properties": {
+        "required": {"type": "boolean"},
+        "reason": {"type": "string", "minLength": 8}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"required": {"const": false}}},
+          "then": {"required": ["reason"]}
+        }
+      ]
+    },
     "chapters": {
       "type": "array",
       "minItems": 1,
