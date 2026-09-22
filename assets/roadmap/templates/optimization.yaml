@@ -6,7 +6,7 @@
 #   1) 改 metadata.title / track 为你这一届这一题；
 #   2) 把 nodes 里的 method 换成你读题审计后确认的方法（回链 Cx 约束、§章节号）；
 #   3) 在 subquestion_mapping 里把每个小问（Q1/Q2/Q3…）映射到对应节点 id；
-#   4) 保持至少一条 type: dashed 的反馈回路（validate → model）；
+#   4) 若真实存在验证/校准反馈，设 feedback_expected: true 并保留对应 dashed 边；否则设 false 并删除虚线边；
 #   5) 跑：python scripts/audit_roadmap.py --spec <本文件>
 # 注意：label_en 是无中文字体时的英文回退，别删。
 # =====================================================================
@@ -15,6 +15,7 @@ metadata:
   year: 2024
   track: "2024A"
   version: "0.1.0"
+  feedback_expected: true
 
 layers:
   - {id: input,     label: "数据输入层", order: 0}

@@ -7,7 +7,7 @@
   subquestion_covered     subquestion_mapping 中每个小问至少映射一个真实存在的节点
   no_isolated_nodes       除 input/output 层外，每个节点至少一条入边或出边
   cbf_safe_colors         节点 color（若显式给出）必须在色盲友好色板内
-  has_feedback_loop       至少一条 dashed 反馈回路（WARN 级，缺则提醒）
+  feedback_policy_match   dashed 控制边是否与 metadata.feedback_expected 一致
   node_method_nonempty    节点 method 非空（与 schema 双保险）
 
 用法：
@@ -102,10 +102,16 @@ def audit(spec: dict, schema_path: Path = SCHEMA_PATH) -> dict:
     add("cbf_safe_colors", not bad_colors, bad=bad_colors,
         message="显式指定的节点色不在色盲友好色板内（勿用 jet/rainbow/tab10/Set1）")
 
-    # 5) 反馈回路（WARN）
+    # 5) 反馈/控制边必须由规格显式声明；独立测试不能为“好看”而回流。
     has_dashed = any(e.get("type") == "dashed" for e in edges)
-    add("has_feedback_loop", has_dashed, severity="WARN",
-        message="缺虚线反馈回路（迭代/调参/换模型），路线图会被质疑无迭代优化")
+    feedback_expected = spec.get("metadata", {}).get("feedback_expected")
+    if feedback_expected is None:
+        add("feedback_policy_declared", False, severity="WARN",
+            message="请用 metadata.feedback_expected 明确该流程是否真实存在验证/校准反馈；不得默认强造回路")
+    else:
+        add("feedback_policy_match", has_dashed == feedback_expected,
+            expected=feedback_expected, actual_has_dashed=has_dashed,
+            message="虚线控制边必须与真实调参/校准/选择关系一致；独立测试不得反馈")
 
     # 6) method 非空（schema 已 minLength，双保险）
     empty_method = [n["id"] for n in nodes if not str(n.get("method", "")).strip()]

@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://huaweibei-cool/assets/roadmap/roadmap.schema.json",
   "title": "Huawei Cup Technical Roadmap Spec",
-  "description": "技术路线图（论文图1）YAML 规格。六层主链路：输入→预处理→模型→求解→验证→输出，含反馈迭代回路。",
+  "description": "技术路线图语义草图 YAML 规格。六层主链路：输入→预处理→模型→求解→验证→输出；反馈控制边仅在真实存在时声明。",
   "type": "object",
   "additionalProperties": false,
   "required": ["metadata", "layers", "nodes", "edges", "subquestion_mapping"],
@@ -15,7 +15,8 @@
         "title": {"type": "string", "minLength": 1, "description": "路线图标题，如‘XX问题技术路线图’"},
         "year": {"type": "integer", "minimum": 2000, "maximum": 2100},
         "track": {"type": "string", "description": "赛道/题号，如 2024A / 2025E"},
-        "version": {"type": "string", "description": "语义化版本，如 0.1.0"}
+        "version": {"type": "string", "description": "语义化版本，如 0.1.0"},
+        "feedback_expected": {"type": "boolean", "description": "是否存在由验证/校准/选择返回上游模块的真实控制边；独立测试不得反馈"}
       }
     },
     "layers": {
@@ -55,7 +56,7 @@
     },
     "edges": {
       "type": "array",
-      "description": "节点间有向边。type=solid 主链路，type=dashed 反馈/迭代回路",
+      "description": "节点间有向边。type=solid 为数据/计算/评价主链路，type=dashed 仅表示有证据支持的反馈或控制关系",
       "items": {
         "type": "object",
         "additionalProperties": false,

@@ -32,7 +32,13 @@ DEMO_FILES = sorted(DEMOS.glob("*_demo.yaml"))
 def base_spec() -> dict:
     """一个完整、合法、可通过全部校验的最小 spec。"""
     return {
-        "metadata": {"title": "测试路线图", "year": 2026, "track": "DEMO", "version": "0.1.0"},
+        "metadata": {
+            "title": "测试路线图",
+            "year": 2026,
+            "track": "DEMO",
+            "version": "0.1.0",
+            "feedback_expected": True,
+        },
         "layers": [
             {"id": "input", "label": "输入", "order": 0},
             {"id": "preprocess", "label": "预处理", "order": 1},
@@ -115,6 +121,26 @@ def test_unsafe_color_fails():
     r = audit_roadmap.audit(spec)
     assert r["status"] == "FAIL"
     assert "cbf_safe_colors" in failed_codes(r)
+
+
+def test_no_feedback_is_valid_when_policy_declares_none():
+    spec = base_spec()
+    spec["metadata"]["feedback_expected"] = False
+    spec["edges"] = [edge for edge in spec["edges"] if edge["type"] != "dashed"]
+
+    result = audit_roadmap.audit(spec)
+
+    assert result["status"] == "PASS", result["failures"]
+
+
+def test_feedback_policy_rejects_invented_dashed_edge():
+    spec = base_spec()
+    spec["metadata"]["feedback_expected"] = False
+
+    result = audit_roadmap.audit(spec)
+
+    assert result["status"] == "FAIL"
+    assert "feedback_policy_match" in failed_codes(result)
 
 
 # ---------- 8 个模板 ----------

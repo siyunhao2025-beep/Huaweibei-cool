@@ -8,6 +8,7 @@ metadata:
   year: 2025
   track: "2025E"
   version: "0.1.0"
+  feedback_expected: true
 
 layers:
   - {id: input,     label: "数据输入层", order: 0}

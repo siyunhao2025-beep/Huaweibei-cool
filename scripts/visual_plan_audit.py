@@ -44,6 +44,21 @@ def project_path(project_root: Path, raw: str) -> Path:
     return candidate
 
 
+def _strip_tex_comment(line: str) -> str:
+    """Strip a real TeX comment while preserving escaped percent signs."""
+    for index, char in enumerate(line):
+        if char != "%":
+            continue
+        backslashes = 0
+        cursor = index - 1
+        while cursor >= 0 and line[cursor] == "\\":
+            backslashes += 1
+            cursor -= 1
+        if backslashes % 2 == 0:
+            return line[:index]
+    return line
+
+
 def tex_closure(main: Path) -> str:
     seen: set[Path] = set()
 
@@ -53,7 +68,7 @@ def tex_closure(main: Path) -> str:
             return ""
         seen.add(path)
         text = path.read_text(encoding="utf-8-sig")
-        clean = "\n".join(line.split("%", 1)[0] for line in text.splitlines())
+        clean = "\n".join(_strip_tex_comment(line) for line in text.splitlines())
         parts = [clean]
         for raw in re.findall(r"\\input\s*\{([^{}]+)\}", clean):
             child = (path.parent / raw).with_suffix(".tex") if not Path(raw).suffix else path.parent / raw
@@ -65,7 +80,100 @@ def tex_closure(main: Path) -> str:
 
 def count_numbered_figures(tex: str) -> int:
     """Count top-level numbered Figure environments; subfigures are panels, not figures."""
-    return len(re.findall(r"\\begin\s*\{figure\*?\}", tex))
+    environments = len(re.findall(r"\\begin\s*\{figure\*?\}", tex))
+    # A wrapper macro normally contains one literal figure environment in its
+    # definition.  Count calls, not the wrapper definition itself.
+    wrappers = ("evidencefigure", "frameworkfigure")
+    definitions = sum(
+        len(re.findall(rf"\\newcommand\s*\{{\\{name}\}}", tex))
+        for name in wrappers
+    )
+    calls = sum(len(re.findall(rf"\\{name}\s*\{{", tex)) for name in wrappers)
+    return max(0, environments - definitions) + calls
+
+
+def _macro_calls(tex: str, names: tuple[str, ...], argument_count: int = 3) -> list[dict]:
+    """Return balanced-brace calls for the small paper figure wrappers."""
+    calls: list[dict] = []
+    pattern = re.compile(r"\\(" + "|".join(re.escape(name) for name in names) + r")\s*\{")
+    for match in pattern.finditer(tex):
+        cursor = match.end() - 1
+        args: list[str] = []
+        end = cursor
+        valid = True
+        for _ in range(argument_count):
+            while cursor < len(tex) and tex[cursor].isspace():
+                cursor += 1
+            if cursor >= len(tex) or tex[cursor] != "{":
+                valid = False
+                break
+            depth = 0
+            start = cursor + 1
+            while cursor < len(tex):
+                char = tex[cursor]
+                if char == "{" and (cursor == 0 or tex[cursor - 1] != "\\"):
+                    depth += 1
+                elif char == "}" and (cursor == 0 or tex[cursor - 1] != "\\"):
+                    depth -= 1
+                    if depth == 0:
+                        args.append(tex[start:cursor])
+                        cursor += 1
+                        end = cursor
+                        break
+                cursor += 1
+            else:
+                valid = False
+                break
+        if valid and len(args) == argument_count:
+            calls.append({"name": match.group(1), "args": args, "start": match.start(), "end": end})
+    return calls
+
+
+def figure_binding_audit(tex: str, labels: list[str]) -> dict:
+    """Check source binding plus the pre/caption/post narrative contract."""
+    wrapper_calls = _macro_calls(tex, ("evidencefigure", "frameworkfigure"))
+    call_by_label = {call["args"][2].strip(): call for call in wrapper_calls}
+    explicit_labels = {item: None for item in re.findall(r"\\label\s*\{([^{}]+)\}", tex)}
+    missing_binding: list[str] = []
+    missing_pre_reference: list[str] = []
+    missing_post_narrative: list[str] = []
+    weak_captions: list[str] = []
+
+    for label in labels:
+        call = call_by_label.get(label)
+        if call is None and label not in explicit_labels:
+            missing_binding.append(label)
+            continue
+        anchor = call["start"] if call else tex.find(r"\label{" + label + "}")
+        before = tex[:anchor]
+        if not re.search(rf"\\(?:ref|autoref)\s*\{{{re.escape(label)}\}}", before):
+            missing_pre_reference.append(label)
+        if call:
+            caption = re.sub(r"\\[A-Za-z@]+|[{}$]", "", call["args"][1])
+            end = call["end"]
+        else:
+            env_start = tex.rfind(r"\begin{figure", 0, anchor)
+            env_end = tex.find(r"\end{figure", anchor)
+            block = tex[env_start:env_end if env_end >= 0 else anchor + 1]
+            caption_match = re.search(r"\\caption\s*\{([^{}]+)\}", block, re.S)
+            caption = caption_match.group(1) if caption_match else ""
+            end_marker = tex.find("}", env_end) if env_end >= 0 else anchor
+            end = end_marker + 1
+        if len(re.sub(r"\s+", "", caption)) < 12:
+            weak_captions.append(label)
+        tail = tex[end:end + 900]
+        tail = re.split(r"\\(?:section|subsection|subsubsection|begin\s*\{figure)", tail, maxsplit=1)[0]
+        tail = re.sub(r"\\[A-Za-z@]+(?:\[[^]]*\])?|[{}$%]", " ", tail)
+        tail = re.sub(r"\s+", "", tail)
+        if len(tail) < 24:
+            missing_post_narrative.append(label)
+
+    return {
+        "missing_binding": missing_binding,
+        "missing_pre_reference": missing_pre_reference,
+        "missing_post_narrative": missing_post_narrative,
+        "weak_captions": weak_captions,
+    }
 
 
 def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None) -> dict:
@@ -111,8 +219,26 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
     add("problems_present", bool(problems), count=len(problems))
     add("visual_encoding_declared", bool(str(plan.get("visual_encoding_path", "")).strip()))
 
-    all_figures: list[dict] = list(plan.get("global_figures", []))
-    all_tables: list[dict] = list(plan.get("global_tables", []))
+    raw_global_figures = plan.get("global_figures", [])
+    raw_global_tables = plan.get("global_tables", [])
+    global_figure_errors = [
+        {"index": index, "value": repr(item)}
+        for index, item in enumerate(raw_global_figures)
+        if not isinstance(item, dict)
+    ]
+    global_table_errors = [
+        {"index": index, "value": repr(item)}
+        for index, item in enumerate(raw_global_tables)
+        if not isinstance(item, dict)
+    ]
+    add("global_figure_entries_are_objects", not global_figure_errors,
+        invalid=global_figure_errors)
+    if schema_version in {"1.1", "1.2"}:
+        add("global_table_entries_are_objects", not global_table_errors,
+            invalid=global_table_errors,
+            message="表格账本条目必须是完整对象，不能只写表格 ID 字符串")
+    all_figures: list[dict] = [item for item in raw_global_figures if isinstance(item, dict)]
+    all_tables: list[dict] = [item for item in raw_global_tables if isinstance(item, dict)]
     all_schematics: list[dict] = []
     all_figure_ids: list[str] = []
     all_claim_ids: set[str] = set()
@@ -122,9 +248,27 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
     for problem in problems:
         pid = str(problem.get("problem_id", ""))
         complexity = problem.get("complexity")
-        figures = problem.get("figures", [])
-        tables = problem.get("tables", [])
-        schematics = problem.get("schematics", [])
+        raw_figures = problem.get("figures", [])
+        raw_tables = problem.get("tables", [])
+        raw_schematics = problem.get("schematics", [])
+        figure_entry_errors = [
+            {"index": index, "value": repr(item)}
+            for index, item in enumerate(raw_figures)
+            if not isinstance(item, dict)
+        ]
+        table_entry_errors = [
+            {"index": index, "value": repr(item)}
+            for index, item in enumerate(raw_tables)
+            if not isinstance(item, dict)
+        ]
+        schematic_entry_errors = [
+            {"index": index, "value": repr(item)}
+            for index, item in enumerate(raw_schematics)
+            if not isinstance(item, dict)
+        ]
+        figures = [item for item in raw_figures if isinstance(item, dict)]
+        tables = [item for item in raw_tables if isinstance(item, dict)]
+        schematics = [item for item in raw_schematics if isinstance(item, dict)]
         evidence = problem.get("evidence_matrix", [])
         claims = problem.get("claims", [])
         all_figures.extend(figures)
@@ -134,6 +278,14 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
         if schema_version in {"1.1", "1.2"}:
             add(f"{pid}:table_ledger_fields_present",
                 "tables" in problem and "low_table_exception" in problem)
+            add(f"{pid}:table_entries_are_objects", not table_entry_errors,
+                invalid=table_entry_errors,
+                message="表格账本条目必须填写问题、证据、列、论文绑定和状态，不能只写 ID")
+
+        add(f"{pid}:figure_entries_are_objects", not figure_entry_errors,
+            invalid=figure_entry_errors)
+        add(f"{pid}:schematic_entries_are_objects", not schematic_entry_errors,
+            invalid=schematic_entry_errors)
 
         add(f"{pid}:complexity_valid", complexity in {"simple", "standard", "complex"}, actual=complexity)
         claim_ids = [str(item.get("claim_id", "")) for item in claims]
@@ -453,6 +605,10 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
         if main_tex is not None and main_tex.is_file():
             tex = tex_closure(main_tex)
             labels = set(re.findall(r"\\label\s*\{([^{}]+)\}", tex))
+            labels.update(
+                call["args"][2].strip()
+                for call in _macro_calls(tex, ("evidencefigure", "frameworkfigure"))
+            )
             graphics = {raw.replace("\\", "/") for raw in re.findall(r"\\includegraphics(?:\[[^]]*\])?\s*\{([^{}]+)\}", tex)}
             missing_labels = [fig.get("paper", {}).get("label") for fig in all_figures
                               if fig.get("paper", {}).get("label") not in labels]
@@ -462,6 +618,23 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
                                   if item.get("paper", {}).get("label") not in labels)
             add("planned_visual_labels_in_tex", not missing_labels,
                 missing=sorted(set(label for label in missing_labels if label)))
+            planned_labels = [
+                str(item.get("paper", {}).get("label", "")).strip()
+                for item in [*all_figures, *all_schematics]
+                if str(item.get("paper", {}).get("label", "")).strip()
+            ]
+            narrative = figure_binding_audit(tex, planned_labels)
+            add("planned_visuals_bound_to_source", not narrative["missing_binding"],
+                missing=narrative["missing_binding"])
+            add("planned_visuals_have_pre_reference", not narrative["missing_pre_reference"],
+                missing=narrative["missing_pre_reference"],
+                message="每张图前必须用唯一标签说明读图目的与口径")
+            add("planned_visuals_have_substantive_caption", not narrative["weak_captions"],
+                missing=narrative["weak_captions"],
+                message="图注须说明对象、范围及必要的面板/颜色/箭头语义")
+            add("planned_visuals_have_post_narrative", not narrative["missing_post_narrative"],
+                missing=narrative["missing_post_narrative"],
+                message="图后须解释至少一个具体证据、含义与边界，不能直接跳到下一标题")
             planned_names = {Path(str(fig.get("outputs", {}).get(key, ""))).name for fig in all_figures for key in ("vector", "preview")}
             planned_names.update(Path(str(item.get(key, ""))).name for item in all_schematics
                                  for key in ("output_pdf", "preview_png"))

@@ -190,3 +190,82 @@ def test_count_numbered_figures_excludes_subfigure_panels():
     \begin{figure*}\end{figure*}
     """
     assert visual_plan_audit.count_numbered_figures(tex) == 2
+
+
+def test_count_numbered_figures_supports_wrapper_macros():
+    tex = r"""
+\newcommand{\evidencefigure}[3]{\begin{figure}\includegraphics{#1}\caption{#2}\label{#3}\end{figure}}
+图~\ref{fig:a} 回答比较问题。
+\evidencefigure{a}{对象、范围、颜色与比较口径均已说明。}{fig:a}
+图后解释给出具体趋势、结论含义以及该证据不能外推的边界条件。
+"""
+    assert visual_plan_audit.count_numbered_figures(tex) == 1
+    audit = visual_plan_audit.figure_binding_audit(tex, ["fig:a"])
+    assert all(not value for value in audit.values()), audit
+
+
+def test_tex_closure_preserves_escaped_percent_and_strips_real_comment(tmp_path):
+    main = tmp_path / "main.tex"
+    main.write_text(
+        r"图~\ref{fig:a} 给出区间。" "\n"
+        r"\evidencefigure{a}{事件配对差异及 95\% Bootstrap 区间。}{fig:a}% 删除本注释" "\n"
+        "图后文字解释区间不跨零所支持的稳定权衡，并限定不能外推为全面提升。\n",
+        encoding="utf-8",
+    )
+
+    tex = visual_plan_audit.tex_closure(main)
+    calls = visual_plan_audit._macro_calls(tex, ("evidencefigure", "frameworkfigure"))
+
+    assert len(calls) == 1
+    assert r"95\%" in calls[0]["args"][1]
+    assert "删除本注释" not in tex
+    assert all(not value for value in visual_plan_audit.figure_binding_audit(tex, ["fig:a"]).values())
+
+
+def test_figure_binding_audit_rejects_unexplained_figure():
+    tex = r"\evidencefigure{a}{图。}{fig:a}\n\subsection{下一节}"
+    audit = visual_plan_audit.figure_binding_audit(tex, ["fig:a"])
+    assert audit["missing_pre_reference"] == ["fig:a"]
+    assert audit["missing_post_narrative"] == ["fig:a"]
+    assert audit["weak_captions"] == ["fig:a"]
+
+
+def test_plan_audit_reports_string_table_entries_instead_of_crashing(tmp_path):
+    plan = {
+        "schema_version": "1.2",
+        "project_title": "表格账本兼容性回归",
+        "plan_status": "ready",
+        "figure_count_lock": {
+            "status": "locked",
+            "proposed_total": 1,
+            "user_requested_total": 1,
+            "final_total": 1,
+            "counting_rule": "numbered_top_level_figures",
+            "confirmation_record": "用户确认 1 张。",
+        },
+        "visual_encoding_path": "视觉编码表.md",
+        "color_semantics": visual_plan_audit.EXPECTED_COLOR_SEMANTICS,
+        "problems": [{
+            "problem_id": "问题一",
+            "complexity": "simple",
+            "claims": [{"claim_id": "C1", "text": "存在可核验结果"}],
+            "evidence_matrix": [],
+            "figures": [],
+            "tables": ["T1"],
+            "schematics": [],
+            "low_figure_exception": "本回归只验证坏账本能被报告，而不是构造完整视觉计划。",
+            "low_table_exception": None,
+        }],
+        "global_figures": [],
+        "global_tables": ["TG"],
+        "flowcharts": [],
+    }
+    plan_path = tmp_path / "bad-table-ledger.json"
+    plan_path.write_text(json.dumps(plan, ensure_ascii=False), encoding="utf-8")
+
+    result = visual_plan_audit.audit(plan_path, "plan", tmp_path, None)
+
+    assert result["status"] == "FAIL"
+    codes = {item["code"] for item in result["failures"]}
+    assert "global_table_entries_are_objects" in codes
+    assert "问题一:table_entries_are_objects" in codes

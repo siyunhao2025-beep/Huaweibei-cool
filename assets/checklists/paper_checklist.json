@@ -526,7 +526,7 @@
     {
       "id": "T05",
       "section": "总体分析",
-      "item": "只有正文需要引用流程图时才写图引文，并说明图表达的主线",
+      "item": "复杂多问论文的 F01 使用论文专属完整框架图；正式高清源图已写入 LaTeX、图前引用、图注解码、图后解释，并在最终 PDF 中可见",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
@@ -536,7 +536,7 @@
     {
       "id": "T06",
       "section": "总体分析",
-      "item": "流程图由真实任务、数据、模型、求解和验证关系生成，不套固定框图",
+      "item": "总流程图由真实输入、各问核心机制、跨问关系、验证/测试边界和证据输出生成；有真实数据/结果锚点，不套空框、不虚构箭头或收益",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
