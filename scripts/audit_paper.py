@@ -111,7 +111,25 @@ def first_page_text(page):
 
 def detect_heading_pages(records, heading_manifest):
     output = []
+    valid_pages = {record["physical_page"] for record in records}
     for item in heading_manifest:
+        declared = item.get("physical_pages", item.get("physical_page"))
+        if declared is not None:
+            values = declared if isinstance(declared, list) else [declared]
+            pages = []
+            for value in values:
+                try:
+                    page = int(value)
+                except (TypeError, ValueError):
+                    continue
+                if page in valid_pages and page not in pages:
+                    pages.append(page)
+            output.append({
+                **item,
+                "physical_pages": sorted(pages),
+                "confidence": "declared" if pages else "invalid_declared_page",
+            })
+            continue
         title = item.get("rendered_title") or item.get("title", "")
         aliases = [title, item.get("title", ""), *item.get("aliases", [])]
         # Word heading JSON records the exact visible title text and its page.

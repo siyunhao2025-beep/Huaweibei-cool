@@ -23,6 +23,30 @@ def test_english_and_windows_identity_markers():
     assert audit_paper.IDENTITY_RE.search(user_path)
 
 
+def test_heading_manifest_can_declare_verified_physical_page_when_cmap_is_broken():
+    records = [
+        {"physical_page": 1, "text": "摘要"},
+        {"physical_page": 2, "text": "���� A"},
+        {"physical_page": 3, "text": "附录正文"},
+    ]
+    headings = [{"title": "附录 A", "role": "appendix", "physical_page": 2}]
+
+    matched = audit_paper.detect_heading_pages(records, headings)
+
+    assert matched[0]["physical_pages"] == [2]
+    assert matched[0]["confidence"] == "declared"
+
+
+def test_heading_manifest_rejects_out_of_range_declared_page():
+    records = [{"physical_page": 1, "text": "正文"}]
+    headings = [{"title": "附录 A", "physical_pages": [99, "bad"]}]
+
+    matched = audit_paper.detect_heading_pages(records, headings)
+
+    assert matched[0]["physical_pages"] == []
+    assert matched[0]["confidence"] == "invalid_declared_page"
+
+
 def test_page_gate_defaults_off_when_official_limit_is_absent():
     assert audit_paper.resolve_body_gate({}, {}) == (0, None, "off", "not_configured")
 
