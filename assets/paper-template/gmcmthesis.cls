@@ -253,16 +253,12 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
     ItalicFont     = *-italic,
     BoldItalicFont = *-bolditalic,
     Scale          = MatchLowercase,
-  ]{texgyrecursor}
+  ]{texgyretermes}
 \else
   % The official Word template assigns Times New Roman to ASCII/HAnsi text.
   \setmainfont{Times New Roman}
   \setsansfont{Times New Roman}
-  \ifmcm@mac
-    \setmonofont[Scale=MatchLowercase]{Menlo}
-  \else
-    \setmonofont[Scale=MatchLowercase]{Courier New}
-  \fi
+  \setmonofont[Scale=MatchLowercase]{Times New Roman}
 \fi
 
 % Mathematical alphabets/operators must come from an OpenType math font; using
@@ -484,9 +480,9 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
   \GMCMContestTitle{\GMCMContestEdition}%
   \vskip0.6cm%
   \begin{center}
-    \begin{tabularx}{.95\textwidth}{@{}lX@{}}
+    \begin{tabularx}{.95\textwidth}{@{}l>{\centering\arraybackslash}X@{}}
       {\lishu\fontsize{18pt}{24pt}\selectfont 题\quad 目：} &
-      \hfill{\zihao{3}\heiti \@title}\hfill\null\\
+      {\zihao{3}\heiti \@title}\\
       \cline{2-2}
     \end{tabularx}
   \end{center}
@@ -554,7 +550,14 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 	\renewcommand{\gmcm@tokens@keywords}{#1}
 	\par
 	\vskip1ex
-	{\noindent\lishu\fontsize{18pt}{24pt}\selectfont\gmcm@cap@keywordsname：}~{\gmcm@tokens@keywords}
+	\begingroup
+	\setbox\z@=\hbox{\lishu\fontsize{18pt}{24pt}\selectfont\gmcm@cap@keywordsname：\hspace{0.5em}}%
+	\hangindent=\wd\z@
+	\hangafter=1
+	\let\gmcm@keywordlinebreak\\
+	\def\\{\gmcm@keywordlinebreak\hspace*{\wd\z@}}%
+	\noindent\copy\z@{\gmcm@tokens@keywords}\par
+	\endgroup
 	}
 
 

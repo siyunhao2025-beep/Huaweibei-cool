@@ -40,7 +40,6 @@
       "note": "非官方要求。先锁定有证据支撑的 Figure 总数并给出预计页数区间，再由用户选择具体总页数；若用户选择“证据充分即可”，将 mode 设为 off 并记录该裁决。禁止为达到页数而注水。"
     },
     "role_windows_enabled": false,
-    "word_template": "研赛论文Word标准模板.docx",
     "latex_engine": "xelatex",
     "contest_title_font": "STXinwei"
   },

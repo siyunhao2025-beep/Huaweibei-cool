@@ -1,22 +1,59 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "华为杯 LaTeX-first 论文 manifest",
+  "$defs": {
+    "numberedProblemChapter": {
+      "type": "object",
+      "allOf": [
+        {
+          "properties": {"role": {"const": "problem"}},
+          "required": ["role"]
+        },
+        {
+          "anyOf": [
+            {
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "pattern": "^\\s*(?:问题\\s*(?:[零〇一二三四五六七八九十百两]+|\\d+)|第\\s*(?:[零〇一二三四五六七八九十百两]+|\\d+)\\s*问|[Qq]\\s*\\d+|[Qq][Uu][Ee][Ss][Tt][Ii][Oo][Nn]\\s*\\d+)"
+                }
+              },
+              "required": ["title"]
+            },
+            {
+              "properties": {
+                "aliases": {
+                  "type": "array",
+                  "contains": {
+                    "type": "string",
+                    "pattern": "^\\s*(?:问题\\s*(?:[零〇一二三四五六七八九十百两]+|\\d+)|第\\s*(?:[零〇一二三四五六七八九十百两]+|\\d+)\\s*问|[Qq]\\s*\\d+|[Qq][Uu][Ee][Ss][Tt][Ii][Oo][Nn]\\s*\\d+)"
+                  }
+                }
+              },
+              "required": ["aliases"]
+            }
+          ]
+        }
+      ]
+    }
+  },
   "type": "object",
-  "required": ["title", "keywords", "abstract_tex_path", "chapters"],
+  "required": ["title", "keywords", "abstract_tex_path", "appendix_pseudocode", "chapters"],
   "additionalProperties": false,
   "properties": {
     "title": {"type": "string", "minLength": 1},
     "keywords": {
       "type": "array",
-      "minItems": 4,
+      "minItems": 3,
       "maxItems": 6,
+      "uniqueItems": true,
       "items": {"type": "string", "minLength": 1}
     },
     "abstract_tex_path": {
       "type": "string",
       "pattern": "\\.tex$"
     },
-    "appendix_pseudocode": {
+    "question_openers": {
       "type": "object",
       "required": ["required"],
       "additionalProperties": false,
@@ -28,6 +65,32 @@
         {
           "if": {"properties": {"required": {"const": false}}},
           "then": {"required": ["reason"]}
+        }
+      ]
+    },
+    "appendix_pseudocode": {
+      "type": "object",
+      "required": ["required"],
+      "additionalProperties": false,
+      "properties": {
+        "required": {"type": "boolean"},
+        "reason": {"type": "string"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"required": {"const": false}}},
+          "then": {
+            "required": ["reason"],
+            "properties": {
+              "reason": {
+                "minLength": 8,
+                "pattern": "(纯解析|解析推导|理论推导|闭式|证明|不依赖|不涉及|无需|未使用|没有使用|analytic|closed[- ]form|proof|without|does not)",
+                "not": {
+                  "pattern": "(REPLACE|replace|TODO|todo|FIXME|fixme|TBD|tbd|待替换|待补|待填写|请替换|占位)"
+                }
+              }
+            }
+          }
         }
       ]
     },
@@ -55,7 +118,70 @@
             "items": {"type": "string"}
           }
         }
+      },
+      "contains": {
+        "type": "object",
+        "properties": {"role": {"const": "references"}},
+        "required": ["role"]
+      },
+      "minContains": 1,
+      "maxContains": 1
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "appendix_pseudocode": {
+            "properties": {"required": {"const": true}},
+            "required": ["required"]
+          }
+        },
+        "required": ["appendix_pseudocode"]
+      },
+      "then": {
+        "properties": {
+          "chapters": {
+            "contains": {
+              "type": "object",
+              "properties": {"role": {"const": "appendix"}},
+              "required": ["role"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "question_openers": {
+            "properties": {"required": {"const": true}},
+            "required": ["required"]
+          }
+        },
+        "required": ["question_openers"]
+      },
+      "then": {
+        "properties": {
+          "chapters": {"contains": {"$ref": "#/$defs/numberedProblemChapter"}}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "question_openers": {
+            "properties": {"required": {"const": false}},
+            "required": ["required"]
+          }
+        },
+        "required": ["question_openers"]
+      },
+      "then": {
+        "properties": {
+          "chapters": {"not": {"contains": {"$ref": "#/$defs/numberedProblemChapter"}}}
+        }
       }
     }
-  }
+  ]
 }

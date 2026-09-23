@@ -148,6 +148,14 @@ framework_figure_binding:
   compiled_pdf_visible: true
 ```
 
+权威视觉计划也要在同一个 F01 条目中登记消费路径；不要只在 checkpoint 里另写一份。可用初始化器生成 schema 合法的草案，再补真实证据字段：
+
+```powershell
+python scripts/visual_plan_init.py --output 求解/视觉计划.json --project-title "论文题目" --problem-id 问题一 --complex-f01
+```
+
+该条目固定使用 `role=complex_multi_question_framework` 和 `paper-framework-figure-studio-pro` 路线，并以项目内相对 JSON 路径登记 `framework_binding` 与同目录 `framework_audit_report`。整份计划只能出现一个 `figure_id=F01`；初始化值只是待补草案，不能代替真实图、binding 或审计报告。
+
 ## 8. YAML 草图/低复杂度分支快速上手
 
 ```powershell

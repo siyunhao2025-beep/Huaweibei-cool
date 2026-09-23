@@ -17,9 +17,9 @@
 \maketitle
 
 \begin{abstract}
-本文档演示正式参赛信息封面与匿名论文正文如何分离。封面作为逻辑第 0 页但不显示页码；匿名题目、摘要和关键词从第 1 页开始。正式摘要应简洁说明建模思路，并选择性加粗\textbf{主要模型}、\textbf{关键求解结果}与\textbf{核心结论或创新点}；普通年份、编号和中间量不机械加粗，所有强调内容均须由结果支撑。
+本文档演示正式参赛信息封面与匿名论文正文如何分离。封面作为逻辑第 0 页但不显示页码；匿名题目、完整摘要和关键词共同占据逻辑第 1 页，正文从下一页开始。正式摘要应简洁说明建模思路，并选择性加粗\textbf{主要模型}、\textbf{关键求解结果}与\textbf{核心结论或创新点}；普通年份、编号和中间量不机械加粗，所有强调内容均须由结果支撑。该单页安排是用户内部规则，不靠缩小字号或空话填挤版面。
 
-\keywords{数学建模\quad 封皮后匿名\quad 格式核对\quad 可复现}
+\keywords{\mbox{数学建模}\quad \mbox{封皮后匿名}\quad \mbox{格式核对}\quad \mbox{可复现}}
 \end{abstract}
 
 \section{问题重述}
@@ -27,6 +27,27 @@
 
 % 若为复杂多问题目，F01 使用经 paper-framework-figure-studio-pro 证据锁定的论文专属完整框架图。
 % 必须完成：正式源图 → LaTeX 绑定 → 图前 \ref 引用 → 自包含图注 → 图后“证据—原因/机制—论文含义—边界”详解 → 最终 PDF 可见性检查。
+
+\section{模型假设}
+模型假设应服务于问题，并交代其合理性及对结论的影响。
+
+\section{主要符号说明}
+全文主要符号及其统一含义见表~\ref{tab:main-symbols}。
+
+\begin{table}[htbp]
+  \centering
+  \caption{全文主要符号、定义与取值域}
+  \label{tab:main-symbols}
+  \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{0.18\textwidth}X>{\centering\arraybackslash}p{0.22\textwidth}}
+    \toprule
+    符号 & 含义或定义 & 单位/取值域 \\
+    \midrule
+    $x$ & 待求决策变量向量 & $x\in\Omega$ \\
+    $\Omega$ & 由题目约束共同确定的可行域 & 集合 \\
+    $f(x)$ & 用于比较可行方案的目标函数 & $f:\Omega\to\mathbb{R}$ \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
 
 \section{模型建立与求解}
 在此给出可追溯的模型、推导、算法和结果。例如可将目标函数写为 \(\min_{x\in\Omega} f(x)\)，但必须用题目的真实变量、约束和参数替换该示例。

@@ -1,0 +1,26 @@
+% 主要符号说明模板（用户确认的内部生产规则，并非官方明文要求）
+% 放置顺序：总体问题分析/数据审计 -> 基本假设 -> 本节 -> 问题一及首个模型公式。
+% 入稿前用本题真实符号替换下面三行占位；未替换时 audit_tex.py 会拒绝通过。
+% 局部参数在首次出现处定义，不塞入总表。
+% 若前置内容已经位于某个一级章内，可把下面的 \section 改为 \subsection，但位置合同不变。
+
+\section{主要符号说明}
+全文主要符号及其统一含义见表~\ref{tab:main-symbols}。
+
+\begin{table}[htbp]
+  \centering
+  \caption{全文主要符号、定义与单位/取值域}
+  \label{tab:main-symbols}
+  \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{0.18\textwidth}X>{\centering\arraybackslash}p{0.22\textwidth}}
+    \toprule
+    符号 & 含义或定义 & 单位/取值域 \\
+    \midrule
+    待替换符号 1 & 待替换：跨小问复用的核心含义 & 待替换：单位或取值域 \\
+    待替换符号 2 & 待替换：跨小问复用的核心含义 & 待替换：单位或取值域 \\
+    待替换符号 3 & 待替换：跨小问复用的核心含义 & 待替换：单位或取值域 \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+% 仅在内容确实跨页时改用 longtable；不得增加竖线、\hline 或 \cline。
+% 不得用 \resizebox、\scalebox、\small、\footnotesize、\scriptsize 或 \tiny 挤压表格。

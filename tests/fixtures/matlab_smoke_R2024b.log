@@ -1,6 +1,6 @@
 ##### MATLAB SMOKE TEST #####
-repoRoot = C:\Users\ASUS\Doubao\chats\2026-09-20\new-chat-12\Huaweibei-cool
-workDir  = C:\Users\ASUS\Doubao\chats\2026-09-20\new-chat-12\Huaweibei-cool\_work
+repoRoot = <REPO_ROOT>
+workDir  = <REPO_ROOT>\_work
 locale.encoding = UTF-8
 locale query failed: 无法识别的字段名称 "codeset"。
 
@@ -148,15 +148,15 @@ Deep Learning Toolbox: unavailable
   ode45 t(end)=5.0000  y(end)=4.560033e-05  (expected e^-10=4.539993e-05)
 
 === [8] write .mat ===
-  wrote: C:\Users\ASUS\Doubao\chats\2026-09-20\new-chat-12\Huaweibei-cool\_work\matlab_test_output.mat  (exists=2)
+  wrote: <REPO_ROOT>\_work\matlab_test_output.mat  (exists=2)
 
 === [9] write .csv ===
-  wrote: C:\Users\ASUS\Doubao\chats\2026-09-20\new-chat-12\Huaweibei-cool\_work\matlab_test_output.csv  (exists=2)
+  wrote: <REPO_ROOT>\_work\matlab_test_output.csv  (exists=2)
 
 === [10] Chinese font & figure ===
   listfonts: Microsoft YaHei present = 1 ; SimHei present = 0
   using CJK font: Microsoft YaHei
-  wrote Chinese PNG: C:\Users\ASUS\Doubao\chats\2026-09-20\new-chat-12\Huaweibei-cool\_work\matlab_chinese_test.png  (exists=2)
+  wrote Chinese PNG: <REPO_ROOT>\_work\matlab_chinese_test.png  (exists=2)
   title literal check: 测试图表：优化结果
 
 === MATLAB SMOKE TEST COMPLETE ===

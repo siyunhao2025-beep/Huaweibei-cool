@@ -45,8 +45,8 @@ jobs:
           python -m pip check
           python -m pip_audit -r requirements.txt --progress-spinner off
           python -m bandit -q -r scripts skills/academic-figure/scripts skills/academic-figure/assets/figures -ll
-          # source-manifest.json contains published SHA-256 checksums, not credentials.
-          python -m detect_secrets scan --all-files --exclude-lines 'detect[-_]secrets' --exclude-files '(^|[\\/])(\.git|__pycache__|\.pytest_cache|\.ruff_cache)([\\/]|$)|\.eval_results\.json$|(^|[\\/])assets[\\/]paper-template[\\/]reference-23rd-latex[\\/]source-manifest\.json$' > /tmp/secrets.json
+          # source-manifest.json and paper-checklist-provenance contain published SHA-256 checksums, not credentials.
+          python -m detect_secrets scan --all-files --exclude-lines 'detect[-_]secrets|paper-checklist-provenance' --exclude-files '(^|[\\/])(\.git|__pycache__|\.pytest_cache|\.ruff_cache)([\\/]|$)|\.eval_results\.json$|(^|[\\/])assets[\\/]paper-template[\\/]reference-23rd-latex[\\/]source-manifest\.json$' > /tmp/secrets.json
           python -c 'import json; data=json.load(open("/tmp/secrets.json", encoding="utf-8")); assert not data["results"], data["results"]'
 
       - name: 全仓静态与语法检查

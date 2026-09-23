@@ -17,9 +17,9 @@
 \maketitle
 
 \begin{abstract}
-本文档用于验证“华为杯”第二十三届中国研究生数学建模竞赛的正式提交版式。物理首页为官方参赛信息封皮，第二页起为匿名摘要和正文。正式摘要应简洁说明建模思路，并选择性加粗\textbf{主要模型}、\textbf{关键求解结果}与\textbf{核心结论或创新点}；普通年份、编号和中间量不机械加粗，所有强调内容均须由结果支撑。摘要篇幅一般不超过两页，无需英文翻译。
+本文档用于验证“华为杯”第二十三届中国研究生数学建模竞赛的正式提交版式。物理首页为官方参赛信息封皮，第二页为匿名题目、完整摘要和关键词，正文从下一页开始。正式摘要应简洁说明建模思路，并选择性加粗\textbf{主要模型}、\textbf{关键求解结果}与\textbf{核心结论或创新点}；普通年份、编号和中间量不机械加粗，所有强调内容均须由结果支撑。官方只规定摘要一般不超过两页；本模板按用户内部规则固定为一个摘要页，不靠缩字或空话填挤版面。
 
-\keywords{数学建模\quad 封皮后匿名\quad 格式核对\quad 可复现}
+\keywords{\mbox{数学建模}\quad \mbox{封皮后匿名}\quad \mbox{格式核对}\quad \mbox{可复现}}
 \end{abstract}
 
 \section{问题重述}
@@ -39,6 +39,24 @@
 
 \section{模型假设}
 模型假设应服务于问题并说明合理性。例如，先定义变量、集合和单位，再明确数据缺失、随机扰动或边界条件的处理方式。
+
+\section{主要符号说明}
+全文主要符号及其统一含义见表~\ref{tab:main-symbols}。
+
+\begin{table}[htbp]
+  \centering
+  \caption{全文主要符号、定义与取值域}
+  \label{tab:main-symbols}
+  \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{0.18\textwidth}X>{\centering\arraybackslash}p{0.22\textwidth}}
+    \toprule
+    符号 & 含义或定义 & 单位/取值域 \\
+    \midrule
+    $x$ & 待求决策变量向量 & $x\in\Omega$ \\
+    $\Omega$ & 由题目约束共同确定的可行域 & 集合 \\
+    $f(x)$ & 用于比较可行方案的目标函数 & $f:\Omega\to\mathbb{R}$ \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
 
 \section{模型建立与求解}
 在此给出可追溯的模型、推导、算法和结果。例如可将目标函数写为 \(\min_{x\in\Omega} f(x)\)，但必须用题目的真实变量、约束和参数替换该示例。若引用公开资料，应在正文按出现次序使用方括号编号，并在参考文献中给出完整信息。

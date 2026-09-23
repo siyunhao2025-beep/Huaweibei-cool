@@ -25,7 +25,7 @@ def test_first_use_card_is_direct_and_does_not_restore_removed_three_steps_copy(
     skill = (REPO_ROOT / "SKILL.md").read_text(encoding="utf-8")
     readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
     combined = skill + "\n" + readme
-    for field in ("你的学校是：", "参赛队号是：", "队员 1：", "队员 2：", "队员 3：", "A / B / C / D / E / F / 未定"):
+    for field in ("比赛届次", "你的学校是：", "参赛队号是：", "队员 1：", "队员 2：", "队员 3：", "A / B / C / D / E / F / 未定"):
         assert field in combined
     assert "下一步三件事" not in combined
     assert "请先核对参赛信息是否齐全" not in combined
@@ -222,3 +222,31 @@ def test_quickstart_demo_has_no_silent_skip_or_stale_pdf_pass():
     assert "Remove-Item -LiteralPath $pdfWork" in script
     assert "$xelatexExit -ne 0" in script
     assert "路线图必须同时生成非空 PNG 与 PDF" in script
+
+
+def test_quickstart_declares_packages_for_extended_tables():
+    source = (REPO_ROOT / "docs" / "examples" / "quickstart" / "main.tex").read_text(
+        encoding="utf-8"
+    )
+    if r"\begin{tabularx}" in source:
+        assert r"\usepackage{tabularx}" in source
+
+
+def test_final_release_requires_full_rerun_clean_build_and_atomic_artifact_sync():
+    skill = (REPO_ROOT / "SKILL.md").read_text(encoding="utf-8")
+    submission = (REPO_ROOT / "modules" / "submission.md").read_text(encoding="utf-8")
+    changes = (REPO_ROOT / "modules" / "change-management.md").read_text(encoding="utf-8")
+    polishing = (REPO_ROOT / "modules" / "polishing.md").read_text(encoding="utf-8")
+    phases = (REPO_ROOT / "modules" / "phases.md").read_text(encoding="utf-8")
+    gates = (REPO_ROOT / "docs" / "PHASE_GATES.md").read_text(encoding="utf-8")
+
+    assert "全链同源、可回退、原子交付" in skill
+    for text in (skill, submission, changes, polishing, phases, gates):
+        assert "派生缓存" in text
+        assert "全量重跑" in text
+    assert "隔离目录干净构建" in submission
+    assert "固定 DPI" in submission
+    assert "解压源码包再次编译" in submission
+    assert "图表生成目录与 LaTeX 读取目录分离" in changes
+    assert "PDF 原始字节" in skill
+    assert "内部审阅稿" in skill

@@ -11,11 +11,20 @@ never edits the official template in place.
 from __future__ import annotations
 
 import argparse
+from io import BytesIO
 import json
 import re
 import time
+import unicodedata
 import zipfile
 from pathlib import Path
+from urllib.parse import unquote
+
+from audit_tex import (
+    MANIFEST_REASON_SENTINEL_RE,
+    _balanced_macro_calls,
+    question_opener_manifest_contract,
+)
 
 
 
@@ -54,8 +63,10 @@ W = "{" + W_NS + "}"
 ROLES = {"preliminary", "problem", "evaluation", "conclusion", "references", "appendix"}
 
 IDENTITY_RE = re.compile(
-    r"学校|学院|实验室|参赛队号|队员姓名|指导教师|学号|邮箱|email|"
-    r"\b(?:school|student|team|member|advisor)\b|C:\\Users\\",
+    r"(?:学校(?:名称)?|所属学校|学院(?:名称)?|实验室(?:名称)?|参赛队号|队号|"
+    r"队员(?:姓名)?(?:\s*[123一二三])?|指导(?:教师|老师)|学号|姓名|(?:电子)?邮箱)\s*[:：]|"
+    r"\b(?:school|student|team|member|advisor|e-?mail)\s*(?:name|id|number)?\s*[:：]|"
+    r"C:\\Users\\",
     re.IGNORECASE,
 )
 
@@ -216,7 +227,7 @@ def configure_styles(document):
     add_style(document, "Huawei Heading 1", "黑体", 14, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER, outline_level=0)
     add_style(document, "Huawei Heading 2", "宋体", 12, bold=True, align=WD_ALIGN_PARAGRAPH.LEFT, outline_level=1)
     add_style(document, "Huawei Heading 3", "宋体", 12, bold=False, align=WD_ALIGN_PARAGRAPH.LEFT, outline_level=2)
-    add_style(document, "Huawei Appendix Code", "Courier New", 9, align=WD_ALIGN_PARAGRAPH.LEFT)
+    add_style(document, "Huawei Appendix Code", "Times New Roman", 9, align=WD_ALIGN_PARAGRAPH.LEFT)
     add_style(document, "Huawei Table Caption", "宋体", 12, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER)
 
 
@@ -276,13 +287,48 @@ def enable_update_fields(document):
     update.set(qn("w:val"), "true")
 
 
-def add_table(document, rows):
+def _set_border(parent, edge, value, *, size=None):
+    borders_tag = "w:tblBorders" if parent.tag == qn("w:tblPr") else "w:tcBorders"
+    borders = parent.find(qn(borders_tag))
+    if borders is None:
+        borders = OxmlElement(borders_tag)
+        parent.append(borders)
+    border = borders.find(qn(f"w:{edge}"))
+    if border is None:
+        border = OxmlElement(f"w:{edge}")
+        borders.append(border)
+    border.set(qn("w:val"), value)
+    if size is not None:
+        border.set(qn("w:sz"), str(size))
+        border.set(qn("w:space"), "0")
+        border.set(qn("w:color"), "000000")
+
+
+def _apply_three_line_borders(table):
+    table.style = None
+    properties = table._tbl.tblPr
+    for edge in ("left", "right", "insideH", "insideV"):
+        _set_border(properties, edge, "nil")
+    for edge in ("top", "bottom"):
+        _set_border(properties, edge, "single", size=8)
+    for cell in table.rows[0].cells:
+        cell_properties = cell._tc.get_or_add_tcPr()
+        _set_border(cell_properties, "bottom", "single", size=8)
+
+
+def add_table(document, rows, caption="", labels=()):
     if not rows:
         return
+    if caption:
+        cap = document.add_paragraph(style="Huawei Table Caption")
+        cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        cap.paragraph_format.first_line_indent = Inches(0)
+        caption_text = tex_to_word_text(caption)
+        tags = " ".join(f"[{label}]" for label in labels)
+        add_body_run(cap, f"{caption_text} {tags}".strip(), bold=True)
     columns = max(len(row) for row in rows)
     table = document.add_table(rows=0, cols=columns)
     table.alignment = WD_TABLE_ALIGNMENT.CENTER
-    table.style = "Table Grid"
     for row_index, values in enumerate(rows):
         cells = table.add_row().cells
         for col in range(columns):
@@ -295,14 +341,17 @@ def add_table(document, rows):
                 p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
                 for run in p.runs:
                     set_run_font(run, "宋体", 12, bold=row_index == 0)
+    _apply_three_line_borders(table)
     document.add_paragraph().paragraph_format.space_after = Pt(0)
 
 
 TEX_IMAGE_RE = re.compile(r"\\includegraphics(?:\[[^]]*\])?\s*\{([^{}]+)\}")
-TEX_CAPTION_RE = re.compile(r"\\caption\s*\{([^{}]*)\}")
+TEX_CAPTION_RE = re.compile(r"\\caption(?:\[[^]]*\])?\s*\{([^{}]*)\}")
+TEX_TABLE_LABEL_RE = re.compile(r"\\label\s*\{(tab:[^{}]+)\}", re.I)
 TEX_HEADING_RE = re.compile(r"\\(section|subsection|subsubsection)\*?\s*\{([^{}]*)\}")
 TEX_BEGIN_RE = re.compile(r"\\begin\s*\{([^{}]+)\}")
 WORD_IMAGE_SUFFIXES = {".bmp", ".gif", ".jpeg", ".jpg", ".png", ".tif", ".tiff"}
+WORD_FIGURE_WRAPPERS = ("evidencefigure", "frameworkfigure", "roadmapfigure")
 
 
 def _replace_braced_command(text: str, command: str, replacement=None) -> str:
@@ -335,7 +384,7 @@ def tex_to_word_text(text: str) -> str:
         r"\\pm": "±", r"\\cdots": "…", r"\\ldots": "…",
     }
     for raw, value in replacements.items():
-        text = re.sub(raw, value, text)
+        text = re.sub(raw + r"(?![A-Za-z@])", value, text)
     text = re.sub(r"\\(?:label|ref|pageref|cite|eqref)\s*\{([^{}]*)\}", r"[\1]", text)
     text = re.sub(r"\\(?:small|footnotesize|normalsize|noindent|centering|par|protect|mbox|raisebox)(?:\s*\{[^{}]*\})?", "", text)
     text = text.replace("\\\\", " ")
@@ -348,22 +397,75 @@ def tex_to_word_text(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
+def _skip_tex_group(text: str, cursor: int, opening: str, closing: str) -> int | None:
+    while cursor < len(text) and text[cursor].isspace():
+        cursor += 1
+    if cursor >= len(text) or text[cursor] != opening:
+        return None
+    depth = 1
+    cursor += 1
+    while cursor < len(text) and depth:
+        if text[cursor] == opening and text[cursor - 1] != "\\":
+            depth += 1
+        elif text[cursor] == closing and text[cursor - 1] != "\\":
+            depth -= 1
+        cursor += 1
+    return cursor if depth == 0 else None
+
+
+def _extract_tabular_body(text: str) -> str:
+    begin = re.search(
+        r"\\begin\s*\{(?P<env>tabular\*?|tabularx|longtable)\}",
+        text,
+        re.IGNORECASE,
+    )
+    if begin is None:
+        return text
+    env = begin.group("env")
+    cursor = begin.end()
+    if env.lower() in {"tabular*", "tabularx"}:
+        cursor = _skip_tex_group(text, cursor, "{", "}")
+        if cursor is None:
+            return text
+    optional_end = _skip_tex_group(text, cursor, "[", "]")
+    if optional_end is not None:
+        cursor = optional_end
+    cursor = _skip_tex_group(text, cursor, "{", "}")
+    if cursor is None:
+        return text
+    end = re.search(
+        rf"\\end\s*\{{{re.escape(env)}\}}",
+        text[cursor:],
+        re.IGNORECASE,
+    )
+    return text[cursor:cursor + end.start()] if end is not None else text[cursor:]
+
+
 def tex_table_rows(text: str) -> list[list[str]]:
     """Extract a simple tabular/longtable body into Word rows."""
+    text = _extract_tabular_body(text)
+    if re.search(r"\\endfirsthead\b", text, re.IGNORECASE):
+        first_head, continuation = re.split(
+            r"\\endfirsthead\b", text, maxsplit=1, flags=re.IGNORECASE
+        )
+        marker_matches = list(re.finditer(
+            r"\\end(?:head|foot|lastfoot)\b", continuation, re.IGNORECASE
+        ))
+        data = continuation[marker_matches[-1].end():] if marker_matches else continuation
+        text = first_head + "\n" + data
     text = re.sub(r"(?m)^\\(?:centering|small|footnotesize|scriptsize)\s*$", "", text)
     text = re.sub(r"(?m)^\\caption\s*\{.*\}\s*$", "", text)
     text = re.sub(r"(?m)^\\label\s*\{.*\}\s*$", "", text)
-    text = re.sub(r"(?m)^\\begin\{(?:tabular|tabularx|longtable)\}.*$", "", text)
-    text = re.sub(r"(?m)^\\end\{(?:tabular|tabularx|longtable)\}.*$", "", text)
     text = re.sub(r"\\(?:toprule|midrule|bottomrule|hline|endhead|endfirsthead|endfoot|endlastfoot)\b", "", text)
     rows: list[list[str]] = []
     for raw_row in re.split(r"\\\\", text):
         row = raw_row.strip()
         if not row or row.startswith("\\caption") or row.startswith("\\label"):
             continue
-        cells = [tex_to_word_text(cell) for cell in row.split("&")]
-        cells = [cell for cell in cells if cell != ""]
-        if cells:
+        if re.search(r"\\multicolumn\b", row, re.IGNORECASE):
+            continue
+        cells = [tex_to_word_text(cell) for cell in re.split(r"(?<!\\)&", row)]
+        if any(cell != "" for cell in cells):
             rows.append(cells)
     return rows
 
@@ -373,18 +475,32 @@ def resolve_figure_path(base_dir: Path, raw_path: str) -> Path:
     clean_path = raw_path.strip()
     for escaped, literal in ((r"\ ", " "), (r"\#", "#"), (r"\%", "%"), (r"\&", "&")):
         clean_path = clean_path.replace(escaped, literal)
-    image_path = (base_dir.resolve() / clean_path).resolve()
-    try:
-        image_path.relative_to(base_dir.resolve())
-    except ValueError as exc:
-        raise ValueError(f"图片必须位于论文工作目录内: {raw_path}") from exc
-    if image_path.suffix.lower() not in WORD_IMAGE_SUFFIXES:
+    requested = Path(clean_path)
+    if requested.suffix and requested.suffix.lower() not in WORD_IMAGE_SUFFIXES | {".pdf"}:
         raise ValueError(
-            f"Word 衍生稿不支持图片格式 {image_path.suffix or '(无扩展名)'}: {raw_path}"
+            f"Word 衍生稿不支持图片格式 {requested.suffix}: {raw_path}"
         )
-    if not image_path.is_file():
-        raise FileNotFoundError(f"图片不存在: {image_path}")
-    return image_path
+    roots = (base_dir.resolve(), (base_dir / "figures").resolve())
+    suffixes = ("",) if requested.suffix else (
+        ".png", ".jpg", ".jpeg", ".tif", ".tiff", ".bmp", ".gif", ".pdf"
+    )
+    candidates: list[Path] = []
+    for search_root in roots:
+        for suffix in suffixes:
+            candidate = (
+                (search_root / requested)
+                if requested.suffix else (search_root / requested).with_suffix(suffix)
+            ).resolve()
+            try:
+                candidate.relative_to(base_dir.resolve())
+            except ValueError as exc:
+                raise ValueError(f"图片必须位于论文工作目录内: {raw_path}") from exc
+            if candidate not in candidates:
+                candidates.append(candidate)
+    match = next((candidate for candidate in candidates if candidate.is_file()), None)
+    if match is None:
+        raise FileNotFoundError(f"图片不存在: {raw_path}")
+    return match
 
 
 def add_tex_figure(document, raw_path: str, caption: str, base_dir: Path):
@@ -394,15 +510,40 @@ def add_tex_figure(document, raw_path: str, caption: str, base_dir: Path):
     p.paragraph_format.first_line_indent = Inches(0)
     p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.AT_LEAST
     p.paragraph_format.line_spacing = Pt(1)
-    p.add_run().add_picture(str(image_path), width=Cm(15.5))
+    if image_path.suffix.lower() == ".pdf":
+        import pymupdf as fitz
+
+        with fitz.open(image_path) as pdf:
+            if pdf.page_count < 1:
+                raise ValueError(f"PDF 图片没有可渲染页面: {image_path}")
+            pixmap = pdf[0].get_pixmap(matrix=fitz.Matrix(2, 2), alpha=False)
+            image_source = BytesIO(pixmap.tobytes("png"))
+        p.add_run().add_picture(image_source, width=Cm(15.5))
+    else:
+        p.add_run().add_picture(str(image_path), width=Cm(15.5))
     cap = document.add_paragraph(style="Huawei Table Caption")
     cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
     cap.paragraph_format.first_line_indent = Inches(0)
     add_body_run(cap, tex_to_word_text(caption), bold=True)
 
 
+def _normalize_production_figure_calls(content: str) -> str:
+    """Put balanced built-in Figure wrapper calls on standalone logical lines."""
+    calls = _balanced_macro_calls(content, WORD_FIGURE_WRAPPERS, 3)
+    for call in reversed(calls):
+        arguments = [re.sub(r"\s+", " ", value).strip() for value in call["args"]]
+        replacement = (
+            "\n\\" + call["name"]
+            + "".join("{" + value + "}" for value in arguments)
+            + "\n"
+        )
+        content = content[:call["start"]] + replacement + content[call["end"]:]
+    return content
+
+
 def add_tex_content(document, content: str, base_dir: Path, *, appendix=False, skip_first_section=True):
     """Render a TeX fragment as an optional, non-authoritative Word derivative."""
+    content = _normalize_production_figure_calls(content)
     lines = content.replace("\r\n", "\n").replace("\r", "\n").split("\n")
     paragraph_buffer: list[str] = []
     i = 0
@@ -433,9 +574,13 @@ def add_tex_content(document, content: str, base_dir: Path, *, appendix=False, s
             i += 1
             continue
         begin = TEX_BEGIN_RE.match(raw)
-        if begin and begin.group(1) in {"table", "tabular", "tabularx", "longtable", "figure"}:
+        if begin and begin.group(1) in {
+            "table", "table*", "tabular", "tabular*", "tabularx", "longtable",
+            "figure", "figure*",
+        }:
             flush()
             env = begin.group(1)
+            base_env = env.rstrip("*")
             block = []
             depth = 1
             i += 1
@@ -449,13 +594,19 @@ def add_tex_content(document, content: str, base_dir: Path, *, appendix=False, s
                 block.append(lines[i])
                 i += 1
             block_text = "\n".join(block)
-            if env == "figure":
+            if base_env == "figure":
                 image = TEX_IMAGE_RE.search(block_text)
                 caption = TEX_CAPTION_RE.search(block_text)
                 if image:
                     add_tex_figure(document, image.group(1), caption.group(1) if caption else "", base_dir)
             else:
-                add_table(document, tex_table_rows(block_text))
+                caption = TEX_CAPTION_RE.search(block_text)
+                add_table(
+                    document,
+                    tex_table_rows(block_text),
+                    caption.group(1) if caption else "",
+                    TEX_TABLE_LABEL_RE.findall(block_text),
+                )
             i += 1
             continue
         if raw.startswith("\\begin{") or raw.startswith("\\end{"):
@@ -485,6 +636,26 @@ def add_tex_content(document, content: str, base_dir: Path, *, appendix=False, s
             paragraph = tex_to_word_text(re.sub(r"^\\item\s*", "", raw))
             if paragraph:
                 add_body_paragraph(document, "• " + paragraph, first_line=False)
+            i += 1
+            continue
+        wrapper_calls = _balanced_macro_calls(raw, WORD_FIGURE_WRAPPERS, 3)
+        if wrapper_calls:
+            cursor = 0
+            for call in wrapper_calls:
+                prefix = raw[cursor:call["start"]].strip()
+                if prefix:
+                    paragraph_buffer.append(prefix)
+                    flush()
+                add_tex_figure(
+                    document,
+                    call["args"][0],
+                    call["args"][1],
+                    base_dir,
+                )
+                cursor = call["end"]
+            suffix = raw[cursor:].strip()
+            if suffix:
+                paragraph_buffer.append(suffix)
             i += 1
             continue
         image = TEX_IMAGE_RE.search(raw)
@@ -522,7 +693,7 @@ def resolve_tex_path(root: Path, raw: str, label: str) -> Path:
 
 
 def read_tex_source(path: Path, root: Path, seen=None) -> str:
-    """Read a fragment and recursively expand local TeX ``\\input`` files."""
+    """Read a fragment and expand active, static local ``\\input``/``\\include`` calls."""
     seen = set() if seen is None else seen
     path = path.resolve()
     if path in seen:
@@ -533,17 +704,40 @@ def read_tex_source(path: Path, root: Path, seen=None) -> str:
     def expand(match):
         raw = match.group(1).strip()
         candidate = raw if raw.lower().endswith(".tex") else raw + ".tex"
-        child = resolve_tex_path(root, candidate, f"\\input in {path.name}")
+        child = resolve_tex_path(root, candidate, f"TeX input in {path.name}")
         return read_tex_source(child, root, seen.copy())
 
-    return re.sub(r"(?m)^\s*\\input\s*\{([^{}]+)\}\s*$", expand, text)
+    input_re = re.compile(r"(?<!\\)\\(?:input|include)\s*\{([^{}]+)\}")
+
+    def expand_active_part(line: str) -> str:
+        comment_at = None
+        for index, character in enumerate(line):
+            if character != "%":
+                continue
+            backslashes = 0
+            cursor = index - 1
+            while cursor >= 0 and line[cursor] == "\\":
+                backslashes += 1
+                cursor -= 1
+            if backslashes % 2 == 0:
+                comment_at = index
+                break
+        active = line if comment_at is None else line[:comment_at]
+        comment = "" if comment_at is None else line[comment_at:]
+        active = input_re.sub(expand, active)
+        if re.search(r"(?<!\\)\\(?:input|include)\b", active):
+            raise ValueError(f"存在无法静态展开的 TeX input/include: {path}")
+        return active + comment
+
+    expanded = "".join(expand_active_part(line) for line in text.splitlines(keepends=True))
+    return expanded
 
 
 def read_input(path: Path):
     data = json.loads(path.read_text(encoding="utf-8-sig"))
     if not isinstance(data, dict):
         raise ValueError("论文输入必须是 JSON 对象")
-    for key in ("title", "abstract_tex_path", "keywords", "chapters"):
+    for key in ("title", "abstract_tex_path", "keywords", "appendix_pseudocode", "chapters"):
         if key not in data:
             raise ValueError(f"输入缺少字段: {key}")
     forbidden = {"abstract", "content", "content_file"} & set(data)
@@ -551,10 +745,22 @@ def read_input(path: Path):
         raise ValueError(f"TeX-first 输入禁止旧字段: {', '.join(sorted(forbidden))}")
     if not str(data["title"]).strip():
         raise ValueError("论文题目不能为空")
-    if not isinstance(data["keywords"], list) or not data["keywords"]:
-        raise ValueError("关键词必须至少提供一个条目")
-    if any(not str(k).strip() for k in data["keywords"]):
-        raise ValueError("关键词不能是空字符串")
+    if not isinstance(data["keywords"], list) or not all(
+        isinstance(item, str) for item in data["keywords"]
+    ):
+        raise ValueError("关键词必须是字符串数组")
+    keywords = [item.strip() for item in data["keywords"]]
+    if any(not item for item in keywords):
+        raise ValueError("关键词不能包含空字符串")
+    if not 3 <= len(keywords) <= 6:
+        raise ValueError("关键词必须提供 3–6 个")
+    normalized_keywords = [
+        re.sub(r"\s+", "", unicodedata.normalize("NFKC", item)).casefold()
+        for item in keywords
+    ]
+    if len(set(normalized_keywords)) != len(normalized_keywords):
+        raise ValueError("关键词规范化后不得重复")
+    data["keywords"] = keywords
     root = path.parent.resolve()
     abstract_path = resolve_tex_path(root, str(data["abstract_tex_path"]), "abstract_tex_path")
     if not read_tex_source(abstract_path, root).strip():
@@ -603,6 +809,29 @@ def read_input(path: Path):
     orders = [int(chapter["order"]) for chapter in data["chapters"]]
     if orders != sorted(orders):
         raise ValueError("章节 order 必须严格递增")
+    question_contract = question_opener_manifest_contract(data)
+    if not question_contract["ok"]:
+        raise ValueError("question_openers 配置无效: " + "; ".join(question_contract["errors"]))
+    policy = data["appendix_pseudocode"]
+    if not isinstance(policy, dict) or set(policy) - {"required", "reason"}:
+        raise ValueError("appendix_pseudocode 必须是仅含 required/reason 的对象")
+    if type(policy.get("required")) is not bool:
+        raise ValueError("appendix_pseudocode.required 必须显式为布尔值")
+    if "reason" in policy and not isinstance(policy["reason"], str):
+        raise ValueError("appendix_pseudocode.reason 必须是字符串")
+    if policy["required"] is False:
+        reason = str(policy.get("reason", "")).strip()
+        if len(reason) < 8 or MANIFEST_REASON_SENTINEL_RE.search(reason) or not re.search(
+            r"纯解析|解析推导|理论推导|闭式|证明|不依赖|不涉及|无需|未使用|没有使用|"
+            r"analytic|closed[- ]form|proof|without|does not",
+            reason,
+            re.IGNORECASE,
+        ):
+            raise ValueError("appendix_pseudocode.required=false 必须给出充分具体的不适用理由")
+    if policy["required"] is True and not any(
+        chapter["role"] == "appendix" for chapter in data["chapters"]
+    ):
+        raise ValueError("appendix_pseudocode.required=true 时必须声明 appendix 章节")
     leaked = [value for value in identity_values if IDENTITY_RE.search(value)]
     if leaked:
         raise ValueError("输入疑似含身份信息，请清理学校/队号/姓名/路径后再生成")
@@ -616,13 +845,28 @@ def remove_numbering_from_paragraph(paragraph):
         ppr.remove(num)
 
 
+def is_external_local_file_target(target: str, target_mode: str = "") -> bool:
+    """Identify external relationships that expose a local/network path."""
+    decoded = unquote(target).strip().replace("\\", "/")
+    lower = decoded.lower()
+    if lower.startswith("file:") or re.match(r"^[a-z]:/", lower):
+        return True
+    if decoded.startswith("//"):
+        return True
+    return target_mode.lower() == "external" and decoded.startswith("/")
+
+
 def scrub_package(path: Path):
     """Remove template-only hidden payloads and personal core properties."""
     temp = path.with_suffix(path.suffix + ".cleaning")
     with zipfile.ZipFile(path, "r") as src, zipfile.ZipFile(temp, "w", zipfile.ZIP_DEFLATED) as dst:
         for info in src.infolist():
             name = info.filename
-            if name.startswith("customXml/") or name.startswith("word/embeddings/"):
+            if (
+                name.startswith("customXml/")
+                or name.startswith("word/embeddings/")
+                or name == "docProps/custom.xml"
+            ):
                 continue
             data = src.read(name)
             if name == "docProps/core.xml":
@@ -634,23 +878,62 @@ def scrub_package(path: Path):
                 data = xml_bytes(root)
             elif name == "docProps/app.xml":
                 root = etree_from_bytes(data)
+                normalized = {
+                    "Application": "Microsoft Office Word",
+                    "Template": "Normal.dotm",
+                    "TotalTime": "0",
+                    "Company": "",
+                    "Manager": "",
+                }
                 for tag in ("Pages", "Words", "Characters", "CharactersWithSpaces", "Lines", "Paragraphs"):
                     for el in root.iter():
                         if el.tag.rsplit("}", 1)[-1] == tag:
                             el.text = "0"
+                for el in root.iter():
+                    local = el.tag.rsplit("}", 1)[-1]
+                    if local in normalized:
+                        el.text = normalized[local]
                 data = xml_bytes(root)
-            elif name == "word/_rels/document.xml.rels":
+            elif name.startswith("word/") and name.endswith(".xml"):
+                root = etree_from_bytes(data)
+                changed = False
+                for element in list(root.iter()):
+                    namespace = element.tag[1:].split("}", 1)[0] if element.tag.startswith("{") else ""
+                    if (
+                        element.tag.rsplit("}", 1)[-1]
+                        not in {"OLEObject", "attachedTemplate", "docVars"}
+                        and namespace != "http://www.wps.cn/officeDocument/2013/wpsCustomData"
+                    ):
+                        continue
+                    parent = element.getparent()
+                    if parent is not None:
+                        parent.remove(element)
+                        changed = True
+                if changed:
+                    data = xml_bytes(root)
+            elif name.endswith(".rels"):
                 root = etree_from_bytes(data)
                 for rel in list(root):
                     target = rel.get("Target", "")
-                    if "embedding" in target or target.startswith("../customXml"):
+                    if (
+                        "embedding" in target
+                        or target.startswith("../customXml")
+                        or target.endswith("docProps/custom.xml")
+                        or is_external_local_file_target(
+                            target, rel.get("TargetMode", "")
+                        )
+                    ):
                         root.remove(rel)
                 data = xml_bytes(root)
             elif name == "[Content_Types].xml":
                 root = etree_from_bytes(data)
                 for override in list(root):
                     part = override.get("PartName", "")
-                    if "/word/embeddings/" in part or "/customXml/" in part:
+                    if (
+                        "/word/embeddings/" in part
+                        or "/customXml/" in part
+                        or part == "/docProps/custom.xml"
+                    ):
                         root.remove(override)
                 data = xml_bytes(root)
             dst.writestr(info, data)

@@ -12,7 +12,10 @@ import argparse
 import json
 import re
 import shutil
+import unicodedata
 from pathlib import Path
+
+from audit_tex import MANIFEST_REASON_SENTINEL_RE, question_opener_manifest_contract
 
 
 ROLES = {"preliminary", "problem", "evaluation", "conclusion", "references", "appendix"}
@@ -75,7 +78,7 @@ def load_manifest(path: Path) -> dict:
     data = json.loads(path.read_text(encoding="utf-8-sig"))
     if not isinstance(data, dict):
         raise ValueError("manifest 必须是 JSON 对象")
-    required = {"title", "keywords", "abstract_tex_path", "chapters"}
+    required = {"title", "keywords", "abstract_tex_path", "appendix_pseudocode", "chapters"}
     missing = sorted(required - set(data))
     if missing:
         raise ValueError(f"manifest 缺少字段: {', '.join(missing)}")
@@ -84,10 +87,22 @@ def load_manifest(path: Path) -> dict:
         raise ValueError(f"LaTeX-first manifest 禁止字段: {', '.join(sorted(forbidden))}")
     if not str(data["title"]).strip():
         raise ValueError("论文题目不能为空")
-    if not isinstance(data["keywords"], list) or not data["keywords"]:
-        raise ValueError("关键词必须至少提供一个条目")
-    if any(not str(item).strip() for item in data["keywords"]):
+    if not isinstance(data["keywords"], list) or not all(
+        isinstance(item, str) for item in data["keywords"]
+    ):
+        raise ValueError("关键词必须是字符串数组")
+    keywords = [item.strip() for item in data["keywords"]]
+    if any(not item for item in keywords):
         raise ValueError("关键词不能包含空字符串")
+    if not 3 <= len(keywords) <= 6:
+        raise ValueError("关键词必须提供 3–6 个")
+    normalized_keywords = [
+        re.sub(r"\s+", "", unicodedata.normalize("NFKC", item)).casefold()
+        for item in keywords
+    ]
+    if len(set(normalized_keywords)) != len(normalized_keywords):
+        raise ValueError("关键词规范化后不得重复")
+    data["keywords"] = keywords
     if not isinstance(data["chapters"], list) or not data["chapters"]:
         raise ValueError("chapters 不能为空")
     chapter_ids: set[str] = set()
@@ -117,6 +132,29 @@ def load_manifest(path: Path) -> dict:
             raise ValueError(f"章节 {chapter['chapter_id']} 禁止使用 Markdown 源文件")
     if orders != sorted(orders) or len(set(orders)) != len(orders):
         raise ValueError("章节 order 必须严格递增且不重复")
+    question_contract = question_opener_manifest_contract(data)
+    if not question_contract["ok"]:
+        raise ValueError("question_openers 配置无效: " + "; ".join(question_contract["errors"]))
+    policy = data["appendix_pseudocode"]
+    if not isinstance(policy, dict) or set(policy) - {"required", "reason"}:
+        raise ValueError("appendix_pseudocode 必须是仅含 required/reason 的对象")
+    if type(policy.get("required")) is not bool:
+        raise ValueError("appendix_pseudocode.required 必须显式为布尔值")
+    if "reason" in policy and not isinstance(policy["reason"], str):
+        raise ValueError("appendix_pseudocode.reason 必须是字符串")
+    if policy["required"] is False:
+        reason = str(policy.get("reason", "")).strip()
+        if len(reason) < 8 or MANIFEST_REASON_SENTINEL_RE.search(reason) or not re.search(
+            r"纯解析|解析推导|理论推导|闭式|证明|不依赖|不涉及|无需|未使用|没有使用|"
+            r"analytic|closed[- ]form|proof|without|does not",
+            reason,
+            re.IGNORECASE,
+        ):
+            raise ValueError("appendix_pseudocode.required=false 必须给出充分具体的不适用理由")
+    if policy["required"] is True and not any(
+        chapter["role"] == "appendix" for chapter in data["chapters"]
+    ):
+        raise ValueError("appendix_pseudocode.required=true 时必须声明 appendix 章节")
     return data
 
 
@@ -141,7 +179,9 @@ def build_main(manifest: dict, root: Path, contest_config: dict) -> tuple[str, l
 
     raw_title = str(manifest["title"]).strip()
     title = tex_escape(raw_title)
-    keywords = r"\quad ".join(tex_escape(str(item).strip()) for item in manifest["keywords"])
+    keywords = r"\quad ".join(
+        rf"\mbox{{{tex_escape(str(item).strip())}}}" for item in manifest["keywords"]
+    )
     edition = contest_edition(contest_config)
     lines = [
         "% !TEX program = xelatex",

@@ -191,6 +191,6 @@ def test_no_cjk_font_fallback(monkeypatch, tmp_path):
 def test_help_exit_zero():
     r = subprocess.run(
         [sys.executable, str(SCRIPTS / "render_roadmap.py"), "--help"],
-        capture_output=True, text=True,
+        capture_output=True, text=True, encoding="utf-8", errors="replace",
     )
     assert r.returncode == 0, r.stderr

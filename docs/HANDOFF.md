@@ -144,7 +144,7 @@
 | evidence-ledger.md | 证据台账与 AI 来源标注 |
 | figures-interface.md | 论文图规范与求解图接口；图表计划必须源自读题审计报告 |
 | paper-writing.md | 章节结构、内容密度与官方页数限制核对（当前默认无页数门禁） |
-| abstract.md | 摘要专项（国一模板；官方表述为摘要一般不超过两页） |
+| abstract.md | 摘要专项（官方表述为一般不超过两页；用户内部交付固定为题目+摘要+关键词一个逻辑页） |
 | deai-writing.md | 反模板/反 AI 味（源自 human-signal，需继续吸收其 references） |
 | innovation.md | 创新点提炼与伪创新识别 |
 | submission.md | 提交规范与 AI 披露（2026 规定） |

@@ -2,10 +2,13 @@
 """Regression checks for the Figure + Table evidence plan."""
 
 import json
+from copy import deepcopy
 from pathlib import Path
 
+import pytest
 from jsonschema import Draft202012Validator
 
+import progress
 import visual_plan_audit
 import visual_plan_init
 
@@ -83,6 +86,120 @@ def test_initializer_starts_with_unconfirmed_figure_count_lock(tmp_path, monkeyp
         "counting_rule": "numbered_top_level_figures",
         "confirmation_record": "",
     }
+
+
+def test_complex_f01_initializer_matches_schema_audit_and_progress(tmp_path, monkeypatch):
+    output = tmp_path / "求解" / "视觉计划.json"
+    monkeypatch.setattr(
+        "sys.argv",
+        [
+            "visual_plan_init.py",
+            "--output", str(output),
+            "--project-title", "复杂多问测试",
+            "--problem-id", "问题一",
+            "--complex-f01",
+        ],
+    )
+    visual_plan_init.main()
+    plan = json.loads(output.read_text(encoding="utf-8"))
+    schema = json.loads(
+        (ROOT / "scripts" / "视觉计划.schema.json").read_text(encoding="utf-8")
+    )
+    Draft202012Validator(schema).validate(plan)
+
+    f01 = plan["global_figures"][0]
+    assert f01["figure_id"] == "F01"
+    assert f01["role"] == "complex_multi_question_framework"
+    assert f01["route"].startswith("paper-framework-figure-studio-pro")
+    assert not Path(f01["framework_binding"]).is_absolute()
+    assert not Path(f01["framework_audit_report"]).is_absolute()
+
+    result = visual_plan_audit.audit(output, "plan", tmp_path, None)
+    checks = {item["code"]: item for item in result["checks"]}
+    assert checks["complex_f01_declared_at_most_once"]["ok"] is True
+    assert checks["complex_f01_contract_declared_once"]["ok"] is True
+    assert checks["F01:complex_f01_contract"]["ok"] is True
+
+    declared, bindings, reports = progress._complex_f01_declaration(tmp_path)
+    assert declared is True
+    assert bindings == [f01["framework_binding"]]
+    assert reports == [f01["framework_audit_report"]]
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("framework_binding", "../F01_framework_binding.json"),
+        ("framework_binding", "C:/outside/F01_framework_binding.json"),
+        ("framework_audit_report", "/outside/F01_framework_audit.json"),
+        ("framework_audit_report", "求解/framework/F01_framework_audit.txt"),
+    ],
+)
+def test_complex_f01_schema_rejects_non_project_json_paths(field, value):
+    schema = json.loads(
+        (ROOT / "scripts" / "视觉计划.schema.json").read_text(encoding="utf-8")
+    )
+    figure = visual_plan_init.make_complex_f01("问题一")
+    figure[field] = value
+    validator = Draft202012Validator({
+        "$schema": schema["$schema"],
+        "$ref": "#/$defs/figure",
+        "$defs": schema["$defs"],
+    })
+    assert not validator.is_valid(figure)
+
+
+def test_complex_f01_schema_rejects_partial_or_non_f01_contract():
+    schema = json.loads(
+        (ROOT / "scripts" / "视觉计划.schema.json").read_text(encoding="utf-8")
+    )
+    validator = Draft202012Validator({
+        "$schema": schema["$schema"],
+        "$ref": "#/$defs/figure",
+        "$defs": schema["$defs"],
+    })
+    figure = visual_plan_init.make_complex_f01("问题一")
+
+    partial = deepcopy(figure)
+    partial.pop("framework_audit_report")
+    assert not validator.is_valid(partial)
+
+    wrong_id = deepcopy(figure)
+    wrong_id["figure_id"] = "F02"
+    assert not validator.is_valid(wrong_id)
+
+
+def test_visual_plan_audit_rejects_duplicate_complex_f01(tmp_path):
+    plan = {
+        "schema_version": "1.2",
+        "project_title": "重复 F01 测试",
+        "plan_status": "draft",
+        "figure_count_lock": {
+            "status": "proposed",
+            "proposed_total": 2,
+            "user_requested_total": None,
+            "final_total": 2,
+            "counting_rule": "numbered_top_level_figures",
+            "confirmation_record": "",
+        },
+        "visual_encoding_path": "求解/视觉编码表.md",
+        "color_semantics": visual_plan_audit.EXPECTED_COLOR_SEMANTICS,
+        "problems": [visual_plan_init.make_problem("问题一", "complex")],
+        "global_figures": [visual_plan_init.make_complex_f01("问题一")],
+        "global_tables": [],
+        "flowcharts": [],
+    }
+    plan["problems"][0]["figures"].append(
+        deepcopy(plan["global_figures"][0])
+    )
+    plan_path = tmp_path / "visual-plan.json"
+    plan_path.write_text(json.dumps(plan, ensure_ascii=False), encoding="utf-8")
+
+    result = visual_plan_audit.audit(plan_path, "plan", tmp_path, None)
+    checks = {item["code"]: item for item in result["checks"]}
+    assert checks["figure_ids_unique"]["ok"] is False
+    assert checks["complex_f01_declared_at_most_once"]["ok"] is False
+    assert checks["complex_f01_contract_declared_once"]["ok"] is False
 
 
 def test_plan_audit_counts_non_redundant_tables(tmp_path):

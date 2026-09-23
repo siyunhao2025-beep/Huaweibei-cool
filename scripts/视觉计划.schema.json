@@ -72,6 +72,11 @@
     }
   },
   "$defs": {
+    "projectRelativeJsonPath": {
+      "type": "string",
+      "minLength": 6,
+      "pattern": "^(?![A-Za-z]:[\\\\/])(?![\\\\/])(?!.*(?:^|[\\\\/])\\.\\.(?:[\\\\/]|$)).+\\.json$"
+    },
     "evidence": {
       "type": "object",
       "required": [
@@ -234,8 +239,38 @@
         "statistics_report": {"type": "string", "minLength": 1},
         "qa_report": {"type": "string", "minLength": 1},
         "paper": {"$ref": "#/$defs/paper_link"},
-        "status": {"enum": ["planned", "data_ready", "rendered", "qa_pass", "incomplete"]}
-      }
+        "status": {"enum": ["planned", "data_ready", "rendered", "qa_pass", "incomplete"]},
+        "role": {"const": "complex_multi_question_framework"},
+        "route": {
+          "type": "string",
+          "pattern": "paper-framework-figure-studio-pro"
+        },
+        "complex_framework": {"const": true},
+        "framework_binding": {"$ref": "#/$defs/projectRelativeJsonPath"},
+        "framework_audit_report": {"$ref": "#/$defs/projectRelativeJsonPath"}
+      },
+      "allOf": [
+        {
+          "if": {
+            "anyOf": [
+              {"required": ["role"]},
+              {"required": ["route"]},
+              {"required": ["complex_framework"]},
+              {"required": ["framework_binding"]},
+              {"required": ["framework_audit_report"]}
+            ]
+          },
+          "then": {
+            "properties": {"figure_id": {"const": "F01"}},
+            "required": [
+              "role",
+              "route",
+              "framework_binding",
+              "framework_audit_report"
+            ]
+          }
+        }
+      ]
     },
     "schematic": {
       "type": "object",

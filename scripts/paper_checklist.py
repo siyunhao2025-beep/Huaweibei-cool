@@ -6,7 +6,8 @@
 输出 Markdown 报告，并在论文目录生成《论文自检表_已勾选.md》。
 
 人工条目（字体、配色、叙事流畅度等）输出 ☐ 待人工；用 --mark ID=pass|na 记录裁决，
-持久化到论文目录旁的 paper_checklist_decisions.json。--strict 模式下未裁决人工条目即失败。
+持久化到论文目录旁的 paper_checklist_decisions.json。--strict 模式下任何机检 fail/pending
+或人工条目未裁决都会失败。
 
 用法：
   python scripts/paper_checklist.py --tex path/to/main.tex --problems 3 --archetype optimization
@@ -19,9 +20,23 @@ import argparse
 import json
 import re
 import sys
+import unicodedata
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
+
+from audit_tex import (
+    _active_tex_source,
+    _caption_texts,
+    _document_body_from_active_source,
+    _figure_wrapper_specs,
+    _large_figure_spans,
+    _read_braced_argument,
+    analyze_symbol_glossary,
+    expand_tex_in_order,
+    find_project_root,
+)
+from progress import build_provenance
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 CHECKLIST_JSON = REPO_ROOT / "assets" / "checklists" / "paper_checklist.json"
@@ -32,6 +47,12 @@ ARCHETYPES = {
     "optimization", "evaluation", "prediction", "classification-cv",
     "mechanism", "signal", "spatial-graph", "simulation",
 }
+
+TEX_ONLY_PENDING = (
+    "未提供可读 TeX 源稿，无法可靠判定；请运行 "
+    "scripts/audit_docx.py --docx <论文.docx> --report <审计报告.json> "
+    "完成 DOCX 专项审计"
+)
 
 # 章节关键词（按出现顺序切分；首个 \section 之前的内容归 "preamble"）
 SECTION_KEYWORDS = [
@@ -71,6 +92,7 @@ class PaperContext:
     problems: Optional[int] = None
     archetype: Optional[str] = None
     decisions: dict = field(default_factory=dict)
+    tex_expansion_errors: list[str] = field(default_factory=list)
 
 
 # --------------------------------------------------------------------------- #
@@ -130,9 +152,126 @@ def _sec_body(ctx: PaperContext, key: str) -> str:
     return body
 
 
+def _abstract_body(ctx: PaperContext) -> tuple[str, bool]:
+    """Return ``(body, is_production_environment)`` with legacy fallback."""
+    active = _document_body_from_active_source(_active_tex_source(ctx.tex_text))
+    match = re.search(
+        r"\\begin\s*\{abstract\}(.*?)\\end\s*\{abstract\}",
+        active,
+        re.IGNORECASE | re.DOTALL,
+    )
+    if match:
+        return match.group(1), True
+    return _sec_body(ctx, "abstract"), False
+
+
+_CHINESE_QUESTION_NUMBERS = {
+    "一": 1,
+    "二": 2,
+    "三": 3,
+    "四": 4,
+    "五": 5,
+    "六": 6,
+    "七": 7,
+    "八": 8,
+    "九": 9,
+    "十": 10,
+}
+
+
+def _question_numbers(text: str) -> set[int]:
+    pattern = re.compile(
+        r"问题\s*(?:(?P<problem_cn>[一二三四五六七八九十]+)|(?P<problem_digit>\d+))|"
+        r"第\s*(?:(?P<ordinal_cn>[一二三四五六七八九十]+)|(?P<ordinal_digit>\d+))\s*问|"
+        r"(?<![A-Za-z0-9_])(?:Q|Question)\s*(?P<latin>\d+)(?!\d)",
+        re.IGNORECASE,
+    )
+    numbers: set[int] = set()
+    for match in pattern.finditer(text):
+        raw = (
+            match.group("problem_digit")
+            or match.group("ordinal_digit")
+            or match.group("latin")
+        )
+        if raw is not None:
+            numbers.add(int(raw))
+            continue
+        chinese = match.group("problem_cn") or match.group("ordinal_cn")
+        value = _CHINESE_QUESTION_NUMBERS.get(chinese or "")
+        if value is None and chinese and "十" in chinese:
+            tens, ones = chinese.split("十", 1)
+            tens_value = _CHINESE_QUESTION_NUMBERS.get(tens, 1) if tens else 1
+            ones_value = _CHINESE_QUESTION_NUMBERS.get(ones, 0) if ones else 0
+            value = tens_value * 10 + ones_value
+        if value is not None:
+            numbers.add(value)
+    return numbers
+
+
+def _keyword_tokens(value: str) -> tuple[list[str], list[str]]:
+    raw_tokens = re.split(r"\\(?:quad|qquad)(?![A-Za-z@])|[；;，,]", value)
+    normalized: list[str] = []
+    display: list[str] = []
+    for raw in raw_tokens:
+        token = raw.strip()
+        if not token:
+            continue
+        plain = token
+        previous = None
+        while previous != plain:
+            previous = plain
+            plain = re.sub(
+                r"\\(?:mbox|textbf|textit|textrm|mathrm)\s*\{([^{}]*)\}",
+                r"\1",
+                plain,
+                flags=re.IGNORECASE,
+            )
+        for escaped, literal in ((r"\&", "&"), (r"\%", "%"), (r"\_", "_")):
+            plain = plain.replace(escaped, literal)
+        plain = re.sub(r"\\[A-Za-z@]+\*?", "", plain)
+        plain = re.sub(r"[{}~\s]+", "", plain)
+        plain = unicodedata.normalize("NFKC", plain).casefold()
+        if plain:
+            normalized.append(plain)
+            display.append(token)
+    return normalized, display
+
+
+def _keyword_value(body: str, production: bool) -> tuple[str | None, str | None]:
+    commands = list(re.finditer(r"\\keywords\b", body, re.IGNORECASE))
+    if commands:
+        if len(commands) != 1:
+            return None, "摘要中必须且只能出现一个 \\keywords{...}"
+        value, _ = _read_braced_argument(body, commands[0].end())
+        if value is None or not value.strip():
+            return None, "\\keywords{...} 必须花括号闭合且内容非空"
+        return value, None
+    if production:
+        return None, "生产摘要环境缺少非空的 \\keywords{...}"
+    plain = re.search(r"关键词\s*[:：]\s*([^\r\n]+)", body, re.IGNORECASE)
+    if plain is None or not plain.group(1).strip():
+        return None, "摘要未发现非空关键词行"
+    return plain.group(1), None
+
+
 def check_q03(ctx: PaperContext) -> CheckResult:
     """Q03 中文论文的图题至少包含中文；标准缩写/变量可保留。"""
-    captions = re.findall(r"\\caption\s*\{([^}]*)\}", ctx.tex_text)
+    if not ctx.tex_text:
+        return CheckResult("Q03", "pending", TEX_ONLY_PENDING)
+    active = _active_tex_source(ctx.tex_text)
+    if "UNRESOLVED_TEX_CONDITIONAL" in active:
+        return CheckResult("Q03", "fail", "存在无法静态判定的 TeX 条件分支")
+    clean = _document_body_from_active_source(active)
+    captions = [
+        caption for caption in _caption_texts(clean)
+        if "#" not in caption
+    ]
+    captions.extend(
+        figure["caption"]
+        for figure in _large_figure_spans(clean, _figure_wrapper_specs(active))
+        if figure["kind"].lower() not in {"figure", "figure*"}
+        and figure["caption"]
+    )
     bad = [c for c in captions if not has_chinese(c)]
     if bad:
         return CheckResult("Q03", "fail", f"{len(bad)} 个题注纯 ASCII，如：{bad[0][:40]}")
@@ -141,57 +280,184 @@ def check_q03(ctx: PaperContext) -> CheckResult:
 
 def check_q04(ctx: PaperContext) -> CheckResult:
     """Q04 每个图/表都在正文被引用。对账 label/ref 与 caption 编号。"""
-    # 收集所有 \label{...} 与 \ref{...}
-    labels = set(re.findall(r"\\label\s*\{([^}]+)\}", ctx.tex_text))
-    refs = set(re.findall(r"\\(?:ref|eqref|autoreval|autoref)\s*\{([^}]+)\}", ctx.tex_text))
-    unreferenced = sorted(labels - refs)
-    # 也兜底：caption 里的“图 N / 表 N”编号是否在正文出现（不含浮动体内）
-    if unreferenced:
-        return CheckResult("Q04", "fail", f"{len(unreferenced)} 个 label 未被 \\ref 引用：{unreferenced[:5]}")
-    return CheckResult("Q04", "pass", f"{len(labels)} 个 label 全部被引用")
+    if not ctx.tex_text:
+        return CheckResult("Q04", "pending", TEX_ONLY_PENDING)
+    active = _active_tex_source(ctx.tex_text)
+    if "UNRESOLVED_TEX_CONDITIONAL" in active:
+        return CheckResult("Q04", "fail", "存在无法静态判定的 TeX 条件分支")
+    clean = _document_body_from_active_source(active)
+    float_re = re.compile(
+        r"\\begin\s*\{(?P<env>figure\*?|table\*?|longtable)\}"
+        r"(?P<body>.*?)\\end\s*\{(?P=env)\}",
+        re.I | re.S,
+    )
+    floats = list(float_re.finditer(clean))
+    failures = []
+    all_bound_labels = []
+    checked = 0
+    for match in floats:
+        body = match.group("body")
+        block_labels = re.findall(r"\\label\s*\{([^}]+)\}", body)
+        if any("#" in label for label in block_labels):
+            continue
+        checked += 1
+        has_caption = bool(re.search(r"\\caption(?:\[[^]]*\])?\s*\{", body, re.S))
+        labels = [label.strip() for label in block_labels if label.strip()]
+        if not has_caption:
+            failures.append(f"第 {checked} 个 {match.group('env')} 缺少 caption")
+        if not labels:
+            failures.append(f"第 {checked} 个 {match.group('env')} 缺少 label")
+        else:
+            label = labels[-1]
+            if not re.search(
+                rf"\\(?:ref|autoref)\s*\{{{re.escape(label)}\}}",
+                clean[:match.start()],
+                re.I,
+            ):
+                failures.append(
+                    f"第 {checked} 个 {match.group('env')} 的主 label 未在图表前被 ref 引用：{label}"
+                )
+            all_bound_labels.append(label)
+
+    for figure in _large_figure_spans(clean, _figure_wrapper_specs(active)):
+        if figure["kind"].lower() in {"figure", "figure*"}:
+            continue
+        checked += 1
+        caption = figure["caption"]
+        label = figure["bound_label"]
+        if not caption:
+            failures.append(f"第 {checked} 个 {figure['kind']} 调用缺少题注")
+        if not label:
+            failures.append(f"第 {checked} 个 {figure['kind']} 调用缺少 label")
+        elif not re.search(
+            rf"\\(?:ref|autoref)\s*\{{{re.escape(label)}\}}",
+            clean[:figure["start"]],
+            re.I,
+        ):
+            failures.append(
+                f"第 {checked} 个 {figure['kind']} 的 label 未在图前被 ref 引用：{label}"
+            )
+        if label:
+            all_bound_labels.append(label)
+    duplicate_labels = sorted(
+        {label for label in all_bound_labels if all_bound_labels.count(label) > 1}
+    )
+    if duplicate_labels:
+        failures.append(f"图表 label 重复：{duplicate_labels}")
+    if failures:
+        return CheckResult("Q04", "fail", "；".join(failures))
+    return CheckResult("Q04", "pass", f"{checked} 个图表均有 caption、唯一 label 与图表前正文引用")
 
 
 def check_s03_s04(ctx: PaperContext) -> tuple[CheckResult, CheckResult]:
-    """S03 使用三线表（列数按内容决定）；S04 表有 caption。"""
-    body = _sec_body(ctx, "symbol")
-    if not body:
-        return (CheckResult("S03", "pending", "未找到“符号说明”章节"),
-                CheckResult("S04", "pending", "未找到“符号说明”章节"))
-    has_top = bool(re.search(r"\\toprule", body))
-    has_mid = bool(re.search(r"\\midrule", body))
-    has_bot = bool(re.search(r"\\bottomrule", body))
-    has_caption = bool(re.search(r"\\caption", body))
-    if has_top and has_mid and has_bot:
-        s03 = CheckResult("S03", "pass", "三线表命令齐全（top/mid/bottom），列数留待内容审查")
+    """S03/S04 share the release audit's main-symbol table contract."""
+    if not ctx.tex_text:
+        return (
+            CheckResult("S03", "pending", TEX_ONLY_PENDING),
+            CheckResult("S04", "pending", TEX_ONLY_PENDING),
+        )
+    analysis = analyze_symbol_glossary(ctx.tex_text)
+    expansion_errors = ctx.tex_expansion_errors
+    if expansion_errors:
+        detail = "TeX 展开失败：" + "；".join(expansion_errors[:3])
+        return (CheckResult("S03", "fail", detail), CheckResult("S04", "fail", detail))
+
+    if analysis["structure_ok"]:
+        s03 = CheckResult(
+            "S03",
+            "pass",
+            f"主要符号三线表结构合规，共 {analysis['data_row_count']} 条真实数据行",
+        )
     else:
-        s03 = CheckResult("S03", "fail", f"三线表命令不全：top={has_top} mid={has_mid} bot={has_bot}")
-    s04 = CheckResult("S04", "pass", "符号说明表含 \\caption") if has_caption \
-        else CheckResult("S04", "fail", "符号说明表缺 \\caption")
+        s03 = CheckResult(
+            "S03",
+            "fail",
+            "；".join(analysis["structure_failures"]),
+        )
+    if analysis["metadata_ok"]:
+        s04 = CheckResult("S04", "pass", "符号表题注、唯一 label 与表前正文引用完整")
+    else:
+        s04 = CheckResult(
+            "S04",
+            "fail",
+            "；".join(analysis["metadata_failures"]),
+        )
     return s03, s04
 
 
 def check_a_series(ctx: PaperContext) -> list[CheckResult]:
-    body = _sec_body(ctx, "abstract")
+    if not ctx.tex_text:
+        return [
+            CheckResult("A02", "pending", TEX_ONLY_PENDING),
+            CheckResult("A10", "pending", TEX_ONLY_PENDING),
+        ]
+    body, production = _abstract_body(ctx)
     if not body:
         return [
             CheckResult("A02", "pending", "未找到摘要章节"),
             CheckResult("A10", "pending", "未找到摘要章节"),
         ]
-    # A02: 能识别问题编号，但不限定“针对问题#”固定句式。
-    problem_mark = r"(?:问题\s*[一二三四五六七八九十\d]+|第\s*[一二三四五六七八九十\d]+\s*问)"
-    a02 = CheckResult("A02", "pass", "摘要内能识别问题编号") if re.search(problem_mark, body) \
-        else CheckResult("A02", "fail", "摘要未发现可识别的问题编号")
-    # A10: 关键词行
-    a10 = CheckResult("A10", "pass", "摘要含“关键词”或 \\keywords") \
-        if (re.search(r"关键词", body) or re.search(r"\\keywords", body)) \
-        else CheckResult("A10", "fail", "摘要未发现“关键词”行")
+    # A02: 提供题目数量时必须逐问覆盖；不限定“针对问题#”固定句式。
+    found = _question_numbers(body)
+    if isinstance(ctx.problems, int) and not isinstance(ctx.problems, bool) and ctx.problems > 0:
+        missing = sorted(set(range(1, ctx.problems + 1)) - found)
+        if missing:
+            a02 = CheckResult(
+                "A02",
+                "fail",
+                "摘要缺少问题编号：" + "、".join(map(str, missing))
+                + "；已识别：" + ("、".join(map(str, sorted(found))) or "无"),
+            )
+        else:
+            a02 = CheckResult(
+                "A02",
+                "pass",
+                f"摘要已覆盖问题 1–{ctx.problems}",
+            )
+    else:
+        a02 = CheckResult("A02", "pass", "摘要内能识别问题编号") if found \
+            else CheckResult("A02", "fail", "摘要未发现可识别的问题编号")
+
+    # A10: 仅检查关键词行的结构、数量和重复；领域覆盖仍由人工判断。
+    keyword_value, keyword_error = _keyword_value(body, production)
+    if keyword_error:
+        a10 = CheckResult("A10", "fail", keyword_error)
+    else:
+        normalized, display = _keyword_tokens(keyword_value or "")
+        duplicates = sorted({
+            display[index]
+            for index, value in enumerate(normalized)
+            if normalized.count(value) > 1
+        })
+        if duplicates:
+            a10 = CheckResult(
+                "A10",
+                "fail",
+                "关键词存在重复项：" + "、".join(duplicates),
+            )
+        elif not 3 <= len(normalized) <= 6:
+            a10 = CheckResult(
+                "A10",
+                "fail",
+                f"关键词共 {len(normalized)} 个，内部结构规则要求 3–6 个",
+            )
+        else:
+            a10 = CheckResult(
+                "A10",
+                "pass",
+                f"关键词共 {len(normalized)} 个，均非空且无重复；领域覆盖仍需人工判断",
+            )
     return [a02, a10]
 
 
 def check_v_series(ctx: PaperContext) -> list[CheckResult]:
+    if not ctx.tex_text:
+        return [CheckResult(f"V0{i}", "pending", TEX_ONLY_PENDING) for i in range(1, 5)]
     if not ctx.archetype:
         return [CheckResult(f"V0{i}", "pending", "未提供 --archetype") for i in range(1, 5)]
-    body = _sec_body(ctx, "check")
+    # 检验内容常嵌在编号问题的 subsection/subsubsection 中，而非独立 section。
+    # 未切出独立检验章时审查展开后的全文，避免把真实灵敏度/误差证据误判为空。
+    body = _sec_body(ctx, "check") or ctx.tex_text
     results = []
     # V01 评价类：至少出现稳定性/敏感性/一致性/外部对照证据之一。
     if ctx.archetype == "evaluation":
@@ -257,6 +523,32 @@ def save_decisions(path: Path, decisions: dict) -> None:
     path.write_text(json.dumps(decisions, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def decision_errors(decisions: dict, checklist: dict) -> list[str]:
+    """Reject unknown/machine overrides and unexplained NA decisions."""
+    if not isinstance(decisions, dict):
+        return ["裁决文件必须是 JSON 对象"]
+    manual_ids = {
+        item["id"] for item in checklist["items"]
+        if item["check_method"] == "manual"
+    }
+    known_ids = {item["id"] for item in checklist["items"]}
+    errors = []
+    for item_id, decision in decisions.items():
+        if item_id not in known_ids:
+            errors.append(f"未知自检项：{item_id}")
+            continue
+        if item_id not in manual_ids:
+            errors.append(f"机检项不得用 sidecar 覆盖：{item_id}")
+            continue
+        if not isinstance(decision, dict) or decision.get("status") not in {"pass", "na"}:
+            errors.append(f"{item_id} 的裁决必须为 pass 或 na")
+            continue
+        note = str(decision.get("note", "")).strip()
+        if decision["status"] == "na" and len(note) < 4:
+            errors.append(f"{item_id}=na 必须给出具体理由（至少 4 个字符）")
+    return errors
+
+
 def render_report(checklist: dict, results: dict[str, CheckResult],
                   ctx: PaperContext) -> str:
     lines = ["# 论文自检表_已勾选", ""]
@@ -284,23 +576,30 @@ def render_report(checklist: dict, results: dict[str, CheckResult],
             # 人工条目：看 sidecar
             dec = ctx.decisions.get(sid)
             if dec and dec.get("status") == "pass":
-                icon = "✅"; note = dec.get("note", "")
+                icon = "✅"
+                note = dec.get("note", "")
                 n_pass += 1
             elif dec and dec.get("status") == "na":
-                icon = "➖"; note = "不适用：" + dec.get("note", "")
+                icon = "➖"
+                note = "不适用：" + dec.get("note", "")
                 n_na += 1
             else:
-                icon = "☐"; note = "待人工：" + item["item"]
+                icon = "☐"
+                note = "待人工：" + item["item"]
                 n_pending += 1
         else:
             if r.status == "pass":
-                icon = "✅"; n_pass += 1
+                icon = "✅"
+                n_pass += 1
             elif r.status == "fail":
-                icon = "❌"; n_fail += 1
+                icon = "❌"
+                n_fail += 1
             elif r.status == "na":
-                icon = "➖"; n_na += 1
+                icon = "➖"
+                n_na += 1
             else:
-                icon = "☐"; n_pending += 1
+                icon = "☐"
+                n_pending += 1
             note = r.evidence or r.detail
         line = f"- {icon} **{sid}** {item['item']}"
         if note:
@@ -334,11 +633,14 @@ def main(argv: Optional[list[str]] = None) -> int:
                     help="记录人工裁决 ID=pass|na，可多次")
     ap.add_argument("--note", default="", help="配合 --mark 的备注")
     ap.add_argument("--strict", action="store_true",
-                    help="存在未裁决人工条目即失败")
+                    help="任何机检 fail/pending 或人工条目未裁决即失败")
     args = ap.parse_args(argv)
 
     if not args.tex and not args.docx and not args.mark:
         ap.print_help()
+        if args.strict:
+            print("\n[FAIL] --strict 必须同时提供 --tex 或 --docx。", file=sys.stderr)
+            return 2
         return 0
 
     tex_path = Path(args.tex).resolve() if args.tex else None
@@ -353,6 +655,10 @@ def main(argv: Optional[list[str]] = None) -> int:
     # --mark 模式：只写 sidecar
     if args.mark:
         decisions = load_decisions(decisions_path)
+        existing_errors = decision_errors(decisions, checklist)
+        if existing_errors:
+            print("裁决文件无效：" + "；".join(existing_errors), file=sys.stderr)
+            return 2
         for spec in args.mark:
             if "=" not in spec:
                 print(f"--mark 格式错误：{spec}，应为 ID=pass|na", file=sys.stderr)
@@ -363,31 +669,85 @@ def main(argv: Optional[list[str]] = None) -> int:
                 print(f"--mark 取值必须是 pass|na：{spec}", file=sys.stderr)
                 return 2
             decisions[sid] = {"status": val, "note": args.note}
+        new_errors = decision_errors(decisions, checklist)
+        if new_errors:
+            print("裁决无效：" + "；".join(new_errors), file=sys.stderr)
+            return 2
         save_decisions(decisions_path, decisions)
         print(f"已记录 {len(args.mark)} 条人工裁决 -> {decisions_path}")
         return 0
 
     # 跑机检
+    decisions = load_decisions(decisions_path)
+    existing_errors = decision_errors(decisions, checklist)
+    if existing_errors:
+        print("裁决文件无效：" + "；".join(existing_errors), file=sys.stderr)
+        return 2
     ctx = PaperContext(tex_path=tex_path, docx_path=docx_path,
                        problems=args.problems, archetype=args.archetype,
-                       decisions=load_decisions(decisions_path))
+                       decisions=decisions)
     if tex_path and tex_path.exists():
-        ctx.tex_text = tex_path.read_text(encoding="utf-8", errors="replace")
+        project_root = find_project_root(tex_path.parent)
+        ctx.tex_text, ctx.tex_expansion_errors = expand_tex_in_order(
+            tex_path,
+            project_root,
+            base=tex_path.parent,
+        )
         ctx.tex_lines = ctx.tex_text.splitlines()
         ctx.sections, _ = split_sections(ctx.tex_text)
     else:
-        print(f"[warn] 未找到 tex：{tex_path}，机检条目将全部 pending", file=sys.stderr)
+        print(
+            f"[warn] 未找到可读 tex：{tex_path}；依赖 TeX 的机检条目将 pending。"
+            "DOCX 请另运行 scripts/audit_docx.py。",
+            file=sys.stderr,
+        )
 
     results = run_machine_checks(ctx)
     report = render_report(checklist, results, ctx)
     report_path = outdir / REPORT_NAME
+    status_map = {
+        item_id.strip(): icon
+        for icon, item_id in re.findall(
+            r"^-\s*(✅|❌|☐|➖)\s*\*\*([^*]+)\*\*",
+            report,
+            re.MULTILINE,
+        )
+    }
+    paper_path = tex_path or docx_path
+    provenance = build_provenance(
+        paper_path,
+        outdir,
+        decisions_path,
+        status_map,
+        args.problems,
+        args.archetype,
+    )
+    provenance_line = json.dumps(
+        provenance, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+    )
+    report = report.replace(
+        "# 论文自检表_已勾选\n",
+        f"# 论文自检表_已勾选\n\n<!-- paper-checklist-provenance: {provenance_line} -->\n",
+        1,
+    )
     report_path.write_text(report, encoding="utf-8")
     print(report)
     print(f"\n报告已写入: {report_path}")
 
     # 退出码
     n_fail = sum(1 for r in results.values() if r.status == "fail")
+    strict_blocked = False
     if args.strict:
+        machine_pending = sorted(
+            item_id for item_id, result in results.items() if result.status == "pending"
+        )
+        if machine_pending:
+            print(
+                f"[strict] 仍有 {len(machine_pending)} 条机检项目处于 pending："
+                + ", ".join(machine_pending),
+                file=sys.stderr,
+            )
+            strict_blocked = True
         # 人工条目未裁决：统计 checklist 中 manual 且未在 decisions 里的
         manual_unresolved = 0
         for item in checklist["items"]:
@@ -402,7 +762,9 @@ def main(argv: Optional[list[str]] = None) -> int:
                 manual_unresolved += 1
         if manual_unresolved:
             print(f"[strict] 仍有 {manual_unresolved} 条人工条目未裁决", file=sys.stderr)
-            return 1
+            strict_blocked = True
+    if strict_blocked:
+        return 1
     if n_fail:
         return 1
     return 0

@@ -1,7 +1,8 @@
 # quickstart demo · 工具链最小闭环样例（Wave5-C）
 
 > 用一道**完全虚构**的单变量优化题，验证"题面 → 初始化 → 读题审计 → 原型匹配 →
-> 技术路线图 → LaTeX 编译 PDF"的最小闭环。**不引用任何真实赛题语料**。
+> 技术路线图 → LaTeX 编译 PDF"的最小闭环。**不引用任何真实赛题语料，也不是正式华为杯
+> 版式样例**；官方封皮、标题字号、行距等由 `assets/paper-template/` 的生产模板验证。
 
 ## 题目
 某工厂生产产品 A，成本 $C(x)=x^2-10x+100$，售价固定 50，求利润最大的产量；
@@ -34,8 +35,8 @@ Step 7 在编译出 PDF 之后，对玩具论文跑 `scripts\paper_checklist.py`
 闭环补齐，做到自检表 100% 闭环：
 
 1. **拷入人工裁决 sidecar**：把本目录预置的 `paper_checklist_decisions.json` 拷到工作目录。
-   该文件预填了所有必须人工裁决的条目（字体 F 系列、篇幅 L 系列、配色 T06、图是否合理 Q08、
-   叙事 W 系列等）的结论——多数标 `pass`，面向其他题型（评价/预测/分类）的条目标 `na`。
+   该文件预填了所有必须人工裁决的条目；玩具稿中确有证据的项目标 `pass`，正式版式、附录、
+   数据预处理、候选算法比较和不存在的图表等项目标 `na` 并写明理由，不能靠“全部通过”伪造闭环。
 2. **跑一次机检**：`paper_checklist.py` 对 `main.tex` 做可确定性检查（R/Q/S/H/B/A/E/V 系列），
    并读取 sidecar 渲染人工条目，输出《论文自检表_已勾选.md》。
 3. **--strict 门禁**：再跑一次 `--strict`，要求退出码 0——即机检 0 个 ❌ 且所有人工条目均已裁决。
@@ -53,7 +54,7 @@ Step 7 在编译出 PDF 之后，对玩具论文跑 `scripts\paper_checklist.py`
 | `problem.txt` | 题面纯文本（供 playbook_match 读） |
 | `problem.yaml` | 桩配置：模型/鲁棒性/管线步骤 |
 | `read_audit_report.md` | 读题审计报告桩示例 |
-| `main.tex` / `main.pdf` | 极简中文论文源 / 编译产物（含灵敏度分析小节） |
+| `main.tex` / `main.pdf` | 极简中文工具链玩具稿 / 编译产物（含灵敏度分析；不作官方格式认证） |
 | `roadmap_optimization.yaml` | 技术路线图所用 optimization 模板 |
 | `roadmap.png` / `roadmap.pdf` | 路线图渲染产物（Wave5-A 渲染器） |
 | `paper_checklist_decisions.json` | Step 7 人工裁决 sidecar（预填全部 manual 条目） |
@@ -62,4 +63,5 @@ Step 7 在编译出 PDF 之后，对玩具论文跑 `scripts\paper_checklist.py`
 ## 说明与边界
 - 第 5 步依赖 Wave5-A 的 `scripts/render_roadmap.py`；本仓库已就绪，若缺失脚本会打印"待就绪"并跳过。
 - `build_latex.py` 面向完整论文模板（需 manifest + template-dir），本玩具样例按任务约定**手动 xelatex 编译极简 tex**，不跑完整模板链。
+- quickstart 的 `--strict` 只证明机检无错误且每个人工项已明确裁决；`na` 是有理由的不适用，不等于格式通过。
 - 正式比赛请把本样例的桩内容替换为真实题面；本 quickstart 不调用 MATLAB，完整测试在检测到 MATLAB 时会自动执行真机烟雾测试。

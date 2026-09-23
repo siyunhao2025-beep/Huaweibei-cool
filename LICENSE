@@ -21,5 +21,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 --------------------------------------------------------------------------------
-第三方资产声明：本仓库部分文件移植自上游 v2.1 工程包与 gmcmthesis 论文模板，
-其原始许可与来源见 docs/UPSTREAM.md。上游第三方作者的身份标识不随本仓库继承。
+第三方资产声明：本 MIT 许可只覆盖 Huaweibei-cool 贡献者有权许可的原创代码与文档，
+不把任何第三方模板、官方附件、徽标或字体重新许可为 MIT。第三方来源与当前许可状态见
+docs/UPSTREAM.md；文件出现在仓库中不构成授权证明。公开再分发前应由发布者独立确认权利。

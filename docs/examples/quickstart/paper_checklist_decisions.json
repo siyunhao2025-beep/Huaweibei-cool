@@ -1,31 +1,31 @@
 {
   "F01": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "quickstart 仅验证工具链，不是正式华为杯排版样例；正式题名字号由生产模板示例与审计验证"
   },
   "F02": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "quickstart 仅验证工具链，不认证官方一级标题格式"
   },
   "F03": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "quickstart 仅验证工具链，不认证官方二三级标题格式"
   },
   "F04": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "quickstart 已设置 Times 系字体但不是正式格式认证样例；正式字体由生产模板审计验证"
   },
   "F05": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "quickstart 仅验证工具链，不认证官方行距"
   },
   "F06": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "quickstart 无正式参赛彩图，不承担打印配色认证"
   },
   "L01": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "单变量解析玩具题不需要流程图"
   },
   "L02": {
     "status": "pass",
@@ -37,7 +37,7 @@
   },
   "L04": {
     "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "note": "问题分析明确给出售价与成本输入、产量输出、利润目标、非负约束、最低成功标准及单问无依赖关系"
   },
   "L05": {
     "status": "pass",
@@ -60,8 +60,8 @@
     "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "L10": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "单问玩具题没有跨问题共享验证章"
   },
   "L11": {
     "status": "pass",
@@ -84,12 +84,12 @@
     "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "L16": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "玩具题面和演示流程均无附件要求"
   },
   "L17": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "本样例为解析推导且没有附录；不虚构代码式伪代码"
   },
   "A01": {
     "status": "pass",
@@ -105,11 +105,11 @@
   },
   "A05": {
     "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "note": "摘要按建模因果关系连接构造利润、解析求优与扰动重算，没有机械堆叠顺序词"
   },
   "A06": {
     "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "note": "摘要明确给出并加粗最优产量、利润及参数扰动区间，结论量化且与正文一致"
   },
   "A07": {
     "status": "pass",
@@ -165,7 +165,7 @@
   },
   "B11": {
     "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "note": "问题一在首个公式前完成题面回溯、任务说明、解析路线与交付物说明"
   },
   "B13": {
     "status": "pass",
@@ -188,24 +188,24 @@
     "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "T03": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "本 quickstart 仅含一个编号问题，不存在跨问题依赖关系"
   },
   "T04": {
     "status": "pass",
     "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "T05": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "单问解析玩具题无需论文级 F01 总流程图"
   },
   "T06": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "未设置 F01，总流程图内容合同不适用"
   },
   "T07": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "未设置 F01，不存在图文代码一致性核验对象"
   },
   "T08": {
     "status": "pass",
@@ -217,11 +217,11 @@
   },
   "H02": {
     "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "note": "唯一假设说明其用于隔离成本扰动影响，并指出固定售价口径来自题面"
   },
   "H03": {
     "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "note": "假设明确说明滞销或产能瓶颈会使最优产量与利润估计偏高，并限定结论适用边界"
   },
   "H06": {
     "status": "pass",
@@ -265,59 +265,59 @@
   },
   "C06": {
     "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "note": "问题一入口自然交代 p、a、x 的输入与约束、利润求优目标、x* 与 P* 输出及可行可复核标准"
   },
   "C07": {
     "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "note": "问题分析和问题一入口均明确说明这是唯一问题，不存在跨问传递"
   },
   "C08": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "本问步骤短且解析可解，不需要局部流程图"
   },
   "P01": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "解析玩具题没有外部数据集、字段或时空粒度"
   },
   "P02": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "解析玩具题没有待清洗的观测数据"
   },
   "P03": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "解析玩具题未执行数据预处理"
   },
   "P04": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "解析玩具题未使用归一化或反变换"
   },
   "P05": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "玩具题无原始数据预处理，不存在处理前后对比"
   },
   "P06": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "解析玩具题没有编码、特征工程或中间数据文件"
   },
   "P07": {
     "status": "pass",
     "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "P08": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "二次函数可直接解析求最优解，不设置候选算法比较"
   },
   "P09": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "未设置候选算法，不存在同口径计算预算比较"
   },
   "P10": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "未设置候选算法，不虚构多方法效果与成本比较"
   },
   "P11": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "该单变量凹二次玩具题可直接解析求解，没有需要比较或淘汰的候选算法"
   },
   "M01": {
     "status": "pass",
@@ -388,12 +388,12 @@
     "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "Q07": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "少量解析结果用正文与表即可，不需要趋势图"
   },
   "Q08": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "本样例没有论文结果图，装饰性图删除检查无对象"
   },
   "V05": {
     "status": "na",
@@ -404,8 +404,8 @@
     "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "V07": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "结果由正文解析推导和同页计算直接得到，不依赖外部结果文件"
   },
   "W01": {
     "status": "pass",
@@ -417,7 +417,7 @@
   },
   "W03": {
     "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "note": "在既定二次成本模型假设下对关键参数实施正负 10% 扰动，并用同一解析公式复算区间；本题无训练集划分"
   },
   "W04": {
     "status": "pass",
@@ -437,7 +437,7 @@
   },
   "E06": {
     "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "note": "局限性段落明确交代固定单价与成本假设的来源、潜在偏差方向、影响范围及缓解办法"
   },
   "E07": {
     "status": "pass",
@@ -448,8 +448,8 @@
     "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
   },
   "I01": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "正文只提出未来推广方向，没有声称已实现改进"
   },
   "I02": {
     "status": "pass",
@@ -457,23 +457,23 @@
   },
   "G01": {
     "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "note": "推广段逐项比较标量与向量变量、非负与业务耦合约束、固定情景与经验分布、利润与风险指标"
   },
   "G02": {
     "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "note": "推广段明确要求重新校准参数、加入容量与分段价格约束，并重新执行验证"
   },
   "R01": {
     "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "note": "正文首次引用顺序为文献 a、b，参考文献列表按同一顺序排列"
   },
   "X01": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "玩具题面与演示流程均未要求附件说明表"
   },
   "X02": {
-    "status": "pass",
-    "note": "quickstart 玩具样例已人工核对（仅演示，不作为通用规则）"
+    "status": "na",
+    "note": "本样例采用解析推导，不依赖程序求解且没有附录"
   },
   "B12": {
     "status": "pass",

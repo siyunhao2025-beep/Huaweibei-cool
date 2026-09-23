@@ -70,6 +70,18 @@ def project_path(project_root: Path, raw: str) -> Path:
     return candidate
 
 
+def project_relative_json_path(project_root: Path, raw: object) -> Path | None:
+    if not isinstance(raw, str) or not raw.strip():
+        return None
+    relative = Path(raw)
+    if relative.is_absolute() or ".." in relative.parts or relative.suffix.lower() != ".json":
+        return None
+    try:
+        return project_path(project_root, raw)
+    except (ValueError, OSError):
+        return None
+
+
 def _strip_tex_comment(line: str) -> str:
     """Strip a real TeX comment while preserving escaped percent signs."""
     for index, char in enumerate(line):
@@ -490,6 +502,45 @@ def audit(plan_path: Path, stage: str, project_root: Path, main_tex: Path | None
 
     all_figure_ids = [str(fig.get("figure_id", "")) for fig in all_figures]
     add("figure_ids_unique", len(all_figure_ids) == len(set(all_figure_ids)), ids=all_figure_ids)
+    f01_entries = [fig for fig in all_figures if fig.get("figure_id") == "F01"]
+    add(
+        "complex_f01_declared_at_most_once",
+        len(f01_entries) <= 1,
+        count=len(f01_entries),
+    )
+    framework_keys = {
+        "role", "route", "complex_framework",
+        "framework_binding", "framework_audit_report",
+    }
+    framework_entries = [fig for fig in all_figures if framework_keys & set(fig)]
+    add(
+        "complex_f01_contract_declared_once",
+        len(framework_entries) <= 1,
+        count=len(framework_entries),
+    )
+    for fig in framework_entries:
+        fid = str(fig.get("figure_id", ""))
+        binding = project_relative_json_path(project_root, fig.get("framework_binding"))
+        report = project_relative_json_path(
+            project_root, fig.get("framework_audit_report")
+        )
+        add(
+            f"{fid or '<missing>'}:complex_f01_contract",
+            fid == "F01"
+            and fig.get("role") == "complex_multi_question_framework"
+            and "paper-framework-figure-studio-pro" in str(fig.get("route", "")).casefold()
+            and fig.get("complex_framework", True) is True
+            and binding is not None
+            and report is not None
+            and binding != report
+            and binding.parent == report.parent,
+            binding=fig.get("framework_binding"),
+            report=fig.get("framework_audit_report"),
+            message=(
+                "复杂 F01 必须唯一登记为 F01，使用 figure-studio 路线，并把同目录、"
+                "项目内相对 JSON 的 binding/report 交给 progress 门禁。"
+            ),
+        )
     figure_id_set = set(all_figure_ids)
     all_schematic_ids = [str(item.get("schematic_id", "")) for item in all_schematics]
     add("schematic_ids_unique", len(all_schematic_ids) == len(set(all_schematic_ids)),

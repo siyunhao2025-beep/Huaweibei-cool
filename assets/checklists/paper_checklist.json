@@ -36,12 +36,12 @@
     {
       "id": "F04",
       "section": "全局格式",
-      "item": "论文中其他汉字一律用小四号宋体字；排版文本中的英文、阿拉伯数字和西文标点用 Times New Roman（Overleaf 缺少该字体时用 TeX Gyre Termes 兼容回退；公式与代码分别保留数学字体和等宽字体）",
+      "item": "论文中其他汉字一律用小四号宋体字；排版文本（含代码环境）中的英文、阿拉伯数字和西文标点用 Times New Roman（Overleaf 缺少该字体时用 TeX Gyre Termes 兼容回退；公式保留数学字体；代码保留逐行结构而不使用 Courier 等字体例外）",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
       "length_requirement": null,
-      "notes": "官方 Word 模板样式将 ASCII/HAnsi 字体设为 Times New Roman；数学运算符不能用普通文本字体替代，代码为保证可读性保留等宽字体。"
+      "notes": "官方 Word 模板样式将 ASCII/HAnsi 字体设为 Times New Roman；数学运算符不能用普通文本字体替代。代码西文同用 Times New Roman/TeX Gyre Termes 是用户内部裁决，并通过结构、缩进和换行维持可读性。"
     },
     {
       "id": "F05",
@@ -328,7 +328,7 @@
       "section": "摘要",
       "item": "关键词通常 3–6 个，覆盖问题领域与核心方法，不重复堆同义词",
       "check_method": "machine",
-      "machine_rule": "摘要环境内出现“关键词”或 \\keywords 行",
+      "machine_rule": "生产稿摘要环境内存在唯一、闭合、非空的 \\keywords；拆分后为 3–6 个且规范化后无重复",
       "applicable_archetypes": null,
       "length_requirement": null,
       "notes": null
@@ -656,9 +656,9 @@
     {
       "id": "S04",
       "section": "符号说明",
-      "item": "表题和唯一标签完整，正文有引用时引用闭合",
+      "item": "表题含“符号”、标签全局唯一，且表前正文必须引用该标签",
       "check_method": "machine",
-      "machine_rule": "符号说明章节的表格含 \\caption",
+      "machine_rule": "目标表含语义明确的 \\caption 与唯一 \\label，表前正文以 \\ref 引用同一标签",
       "applicable_archetypes": null,
       "length_requirement": null,
       "notes": null
@@ -1082,12 +1082,12 @@
     {
       "id": "Q05",
       "section": "模型求解",
-      "item": "按“答案—证据—比较—原因/机制—对模型或决策的含义—边界/代价”组织结果；每张图均有正文详解，因果证据不足时明确标为相关现象或待验证解释，不强制三段式",
+      "item": "按“答案—证据—比较—原因/机制—对模型或决策的含义—边界/代价”组织结果；每张图均有正文详解，相邻顶层 Figure 之间有 1--2 段实质承接后再进入下一张；因果证据不足时明确标为相关现象或待验证解释",
       "check_method": "manual",
       "machine_rule": null,
       "applicable_archetypes": null,
       "length_requirement": null,
-      "notes": "图后不能只复述上升、下降或最优值；复合图解释关键面板，流程图解释模块、箭头与数据隔离"
+      "notes": "图后不能只复述上升、下降或最优值；复合图解释关键面板，流程图解释模块、箭头与数据隔离；标题、分页命令或‘下面给出下一图’不算图间过渡"
     },
     {
       "id": "Q06",
