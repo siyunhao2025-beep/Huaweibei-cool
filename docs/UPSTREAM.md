@@ -129,3 +129,24 @@ Wave0 已逐个 `--help` 验证 import 不报错（编译链路 Wave3 验证）�
 - **装载方式**：六个文件在用户本机 skill 中按 SHA-256 装载；公开仓库仅保存 `assets/paper-template/reference-23rd-latex/source-manifest.json` 与 `docs/TEMPLATE_CONTENT_MAPPING_23RD.md`。
 - **分发边界**：源包未附明确再分发许可，故不把原 PDF、源文件或图像提交到公开 GitHub。
 - **融合范围**：吸收任务卡、数据审计、Baseline—主模型证据链、按结构验证、不确定性、结果解释、模型评价、结论和复现元数据；拒绝目录、社区类文件、组合 logo 与写有“第二十二届”的过期标题资产。
+
+## 七、figures4papers 作图来源审计与许可补救
+
+- **来源**：[`ChenLiu-1996/figures4papers`](https://github.com/ChenLiu-1996/figures4papers)，锁定提交
+  `3c181f85e82c6f24948fcaaf3be6696102b41d8d`，审计日期 2026-09-24。
+- **许可**：上游根许可证为 CC BY-NC 4.0，并非 MIT/Apache。它要求署名、
+  来源/许可链接和修改说明，并限制非商业用途；本仓库根 MIT 和
+  `skills/academic-figure/LICENSE` 不重新许可这些内容。
+- **现有重合补救**：审计发现 `skills/academic-figure/assets/figures/` 中有
+  17 个文件与该锁定上游逐字节相同，另有 3 个改编文件。完整路径映射、
+  修改状态和作者归属见 `skills/academic-figure/THIRD_PARTY_NOTICES.md`；
+  完整许可证正文见 `skills/academic-figure/LICENSES/CC-BY-NC-4.0.txt`。
+- **全量覆盖而非全量复制**：95 个树条目中的 76 个文件已全部登记在
+  `skills/academic-figure/references/figures4papers.lock.json`。25 个 Python、
+  39 张 PNG、3 个 PDF、7 个 Markdown 及其余许可/配置文件均有明确
+  disposition。PNG/PDF、论文数据和复合 raster 默认为 reference-only，不再复制。
+- **融合方式**：通用图形思想以独立表述写入
+  `skills/academic-figure/references/figures4papers-profile.md`；对截断柱轴、
+  红绿唯一编码、alpha-only 分类、逐列热图误读、跨量纲雷达面积、超宽画布、
+  硬依赖 Helvetica/TeX、导入即出图等做了拒绝或安全改造。商业或用途不清时
+  只能从零实现通用原则，不能调用 CC BY-NC 模板。

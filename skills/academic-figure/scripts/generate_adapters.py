@@ -164,7 +164,7 @@ def generate_codex_manifest(core: str) -> str:
 # Generated: {_now()}
 
 name: academic-figure-skill
-version: "1.0.0"
+version: "1.1.0"
 description: >-
   Publication-grade scientific figure creation for Nature/Cell/Science journals.
   Handles any figure type with journal-grade typography, color science, and layout.
@@ -172,6 +172,9 @@ description: >-
 entrypoint: SKILL.md
 resources:
   - instructions.md
+  - LICENSE
+  - THIRD_PARTY_NOTICES.md
+  - LICENSES/
   - references/
   - scripts/
   - assets/figures/

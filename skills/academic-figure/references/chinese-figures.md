@@ -2,9 +2,11 @@
 
 This project keeps the academic-figure-skill layout, color, statistics and
 export logic, while adapting ordinary scientific result text to Chinese.
-Copy the production script into the working directory before changing only
-render-layer labels or data paths. Never change original field names or raw
-files.
+After the source/license gate has marked a production script as
+provenance-cleared and permitted for the intended use, copy it into the working
+directory before changing only render-layer labels or data paths. Restricted or
+unknown-source scripts must not be copied; implement the panel independently.
+Never change original field names or raw files.
 
 1. Resolve an installed Chinese-capable font with
    `scripts/chinese_fonts.py`; verify glyph coverage rather than trusting a

@@ -19,13 +19,18 @@ def save_cns_figure(fig, filename):
 
 ```r
 # Academic Figure Skill Export Baseline — COPY VERBATIM
-save_cns_figure <- function(plot, filename, width_mm = 183, height_mm = NULL) {
+save_cns_figure <- function(plot, filename, width_mm = 183, height_mm = NULL,
+                            showtext_enabled = FALSE) {
   ggsave(paste0(filename, ".pdf"), plot, device = cairo_pdf,
          width = width_mm, height = height_mm, units = "mm", dpi = 300)
+  # If this script previously enabled showtext_auto(), disable it for Cairo PNG
+  # and restore it afterwards. Leave showtext_enabled=FALSE otherwise.
+  if (showtext_enabled) showtext::showtext_auto(FALSE)
   png(paste0(filename, ".png"), width = width_mm, height = height_mm,
       units = "mm", res = 300, type = "cairo")
   print(plot)
   dev.off()
+  if (showtext_enabled) showtext::showtext_auto(TRUE)
 }
 ```
 
@@ -75,8 +80,14 @@ mpl.rcParams.update({
 ggsave("figure.pdf", width = 89, height = 70, units = "mm",
        device = cairo_pdf, dpi = 300)
 
-# Raster preview
-ggsave("figure.png", width = 89, height = 70, units = "mm", dpi = 300)
+# Raster preview. If showtext_auto() was enabled earlier, turn it off before
+# opening this device and restore it only after dev.off().
+showtext::showtext_auto(FALSE)  # omit when showtext was never enabled
+png("figure.png", width = 89, height = 70, units = "mm",
+    res = 300, type = "cairo")
+print(plot)
+dev.off()
+showtext::showtext_auto(TRUE)   # omit when showtext was never enabled
 ```
 
 ## R ComplexHeatmap Export
@@ -88,9 +99,12 @@ draw(ht)
 dev.off()
 
 # Raster preview
-png("heatmap_preview.png", width = 183, height = 120, units = "mm", res = 300)
+showtext::showtext_auto(FALSE)  # omit when showtext was never enabled
+png("heatmap_preview.png", width = 183, height = 120, units = "mm",
+    res = 300, type = "cairo")
 draw(ht)
 dev.off()
+showtext::showtext_auto(TRUE)   # omit when showtext was never enabled
 ```
 
 ## Resolution Requirements by Journal
