@@ -11,7 +11,7 @@ from conftest import REPO_ROOT
 
 SKILL = REPO_ROOT / "skills" / "academic-figure"
 LOCK = SKILL / "references" / "figures4papers.lock.json"
-EXPECTED_COMMIT = "3c181f85e82c6f24948fcaaf3be6696102b41d8d"
+EXPECTED_COMMIT = "3c181f85e82c6f24948fcaaf3be6696102b41d8d"  # pragma: allowlist secret
 
 
 def _git_blob_sha(data: bytes) -> str:
