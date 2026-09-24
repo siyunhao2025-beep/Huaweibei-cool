@@ -39,6 +39,7 @@ jobs:
             fonts-texgyre \
             fonts-texgyre-math \
             texlive-lang-chinese \
+            texlive-plain-generic \
             texlive-xetex
 
       - name: 安装依赖

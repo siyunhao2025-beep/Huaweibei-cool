@@ -122,4 +122,5 @@ def test_ci_supports_published_checksums_and_pdf_integration():
     assert "figures4papers\\.lock\\.json$" in workflow
     assert "texlive-xetex" in workflow
     assert "texlive-lang-chinese" in workflow
+    assert "texlive-plain-generic" in workflow
     assert "fonts-texgyre-math" in workflow
