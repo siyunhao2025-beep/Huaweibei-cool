@@ -124,4 +124,7 @@ def test_ci_supports_published_checksums_and_pdf_integration():
     assert "texlive-fonts-recommended" in workflow
     assert "texlive-lang-chinese" in workflow
     assert "texlive-plain-generic" in workflow
+    assert "texlive-science" in workflow
     assert "fonts-texgyre-math" in workflow
+    assert "/usr/local/share/fonts/fandol" in workflow
+    assert "fc-cache -f" in workflow

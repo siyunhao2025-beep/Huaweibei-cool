@@ -41,7 +41,13 @@ jobs:
             texlive-fonts-recommended \
             texlive-lang-chinese \
             texlive-plain-generic \
+            texlive-science \
             texlive-xetex
+          sudo install -d /usr/local/share/fonts
+          sudo ln -s \
+            /usr/share/texlive/texmf-dist/fonts/opentype/public/fandol \
+            /usr/local/share/fonts/fandol
+          sudo fc-cache -f
 
       - name: 安装依赖
         run: |
@@ -67,5 +73,5 @@ jobs:
         run: python -m pytest tests/ -q -ra
 
       # 说明：
-      # - CI 已安装 Noto CJK、TeX Gyre 与 XeLaTeX；绘图字体和 PDF 编译测试均按真实运行时执行。
+      # - CI 已安装 Noto CJK、Fandol、TeX Gyre 与 XeLaTeX；绘图字体和 PDF 编译测试均按真实运行时执行。
       # - MATLAB 用例在 CI 无 matlab.exe 时校验 R2024b 真机证据日志，不产生 skip。
