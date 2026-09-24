@@ -114,6 +114,23 @@ python -m pip install -r requirements.txt
 
 依赖：pymupdf、pypdf、python-docx、pytest（已实测可导入）。
 
+### Codex 子 Skill 安装
+
+仓库包含两个彼此独立的绘图 Skill。若希望 Codex 能直接发现它们，需要分别
+复制到 Codex skills 根目录；仅安装仓库根 `huawei-mcm` 不会自动把嵌套目录
+注册为独立 Skill。默认目标分别是 `~/.codex/skills/academic-figure-skill/`
+与 `~/.codex/skills/scientific-figure-making/`：
+
+```powershell
+$codexSkills = Join-Path $env:USERPROFILE '.codex\skills'
+Copy-Item -Recurse -Force 'skills\academic-figure' (Join-Path $codexSkills 'academic-figure-skill')
+Copy-Item -Recurse -Force 'skills\scientific-figure-making' (Join-Path $codexSkills 'scientific-figure-making')
+```
+
+`scientific-figure-making` 及其 references 保持上游 CC BY-NC 4.0，不受本仓
+MIT 或 `academic-figure` Apache-2.0 重许可；商业、付费或用途不清时由
+`academic-figure` 的许可门改走项目自有代码独立实现。
+
 ## 目录结构
 
 ```
@@ -128,7 +145,8 @@ corpus/
   schemas/                 卡片 JSON Schema
   cards/                   产出的简卡/深卡（入库）
 scripts/            语料与论文链脚本（含 doctor.py 自检 / render_roadmap.py 路线图渲染 / paper_checklist.py 终审机检）
-skills/academic-figure/  科研绘图子 skill
+skills/academic-figure/          本仓安全增强科研绘图子 skill
+skills/scientific-figure-making/ figures4papers 原始风格 Skill（独立 CC BY-NC）
 assets/paper-template/   论文 LaTeX 模板与 Word 派生规范（不捆绑 Word 二进制）
 assets/scaffold/         比赛日空骨架
 assets/roadmap/          技术路线图 schema 与 8 原型 YAML 模板

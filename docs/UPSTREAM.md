@@ -150,3 +150,11 @@ Wave0 已逐个 `--help` 验证 import 不报错（编译链路 Wave3 验证）�
   红绿唯一编码、alpha-only 分类、逐列热图误读、跨量纲雷达面积、超宽画布、
   硬依赖 Helvetica/TeX、导入即出图等做了拒绝或安全改造。商业或用途不清时
   只能从零实现通用原则，不能调用 CC BY-NC 模板。
+- **独立 Skill 分发**：上游真实 `scientific-figure-making/` 现以独立目录
+  `skills/scientific-figure-making/` 随仓库分发，不与 `academic-figure` 合并。
+  其 `SKILL.md`、五份 reference 和完整许可证继续适用 CC BY-NC 4.0；根 MIT
+  与 `academic-figure` 的 Apache-2.0 均不重许可这些内容。修改仅包括：在
+  `SKILL.md` 增加本仓许可/科学安全画像的优先路由；把 `demos.md` 的移动
+  `tree/main` 链接锁到提交 `3c181f85e82c6f24948fcaaf3be6696102b41d8d`；
+  增加 `SOURCE.md` 与 `agents/openai.yaml` 集成元数据。逐文件 blob 与修改说明
+  见该目录的 `SOURCE.md`，并继续由 figures4papers 锁文件和测试覆盖。

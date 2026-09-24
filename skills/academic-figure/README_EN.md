@@ -186,6 +186,15 @@ mkdir -p ~/.codex/skills/academic-figure-skill
 cp -r SKILL.md LICENSE THIRD_PARTY_NOTICES.md LICENSES/ references/ scripts/ assets/ install/codex/* ~/.codex/skills/academic-figure-skill/
 ```
 
+In the Huaweibei-cool distribution, `scientific-figure-making` is a separate
+CC BY-NC 4.0 skill, not Apache-2.0 content from this skill. To make it
+discoverable by Codex, install it separately from the Huaweibei-cool repository
+root:
+
+```bash
+cp -r skills/scientific-figure-making ~/.codex/skills/scientific-figure-making
+```
+
 After installation, describe your task naturally in a Codex session — the skill activates automatically based on trigger rules in `manifest.yaml`.
 
 You can also ask Codex to install for you:

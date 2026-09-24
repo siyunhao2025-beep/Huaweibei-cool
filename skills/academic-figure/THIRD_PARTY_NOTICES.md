@@ -50,3 +50,19 @@ The upstream PNG/PDF outputs, paper data, and composite raster assets are not
 imported by this integration. They remain reference-only because their
 editable sources and possible co-author, publisher, icon, or rendering rights
 cannot be established from the repository alone.
+
+## Independently installed `scientific-figure-making` skill
+
+The real upstream skill at `scientific-figure-making/` is distributed as the
+independent sibling directory
+[`../scientific-figure-making/`](../scientific-figure-making/). Its `SKILL.md`
+and five references remain CC BY-NC 4.0; neither this directory's Apache-2.0
+license nor the repository-level MIT license applies to that content.
+
+The source, locked blob identifiers, license link, and change record are in
+[`../scientific-figure-making/SOURCE.md`](../scientific-figure-making/SOURCE.md).
+Four references are redistributed unchanged. `SKILL.md` is adapted only to
+route through this repository's license/safety gate, and `references/demos.md`
+is adapted only to pin moving `main` links to the audited revision. The added
+`SOURCE.md` and `agents/openai.yaml` are integration metadata. These changes do
+not grant commercial permission or imply upstream endorsement.

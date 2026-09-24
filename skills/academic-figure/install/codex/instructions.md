@@ -133,6 +133,15 @@ def save_cns_figure(fig, filename):
 - If not found, cross-type inherit from similar figure type.
 - R scripts: png(type="cairo"), showtext_auto(FALSE) before export.
 
+## Independently Installed Companion Skill
+- Huaweibei-cool distributes `scientific-figure-making` as the sibling
+  `../scientific-figure-making/`, not as merged Apache/MIT content.
+- Its `SKILL.md` and five references remain CC BY-NC 4.0. Read its `SOURCE.md`
+  and this skill's safety profile before following upstream-derived advice.
+- The local safety profile overrides truncated magnitude-bar axes, hidden
+  category labels, alpha-only categories, red-green-only contrasts, and
+  28–45 inch ultra-wide defaults.
+
 ## QA Checklist
 - [ ] Custom hex colors used (no defaults)
 - [ ] Top/right spines removed

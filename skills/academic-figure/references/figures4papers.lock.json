@@ -541,42 +541,48 @@
       "blob_sha": "a8f933c1775d076c42d49f990c479b5bd7b8ef0d",
       "bytes": 2242,
       "kind": "markdown",
-      "disposition": "reviewed-reference-only"
+      "disposition": "redistributed-cc-by-nc-adapted",
+      "target": "skills/scientific-figure-making/SKILL.md"
     },
     {
       "path": "scientific-figure-making/references/api.md",
       "blob_sha": "966261ae792298c361f5840705874c22981ed232",
       "bytes": 5476,
       "kind": "markdown",
-      "disposition": "reviewed-reference-only"
+      "disposition": "redistributed-cc-by-nc-exact",
+      "target": "skills/scientific-figure-making/references/api.md"
     },
     {
       "path": "scientific-figure-making/references/common-patterns.md",
       "blob_sha": "0a40d6f182680ef794ef2849ab2168b6d36a32bd",
       "bytes": 3075,
       "kind": "markdown",
-      "disposition": "reviewed-reference-only"
+      "disposition": "redistributed-cc-by-nc-exact",
+      "target": "skills/scientific-figure-making/references/common-patterns.md"
     },
     {
       "path": "scientific-figure-making/references/demos.md",
       "blob_sha": "31a1acaed6e138889cb535ce1c9f68669e14ba4f",
       "bytes": 2528,
       "kind": "markdown",
-      "disposition": "reviewed-reference-only"
+      "disposition": "redistributed-cc-by-nc-adapted",
+      "target": "skills/scientific-figure-making/references/demos.md"
     },
     {
       "path": "scientific-figure-making/references/design-theory.md",
       "blob_sha": "798abb346c5f6a75ca1ee21bc5a4d9efa72a3108",
       "bytes": 6738,
       "kind": "markdown",
-      "disposition": "reviewed-reference-only"
+      "disposition": "redistributed-cc-by-nc-exact",
+      "target": "skills/scientific-figure-making/references/design-theory.md"
     },
     {
       "path": "scientific-figure-making/references/tutorials.md",
       "blob_sha": "79e04dc2604a9081341dd92c415392ac946834c0",
       "bytes": 6411,
       "kind": "markdown",
-      "disposition": "reviewed-reference-only"
+      "disposition": "redistributed-cc-by-nc-exact",
+      "target": "skills/scientific-figure-making/references/tutorials.md"
     }
   ]
 }

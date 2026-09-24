@@ -3,7 +3,7 @@
 # Generated: 2026-07-05 13:39 UTC
 
 name: academic-figure-skill
-version: "1.1.0"
+version: "1.2.0"
 description: >-
   Publication-grade scientific figure creation for Nature/Cell/Science journals.
   Handles any figure type with journal-grade typography, color science, and layout.
@@ -17,6 +17,7 @@ resources:
   - references/
   - scripts/
   - assets/figures/
+  - ../scientific-figure-making/
 
 triggers:
   - keywords: [figure, plot, chart, heatmap, volcano, boxplot, scatter, bar,

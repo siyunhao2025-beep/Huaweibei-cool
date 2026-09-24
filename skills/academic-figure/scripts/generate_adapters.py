@@ -49,7 +49,7 @@ def extract_core_rules() -> str:
 
 ## Design Principles
 1. One figure, one core message. Remove gridlines, borders, and redundant legends.
-2. Restrained color > abundant color. Use 2-4 semantic colors + 1 accent. Never default palettes.
+2. Semantic color richness > arbitrary color abundance. Use 2-4 semantic colors + 1 accent per Figure, vary justified palette roles across a paper, and never use default palettes.
 3. Design for print, not screen. Single column 89mm, double column 183mm.
 4. Vector first, raster fallback. PDF/SVG/EPS for line art; TIFF/PNG (≥300dpi) for raster.
 
@@ -77,6 +77,13 @@ Color roles: Blue (#2166AC) = control/baseline. Red (#B2182B) = emphasis/up-regu
 
 Font: Arial/Helvetica. No text below 5pt at final print dimensions. Panel labels: lowercase bold a,b,c... at consistent positions.
 
+Huawei Cup project adapter: ordinary result-figure display text defaults to
+Chinese. Resolve an installed Chinese font with `scripts/chinese_fonts.py`, use
+`FontProperties` and `axes.unicode_minus=False`, call `fig.canvas.draw()` before
+export, and fail closed on missing glyphs or render warnings. R uses
+`systemfonts`/equivalent plus Cairo. Run the Chinese smoke test for units,
+RMSE, negative values, Greek letters and subscripts.
+
 ## Export — COPY VERBATIM
 
 ```python
@@ -91,10 +98,27 @@ Font: Arial/Helvetica. No text below 5pt at final print dimensions. Panel labels
 - Multi-panel: rows have aspect-ratio-correct heights (heatmap=1.0, ridge=0.65).
 
 ## Production Scripts
-- Check `assets/figures/<type>/` for matching production scripts first.
-- If found, copy-modify-run — change only data paths and labels.
+- Before asset reuse, read `THIRD_PARTY_NOTICES.md`, then check the path in
+  `references/figures4papers.lock.json`. The root MIT and this skill's
+  Apache-2.0 license do not relicense CC BY-NC 4.0 files.
+- Directly reuse a listed figures4papers asset only for clearly noncommercial
+  use with attribution, source/license links, and a change notice. For
+  commercial or unclear use, follow `references/figures4papers-profile.md` and
+  independently implement the general method.
+- Check `assets/figures/<type>/` for matching production scripts after the
+  license gate.
+- If permitted, copy-modify-run — change only data paths and labels.
 - If not found, cross-type inherit from similar figure type.
 - R scripts: png(type="cairo"), showtext_auto(FALSE) before export.
+
+## Independently Installed Companion Skill
+- Huaweibei-cool distributes `scientific-figure-making` as the sibling
+  `../scientific-figure-making/`, not as merged Apache/MIT content.
+- Its `SKILL.md` and five references remain CC BY-NC 4.0. Read its `SOURCE.md`
+  and this skill's safety profile before following upstream-derived advice.
+- The local safety profile overrides truncated magnitude-bar axes, hidden
+  category labels, alpha-only categories, red-green-only contrasts, and
+  28–45 inch ultra-wide defaults.
 
 ## QA Checklist
 - [ ] Custom hex colors used (no defaults)
@@ -164,7 +188,7 @@ def generate_codex_manifest(core: str) -> str:
 # Generated: {_now()}
 
 name: academic-figure-skill
-version: "1.1.0"
+version: "1.2.0"
 description: >-
   Publication-grade scientific figure creation for Nature/Cell/Science journals.
   Handles any figure type with journal-grade typography, color science, and layout.
@@ -178,6 +202,7 @@ resources:
   - references/
   - scripts/
   - assets/figures/
+  - ../scientific-figure-making/
 
 triggers:
   - keywords: [figure, plot, chart, heatmap, volcano, boxplot, scatter, bar,
@@ -192,7 +217,7 @@ triggers:
 
 {core}
 '''
-    return manifest, instructions
+    return manifest, instructions.rstrip() + "\n"
 
 
 def generate_cursor_rules(core: str) -> str:

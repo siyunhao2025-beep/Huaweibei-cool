@@ -557,6 +557,9 @@ Generated adapters are in `install/`:
 - `install/cursor/.cursorrules` → copy to your project root for Cursor
 - `install/copilot/copilot-instructions.md` → copy to `.github/` for GitHub Copilot
 - `install/codex/manifest.yaml` + `instructions.md` → copy to `~/.codex/skills/academic-figure-skill/` for Codex
+- In the Huaweibei-cool distribution, also copy the independent sibling
+  `../scientific-figure-making/` to `~/.codex/skills/scientific-figure-making/`;
+  keep its CC BY-NC 4.0 license and `SOURCE.md` with it.
 - `install/claude-code/README.md` → already supported natively via `~/.claude/skills/`
 
 ---

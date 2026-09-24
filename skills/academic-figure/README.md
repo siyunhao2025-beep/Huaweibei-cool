@@ -191,6 +191,14 @@ mkdir -p ~/.codex/skills/academic-figure-skill
 cp -r SKILL.md LICENSE THIRD_PARTY_NOTICES.md LICENSES/ references/ scripts/ assets/ install/codex/* ~/.codex/skills/academic-figure-skill/
 ```
 
+在 Huaweibei-cool 分发包中，`scientific-figure-making` 是一个独立的
+CC BY-NC 4.0 Skill，而不是本 Skill 的 Apache-2.0 内容。若要让 Codex
+发现它，还需从 Huaweibei-cool 仓库根目录单独安装：
+
+```bash
+cp -r skills/scientific-figure-making ~/.codex/skills/scientific-figure-making
+```
+
 安装后在 Codex 会话中自然描述需求，Skill 会根据 `manifest.yaml` 中的触发规则自动激活。
 
 也可以让 Codex 代为安装：
