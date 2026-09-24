@@ -46,14 +46,14 @@ User request received
   Step 2: Runtime & Environment ←── Detect Python + R availability.
        │                            Install or configure if missing.
        ▼
-  Step 3: Style Baseline Injection ←── typography + color + export blocks.
-       │                               Copied VERBATIM into every script.
+  Step 3: Style Baseline Injection ←── provenance-cleared typography,
+       │                               color, and export blocks.
        ▼
   Step 4: Production Asset Scan ←── ls assets/figures/. For EVERY panel in
        │                            the plan, check matching scripts.
        ▼
-  Step 5: Generate ←── COPY-FIRST for matching scripts → native run.
-       │              No match → cross-type inherit.
+  Step 5: Generate ←── LICENSE-FIRST for matching scripts → approved native run.
+       │              Restricted/no match → independent implementation.
        ▼
   Step 5.5: Validate Data ←── Data sanity checks BEFORE rendering.
        │
@@ -174,9 +174,34 @@ Store as `PYTHON_AVAILABLE`, `R_AVAILABLE`, `R_PATH`.
 
 ---
 
+### Step 2.5: Source and License Gate (BEFORE reuse)
+
+Before copying, executing, adapting, or redistributing any production asset,
+identify its source and license. Read `THIRD_PARTY_NOTICES.md` and
+`references/figures4papers-profile.md` whenever a matched path appears in
+`references/figures4papers.lock.json`.
+
+- The repository-level MIT license and this skill's Apache-2.0 license do not
+  relicense listed third-party files.
+- `figures4papers` material is CC BY-NC 4.0. Direct reuse is limited to clearly
+  noncommercial use with attribution, source/license links, and a change notice.
+- For commercial, enterprise, paid, or unclear use, do not copy or execute a
+  restricted template. Implement the general visualization principle anew with
+  project-owned code and synthetic tests.
+- PNG/PDF paper outputs, hard-coded paper data, and composite rasters are
+  reference-only unless separate rights are verified.
+
+This gate overrides every generic `COPY-FIRST`, `COPY VERBATIM`, and parameter
+inheritance instruction below. “A file exists locally” is not evidence that the
+intended use is licensed.
+
+---
+
 ### Step 3: Style Baseline Injection (ALWAYS FIRST)
 
-Load these three files and copy their "COPY VERBATIM" code blocks into the script — in order, at the very top, before any panel logic:
+Load these three project-owned reference files and inject their reviewed style
+blocks into the script—in order, at the very top, before panel logic. Never
+substitute a restricted upstream block merely because it looks similar:
 
 1. `references/typography.md` — rcParams/theme block. Fonts, spines, ticks, legend defaults.
 2. `references/color-palettes.md` — PALETTE constants. All color variables.
@@ -193,16 +218,20 @@ Also read `references/journal-specs.md` for target dimensions (89mm single / 183
 1. **First, read `references/directory-map.md`.** This table maps user language (Chinese + English) to exact `assets/figures/<dir>/` paths. Find the user's description in the "Keywords" column → use the exact directory path. This prevents the #2 recurring bug: "柱状图" matching the wrong bar sub-directory.
 2. Verify with `ls assets/figures/<matched-dir>/` that the directory exists and has scripts.
 3. Check the matching directory for production scripts (`.py`, `.R`, `.r`).
-4. For each match, check if the script's language runtime is available (from Step 2).
-5. **Verify script can work with user data.** Read the script. Identify the script's "data entry points" — which variables receive external data (column names, data frames, file paths). Map them to the user's data columns. If the mapping exists but columns differ (e.g. script expects `length`/`number_of_cds` but user has `Pheno1`/`Pheno2`), mark as "visual adapt" — the script's visual system is preserved, only data mapping changes. Only mark as "incompatible" when the data STRUCTURE fundamentally differs (e.g. script expects paired X/Y CSV files but user has a single wide table).
-6. **Fallback:** Only if `directory-map.md` has no matching entry, fall back to scanning `ls assets/figures/` and matching directory names.
+4. Check the matched path against `references/figures4papers.lock.json` and
+   record `license_status` as `project-owned`, `approved-third-party`,
+   `restricted`, or `unknown`. Restricted/unknown never qualifies for a native
+   production copy outside its permitted terms.
+5. For each permitted match, check if the script's language runtime is available (from Step 2).
+6. **Verify script can work with user data.** Read the script. Identify the script's "data entry points" — which variables receive external data (column names, data frames, file paths). Map them to the user's data columns. If the mapping exists but columns differ (e.g. script expects `length`/`number_of_cds` but user has `Pheno1`/`Pheno2`), mark as "visual adapt" — the script's visual system is preserved, only data mapping changes. Only mark as "incompatible" when the data STRUCTURE fundamentally differs (e.g. script expects paired X/Y CSV files but user has a single wide table).
+7. **Fallback:** Only if `directory-map.md` has no matching entry, fall back to scanning `ls assets/figures/` and matching directory names.
 
 Decision per panel:
 
 ```
 Panel type matched in assets/figures/<type>/
     │
-    ├── Script exists + runtime available + data STRUCTURE matches → COPY-FIRST.
+    ├── License approved + script exists + runtime/data match → LICENSE-FIRST native run.
     │   1. Copy the ENTIRE script file to work_dir/<panel>_production.<ext>
     │   2. Find the data-loading line, replace ONLY the data path
     │   3. Execute: subprocess.run([python/r_bin, script])
@@ -302,11 +331,16 @@ Correlation Scatter Scatter (basic)     point size, alpha, regression line style
 
 #### Class A/B/C parameter extraction
 
-**Class A — Hard Parameters (copy verbatim):** Color hex, alpha, line widths, marker sizes, bandwidth, density scale, spacing ratios.
+**Class A — Hard Parameters (approved assets only):** For project-owned or
+license-approved assets, preserve reviewed color, alpha, line widths, marker
+sizes, bandwidth, density scale, and spacing ratios. For restricted/unknown
+assets, choose new parameters from this skill's project-owned references.
 
 **Class B — Scaling Parameters (preserve ratio):** Font sizes → scale proportionally to Academic Figure Skill 7pt base. Figure dimensions → scale to journal column width.
 
-**Class C — Logic Parameters (copy behavior):** Legend on/off, grid on/off, spine visibility, statistical annotation format, frameon.
+**Class C — Logic Parameters (approved assets only):** Preserve legend/grid/
+spine behavior and annotation logic only when Step 2.5 permits adaptation.
+Otherwise implement the general scientific requirement independently.
 
 #### Preview PNG — HARD RULE
 
@@ -325,27 +359,34 @@ Before any import, before any baseline block, the generated script MUST start wi
 # (a) [figure type] → [asset path or "cross-type inherit"] → [native run | param inherit]
 # (b) [figure type] → [asset path or "cross-type inherit"] → [native run | param inherit]
 # ...
-# RULE: "native run" = load pre-rendered PNG via Image.open().ax.imshow().
+# RULE: "native run" = execute the provenance-cleared production asset.
+#       PNG + Image.open()/imshow() is preview composition only.
+#       Submission masters require vector-aware PDF/SVG assembly.
 #       "param inherit" = drawing function below that copies Class A/B/C values.
 #       If a panel says "native run" and you write a drawing function, you broke the contract.
 ```
 
-**COPY-FIRST RULE — this is a MECHANICAL rule, not a judgment call.**
+**LICENSE-FIRST NATIVE-RUN RULE.** Apply this only after Step 2.5 records an
+approved license status. A restricted or unknown asset must be marked
+`independent implementation`; do not copy its file or inherit its exact palette,
+layout, paper data, or prose.
 
-For EVERY panel marked "native run" in the Asset Confirmation Table:
+For every license-approved panel marked "native run" in the Asset Confirmation Table:
 
 1. **Copy the production script file to a working file.** Use `shutil.copy()` or shell `cp`. The filename must be `<panel_label>_production.<ext>`.
 2. **Modify ONLY the data path.** Open the copied file, find the line that reads data (`pd.read_csv(...)`, `read.csv(...)`, `read.delim(...)`), and replace the path with the user's data path. Change NOTHING else.
 3. **Execute the copied script.** Python: `subprocess.run([sys.executable, script])`. R: `subprocess.run([r_bin, script])`.
-4. **Verify output.** Check that the output PNG/PDF file exists and is non-zero. If execution fails (syntax error, missing package, data mismatch), log the error, set that panel to "param inherit" in a REVISED Asset Confirmation Table comment, and proceed with cross-type inheritance instead. The failure reason MUST appear in the QA report.
-5. **For R scripts:** ensure `png(type="cairo")` and `showtext_auto(FALSE)` before `png()` per `references/r-rendering.md`.
+4. **Verify output.** Check that every declared output exists and is non-zero. Prefer a PDF/SVG panel for the submission master and a PNG only for preview QA. If execution fails (syntax error, missing package, data mismatch), log the error, set that panel to "param inherit" in a REVISED Asset Confirmation Table comment, and proceed with cross-type inheritance instead. The failure reason MUST appear in the QA report.
+5. **For R scripts:** prefer Cairo PDF/SVG for the master and additionally render a PNG preview. When PNG is required, ensure `png(type="cairo")` and `showtext_auto(FALSE)` before `png()` per `references/r-rendering.md`.
 
 **What this means in the composition script:**
-- "native run" panels → NO drawing function. The script loads the pre-rendered PNG via `Image.open()`.
+- "native run" panels → NO drawing function. A PNG may be loaded via `Image.open()` for preview composition only.
 - "param inherit" panels → drawing function with Class A/B/C values extracted from the named asset.
 - If a native run FAILED → REVISED table shows the downgrade to "param inherit" and the reason.
 
-**Forbidden patterns (these indicate the COPY-FIRST rule was violated):**
+**Vector-master gate:** embedding a whole rendered panel with `Image.open()` / `imshow()` rasterizes that panel even when the container is saved as PDF. It therefore does **not** satisfy the vector-master requirement for line art, text, bars, or axes. For the submission master, either assemble the native PDF/SVG with a vector-aware tool or reclassify the panel and independently draw it in the final vector composition. Only genuinely raster data layers may remain rasterized. If the approved native asset can produce PNG only, mark the composite as a preview/draft rather than a vector master.
+
+**Forbidden patterns (these indicate the native-run contract was violated):**
 - A drawing function whose name matches a panel marked "native run" in the table.
 - A drawing function that is a "simplified version" of a production script.
 - Importing functions from a production script instead of executing the whole script.
@@ -353,14 +394,14 @@ For EVERY panel marked "native run" in the Asset Confirmation Table:
 Script structure:
 ```
 1. Asset Confirmation Table (MANDATORY — the first lines)
-2. Style baseline (verbatim from Step 3) — ONCE at top
+2. Provenance-cleared style baseline from Step 3 — ONCE at top
 3. Data section — ALL user data loaded here, NEVER downsampled
 4. Production script execution (for "native run" panels) — subprocess calls
-5. Panel functions — PNG loaders for "native run", drawing functions for "param inherit"
-6. compose_figure() call — handles layout, spacing, labels, export
+5. Panel functions — PNG loaders for preview-only "native run", drawing functions for "param inherit"
+6. compose_figure() call — handles preview layout, spacing, labels, export; vector-aware assembly is required for a native-run submission master
 ```
 
-**Mixed Python+R:** R panels run first to PNG at spec-correct dimensions. Python engine loads them via `ax.imshow()`.
+**Mixed Python+R:** R panels produce a Cairo PDF/SVG master panel plus a PNG preview at spec-correct dimensions. The Python engine may load the PNG via `ax.imshow()` for preview QA, but the submission master must preserve the PDF/SVG panel through vector-aware assembly. A PDF containing a rasterized full-panel screenshot is not a vector master.
 
 **R PNG rendering:** Follow the three mandatory rules in `references/r-rendering.md`. Never skip them — they prevent the #1 recurring R PNG quality bug.
 
@@ -368,19 +409,18 @@ Script structure:
 
 ### Step 5.5: Validate Data Before Rendering
 
-Run chart-type checks on every panel's data array. Fix failures before rendering.
+Run chart-type integrity checks on every panel's source and derived arrays before rendering:
 
-```
-Volcano: (padj < 0.05).sum() ≥ 10 AND ≤ 80%
-AUROC:   (tpr - fpr).max() ≥ 0.15
-Heatmap: np.std(data, axis=1).mean() > 0.2
-Bar:     abs(means.max() - means.min()) / means.max() > 0.05
-Corr:    abs(corr_mat).max() (off-diag) ≥ 0.3
-PCA/RDA: between_group_var / within_group_var > 1.0
-Box/Violin: abs(medians.max() - medians.min()) / data_range > 0.1
-```
+- required arrays are non-empty, shape-aligned and finite where the method requires finite values;
+- missing, excluded, censored and out-of-domain values are preserved or explicitly documented, never silently converted to zero;
+- labels, units, transformations, group order, sample units and uncertainty definitions match the analysis contract;
+- estimates, intervals and annotations are regenerated from the same versioned source rather than typed by hand;
+- denominators, zero ranges, log-domain constraints and other chart-specific edge cases are handled explicitly;
+- weak, flat, null or negative results remain visible when they are the truthful result.
 
-Also predict 3 visual problems at the target panel width. Fix them before rendering.
+Quantities such as the number of significant volcano points, maximum ROC separation, row variation in a heatmap, bar-range ratios, off-diagonal correlation, between/within-group variation or median separation may be calculated as **diagnostic summaries**. They are never universal pass/fail thresholds: their scientific meaning depends on the design, multiplicity control, sample size and claim. A weak diagnostic may trigger a note, alternative scale or a clearer caption, but it must never trigger filtering, selective resimulation, axis manipulation, data alteration or fabrication merely to make the plot look stronger.
+
+Also predict 3 visual problems at the target panel width and fix presentation defects before rendering. Do not "fix" an honest result.
 
 ---
 
@@ -517,6 +557,9 @@ Generated adapters are in `install/`:
 - `install/cursor/.cursorrules` → copy to your project root for Cursor
 - `install/copilot/copilot-instructions.md` → copy to `.github/` for GitHub Copilot
 - `install/codex/manifest.yaml` + `instructions.md` → copy to `~/.codex/skills/academic-figure-skill/` for Codex
+- In the Huaweibei-cool distribution, also copy the independent sibling
+  `../scientific-figure-making/` to `~/.codex/skills/scientific-figure-making/`;
+  keep its CC BY-NC 4.0 license and `SOURCE.md` with it.
 - `install/claude-code/README.md` → already supported natively via `~/.claude/skills/`
 
 ---
@@ -534,6 +577,9 @@ Generated adapters are in `install/`:
 | `references/journal-specs.md` | Dimension and spine setup |
 | `references/export-specs.md` | Format and resolution |
 | `references/checklist.md` | Full QA checklist |
+| `references/figures4papers-profile.md` | Audited technique ledger, license gate, safe adaptations, and rejected defaults |
+| `references/figures4papers.lock.json` | 76/76 upstream file coverage and exact third-party path mapping |
+| `THIRD_PARTY_NOTICES.md` | Attribution, license scope, and change record for redistributed third-party files |
 
 ### On-Demand
 

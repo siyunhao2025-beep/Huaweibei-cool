@@ -31,8 +31,23 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      - name: 安装中文字体（路线图渲染）
-        run: sudo apt-get update && sudo apt-get install -y fonts-noto-cjk
+      - name: 安装中文字体与 XeLaTeX（路线图和 PDF 集成测试）
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            fonts-noto-cjk \
+            fonts-texgyre \
+            fonts-texgyre-math \
+            texlive-fonts-recommended \
+            texlive-lang-chinese \
+            texlive-plain-generic \
+            texlive-science \
+            texlive-xetex
+          sudo install -d /usr/local/share/fonts
+          sudo ln -s \
+            /usr/share/texlive/texmf-dist/fonts/opentype/public/fandol \
+            /usr/local/share/fonts/fandol
+          sudo fc-cache -f
 
       - name: 安装依赖
         run: |
@@ -45,8 +60,8 @@ jobs:
           python -m pip check
           python -m pip_audit -r requirements.txt --progress-spinner off
           python -m bandit -q -r scripts skills/academic-figure/scripts skills/academic-figure/assets/figures -ll
-          # source-manifest.json and paper-checklist-provenance contain published SHA-256 checksums, not credentials.
-          python -m detect_secrets scan --all-files --exclude-lines 'detect[-_]secrets|paper-checklist-provenance' --exclude-files '(^|[\\/])(\.git|__pycache__|\.pytest_cache|\.ruff_cache)([\\/]|$)|\.eval_results\.json$|(^|[\\/])assets[\\/]paper-template[\\/]reference-23rd-latex[\\/]source-manifest\.json$' > /tmp/secrets.json
+          # The two manifests below contain published Git/SHA checksums, not credentials.
+          python -m detect_secrets scan --all-files --exclude-lines 'detect[-_]secrets|paper-checklist-provenance' --exclude-files '(^|[\\/])(\.git|__pycache__|\.pytest_cache|\.ruff_cache)([\\/]|$)|\.eval_results\.json$|(^|[\\/])assets[\\/]paper-template[\\/]reference-23rd-latex[\\/]source-manifest\.json$|(^|[\\/])skills[\\/]academic-figure[\\/]references[\\/]figures4papers\.lock\.json$' > /tmp/secrets.json
           python -c 'import json; data=json.load(open("/tmp/secrets.json", encoding="utf-8")); assert not data["results"], data["results"]'
 
       - name: 全仓静态与语法检查
@@ -58,5 +73,5 @@ jobs:
         run: python -m pytest tests/ -q -ra
 
       # 说明：
-      # - CI 已安装 Noto CJK；严格绘图测试把缺少中文字体视为失败，生产渲染器仍保留英文回退。
+      # - CI 已安装 Noto CJK、Fandol、TeX Gyre 与 XeLaTeX；绘图字体和 PDF 编译测试均按真实运行时执行。
       # - MATLAB 用例在 CI 无 matlab.exe 时校验 R2024b 真机证据日志，不产生 skip。

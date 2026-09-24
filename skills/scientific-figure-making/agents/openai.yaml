@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scientific Figure Making"
+  short_description: "Safe publication-ready matplotlib figure guidance"
+  default_prompt: "Use $scientific-figure-making to plan a publication-ready matplotlib figure while applying the repository's figures4papers license and safety guardrails."

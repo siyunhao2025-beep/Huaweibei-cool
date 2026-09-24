@@ -5,7 +5,8 @@
     问题驱动 · 8 步闭环工作流 · 39 类图形资产 · 四轮 QA 协议 · 矢量 PDF 交付 · 统计报告
   </p>
   <p>
-    <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-Apache--2.0-2ea44f"></a>
+    <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/original-Apache--2.0-2ea44f"></a>
+    <a href="THIRD_PARTY_NOTICES.md"><img alt="Third-party license" src="https://img.shields.io/badge/third--party-CC%20BY--NC%204.0-f59e0b"></a>
     <a href="#安装与使用"><img alt="Install" src="https://img.shields.io/badge/install-Claude%20Code%20%7C%20Codex%20%7C%20Cursor%20%7C%20Copilot-111827"></a>
     <a href="#图表类型全览"><img alt="Figure Types" src="https://img.shields.io/badge/assets-39-0ea5e9"></a>
     <a href="#assets-figure-atlas"><img alt="QA" src="https://img.shields.io/badge/QA-4%20pass%2030%2B%20checks-success"></a>
@@ -27,6 +28,12 @@
 
 **Academic Figure Skill** 以"问题驱动而非模板驱动"为核心原则——每一张图从科学问题出发，通过 8 步闭环工作流（用户意图解析 → 原型分类 → 图型论证 → 环境探测 → 风格注入 → 资产检索 → 渲染生成 → 质量验证），输出可直接投稿的矢量 PDF 主文件 + 300dpi PNG 预览 + 统计报告。更多详情，请关注微信公众号：**科研绘图酱**。
 
+> **许可边界：** 本目录的原创内容使用 Apache-2.0；部分既有绘图脚本来自
+> `ChenLiu-1996/figures4papers`，仍受 CC BY-NC 4.0（非商业）约束，不能被
+> Apache/MIT 重新许可。使用资产前必须阅读
+> [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) 和
+> [`references/figures4papers-profile.md`](references/figures4papers-profile.md)。
+
 ---
 
 ## 效果预览
@@ -46,7 +53,7 @@
 
 ## 项目介绍
 
-Academic Figure Skill 是一个面向 AI 编程助手（Claude Code、Codex 等）的 Skill 包。其工作方式是：将 Nature / Cell / Science 系列期刊的图表制作规范（字体 Arial/Helvetica、栏宽 89mm/183mm、PDF 矢量导出、300dpi 栅格预览）和 39 类图形资产的视觉参数编码为 `SKILL.md` 及其引用的 18 份参考文档。当用户提供数据和科学问题后，Skill 引导 LLM 执行一个标准化的 8 步流程：澄清研究问题 → 分类图型原型 → 论证面板方案并获取用户确认 → 检测 Python/R 运行时 → 注入统一的排版和配色基线 → 扫描 `assets/figures/` 中的生产脚本（匹配则原生运行，无匹配则跨类型继承视觉参数）→ 数据校验 → 4 轮 QA 自检 → 输出矢量 PDF 与统计报告。
+Academic Figure Skill 是一个面向 AI 编程助手（Claude Code、Codex 等）的 Skill 包。其工作方式是：将 Nature / Cell / Science 系列期刊的图表制作规范（字体 Arial/Helvetica、栏宽 89mm/183mm、PDF 矢量导出、300dpi 栅格预览）和 39 类图形资产的视觉参数编码为 `SKILL.md` 及其引用的 20 份知识/来源文件。当用户提供数据和科学问题后，Skill 引导 LLM 执行一个标准化的 8 步流程：澄清研究问题 → 分类图型原型 → 论证面板方案并获取用户确认 → 检测 Python/R 运行时 → 注入统一的排版和配色基线 → 扫描 `assets/figures/` 并先核来源/许可（获许可才原生运行，否则独立实现）→ 数据校验 → 4 轮 QA 自检 → 输出矢量 PDF 与统计报告。
 
 华为杯项目适配层要求普通结果图的可见文字默认使用中文：通过
 `scripts/chinese_fonts.py` 验证实际安装字体和字符覆盖，Python 使用
@@ -72,7 +79,7 @@ Academic Figure Skill 是一个面向 AI 编程助手（Claude Code、Codex 等�
 |------|------|
 | **原型分类** | 四类范式：`quantitative_grid`（定量网格）、`schematic-led`（示意引导）、`image plate + quant`（图像-定量融合）、`asymmetric_mixed`（非对称复合）——自动驱动布局与英雄面板策略 |
 | **39 类图形资产** | 29 类通用/生物医学科研图，加轨迹投影、参数扫描、残差诊断、Monte Carlo 恢复、收敛带、灵敏度龙卷风、场景热图、贡献瀑布、相位轮廓和资源设计 10 类建模图；按资产能力提供生产脚本与预览 |
-| **Copy-First 规则** | 生成代码前扫描 `assets/figures/<type>/`，匹配到生产脚本则**原生运行**——Python 跑 `.py`，R 跑 `.R`，不翻译、不降级质量 |
+| **License-First 规则** | 先查来源与许可，再扫描 `assets/figures/<type>/`；只有用途获许可的脚本才原生运行，受限或用途不清的资产按通用原理独立重写 |
 | **跨类型参数继承** | 无生产脚本时，从相近图型借用 Class A（硬参数：颜色/透明度/线宽）、Class B（比例参数：字号/尺寸）、Class C（逻辑参数：图例开关/网格开关）三类视觉参数 |
 | **混合语言组合** | R 面板原生运行 → 输出 spec-correct PNG，Python 排版引擎按精确物理尺寸拼合多面板 |
 | **英雄面板自动识别** | 承载核心结论的面板自动获得更大的视觉权重，支撑面板居次排列 |
@@ -123,7 +130,7 @@ Academic Figure Skill 是一个面向 AI 编程助手（Claude Code、Codex 等�
   Step 2   环境探测    │ 运行时自检（Python / R 内核、依赖完整性）
   Step 3   风格注入    │ 视觉基线固化：字体系统 + 配色方案 + 导出规格
   Step 4   资产检索    │ 扫描 assets/figures/<type>/，逐面板匹配已有生产脚本
-  Step 5   渲染生成    │ Copy-First 原生运行或跨类型参数继承
+  Step 5   渲染生成    │ License-First 原生运行或独立实现
   Step 5.5 数据校验    │ 逐面板预判图表可用性，不通过则拒绝渲染
   Step 6   质量验证    │ 四轮 QA 协议，30+ 项检查点
   Step 7   成果交付    │ 矢量 PDF + 300dpi PNG + 统计报告 + QA 报告
@@ -181,7 +188,15 @@ Codex 支持通过 `install/codex/` 中的 `manifest.yaml` + `instructions.md` �
 git clone https://github.com/TingxiYu/academic-figure-skill.git
 cd academic-figure-skill
 mkdir -p ~/.codex/skills/academic-figure-skill
-cp -r SKILL.md references/ scripts/ assets/ install/codex/* ~/.codex/skills/academic-figure-skill/
+cp -r SKILL.md LICENSE THIRD_PARTY_NOTICES.md LICENSES/ references/ scripts/ assets/ install/codex/* ~/.codex/skills/academic-figure-skill/
+```
+
+在 Huaweibei-cool 分发包中，`scientific-figure-making` 是一个独立的
+CC BY-NC 4.0 Skill，而不是本 Skill 的 Apache-2.0 内容。若要让 Codex
+发现它，还需从 Huaweibei-cool 仓库根目录单独安装：
+
+```bash
+cp -r skills/scientific-figure-making ~/.codex/skills/scientific-figure-making
 ```
 
 安装后在 Codex 会话中自然描述需求，Skill 会根据 `manifest.yaml` 中的触发规则自动激活。
@@ -190,7 +205,7 @@ cp -r SKILL.md references/ scripts/ assets/ install/codex/* ~/.codex/skills/acad
 
 ```text
 从 https://github.com/TingxiYu/academic-figure-skill.git 安装 Codex skill。
-克隆仓库后，将 SKILL.md、references/、scripts/、assets/ 和 install/codex/ 复制到 ~/.codex/skills/academic-figure-skill/。
+克隆仓库后，将 SKILL.md、LICENSE、THIRD_PARTY_NOTICES.md、LICENSES/、references/、scripts/、assets/ 和 install/codex/ 复制到 ~/.codex/skills/academic-figure-skill/。
 保持完整目录结构，不要只复制 SKILL.md。
 ```
 
@@ -233,9 +248,11 @@ cp academic-figure-skill/install/copilot/copilot-instructions.md <your-project>/
 ```text
 	academic-figure-skill/                          ← 核心 Skill 包（本目录）
     ├── README.md                      ← 项目说明文档（本文件）
-    ├── LICENSE                        ← MIT 许可证
+    ├── LICENSE                        ← 原创内容 Apache-2.0 许可证
+    ├── THIRD_PARTY_NOTICES.md         ← 第三方归属、许可范围与修改记录
+    ├── LICENSES/                      ← 第三方许可证正文
     ├── SKILL.md                       ← 技能入口：8 步闭环工作流 + 全部规则
-    ├── references/                    ← 16 份共享知识文档
+    ├── references/                    ← 20 份共享知识/来源清单文件
     │   ├── figure-contract.md         ← 图表合同：核心结论 + 证据链 + 审稿风险
     │   ├── color-palettes.md          ← 配色系统：分类/发散/连续 + 色盲友好
     │   ├── typography.md              ← 字体规范：Arial/Helvetica, ≥5pt 底限
@@ -354,4 +371,8 @@ Academic Figure Skill 采用 Skill 插件架构，添加新图型只需：
 
 ## 许可证
 
-[Apache 2.0](LICENSE) © 2025 Academic Figure Skill
+原创内容：[Apache 2.0](LICENSE) © 2025 Academic Figure Skill。
+
+第三方内容不随 Apache-2.0 重新许可。`figures4papers` 同源文件使用
+[CC BY-NC 4.0](LICENSES/CC-BY-NC-4.0.txt)，仅限符合其非商业条款的用途；
+完整归属、锁定版本和文件映射见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。

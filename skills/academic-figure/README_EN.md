@@ -5,7 +5,8 @@
     Question-driven · 8-step workflow · 39 figure asset families · 4-pass QA · Vector PDF delivery · Statistics report
   </p>
   <p>
-    <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-Apache--2.0-2ea44f"></a>
+    <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/original-Apache--2.0-2ea44f"></a>
+    <a href="THIRD_PARTY_NOTICES.md"><img alt="Third-party license" src="https://img.shields.io/badge/third--party-CC%20BY--NC%204.0-f59e0b"></a>
     <a href="#installation"><img alt="Install" src="https://img.shields.io/badge/install-Claude%20Code%20%7C%20Codex%20%7C%20Cursor%20%7C%20Copilot-111827"></a>
     <a href="#figure-type-gallery"><img alt="Figure Types" src="https://img.shields.io/badge/assets-39-0ea5e9"></a>
     <a href="#quality-assessment"><img alt="QA" src="https://img.shields.io/badge/QA-4%20pass%2030%2B%20checks-success"></a>
@@ -27,6 +28,12 @@
 
 **Academic Figure Skill** takes "question-driven, not template-driven" as its core principle. Every figure starts from a scientific question and goes through an 8-step closed-loop workflow (intent parsing → archetype classification → figure-type justification → environment detection → style baseline injection → asset scan → render → QA verification), delivering submission-ready vector PDF masters + 300dpi PNG previews + statistical reports. For updates, follow our WeChat official account: **科研绘图酱**.
 
+> **License boundary:** Original material in this directory is Apache-2.0.
+> Several existing plotting scripts originate from `ChenLiu-1996/figures4papers`
+> and remain subject to CC BY-NC 4.0; Apache/MIT does not relicense them.
+> Before using an asset, read [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)
+> and [`references/figures4papers-profile.md`](references/figures4papers-profile.md).
+
 ---
 
 ## Preview
@@ -46,7 +53,7 @@
 
 ## About
 
-Academic Figure Skill is a skill package for AI coding assistants (Claude Code, Codex, and others). It encodes the figure preparation conventions of Nature, Cell, and Science family journals — Arial/Helvetica typography, 89 mm / 183 mm column widths, PDF vector export, and 300 dpi raster previews — along with the visual parameters of 39 figure asset families into `SKILL.md` and 18 supporting reference documents. When a user provides data and a scientific question, the skill guides the LLM through a standardized 8-step workflow: clarifying the research question → classifying the figure archetype → proposing and justifying a panel plan for user confirmation → detecting Python/R runtimes → injecting a unified typography and color baseline → scanning `assets/figures/` for production scripts (native execution when matched, cross-type parameter inheritance otherwise) → pre-render data validation → 4-pass QA self-check → delivering a vector PDF master and a statistical report.
+Academic Figure Skill is a skill package for AI coding assistants (Claude Code, Codex, and others). It encodes the figure preparation conventions of Nature, Cell, and Science family journals — Arial/Helvetica typography, 89 mm / 183 mm column widths, PDF vector export, and 300 dpi raster previews — along with the visual parameters of 39 figure asset families into `SKILL.md` and 20 knowledge/provenance files. When a user provides data and a scientific question, the skill guides the LLM through a standardized 8-step workflow: clarifying the research question → classifying the figure archetype → proposing and justifying a panel plan for user confirmation → detecting Python/R runtimes → injecting a unified typography and color baseline → scanning `assets/figures/` and checking provenance/license before reuse (native execution only when permitted, independent implementation otherwise) → pre-render data validation → 4-pass QA self-check → delivering a vector PDF master and a statistical report.
 
 The skill does not replace the plotting capabilities of Python or R. It provides a set of structured constraints and priors so that LLM-generated plotting code adheres to CNS journal visual standards, reducing the manual effort of adjusting typography, color schemes, and export parameters. For multi-panel compositions, the skill supports mixed Python and R orchestration: R panels are rendered to bitmaps via the Cairo graphics device, and the Python `compose.py` layout engine tiles them at exact physical dimensions.
 
@@ -67,7 +74,7 @@ The skill does not replace the plotting capabilities of Python or R. It provides
 |------------|-------------|
 | **Archetype Classification** | Four paradigms: `quantitative_grid`, `schematic-led`, `image plate + quant`, `asymmetric_mixed` — automatically drive layout and hero-panel strategy |
 | **39 Figure Asset Families** | 29 general/biomedical families plus trajectory projection, parameter sweep, residual diagnostics, Monte Carlo recovery, convergence bands, sensitivity tornado, scenario heatmap, contribution waterfall, phase profile, and resource design; production scripts and previews are provided according to asset capability |
-| **Copy-First Rule** | Scan `assets/figures/<type>/` before generating code; if a production script matches, **run it natively** — Python runs `.py`, R runs `.R` — no translation, no quality degradation |
+| **License-First Rule** | Check provenance and license before scanning `assets/figures/<type>/`; natively run only assets whose intended use is permitted, otherwise reimplement the general principle independently |
 | **Cross-Type Parameter Inheritance** | When no production script exists, borrow Class A (hard params: colors/alpha/linewidth), Class B (scaling params: font sizes/dimensions), and Class C (logic params: legend on/off, grid on/off) from the nearest figure type |
 | **Multi-Language Composition** | R panels run natively → output spec-correct PNGs; Python composition engine tiles them by exact physical dimensions |
 | **Auto Hero-Panel Detection** | The panel carrying the core conclusion automatically gets larger visual weight; supporting panels are arranged as subordinates |
@@ -118,7 +125,7 @@ The skill does not replace the plotting capabilities of Python or R. It provides
   Step 2   Detect environment│ Runtime self-check (Python / R kernels, dependency integrity)
   Step 3   Inject style      │ Visual baseline: typography system + color scheme + export specs
   Step 4   Scan assets       │ Scan assets/figures/<type>/, match production scripts per panel
-  Step 5   Render            │ Copy-First native execution or cross-type parameter inheritance
+  Step 5   Render            │ License-First native execution or independent implementation
   Step 5.5 Validate data     │ Pre-render per-panel feasibility check — refuse if criteria not met
   Step 6   QA verification   │ 4-pass QA protocol, 30+ checkpoints
   Step 7   Deliver           │ Vector PDF + 300dpi PNG + Statistics Report + QA Report
@@ -176,7 +183,16 @@ Codex loads skills through `install/codex/` which provides `manifest.yaml` + `in
 git clone https://github.com/TingxiYu/academic-figure-skill.git
 cd academic-figure-skill
 mkdir -p ~/.codex/skills/academic-figure-skill
-cp -r SKILL.md references/ scripts/ assets/ install/codex/* ~/.codex/skills/academic-figure-skill/
+cp -r SKILL.md LICENSE THIRD_PARTY_NOTICES.md LICENSES/ references/ scripts/ assets/ install/codex/* ~/.codex/skills/academic-figure-skill/
+```
+
+In the Huaweibei-cool distribution, `scientific-figure-making` is a separate
+CC BY-NC 4.0 skill, not Apache-2.0 content from this skill. To make it
+discoverable by Codex, install it separately from the Huaweibei-cool repository
+root:
+
+```bash
+cp -r skills/scientific-figure-making ~/.codex/skills/scientific-figure-making
 ```
 
 After installation, describe your task naturally in a Codex session — the skill activates automatically based on trigger rules in `manifest.yaml`.
@@ -185,7 +201,7 @@ You can also ask Codex to install for you:
 
 ```text
 Install the Codex skill from https://github.com/TingxiYu/academic-figure-skill.git.
-Clone the repo, then copy SKILL.md, references/, scripts/, assets/, and install/codex/ to ~/.codex/skills/academic-figure-skill/.
+Clone the repo, then copy SKILL.md, LICENSE, THIRD_PARTY_NOTICES.md, LICENSES/, references/, scripts/, assets/, and install/codex/ to ~/.codex/skills/academic-figure-skill/.
 Keep the full directory structure — do not copy only SKILL.md.
 ```
 
@@ -229,9 +245,11 @@ For other AI coding assistants:
 	academic-figure-skill/             ← Core skill package (this directory)
     ├── README.md                      ← Documentation (Chinese)
     ├── README_EN.md                   ← Documentation (English)
-    ├── LICENSE                        ← Apache 2.0 License
+    ├── LICENSE                        ← Apache-2.0 for original material
+    ├── THIRD_PARTY_NOTICES.md         ← Attribution, scope, and change notices
+    ├── LICENSES/                      ← Third-party license texts
     ├── SKILL.md                       ← Skill entry point: 8-step workflow + all rules
-    ├── references/                    ← 16 shared knowledge documents
+    ├── references/                    ← 20 knowledge and provenance files
     │   ├── figure-contract.md         ← Figure contract: core conclusion + evidence chain + review risks
     │   ├── color-palettes.md          ← Color system: categorical/diverging/sequential + colorblind-friendly
     │   ├── typography.md              ← Font specification: Arial/Helvetica, ≥5pt minimum
@@ -350,4 +368,10 @@ Academic Figure Skill uses a skill plugin architecture. To add a new figure type
 
 ## License
 
-[Apache 2.0](LICENSE) © 2025 Academic Figure Skill Contributors
+Original material: [Apache 2.0](LICENSE) © 2025 Academic Figure Skill Contributors.
+
+Third-party material is not relicensed under Apache-2.0. Files originating
+from `figures4papers` remain under
+[CC BY-NC 4.0](LICENSES/CC-BY-NC-4.0.txt) and are limited to uses permitted by
+its noncommercial terms. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)
+for attribution, locked revision, and the exact file map.
