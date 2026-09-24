@@ -31,8 +31,15 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      - name: 安装中文字体（路线图渲染）
-        run: sudo apt-get update && sudo apt-get install -y fonts-noto-cjk
+      - name: 安装中文字体与 XeLaTeX（路线图和 PDF 集成测试）
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            fonts-noto-cjk \
+            fonts-texgyre \
+            fonts-texgyre-math \
+            texlive-lang-chinese \
+            texlive-xetex
 
       - name: 安装依赖
         run: |
@@ -58,5 +65,5 @@ jobs:
         run: python -m pytest tests/ -q -ra
 
       # 说明：
-      # - CI 已安装 Noto CJK；严格绘图测试把缺少中文字体视为失败，生产渲染器仍保留英文回退。
+      # - CI 已安装 Noto CJK、TeX Gyre 与 XeLaTeX；绘图字体和 PDF 编译测试均按真实运行时执行。
       # - MATLAB 用例在 CI 无 matlab.exe 时校验 R2024b 真机证据日志，不产生 skip。

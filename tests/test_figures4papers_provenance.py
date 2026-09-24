@@ -115,8 +115,11 @@ def test_codex_adapter_generator_preserves_license_resources():
         assert required in checked_in
 
 
-def test_ci_treats_published_lock_hashes_as_checksums_not_secrets():
+def test_ci_supports_published_checksums_and_pdf_integration():
     workflow = (REPO_ROOT / ".github" / "workflows" / "ci.yml").read_text(
         encoding="utf-8"
     )
     assert "figures4papers\\.lock\\.json$" in workflow
+    assert "texlive-xetex" in workflow
+    assert "texlive-lang-chinese" in workflow
+    assert "fonts-texgyre-math" in workflow
