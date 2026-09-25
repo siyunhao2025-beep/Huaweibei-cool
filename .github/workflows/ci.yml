@@ -39,9 +39,18 @@ jobs:
             texlive-xetex \
             texlive-lang-chinese \
             texlive-latex-extra \
-            texlive-fonts-recommended
+            texlive-fonts-recommended \
+            texlive-plain-generic \
+            tex-gyre \
+            fonts-texgyre \
+            fonts-texgyre-math
           xelatex --version
           kpsewhich ctexart.cls
+          kpsewhich ulem.sty
+          kpsewhich FandolKai-Regular.otf
+          kpsewhich texgyretermes-regular.otf
+          fc-match "TeX Gyre Termes" | grep -Fq 'texgyretermes'
+          fc-match "TeX Gyre Termes Math" | grep -Fq 'texgyretermes-math'
 
       - name: 安装依赖
         run: |

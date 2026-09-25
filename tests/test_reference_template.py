@@ -79,6 +79,16 @@ def test_times_family_and_abstract_emphasis_rules_are_built_in():
     assert "整句、整段加粗" in abstract_guide
 
 
+def test_title_style_uses_tex_tree_fandol_fallback_on_minimal_linux():
+    title_style = (
+        ROOT / "assets" / "paper-template" / "gmcm-title.sty"
+    ).read_text(encoding="utf-8")
+    assert "{FandolKai-Regular.otf}" in title_style
+    assert "{FandolSong-Regular.otf}" in title_style
+    assert "{FandolKai-Regular}" not in title_style
+    assert "{FandolSong-Regular}" not in title_style
+
+
 def test_identity_cover_hides_zero_but_abstract_starts_at_one():
     cls = (ROOT / "assets" / "paper-template" / "gmcmthesis.cls").read_text(encoding="utf-8")
     cover = cls.split(r"\newcommand{\makeidentitycover}", 1)[1].split(r"\renewcommand{\maketitle}", 1)[0]

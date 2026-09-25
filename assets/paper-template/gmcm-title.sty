@@ -18,10 +18,13 @@
 \IfFontExistsTF{STXinwei}{%
   \setCJKfamilyfont{hwxw}[AutoFakeBold=2]{STXinwei}%
 }{%
-  \IfFontExistsTF{FandolKai-Regular}{%
-    \setCJKfamilyfont{hwxw}[AutoFakeBold=2]{FandolKai-Regular}%
+  % Use the TeX-tree filename rather than the font-family name.  Minimal Linux
+  % runners do not necessarily expose TeX Live's Fandol fonts through
+  % fontconfig, while XeTeX can resolve the bundled OTF via kpathsea.
+  \IfFontExistsTF{FandolKai-Regular.otf}{%
+    \setCJKfamilyfont{hwxw}[AutoFakeBold=2]{FandolKai-Regular.otf}%
   }{%
-    \setCJKfamilyfont{hwxw}[AutoFakeBold=2]{FandolSong-Regular}%
+    \setCJKfamilyfont{hwxw}[AutoFakeBold=2]{FandolSong-Regular.otf}%
   }%
   \PackageWarningNoLine{gmcm-title}{STXinwei not found; using a bundled CJK fallback for contest-title lines}%
 }
