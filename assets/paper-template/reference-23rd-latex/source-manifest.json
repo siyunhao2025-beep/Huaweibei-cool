@@ -2,6 +2,7 @@
   "name": "第23届华为杯LaTeX模板",
   "status": "user-provided-community-reference",
   "ingested_on": "2026-09-21",
+  "reverified_on": "2026-09-26",
   "production_dependency": false,
   "local_skill_loaded": true,
   "git_distribution": false,
@@ -9,8 +10,8 @@
   "files": [
     {
       "path": "第23届华为杯LaTeX模板.pdf",
-      "bytes": 2658911,
-      "sha256": "A5317448802BD8792057B00DC025D91F2A4303E5D9B043D26E293AD32AF2B0B4",
+      "bytes": 849502,
+      "sha256": "3255288165A3290C400708F6DCB5CD1863CAAFF2165688DC1E0E919B420B3A88",
       "local_loaded": true,
       "git_distributed": false
     },
@@ -23,8 +24,8 @@
     },
     {
       "path": "gmcmthesis.cls",
-      "bytes": 21663,
-      "sha256": "09AED0CA54931F16631C91FC1FDA1375B2D4C998A008A69DDC864C9D793DDE40",
+      "bytes": 22166,
+      "sha256": "5126D85F7CDB6F0A3F01DA66A39D2AB8B6757710237401FDBA7A3DDEE642AC02",
       "local_loaded": true,
       "git_distributed": false
     },
@@ -45,11 +46,11 @@
     },
     {
       "path": "figures/title.pdf",
-      "bytes": 256223,
-      "sha256": "19EEE18DE63633104DC4829439700FD30A7279549DFA12F71FD7D8F76D158BD7",
+      "bytes": 13426,
+      "sha256": "7644C1B0E0B47F7F0AD837BD1B2BC9572AAC5BC3CFC99C60C57ED5328D4C9563",
       "local_loaded": true,
       "git_distributed": false,
-      "reason": "未被 main.tex 调用，且图中文字仍为第二十二届，禁止用于第 23 届生产稿。"
+      "reason": "当前图中文字为第二十三届，且新版社区类文件会调用；它仍是未获明确再分发许可的裁切资产，生产模板不得依赖。"
     }
   ]
 }

@@ -128,4 +128,4 @@ Wave0 已逐个 `--help` 验证 import 不报错（编译链路 Wave3 验证）�
 - **身份判断**：`gmcmthesis.cls` 文件头注明由 `latexstudio.net` 创建并由社区作者更新；不能称为组委会官方 LaTeX 模板。
 - **装载方式**：六个文件在用户本机 skill 中按 SHA-256 装载；公开仓库仅保存 `assets/paper-template/reference-23rd-latex/source-manifest.json` 与 `docs/TEMPLATE_CONTENT_MAPPING_23RD.md`。
 - **分发边界**：源包未附明确再分发许可，故不把原 PDF、源文件或图像提交到公开 GitHub。
-- **融合范围**：吸收任务卡、数据审计、Baseline—主模型证据链、按结构验证、不确定性、结果解释、模型评价、结论和复现元数据；拒绝目录、社区类文件、组合 logo 与写有“第二十二届”的过期标题资产。
+- **融合范围**：吸收任务卡、数据审计、Baseline—主模型证据链、按结构验证、不确定性、结果解释、模型评价、结论和复现元数据；拒绝目录、社区类文件、组合 logo 与社区裁切标题资产。2026-09-26 复核时 `title.pdf` 已更新为第二十三届且被新版社区类文件调用，但仍不进入生产依赖。

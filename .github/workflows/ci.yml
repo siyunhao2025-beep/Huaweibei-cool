@@ -20,7 +20,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - name: 检出代码
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -31,8 +31,17 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      - name: 安装中文字体（路线图渲染）
-        run: sudo apt-get update && sudo apt-get install -y fonts-noto-cjk
+      - name: 安装 XeLaTeX 与中文字体（PDF 集成测试）
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            fonts-noto-cjk \
+            texlive-xetex \
+            texlive-lang-chinese \
+            texlive-latex-extra \
+            texlive-fonts-recommended
+          xelatex --version
+          kpsewhich ctexart.cls
 
       - name: 安装依赖
         run: |
@@ -58,5 +67,6 @@ jobs:
         run: python -m pytest tests/ -q -ra
 
       # 说明：
-      # - CI 已安装 Noto CJK；严格绘图测试把缺少中文字体视为失败，生产渲染器仍保留英文回退。
+      # - CI 已安装 XeLaTeX、CTeX 与 Noto CJK；PDF 集成测试和严格中文绘图测试都不得静默跳过。
+      # - 生产渲染器仍保留英文回退，但论文编译测试要求真实 XeLaTeX 工具链。
       # - MATLAB 用例在 CI 无 matlab.exe 时校验 R2024b 真机证据日志，不产生 skip。

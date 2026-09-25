@@ -140,6 +140,32 @@ def test_numbered_problem_sections_require_reader_orienting_openers():
     assert "question_sections_open_with_recap_route_and_deliverable" in audit
 
 
+def test_adaptive_task_mapping_scaffold_is_routed_without_fixed_problem_archetypes():
+    skill = (REPO_ROOT / "SKILL.md").read_text(encoding="utf-8")
+    writing = (REPO_ROOT / "modules" / "paper-writing.md").read_text(encoding="utf-8")
+    mapping = (REPO_ROOT / "docs" / "TEMPLATE_CONTENT_MAPPING_23RD.md").read_text(
+        encoding="utf-8"
+    )
+    scaffold = (
+        REPO_ROOT
+        / "assets"
+        / "paper-template"
+        / "章节模板"
+        / "任务映射与总体分析模板.tex"
+    ).read_text(encoding="utf-8")
+
+    route = "assets/paper-template/章节模板/任务映射与总体分析模板.tex"
+    assert route in skill and route in writing
+    assert "任务映射与总体分析模板.tex" in mapping
+    for field in ("输入与硬约束", "数学任务", "输出与成功条件", "真实依赖"):
+        assert field in scaffold
+    for guard in ("按真实问题数增删", "强造接口", "简单题直接进入"):
+        assert guard in scaffold
+    assert "问题一做结构识别" not in scaffold
+    assert "问题二做预测" not in scaffold
+    assert "问题三做优化" not in scaffold
+
+
 def test_literal_local_references_from_skill_and_modules_exist():
     sources = [REPO_ROOT / "SKILL.md", *sorted((REPO_ROOT / "modules").glob("*.md"))]
     pattern = re.compile(
