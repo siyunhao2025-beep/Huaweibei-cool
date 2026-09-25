@@ -41,12 +41,14 @@ jobs:
             texlive-latex-extra \
             texlive-fonts-recommended \
             texlive-plain-generic \
+            texlive-science \
             tex-gyre \
             fonts-texgyre \
             fonts-texgyre-math
           xelatex --version
           kpsewhich ctexart.cls
           kpsewhich ulem.sty
+          kpsewhich siunitx.sty
           kpsewhich FandolKai-Regular.otf
           kpsewhich texgyretermes-regular.otf
           fc-match "TeX Gyre Termes" | grep -Fq 'texgyretermes'
